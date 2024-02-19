@@ -54,14 +54,30 @@ jobs:
         env:
           WA_COMMIT: true
       
-      - name: Git Status
-        if: ${{ steps.update.outputs.hasChanges == 'true' }}
-        run: git status
+
+      - name: Check for Changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes detected. Exiting."
+            exit 0
+          fi
+          echo "Changes detected. Continuing."
+  
+      - name: Commit Changes
+        if: steps.check_changes.outputs.result == 'success'
+        run: |
+          git add .
+          git commit -m "Update WAProto.proto"
+          
+      - name: Push Changes
+        if: steps.check_changes.outputs.result == 'success'
+        run: git push
 
       - name: Remove untracked files
-        if: ${{ steps.update.outputs.hasChanges == 'true' }}
+        if: steps.check_changes.outputs.result == 'success'
         run: git clean -fd
 
       - name: Release
-        if: ${{ steps.update.outputs.hasChanges == 'true' }}
+        if: steps.check_changes.outputs.result == 'success'
         run: npm run release -- --ci -i patch
