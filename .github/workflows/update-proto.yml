@@ -1,0 +1,83 @@
+name: Update WAProto
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    - cron: "0,30 * * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-proto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup GIT
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Get npm cache directory
+        id: npm-cache
+        run: |
+            echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
+      - name: Setup npm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Check update WAProto.proto
+        id: wa_proto_info
+        run: npm run build
+        env:
+          WA_COMMIT: true
+      
+
+      - name: Check for Changes
+        id: check_changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes detected. Exiting."
+            exit 0
+          fi
+          echo "Changes detected. Continuing."
+  
+      - name: Commit Changes
+        if: steps.check_changes.outputs.result == 'success'
+        run: |
+          git add .
+          git commit -m "Update WAProto.proto"
+          
+      - name: Push Changes
+        if: steps.check_changes.outputs.result == 'success'
+        run: git push
+
+      - name: Remove untracked files
+        if: steps.check_changes.outputs.result == 'success'
+        run: git clean -fd
+
+      - name: Release
+        if: steps.check_changes.outputs.result == 'success'
+        run: npm run release -- --ci -i patch
