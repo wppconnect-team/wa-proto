@@ -9821,7 +9821,7 @@ export namespace waproto {
         interface IProgressiveJpegDetails {
 
             /** ProgressiveJpegDetails scanLengths */
-            scanLengths?: ((number|Long)[]|null);
+            scanLengths?: (number[]|null);
 
             /** ProgressiveJpegDetails sidecar */
             sidecar?: (Uint8Array|null);
@@ -9837,7 +9837,7 @@ export namespace waproto {
             constructor(properties?: waproto.MediaEntry.IProgressiveJpegDetails);
 
             /** ProgressiveJpegDetails scanLengths. */
-            public scanLengths: (number|Long)[];
+            public scanLengths: number[];
 
             /** ProgressiveJpegDetails sidecar. */
             public sidecar: Uint8Array;

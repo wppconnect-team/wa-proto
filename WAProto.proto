@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.2407.2
+/// WhatsApp Version: 2.2407.5
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -924,7 +924,7 @@ message MediaEntry {
     }
     
     message ProgressiveJpegDetails {
-        repeated int64 scanLengths = 1;
+        repeated uint32 scanLengths = 1;
         optional bytes sidecar = 2;
     }
     
