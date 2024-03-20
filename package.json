@@ -33,6 +33,6 @@
     "protobufjs-cli": "^1.1.2",
     "request": "^2.88.2",
     "request-promise-core": "^1.1.4",
-    "request-promise-native": "^1.0.7"
+    "request-promise-native": "^1.0.9"
   }
 }
