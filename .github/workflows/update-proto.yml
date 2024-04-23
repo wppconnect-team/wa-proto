@@ -59,25 +59,25 @@ jobs:
         id: check_changes
         run: |
           if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes detected. Exiting."
-            exit 0
+            echo "::set-output name=result::no_changes"
+          else
+            echo "::set-output name=result::changes_detected"
           fi
-          echo "Changes detected. Continuing."
   
       - name: Commit Changes
-        if: steps.check_changes.outputs.result == 'success'
+        if: steps.check_changes.outputs.result == 'changes_detected'
         run: |
           git add .
           git commit -m "Update WAProto.proto"
           
       - name: Push Changes
-        if: steps.check_changes.outputs.result == 'success'
+        if: steps.check_changes.outputs.result == 'changes_detected'
         run: git push
 
       - name: Remove untracked files
-        if: steps.check_changes.outputs.result == 'success'
+        if: steps.check_changes.outputs.result == 'changes_detected'
         run: git clean -fd
 
       - name: Release
-        if: steps.check_changes.outputs.result == 'success'
+        if: steps.check_changes.outputs.result == 'changes_detected'
         run: npm run release -- --ci -i patch
