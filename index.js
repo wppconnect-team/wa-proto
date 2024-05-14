@@ -246,10 +246,6 @@ async function findAppModules() {
           const targetIdent = Object.values(modInfo.identifiers).find(
             (v) => v.alias === node.left.object.name
           );
-          console.log(node.left.object.name);
-          console.log(targetIdent);
-          console.log(node);
-          exit;
           if (!targetIdent) {
             console.warn(
               `found message specification for unknown identifier alias: ${node.left.object.name}`

@@ -137,26 +137,24 @@ async function findAppModules() {
   // find aliases of cross references between the wanted modules
   const modulesInfo = {};
   const moduleIndentationMap = {};
-  modules.forEach((value) => {
-    const requiringParam = value.expression.arguments[0].value;
-    modulesInfo[requiringParam] = { crossRefs: [] };
-    for (const mod of modules) {
-      walk.simple(mod, {
-        CallExpression(node) {
-          if (
-            node &&
-            node?.type ==='CallExpression' &&
-            node?.arguments.length == 1 &&
-            node?.arguments[0].value == requiringParam
-          ) {
-            modulesInfo[requiringParam].crossRefs.push({
-              alias: node.arguments[0].value,
-              module: node.arguments[0].value,
-            });
-          }
-        },
-      });
-    }
+  modules.forEach((module) => {
+    const moduleName = module.expression.arguments[0].value;
+    modulesInfo[moduleName] = { crossRefs: [] };
+    walk.simple(module, {
+      AssignmentExpression(node) {
+        if (
+          node &&
+          node?.right?.type == 'CallExpression' &&
+          node?.right?.arguments?.length == 1 &&
+          node?.right?.arguments[0].type !== 'ObjectExpression'
+        ) {
+          modulesInfo[moduleName].crossRefs.push({
+            alias: node.left.name,
+            module: node.right.arguments[0].value,
+          });
+        }
+      },
+    });
   });
 
   // find all identifiers and, for enums, their array of values
@@ -299,9 +297,11 @@ async function findAppModules() {
                   );
                 }
               } else if (elements[2].type === 'MemberExpression') {
+                //console.log(elements[2]);
                 const crossRef = modInfo.crossRefs.find(
                   (r) => r.alias === elements[2].object.name
                 );
+                //console.log(crossRef);
                 if (
                   crossRef &&
                   modulesInfo[crossRef.module].identifiers[
