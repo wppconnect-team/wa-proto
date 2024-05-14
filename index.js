@@ -167,15 +167,16 @@ async function findAppModules() {
     const assignments = []
     walk.simple(mod, {
       AssignmentExpression(node) {
-          const assignments = [];
-          let i = 1;
-          assignments.push(node);
+        const left = node.left;
+        if(left.property?.name) {
+          assignments.push(node?.left);
+        }
       }
     });
 
 
     const makeBlankIdent = (a) => {
-      const key = rename(a.property.name);
+      const key = rename(a?.property?.name);
       const indentation = getNesting(key);
       const value = { name: key };
 
@@ -196,7 +197,6 @@ async function findAppModules() {
     modInfo.identifiers = Object.fromEntries(
       assignments.map(makeBlankIdent).reverse()
     );
-    console.log(modInfo);
     const enumAliases = {};
     // enums are defined directly, and both enums and messages get a one-letter alias
     walk.simple(mod, {
