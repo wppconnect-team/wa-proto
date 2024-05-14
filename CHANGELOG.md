@@ -1,3 +1,12 @@
+## 0.0.4 (2024-05-14)
+
+
+### Bug Fixes
+
+* Improovment aliases ([5408a34](https://github.com/wppconnect-team/wa-proto/commit/5408a34d255da6b7a569f2fd2fb2d3df28221bb4))
+
+
+
 ## 0.0.3 (2024-05-14)
 
 
