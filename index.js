@@ -58,9 +58,7 @@ const extractAllExpressions = (node) => {
   return expressions;
 };
 
-const getWAWebProtobufsE2E = (nodes) => {
-  return nodes.find((body) => body?.expression?.arguments?.[0]?.value?.toString()?.includes('WAWebProtobufsE2E.pb'));
-}
+
 async function findAppModules() {
   const ua = {
     headers: {
@@ -103,13 +101,10 @@ async function findAppModules() {
   );
   //const patchedQrData = qrData.replace("Spec=void 0,t.", "Spec=t.")
 
-  const protoModule = getWAWebProtobufsE2E(acorn.parse(patchedQrData).body);
-  //console.log(protoModule.expression.arguments[2].body.body[60].expression.left);
   const qrModules = acorn.parse(patchedQrData).body;
   
   const result = qrModules.filter((m) => {
     const expressions = extractAllExpressions(m);
-    //console.log(expressions);
     return expressions?.find(
       (e) => { 
         return e?.left?.property?.name === 'internalSpec'
@@ -145,21 +140,23 @@ async function findAppModules() {
   modules.forEach((value) => {
     const requiringParam = value.expression.arguments[0].value;
     modulesInfo[requiringParam] = { crossRefs: [] };
-    walk.simple(value, {
-      VariableDeclarator(node) {
-        if (
-          node.init &&
-          node.init.type === 'CallExpression' &&
-          node.init.arguments[0].value === requiringParam &&
-          node.init.arguments.length === 1
-        ) {
-          modulesInfo[requiringParam].crossRefs.push({
-            alias: requiringParam,
-            module: node.init.arguments[0].value,
-          });
-        }
-      },
-    });
+    for (const mod of modules) {
+      walk.simple(mod, {
+        CallExpression(node) {
+          if (
+            node &&
+            node?.type ==='CallExpression' &&
+            node?.arguments.length == 1 &&
+            node?.arguments[0].value == requiringParam
+          ) {
+            modulesInfo[requiringParam].crossRefs.push({
+              alias: node.arguments[0].value,
+              module: node.arguments[0].value,
+            });
+          }
+        },
+      });
+    }
   });
 
   // find all identifiers and, for enums, their array of values
@@ -175,7 +172,7 @@ async function findAppModules() {
           assignments.push(node);
       }
     });
-    
+
 
     const makeBlankIdent = (a) => {
       const key = rename(a.property.name);
@@ -199,6 +196,7 @@ async function findAppModules() {
     modInfo.identifiers = Object.fromEntries(
       assignments.map(makeBlankIdent).reverse()
     );
+    console.log(modInfo);
     const enumAliases = {};
     // enums are defined directly, and both enums and messages get a one-letter alias
     walk.simple(mod, {

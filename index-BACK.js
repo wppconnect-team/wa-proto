@@ -170,7 +170,6 @@ async function findAppModules() {
           let i = 1;
           anc.reverse();
           while (anc[i].type === 'AssignmentExpression') {
-          console.log(anc[i]);
             assignments.push(anc[i++].left);
           }
 
