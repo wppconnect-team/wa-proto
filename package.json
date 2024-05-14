@@ -11,10 +11,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "build:alpha": "npm run fetch:alpha && npm run compile",
     "build": "npm run fetch && npm run compile",
     "compile": "npm run compile:js && npm run compile:ts",
     "compile:js": "pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
+    "fetch:alpha": "node fetch-alpha.js",
     "fetch": "node index.js",
     "changelog:last": "conventional-changelog -p angular -r 2",
     "changelog:preview": "conventional-changelog -p angular -u",

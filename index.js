@@ -32,23 +32,7 @@ const extractAllExpressions = (node) => {
   if (exp) {
     expressions.push(exp);
   }
-  if(node?.expression?.arguments?.length) {
-    for (const arg of node?.expression?.arguments) {
-      if(arg?.body?.body?.length){
-        for(const exp of arg?.body.body) {
-          expressions.push(...extractAllExpressions(exp));
-        }
-      }
-    }
-  }
-  if(node?.body?.body?.length) {
-    for (const exp of node?.body?.body) {
-      if(exp.expression){
-        expressions.push(...extractAllExpressions(exp.expression));
-      }
-    }
-  }
-  
+
   if (node.expression?.expressions?.length) {
     for (const exp of node.expression?.expressions) {
       expressions.push(...extractAllExpressions(exp));
@@ -57,7 +41,6 @@ const extractAllExpressions = (node) => {
 
   return expressions;
 };
-
 
 async function findAppModules() {
   const ua = {
@@ -73,26 +56,37 @@ async function findAppModules() {
     },
   };
   const baseURL = 'https://web.whatsapp.com';
-  const serviceworker = await request.get(`${baseURL}/sw.js`, ua);
+  const serviceworker = await request.get(`${baseURL}/serviceworker.js`, ua);
 
   const versions = [
-    ...serviceworker.matchAll(/client_revision":([\d\.]+),/g),
+    ...serviceworker.matchAll(/assets-manifest-([\d\.]+).json/g),
   ].map((r) => r[1]);
   const version = versions[0];
-  console.log(`Current version: 2.3000.${version}`);
-
-  const waVersion = `2.3000.${version}`;
-  whatsAppVersion = waVersion;
 
   let bootstrapQRURL = '';
+  if (version) {
+    const asset = await request.get(
+      `${baseURL}/assets-manifest-${version}.json`,
+      ua
+    );
+    const hashFiles = JSON.parse(asset);
+    const files = Object.keys(hashFiles);
+    const app = files.find((f) => /^app\./.test(f));
+    bootstrapQRURL = `${baseURL}/${app}`;
+  } else {
+    const index = await request.get(baseURL, ua);
+    const bootstrapQRID = index.match(/src="\/app.([0-9a-z]{10,}).js"/)[1];
+    bootstrapQRURL = baseURL + '/app.' + bootstrapQRID + '.js';
+  }
 
-  const URLScript = serviceworker.match(/(?<=importScripts\(["'])(.*?)(?=["']\);)/g);
-  bootstrapQRURL = new URL(URLScript[0].replaceAll("\\",'')).href;
-
-  console.info('Found source JS URL:', bootstrapQRURL);
+  console.error('Found source JS URL:', bootstrapQRURL);
 
   const qrData = await request.get(bootstrapQRURL, ua);
-
+  const waVersion = qrData.match(
+    /(?:appVersion:|VERSION_STR=)"(\d\.\d+\.\d+)"/
+  )[1];
+  console.log('Current version:', waVersion);
+  whatsAppVersion = waVersion;
   // This one list of types is so long that it's split into two JavaScript declarations.
   // The module finder below can't handle it, so just patch it manually here.
   const patchedQrData = qrData.replace(
@@ -100,17 +94,22 @@ async function findAppModules() {
     't.ActionLinkSpec=t.TemplateButtonSpec'
   );
   //const patchedQrData = qrData.replace("Spec=void 0,t.", "Spec=t.")
+  const qrModules =
+    acorn.parse(patchedQrData).body[0].expression.arguments[0].elements[1]
+      .properties;
 
-  const qrModules = acorn.parse(patchedQrData).body;
-  
   const result = qrModules.filter((m) => {
-    const expressions = extractAllExpressions(m);
-    return expressions?.find(
-      (e) => { 
-        return e?.left?.property?.name === 'internalSpec'
-      }
-    );
+    const hasProto = !!m.value.body.body.find((b) => {
+      const expressions = extractAllExpressions(b);
+      return expressions?.find(
+        (e) => e?.left?.property?.name === 'internalSpec'
+      );
+    });
+    if (hasProto) {
+      return true;
+    }
   });
+
   return result;
 }
 
@@ -128,6 +127,7 @@ async function findAppModules() {
   // const enumConstructorIDs = [76672, 54302]
 
   const modules = await findAppModules();
+
   // Sort modules so that whatsapp module id changes don't change the order in the output protobuf schema
   // const modules = []
   // for (const mod of wantedModules) {
@@ -137,66 +137,67 @@ async function findAppModules() {
   // find aliases of cross references between the wanted modules
   const modulesInfo = {};
   const moduleIndentationMap = {};
-  modules.forEach((value) => {
-    const requiringParam = value.expression.arguments[0].value;
-    modulesInfo[requiringParam] = { crossRefs: [] };
-    for (const mod of modules) {
-      walk.simple(mod, {
-        CallExpression(node) {
-          if (
-            node &&
-            node?.type ==='CallExpression' &&
-            node?.arguments.length == 1 &&
-            node?.arguments[0].value == requiringParam
-          ) {
-            modulesInfo[requiringParam].crossRefs.push({
-              alias: node.arguments[0].value,
-              module: node.arguments[0].value,
-            });
-          }
-        },
-      });
-    }
+  modules.forEach(({ key, value }) => {
+    const requiringParam = value.params[2].name;
+    modulesInfo[key.value] = { crossRefs: [] };
+    walk.simple(value, {
+      VariableDeclarator(node) {
+        if (
+          node.init &&
+          node.init.type === 'CallExpression' &&
+          node.init.callee.name === requiringParam &&
+          node.init.arguments.length === 1
+        ) {
+          modulesInfo[key.value].crossRefs.push({
+            alias: node.id.name,
+            module: node.init.arguments[0].value,
+          });
+        }
+      },
+    });
   });
 
   // find all identifiers and, for enums, their array of values
   for (const mod of modules) {
-    const modInfo = modulesInfo[mod.expression.arguments[0].value];
-    const rename = makeRenameFunc(mod.expression.arguments[0].value);
+    const modInfo = modulesInfo[mod.key.value];
+    const rename = makeRenameFunc(mod.key.value);
 
-    const assignments = []
-    walk.simple(mod, {
-      AssignmentExpression(node) {
-        const left = node.left;
-        if(left.property?.name) {
-          assignments.push(node?.left);
+    // all identifiers will be initialized to "void 0" (i.e. "undefined") at the start, so capture them here
+    walk.ancestor(mod, {
+      UnaryExpression(node, anc) {
+        if (!modInfo.identifiers && node.operator === 'void') {
+          const assignments = [];
+          let i = 1;
+          anc.reverse();
+          while (anc[i].type === 'AssignmentExpression') {
+            assignments.push(anc[i++].left);
+          }
+
+          const makeBlankIdent = (a) => {
+            const key = rename(a.property.name);
+            const indentation = getNesting(key);
+            const value = { name: key };
+
+            moduleIndentationMap[key] = moduleIndentationMap[key] || {};
+            moduleIndentationMap[key].indentation = indentation;
+
+            if (indentation.length) {
+              moduleIndentationMap[indentation] =
+                moduleIndentationMap[indentation] || {};
+              moduleIndentationMap[indentation].members =
+                moduleIndentationMap[indentation].members || new Set();
+              moduleIndentationMap[indentation].members.add(key);
+            }
+
+            return [key, value];
+          };
+
+          modInfo.identifiers = Object.fromEntries(
+            assignments.map(makeBlankIdent).reverse()
+          );
         }
-      }
+      },
     });
-
-
-    const makeBlankIdent = (a) => {
-      const key = rename(a?.property?.name);
-      const indentation = getNesting(key);
-      const value = { name: key };
-
-      moduleIndentationMap[key] = moduleIndentationMap[key] || {};
-      moduleIndentationMap[key].indentation = indentation;
-
-      if (indentation.length) {
-        moduleIndentationMap[indentation] =
-          moduleIndentationMap[indentation] || {};
-        moduleIndentationMap[indentation].members =
-          moduleIndentationMap[indentation].members || new Set();
-        moduleIndentationMap[indentation].members.add(key);
-      }
-
-      return [key, value];
-    };
-
-    modInfo.identifiers = Object.fromEntries(
-      assignments.map(makeBlankIdent).reverse()
-    );
     const enumAliases = {};
     // enums are defined directly, and both enums and messages get a one-letter alias
     walk.simple(mod, {
@@ -218,9 +219,9 @@ async function findAppModules() {
       AssignmentExpression(node) {
         if (
           node.left.type === 'MemberExpression' &&
-          modInfo.identifiers?.[node?.left?.property?.name]
+          modInfo.identifiers[rename(node.left.property.name)]
         ) {
-          const ident = modInfo.identifiers?.[node?.left?.property?.name];
+          const ident = modInfo.identifiers[rename(node.left.property.name)];
           ident.alias = node.right.name;
           // enumAliases[ident.alias] = enumAliases[ident.alias] || []
           ident.enumValues = enumAliases[ident.alias];
@@ -231,8 +232,8 @@ async function findAppModules() {
 
   // find the contents for all protobuf messages
   for (const mod of modules) {
-    const modInfo = modulesInfo[mod.expression.arguments[0].value];
-    const rename = makeRenameFunc(mod.expression.arguments[0].value);
+    const modInfo = modulesInfo[mod.key.value];
+    const rename = makeRenameFunc(mod.key.value);
 
     // message specifications are stored in a "internalSpec" attribute of the respective identifier alias
     walk.simple(mod, {
@@ -243,8 +244,12 @@ async function findAppModules() {
           node.right.type === 'ObjectExpression'
         ) {
           const targetIdent = Object.values(modInfo.identifiers).find(
-            (v) => v?.alias === node.left.object.name
+            (v) => v.alias === node.left.object.name
           );
+          console.log(node.left.object.name);
+          console.log(targetIdent);
+          console.log(node);
+          exit;
           if (!targetIdent) {
             console.warn(
               `found message specification for unknown identifier alias: ${node.left.object.name}`
@@ -285,9 +290,8 @@ async function findAppModules() {
             });
 
             // determine cross reference name from alias if this member has type "message" or "enum"
-            
             if (type === 'message' || type === 'enum') {
-              const currLoc = ` from member '${name}' of message ${targetIdent.name}'`;
+              const currLoc = ` from member '${name}' of message '${targetIdent.name}'`;
               if (elements[2].type === 'Identifier') {
                 type = Object.values(modInfo.identifiers).find(
                   (v) => v.alias === elements[2].name
@@ -350,9 +354,8 @@ async function findAppModules() {
   const decodedProtoMap = {};
   const spaceIndent = ' '.repeat(4);
   for (const mod of modules) {
-    const modInfo = modulesInfo[mod.expression.arguments[0].value];
-    const identifiers = modInfo?.identifiers?.length > 0 ? Object.values(modInfo?.identifiers) : [];
-    
+    const modInfo = modulesInfo[mod.key.value];
+    const identifiers = Object.values(modInfo.identifiers);
 
     // enum stringifying function
     const stringifyEnum = (ident, overrideName = null) =>
