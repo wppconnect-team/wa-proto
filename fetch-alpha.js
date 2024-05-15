@@ -167,9 +167,9 @@ async function findAppModules() {
       AssignmentExpression(node) {
         const left = node.left;
         if(left.property?.name) {
-          assignments.push(node?.left);
+          assignments.push(left);
         }
-      }
+      },
     });
 
 
@@ -197,6 +197,19 @@ async function findAppModules() {
     );
     const enumAliases = {};
     // enums are defined directly, and both enums and messages get a one-letter alias
+    walk.ancestor(mod, {
+      Property(node, anc) {
+        const fatherNode = anc[anc.length - 3];
+        const fatherFather = anc[anc.length - 4];
+        if (node?.key && node?.key?.name /*&& fatherNode?.callee?.arguments?.[0]?.value === '$InternalEnum'*/) {
+          const values = fatherNode.arguments?.[0]?.properties.map((p) => ({
+            name: p.key.name,
+            id: p.value.value,
+          }));
+          enumAliases[fatherFather?.left?.name] = values;
+        }
+      },
+    });
     walk.simple(mod, {
       VariableDeclarator(node) {
         if (
