@@ -125,7 +125,6 @@ async function findAppModules() {
     //  return renames[name] ?? unnestName(name)
   };
   // The constructor IDs that can be used for enum types
-  // const enumConstructorIDs = [76672, 54302]
 
   const modules = await findAppModules();
   // Sort modules so that whatsapp module id changes don't change the order in the output protobuf schema
@@ -166,7 +165,11 @@ async function findAppModules() {
     walk.simple(mod, {
       AssignmentExpression(node) {
         const left = node.left;
-        if(left.property?.name) {
+        if(
+            left.property?.name && 
+            left.property?.name !== 'internalSpec' && 
+            left.property?.name !== 'internalDefaults'
+        ) {
           assignments.push(left);
         }
       },
@@ -201,31 +204,17 @@ async function findAppModules() {
       Property(node, anc) {
         const fatherNode = anc[anc.length - 3];
         const fatherFather = anc[anc.length - 4];
-        if (node?.key && node?.key?.name /*&& fatherNode?.callee?.arguments?.[0]?.value === '$InternalEnum'*/) {
+        if (node?.key && node?.key?.name && fatherNode.arguments?.length > 0) {
           const values = fatherNode.arguments?.[0]?.properties.map((p) => ({
             name: p.key.name,
             id: p.value.value,
           }));
-          enumAliases[fatherFather?.left?.name] = values;
+          const nameAlias = fatherFather?.left?.name || fatherFather.id.name;
+          enumAliases[nameAlias] = values;
         }
       },
     });
     walk.simple(mod, {
-      VariableDeclarator(node) {
-        if (
-          node.init?.type === 'CallExpression' &&
-          // && enumConstructorIDs.includes(node.init.callee?.arguments?.[0]?.value)
-          !!node.init.arguments.length &&
-          node.init.arguments[0].type === 'ObjectExpression' &&
-          node.init.arguments[0].properties.length
-        ) {
-          const values = node.init.arguments[0].properties.map((p) => ({
-            name: p.key.name,
-            id: p.value.value,
-          }));
-          enumAliases[node.id.name] = values;
-        }
-      },
       AssignmentExpression(node) {
         if (
           node.left.type === 'MemberExpression' &&
@@ -310,13 +299,12 @@ async function findAppModules() {
                   );
                 }
               } else if (elements[2].type === 'MemberExpression') {
-                //console.log(elements[2]);
                 const crossRef = modInfo.crossRefs.find(
-                  (r) => r.alias === elements[2].object.name
+                  (r) => r.alias === elements[2]?.object?.name || elements[2]?.object?.left?.name || elements[2]?.object?.callee?.name
                 );
-                //console.log(crossRef);
                 if (
                   crossRef &&
+                  crossRef.module !== '$InternalEnum' &&
                   modulesInfo[crossRef.module].identifiers[
                     rename(elements[2].property.name)
                   ]
