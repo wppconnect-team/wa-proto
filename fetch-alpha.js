@@ -76,7 +76,7 @@ async function findAppModules() {
   const serviceworker = await request.get(`${baseURL}/sw.js`, ua);
 
   const versions = [
-    ...serviceworker.matchAll(/client_revision":([\d\.]+),/g),
+    ...serviceworker.matchAll(/client_revision\\":([\d\.]+),/g),
   ].map((r) => r[1]);
   const version = versions[0];
   console.log(`Current version: 2.3000.${version}`);
@@ -85,8 +85,8 @@ async function findAppModules() {
   whatsAppVersion = waVersion;
 
   let bootstrapQRURL = '';
-
-  const URLScript = serviceworker.match(/(?<=importScripts\(["'])(.*?)(?=["']\);)/g);
+  const clearString = serviceworker.replaceAll('/*BTDS*/', '');
+  const URLScript = clearString.match(/(?<=importScripts\(["'])(.*?)(?=["']\);)/g);
   bootstrapQRURL = new URL(URLScript[0].replaceAll("\\",'')).href;
 
   console.info('Found source JS URL:', bootstrapQRURL);
@@ -147,6 +147,11 @@ async function findAppModules() {
           node?.right?.arguments?.length == 1 &&
           node?.right?.arguments[0].type !== 'ObjectExpression'
         ) {
+          if(node.right.arguments[0].value == '$InternalEnum') {
+            console.log(node);
+            console.log(node.right.arguments[0]);
+            exit;
+          }
           modulesInfo[moduleName].crossRefs.push({
             alias: node.left.name,
             module: node.right.arguments[0].value,
@@ -204,7 +209,22 @@ async function findAppModules() {
       Property(node, anc) {
         const fatherNode = anc[anc.length - 3];
         const fatherFather = anc[anc.length - 4];
-        if (node?.key && node?.key?.name && fatherNode.arguments?.length > 0) {
+        if(
+          fatherNode?.type === 'AssignmentExpression' && 
+          fatherNode?.left?.property?.name == 'internalSpec' 
+          && fatherNode?.right?.properties.length
+        ) {
+          const values = fatherNode?.right?.properties.map((p) => ({
+            name: p.key.name,
+            id: p.value.value,
+          }));
+          const nameAlias = fatherNode?.left?.name;
+          enumAliases[nameAlias] = values;
+          /*console.log(fatherNode?.right?.properties);
+          console.log(node?.key?.name);
+          exit;*/
+        }
+        else if (node?.key && node?.key?.name && fatherNode.arguments?.length > 0) {
           const values = fatherNode.arguments?.[0]?.properties.map((p) => ({
             name: p.key.name,
             id: p.value.value,
@@ -222,7 +242,6 @@ async function findAppModules() {
         ) {
           const ident = modInfo.identifiers[rename(node.left.property.name)];
           ident.alias = node.right.name;
-          // enumAliases[ident.alias] = enumAliases[ident.alias] || []
           ident.enumValues = enumAliases[ident.alias];
         }
       },
@@ -299,9 +318,15 @@ async function findAppModules() {
                   );
                 }
               } else if (elements[2].type === 'MemberExpression') {
-                const crossRef = modInfo.crossRefs.find(
+                let crossRef = modInfo.crossRefs.find(
                   (r) => r.alias === elements[2]?.object?.name || elements[2]?.object?.left?.name || elements[2]?.object?.callee?.name
                 );
+                if(elements[2]?.property?.name == 'ChatLockSettingsSpec') {
+                  crossRef = modInfo.crossRefs.find(
+                    (r) => { return r.alias === 'a';  }
+                  );
+                  console.log(crossRef);
+                }
                 if (
                   crossRef &&
                   crossRef.module !== '$InternalEnum' &&
