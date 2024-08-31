@@ -63,6 +63,10 @@ jobs:
           else
             echo "::set-output name=result::changes_detected"
           fi
+          
+      - name: Checkout main
+        if: steps.check_changes.outputs.result == 'changes_detected'
+        run: git checkout main
   
       - name: Commit Changes
         if: steps.check_changes.outputs.result == 'changes_detected'
