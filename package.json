@@ -13,7 +13,7 @@
   "scripts": {
     "build": "npm run fetch && npm run compile",
     "compile": "npm run compile:js && npm run compile:ts",
-    "compile:js": "pbjs -o ./dist/index.js ./WAProto.proto",
+    "compile:js": "pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
     "fetch": "node index.js",
     "changelog:last": "conventional-changelog -p angular -r 2",

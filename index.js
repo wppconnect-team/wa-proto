@@ -244,6 +244,9 @@ async function findAppModules() {
   for (const mod of modules) {
     const modInfo = modulesInfo[mod.expression.arguments[0].value];
     const rename = makeRenameFunc(mod.expression.arguments[0].value);
+    const findByAliasInIdentifier = (obj, alias) => {
+      return Object.values(obj).find(item => item.alias === alias);
+    };
 
     // message specifications are stored in a "internalSpec" attribute of the respective identifier alias
     walk.simple(mod, {
@@ -289,8 +292,27 @@ async function findAppModules() {
               ) {
                 if (m.object.property.name === 'TYPES') {
                   type = m.property.name.toLowerCase();
+                  if(type == 'map'){
+
+                    let typeStr = 'map<';
+                    if (elements[2]?.type === 'ArrayExpression') {
+                      const subElements = elements[2].elements;
+                      subElements.forEach((element, index) => {
+                        if(element?.property?.name) {
+                          typeStr += element?.property?.name?.toLowerCase();
+                        } else {
+                          const ref = findByAliasInIdentifier(modInfo.identifiers, element.name);
+                          typeStr += ref.name;
+                        }
+                        if (index < subElements.length - 1) {
+                            typeStr += ', ';
+                        }
+                      });
+                      typeStr += '>';
+                      type = typeStr;
+                    }
+                  }
                 } else if (m.object.property.name === 'FLAGS') {
-                  console.log(m);
                   flags.push(m.property.name.toLowerCase());
                 }
               }
@@ -404,8 +426,7 @@ async function findAppModules() {
           info.flags.splice(info.flags.indexOf('packed'));
           info.packed = ' [packed=true]';
         }
-
-        if (completeFlags && info.flags.length === 0) {
+        if (completeFlags && info.flags.length === 0 && !info.type.includes('map')) {
           info.flags.push('optional');
         }
 
