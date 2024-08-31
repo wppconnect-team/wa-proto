@@ -4,9 +4,8 @@
   "description": "Protobuf files from WhatsApp WEB",
   "license": "Apache-2.0",
   "author": {
-    "name": "Edgard Messias",
-    "email": "edgardmessias@gmail.com",
-    "url": "https://github.com/edgardmessias"
+    "name": "Cleiton Costa",
+    "url": "https://github.com/icleitoncosta"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
