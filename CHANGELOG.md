@@ -1,3 +1,12 @@
+## 0.0.5 (2024-08-31)
+
+
+### Features
+
+* Added support for map in sintax3 proto ([b42b85e](https://github.com/wppconnect-team/wa-proto/commit/b42b85efaad8ba18467a81d9addf4f73914ac844))
+
+
+
 ## 0.0.4 (2024-05-14)
 
 
