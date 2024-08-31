@@ -1,3 +1,12 @@
+## 1.0.1 (2024-08-31)
+
+
+### Bug Fixes
+
+* Fixed publish in NPM ([1e43d27](https://github.com/wppconnect-team/wa-proto/commit/1e43d2766ae81f56e60c4e53edd28c802ffc5720))
+
+
+
 # 1.0.0 (2024-08-31)
 
 
