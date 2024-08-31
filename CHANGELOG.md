@@ -1,3 +1,12 @@
+# 0.1.0 (2024-08-31)
+
+
+### Features
+
+* Update workflow ([d1e69b9](https://github.com/wppconnect-team/wa-proto/commit/d1e69b982564bab163f535782229eb599c637f05))
+
+
+
 ## 0.0.5 (2024-08-31)
 
 
