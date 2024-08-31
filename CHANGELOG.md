@@ -1,3 +1,12 @@
+# 1.0.0 (2024-08-31)
+
+
+### Features
+
+* Upgrade WA-Proto to 2.3000x ([f47ab29](https://github.com/wppconnect-team/wa-proto/commit/f47ab297a5544c4123171257f0f4df796f2125cd))
+
+
+
 # 0.1.0 (2024-08-31)
 
 
