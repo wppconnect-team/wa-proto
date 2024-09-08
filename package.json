@@ -1,6 +1,6 @@
 {
   "name": "@wppconnect/wa-proto",
-  "version": "1.0.80",
+  "version": "1.0.81",
   "description": "Protobuf files from WhatsApp WEB",
   "license": "Apache-2.0",
   "author": {
