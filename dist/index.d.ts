@@ -35116,9 +35116,6 @@ export namespace waproto {
 
         /** SyncActionValue waffleAccountLinkStateAction */
         waffleAccountLinkStateAction?: (waproto.SyncActionValue.IWaffleAccountLinkStateAction|null);
-
-        /** SyncActionValue usernameChatStartMode */
-        usernameChatStartMode?: (waproto.SyncActionValue.IUsernameChatStartModeAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -35285,9 +35282,6 @@ export namespace waproto {
 
         /** SyncActionValue waffleAccountLinkStateAction. */
         public waffleAccountLinkStateAction?: (waproto.SyncActionValue.IWaffleAccountLinkStateAction|null);
-
-        /** SyncActionValue usernameChatStartMode. */
-        public usernameChatStartMode?: (waproto.SyncActionValue.IUsernameChatStartModeAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -40762,112 +40756,6 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        /** Properties of a UsernameChatStartModeAction. */
-        interface IUsernameChatStartModeAction {
-
-            /** UsernameChatStartModeAction chatStartMode */
-            chatStartMode?: (waproto.SyncActionValue.UsernameChatStartModeAction.ChatStartMode|null);
-        }
-
-        /** Represents a UsernameChatStartModeAction. */
-        class UsernameChatStartModeAction implements IUsernameChatStartModeAction {
-
-            /**
-             * Constructs a new UsernameChatStartModeAction.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.SyncActionValue.IUsernameChatStartModeAction);
-
-            /** UsernameChatStartModeAction chatStartMode. */
-            public chatStartMode?: (waproto.SyncActionValue.UsernameChatStartModeAction.ChatStartMode|null);
-
-            /**
-             * Creates a new UsernameChatStartModeAction instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns UsernameChatStartModeAction instance
-             */
-            public static create(properties?: waproto.SyncActionValue.IUsernameChatStartModeAction): waproto.SyncActionValue.UsernameChatStartModeAction;
-
-            /**
-             * Encodes the specified UsernameChatStartModeAction message. Does not implicitly {@link waproto.SyncActionValue.UsernameChatStartModeAction.verify|verify} messages.
-             * @param message UsernameChatStartModeAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.SyncActionValue.IUsernameChatStartModeAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified UsernameChatStartModeAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.UsernameChatStartModeAction.verify|verify} messages.
-             * @param message UsernameChatStartModeAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.SyncActionValue.IUsernameChatStartModeAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a UsernameChatStartModeAction message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns UsernameChatStartModeAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.UsernameChatStartModeAction;
-
-            /**
-             * Decodes a UsernameChatStartModeAction message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns UsernameChatStartModeAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.UsernameChatStartModeAction;
-
-            /**
-             * Verifies a UsernameChatStartModeAction message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a UsernameChatStartModeAction message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns UsernameChatStartModeAction
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.UsernameChatStartModeAction;
-
-            /**
-             * Creates a plain object from a UsernameChatStartModeAction message. Also converts values to other types if specified.
-             * @param message UsernameChatStartModeAction
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.SyncActionValue.UsernameChatStartModeAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this UsernameChatStartModeAction to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for UsernameChatStartModeAction
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace UsernameChatStartModeAction {
-
-            /** ChatStartMode enum. */
-            enum ChatStartMode {
-                LID = 1,
-                PN = 2
-            }
         }
 
         /** Properties of a WaffleAccountLinkStateAction. */
