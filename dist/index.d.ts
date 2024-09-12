@@ -28701,6 +28701,9 @@ export namespace waproto {
         /** MsgOpaqueData isSentCagPollCreation */
         isSentCagPollCreation?: (boolean|null);
 
+        /** MsgOpaqueData pollVotesSnapshot */
+        pollVotesSnapshot?: (waproto.MsgOpaqueData.IPollVotesSnapshot|null);
+
         /** MsgOpaqueData encReactionTargetMessageKey */
         encReactionTargetMessageKey?: (string|null);
 
@@ -28818,6 +28821,9 @@ export namespace waproto {
 
         /** MsgOpaqueData isSentCagPollCreation. */
         public isSentCagPollCreation?: (boolean|null);
+
+        /** MsgOpaqueData pollVotesSnapshot. */
+        public pollVotesSnapshot?: (waproto.MsgOpaqueData.IPollVotesSnapshot|null);
 
         /** MsgOpaqueData encReactionTargetMessageKey. */
         public encReactionTargetMessageKey?: (string|null);
@@ -29159,6 +29165,206 @@ export namespace waproto {
 
             /**
              * Gets the default type url for PollOption
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a PollVoteSnapshot. */
+        interface IPollVoteSnapshot {
+
+            /** PollVoteSnapshot option */
+            option?: (waproto.MsgOpaqueData.IPollOption|null);
+
+            /** PollVoteSnapshot optionVoteCount */
+            optionVoteCount?: (number|null);
+        }
+
+        /** Represents a PollVoteSnapshot. */
+        class PollVoteSnapshot implements IPollVoteSnapshot {
+
+            /**
+             * Constructs a new PollVoteSnapshot.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.MsgOpaqueData.IPollVoteSnapshot);
+
+            /** PollVoteSnapshot option. */
+            public option?: (waproto.MsgOpaqueData.IPollOption|null);
+
+            /** PollVoteSnapshot optionVoteCount. */
+            public optionVoteCount?: (number|null);
+
+            /**
+             * Creates a new PollVoteSnapshot instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PollVoteSnapshot instance
+             */
+            public static create(properties?: waproto.MsgOpaqueData.IPollVoteSnapshot): waproto.MsgOpaqueData.PollVoteSnapshot;
+
+            /**
+             * Encodes the specified PollVoteSnapshot message. Does not implicitly {@link waproto.MsgOpaqueData.PollVoteSnapshot.verify|verify} messages.
+             * @param message PollVoteSnapshot message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.MsgOpaqueData.IPollVoteSnapshot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PollVoteSnapshot message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.PollVoteSnapshot.verify|verify} messages.
+             * @param message PollVoteSnapshot message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.MsgOpaqueData.IPollVoteSnapshot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PollVoteSnapshot message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PollVoteSnapshot
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MsgOpaqueData.PollVoteSnapshot;
+
+            /**
+             * Decodes a PollVoteSnapshot message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PollVoteSnapshot
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MsgOpaqueData.PollVoteSnapshot;
+
+            /**
+             * Verifies a PollVoteSnapshot message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PollVoteSnapshot message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PollVoteSnapshot
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.MsgOpaqueData.PollVoteSnapshot;
+
+            /**
+             * Creates a plain object from a PollVoteSnapshot message. Also converts values to other types if specified.
+             * @param message PollVoteSnapshot
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.MsgOpaqueData.PollVoteSnapshot, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PollVoteSnapshot to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PollVoteSnapshot
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a PollVotesSnapshot. */
+        interface IPollVotesSnapshot {
+
+            /** PollVotesSnapshot pollVotes */
+            pollVotes?: (waproto.MsgOpaqueData.IPollVoteSnapshot[]|null);
+        }
+
+        /** Represents a PollVotesSnapshot. */
+        class PollVotesSnapshot implements IPollVotesSnapshot {
+
+            /**
+             * Constructs a new PollVotesSnapshot.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.MsgOpaqueData.IPollVotesSnapshot);
+
+            /** PollVotesSnapshot pollVotes. */
+            public pollVotes: waproto.MsgOpaqueData.IPollVoteSnapshot[];
+
+            /**
+             * Creates a new PollVotesSnapshot instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PollVotesSnapshot instance
+             */
+            public static create(properties?: waproto.MsgOpaqueData.IPollVotesSnapshot): waproto.MsgOpaqueData.PollVotesSnapshot;
+
+            /**
+             * Encodes the specified PollVotesSnapshot message. Does not implicitly {@link waproto.MsgOpaqueData.PollVotesSnapshot.verify|verify} messages.
+             * @param message PollVotesSnapshot message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.MsgOpaqueData.IPollVotesSnapshot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PollVotesSnapshot message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.PollVotesSnapshot.verify|verify} messages.
+             * @param message PollVotesSnapshot message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.MsgOpaqueData.IPollVotesSnapshot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PollVotesSnapshot message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PollVotesSnapshot
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MsgOpaqueData.PollVotesSnapshot;
+
+            /**
+             * Decodes a PollVotesSnapshot message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PollVotesSnapshot
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MsgOpaqueData.PollVotesSnapshot;
+
+            /**
+             * Verifies a PollVotesSnapshot message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PollVotesSnapshot message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PollVotesSnapshot
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.MsgOpaqueData.PollVotesSnapshot;
+
+            /**
+             * Creates a plain object from a PollVotesSnapshot message. Also converts values to other types if specified.
+             * @param message PollVotesSnapshot
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.MsgOpaqueData.PollVotesSnapshot, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PollVotesSnapshot to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PollVotesSnapshot
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
