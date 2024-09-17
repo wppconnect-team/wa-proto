@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016563259
+/// WhatsApp Version: 2.3000.1016568017
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -142,6 +142,7 @@ message BotMetadata {
     optional BotReminderMetadata reminderMetadata = 9;
     optional BotModelMetadata modelMetadata = 10;
     optional string messageDisclaimerText = 11;
+    optional BotProgressIndicatorMetadata progressIndicatorMetadata = 12;
 }
 
 message BotModelMetadata {
@@ -176,7 +177,12 @@ message BotPluginMetadata {
     enum SearchProvider {
         BING = 1;
         GOOGLE = 2;
+        SUPPORT = 3;
     }
+}
+
+message BotProgressIndicatorMetadata {
+    optional string progressDescription = 1;
 }
 
 message BotReminderMetadata {
@@ -360,6 +366,7 @@ message ClientPayload {
     optional int32 memClass = 37;
     optional InteropData interopData = 38;
     optional bool isPcr = 39;
+    optional TrafficAnonymization trafficAnonymization = 40;
     enum ConnectReason {
         PUSH = 0;
         USER_ACTIVATED = 1;
@@ -425,6 +432,10 @@ message ClientPayload {
         MESSENGER = 1;
         INTEROP = 2;
         INTEROP_MSGR = 3;
+    }
+    enum TrafficAnonymization {
+        OFF = 0;
+        STANDARD = 1;
     }
     message UserAgent {
         optional Platform platform = 1;
@@ -588,6 +599,8 @@ message ContextInfo {
     optional FeatureEligibilities featureEligibilities = 49;
     optional string entryPointConversionExternalSource = 50;
     optional string entryPointConversionExternalMedium = 51;
+    optional string ctwaSignals = 54;
+    optional bytes ctwaPayload = 55;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -635,6 +648,10 @@ message ContextInfo {
         optional string ref = 14;
         optional bool clickToWhatsappCall = 15;
         optional bool adContextPreviewDismissed = 16;
+        optional string sourceApp = 17;
+        optional bool automatedGreetingMessageShown = 18;
+        optional string greetingMessageBody = 19;
+        optional string ctaPayload = 20;
         enum MediaType {
             NONE = 0;
             IMAGE = 1;
@@ -777,6 +794,7 @@ message DeviceProps {
         optional bool supportHostedGroupMsg = 11;
         optional bool supportFbidBotChatHistory = 12;
         optional bool supportAddOnHistorySyncMigration = 13;
+        optional bool supportMessageAssociation = 14;
     }
     
     enum PlatformType {
@@ -804,6 +822,7 @@ message DeviceProps {
         UWP = 21;
         VR = 22;
         CLOUD_API = 23;
+        SMARTGLASSES = 24;
     }
 }
 
@@ -850,6 +869,7 @@ message EmbeddedMusic {
     optional bytes artworkEncSha256 = 7;
     optional string artistAttribution = 8;
     optional bytes countryBlocklist = 9;
+    optional bool isExplicit = 10;
 }
 
 message EncryptedPairingRequest {
@@ -1360,6 +1380,8 @@ message Message {
         optional string conversionSource = 2;
         optional bytes conversionData = 3;
         optional uint32 conversionDelaySeconds = 4;
+        optional string ctwaSignals = 5;
+        optional bytes ctwaPayload = 6;
     }
     
     message CallLogMessage {
@@ -2305,7 +2327,7 @@ message Message {
         optional string name = 2;
         optional string publisher = 3;
         repeated Sticker stickers = 4;
-        optional uint64 fileSize = 5;
+        optional uint64 fileLength = 5;
         optional bytes fileSha256 = 6;
         optional bytes fileEncSha256 = 7;
         optional bytes mediaKey = 8;
@@ -2320,6 +2342,7 @@ message Message {
         optional bytes thumbnailEncSha256 = 17;
         optional uint32 thumbnailHeight = 18;
         optional uint32 thumbnailWidth = 19;
+        optional string imageDataHash = 20;
         message Sticker {
             optional string fileName = 1;
             optional bool isAnimated = 2;

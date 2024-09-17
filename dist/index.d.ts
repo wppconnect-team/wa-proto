@@ -1700,6 +1700,9 @@ export namespace waproto {
 
         /** BotMetadata messageDisclaimerText */
         messageDisclaimerText?: (string|null);
+
+        /** BotMetadata progressIndicatorMetadata */
+        progressIndicatorMetadata?: (waproto.IBotProgressIndicatorMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -1743,6 +1746,9 @@ export namespace waproto {
 
         /** BotMetadata messageDisclaimerText. */
         public messageDisclaimerText?: (string|null);
+
+        /** BotMetadata progressIndicatorMetadata. */
+        public progressIndicatorMetadata?: (waproto.IBotProgressIndicatorMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -2108,8 +2114,106 @@ export namespace waproto {
         /** SearchProvider enum. */
         enum SearchProvider {
             BING = 1,
-            GOOGLE = 2
+            GOOGLE = 2,
+            SUPPORT = 3
         }
+    }
+
+    /** Properties of a BotProgressIndicatorMetadata. */
+    interface IBotProgressIndicatorMetadata {
+
+        /** BotProgressIndicatorMetadata progressDescription */
+        progressDescription?: (string|null);
+    }
+
+    /** Represents a BotProgressIndicatorMetadata. */
+    class BotProgressIndicatorMetadata implements IBotProgressIndicatorMetadata {
+
+        /**
+         * Constructs a new BotProgressIndicatorMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotProgressIndicatorMetadata);
+
+        /** BotProgressIndicatorMetadata progressDescription. */
+        public progressDescription?: (string|null);
+
+        /**
+         * Creates a new BotProgressIndicatorMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotProgressIndicatorMetadata instance
+         */
+        public static create(properties?: waproto.IBotProgressIndicatorMetadata): waproto.BotProgressIndicatorMetadata;
+
+        /**
+         * Encodes the specified BotProgressIndicatorMetadata message. Does not implicitly {@link waproto.BotProgressIndicatorMetadata.verify|verify} messages.
+         * @param message BotProgressIndicatorMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotProgressIndicatorMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotProgressIndicatorMetadata message, length delimited. Does not implicitly {@link waproto.BotProgressIndicatorMetadata.verify|verify} messages.
+         * @param message BotProgressIndicatorMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotProgressIndicatorMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotProgressIndicatorMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotProgressIndicatorMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotProgressIndicatorMetadata;
+
+        /**
+         * Decodes a BotProgressIndicatorMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotProgressIndicatorMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotProgressIndicatorMetadata;
+
+        /**
+         * Verifies a BotProgressIndicatorMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotProgressIndicatorMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotProgressIndicatorMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotProgressIndicatorMetadata;
+
+        /**
+         * Creates a plain object from a BotProgressIndicatorMetadata message. Also converts values to other types if specified.
+         * @param message BotProgressIndicatorMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotProgressIndicatorMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotProgressIndicatorMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotProgressIndicatorMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a BotReminderMetadata. */
@@ -3917,6 +4021,9 @@ export namespace waproto {
 
         /** ClientPayload isPcr */
         isPcr?: (boolean|null);
+
+        /** ClientPayload trafficAnonymization */
+        trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
     }
 
     /** Represents a ClientPayload. */
@@ -4011,6 +4118,9 @@ export namespace waproto {
 
         /** ClientPayload isPcr. */
         public isPcr?: (boolean|null);
+
+        /** ClientPayload trafficAnonymization. */
+        public trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -4498,6 +4608,12 @@ export namespace waproto {
             MESSENGER = 1,
             INTEROP = 2,
             INTEROP_MSGR = 3
+        }
+
+        /** TrafficAnonymization enum. */
+        enum TrafficAnonymization {
+            OFF = 0,
+            STANDARD = 1
         }
 
         /** Properties of a UserAgent. */
@@ -5581,6 +5697,12 @@ export namespace waproto {
 
         /** ContextInfo entryPointConversionExternalMedium */
         entryPointConversionExternalMedium?: (string|null);
+
+        /** ContextInfo ctwaSignals */
+        ctwaSignals?: (string|null);
+
+        /** ContextInfo ctwaPayload */
+        ctwaPayload?: (Uint8Array|null);
     }
 
     /** Represents a ContextInfo. */
@@ -5702,6 +5824,12 @@ export namespace waproto {
 
         /** ContextInfo entryPointConversionExternalMedium. */
         public entryPointConversionExternalMedium?: (string|null);
+
+        /** ContextInfo ctwaSignals. */
+        public ctwaSignals?: (string|null);
+
+        /** ContextInfo ctwaPayload. */
+        public ctwaPayload?: (Uint8Array|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -6288,6 +6416,18 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo adContextPreviewDismissed */
             adContextPreviewDismissed?: (boolean|null);
+
+            /** ExternalAdReplyInfo sourceApp */
+            sourceApp?: (string|null);
+
+            /** ExternalAdReplyInfo automatedGreetingMessageShown */
+            automatedGreetingMessageShown?: (boolean|null);
+
+            /** ExternalAdReplyInfo greetingMessageBody */
+            greetingMessageBody?: (string|null);
+
+            /** ExternalAdReplyInfo ctaPayload */
+            ctaPayload?: (string|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -6346,6 +6486,18 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo adContextPreviewDismissed. */
             public adContextPreviewDismissed?: (boolean|null);
+
+            /** ExternalAdReplyInfo sourceApp. */
+            public sourceApp?: (string|null);
+
+            /** ExternalAdReplyInfo automatedGreetingMessageShown. */
+            public automatedGreetingMessageShown?: (boolean|null);
+
+            /** ExternalAdReplyInfo greetingMessageBody. */
+            public greetingMessageBody?: (string|null);
+
+            /** ExternalAdReplyInfo ctaPayload. */
+            public ctaPayload?: (string|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -7802,6 +7954,9 @@ export namespace waproto {
 
             /** HistorySyncConfig supportAddOnHistorySyncMigration */
             supportAddOnHistorySyncMigration?: (boolean|null);
+
+            /** HistorySyncConfig supportMessageAssociation */
+            supportMessageAssociation?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -7851,6 +8006,9 @@ export namespace waproto {
 
             /** HistorySyncConfig supportAddOnHistorySyncMigration. */
             public supportAddOnHistorySyncMigration?: (boolean|null);
+
+            /** HistorySyncConfig supportMessageAssociation. */
+            public supportMessageAssociation?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
@@ -7955,7 +8113,8 @@ export namespace waproto {
             AR_DEVICE = 20,
             UWP = 21,
             VR = 22,
-            CLOUD_API = 23
+            CLOUD_API = 23,
+            SMARTGLASSES = 24
         }
     }
 
@@ -8333,6 +8492,9 @@ export namespace waproto {
 
         /** EmbeddedMusic countryBlocklist */
         countryBlocklist?: (Uint8Array|null);
+
+        /** EmbeddedMusic isExplicit */
+        isExplicit?: (boolean|null);
     }
 
     /** Represents an EmbeddedMusic. */
@@ -8370,6 +8532,9 @@ export namespace waproto {
 
         /** EmbeddedMusic countryBlocklist. */
         public countryBlocklist?: (Uint8Array|null);
+
+        /** EmbeddedMusic isExplicit. */
+        public isExplicit?: (boolean|null);
 
         /**
          * Creates a new EmbeddedMusic instance using the specified properties.
@@ -14644,6 +14809,12 @@ export namespace waproto {
 
             /** Call conversionDelaySeconds */
             conversionDelaySeconds?: (number|null);
+
+            /** Call ctwaSignals */
+            ctwaSignals?: (string|null);
+
+            /** Call ctwaPayload */
+            ctwaPayload?: (Uint8Array|null);
         }
 
         /** Represents a Call. */
@@ -14666,6 +14837,12 @@ export namespace waproto {
 
             /** Call conversionDelaySeconds. */
             public conversionDelaySeconds?: (number|null);
+
+            /** Call ctwaSignals. */
+            public ctwaSignals?: (string|null);
+
+            /** Call ctwaPayload. */
+            public ctwaPayload?: (Uint8Array|null);
 
             /**
              * Creates a new Call instance using the specified properties.
@@ -26521,8 +26698,8 @@ export namespace waproto {
             /** StickerPackMessage stickers */
             stickers?: (waproto.Message.StickerPackMessage.ISticker[]|null);
 
-            /** StickerPackMessage fileSize */
-            fileSize?: (number|Long|null);
+            /** StickerPackMessage fileLength */
+            fileLength?: (number|Long|null);
 
             /** StickerPackMessage fileSha256 */
             fileSha256?: (Uint8Array|null);
@@ -26565,6 +26742,9 @@ export namespace waproto {
 
             /** StickerPackMessage thumbnailWidth */
             thumbnailWidth?: (number|null);
+
+            /** StickerPackMessage imageDataHash */
+            imageDataHash?: (string|null);
         }
 
         /** Represents a StickerPackMessage. */
@@ -26588,8 +26768,8 @@ export namespace waproto {
             /** StickerPackMessage stickers. */
             public stickers: waproto.Message.StickerPackMessage.ISticker[];
 
-            /** StickerPackMessage fileSize. */
-            public fileSize?: (number|Long|null);
+            /** StickerPackMessage fileLength. */
+            public fileLength?: (number|Long|null);
 
             /** StickerPackMessage fileSha256. */
             public fileSha256?: (Uint8Array|null);
@@ -26632,6 +26812,9 @@ export namespace waproto {
 
             /** StickerPackMessage thumbnailWidth. */
             public thumbnailWidth?: (number|null);
+
+            /** StickerPackMessage imageDataHash. */
+            public imageDataHash?: (string|null);
 
             /**
              * Creates a new StickerPackMessage instance using the specified properties.
