@@ -6428,6 +6428,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo ctaPayload */
             ctaPayload?: (string|null);
+
+            /** ExternalAdReplyInfo disableNudge */
+            disableNudge?: (boolean|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -6498,6 +6501,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo ctaPayload. */
             public ctaPayload?: (string|null);
+
+            /** ExternalAdReplyInfo disableNudge. */
+            public disableNudge?: (boolean|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -8487,6 +8493,9 @@ export namespace waproto {
         /** EmbeddedMusic artworkEncSha256 */
         artworkEncSha256?: (Uint8Array|null);
 
+        /** EmbeddedMusic artworkMediaKey */
+        artworkMediaKey?: (Uint8Array|null);
+
         /** EmbeddedMusic artistAttribution */
         artistAttribution?: (string|null);
 
@@ -8526,6 +8535,9 @@ export namespace waproto {
 
         /** EmbeddedMusic artworkEncSha256. */
         public artworkEncSha256?: (Uint8Array|null);
+
+        /** EmbeddedMusic artworkMediaKey. */
+        public artworkMediaKey?: (Uint8Array|null);
 
         /** EmbeddedMusic artistAttribution. */
         public artistAttribution?: (string|null);
@@ -12219,6 +12231,9 @@ export namespace waproto {
 
         /** MediaRetryNotification result */
         result?: (waproto.MediaRetryNotification.ResultType|null);
+
+        /** MediaRetryNotification messageSecret */
+        messageSecret?: (Uint8Array|null);
     }
 
     /** Represents a MediaRetryNotification. */
@@ -12238,6 +12253,9 @@ export namespace waproto {
 
         /** MediaRetryNotification result. */
         public result?: (waproto.MediaRetryNotification.ResultType|null);
+
+        /** MediaRetryNotification messageSecret. */
+        public messageSecret?: (Uint8Array|null);
 
         /**
          * Creates a new MediaRetryNotification instance using the specified properties.

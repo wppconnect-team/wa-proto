@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016627401
+/// WhatsApp Version: 2.3000.1016629271
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -652,6 +652,7 @@ message ContextInfo {
         optional bool automatedGreetingMessageShown = 18;
         optional string greetingMessageBody = 19;
         optional string ctaPayload = 20;
+        optional bool disableNudge = 21;
         enum MediaType {
             NONE = 0;
             IMAGE = 1;
@@ -867,6 +868,7 @@ message EmbeddedMusic {
     optional string artworkDirectPath = 5;
     optional bytes artworkSha256 = 6;
     optional bytes artworkEncSha256 = 7;
+    optional bytes artworkMediaKey = 11;
     optional string artistAttribution = 8;
     optional bytes countryBlocklist = 9;
     optional bool isExplicit = 10;
@@ -1120,6 +1122,7 @@ message MediaRetryNotification {
     optional string stanzaId = 1;
     optional string directPath = 2;
     optional ResultType result = 3;
+    optional bytes messageSecret = 4;
     enum ResultType {
         GENERAL_ERROR = 0;
         SUCCESS = 1;
