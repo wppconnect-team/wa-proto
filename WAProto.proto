@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016647876
+/// WhatsApp Version: 2.3000.1016658771
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3066,6 +3066,7 @@ message SyncActionValue {
     optional FavoritesAction favoritesAction = 56;
     optional MerchantPaymentPartnerAction merchantPaymentPartnerAction = 57;
     optional WaffleAccountLinkStateAction waffleAccountLinkStateAction = 58;
+    optional UsernameChatStartModeAction usernameChatStartMode = 59;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -3164,6 +3165,16 @@ message SyncActionValue {
         optional int32 predefinedId = 3;
         optional bool deleted = 4;
         optional int32 orderIndex = 5;
+        optional bool isActive = 6;
+        optional ListType type = 7;
+        enum ListType {
+            NONE = 0;
+            UNREAD = 1;
+            GROUPS = 2;
+            FAVORITES = 3;
+            PREDEFINED = 4;
+            CUSTOM = 5;
+        }
     }
     
     message LabelReorderingAction {
@@ -3340,6 +3351,14 @@ message SyncActionValue {
     
     message UserStatusMuteAction {
         optional bool muted = 1;
+    }
+    
+    message UsernameChatStartModeAction {
+        optional ChatStartMode chatStartMode = 1;
+        enum ChatStartMode {
+            LID = 1;
+            PN = 2;
+        }
     }
     
     message WaffleAccountLinkStateAction {
