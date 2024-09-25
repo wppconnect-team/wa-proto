@@ -1,3 +1,7 @@
+## [1.0.265](https://github.com/wppconnect-team/wa-proto/compare/v1.0.264...v1.0.265) (2024-09-25)
+
+
+
 ## [1.0.264](https://github.com/wppconnect-team/wa-proto/compare/v1.0.263...v1.0.264) (2024-09-25)
 
 
