@@ -1425,6 +1425,113 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a BotCapabilityMetadata. */
+    interface IBotCapabilityMetadata {
+
+        /** BotCapabilityMetadata capabilities */
+        capabilities?: (waproto.BotCapabilityMetadata.BotCapabilityType[]|null);
+    }
+
+    /** Represents a BotCapabilityMetadata. */
+    class BotCapabilityMetadata implements IBotCapabilityMetadata {
+
+        /**
+         * Constructs a new BotCapabilityMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotCapabilityMetadata);
+
+        /** BotCapabilityMetadata capabilities. */
+        public capabilities: waproto.BotCapabilityMetadata.BotCapabilityType[];
+
+        /**
+         * Creates a new BotCapabilityMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotCapabilityMetadata instance
+         */
+        public static create(properties?: waproto.IBotCapabilityMetadata): waproto.BotCapabilityMetadata;
+
+        /**
+         * Encodes the specified BotCapabilityMetadata message. Does not implicitly {@link waproto.BotCapabilityMetadata.verify|verify} messages.
+         * @param message BotCapabilityMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotCapabilityMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotCapabilityMetadata message, length delimited. Does not implicitly {@link waproto.BotCapabilityMetadata.verify|verify} messages.
+         * @param message BotCapabilityMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotCapabilityMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotCapabilityMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotCapabilityMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotCapabilityMetadata;
+
+        /**
+         * Decodes a BotCapabilityMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotCapabilityMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotCapabilityMetadata;
+
+        /**
+         * Verifies a BotCapabilityMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotCapabilityMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotCapabilityMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotCapabilityMetadata;
+
+        /**
+         * Creates a plain object from a BotCapabilityMetadata message. Also converts values to other types if specified.
+         * @param message BotCapabilityMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotCapabilityMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotCapabilityMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotCapabilityMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotCapabilityMetadata {
+
+        /** BotCapabilityType enum. */
+        enum BotCapabilityType {
+            PROGRESS_INDICATOR = 1,
+            RICH_RESPONSE_HEADING = 2,
+            RICH_RESPONSE_NESTED_LIST = 3
+        }
+    }
+
     /** Properties of a BotMediaMetadata. */
     interface IBotMediaMetadata {
 
@@ -1703,6 +1810,9 @@ export namespace waproto {
 
         /** BotMetadata progressIndicatorMetadata */
         progressIndicatorMetadata?: (waproto.IBotProgressIndicatorMetadata|null);
+
+        /** BotMetadata capabilityMetadata */
+        capabilityMetadata?: (waproto.IBotCapabilityMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -1749,6 +1859,9 @@ export namespace waproto {
 
         /** BotMetadata progressIndicatorMetadata. */
         public progressIndicatorMetadata?: (waproto.IBotProgressIndicatorMetadata|null);
+
+        /** BotMetadata capabilityMetadata. */
+        public capabilityMetadata?: (waproto.IBotCapabilityMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -26763,6 +26876,9 @@ export namespace waproto {
 
             /** StickerPackMessage imageDataHash */
             imageDataHash?: (string|null);
+
+            /** StickerPackMessage stickerPackSize */
+            stickerPackSize?: (number|Long|null);
         }
 
         /** Represents a StickerPackMessage. */
@@ -26833,6 +26949,9 @@ export namespace waproto {
 
             /** StickerPackMessage imageDataHash. */
             public imageDataHash?: (string|null);
+
+            /** StickerPackMessage stickerPackSize. */
+            public stickerPackSize?: (number|Long|null);
 
             /**
              * Creates a new StickerPackMessage instance using the specified properties.
