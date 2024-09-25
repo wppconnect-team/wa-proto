@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016785881
+/// WhatsApp Version: 2.3000.1016800603
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -111,6 +111,15 @@ message BotAvatarMetadata {
     optional uint32 wordCount = 5;
 }
 
+message BotCapabilityMetadata {
+    repeated BotCapabilityType capabilities = 1;
+    enum BotCapabilityType {
+        PROGRESS_INDICATOR = 1;
+        RICH_RESPONSE_HEADING = 2;
+        RICH_RESPONSE_NESTED_LIST = 3;
+    }
+}
+
 message BotMediaMetadata {
     optional string fileSha256 = 1;
     optional string mediaKey = 2;
@@ -143,6 +152,7 @@ message BotMetadata {
     optional BotModelMetadata modelMetadata = 10;
     optional string messageDisclaimerText = 11;
     optional BotProgressIndicatorMetadata progressIndicatorMetadata = 12;
+    optional BotCapabilityMetadata capabilityMetadata = 13;
 }
 
 message BotModelMetadata {
@@ -2346,6 +2356,7 @@ message Message {
         optional uint32 thumbnailHeight = 18;
         optional uint32 thumbnailWidth = 19;
         optional string imageDataHash = 20;
+        optional uint64 stickerPackSize = 21;
         message Sticker {
             optional string fileName = 1;
             optional bool isAnimated = 2;
