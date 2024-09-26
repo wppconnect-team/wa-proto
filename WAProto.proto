@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016824296
+/// WhatsApp Version: 2.3000.1016826047
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -611,6 +611,7 @@ message ContextInfo {
     optional string entryPointConversionExternalMedium = 51;
     optional string ctwaSignals = 54;
     optional bytes ctwaPayload = 55;
+    optional ForwardedAIBotMessageInfo forwardedAiBotMessageInfo = 56;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -674,6 +675,12 @@ message ContextInfo {
         optional bool cannotBeReactedTo = 1;
         optional bool cannotBeRanked = 2;
         optional bool canRequestFeedback = 3;
+    }
+    
+    message ForwardedAIBotMessageInfo {
+        optional string botName = 1;
+        optional string botJid = 2;
+        optional string creatorName = 3;
     }
     
     message ForwardedNewsletterMessageInfo {
