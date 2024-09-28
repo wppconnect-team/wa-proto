@@ -1,3 +1,7 @@
+## [1.0.295](https://github.com/wppconnect-team/wa-proto/compare/v1.0.294...v1.0.295) (2024-09-28)
+
+
+
 ## [1.0.294](https://github.com/wppconnect-team/wa-proto/compare/v1.0.293...v1.0.294) (2024-09-28)
 
 
