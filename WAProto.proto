@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016910645
+/// WhatsApp Version: 2.3000.1016912314
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -120,6 +120,17 @@ message BotCapabilityMetadata {
     }
 }
 
+message BotImagineMetadata {
+    optional ImagineType imagineType = 1;
+    enum ImagineType {
+        UNKNOWN = 0;
+        IMAGINE = 1;
+        MEMU = 2;
+        FLASH = 3;
+        EDIT = 4;
+    }
+}
+
 message BotMediaMetadata {
     optional string fileSha256 = 1;
     optional string mediaKey = 2;
@@ -153,6 +164,7 @@ message BotMetadata {
     optional string messageDisclaimerText = 11;
     optional BotProgressIndicatorMetadata progressIndicatorMetadata = 12;
     optional BotCapabilityMetadata capabilityMetadata = 13;
+    optional BotImagineMetadata imagineMetadata = 14;
 }
 
 message BotModelMetadata {
@@ -1228,7 +1240,6 @@ message Message {
     optional FutureProofMessage statusMentionMessage = 87;
     optional PollResultSnapshotMessage pollResultSnapshotMessage = 88;
     message AlbumMessage {
-        optional string caption = 1;
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
         optional ContextInfo contextInfo = 17;
@@ -2364,6 +2375,7 @@ message Message {
         optional uint32 thumbnailWidth = 19;
         optional string imageDataHash = 20;
         optional uint64 stickerPackSize = 21;
+        optional StickerPackOrigin stickerPackOrigin = 22;
         message Sticker {
             optional string fileName = 1;
             optional bool isAnimated = 2;
@@ -2373,6 +2385,11 @@ message Message {
             optional string mimetype = 6;
         }
         
+        enum StickerPackOrigin {
+            FIRST_PARTY = 0;
+            THIRD_PARTY = 1;
+            USER_CREATED = 2;
+        }
     }
     
     message StickerSyncRMRMessage {

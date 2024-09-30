@@ -1532,6 +1532,115 @@ export namespace waproto {
         }
     }
 
+    /** Properties of a BotImagineMetadata. */
+    interface IBotImagineMetadata {
+
+        /** BotImagineMetadata imagineType */
+        imagineType?: (waproto.BotImagineMetadata.ImagineType|null);
+    }
+
+    /** Represents a BotImagineMetadata. */
+    class BotImagineMetadata implements IBotImagineMetadata {
+
+        /**
+         * Constructs a new BotImagineMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotImagineMetadata);
+
+        /** BotImagineMetadata imagineType. */
+        public imagineType?: (waproto.BotImagineMetadata.ImagineType|null);
+
+        /**
+         * Creates a new BotImagineMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotImagineMetadata instance
+         */
+        public static create(properties?: waproto.IBotImagineMetadata): waproto.BotImagineMetadata;
+
+        /**
+         * Encodes the specified BotImagineMetadata message. Does not implicitly {@link waproto.BotImagineMetadata.verify|verify} messages.
+         * @param message BotImagineMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotImagineMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotImagineMetadata message, length delimited. Does not implicitly {@link waproto.BotImagineMetadata.verify|verify} messages.
+         * @param message BotImagineMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotImagineMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotImagineMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotImagineMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotImagineMetadata;
+
+        /**
+         * Decodes a BotImagineMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotImagineMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotImagineMetadata;
+
+        /**
+         * Verifies a BotImagineMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotImagineMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotImagineMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotImagineMetadata;
+
+        /**
+         * Creates a plain object from a BotImagineMetadata message. Also converts values to other types if specified.
+         * @param message BotImagineMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotImagineMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotImagineMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotImagineMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotImagineMetadata {
+
+        /** ImagineType enum. */
+        enum ImagineType {
+            UNKNOWN = 0,
+            IMAGINE = 1,
+            MEMU = 2,
+            FLASH = 3,
+            EDIT = 4
+        }
+    }
+
     /** Properties of a BotMediaMetadata. */
     interface IBotMediaMetadata {
 
@@ -1813,6 +1922,9 @@ export namespace waproto {
 
         /** BotMetadata capabilityMetadata */
         capabilityMetadata?: (waproto.IBotCapabilityMetadata|null);
+
+        /** BotMetadata imagineMetadata */
+        imagineMetadata?: (waproto.IBotImagineMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -1862,6 +1974,9 @@ export namespace waproto {
 
         /** BotMetadata capabilityMetadata. */
         public capabilityMetadata?: (waproto.IBotCapabilityMetadata|null);
+
+        /** BotMetadata imagineMetadata. */
+        public imagineMetadata?: (waproto.IBotImagineMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -13115,9 +13230,6 @@ export namespace waproto {
         /** Properties of an AlbumMessage. */
         interface IAlbumMessage {
 
-            /** AlbumMessage caption */
-            caption?: (string|null);
-
             /** AlbumMessage expectedImageCount */
             expectedImageCount?: (number|null);
 
@@ -13136,9 +13248,6 @@ export namespace waproto {
              * @param [properties] Properties to set
              */
             constructor(properties?: waproto.Message.IAlbumMessage);
-
-            /** AlbumMessage caption. */
-            public caption?: (string|null);
 
             /** AlbumMessage expectedImageCount. */
             public expectedImageCount?: (number|null);
@@ -26994,6 +27103,9 @@ export namespace waproto {
 
             /** StickerPackMessage stickerPackSize */
             stickerPackSize?: (number|Long|null);
+
+            /** StickerPackMessage stickerPackOrigin */
+            stickerPackOrigin?: (waproto.Message.StickerPackMessage.StickerPackOrigin|null);
         }
 
         /** Represents a StickerPackMessage. */
@@ -27067,6 +27179,9 @@ export namespace waproto {
 
             /** StickerPackMessage stickerPackSize. */
             public stickerPackSize?: (number|Long|null);
+
+            /** StickerPackMessage stickerPackOrigin. */
+            public stickerPackOrigin?: (waproto.Message.StickerPackMessage.StickerPackOrigin|null);
 
             /**
              * Creates a new StickerPackMessage instance using the specified properties.
@@ -27273,6 +27388,13 @@ export namespace waproto {
                  * @returns The default type url
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** StickerPackOrigin enum. */
+            enum StickerPackOrigin {
+                FIRST_PARTY = 0,
+                THIRD_PARTY = 1,
+                USER_CREATED = 2
             }
         }
 
