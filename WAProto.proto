@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1016986135
+/// WhatsApp Version: 2.3000.1016988355
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -676,6 +676,7 @@ message ContextInfo {
         optional string greetingMessageBody = 19;
         optional string ctaPayload = 20;
         optional bool disableNudge = 21;
+        optional string originalImageUrl = 22;
         enum MediaType {
             NONE = 0;
             IMAGE = 1;
@@ -1606,6 +1607,7 @@ message Message {
             PLACEHOLDER = 4;
             IMAGE = 5;
             PAYMENT_LINKS = 6;
+            PROFILE = 7;
         }
     }
     
@@ -2039,6 +2041,7 @@ message Message {
             optional bool oldestMsgFromMe = 3;
             optional int32 onDemandMsgCount = 4;
             optional int64 oldestMsgTimestampMs = 5;
+            optional string accountLid = 6;
         }
         
         message PlaceholderMessageResendRequest {
@@ -3652,6 +3655,7 @@ message WebMessageInfo {
     optional MessageKey targetMessageId = 67;
     repeated MessageAddOn messageAddOns = 68;
     optional StatusMentionMessage statusMentionMessageInfo = 69;
+    optional bool isSupportAiMessage = 70;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;

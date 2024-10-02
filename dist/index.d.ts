@@ -6665,6 +6665,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo disableNudge */
             disableNudge?: (boolean|null);
+
+            /** ExternalAdReplyInfo originalImageUrl */
+            originalImageUrl?: (string|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -6738,6 +6741,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo disableNudge. */
             public disableNudge?: (boolean|null);
+
+            /** ExternalAdReplyInfo originalImageUrl. */
+            public originalImageUrl?: (string|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -17459,7 +17465,8 @@ export namespace waproto {
                 VIDEO = 1,
                 PLACEHOLDER = 4,
                 IMAGE = 5,
-                PAYMENT_LINKS = 6
+                PAYMENT_LINKS = 6,
+                PROFILE = 7
             }
         }
 
@@ -22864,6 +22871,9 @@ export namespace waproto {
 
                 /** HistorySyncOnDemandRequest oldestMsgTimestampMs */
                 oldestMsgTimestampMs?: (number|Long|null);
+
+                /** HistorySyncOnDemandRequest accountLid */
+                accountLid?: (string|null);
             }
 
             /** Represents a HistorySyncOnDemandRequest. */
@@ -22889,6 +22899,9 @@ export namespace waproto {
 
                 /** HistorySyncOnDemandRequest oldestMsgTimestampMs. */
                 public oldestMsgTimestampMs?: (number|Long|null);
+
+                /** HistorySyncOnDemandRequest accountLid. */
+                public accountLid?: (string|null);
 
                 /**
                  * Creates a new HistorySyncOnDemandRequest instance using the specified properties.
@@ -44514,6 +44527,9 @@ export namespace waproto {
 
         /** WebMessageInfo statusMentionMessageInfo */
         statusMentionMessageInfo?: (waproto.IStatusMentionMessage|null);
+
+        /** WebMessageInfo isSupportAiMessage */
+        isSupportAiMessage?: (boolean|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -44698,6 +44714,9 @@ export namespace waproto {
 
         /** WebMessageInfo statusMentionMessageInfo. */
         public statusMentionMessageInfo?: (waproto.IStatusMentionMessage|null);
+
+        /** WebMessageInfo isSupportAiMessage. */
+        public isSupportAiMessage?: (boolean|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
