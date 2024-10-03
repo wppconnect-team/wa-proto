@@ -28693,7 +28693,8 @@ export namespace waproto {
             MEDIA_ALBUM = 1,
             BOT_PLUGIN = 2,
             EVENT_COVER_IMAGE = 3,
-            STATUS_POLL = 4
+            STATUS_POLL = 4,
+            HD_VIDEO_DUAL_UPLOAD = 5
         }
     }
 
