@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017067526
+/// WhatsApp Version: 2.3000.1017059969
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -387,6 +387,7 @@ message ClientPayload {
     optional int32 yearClass = 36;
     optional int32 memClass = 37;
     optional InteropData interopData = 38;
+    optional bool isPcr = 39;
     optional TrafficAnonymization trafficAnonymization = 40;
     enum ConnectReason {
         PUSH = 0;
@@ -1087,7 +1088,6 @@ message InteractiveAnnotation {
         Location location = 2;
         ContextInfo.ForwardedNewsletterMessageInfo newsletter = 3;
         bool embeddedAction = 6;
-        TapLinkAction tapAction = 7;
     }
 }
 
@@ -2517,7 +2517,6 @@ message MessageAssociation {
         EVENT_COVER_IMAGE = 3;
         STATUS_POLL = 4;
         HD_VIDEO_DUAL_UPLOAD = 5;
-        STATUS_TAPPABLE_MESSAGE = 6;
     }
 }
 
@@ -3462,11 +3461,6 @@ message SyncdValue {
 
 message SyncdVersion {
     optional uint64 version = 1;
-}
-
-message TapLinkAction {
-    optional string title = 1;
-    optional string tapUrl = 2;
 }
 
 message TemplateButton {
