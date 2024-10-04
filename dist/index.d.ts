@@ -4247,9 +4247,6 @@ export namespace waproto {
         /** ClientPayload interopData */
         interopData?: (waproto.ClientPayload.IInteropData|null);
 
-        /** ClientPayload isPcr */
-        isPcr?: (boolean|null);
-
         /** ClientPayload trafficAnonymization */
         trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
     }
@@ -4343,9 +4340,6 @@ export namespace waproto {
 
         /** ClientPayload interopData. */
         public interopData?: (waproto.ClientPayload.IInteropData|null);
-
-        /** ClientPayload isPcr. */
-        public isPcr?: (boolean|null);
 
         /** ClientPayload trafficAnonymization. */
         public trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
@@ -11483,6 +11477,9 @@ export namespace waproto {
 
         /** InteractiveAnnotation embeddedAction */
         embeddedAction?: (boolean|null);
+
+        /** InteractiveAnnotation tapAction */
+        tapAction?: (waproto.ITapLinkAction|null);
     }
 
     /** Represents an InteractiveAnnotation. */
@@ -11512,8 +11509,11 @@ export namespace waproto {
         /** InteractiveAnnotation embeddedAction. */
         public embeddedAction?: (boolean|null);
 
+        /** InteractiveAnnotation tapAction. */
+        public tapAction?: (waproto.ITapLinkAction|null);
+
         /** InteractiveAnnotation action. */
-        public action?: ("location"|"newsletter"|"embeddedAction");
+        public action?: ("location"|"newsletter"|"embeddedAction"|"tapAction");
 
         /**
          * Creates a new InteractiveAnnotation instance using the specified properties.
@@ -28694,7 +28694,8 @@ export namespace waproto {
             BOT_PLUGIN = 2,
             EVENT_COVER_IMAGE = 3,
             STATUS_POLL = 4,
-            HD_VIDEO_DUAL_UPLOAD = 5
+            HD_VIDEO_DUAL_UPLOAD = 5,
+            STATUS_TAPPABLE_MESSAGE = 6
         }
     }
 
@@ -42738,6 +42739,109 @@ export namespace waproto {
 
         /**
          * Gets the default type url for SyncdVersion
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a TapLinkAction. */
+    interface ITapLinkAction {
+
+        /** TapLinkAction title */
+        title?: (string|null);
+
+        /** TapLinkAction tapUrl */
+        tapUrl?: (string|null);
+    }
+
+    /** Represents a TapLinkAction. */
+    class TapLinkAction implements ITapLinkAction {
+
+        /**
+         * Constructs a new TapLinkAction.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.ITapLinkAction);
+
+        /** TapLinkAction title. */
+        public title?: (string|null);
+
+        /** TapLinkAction tapUrl. */
+        public tapUrl?: (string|null);
+
+        /**
+         * Creates a new TapLinkAction instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns TapLinkAction instance
+         */
+        public static create(properties?: waproto.ITapLinkAction): waproto.TapLinkAction;
+
+        /**
+         * Encodes the specified TapLinkAction message. Does not implicitly {@link waproto.TapLinkAction.verify|verify} messages.
+         * @param message TapLinkAction message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.ITapLinkAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified TapLinkAction message, length delimited. Does not implicitly {@link waproto.TapLinkAction.verify|verify} messages.
+         * @param message TapLinkAction message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.ITapLinkAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a TapLinkAction message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns TapLinkAction
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.TapLinkAction;
+
+        /**
+         * Decodes a TapLinkAction message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns TapLinkAction
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.TapLinkAction;
+
+        /**
+         * Verifies a TapLinkAction message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a TapLinkAction message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns TapLinkAction
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.TapLinkAction;
+
+        /**
+         * Creates a plain object from a TapLinkAction message. Also converts values to other types if specified.
+         * @param message TapLinkAction
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.TapLinkAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this TapLinkAction to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for TapLinkAction
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
