@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017111760
+/// WhatsApp Version: 2.3000.1017115184
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2070,6 +2070,11 @@ message Message {
             optional PlaceholderMessageResendResponse placeholderMessageResendResponse = 4;
             optional WaffleNonceFetchResponse waffleNonceFetchRequestResponse = 5;
             optional FullHistorySyncOnDemandRequestResponse fullHistorySyncOnDemandRequestResponse = 6;
+            optional CompanionMetaNonceFetchResponse companionMetaNonceFetchRequestResponse = 7;
+            message CompanionMetaNonceFetchResponse {
+                optional string nonce = 1;
+            }
+            
             message FullHistorySyncOnDemandRequestResponse {
                 optional Message.FullHistorySyncOnDemandRequestMetadata requestMetadata = 1;
                 optional Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandResponseCode responseCode = 2;
@@ -2126,6 +2131,7 @@ message Message {
         PLACEHOLDER_MESSAGE_RESEND = 4;
         WAFFLE_LINKING_NONCE_FETCH = 5;
         FULL_HISTORY_SYNC_ON_DEMAND = 6;
+        COMPANION_META_NONCE_FETCH = 7;
     }
     message PinInChatMessage {
         optional MessageKey key = 1;
@@ -3889,6 +3895,7 @@ message WebMessageInfo {
         COMMUNITY_SUB_GROUP_VISIBILITY_HIDDEN = 208;
         CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209;
         STATUS_MENTION = 210;
+        ONE_TO_ONE_ACCOUNT_DEPRECATED_SYSTEM_MESSAGE = 211;
     }
 }
 

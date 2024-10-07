@@ -23410,6 +23410,9 @@ export namespace waproto {
 
                 /** PeerDataOperationResult fullHistorySyncOnDemandRequestResponse */
                 fullHistorySyncOnDemandRequestResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFullHistorySyncOnDemandRequestResponse|null);
+
+                /** PeerDataOperationResult companionMetaNonceFetchRequestResponse */
+                companionMetaNonceFetchRequestResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse|null);
             }
 
             /** Represents a PeerDataOperationResult. */
@@ -23438,6 +23441,9 @@ export namespace waproto {
 
                 /** PeerDataOperationResult fullHistorySyncOnDemandRequestResponse. */
                 public fullHistorySyncOnDemandRequestResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFullHistorySyncOnDemandRequestResponse|null);
+
+                /** PeerDataOperationResult companionMetaNonceFetchRequestResponse. */
+                public companionMetaNonceFetchRequestResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse|null);
 
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
@@ -23518,6 +23524,103 @@ export namespace waproto {
             }
 
             namespace PeerDataOperationResult {
+
+                /** Properties of a CompanionMetaNonceFetchResponse. */
+                interface ICompanionMetaNonceFetchResponse {
+
+                    /** CompanionMetaNonceFetchResponse nonce */
+                    nonce?: (string|null);
+                }
+
+                /** Represents a CompanionMetaNonceFetchResponse. */
+                class CompanionMetaNonceFetchResponse implements ICompanionMetaNonceFetchResponse {
+
+                    /**
+                     * Constructs a new CompanionMetaNonceFetchResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse);
+
+                    /** CompanionMetaNonceFetchResponse nonce. */
+                    public nonce?: (string|null);
+
+                    /**
+                     * Creates a new CompanionMetaNonceFetchResponse instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns CompanionMetaNonceFetchResponse instance
+                     */
+                    public static create(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse;
+
+                    /**
+                     * Encodes the specified CompanionMetaNonceFetchResponse message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.verify|verify} messages.
+                     * @param message CompanionMetaNonceFetchResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified CompanionMetaNonceFetchResponse message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.verify|verify} messages.
+                     * @param message CompanionMetaNonceFetchResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionMetaNonceFetchResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a CompanionMetaNonceFetchResponse message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns CompanionMetaNonceFetchResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse;
+
+                    /**
+                     * Decodes a CompanionMetaNonceFetchResponse message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns CompanionMetaNonceFetchResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse;
+
+                    /**
+                     * Verifies a CompanionMetaNonceFetchResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a CompanionMetaNonceFetchResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns CompanionMetaNonceFetchResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse;
+
+                    /**
+                     * Creates a plain object from a CompanionMetaNonceFetchResponse message. Also converts values to other types if specified.
+                     * @param message CompanionMetaNonceFetchResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this CompanionMetaNonceFetchResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the default type url for CompanionMetaNonceFetchResponse
+                     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns The default type url
+                     */
+                    public static getTypeUrl(typeUrlPrefix?: string): string;
+                }
 
                 /** Properties of a FullHistorySyncOnDemandRequestResponse. */
                 interface IFullHistorySyncOnDemandRequestResponse {
@@ -24118,7 +24221,8 @@ export namespace waproto {
             HISTORY_SYNC_ON_DEMAND = 3,
             PLACEHOLDER_MESSAGE_RESEND = 4,
             WAFFLE_LINKING_NONCE_FETCH = 5,
-            FULL_HISTORY_SYNC_ON_DEMAND = 6
+            FULL_HISTORY_SYNC_ON_DEMAND = 6,
+            COMPANION_META_NONCE_FETCH = 7
         }
 
         /** Properties of a PinInChatMessage. */
@@ -45133,7 +45237,8 @@ export namespace waproto {
             COMMUNITY_OWNER_UPDATED = 207,
             COMMUNITY_SUB_GROUP_VISIBILITY_HIDDEN = 208,
             CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209,
-            STATUS_MENTION = 210
+            STATUS_MENTION = 210,
+            ONE_TO_ONE_ACCOUNT_DEPRECATED_SYSTEM_MESSAGE = 211
         }
     }
 
