@@ -12923,6 +12923,12 @@ export namespace waproto {
 
         /** Message pollResultSnapshotMessage */
         pollResultSnapshotMessage?: (waproto.Message.IPollResultSnapshotMessage|null);
+
+        /** Message pollCreationMessageV4 */
+        pollCreationMessageV4?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message pollCreationOptionImageMessage */
+        pollCreationOptionImageMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -13152,6 +13158,12 @@ export namespace waproto {
 
         /** Message pollResultSnapshotMessage. */
         public pollResultSnapshotMessage?: (waproto.Message.IPollResultSnapshotMessage|null);
+
+        /** Message pollCreationMessageV4. */
+        public pollCreationMessageV4?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message pollCreationOptionImageMessage. */
+        public pollCreationOptionImageMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -24466,6 +24478,9 @@ export namespace waproto {
 
             /** PollCreationMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
+
+            /** PollCreationMessage pollType */
+            pollType?: (waproto.Message.PollType|null);
         }
 
         /** Represents a PollCreationMessage. */
@@ -24491,6 +24506,9 @@ export namespace waproto {
 
             /** PollCreationMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
+
+            /** PollCreationMessage pollType. */
+            public pollType?: (waproto.Message.PollType|null);
 
             /**
              * Creates a new PollCreationMessage instance using the specified properties.
@@ -24577,6 +24595,9 @@ export namespace waproto {
 
                 /** Option optionName */
                 optionName?: (string|null);
+
+                /** Option optionHash */
+                optionHash?: (string|null);
             }
 
             /** Represents an Option. */
@@ -24590,6 +24611,9 @@ export namespace waproto {
 
                 /** Option optionName. */
                 public optionName?: (string|null);
+
+                /** Option optionHash. */
+                public optionHash?: (string|null);
 
                 /**
                  * Creates a new Option instance using the specified properties.
@@ -24986,6 +25010,12 @@ export namespace waproto {
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
             }
+        }
+
+        /** PollType enum. */
+        enum PollType {
+            TEXT = 1,
+            IMAGE = 2
         }
 
         /** Properties of a PollUpdateMessage. */
@@ -28694,6 +28724,9 @@ export namespace waproto {
 
         /** MessageAssociation parentMessageKey */
         parentMessageKey?: (waproto.IMessageKey|null);
+
+        /** MessageAssociation messageIndex */
+        messageIndex?: (number|null);
     }
 
     /** Represents a MessageAssociation. */
@@ -28710,6 +28743,9 @@ export namespace waproto {
 
         /** MessageAssociation parentMessageKey. */
         public parentMessageKey?: (waproto.IMessageKey|null);
+
+        /** MessageAssociation messageIndex. */
+        public messageIndex?: (number|null);
 
         /**
          * Creates a new MessageAssociation instance using the specified properties.
@@ -28799,7 +28835,8 @@ export namespace waproto {
             EVENT_COVER_IMAGE = 3,
             STATUS_POLL = 4,
             HD_VIDEO_DUAL_UPLOAD = 5,
-            STATUS_TAPPABLE_MESSAGE = 6
+            STATUS_TAPPABLE_MESSAGE = 6,
+            MEDIA_POLL = 7
         }
     }
 
@@ -45237,8 +45274,7 @@ export namespace waproto {
             COMMUNITY_OWNER_UPDATED = 207,
             COMMUNITY_SUB_GROUP_VISIBILITY_HIDDEN = 208,
             CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209,
-            STATUS_MENTION = 210,
-            ONE_TO_ONE_ACCOUNT_DEPRECATED_SYSTEM_MESSAGE = 211
+            STATUS_MENTION = 210
         }
     }
 

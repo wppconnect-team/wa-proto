@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017144413
+/// WhatsApp Version: 2.3000.1017145928
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1240,6 +1240,8 @@ message Message {
     optional StickerPackMessage stickerPackMessage = 86;
     optional FutureProofMessage statusMentionMessage = 87;
     optional PollResultSnapshotMessage pollResultSnapshotMessage = 88;
+    optional FutureProofMessage pollCreationMessageV4 = 89;
+    optional FutureProofMessage pollCreationOptionImageMessage = 90;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2157,8 +2159,10 @@ message Message {
         repeated Option options = 3;
         optional uint32 selectableOptionsCount = 4;
         optional ContextInfo contextInfo = 5;
+        optional Message.PollType pollType = 6;
         message Option {
             optional string optionName = 1;
+            optional string optionHash = 2;
         }
         
     }
@@ -2179,6 +2183,10 @@ message Message {
         
     }
     
+    enum PollType {
+        TEXT = 1;
+        IMAGE = 2;
+    }
     message PollUpdateMessage {
         optional MessageKey pollCreationMessageKey = 1;
         optional Message.PollEncValue vote = 2;
@@ -2516,6 +2524,7 @@ message MessageAddOnContextInfo {
 message MessageAssociation {
     optional AssociationType associationType = 1;
     optional MessageKey parentMessageKey = 2;
+    optional int32 messageIndex = 3;
     enum AssociationType {
         UNKNOWN = 0;
         MEDIA_ALBUM = 1;
@@ -2524,6 +2533,7 @@ message MessageAssociation {
         STATUS_POLL = 4;
         HD_VIDEO_DUAL_UPLOAD = 5;
         STATUS_TAPPABLE_MESSAGE = 6;
+        MEDIA_POLL = 7;
     }
 }
 
@@ -3895,7 +3905,6 @@ message WebMessageInfo {
         COMMUNITY_SUB_GROUP_VISIBILITY_HIDDEN = 208;
         CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209;
         STATUS_MENTION = 210;
-        ONE_TO_ONE_ACCOUNT_DEPRECATED_SYSTEM_MESSAGE = 211;
     }
 }
 
