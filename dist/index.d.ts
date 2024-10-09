@@ -1784,6 +1784,218 @@ export namespace waproto {
         }
     }
 
+    /** Properties of a BotMemoryFact. */
+    interface IBotMemoryFact {
+
+        /** BotMemoryFact fact */
+        fact?: (string|null);
+
+        /** BotMemoryFact factId */
+        factId?: (string|null);
+    }
+
+    /** Represents a BotMemoryFact. */
+    class BotMemoryFact implements IBotMemoryFact {
+
+        /**
+         * Constructs a new BotMemoryFact.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotMemoryFact);
+
+        /** BotMemoryFact fact. */
+        public fact?: (string|null);
+
+        /** BotMemoryFact factId. */
+        public factId?: (string|null);
+
+        /**
+         * Creates a new BotMemoryFact instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotMemoryFact instance
+         */
+        public static create(properties?: waproto.IBotMemoryFact): waproto.BotMemoryFact;
+
+        /**
+         * Encodes the specified BotMemoryFact message. Does not implicitly {@link waproto.BotMemoryFact.verify|verify} messages.
+         * @param message BotMemoryFact message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotMemoryFact, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotMemoryFact message, length delimited. Does not implicitly {@link waproto.BotMemoryFact.verify|verify} messages.
+         * @param message BotMemoryFact message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotMemoryFact, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotMemoryFact message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotMemoryFact
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotMemoryFact;
+
+        /**
+         * Decodes a BotMemoryFact message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotMemoryFact
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotMemoryFact;
+
+        /**
+         * Verifies a BotMemoryFact message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotMemoryFact message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotMemoryFact
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotMemoryFact;
+
+        /**
+         * Creates a plain object from a BotMemoryFact message. Also converts values to other types if specified.
+         * @param message BotMemoryFact
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotMemoryFact, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotMemoryFact to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotMemoryFact
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BotMemoryMetadata. */
+    interface IBotMemoryMetadata {
+
+        /** BotMemoryMetadata addedFacts */
+        addedFacts?: (waproto.IBotMemoryFact[]|null);
+
+        /** BotMemoryMetadata removedFacts */
+        removedFacts?: (waproto.IBotMemoryFact[]|null);
+
+        /** BotMemoryMetadata disclaimer */
+        disclaimer?: (string|null);
+    }
+
+    /** Represents a BotMemoryMetadata. */
+    class BotMemoryMetadata implements IBotMemoryMetadata {
+
+        /**
+         * Constructs a new BotMemoryMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotMemoryMetadata);
+
+        /** BotMemoryMetadata addedFacts. */
+        public addedFacts: waproto.IBotMemoryFact[];
+
+        /** BotMemoryMetadata removedFacts. */
+        public removedFacts: waproto.IBotMemoryFact[];
+
+        /** BotMemoryMetadata disclaimer. */
+        public disclaimer?: (string|null);
+
+        /**
+         * Creates a new BotMemoryMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotMemoryMetadata instance
+         */
+        public static create(properties?: waproto.IBotMemoryMetadata): waproto.BotMemoryMetadata;
+
+        /**
+         * Encodes the specified BotMemoryMetadata message. Does not implicitly {@link waproto.BotMemoryMetadata.verify|verify} messages.
+         * @param message BotMemoryMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotMemoryMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotMemoryMetadata message, length delimited. Does not implicitly {@link waproto.BotMemoryMetadata.verify|verify} messages.
+         * @param message BotMemoryMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotMemoryMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotMemoryMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotMemoryMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotMemoryMetadata;
+
+        /**
+         * Decodes a BotMemoryMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotMemoryMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotMemoryMetadata;
+
+        /**
+         * Verifies a BotMemoryMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotMemoryMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotMemoryMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotMemoryMetadata;
+
+        /**
+         * Creates a plain object from a BotMemoryMetadata message. Also converts values to other types if specified.
+         * @param message BotMemoryMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotMemoryMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotMemoryMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotMemoryMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a BotMemuMetadata. */
     interface IBotMemuMetadata {
 
@@ -1925,6 +2137,9 @@ export namespace waproto {
 
         /** BotMetadata imagineMetadata */
         imagineMetadata?: (waproto.IBotImagineMetadata|null);
+
+        /** BotMetadata memoryMetadata */
+        memoryMetadata?: (waproto.IBotMemoryMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -1977,6 +2192,9 @@ export namespace waproto {
 
         /** BotMetadata imagineMetadata. */
         public imagineMetadata?: (waproto.IBotImagineMetadata|null);
+
+        /** BotMetadata memoryMetadata. */
+        public memoryMetadata?: (waproto.IBotMemoryMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
