@@ -85,4 +85,4 @@ jobs:
 
       - name: Release
         if: steps.check_changes.outputs.result == 'changes_detected'
-        run: npm run release -- --ci -i patch
+        run: 'npx release-it --increment ${{ github.event.inputs.increment }}'
