@@ -4,8 +4,7 @@
 [![Downloads](https://img.shields.io/npm/dm/@wppconnect/wa-proto.svg)](https://www.npmjs.com/package/@wppconnect/wa-proto)
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/wppconnect-team/wa-proto.svg)](https://isitmaintained.com/project/wppconnect/wa-proto 'Average time to resolve an issue')
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/wppconnect-team/wa-proto.svg)](https://isitmaintained.com/project/wppconnect/wa-proto 'Percentage of issues still open')
-[![Build Status](https://img.shields.io/github/actions/workflow/status/wppconnect-team/wa-proto/build.yml?branch=main)](https://github.com/wppconnect/wa-proto/actions)
-[![Lint Status](https://img.shields.io/github/actions/workflow/status/wppconnect-team/wa-proto/lint.yml?branch=main&label=lint)](https://github.com/wppconnect/wa-proto/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/wppconnect-team/wa-proto/update-proto.yml?branch=main)](https://github.com/wppconnect/wa-proto/actions)
 [![release-it](https://img.shields.io/badge/%F0%9F%93%A6%F0%9F%9A%80-release--it-e10079.svg)](https://github.com/release-it/release-it)
 
 > WPPConnect/WA-Proto is a open source project with extracted protobuf files from WhatsApp WEB based on https://github.com/WhiskeySockets/Baileys/tree/master/WAProto
