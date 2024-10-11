@@ -10,6 +10,8 @@
 
 > WPPConnect/WA-Proto is a open source project with extracted protobuf files from WhatsApp WEB based on https://github.com/WhiskeySockets/Baileys/tree/master/WAProto
 
+> This project works with Protobuf files for 2.3000.x versions of Whatsapp
+
 ## Our online channels
 
 [![Discord](https://img.shields.io/discord/844351092758413353?color=blueviolet&label=Discord&logo=discord&style=flat)](https://discord.gg/JU5JGGKGNG)
