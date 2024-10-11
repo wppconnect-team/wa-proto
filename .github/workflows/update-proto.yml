@@ -58,7 +58,8 @@ jobs:
       - name: Check for Changes
         id: check_changes
         run: |
-          if [ -z "$(git status --porcelain)" ]; then
+          CHANGED_LINES=$(git diff --stat | tail -n1 | awk '{print $1}')
+          if [ -z "$CHANGED_LINES" ] || [ "$CHANGED_LINES" -le 1 ]; then
             echo "::set-output name=result::no_changes"
           else
             echo "::set-output name=result::changes_detected"
