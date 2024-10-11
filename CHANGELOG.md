@@ -1,3 +1,12 @@
+# 1.1.0 (2024-10-11)
+
+
+### Bug Fixes
+
+* Fixed release for publish in npm ([6f07628](https://github.com/wppconnect-team/wa-proto/commit/6f0762821f6510f6208cd8343d64e9abfe716bba))
+
+
+
 ## [1.0.439](https://github.com/wppconnect-team/wa-proto/compare/v1.0.438...v1.0.439) (2024-10-11)
 
 
