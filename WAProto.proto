@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017264179
+/// WhatsApp Version: 2.3000.1017399100
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1254,6 +1254,7 @@ message Message {
     optional PollResultSnapshotMessage pollResultSnapshotMessage = 88;
     optional FutureProofMessage pollCreationMessageV4 = 89;
     optional FutureProofMessage pollCreationOptionImageMessage = 90;
+    optional FutureProofMessage associatedChildMessage = 91;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -3917,6 +3918,7 @@ message WebMessageInfo {
         COMMUNITY_SUB_GROUP_VISIBILITY_HIDDEN = 208;
         CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209;
         STATUS_MENTION = 210;
+        USER_CONTROLS_SYSTEM_MESSAGE = 211;
     }
 }
 

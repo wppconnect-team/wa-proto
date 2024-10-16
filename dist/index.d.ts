@@ -13147,6 +13147,9 @@ export namespace waproto {
 
         /** Message pollCreationOptionImageMessage */
         pollCreationOptionImageMessage?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message associatedChildMessage */
+        associatedChildMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -13382,6 +13385,9 @@ export namespace waproto {
 
         /** Message pollCreationOptionImageMessage. */
         public pollCreationOptionImageMessage?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message associatedChildMessage. */
+        public associatedChildMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -45492,7 +45498,8 @@ export namespace waproto {
             COMMUNITY_OWNER_UPDATED = 207,
             COMMUNITY_SUB_GROUP_VISIBILITY_HIDDEN = 208,
             CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209,
-            STATUS_MENTION = 210
+            STATUS_MENTION = 210,
+            USER_CONTROLS_SYSTEM_MESSAGE = 211
         }
     }
 
