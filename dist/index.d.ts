@@ -1528,7 +1528,10 @@ export namespace waproto {
         enum BotCapabilityType {
             PROGRESS_INDICATOR = 1,
             RICH_RESPONSE_HEADING = 2,
-            RICH_RESPONSE_NESTED_LIST = 3
+            RICH_RESPONSE_NESTED_LIST = 3,
+            WA_IG_1P_PLUGIN_RANKING_CONTROL = 10,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12
         }
     }
 
@@ -17506,6 +17509,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage videoWidth */
             videoWidth?: (number|null);
+
+            /** ExtendedTextMessage faviconMMSMetadata */
+            faviconMMSMetadata?: (waproto.Message.IMMSThumbnailMetadata|null);
         }
 
         /** Represents an ExtendedTextMessage. */
@@ -17594,6 +17600,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage videoWidth. */
             public videoWidth?: (number|null);
+
+            /** ExtendedTextMessage faviconMMSMetadata. */
+            public faviconMMSMetadata?: (waproto.Message.IMMSThumbnailMetadata|null);
 
             /**
              * Creates a new ExtendedTextMessage instance using the specified properties.
@@ -22282,6 +22291,139 @@ export namespace waproto {
 
             /**
              * Gets the default type url for LocationMessage
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a MMSThumbnailMetadata. */
+        interface IMMSThumbnailMetadata {
+
+            /** MMSThumbnailMetadata thumbnailDirectPath */
+            thumbnailDirectPath?: (string|null);
+
+            /** MMSThumbnailMetadata thumbnailSha256 */
+            thumbnailSha256?: (Uint8Array|null);
+
+            /** MMSThumbnailMetadata thumbnailEncSha256 */
+            thumbnailEncSha256?: (Uint8Array|null);
+
+            /** MMSThumbnailMetadata mediaKey */
+            mediaKey?: (Uint8Array|null);
+
+            /** MMSThumbnailMetadata mediaKeyTimestamp */
+            mediaKeyTimestamp?: (number|Long|null);
+
+            /** MMSThumbnailMetadata thumbnailHeight */
+            thumbnailHeight?: (number|null);
+
+            /** MMSThumbnailMetadata thumbnailWidth */
+            thumbnailWidth?: (number|null);
+        }
+
+        /** Represents a MMSThumbnailMetadata. */
+        class MMSThumbnailMetadata implements IMMSThumbnailMetadata {
+
+            /**
+             * Constructs a new MMSThumbnailMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IMMSThumbnailMetadata);
+
+            /** MMSThumbnailMetadata thumbnailDirectPath. */
+            public thumbnailDirectPath?: (string|null);
+
+            /** MMSThumbnailMetadata thumbnailSha256. */
+            public thumbnailSha256?: (Uint8Array|null);
+
+            /** MMSThumbnailMetadata thumbnailEncSha256. */
+            public thumbnailEncSha256?: (Uint8Array|null);
+
+            /** MMSThumbnailMetadata mediaKey. */
+            public mediaKey?: (Uint8Array|null);
+
+            /** MMSThumbnailMetadata mediaKeyTimestamp. */
+            public mediaKeyTimestamp?: (number|Long|null);
+
+            /** MMSThumbnailMetadata thumbnailHeight. */
+            public thumbnailHeight?: (number|null);
+
+            /** MMSThumbnailMetadata thumbnailWidth. */
+            public thumbnailWidth?: (number|null);
+
+            /**
+             * Creates a new MMSThumbnailMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MMSThumbnailMetadata instance
+             */
+            public static create(properties?: waproto.Message.IMMSThumbnailMetadata): waproto.Message.MMSThumbnailMetadata;
+
+            /**
+             * Encodes the specified MMSThumbnailMetadata message. Does not implicitly {@link waproto.Message.MMSThumbnailMetadata.verify|verify} messages.
+             * @param message MMSThumbnailMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IMMSThumbnailMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MMSThumbnailMetadata message, length delimited. Does not implicitly {@link waproto.Message.MMSThumbnailMetadata.verify|verify} messages.
+             * @param message MMSThumbnailMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IMMSThumbnailMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MMSThumbnailMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MMSThumbnailMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.MMSThumbnailMetadata;
+
+            /**
+             * Decodes a MMSThumbnailMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MMSThumbnailMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.MMSThumbnailMetadata;
+
+            /**
+             * Verifies a MMSThumbnailMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MMSThumbnailMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MMSThumbnailMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.MMSThumbnailMetadata;
+
+            /**
+             * Creates a plain object from a MMSThumbnailMetadata message. Also converts values to other types if specified.
+             * @param message MMSThumbnailMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.MMSThumbnailMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MMSThumbnailMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for MMSThumbnailMetadata
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */

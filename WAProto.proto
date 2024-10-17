@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017399100
+/// WhatsApp Version: 2.3000.1017440561
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -117,6 +117,9 @@ message BotCapabilityMetadata {
         PROGRESS_INDICATOR = 1;
         RICH_RESPONSE_HEADING = 2;
         RICH_RESPONSE_NESTED_LIST = 3;
+        WA_IG_1P_PLUGIN_RANKING_CONTROL = 10;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12;
     }
 }
 
@@ -1600,6 +1603,7 @@ message Message {
         optional bool viewOnce = 30;
         optional uint32 videoHeight = 31;
         optional uint32 videoWidth = 32;
+        optional Message.MMSThumbnailMetadata faviconMMSMetadata = 33;
         enum FontType {
             SYSTEM = 0;
             SYSTEM_TEXT = 1;
@@ -1980,6 +1984,16 @@ message Message {
         optional string comment = 11;
         optional bytes jpegThumbnail = 16;
         optional ContextInfo contextInfo = 17;
+    }
+    
+    message MMSThumbnailMetadata {
+        optional string thumbnailDirectPath = 1;
+        optional bytes thumbnailSha256 = 2;
+        optional bytes thumbnailEncSha256 = 3;
+        optional bytes mediaKey = 4;
+        optional int64 mediaKeyTimestamp = 5;
+        optional uint32 thumbnailHeight = 6;
+        optional uint32 thumbnailWidth = 7;
     }
     
     message MessageHistoryBundle {
