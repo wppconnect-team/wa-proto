@@ -2665,6 +2665,206 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a BotPromptSuggestion. */
+    interface IBotPromptSuggestion {
+
+        /** BotPromptSuggestion prompt */
+        prompt?: (string|null);
+
+        /** BotPromptSuggestion promptId */
+        promptId?: (string|null);
+    }
+
+    /** Represents a BotPromptSuggestion. */
+    class BotPromptSuggestion implements IBotPromptSuggestion {
+
+        /**
+         * Constructs a new BotPromptSuggestion.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotPromptSuggestion);
+
+        /** BotPromptSuggestion prompt. */
+        public prompt?: (string|null);
+
+        /** BotPromptSuggestion promptId. */
+        public promptId?: (string|null);
+
+        /**
+         * Creates a new BotPromptSuggestion instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotPromptSuggestion instance
+         */
+        public static create(properties?: waproto.IBotPromptSuggestion): waproto.BotPromptSuggestion;
+
+        /**
+         * Encodes the specified BotPromptSuggestion message. Does not implicitly {@link waproto.BotPromptSuggestion.verify|verify} messages.
+         * @param message BotPromptSuggestion message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotPromptSuggestion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotPromptSuggestion message, length delimited. Does not implicitly {@link waproto.BotPromptSuggestion.verify|verify} messages.
+         * @param message BotPromptSuggestion message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotPromptSuggestion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotPromptSuggestion message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotPromptSuggestion
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotPromptSuggestion;
+
+        /**
+         * Decodes a BotPromptSuggestion message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotPromptSuggestion
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotPromptSuggestion;
+
+        /**
+         * Verifies a BotPromptSuggestion message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotPromptSuggestion message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotPromptSuggestion
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotPromptSuggestion;
+
+        /**
+         * Creates a plain object from a BotPromptSuggestion message. Also converts values to other types if specified.
+         * @param message BotPromptSuggestion
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotPromptSuggestion, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotPromptSuggestion to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotPromptSuggestion
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BotPromptSuggestions. */
+    interface IBotPromptSuggestions {
+
+        /** BotPromptSuggestions suggestions */
+        suggestions?: (waproto.IBotPromptSuggestion[]|null);
+    }
+
+    /** Represents a BotPromptSuggestions. */
+    class BotPromptSuggestions implements IBotPromptSuggestions {
+
+        /**
+         * Constructs a new BotPromptSuggestions.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotPromptSuggestions);
+
+        /** BotPromptSuggestions suggestions. */
+        public suggestions: waproto.IBotPromptSuggestion[];
+
+        /**
+         * Creates a new BotPromptSuggestions instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotPromptSuggestions instance
+         */
+        public static create(properties?: waproto.IBotPromptSuggestions): waproto.BotPromptSuggestions;
+
+        /**
+         * Encodes the specified BotPromptSuggestions message. Does not implicitly {@link waproto.BotPromptSuggestions.verify|verify} messages.
+         * @param message BotPromptSuggestions message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotPromptSuggestions, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotPromptSuggestions message, length delimited. Does not implicitly {@link waproto.BotPromptSuggestions.verify|verify} messages.
+         * @param message BotPromptSuggestions message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotPromptSuggestions, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotPromptSuggestions message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotPromptSuggestions
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotPromptSuggestions;
+
+        /**
+         * Decodes a BotPromptSuggestions message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotPromptSuggestions
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotPromptSuggestions;
+
+        /**
+         * Verifies a BotPromptSuggestions message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotPromptSuggestions message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotPromptSuggestions
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotPromptSuggestions;
+
+        /**
+         * Creates a plain object from a BotPromptSuggestions message. Also converts values to other types if specified.
+         * @param message BotPromptSuggestions
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotPromptSuggestions, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotPromptSuggestions to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotPromptSuggestions
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a BotReminderMetadata. */
     interface IBotReminderMetadata {
 
@@ -2927,6 +3127,9 @@ export namespace waproto {
 
         /** BotSuggestedPromptMetadata selectedPromptIndex */
         selectedPromptIndex?: (number|null);
+
+        /** BotSuggestedPromptMetadata promptSuggestions */
+        promptSuggestions?: (waproto.IBotPromptSuggestions|null);
     }
 
     /** Represents a BotSuggestedPromptMetadata. */
@@ -2943,6 +3146,9 @@ export namespace waproto {
 
         /** BotSuggestedPromptMetadata selectedPromptIndex. */
         public selectedPromptIndex?: (number|null);
+
+        /** BotSuggestedPromptMetadata promptSuggestions. */
+        public promptSuggestions?: (waproto.IBotPromptSuggestions|null);
 
         /**
          * Creates a new BotSuggestedPromptMetadata instance using the specified properties.

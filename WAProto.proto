@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017440561
+/// WhatsApp Version: 2.3000.1017512734
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -222,6 +222,15 @@ message BotProgressIndicatorMetadata {
     optional string progressDescription = 1;
 }
 
+message BotPromptSuggestion {
+    optional string prompt = 1;
+    optional string promptId = 2;
+}
+
+message BotPromptSuggestions {
+    repeated BotPromptSuggestion suggestions = 1;
+}
+
 message BotReminderMetadata {
     optional MessageKey requestMessageKey = 1;
     optional ReminderAction action = 2;
@@ -259,6 +268,7 @@ enum BotSessionSource {
 message BotSuggestedPromptMetadata {
     repeated string suggestedPrompts = 1;
     optional uint32 selectedPromptIndex = 2;
+    optional BotPromptSuggestions promptSuggestions = 3;
 }
 
 message CallLogRecord {
