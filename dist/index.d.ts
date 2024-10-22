@@ -2430,6 +2430,9 @@ export namespace waproto {
 
         /** BotPluginMetadata parentPluginType */
         parentPluginType?: (waproto.BotPluginMetadata.PluginType|null);
+
+        /** BotPluginMetadata faviconCdnUrl */
+        faviconCdnUrl?: (string|null);
     }
 
     /** Represents a BotPluginMetadata. */
@@ -2473,6 +2476,9 @@ export namespace waproto {
 
         /** BotPluginMetadata parentPluginType. */
         public parentPluginType?: (waproto.BotPluginMetadata.PluginType|null);
+
+        /** BotPluginMetadata faviconCdnUrl. */
+        public faviconCdnUrl?: (string|null);
 
         /**
          * Creates a new BotPluginMetadata instance using the specified properties.
