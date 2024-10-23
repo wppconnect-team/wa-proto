@@ -26172,6 +26172,9 @@ export namespace waproto {
 
                 /** ProductSnapshot salePriceAmount1000 */
                 salePriceAmount1000?: (number|Long|null);
+
+                /** ProductSnapshot signedUrl */
+                signedUrl?: (string|null);
             }
 
             /** Represents a ProductSnapshot. */
@@ -26215,6 +26218,9 @@ export namespace waproto {
 
                 /** ProductSnapshot salePriceAmount1000. */
                 public salePriceAmount1000?: (number|Long|null);
+
+                /** ProductSnapshot signedUrl. */
+                public signedUrl?: (string|null);
 
                 /**
                  * Creates a new ProductSnapshot instance using the specified properties.
