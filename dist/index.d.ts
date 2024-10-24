@@ -25057,8 +25057,8 @@ export namespace waproto {
             /** PollCreationMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
 
-            /** PollCreationMessage pollType */
-            pollType?: (waproto.Message.PollType|null);
+            /** PollCreationMessage pollMediaType */
+            pollMediaType?: (waproto.Message.PollMediaType|null);
         }
 
         /** Represents a PollCreationMessage. */
@@ -25085,8 +25085,8 @@ export namespace waproto {
             /** PollCreationMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
 
-            /** PollCreationMessage pollType. */
-            public pollType?: (waproto.Message.PollType|null);
+            /** PollCreationMessage pollMediaType. */
+            public pollMediaType?: (waproto.Message.PollMediaType|null);
 
             /**
              * Creates a new PollCreationMessage instance using the specified properties.
@@ -25375,6 +25375,12 @@ export namespace waproto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** PollMediaType enum. */
+        enum PollMediaType {
+            TEXT = 1,
+            IMAGE = 2
+        }
+
         /** Properties of a PollResultSnapshotMessage. */
         interface IPollResultSnapshotMessage {
 
@@ -25588,12 +25594,6 @@ export namespace waproto {
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
             }
-        }
-
-        /** PollType enum. */
-        enum PollType {
-            TEXT = 1,
-            IMAGE = 2
         }
 
         /** Properties of a PollUpdateMessage. */
