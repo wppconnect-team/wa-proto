@@ -1529,6 +1529,7 @@ export namespace waproto {
             PROGRESS_INDICATOR = 1,
             RICH_RESPONSE_HEADING = 2,
             RICH_RESPONSE_NESTED_LIST = 3,
+            AI_MEMORY = 4,
             WA_IG_1P_PLUGIN_RANKING_CONTROL = 10,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12
@@ -3136,6 +3137,9 @@ export namespace waproto {
 
         /** BotSuggestedPromptMetadata promptSuggestions */
         promptSuggestions?: (waproto.IBotPromptSuggestions|null);
+
+        /** BotSuggestedPromptMetadata selectedPromptId */
+        selectedPromptId?: (string|null);
     }
 
     /** Represents a BotSuggestedPromptMetadata. */
@@ -3155,6 +3159,9 @@ export namespace waproto {
 
         /** BotSuggestedPromptMetadata promptSuggestions. */
         public promptSuggestions?: (waproto.IBotPromptSuggestions|null);
+
+        /** BotSuggestedPromptMetadata selectedPromptId. */
+        public selectedPromptId?: (string|null);
 
         /**
          * Creates a new BotSuggestedPromptMetadata instance using the specified properties.
