@@ -13372,6 +13372,9 @@ export namespace waproto {
 
         /** Message associatedChildMessage */
         associatedChildMessage?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message groupStatusMentionMessage */
+        groupStatusMentionMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -13610,6 +13613,9 @@ export namespace waproto {
 
         /** Message associatedChildMessage. */
         public associatedChildMessage?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message groupStatusMentionMessage. */
+        public groupStatusMentionMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
