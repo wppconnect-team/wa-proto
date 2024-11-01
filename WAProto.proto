@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1017784046
+/// WhatsApp Version: 2.3000.1017870414
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -597,6 +597,10 @@ message ClientPayload {
 message CommentMetadata {
     optional MessageKey commentParentKey = 1;
     optional uint32 replyCount = 2;
+}
+
+message CompanionCommitment {
+    optional bytes hash = 1;
 }
 
 message CompanionEphemeralIdentity {
@@ -1268,10 +1272,10 @@ message Message {
     optional StickerPackMessage stickerPackMessage = 86;
     optional FutureProofMessage statusMentionMessage = 87;
     optional PollResultSnapshotMessage pollResultSnapshotMessage = 88;
-    optional FutureProofMessage pollCreationMessageV4 = 89;
     optional FutureProofMessage pollCreationOptionImageMessage = 90;
     optional FutureProofMessage associatedChildMessage = 91;
     optional FutureProofMessage groupStatusMentionMessage = 92;
+    optional FutureProofMessage pollCreationMessageV4 = 93;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2713,6 +2717,12 @@ message NotificationSettings {
     optional string callVibrate = 6;
 }
 
+message PairingRequest {
+    optional bytes companionPublicKey = 1;
+    optional bytes companionIdentityKey = 2;
+    optional bytes advSecret = 3;
+}
+
 message PastParticipant {
     optional string userJid = 1;
     optional LeaveReason leaveReason = 2;
@@ -2913,6 +2923,7 @@ message PremiumMessageInfo {
 
 message PrimaryEphemeralIdentity {
     optional bytes publicKey = 1;
+    optional bytes nonce = 2;
 }
 
 enum PrivacySystemMessage {
@@ -2935,6 +2946,11 @@ message ProcessedVideo {
         MID = 2;
         HIGH = 3;
     }
+}
+
+message ProloguePayload {
+    optional bytes companionEphemeralIdentity = 1;
+    optional CompanionCommitment commitment = 2;
 }
 
 message Pushname {
