@@ -25,7 +25,7 @@
     "protobufjs": "^7.4.0"
   },
   "devDependencies": {
-    "acorn": "^8.11.3",
+    "acorn": "^8.14.0",
     "acorn-walk": "^8.3.4",
     "conventional-changelog-cli": "^4.1.0",
     "protobufjs-cli": "^1.1.3",
