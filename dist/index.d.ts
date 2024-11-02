@@ -36950,6 +36950,9 @@ export namespace waproto {
 
         /** SyncActionValue usernameChatStartMode */
         usernameChatStartMode?: (waproto.SyncActionValue.IUsernameChatStartModeAction|null);
+
+        /** SyncActionValue notificationActivitySettingAction */
+        notificationActivitySettingAction?: (waproto.SyncActionValue.INotificationActivitySettingAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -37119,6 +37122,9 @@ export namespace waproto {
 
         /** SyncActionValue usernameChatStartMode. */
         public usernameChatStartMode?: (waproto.SyncActionValue.IUsernameChatStartModeAction|null);
+
+        /** SyncActionValue notificationActivitySettingAction. */
+        public notificationActivitySettingAction?: (waproto.SyncActionValue.INotificationActivitySettingAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -40353,6 +40359,114 @@ export namespace waproto {
             enum NoteType {
                 UNSTRUCTURED = 1,
                 STRUCTURED = 2
+            }
+        }
+
+        /** Properties of a NotificationActivitySettingAction. */
+        interface INotificationActivitySettingAction {
+
+            /** NotificationActivitySettingAction notificationActivitySetting */
+            notificationActivitySetting?: (waproto.SyncActionValue.NotificationActivitySettingAction.NotificationActivitySetting|null);
+        }
+
+        /** Represents a NotificationActivitySettingAction. */
+        class NotificationActivitySettingAction implements INotificationActivitySettingAction {
+
+            /**
+             * Constructs a new NotificationActivitySettingAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.INotificationActivitySettingAction);
+
+            /** NotificationActivitySettingAction notificationActivitySetting. */
+            public notificationActivitySetting?: (waproto.SyncActionValue.NotificationActivitySettingAction.NotificationActivitySetting|null);
+
+            /**
+             * Creates a new NotificationActivitySettingAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns NotificationActivitySettingAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.INotificationActivitySettingAction): waproto.SyncActionValue.NotificationActivitySettingAction;
+
+            /**
+             * Encodes the specified NotificationActivitySettingAction message. Does not implicitly {@link waproto.SyncActionValue.NotificationActivitySettingAction.verify|verify} messages.
+             * @param message NotificationActivitySettingAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.INotificationActivitySettingAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified NotificationActivitySettingAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.NotificationActivitySettingAction.verify|verify} messages.
+             * @param message NotificationActivitySettingAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.INotificationActivitySettingAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a NotificationActivitySettingAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns NotificationActivitySettingAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.NotificationActivitySettingAction;
+
+            /**
+             * Decodes a NotificationActivitySettingAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns NotificationActivitySettingAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.NotificationActivitySettingAction;
+
+            /**
+             * Verifies a NotificationActivitySettingAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a NotificationActivitySettingAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns NotificationActivitySettingAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.NotificationActivitySettingAction;
+
+            /**
+             * Creates a plain object from a NotificationActivitySettingAction message. Also converts values to other types if specified.
+             * @param message NotificationActivitySettingAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.NotificationActivitySettingAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this NotificationActivitySettingAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for NotificationActivitySettingAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace NotificationActivitySettingAction {
+
+            /** NotificationActivitySetting enum. */
+            enum NotificationActivitySetting {
+                DEFAULT_ALL_MESSAGES = 0,
+                ALL_MESSAGES = 1,
+                HIGHLIGHTS = 2,
+                DEFAULT_HIGHLIGHTS = 3
             }
         }
 
