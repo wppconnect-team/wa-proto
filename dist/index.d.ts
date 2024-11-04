@@ -13472,6 +13472,9 @@ export namespace waproto {
 
         /** Message pollCreationMessageV4 */
         pollCreationMessageV4?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message pollCreationMessageV5 */
+        pollCreationMessageV5?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -13713,6 +13716,9 @@ export namespace waproto {
 
         /** Message pollCreationMessageV4. */
         public pollCreationMessageV4?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message pollCreationMessageV5. */
+        public pollCreationMessageV5?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -25169,6 +25175,12 @@ export namespace waproto {
 
             /** PollCreationMessage pollMediaType */
             pollMediaType?: (waproto.Message.PollMediaType|null);
+
+            /** PollCreationMessage pollType */
+            pollType?: (waproto.Message.PollCreationMessage.PollType|null);
+
+            /** PollCreationMessage correctAnswer */
+            correctAnswer?: (waproto.Message.PollCreationMessage.IOption|null);
         }
 
         /** Represents a PollCreationMessage. */
@@ -25197,6 +25209,12 @@ export namespace waproto {
 
             /** PollCreationMessage pollMediaType. */
             public pollMediaType?: (waproto.Message.PollMediaType|null);
+
+            /** PollCreationMessage pollType. */
+            public pollType?: (waproto.Message.PollCreationMessage.PollType|null);
+
+            /** PollCreationMessage correctAnswer. */
+            public correctAnswer?: (waproto.Message.PollCreationMessage.IOption|null);
 
             /**
              * Creates a new PollCreationMessage instance using the specified properties.
@@ -25379,6 +25397,12 @@ export namespace waproto {
                  * @returns The default type url
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** PollType enum. */
+            enum PollType {
+                POLL = 0,
+                QUIZ = 1
             }
         }
 
