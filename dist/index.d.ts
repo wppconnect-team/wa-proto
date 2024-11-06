@@ -29554,7 +29554,8 @@ export namespace waproto {
             STATUS_POLL = 4,
             HD_VIDEO_DUAL_UPLOAD = 5,
             STATUS_TAPPABLE_MESSAGE = 6,
-            MEDIA_POLL = 7
+            MEDIA_POLL = 7,
+            STATUS_ADD_YOURS = 8
         }
     }
 
