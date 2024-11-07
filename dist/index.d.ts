@@ -2385,12 +2385,14 @@ export namespace waproto {
 
         /** ModelType enum. */
         enum ModelType {
+            UNKNOWN_TYPE = 0,
             LLAMA_PROD = 1,
             LLAMA_PROD_PREMIUM = 2
         }
 
         /** PremiumModelStatus enum. */
         enum PremiumModelStatus {
+            UNKNOWN_STATUS = 0,
             AVAILABLE = 1,
             QUOTA_EXCEED_LIMIT = 2
         }
@@ -2563,12 +2565,14 @@ export namespace waproto {
 
         /** PluginType enum. */
         enum PluginType {
+            UNKNOWN_PLUGIN = 0,
             REELS = 1,
             SEARCH = 2
         }
 
         /** SearchProvider enum. */
         enum SearchProvider {
+            UNKNOWN = 0,
             BING = 1,
             GOOGLE = 2,
             SUPPORT = 3
