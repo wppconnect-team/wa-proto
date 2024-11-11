@@ -1532,7 +1532,15 @@ export namespace waproto {
             AI_MEMORY = 4,
             WA_IG_1P_PLUGIN_RANKING_CONTROL = 10,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11,
-            WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_3 = 13,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_4 = 14,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_5 = 15,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_6 = 16,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_7 = 17,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_8 = 18,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_9 = 19,
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_10 = 20
         }
     }
 
@@ -2144,6 +2152,9 @@ export namespace waproto {
 
         /** BotMetadata memoryMetadata */
         memoryMetadata?: (waproto.IBotMemoryMetadata|null);
+
+        /** BotMetadata renderingMetadata */
+        renderingMetadata?: (waproto.IBotRenderingMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -2199,6 +2210,9 @@ export namespace waproto {
 
         /** BotMetadata memoryMetadata. */
         public memoryMetadata?: (waproto.IBotMemoryMetadata|null);
+
+        /** BotMetadata renderingMetadata. */
+        public renderingMetadata?: (waproto.IBotRenderingMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -3014,6 +3028,209 @@ export namespace waproto {
             WEEKLY = 3,
             BIWEEKLY = 4,
             MONTHLY = 5
+        }
+    }
+
+    /** Properties of a BotRenderingMetadata. */
+    interface IBotRenderingMetadata {
+
+        /** BotRenderingMetadata keywords */
+        keywords?: (waproto.BotRenderingMetadata.IKeyword[]|null);
+    }
+
+    /** Represents a BotRenderingMetadata. */
+    class BotRenderingMetadata implements IBotRenderingMetadata {
+
+        /**
+         * Constructs a new BotRenderingMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotRenderingMetadata);
+
+        /** BotRenderingMetadata keywords. */
+        public keywords: waproto.BotRenderingMetadata.IKeyword[];
+
+        /**
+         * Creates a new BotRenderingMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotRenderingMetadata instance
+         */
+        public static create(properties?: waproto.IBotRenderingMetadata): waproto.BotRenderingMetadata;
+
+        /**
+         * Encodes the specified BotRenderingMetadata message. Does not implicitly {@link waproto.BotRenderingMetadata.verify|verify} messages.
+         * @param message BotRenderingMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotRenderingMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotRenderingMetadata message, length delimited. Does not implicitly {@link waproto.BotRenderingMetadata.verify|verify} messages.
+         * @param message BotRenderingMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotRenderingMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotRenderingMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotRenderingMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotRenderingMetadata;
+
+        /**
+         * Decodes a BotRenderingMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotRenderingMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotRenderingMetadata;
+
+        /**
+         * Verifies a BotRenderingMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotRenderingMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotRenderingMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotRenderingMetadata;
+
+        /**
+         * Creates a plain object from a BotRenderingMetadata message. Also converts values to other types if specified.
+         * @param message BotRenderingMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotRenderingMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotRenderingMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotRenderingMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotRenderingMetadata {
+
+        /** Properties of a Keyword. */
+        interface IKeyword {
+
+            /** Keyword value */
+            value?: (string|null);
+
+            /** Keyword associatedPrompts */
+            associatedPrompts?: (string[]|null);
+        }
+
+        /** Represents a Keyword. */
+        class Keyword implements IKeyword {
+
+            /**
+             * Constructs a new Keyword.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BotRenderingMetadata.IKeyword);
+
+            /** Keyword value. */
+            public value?: (string|null);
+
+            /** Keyword associatedPrompts. */
+            public associatedPrompts: string[];
+
+            /**
+             * Creates a new Keyword instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Keyword instance
+             */
+            public static create(properties?: waproto.BotRenderingMetadata.IKeyword): waproto.BotRenderingMetadata.Keyword;
+
+            /**
+             * Encodes the specified Keyword message. Does not implicitly {@link waproto.BotRenderingMetadata.Keyword.verify|verify} messages.
+             * @param message Keyword message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.BotRenderingMetadata.IKeyword, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Keyword message, length delimited. Does not implicitly {@link waproto.BotRenderingMetadata.Keyword.verify|verify} messages.
+             * @param message Keyword message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.BotRenderingMetadata.IKeyword, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Keyword message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Keyword
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotRenderingMetadata.Keyword;
+
+            /**
+             * Decodes a Keyword message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Keyword
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotRenderingMetadata.Keyword;
+
+            /**
+             * Verifies a Keyword message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Keyword message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Keyword
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.BotRenderingMetadata.Keyword;
+
+            /**
+             * Creates a plain object from a Keyword message. Also converts values to other types if specified.
+             * @param message Keyword
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.BotRenderingMetadata.Keyword, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Keyword to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Keyword
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018026946
+/// WhatsApp Version: 2.3000.1018088939
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -121,6 +121,14 @@ message BotCapabilityMetadata {
         WA_IG_1P_PLUGIN_RANKING_CONTROL = 10;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_3 = 13;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_4 = 14;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_5 = 15;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_6 = 16;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_7 = 17;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_8 = 18;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_9 = 19;
+        WA_IG_1P_PLUGIN_RANKING_UPDATE_10 = 20;
     }
 }
 
@@ -181,6 +189,7 @@ message BotMetadata {
     optional BotCapabilityMetadata capabilityMetadata = 13;
     optional BotImagineMetadata imagineMetadata = 14;
     optional BotMemoryMetadata memoryMetadata = 15;
+    optional BotRenderingMetadata renderingMetadata = 16;
 }
 
 message BotModelMetadata {
@@ -256,6 +265,15 @@ message BotReminderMetadata {
         BIWEEKLY = 4;
         MONTHLY = 5;
     }
+}
+
+message BotRenderingMetadata {
+    repeated Keyword keywords = 1;
+    message Keyword {
+        optional string value = 1;
+        repeated string associatedPrompts = 2;
+    }
+    
 }
 
 message BotSessionMetadata {
