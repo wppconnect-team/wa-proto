@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018088939
+/// WhatsApp Version: 2.3000.1018121912
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1299,6 +1299,7 @@ message Message {
     optional FutureProofMessage groupStatusMentionMessage = 92;
     optional FutureProofMessage pollCreationMessageV4 = 93;
     optional FutureProofMessage pollCreationMessageV5 = 94;
+    optional FutureProofMessage statusAddYours = 95;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2788,6 +2789,8 @@ message PatchDebugData {
         WEB = 4;
         UWP = 5;
         DARWIN = 6;
+        IPAD = 7;
+        WEAROS = 8;
     }
 }
 

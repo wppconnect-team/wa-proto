@@ -13696,6 +13696,9 @@ export namespace waproto {
 
         /** Message pollCreationMessageV5 */
         pollCreationMessageV5?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message statusAddYours */
+        statusAddYours?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -13940,6 +13943,9 @@ export namespace waproto {
 
         /** Message pollCreationMessageV5. */
         public pollCreationMessageV5?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message statusAddYours. */
+        public statusAddYours?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -32094,7 +32100,9 @@ export namespace waproto {
             SMBI = 3,
             WEB = 4,
             UWP = 5,
-            DARWIN = 6
+            DARWIN = 6,
+            IPAD = 7,
+            WEAROS = 8
         }
     }
 
