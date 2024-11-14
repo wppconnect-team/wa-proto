@@ -1530,6 +1530,7 @@ export namespace waproto {
             RICH_RESPONSE_HEADING = 2,
             RICH_RESPONSE_NESTED_LIST = 3,
             AI_MEMORY = 4,
+            RICH_RESPONSE_THREAD_SURFING = 5,
             WA_IG_1P_PLUGIN_RANKING_CONTROL = 10,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12,
@@ -46056,6 +46057,9 @@ export namespace waproto {
 
         /** WebMessageInfo isSupportAiMessage */
         isSupportAiMessage?: (boolean|null);
+
+        /** WebMessageInfo statusMentionSources */
+        statusMentionSources?: (string[]|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -46243,6 +46247,9 @@ export namespace waproto {
 
         /** WebMessageInfo isSupportAiMessage. */
         public isSupportAiMessage?: (boolean|null);
+
+        /** WebMessageInfo statusMentionSources. */
+        public statusMentionSources: string[];
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
