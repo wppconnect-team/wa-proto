@@ -1531,6 +1531,8 @@ export namespace waproto {
             RICH_RESPONSE_NESTED_LIST = 3,
             AI_MEMORY = 4,
             RICH_RESPONSE_THREAD_SURFING = 5,
+            RICH_RESPONSE_TABLE = 6,
+            RICH_RESPONSE_CODE = 7,
             WA_IG_1P_PLUGIN_RANKING_CONTROL = 10,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12,
@@ -2156,6 +2158,9 @@ export namespace waproto {
 
         /** BotMetadata renderingMetadata */
         renderingMetadata?: (waproto.IBotRenderingMetadata|null);
+
+        /** BotMetadata botMetricsMetadata */
+        botMetricsMetadata?: (waproto.IBotMetricsMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -2214,6 +2219,9 @@ export namespace waproto {
 
         /** BotMetadata renderingMetadata. */
         public renderingMetadata?: (waproto.IBotRenderingMetadata|null);
+
+        /** BotMetadata botMetricsMetadata. */
+        public botMetricsMetadata?: (waproto.IBotMetricsMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -2287,6 +2295,129 @@ export namespace waproto {
 
         /**
          * Gets the default type url for BotMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** BotMetricsEntryPoint enum. */
+    enum BotMetricsEntryPoint {
+        FAVICON = 1,
+        CHATLIST = 2,
+        AISEARCH_NULL_STATE_PAPER_PLANE = 3,
+        AISEARCH_NULL_STATE_SUGGESTION = 4,
+        AISEARCH_TYPE_AHEAD_SUGGESTION = 5,
+        AISEARCH_TYPE_AHEAD_PAPER_PLANE = 6,
+        AISEARCH_TYPE_AHEAD_RESULT_CHATLIST = 7,
+        AISEARCH_TYPE_AHEAD_RESULT_MESSAGES = 8,
+        AIVOICE_SEARCH_BAR = 9,
+        AIVOICE_FAVICON = 10,
+        AISTUDIO = 11,
+        DEEPLINK = 12,
+        NOTIFICATION = 13,
+        PROFILE_MESSAGE_BUTTON = 14,
+        FORWARD = 15,
+        APP_SHORTCUT = 16
+    }
+
+    /** Properties of a BotMetricsMetadata. */
+    interface IBotMetricsMetadata {
+
+        /** BotMetricsMetadata destinationId */
+        destinationId?: (string|null);
+
+        /** BotMetricsMetadata destinationEntryPoint */
+        destinationEntryPoint?: (waproto.BotMetricsEntryPoint|null);
+    }
+
+    /** Represents a BotMetricsMetadata. */
+    class BotMetricsMetadata implements IBotMetricsMetadata {
+
+        /**
+         * Constructs a new BotMetricsMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotMetricsMetadata);
+
+        /** BotMetricsMetadata destinationId. */
+        public destinationId?: (string|null);
+
+        /** BotMetricsMetadata destinationEntryPoint. */
+        public destinationEntryPoint?: (waproto.BotMetricsEntryPoint|null);
+
+        /**
+         * Creates a new BotMetricsMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotMetricsMetadata instance
+         */
+        public static create(properties?: waproto.IBotMetricsMetadata): waproto.BotMetricsMetadata;
+
+        /**
+         * Encodes the specified BotMetricsMetadata message. Does not implicitly {@link waproto.BotMetricsMetadata.verify|verify} messages.
+         * @param message BotMetricsMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotMetricsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotMetricsMetadata message, length delimited. Does not implicitly {@link waproto.BotMetricsMetadata.verify|verify} messages.
+         * @param message BotMetricsMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotMetricsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotMetricsMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotMetricsMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotMetricsMetadata;
+
+        /**
+         * Decodes a BotMetricsMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotMetricsMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotMetricsMetadata;
+
+        /**
+         * Verifies a BotMetricsMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotMetricsMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotMetricsMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotMetricsMetadata;
+
+        /**
+         * Creates a plain object from a BotMetricsMetadata message. Also converts values to other types if specified.
+         * @param message BotMetricsMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotMetricsMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotMetricsMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotMetricsMetadata
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -6687,6 +6818,9 @@ export namespace waproto {
 
         /** ContextInfo forwardedAiBotMessageInfo */
         forwardedAiBotMessageInfo?: (waproto.ContextInfo.IForwardedAIBotMessageInfo|null);
+
+        /** ContextInfo statusAttributionType */
+        statusAttributionType?: (waproto.ContextInfo.StatusAttributionType|null);
     }
 
     /** Represents a ContextInfo. */
@@ -6817,6 +6951,9 @@ export namespace waproto {
 
         /** ContextInfo forwardedAiBotMessageInfo. */
         public forwardedAiBotMessageInfo?: (waproto.ContextInfo.IForwardedAIBotMessageInfo|null);
+
+        /** ContextInfo statusAttributionType. */
+        public statusAttributionType?: (waproto.ContextInfo.StatusAttributionType|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -7933,6 +8070,12 @@ export namespace waproto {
                 UPDATE_CARD = 2,
                 LINK_CARD = 3
             }
+        }
+
+        /** StatusAttributionType enum. */
+        enum StatusAttributionType {
+            NONE = 0,
+            RESHARED_FROM_MENTION = 1
         }
 
         /** Properties of a UTMInfo. */

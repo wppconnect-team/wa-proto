@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018186866
+/// WhatsApp Version: 2.3000.1018218440
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -119,6 +119,8 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_NESTED_LIST = 3;
         AI_MEMORY = 4;
         RICH_RESPONSE_THREAD_SURFING = 5;
+        RICH_RESPONSE_TABLE = 6;
+        RICH_RESPONSE_CODE = 7;
         WA_IG_1P_PLUGIN_RANKING_CONTROL = 10;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12;
@@ -191,6 +193,30 @@ message BotMetadata {
     optional BotImagineMetadata imagineMetadata = 14;
     optional BotMemoryMetadata memoryMetadata = 15;
     optional BotRenderingMetadata renderingMetadata = 16;
+    optional BotMetricsMetadata botMetricsMetadata = 17;
+}
+
+enum BotMetricsEntryPoint {
+    FAVICON = 1;
+    CHATLIST = 2;
+    AISEARCH_NULL_STATE_PAPER_PLANE = 3;
+    AISEARCH_NULL_STATE_SUGGESTION = 4;
+    AISEARCH_TYPE_AHEAD_SUGGESTION = 5;
+    AISEARCH_TYPE_AHEAD_PAPER_PLANE = 6;
+    AISEARCH_TYPE_AHEAD_RESULT_CHATLIST = 7;
+    AISEARCH_TYPE_AHEAD_RESULT_MESSAGES = 8;
+    AIVOICE_SEARCH_BAR = 9;
+    AIVOICE_FAVICON = 10;
+    AISTUDIO = 11;
+    DEEPLINK = 12;
+    NOTIFICATION = 13;
+    PROFILE_MESSAGE_BUTTON = 14;
+    FORWARD = 15;
+    APP_SHORTCUT = 16;
+}
+message BotMetricsMetadata {
+    optional string destinationId = 1;
+    optional BotMetricsEntryPoint destinationEntryPoint = 2;
 }
 
 message BotModelMetadata {
@@ -678,6 +704,7 @@ message ContextInfo {
     optional string ctwaSignals = 54;
     optional bytes ctwaPayload = 55;
     optional ForwardedAIBotMessageInfo forwardedAiBotMessageInfo = 56;
+    optional StatusAttributionType statusAttributionType = 57;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -763,6 +790,10 @@ message ContextInfo {
         }
     }
     
+    enum StatusAttributionType {
+        NONE = 0;
+        RESHARED_FROM_MENTION = 1;
+    }
     message UTMInfo {
         optional string utmSource = 1;
         optional string utmCampaign = 2;
