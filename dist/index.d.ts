@@ -8328,6 +8328,9 @@ export namespace waproto {
 
         /** Conversation capiCreatedGroup */
         capiCreatedGroup?: (boolean|null);
+
+        /** Conversation accountLid */
+        accountLid?: (string|null);
     }
 
     /** Represents a Conversation. */
@@ -8482,6 +8485,9 @@ export namespace waproto {
 
         /** Conversation capiCreatedGroup. */
         public capiCreatedGroup?: (boolean|null);
+
+        /** Conversation accountLid. */
+        public accountLid?: (string|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
