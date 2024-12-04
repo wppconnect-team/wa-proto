@@ -13849,6 +13849,9 @@ export namespace waproto {
 
         /** Message statusAddYours */
         statusAddYours?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message groupStatusMessage */
+        groupStatusMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -14096,6 +14099,9 @@ export namespace waproto {
 
         /** Message statusAddYours. */
         public statusAddYours?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message groupStatusMessage. */
+        public groupStatusMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
