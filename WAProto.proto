@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018607504
+/// WhatsApp Version: 2.3000.1018702028
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1204,8 +1204,18 @@ message KeyId {
     optional bytes id = 1;
 }
 
+message LIDMigrationMapping {
+    required uint64 pn = 1;
+    required uint64 assignedLid = 2;
+    optional uint64 latestLid = 3;
+}
+
 message LIDMigrationMappingSyncMessage {
     optional bytes encodedMappingPayload = 1;
+}
+
+message LIDMigrationMappingSyncPayload {
+    repeated LIDMigrationMapping pnToLidMappings = 1;
 }
 
 message LegacyMessage {
