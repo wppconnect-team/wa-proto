@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018702028
+/// WhatsApp Version: 2.3000.1018721421
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1871,6 +1871,7 @@ message Message {
         optional Body body = 2;
         optional Footer footer = 3;
         optional ContextInfo contextInfo = 15;
+        optional UrlTrackingMap urlTrackingMap = 16;
         oneof interactiveMessage {
             Message.InteractiveMessage.ShopMessage shopStorefrontMessage = 4;
             Message.InteractiveMessage.CollectionMessage collectionMessage = 5;
@@ -1931,6 +1932,16 @@ message Message {
                 IG = 2;
                 WA = 3;
             }
+        }
+        
+        message UrlTrackingMap {
+            repeated UrlTrackingMapElement urlTrackingMapElements = 1;
+            message UrlTrackingMapElement {
+                optional string originalUrl = 1;
+                optional string unconsentedUsersUrl = 2;
+                optional string consentedUsersUrl = 3;
+            }
+            
         }
         
     }

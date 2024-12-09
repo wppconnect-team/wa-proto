@@ -20276,6 +20276,9 @@ export namespace waproto {
             /** InteractiveMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
 
+            /** InteractiveMessage urlTrackingMap */
+            urlTrackingMap?: (waproto.Message.InteractiveMessage.IUrlTrackingMap|null);
+
             /** InteractiveMessage shopStorefrontMessage */
             shopStorefrontMessage?: (waproto.Message.InteractiveMessage.IShopMessage|null);
 
@@ -20309,6 +20312,9 @@ export namespace waproto {
 
             /** InteractiveMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
+
+            /** InteractiveMessage urlTrackingMap. */
+            public urlTrackingMap?: (waproto.Message.InteractiveMessage.IUrlTrackingMap|null);
 
             /** InteractiveMessage shopStorefrontMessage. */
             public shopStorefrontMessage?: (waproto.Message.InteractiveMessage.IShopMessage|null);
@@ -21291,6 +21297,215 @@ export namespace waproto {
                     FB = 1,
                     IG = 2,
                     WA = 3
+                }
+            }
+
+            /** Properties of an UrlTrackingMap. */
+            interface IUrlTrackingMap {
+
+                /** UrlTrackingMap urlTrackingMapElements */
+                urlTrackingMapElements?: (waproto.Message.InteractiveMessage.UrlTrackingMap.IUrlTrackingMapElement[]|null);
+            }
+
+            /** Represents an UrlTrackingMap. */
+            class UrlTrackingMap implements IUrlTrackingMap {
+
+                /**
+                 * Constructs a new UrlTrackingMap.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.InteractiveMessage.IUrlTrackingMap);
+
+                /** UrlTrackingMap urlTrackingMapElements. */
+                public urlTrackingMapElements: waproto.Message.InteractiveMessage.UrlTrackingMap.IUrlTrackingMapElement[];
+
+                /**
+                 * Creates a new UrlTrackingMap instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns UrlTrackingMap instance
+                 */
+                public static create(properties?: waproto.Message.InteractiveMessage.IUrlTrackingMap): waproto.Message.InteractiveMessage.UrlTrackingMap;
+
+                /**
+                 * Encodes the specified UrlTrackingMap message. Does not implicitly {@link waproto.Message.InteractiveMessage.UrlTrackingMap.verify|verify} messages.
+                 * @param message UrlTrackingMap message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.InteractiveMessage.IUrlTrackingMap, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified UrlTrackingMap message, length delimited. Does not implicitly {@link waproto.Message.InteractiveMessage.UrlTrackingMap.verify|verify} messages.
+                 * @param message UrlTrackingMap message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.InteractiveMessage.IUrlTrackingMap, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an UrlTrackingMap message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns UrlTrackingMap
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.InteractiveMessage.UrlTrackingMap;
+
+                /**
+                 * Decodes an UrlTrackingMap message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns UrlTrackingMap
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.InteractiveMessage.UrlTrackingMap;
+
+                /**
+                 * Verifies an UrlTrackingMap message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an UrlTrackingMap message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns UrlTrackingMap
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.InteractiveMessage.UrlTrackingMap;
+
+                /**
+                 * Creates a plain object from an UrlTrackingMap message. Also converts values to other types if specified.
+                 * @param message UrlTrackingMap
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.InteractiveMessage.UrlTrackingMap, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this UrlTrackingMap to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for UrlTrackingMap
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            namespace UrlTrackingMap {
+
+                /** Properties of an UrlTrackingMapElement. */
+                interface IUrlTrackingMapElement {
+
+                    /** UrlTrackingMapElement originalUrl */
+                    originalUrl?: (string|null);
+
+                    /** UrlTrackingMapElement unconsentedUsersUrl */
+                    unconsentedUsersUrl?: (string|null);
+
+                    /** UrlTrackingMapElement consentedUsersUrl */
+                    consentedUsersUrl?: (string|null);
+                }
+
+                /** Represents an UrlTrackingMapElement. */
+                class UrlTrackingMapElement implements IUrlTrackingMapElement {
+
+                    /**
+                     * Constructs a new UrlTrackingMapElement.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: waproto.Message.InteractiveMessage.UrlTrackingMap.IUrlTrackingMapElement);
+
+                    /** UrlTrackingMapElement originalUrl. */
+                    public originalUrl?: (string|null);
+
+                    /** UrlTrackingMapElement unconsentedUsersUrl. */
+                    public unconsentedUsersUrl?: (string|null);
+
+                    /** UrlTrackingMapElement consentedUsersUrl. */
+                    public consentedUsersUrl?: (string|null);
+
+                    /**
+                     * Creates a new UrlTrackingMapElement instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns UrlTrackingMapElement instance
+                     */
+                    public static create(properties?: waproto.Message.InteractiveMessage.UrlTrackingMap.IUrlTrackingMapElement): waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement;
+
+                    /**
+                     * Encodes the specified UrlTrackingMapElement message. Does not implicitly {@link waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement.verify|verify} messages.
+                     * @param message UrlTrackingMapElement message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: waproto.Message.InteractiveMessage.UrlTrackingMap.IUrlTrackingMapElement, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified UrlTrackingMapElement message, length delimited. Does not implicitly {@link waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement.verify|verify} messages.
+                     * @param message UrlTrackingMapElement message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: waproto.Message.InteractiveMessage.UrlTrackingMap.IUrlTrackingMapElement, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes an UrlTrackingMapElement message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns UrlTrackingMapElement
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement;
+
+                    /**
+                     * Decodes an UrlTrackingMapElement message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns UrlTrackingMapElement
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement;
+
+                    /**
+                     * Verifies an UrlTrackingMapElement message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates an UrlTrackingMapElement message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns UrlTrackingMapElement
+                     */
+                    public static fromObject(object: { [k: string]: any }): waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement;
+
+                    /**
+                     * Creates a plain object from an UrlTrackingMapElement message. Also converts values to other types if specified.
+                     * @param message UrlTrackingMapElement
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: waproto.Message.InteractiveMessage.UrlTrackingMap.UrlTrackingMapElement, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this UrlTrackingMapElement to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the default type url for UrlTrackingMapElement
+                     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns The default type url
+                     */
+                    public static getTypeUrl(typeUrlPrefix?: string): string;
                 }
             }
         }
