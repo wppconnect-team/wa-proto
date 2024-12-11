@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018721421
+/// WhatsApp Version: 2.3000.1018796293
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2277,13 +2277,18 @@ message Message {
         }
     }
     
+    enum PollContentType {
+        UNKNOWN = 0;
+        TEXT = 1;
+        IMAGE = 2;
+    }
     message PollCreationMessage {
         optional bytes encKey = 1;
         optional string name = 2;
         repeated Option options = 3;
         optional uint32 selectableOptionsCount = 4;
         optional ContextInfo contextInfo = 5;
-        optional Message.PollMediaType pollMediaType = 6;
+        optional Message.PollContentType pollMediaType = 6;
         optional PollType pollType = 7;
         optional Option correctAnswer = 8;
         message Option {
@@ -2302,11 +2307,6 @@ message Message {
         optional bytes encIv = 2;
     }
     
-    enum PollMediaType {
-        UNKNOWN = 0;
-        TEXT = 1;
-        IMAGE = 2;
-    }
     message PollResultSnapshotMessage {
         optional string name = 1;
         repeated PollVote pollVotes = 2;

@@ -25959,6 +25959,13 @@ export namespace waproto {
             }
         }
 
+        /** PollContentType enum. */
+        enum PollContentType {
+            UNKNOWN = 0,
+            TEXT = 1,
+            IMAGE = 2
+        }
+
         /** Properties of a PollCreationMessage. */
         interface IPollCreationMessage {
 
@@ -25978,7 +25985,7 @@ export namespace waproto {
             contextInfo?: (waproto.IContextInfo|null);
 
             /** PollCreationMessage pollMediaType */
-            pollMediaType?: (waproto.Message.PollMediaType|null);
+            pollMediaType?: (waproto.Message.PollContentType|null);
 
             /** PollCreationMessage pollType */
             pollType?: (waproto.Message.PollCreationMessage.PollType|null);
@@ -26012,7 +26019,7 @@ export namespace waproto {
             public contextInfo?: (waproto.IContextInfo|null);
 
             /** PollCreationMessage pollMediaType. */
-            public pollMediaType?: (waproto.Message.PollMediaType|null);
+            public pollMediaType?: (waproto.Message.PollContentType|null);
 
             /** PollCreationMessage pollType. */
             public pollType?: (waproto.Message.PollCreationMessage.PollType|null);
@@ -26311,13 +26318,6 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        /** PollMediaType enum. */
-        enum PollMediaType {
-            UNKNOWN = 0,
-            TEXT = 1,
-            IMAGE = 2
         }
 
         /** Properties of a PollResultSnapshotMessage. */
