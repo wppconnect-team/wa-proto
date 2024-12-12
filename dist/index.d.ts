@@ -25984,8 +25984,8 @@ export namespace waproto {
             /** PollCreationMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
 
-            /** PollCreationMessage pollMediaType */
-            pollMediaType?: (waproto.Message.PollContentType|null);
+            /** PollCreationMessage pollContentType */
+            pollContentType?: (waproto.Message.PollContentType|null);
 
             /** PollCreationMessage pollType */
             pollType?: (waproto.Message.PollCreationMessage.PollType|null);
@@ -26018,8 +26018,8 @@ export namespace waproto {
             /** PollCreationMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
 
-            /** PollCreationMessage pollMediaType. */
-            public pollMediaType?: (waproto.Message.PollContentType|null);
+            /** PollCreationMessage pollContentType. */
+            public pollContentType?: (waproto.Message.PollContentType|null);
 
             /** PollCreationMessage pollType. */
             public pollType?: (waproto.Message.PollCreationMessage.PollType|null);

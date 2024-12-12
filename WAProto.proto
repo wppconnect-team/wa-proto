@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018796293
+/// WhatsApp Version: 2.3000.1018805719
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2288,7 +2288,7 @@ message Message {
         repeated Option options = 3;
         optional uint32 selectableOptionsCount = 4;
         optional ContextInfo contextInfo = 5;
-        optional Message.PollContentType pollMediaType = 6;
+        optional Message.PollContentType pollContentType = 6;
         optional PollType pollType = 7;
         optional Option correctAnswer = 8;
         message Option {
