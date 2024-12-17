@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018853814
+/// WhatsApp Version: 2.3000.1018934872
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -434,6 +434,7 @@ message ChatRowOpaqueData {
 
 message ClientPairingProps {
     optional bool isChatDbLidMigrated = 1;
+    optional bool isSyncdPureLidSession = 2;
 }
 
 message ClientPayload {
@@ -705,6 +706,7 @@ message ContextInfo {
     optional bytes ctwaPayload = 55;
     optional ForwardedAIBotMessageInfo forwardedAiBotMessageInfo = 56;
     optional StatusAttributionType statusAttributionType = 57;
+    optional UrlTrackingMap urlTrackingMap = 58;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1932,16 +1934,6 @@ message Message {
                 IG = 2;
                 WA = 3;
             }
-        }
-        
-        message UrlTrackingMap {
-            repeated UrlTrackingMapElement urlTrackingMapElements = 1;
-            message UrlTrackingMapElement {
-                optional string originalUrl = 1;
-                optional string unconsentedUsersUrl = 2;
-                optional string consentedUsersUrl = 3;
-            }
-            
         }
         
     }
@@ -3669,6 +3661,17 @@ message TemplateButton {
     message URLButton {
         optional Message.HighlyStructuredMessage displayText = 1;
         optional Message.HighlyStructuredMessage url = 2;
+    }
+    
+}
+
+message UrlTrackingMap {
+    repeated UrlTrackingMapElement urlTrackingMapElements = 1;
+    message UrlTrackingMapElement {
+        optional string originalUrl = 1;
+        optional string unconsentedUsersUrl = 2;
+        optional string consentedUsersUrl = 3;
+        optional uint32 cardIndex = 4;
     }
     
 }
