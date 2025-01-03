@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1018934872
+/// WhatsApp Version: 2.3000.1019133605
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -40,6 +40,96 @@ message ADVSignedKeyIndexList {
     optional bytes details = 1;
     optional bytes accountSignature = 2;
     optional bytes accountSignatureKey = 3;
+}
+
+message AIRichResponseMessage {
+    optional AIRichResponseMessageType messageType = 1;
+    repeated AIRichResponseSubMessage submessages = 2;
+    message AIRichResponseCodeMetadata {
+        optional string codeLanguage = 1;
+        repeated AIRichResponseCodeBlock codeBlocks = 2;
+        message AIRichResponseCodeBlock {
+            optional AIRichResponseMessage.AIRichResponseCodeMetadata.AIRichResponseCodeHighlightType highlightType = 1;
+            optional string codeContent = 2;
+        }
+        
+        enum AIRichResponseCodeHighlightType {
+            AI_RICH_RESPONSE_CODE_HIGHLIGHT_DEFAULT = 0;
+            AI_RICH_RESPONSE_CODE_HIGHLIGHT_KEYWORD = 1;
+            AI_RICH_RESPONSE_CODE_HIGHLIGHT_METHOD = 2;
+            AI_RICH_RESPONSE_CODE_HIGHLIGHT_STRING = 3;
+            AI_RICH_RESPONSE_CODE_HIGHLIGHT_NUMBER = 4;
+            AI_RICH_RESPONSE_CODE_HIGHLIGHT_COMMENT = 5;
+        }
+    }
+    
+    message AIRichResponseDynamicMetadata {
+        optional AIRichResponseDynamicMetadataType type = 1;
+        optional uint64 version = 2;
+        optional string url = 3;
+        optional uint32 loopCount = 4;
+        enum AIRichResponseDynamicMetadataType {
+            AI_RICH_RESPONSE_DYNAMIC_METADATA_TYPE_UNKNOWN = 0;
+            AI_RICH_RESPONSE_DYNAMIC_METADATA_TYPE_IMAGE = 1;
+            AI_RICH_RESPONSE_DYNAMIC_METADATA_TYPE_GIF = 2;
+        }
+    }
+    
+    message AIRichResponseGridImageMetadata {
+        optional AIRichResponseMessage.AIRichResponseImageURL gridImageUrl = 1;
+        repeated AIRichResponseMessage.AIRichResponseImageURL imageUrls = 2;
+    }
+    
+    message AIRichResponseImageURL {
+        optional string imagePreviewUrl = 1;
+        optional string imageHighResUrl = 2;
+    }
+    
+    message AIRichResponseInlineImageMetadata {
+        optional AIRichResponseMessage.AIRichResponseImageURL imageUrl = 1;
+        optional string imageText = 2;
+        optional AIRichResponseImageAlignment alignment = 3;
+        optional string tapLinkUrl = 4;
+        enum AIRichResponseImageAlignment {
+            AI_RICH_RESPONSE_IMAGE_LAYOUT_LEADING_ALIGNED = 0;
+            AI_RICH_RESPONSE_IMAGE_LAYOUT_TRAILING_ALIGNED = 1;
+            AI_RICH_RESPONSE_IMAGE_LAYOUT_CENTER_ALIGNED = 2;
+        }
+    }
+    
+    enum AIRichResponseMessageType {
+        AI_RICH_RESPONSE_TYPE_UNKNOWN = 0;
+        AI_RICH_RESPONSE_TYPE_STANDARD = 1;
+        AI_RICH_RESPONSE_TYPE_ARTIFACTS = 2;
+    }
+    message AIRichResponseSubMessage {
+        optional AIRichResponseMessage.AIRichResponseSubMessageType messageType = 1;
+        optional AIRichResponseMessage.AIRichResponseGridImageMetadata gridImageMetadata = 2;
+        optional string messageText = 3;
+        optional AIRichResponseMessage.AIRichResponseInlineImageMetadata imageMetadata = 4;
+        optional AIRichResponseMessage.AIRichResponseCodeMetadata codeMetadata = 5;
+        optional AIRichResponseMessage.AIRichResponseTableMetadata tableMetadata = 6;
+        optional AIRichResponseMessage.AIRichResponseDynamicMetadata dynamicMetadata = 7;
+    }
+    
+    enum AIRichResponseSubMessageType {
+        AI_RICH_RESPONSE_UNKNOWN = 0;
+        AI_RICH_RESPONSE_GRID_IMAGE = 1;
+        AI_RICH_RESPONSE_TEXT = 2;
+        AI_RICH_RESPONSE_INLINE_IMAGE = 3;
+        AI_RICH_RESPONSE_TABLE = 4;
+        AI_RICH_RESPONSE_CODE = 5;
+        AI_RICH_RESPONSE_DYNAMIC = 6;
+    }
+    message AIRichResponseTableMetadata {
+        repeated AIRichResponseTableRow rows = 1;
+        message AIRichResponseTableRow {
+            repeated string items = 1;
+            optional bool isHeading = 2;
+        }
+        
+    }
+    
 }
 
 message ActionLink {
@@ -121,6 +211,8 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_THREAD_SURFING = 5;
         RICH_RESPONSE_TABLE = 6;
         RICH_RESPONSE_CODE = 7;
+        RICH_RESPONSE_STRUCTURED_RESPONSE = 8;
+        RICH_RESPONSE_INLINE_IMAGE = 9;
         WA_IG_1P_PLUGIN_RANKING_CONTROL = 10;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_1 = 11;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_2 = 12;
@@ -1346,6 +1438,7 @@ message Message {
     optional FutureProofMessage pollCreationMessageV5 = 94;
     optional FutureProofMessage statusAddYours = 95;
     optional FutureProofMessage groupStatusMessage = 96;
+    optional AIRichResponseMessage richResponseMessage = 97;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
