@@ -32275,6 +32275,9 @@ export namespace waproto {
 
             /** PollOption name */
             name?: (string|null);
+
+            /** PollOption hash */
+            hash?: (string|null);
         }
 
         /** Represents a PollOption. */
@@ -32288,6 +32291,9 @@ export namespace waproto {
 
             /** PollOption name. */
             public name?: (string|null);
+
+            /** PollOption hash. */
+            public hash?: (string|null);
 
             /**
              * Creates a new PollOption instance using the specified properties.
