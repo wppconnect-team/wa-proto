@@ -4608,6 +4608,7 @@ export namespace waproto {
 
     /** BotSessionSource enum. */
     enum BotSessionSource {
+        NONE = 0,
         NULL_STATE = 1,
         TYPEAHEAD = 2,
         USER_INPUT = 3,

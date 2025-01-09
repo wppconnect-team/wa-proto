@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1019136581
+/// WhatsApp Version: 2.3000.1019229338
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -401,6 +401,7 @@ message BotSessionMetadata {
 }
 
 enum BotSessionSource {
+    NONE = 0;
     NULL_STATE = 1;
     TYPEAHEAD = 2;
     USER_INPUT = 3;
