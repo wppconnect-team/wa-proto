@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1019229338
+/// WhatsApp Version: 2.3000.1019270342
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1761,7 +1761,6 @@ message Message {
     message ExtendedTextMessage {
         optional string text = 1;
         optional string matchedText = 2;
-        optional string canonicalUrl = 4;
         optional string description = 5;
         optional string title = 6;
         optional fixed32 textArgb = 7;
@@ -2306,7 +2305,6 @@ message Message {
                 optional string title = 2;
                 optional string description = 3;
                 optional bytes thumbData = 4;
-                optional string canonicalUrl = 5;
                 optional string matchText = 6;
                 optional string previewType = 7;
                 optional LinkPreviewHighQualityThumbnail hqThumbnail = 8;

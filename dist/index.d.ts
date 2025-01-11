@@ -19511,9 +19511,6 @@ export namespace waproto {
             /** ExtendedTextMessage matchedText */
             matchedText?: (string|null);
 
-            /** ExtendedTextMessage canonicalUrl */
-            canonicalUrl?: (string|null);
-
             /** ExtendedTextMessage description */
             description?: (string|null);
 
@@ -19601,9 +19598,6 @@ export namespace waproto {
 
             /** ExtendedTextMessage matchedText. */
             public matchedText?: (string|null);
-
-            /** ExtendedTextMessage canonicalUrl. */
-            public canonicalUrl?: (string|null);
 
             /** ExtendedTextMessage description. */
             public description?: (string|null);
@@ -26208,9 +26202,6 @@ export namespace waproto {
                     /** LinkPreviewResponse thumbData */
                     thumbData?: (Uint8Array|null);
 
-                    /** LinkPreviewResponse canonicalUrl */
-                    canonicalUrl?: (string|null);
-
                     /** LinkPreviewResponse matchText */
                     matchText?: (string|null);
 
@@ -26241,9 +26232,6 @@ export namespace waproto {
 
                     /** LinkPreviewResponse thumbData. */
                     public thumbData?: (Uint8Array|null);
-
-                    /** LinkPreviewResponse canonicalUrl. */
-                    public canonicalUrl?: (string|null);
 
                     /** LinkPreviewResponse matchText. */
                     public matchText?: (string|null);
