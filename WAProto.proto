@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1019270342
+/// WhatsApp Version: 2.3000.1019503120
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -224,6 +224,7 @@ message BotCapabilityMetadata {
         WA_IG_1P_PLUGIN_RANKING_UPDATE_8 = 18;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_9 = 19;
         WA_IG_1P_PLUGIN_RANKING_UPDATE_10 = 20;
+        RICH_RESPONSE_SUB_HEADING = 21;
     }
 }
 
@@ -1529,6 +1530,9 @@ message Message {
             BOT_FEEDBACK_NEGATIVE_REFUSED = 7;
             BOT_FEEDBACK_NEGATIVE_NOT_VISUALLY_APPEALING = 8;
             BOT_FEEDBACK_NEGATIVE_NOT_RELEVANT_TO_TEXT = 9;
+            BOT_FEEDBACK_NEGATIVE_PERSONALIZED = 10;
+            BOT_FEEDBACK_NEGATIVE_CLARITY = 11;
+            BOT_FEEDBACK_NEGATIVE_DOESNT_LOOK_LIKE_THE_PERSON = 12;
         }
         enum BotFeedbackKindMultipleNegative {
             BOT_FEEDBACK_MULTIPLE_NEGATIVE_GENERIC = 1;

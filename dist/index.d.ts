@@ -2680,7 +2680,8 @@ export namespace waproto {
             WA_IG_1P_PLUGIN_RANKING_UPDATE_7 = 17,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_8 = 18,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_9 = 19,
-            WA_IG_1P_PLUGIN_RANKING_UPDATE_10 = 20
+            WA_IG_1P_PLUGIN_RANKING_UPDATE_10 = 20,
+            RICH_RESPONSE_SUB_HEADING = 21
         }
     }
 
@@ -16821,7 +16822,10 @@ export namespace waproto {
                 BOT_FEEDBACK_NEGATIVE_OTHER = 6,
                 BOT_FEEDBACK_NEGATIVE_REFUSED = 7,
                 BOT_FEEDBACK_NEGATIVE_NOT_VISUALLY_APPEALING = 8,
-                BOT_FEEDBACK_NEGATIVE_NOT_RELEVANT_TO_TEXT = 9
+                BOT_FEEDBACK_NEGATIVE_NOT_RELEVANT_TO_TEXT = 9,
+                BOT_FEEDBACK_NEGATIVE_PERSONALIZED = 10,
+                BOT_FEEDBACK_NEGATIVE_CLARITY = 11,
+                BOT_FEEDBACK_NEGATIVE_DOESNT_LOOK_LIKE_THE_PERSON = 12
             }
 
             /** BotFeedbackKindMultipleNegative enum. */
