@@ -2681,7 +2681,8 @@ export namespace waproto {
             WA_IG_1P_PLUGIN_RANKING_UPDATE_8 = 18,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_9 = 19,
             WA_IG_1P_PLUGIN_RANKING_UPDATE_10 = 20,
-            RICH_RESPONSE_SUB_HEADING = 21
+            RICH_RESPONSE_SUB_HEADING = 21,
+            RICH_RESPONSE_GRID_IMAGE = 22
         }
     }
 
