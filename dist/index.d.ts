@@ -7268,7 +7268,8 @@ export namespace waproto {
                 APP_STORE = 1,
                 WIN_STORE = 2,
                 DARWIN = 3,
-                WIN32 = 4
+                WIN32 = 4,
+                WIN_HYBRID = 5
             }
 
             /** Properties of a WebdPayload. */
