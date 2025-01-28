@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1019558984
+/// WhatsApp Version: 2.3000.1019638179
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -83,6 +83,7 @@ message AIRichResponseMessage {
     message AIRichResponseImageURL {
         optional string imagePreviewUrl = 1;
         optional string imageHighResUrl = 2;
+        optional string sourceUrl = 3;
     }
     
     message AIRichResponseInlineImageMetadata {
@@ -867,6 +868,7 @@ message ContextInfo {
         optional bool cannotBeReactedTo = 1;
         optional bool cannotBeRanked = 2;
         optional bool canRequestFeedback = 3;
+        optional bool canBeReshared = 4;
     }
     
     message ForwardedAIBotMessageInfo {
@@ -891,6 +893,7 @@ message ContextInfo {
     enum StatusAttributionType {
         NONE = 0;
         RESHARED_FROM_MENTION = 1;
+        RESHARED_FROM_POST = 2;
     }
     message UTMInfo {
         optional string utmSource = 1;

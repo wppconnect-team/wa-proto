@@ -1144,6 +1144,9 @@ export namespace waproto {
 
             /** AIRichResponseImageURL imageHighResUrl */
             imageHighResUrl?: (string|null);
+
+            /** AIRichResponseImageURL sourceUrl */
+            sourceUrl?: (string|null);
         }
 
         /** Represents a AIRichResponseImageURL. */
@@ -1160,6 +1163,9 @@ export namespace waproto {
 
             /** AIRichResponseImageURL imageHighResUrl. */
             public imageHighResUrl?: (string|null);
+
+            /** AIRichResponseImageURL sourceUrl. */
+            public sourceUrl?: (string|null);
 
             /**
              * Creates a new AIRichResponseImageURL instance using the specified properties.
@@ -8887,6 +8893,9 @@ export namespace waproto {
 
             /** FeatureEligibilities canRequestFeedback */
             canRequestFeedback?: (boolean|null);
+
+            /** FeatureEligibilities canBeReshared */
+            canBeReshared?: (boolean|null);
         }
 
         /** Represents a FeatureEligibilities. */
@@ -8906,6 +8915,9 @@ export namespace waproto {
 
             /** FeatureEligibilities canRequestFeedback. */
             public canRequestFeedback?: (boolean|null);
+
+            /** FeatureEligibilities canBeReshared. */
+            public canBeReshared?: (boolean|null);
 
             /**
              * Creates a new FeatureEligibilities instance using the specified properties.
@@ -9228,7 +9240,8 @@ export namespace waproto {
         /** StatusAttributionType enum. */
         enum StatusAttributionType {
             NONE = 0,
-            RESHARED_FROM_MENTION = 1
+            RESHARED_FROM_MENTION = 1,
+            RESHARED_FROM_POST = 2
         }
 
         /** Properties of a UTMInfo. */
