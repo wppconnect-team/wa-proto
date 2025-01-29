@@ -6,6 +6,7 @@ on:
       increment:
         description: 'Tipo de incremento: patch, minor, major ou pre*'
         required: true
+        type: choice
         default: 'patch'
         options:
           - patch
