@@ -6510,7 +6510,8 @@ export namespace waproto {
                 GOOGLE = 1,
                 HARDCODED = 2,
                 OVERRIDE = 3,
-                FALLBACK = 4
+                FALLBACK = 4,
+                MNS = 5
             }
         }
 
