@@ -3671,7 +3671,8 @@ export namespace waproto {
         NOTIFICATION = 13,
         PROFILE_MESSAGE_BUTTON = 14,
         FORWARD = 15,
-        APP_SHORTCUT = 16
+        APP_SHORTCUT = 16,
+        FF_FAMILY = 17
     }
 
     /** Properties of a BotMetricsMetadata. */
