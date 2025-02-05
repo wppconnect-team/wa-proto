@@ -2911,6 +2911,9 @@ export namespace waproto {
 
         /** BotLinkedAccountsMetadata accounts */
         accounts?: (waproto.IBotLinkedAccount[]|null);
+
+        /** BotLinkedAccountsMetadata acAuthTokens */
+        acAuthTokens?: (Uint8Array|null);
     }
 
     /** Represents a BotLinkedAccountsMetadata. */
@@ -2924,6 +2927,9 @@ export namespace waproto {
 
         /** BotLinkedAccountsMetadata accounts. */
         public accounts: waproto.IBotLinkedAccount[];
+
+        /** BotLinkedAccountsMetadata acAuthTokens. */
+        public acAuthTokens?: (Uint8Array|null);
 
         /**
          * Creates a new BotLinkedAccountsMetadata instance using the specified properties.
