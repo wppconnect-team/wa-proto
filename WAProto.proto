@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1019853097
+/// WhatsApp Version: 2.3000.1019893762
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -540,6 +540,13 @@ message ChatRowOpaqueData {
         
     }
     
+}
+
+message Citation {
+    required string title = 1;
+    required string subtitle = 2;
+    required string cmsId = 3;
+    required string imageUrl = 4;
 }
 
 message ClientPairingProps {
@@ -3977,6 +3984,7 @@ message WebMessageInfo {
     optional StatusMentionMessage statusMentionMessageInfo = 69;
     optional bool isSupportAiMessage = 70;
     repeated string statusMentionSources = 71;
+    repeated Citation supportAiCitations = 72;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;
@@ -4204,6 +4212,7 @@ message WebMessageInfo {
         CAPI_GROUP_NE2EE_SYSTEM_MESSAGE = 209;
         STATUS_MENTION = 210;
         USER_CONTROLS_SYSTEM_MESSAGE = 211;
+        SUPPORT_SYSTEM_MESSAGE = 212;
     }
 }
 
