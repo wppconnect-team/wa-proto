@@ -48285,6 +48285,9 @@ export namespace waproto {
 
         /** WebMessageInfo supportAiCitations */
         supportAiCitations?: (waproto.ICitation[]|null);
+
+        /** WebMessageInfo botTargetId */
+        botTargetId?: (string|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -48478,6 +48481,9 @@ export namespace waproto {
 
         /** WebMessageInfo supportAiCitations. */
         public supportAiCitations: waproto.ICitation[];
+
+        /** WebMessageInfo botTargetId. */
+        public botTargetId?: (string|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
