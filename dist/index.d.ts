@@ -689,6 +689,103 @@ export namespace waproto {
 
     namespace AIRichResponseMessage {
 
+        /** Properties of a AIRichResponseAbstractData. */
+        interface IAIRichResponseAbstractData {
+
+            /** AIRichResponseAbstractData data */
+            data?: (Uint8Array|null);
+        }
+
+        /** Represents a AIRichResponseAbstractData. */
+        class AIRichResponseAbstractData implements IAIRichResponseAbstractData {
+
+            /**
+             * Constructs a new AIRichResponseAbstractData.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.AIRichResponseMessage.IAIRichResponseAbstractData);
+
+            /** AIRichResponseAbstractData data. */
+            public data?: (Uint8Array|null);
+
+            /**
+             * Creates a new AIRichResponseAbstractData instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns AIRichResponseAbstractData instance
+             */
+            public static create(properties?: waproto.AIRichResponseMessage.IAIRichResponseAbstractData): waproto.AIRichResponseMessage.AIRichResponseAbstractData;
+
+            /**
+             * Encodes the specified AIRichResponseAbstractData message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseAbstractData.verify|verify} messages.
+             * @param message AIRichResponseAbstractData message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.AIRichResponseMessage.IAIRichResponseAbstractData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified AIRichResponseAbstractData message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseAbstractData.verify|verify} messages.
+             * @param message AIRichResponseAbstractData message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.AIRichResponseMessage.IAIRichResponseAbstractData, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a AIRichResponseAbstractData message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns AIRichResponseAbstractData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseAbstractData;
+
+            /**
+             * Decodes a AIRichResponseAbstractData message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns AIRichResponseAbstractData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseAbstractData;
+
+            /**
+             * Verifies a AIRichResponseAbstractData message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a AIRichResponseAbstractData message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns AIRichResponseAbstractData
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseAbstractData;
+
+            /**
+             * Creates a plain object from a AIRichResponseAbstractData message. Also converts values to other types if specified.
+             * @param message AIRichResponseAbstractData
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseAbstractData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this AIRichResponseAbstractData to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for AIRichResponseAbstractData
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of a AIRichResponseCodeMetadata. */
         interface IAIRichResponseCodeMetadata {
 
@@ -1399,6 +1496,9 @@ export namespace waproto {
 
             /** AIRichResponseSubMessage dynamicMetadata */
             dynamicMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseDynamicMetadata|null);
+
+            /** AIRichResponseSubMessage abstractData */
+            abstractData?: (waproto.AIRichResponseMessage.IAIRichResponseAbstractData|null);
         }
 
         /** Represents a AIRichResponseSubMessage. */
@@ -1430,6 +1530,9 @@ export namespace waproto {
 
             /** AIRichResponseSubMessage dynamicMetadata. */
             public dynamicMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseDynamicMetadata|null);
+
+            /** AIRichResponseSubMessage abstractData. */
+            public abstractData?: (waproto.AIRichResponseMessage.IAIRichResponseAbstractData|null);
 
             /**
              * Creates a new AIRichResponseSubMessage instance using the specified properties.
@@ -8308,6 +8411,9 @@ export namespace waproto {
 
         /** ContextInfo urlTrackingMap */
         urlTrackingMap?: (waproto.IUrlTrackingMap|null);
+
+        /** ContextInfo pairedMediaType */
+        pairedMediaType?: (waproto.ContextInfo.PairedMediaType|null);
     }
 
     /** Represents a ContextInfo. */
@@ -8444,6 +8550,9 @@ export namespace waproto {
 
         /** ContextInfo urlTrackingMap. */
         public urlTrackingMap?: (waproto.IUrlTrackingMap|null);
+
+        /** ContextInfo pairedMediaType. */
+        public pairedMediaType?: (waproto.ContextInfo.PairedMediaType|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -9566,6 +9675,15 @@ export namespace waproto {
                 UPDATE_CARD = 2,
                 LINK_CARD = 3
             }
+        }
+
+        /** PairedMediaType enum. */
+        enum PairedMediaType {
+            NOT_PAIRED_MEDIA = 0,
+            SD_VIDEO_PARENT = 1,
+            HD_VIDEO_CHILD = 2,
+            SD_IMAGE_PARENT = 3,
+            HD_IMAGE_CHILD = 4
         }
 
         /** StatusAttributionType enum. */
@@ -31771,7 +31889,9 @@ export namespace waproto {
             STATUS_TAPPABLE_MESSAGE = 6,
             MEDIA_POLL = 7,
             STATUS_ADD_YOURS = 8,
-            STATUS_NOTIFICATION = 9
+            STATUS_NOTIFICATION = 9,
+            HD_IMAGE_DUAL_UPLOAD = 10,
+            STICKER_ANNOTATION = 11
         }
     }
 
