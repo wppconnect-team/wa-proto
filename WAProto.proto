@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020120820
+/// WhatsApp Version: 2.3000.1020163651
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -45,6 +45,7 @@ message ADVSignedKeyIndexList {
 message AIRichResponseMessage {
     optional AIRichResponseMessageType messageType = 1;
     repeated AIRichResponseSubMessage submessages = 2;
+    optional AIRichResponseAbstractData abstractData = 3;
     message AIRichResponseAbstractData {
         optional bytes data = 1;
     }
@@ -102,6 +103,19 @@ message AIRichResponseMessage {
         }
     }
     
+    message AIRichResponseLatexMetadata {
+        optional string text = 1;
+        repeated AIRichResponseLatexExpression expressions = 2;
+        message AIRichResponseLatexExpression {
+            optional string latexExpression = 1;
+            optional string url = 2;
+            optional double width = 3;
+            optional double height = 4;
+            optional double fontHeight = 5;
+        }
+        
+    }
+    
     enum AIRichResponseMessageType {
         AI_RICH_RESPONSE_TYPE_UNKNOWN = 0;
         AI_RICH_RESPONSE_TYPE_STANDARD = 1;
@@ -114,7 +128,7 @@ message AIRichResponseMessage {
         optional AIRichResponseMessage.AIRichResponseCodeMetadata codeMetadata = 5;
         optional AIRichResponseMessage.AIRichResponseTableMetadata tableMetadata = 6;
         optional AIRichResponseMessage.AIRichResponseDynamicMetadata dynamicMetadata = 7;
-        optional AIRichResponseMessage.AIRichResponseAbstractData abstractData = 8;
+        optional AIRichResponseMessage.AIRichResponseLatexMetadata latexMetadata = 8;
     }
     
     enum AIRichResponseSubMessageType {
@@ -232,6 +246,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_SUB_HEADING = 21;
         RICH_RESPONSE_GRID_IMAGE = 22;
         AI_STUDIO_UGC_MEMORY = 23;
+        RICH_RESPONSE_LATEX = 24;
     }
 }
 
