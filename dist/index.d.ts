@@ -22121,8 +22121,7 @@ export namespace waproto {
             enum ImageSourceType {
                 USER_IMAGE = 0,
                 AI_GENERATED = 1,
-                AI_MODIFIED = 2,
-                RASTERIZED_TEXT_STATUS = 3
+                AI_MODIFIED = 2
             }
         }
 
@@ -49256,9 +49255,7 @@ export namespace waproto {
             STATUS_MENTION = 210,
             USER_CONTROLS_SYSTEM_MESSAGE = 211,
             SUPPORT_SYSTEM_MESSAGE = 212,
-            CHANGE_LID = 213,
-            BIZ_CUSTOMER_3PD_DATA_SHARING_OPT_IN_MESSAGE = 214,
-            BIZ_CUSTOMER_3PD_DATA_SHARING_OPT_OUT_MESSAGE = 215
+            CHANGE_LID = 213
         }
     }
 
