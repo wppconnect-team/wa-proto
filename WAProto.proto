@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020253350
+/// WhatsApp Version: 2.3000.1020289932
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -116,10 +116,38 @@ message AIRichResponseMessage {
         
     }
     
+    message AIRichResponseMapMetadata {
+        optional double centerLatitude = 1;
+        optional double centerLongtitude = 2;
+        optional double latitudeDelta = 3;
+        optional double longtitudeDelta = 4;
+        repeated AIRichResponseMapAnnotation anotations = 5;
+        optional bool showInfoList = 6;
+        message AIRichResponseMapAnnotation {
+            optional uint32 annotationNumber = 1;
+            optional double latitude = 2;
+            optional double longtitude = 3;
+            optional string title = 4;
+            optional string body = 5;
+        }
+        
+    }
+    
     enum AIRichResponseMessageType {
         AI_RICH_RESPONSE_TYPE_UNKNOWN = 0;
         AI_RICH_RESPONSE_TYPE_STANDARD = 1;
     }
+    message AIRichResponseReelsMetadata {
+        repeated AIRichResponseReelMetadata reelsMetadata = 1;
+        message AIRichResponseReelMetadata {
+            optional string title = 1;
+            optional string profileIconUrl = 2;
+            optional string previewUrl = 3;
+            optional string videoUrl = 4;
+        }
+        
+    }
+    
     message AIRichResponseSubMessage {
         optional AIRichResponseMessage.AIRichResponseSubMessageType messageType = 1;
         optional AIRichResponseMessage.AIRichResponseGridImageMetadata gridImageMetadata = 2;
@@ -129,6 +157,8 @@ message AIRichResponseMessage {
         optional AIRichResponseMessage.AIRichResponseTableMetadata tableMetadata = 6;
         optional AIRichResponseMessage.AIRichResponseDynamicMetadata dynamicMetadata = 7;
         optional AIRichResponseMessage.AIRichResponseLatexMetadata latexMetadata = 8;
+        optional AIRichResponseMessage.AIRichResponseMapMetadata mapMetadata = 9;
+        optional AIRichResponseMessage.AIRichResponseReelsMetadata reelsMetadata = 10;
     }
     
     enum AIRichResponseSubMessageType {
@@ -139,6 +169,9 @@ message AIRichResponseMessage {
         AI_RICH_RESPONSE_TABLE = 4;
         AI_RICH_RESPONSE_CODE = 5;
         AI_RICH_RESPONSE_DYNAMIC = 6;
+        AI_RICH_RESPONSE_MAP = 7;
+        AI_RICH_RESPONSE_LATEX = 8;
+        AI_RICH_RESPONSE_INLINE_REELS = 9;
     }
     message AIRichResponseTableMetadata {
         repeated AIRichResponseTableRow rows = 1;
@@ -247,6 +280,8 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_GRID_IMAGE = 22;
         AI_STUDIO_UGC_MEMORY = 23;
         RICH_RESPONSE_LATEX = 24;
+        RICH_RESPONSE_MAPS = 25;
+        RICH_RESPONSE_INLINE_REELS = 26;
     }
 }
 
@@ -391,6 +426,32 @@ message BotPluginMetadata {
 
 message BotProgressIndicatorMetadata {
     optional string progressDescription = 1;
+    repeated BotPlanningStepMetadata stepsMetadata = 2;
+    message BotPlanningStepMetadata {
+        optional string statusTitle = 1;
+        optional string statusBody = 2;
+        repeated BotPlanningSearchSourcesMetadata sourcesMetadata = 3;
+        optional PlanningStepStatus status = 4;
+        optional bool isReasoning = 5;
+        optional bool isEnhancedSearch = 6;
+        message BotPlanningSearchSourcesMetadata {
+            optional string sourceTitle = 1;
+            optional BotPlanningSearchSourceProvider provider = 2;
+            optional string sourceUrl = 3;
+            enum BotPlanningSearchSourceProvider {
+                OTHER = 1;
+                GOOGLE = 2;
+                BING = 3;
+            }
+        }
+        
+        enum PlanningStepStatus {
+            PLANNED = 1;
+            EXECUTING = 2;
+            FINISHED = 3;
+        }
+    }
+    
 }
 
 message BotPromptSuggestion {
@@ -2555,6 +2616,7 @@ message Message {
             REMINDER_MESSAGE = 23;
             BOT_MEMU_ONBOARDING_MESSAGE = 24;
             STATUS_MENTION_MESSAGE = 25;
+            STOP_GENERATION_MESSAGE = 26;
         }
     }
     

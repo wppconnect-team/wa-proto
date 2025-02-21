@@ -1700,10 +1700,476 @@ export namespace waproto {
             }
         }
 
+        /** Properties of a AIRichResponseMapMetadata. */
+        interface IAIRichResponseMapMetadata {
+
+            /** AIRichResponseMapMetadata centerLatitude */
+            centerLatitude?: (number|null);
+
+            /** AIRichResponseMapMetadata centerLongtitude */
+            centerLongtitude?: (number|null);
+
+            /** AIRichResponseMapMetadata latitudeDelta */
+            latitudeDelta?: (number|null);
+
+            /** AIRichResponseMapMetadata longtitudeDelta */
+            longtitudeDelta?: (number|null);
+
+            /** AIRichResponseMapMetadata anotations */
+            anotations?: (waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation[]|null);
+
+            /** AIRichResponseMapMetadata showInfoList */
+            showInfoList?: (boolean|null);
+        }
+
+        /** Represents a AIRichResponseMapMetadata. */
+        class AIRichResponseMapMetadata implements IAIRichResponseMapMetadata {
+
+            /**
+             * Constructs a new AIRichResponseMapMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.AIRichResponseMessage.IAIRichResponseMapMetadata);
+
+            /** AIRichResponseMapMetadata centerLatitude. */
+            public centerLatitude?: (number|null);
+
+            /** AIRichResponseMapMetadata centerLongtitude. */
+            public centerLongtitude?: (number|null);
+
+            /** AIRichResponseMapMetadata latitudeDelta. */
+            public latitudeDelta?: (number|null);
+
+            /** AIRichResponseMapMetadata longtitudeDelta. */
+            public longtitudeDelta?: (number|null);
+
+            /** AIRichResponseMapMetadata anotations. */
+            public anotations: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation[];
+
+            /** AIRichResponseMapMetadata showInfoList. */
+            public showInfoList?: (boolean|null);
+
+            /**
+             * Creates a new AIRichResponseMapMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns AIRichResponseMapMetadata instance
+             */
+            public static create(properties?: waproto.AIRichResponseMessage.IAIRichResponseMapMetadata): waproto.AIRichResponseMessage.AIRichResponseMapMetadata;
+
+            /**
+             * Encodes the specified AIRichResponseMapMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseMapMetadata.verify|verify} messages.
+             * @param message AIRichResponseMapMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.AIRichResponseMessage.IAIRichResponseMapMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified AIRichResponseMapMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseMapMetadata.verify|verify} messages.
+             * @param message AIRichResponseMapMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.AIRichResponseMessage.IAIRichResponseMapMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a AIRichResponseMapMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns AIRichResponseMapMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseMapMetadata;
+
+            /**
+             * Decodes a AIRichResponseMapMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns AIRichResponseMapMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseMapMetadata;
+
+            /**
+             * Verifies a AIRichResponseMapMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a AIRichResponseMapMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns AIRichResponseMapMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseMapMetadata;
+
+            /**
+             * Creates a plain object from a AIRichResponseMapMetadata message. Also converts values to other types if specified.
+             * @param message AIRichResponseMapMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseMapMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this AIRichResponseMapMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for AIRichResponseMapMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace AIRichResponseMapMetadata {
+
+            /** Properties of a AIRichResponseMapAnnotation. */
+            interface IAIRichResponseMapAnnotation {
+
+                /** AIRichResponseMapAnnotation annotationNumber */
+                annotationNumber?: (number|null);
+
+                /** AIRichResponseMapAnnotation latitude */
+                latitude?: (number|null);
+
+                /** AIRichResponseMapAnnotation longtitude */
+                longtitude?: (number|null);
+
+                /** AIRichResponseMapAnnotation title */
+                title?: (string|null);
+
+                /** AIRichResponseMapAnnotation body */
+                body?: (string|null);
+            }
+
+            /** Represents a AIRichResponseMapAnnotation. */
+            class AIRichResponseMapAnnotation implements IAIRichResponseMapAnnotation {
+
+                /**
+                 * Constructs a new AIRichResponseMapAnnotation.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation);
+
+                /** AIRichResponseMapAnnotation annotationNumber. */
+                public annotationNumber?: (number|null);
+
+                /** AIRichResponseMapAnnotation latitude. */
+                public latitude?: (number|null);
+
+                /** AIRichResponseMapAnnotation longtitude. */
+                public longtitude?: (number|null);
+
+                /** AIRichResponseMapAnnotation title. */
+                public title?: (string|null);
+
+                /** AIRichResponseMapAnnotation body. */
+                public body?: (string|null);
+
+                /**
+                 * Creates a new AIRichResponseMapAnnotation instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AIRichResponseMapAnnotation instance
+                 */
+                public static create(properties?: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation): waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation;
+
+                /**
+                 * Encodes the specified AIRichResponseMapAnnotation message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.verify|verify} messages.
+                 * @param message AIRichResponseMapAnnotation message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AIRichResponseMapAnnotation message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.verify|verify} messages.
+                 * @param message AIRichResponseMapAnnotation message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a AIRichResponseMapAnnotation message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AIRichResponseMapAnnotation
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation;
+
+                /**
+                 * Decodes a AIRichResponseMapAnnotation message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AIRichResponseMapAnnotation
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation;
+
+                /**
+                 * Verifies a AIRichResponseMapAnnotation message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a AIRichResponseMapAnnotation message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AIRichResponseMapAnnotation
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation;
+
+                /**
+                 * Creates a plain object from a AIRichResponseMapAnnotation message. Also converts values to other types if specified.
+                 * @param message AIRichResponseMapAnnotation
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.AIRichResponseMapAnnotation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AIRichResponseMapAnnotation to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for AIRichResponseMapAnnotation
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+        }
+
         /** AIRichResponseMessageType enum. */
         enum AIRichResponseMessageType {
             AI_RICH_RESPONSE_TYPE_UNKNOWN = 0,
             AI_RICH_RESPONSE_TYPE_STANDARD = 1
+        }
+
+        /** Properties of a AIRichResponseReelsMetadata. */
+        interface IAIRichResponseReelsMetadata {
+
+            /** AIRichResponseReelsMetadata reelsMetadata */
+            reelsMetadata?: (waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata[]|null);
+        }
+
+        /** Represents a AIRichResponseReelsMetadata. */
+        class AIRichResponseReelsMetadata implements IAIRichResponseReelsMetadata {
+
+            /**
+             * Constructs a new AIRichResponseReelsMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata);
+
+            /** AIRichResponseReelsMetadata reelsMetadata. */
+            public reelsMetadata: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata[];
+
+            /**
+             * Creates a new AIRichResponseReelsMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns AIRichResponseReelsMetadata instance
+             */
+            public static create(properties?: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
+
+            /**
+             * Encodes the specified AIRichResponseReelsMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.verify|verify} messages.
+             * @param message AIRichResponseReelsMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified AIRichResponseReelsMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.verify|verify} messages.
+             * @param message AIRichResponseReelsMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a AIRichResponseReelsMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns AIRichResponseReelsMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
+
+            /**
+             * Decodes a AIRichResponseReelsMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns AIRichResponseReelsMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
+
+            /**
+             * Verifies a AIRichResponseReelsMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a AIRichResponseReelsMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns AIRichResponseReelsMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
+
+            /**
+             * Creates a plain object from a AIRichResponseReelsMetadata message. Also converts values to other types if specified.
+             * @param message AIRichResponseReelsMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this AIRichResponseReelsMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for AIRichResponseReelsMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace AIRichResponseReelsMetadata {
+
+            /** Properties of a AIRichResponseReelMetadata. */
+            interface IAIRichResponseReelMetadata {
+
+                /** AIRichResponseReelMetadata title */
+                title?: (string|null);
+
+                /** AIRichResponseReelMetadata profileIconUrl */
+                profileIconUrl?: (string|null);
+
+                /** AIRichResponseReelMetadata previewUrl */
+                previewUrl?: (string|null);
+
+                /** AIRichResponseReelMetadata videoUrl */
+                videoUrl?: (string|null);
+            }
+
+            /** Represents a AIRichResponseReelMetadata. */
+            class AIRichResponseReelMetadata implements IAIRichResponseReelMetadata {
+
+                /**
+                 * Constructs a new AIRichResponseReelMetadata.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata);
+
+                /** AIRichResponseReelMetadata title. */
+                public title?: (string|null);
+
+                /** AIRichResponseReelMetadata profileIconUrl. */
+                public profileIconUrl?: (string|null);
+
+                /** AIRichResponseReelMetadata previewUrl. */
+                public previewUrl?: (string|null);
+
+                /** AIRichResponseReelMetadata videoUrl. */
+                public videoUrl?: (string|null);
+
+                /**
+                 * Creates a new AIRichResponseReelMetadata instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AIRichResponseReelMetadata instance
+                 */
+                public static create(properties?: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
+
+                /**
+                 * Encodes the specified AIRichResponseReelMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata.verify|verify} messages.
+                 * @param message AIRichResponseReelMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AIRichResponseReelMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata.verify|verify} messages.
+                 * @param message AIRichResponseReelMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a AIRichResponseReelMetadata message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AIRichResponseReelMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
+
+                /**
+                 * Decodes a AIRichResponseReelMetadata message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AIRichResponseReelMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
+
+                /**
+                 * Verifies a AIRichResponseReelMetadata message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a AIRichResponseReelMetadata message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AIRichResponseReelMetadata
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
+
+                /**
+                 * Creates a plain object from a AIRichResponseReelMetadata message. Also converts values to other types if specified.
+                 * @param message AIRichResponseReelMetadata
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AIRichResponseReelMetadata to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for AIRichResponseReelMetadata
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
         }
 
         /** Properties of a AIRichResponseSubMessage. */
@@ -1732,6 +2198,12 @@ export namespace waproto {
 
             /** AIRichResponseSubMessage latexMetadata */
             latexMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseLatexMetadata|null);
+
+            /** AIRichResponseSubMessage mapMetadata */
+            mapMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseMapMetadata|null);
+
+            /** AIRichResponseSubMessage reelsMetadata */
+            reelsMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata|null);
         }
 
         /** Represents a AIRichResponseSubMessage. */
@@ -1766,6 +2238,12 @@ export namespace waproto {
 
             /** AIRichResponseSubMessage latexMetadata. */
             public latexMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseLatexMetadata|null);
+
+            /** AIRichResponseSubMessage mapMetadata. */
+            public mapMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseMapMetadata|null);
+
+            /** AIRichResponseSubMessage reelsMetadata. */
+            public reelsMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata|null);
 
             /**
              * Creates a new AIRichResponseSubMessage instance using the specified properties.
@@ -1853,7 +2331,10 @@ export namespace waproto {
             AI_RICH_RESPONSE_INLINE_IMAGE = 3,
             AI_RICH_RESPONSE_TABLE = 4,
             AI_RICH_RESPONSE_CODE = 5,
-            AI_RICH_RESPONSE_DYNAMIC = 6
+            AI_RICH_RESPONSE_DYNAMIC = 6,
+            AI_RICH_RESPONSE_MAP = 7,
+            AI_RICH_RESPONSE_LATEX = 8,
+            AI_RICH_RESPONSE_INLINE_REELS = 9
         }
 
         /** Properties of a AIRichResponseTableMetadata. */
@@ -3025,7 +3506,9 @@ export namespace waproto {
             RICH_RESPONSE_SUB_HEADING = 21,
             RICH_RESPONSE_GRID_IMAGE = 22,
             AI_STUDIO_UGC_MEMORY = 23,
-            RICH_RESPONSE_LATEX = 24
+            RICH_RESPONSE_LATEX = 24,
+            RICH_RESPONSE_MAPS = 25,
+            RICH_RESPONSE_INLINE_REELS = 26
         }
     }
 
@@ -4427,6 +4910,9 @@ export namespace waproto {
 
         /** BotProgressIndicatorMetadata progressDescription */
         progressDescription?: (string|null);
+
+        /** BotProgressIndicatorMetadata stepsMetadata */
+        stepsMetadata?: (waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata[]|null);
     }
 
     /** Represents a BotProgressIndicatorMetadata. */
@@ -4440,6 +4926,9 @@ export namespace waproto {
 
         /** BotProgressIndicatorMetadata progressDescription. */
         public progressDescription?: (string|null);
+
+        /** BotProgressIndicatorMetadata stepsMetadata. */
+        public stepsMetadata: waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata[];
 
         /**
          * Creates a new BotProgressIndicatorMetadata instance using the specified properties.
@@ -4517,6 +5006,265 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotProgressIndicatorMetadata {
+
+        /** Properties of a BotPlanningStepMetadata. */
+        interface IBotPlanningStepMetadata {
+
+            /** BotPlanningStepMetadata statusTitle */
+            statusTitle?: (string|null);
+
+            /** BotPlanningStepMetadata statusBody */
+            statusBody?: (string|null);
+
+            /** BotPlanningStepMetadata sourcesMetadata */
+            sourcesMetadata?: (waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata[]|null);
+
+            /** BotPlanningStepMetadata status */
+            status?: (waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.PlanningStepStatus|null);
+
+            /** BotPlanningStepMetadata isReasoning */
+            isReasoning?: (boolean|null);
+
+            /** BotPlanningStepMetadata isEnhancedSearch */
+            isEnhancedSearch?: (boolean|null);
+        }
+
+        /** Represents a BotPlanningStepMetadata. */
+        class BotPlanningStepMetadata implements IBotPlanningStepMetadata {
+
+            /**
+             * Constructs a new BotPlanningStepMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata);
+
+            /** BotPlanningStepMetadata statusTitle. */
+            public statusTitle?: (string|null);
+
+            /** BotPlanningStepMetadata statusBody. */
+            public statusBody?: (string|null);
+
+            /** BotPlanningStepMetadata sourcesMetadata. */
+            public sourcesMetadata: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata[];
+
+            /** BotPlanningStepMetadata status. */
+            public status?: (waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.PlanningStepStatus|null);
+
+            /** BotPlanningStepMetadata isReasoning. */
+            public isReasoning?: (boolean|null);
+
+            /** BotPlanningStepMetadata isEnhancedSearch. */
+            public isEnhancedSearch?: (boolean|null);
+
+            /**
+             * Creates a new BotPlanningStepMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BotPlanningStepMetadata instance
+             */
+            public static create(properties?: waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata;
+
+            /**
+             * Encodes the specified BotPlanningStepMetadata message. Does not implicitly {@link waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.verify|verify} messages.
+             * @param message BotPlanningStepMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BotPlanningStepMetadata message, length delimited. Does not implicitly {@link waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.verify|verify} messages.
+             * @param message BotPlanningStepMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BotPlanningStepMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BotPlanningStepMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata;
+
+            /**
+             * Decodes a BotPlanningStepMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BotPlanningStepMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata;
+
+            /**
+             * Verifies a BotPlanningStepMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BotPlanningStepMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BotPlanningStepMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata;
+
+            /**
+             * Creates a plain object from a BotPlanningStepMetadata message. Also converts values to other types if specified.
+             * @param message BotPlanningStepMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BotPlanningStepMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for BotPlanningStepMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace BotPlanningStepMetadata {
+
+            /** Properties of a BotPlanningSearchSourcesMetadata. */
+            interface IBotPlanningSearchSourcesMetadata {
+
+                /** BotPlanningSearchSourcesMetadata sourceTitle */
+                sourceTitle?: (string|null);
+
+                /** BotPlanningSearchSourcesMetadata provider */
+                provider?: (waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.BotPlanningSearchSourceProvider|null);
+
+                /** BotPlanningSearchSourcesMetadata sourceUrl */
+                sourceUrl?: (string|null);
+            }
+
+            /** Represents a BotPlanningSearchSourcesMetadata. */
+            class BotPlanningSearchSourcesMetadata implements IBotPlanningSearchSourcesMetadata {
+
+                /**
+                 * Constructs a new BotPlanningSearchSourcesMetadata.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata);
+
+                /** BotPlanningSearchSourcesMetadata sourceTitle. */
+                public sourceTitle?: (string|null);
+
+                /** BotPlanningSearchSourcesMetadata provider. */
+                public provider?: (waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.BotPlanningSearchSourceProvider|null);
+
+                /** BotPlanningSearchSourcesMetadata sourceUrl. */
+                public sourceUrl?: (string|null);
+
+                /**
+                 * Creates a new BotPlanningSearchSourcesMetadata instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns BotPlanningSearchSourcesMetadata instance
+                 */
+                public static create(properties?: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata;
+
+                /**
+                 * Encodes the specified BotPlanningSearchSourcesMetadata message. Does not implicitly {@link waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.verify|verify} messages.
+                 * @param message BotPlanningSearchSourcesMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified BotPlanningSearchSourcesMetadata message, length delimited. Does not implicitly {@link waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.verify|verify} messages.
+                 * @param message BotPlanningSearchSourcesMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a BotPlanningSearchSourcesMetadata message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns BotPlanningSearchSourcesMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata;
+
+                /**
+                 * Decodes a BotPlanningSearchSourcesMetadata message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns BotPlanningSearchSourcesMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata;
+
+                /**
+                 * Verifies a BotPlanningSearchSourcesMetadata message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a BotPlanningSearchSourcesMetadata message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns BotPlanningSearchSourcesMetadata
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata;
+
+                /**
+                 * Creates a plain object from a BotPlanningSearchSourcesMetadata message. Also converts values to other types if specified.
+                 * @param message BotPlanningSearchSourcesMetadata
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this BotPlanningSearchSourcesMetadata to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for BotPlanningSearchSourcesMetadata
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            namespace BotPlanningSearchSourcesMetadata {
+
+                /** BotPlanningSearchSourceProvider enum. */
+                enum BotPlanningSearchSourceProvider {
+                    OTHER = 1,
+                    GOOGLE = 2,
+                    BING = 3
+                }
+            }
+
+            /** PlanningStepStatus enum. */
+            enum PlanningStepStatus {
+                PLANNED = 1,
+                EXECUTING = 2,
+                FINISHED = 3
+            }
+        }
     }
 
     /** Properties of a BotPromptSuggestion. */
@@ -29222,7 +29970,8 @@ export namespace waproto {
                 LID_MIGRATION_MAPPING_SYNC = 22,
                 REMINDER_MESSAGE = 23,
                 BOT_MEMU_ONBOARDING_MESSAGE = 24,
-                STATUS_MENTION_MESSAGE = 25
+                STATUS_MENTION_MESSAGE = 25,
+                STOP_GENERATION_MESSAGE = 26
             }
         }
 
