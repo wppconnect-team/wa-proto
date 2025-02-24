@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020289932
+/// WhatsApp Version: 2.3000.1020333766
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -256,6 +256,7 @@ message BotAvatarMetadata {
 message BotCapabilityMetadata {
     repeated BotCapabilityType capabilities = 1;
     enum BotCapabilityType {
+        UNKNOWN = 0;
         PROGRESS_INDICATOR = 1;
         RICH_RESPONSE_HEADING = 2;
         RICH_RESPONSE_NESTED_LIST = 3;
@@ -282,6 +283,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_LATEX = 24;
         RICH_RESPONSE_MAPS = 25;
         RICH_RESPONSE_INLINE_REELS = 26;
+        AGENTIC_PLANNING = 27;
     }
 }
 
@@ -439,6 +441,7 @@ message BotProgressIndicatorMetadata {
             optional BotPlanningSearchSourceProvider provider = 2;
             optional string sourceUrl = 3;
             enum BotPlanningSearchSourceProvider {
+                UNKNOWN = 0;
                 OTHER = 1;
                 GOOGLE = 2;
                 BING = 3;
@@ -446,6 +449,7 @@ message BotProgressIndicatorMetadata {
         }
         
         enum PlanningStepStatus {
+            UNKNOWN = 0;
             PLANNED = 1;
             EXECUTING = 2;
             FINISHED = 3;
@@ -908,6 +912,7 @@ message ContextInfo {
     optional StatusAttributionType statusAttributionType = 57;
     optional UrlTrackingMap urlTrackingMap = 58;
     optional PairedMediaType pairedMediaType = 59;
+    optional uint32 rankingVersion = 60;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1438,6 +1443,15 @@ message LIDMigrationMappingSyncPayload {
 message LegacyMessage {
     optional Message.EventResponseMessage eventResponseMessage = 1;
     optional Message.PollVoteMessage pollVote = 2;
+}
+
+message LimitSharing {
+    optional bool sharingLimited = 1;
+    optional Trigger trigger = 2;
+    enum Trigger {
+        CHAT_SETTING = 0;
+        BIZ_SUPPORTS_FB_HOSTING = 1;
+    }
 }
 
 message LocalizedName {
@@ -2594,6 +2608,7 @@ message Message {
         optional MediaNotifyMessage mediaNotifyMessage = 21;
         optional Message.CloudAPIThreadControlNotification cloudApiThreadControlNotification = 22;
         optional LIDMigrationMappingSyncMessage lidMigrationMappingSyncMessage = 23;
+        optional LimitSharing limitSharing = 24;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -2617,6 +2632,7 @@ message Message {
             BOT_MEMU_ONBOARDING_MESSAGE = 24;
             STATUS_MENTION_MESSAGE = 25;
             STOP_GENERATION_MESSAGE = 26;
+            LIMIT_SHARING = 27;
         }
     }
     

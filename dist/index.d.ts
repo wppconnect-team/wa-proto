@@ -3483,6 +3483,7 @@ export namespace waproto {
 
         /** BotCapabilityType enum. */
         enum BotCapabilityType {
+            UNKNOWN = 0,
             PROGRESS_INDICATOR = 1,
             RICH_RESPONSE_HEADING = 2,
             RICH_RESPONSE_NESTED_LIST = 3,
@@ -3508,7 +3509,8 @@ export namespace waproto {
             AI_STUDIO_UGC_MEMORY = 23,
             RICH_RESPONSE_LATEX = 24,
             RICH_RESPONSE_MAPS = 25,
-            RICH_RESPONSE_INLINE_REELS = 26
+            RICH_RESPONSE_INLINE_REELS = 26,
+            AGENTIC_PLANNING = 27
         }
     }
 
@@ -5252,6 +5254,7 @@ export namespace waproto {
 
                 /** BotPlanningSearchSourceProvider enum. */
                 enum BotPlanningSearchSourceProvider {
+                    UNKNOWN = 0,
                     OTHER = 1,
                     GOOGLE = 2,
                     BING = 3
@@ -5260,6 +5263,7 @@ export namespace waproto {
 
             /** PlanningStepStatus enum. */
             enum PlanningStepStatus {
+                UNKNOWN = 0,
                 PLANNED = 1,
                 EXECUTING = 2,
                 FINISHED = 3
@@ -9396,6 +9400,9 @@ export namespace waproto {
 
         /** ContextInfo pairedMediaType */
         pairedMediaType?: (waproto.ContextInfo.PairedMediaType|null);
+
+        /** ContextInfo rankingVersion */
+        rankingVersion?: (number|null);
     }
 
     /** Represents a ContextInfo. */
@@ -9535,6 +9542,9 @@ export namespace waproto {
 
         /** ContextInfo pairedMediaType. */
         public pairedMediaType?: (waproto.ContextInfo.PairedMediaType|null);
+
+        /** ContextInfo rankingVersion. */
+        public rankingVersion?: (number|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -15957,6 +15967,118 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a LimitSharing. */
+    interface ILimitSharing {
+
+        /** LimitSharing sharingLimited */
+        sharingLimited?: (boolean|null);
+
+        /** LimitSharing trigger */
+        trigger?: (waproto.LimitSharing.Trigger|null);
+    }
+
+    /** Represents a LimitSharing. */
+    class LimitSharing implements ILimitSharing {
+
+        /**
+         * Constructs a new LimitSharing.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.ILimitSharing);
+
+        /** LimitSharing sharingLimited. */
+        public sharingLimited?: (boolean|null);
+
+        /** LimitSharing trigger. */
+        public trigger?: (waproto.LimitSharing.Trigger|null);
+
+        /**
+         * Creates a new LimitSharing instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns LimitSharing instance
+         */
+        public static create(properties?: waproto.ILimitSharing): waproto.LimitSharing;
+
+        /**
+         * Encodes the specified LimitSharing message. Does not implicitly {@link waproto.LimitSharing.verify|verify} messages.
+         * @param message LimitSharing message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.ILimitSharing, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified LimitSharing message, length delimited. Does not implicitly {@link waproto.LimitSharing.verify|verify} messages.
+         * @param message LimitSharing message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.ILimitSharing, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a LimitSharing message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns LimitSharing
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.LimitSharing;
+
+        /**
+         * Decodes a LimitSharing message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns LimitSharing
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.LimitSharing;
+
+        /**
+         * Verifies a LimitSharing message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a LimitSharing message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns LimitSharing
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.LimitSharing;
+
+        /**
+         * Creates a plain object from a LimitSharing message. Also converts values to other types if specified.
+         * @param message LimitSharing
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.LimitSharing, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this LimitSharing to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for LimitSharing
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace LimitSharing {
+
+        /** Trigger enum. */
+        enum Trigger {
+            CHAT_SETTING = 0,
+            BIZ_SUPPORTS_FB_HOSTING = 1
+        }
     }
 
     /** Properties of a LocalizedName. */
@@ -29797,6 +29919,9 @@ export namespace waproto {
 
             /** ProtocolMessage lidMigrationMappingSyncMessage */
             lidMigrationMappingSyncMessage?: (waproto.ILIDMigrationMappingSyncMessage|null);
+
+            /** ProtocolMessage limitSharing */
+            limitSharing?: (waproto.ILimitSharing|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -29867,6 +29992,9 @@ export namespace waproto {
 
             /** ProtocolMessage lidMigrationMappingSyncMessage. */
             public lidMigrationMappingSyncMessage?: (waproto.ILIDMigrationMappingSyncMessage|null);
+
+            /** ProtocolMessage limitSharing. */
+            public limitSharing?: (waproto.ILimitSharing|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -29971,7 +30099,8 @@ export namespace waproto {
                 REMINDER_MESSAGE = 23,
                 BOT_MEMU_ONBOARDING_MESSAGE = 24,
                 STATUS_MENTION_MESSAGE = 25,
-                STOP_GENERATION_MESSAGE = 26
+                STOP_GENERATION_MESSAGE = 26,
+                LIMIT_SHARING = 27
             }
         }
 
