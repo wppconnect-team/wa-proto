@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020333766
+/// WhatsApp Version: 2.3000.1020449354
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2860,6 +2860,7 @@ message Message {
         repeated InteractiveAnnotation annotations = 25;
         optional string accessibilityLabel = 26;
         repeated ProcessedVideo processedVideos = 27;
+        optional uint32 externalShareFullVideoDurationInSeconds = 28;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;

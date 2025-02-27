@@ -32551,6 +32551,9 @@ export namespace waproto {
 
             /** VideoMessage processedVideos */
             processedVideos?: (waproto.IProcessedVideo[]|null);
+
+            /** VideoMessage externalShareFullVideoDurationInSeconds */
+            externalShareFullVideoDurationInSeconds?: (number|null);
         }
 
         /** Represents a VideoMessage. */
@@ -32639,6 +32642,9 @@ export namespace waproto {
 
             /** VideoMessage processedVideos. */
             public processedVideos: waproto.IProcessedVideo[];
+
+            /** VideoMessage externalShareFullVideoDurationInSeconds. */
+            public externalShareFullVideoDurationInSeconds?: (number|null);
 
             /**
              * Creates a new VideoMessage instance using the specified properties.
