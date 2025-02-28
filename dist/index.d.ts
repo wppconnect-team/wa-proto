@@ -1011,6 +1011,333 @@ export namespace waproto {
             }
         }
 
+        /** Properties of a AIRichResponseContentItemsMetadata. */
+        interface IAIRichResponseContentItemsMetadata {
+
+            /** AIRichResponseContentItemsMetadata itemsMetadata */
+            itemsMetadata?: (waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseContentItemMetadata[]|null);
+
+            /** AIRichResponseContentItemsMetadata contentType */
+            contentType?: (waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.ContentType|null);
+        }
+
+        /** Represents a AIRichResponseContentItemsMetadata. */
+        class AIRichResponseContentItemsMetadata implements IAIRichResponseContentItemsMetadata {
+
+            /**
+             * Constructs a new AIRichResponseContentItemsMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.AIRichResponseMessage.IAIRichResponseContentItemsMetadata);
+
+            /** AIRichResponseContentItemsMetadata itemsMetadata. */
+            public itemsMetadata: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseContentItemMetadata[];
+
+            /** AIRichResponseContentItemsMetadata contentType. */
+            public contentType?: (waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.ContentType|null);
+
+            /**
+             * Creates a new AIRichResponseContentItemsMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns AIRichResponseContentItemsMetadata instance
+             */
+            public static create(properties?: waproto.AIRichResponseMessage.IAIRichResponseContentItemsMetadata): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata;
+
+            /**
+             * Encodes the specified AIRichResponseContentItemsMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.verify|verify} messages.
+             * @param message AIRichResponseContentItemsMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.AIRichResponseMessage.IAIRichResponseContentItemsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified AIRichResponseContentItemsMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.verify|verify} messages.
+             * @param message AIRichResponseContentItemsMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.AIRichResponseMessage.IAIRichResponseContentItemsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a AIRichResponseContentItemsMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns AIRichResponseContentItemsMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata;
+
+            /**
+             * Decodes a AIRichResponseContentItemsMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns AIRichResponseContentItemsMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata;
+
+            /**
+             * Verifies a AIRichResponseContentItemsMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a AIRichResponseContentItemsMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns AIRichResponseContentItemsMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata;
+
+            /**
+             * Creates a plain object from a AIRichResponseContentItemsMetadata message. Also converts values to other types if specified.
+             * @param message AIRichResponseContentItemsMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this AIRichResponseContentItemsMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for AIRichResponseContentItemsMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace AIRichResponseContentItemsMetadata {
+
+            /** Properties of a AIRichResponseContentItemMetadata. */
+            interface IAIRichResponseContentItemMetadata {
+
+                /** AIRichResponseContentItemMetadata reelItem */
+                reelItem?: (waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseReelItem|null);
+            }
+
+            /** Represents a AIRichResponseContentItemMetadata. */
+            class AIRichResponseContentItemMetadata implements IAIRichResponseContentItemMetadata {
+
+                /**
+                 * Constructs a new AIRichResponseContentItemMetadata.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseContentItemMetadata);
+
+                /** AIRichResponseContentItemMetadata reelItem. */
+                public reelItem?: (waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseReelItem|null);
+
+                /** AIRichResponseContentItemMetadata aIRichResponseContentItem. */
+                public aIRichResponseContentItem?: "reelItem";
+
+                /**
+                 * Creates a new AIRichResponseContentItemMetadata instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AIRichResponseContentItemMetadata instance
+                 */
+                public static create(properties?: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseContentItemMetadata): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata;
+
+                /**
+                 * Encodes the specified AIRichResponseContentItemMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.verify|verify} messages.
+                 * @param message AIRichResponseContentItemMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseContentItemMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AIRichResponseContentItemMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.verify|verify} messages.
+                 * @param message AIRichResponseContentItemMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseContentItemMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a AIRichResponseContentItemMetadata message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AIRichResponseContentItemMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata;
+
+                /**
+                 * Decodes a AIRichResponseContentItemMetadata message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AIRichResponseContentItemMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata;
+
+                /**
+                 * Verifies a AIRichResponseContentItemMetadata message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a AIRichResponseContentItemMetadata message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AIRichResponseContentItemMetadata
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata;
+
+                /**
+                 * Creates a plain object from a AIRichResponseContentItemMetadata message. Also converts values to other types if specified.
+                 * @param message AIRichResponseContentItemMetadata
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AIRichResponseContentItemMetadata to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for AIRichResponseContentItemMetadata
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** Properties of a AIRichResponseReelItem. */
+            interface IAIRichResponseReelItem {
+
+                /** AIRichResponseReelItem title */
+                title?: (string|null);
+
+                /** AIRichResponseReelItem profileIconUrl */
+                profileIconUrl?: (string|null);
+
+                /** AIRichResponseReelItem thumbnailUrl */
+                thumbnailUrl?: (string|null);
+
+                /** AIRichResponseReelItem videoUrl */
+                videoUrl?: (string|null);
+            }
+
+            /** Represents a AIRichResponseReelItem. */
+            class AIRichResponseReelItem implements IAIRichResponseReelItem {
+
+                /**
+                 * Constructs a new AIRichResponseReelItem.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseReelItem);
+
+                /** AIRichResponseReelItem title. */
+                public title?: (string|null);
+
+                /** AIRichResponseReelItem profileIconUrl. */
+                public profileIconUrl?: (string|null);
+
+                /** AIRichResponseReelItem thumbnailUrl. */
+                public thumbnailUrl?: (string|null);
+
+                /** AIRichResponseReelItem videoUrl. */
+                public videoUrl?: (string|null);
+
+                /**
+                 * Creates a new AIRichResponseReelItem instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AIRichResponseReelItem instance
+                 */
+                public static create(properties?: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseReelItem): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem;
+
+                /**
+                 * Encodes the specified AIRichResponseReelItem message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.verify|verify} messages.
+                 * @param message AIRichResponseReelItem message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseReelItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AIRichResponseReelItem message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.verify|verify} messages.
+                 * @param message AIRichResponseReelItem message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.IAIRichResponseReelItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a AIRichResponseReelItem message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns AIRichResponseReelItem
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem;
+
+                /**
+                 * Decodes a AIRichResponseReelItem message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns AIRichResponseReelItem
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem;
+
+                /**
+                 * Verifies a AIRichResponseReelItem message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a AIRichResponseReelItem message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AIRichResponseReelItem
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem;
+
+                /**
+                 * Creates a plain object from a AIRichResponseReelItem message. Also converts values to other types if specified.
+                 * @param message AIRichResponseReelItem
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseContentItemsMetadata.AIRichResponseReelItem, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AIRichResponseReelItem to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for AIRichResponseReelItem
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** ContentType enum. */
+            enum ContentType {
+                DEFAULT = 0,
+                CAROUSEL = 1
+            }
+        }
+
         /** Properties of a AIRichResponseDynamicMetadata. */
         interface IAIRichResponseDynamicMetadata {
 
@@ -1957,221 +2284,6 @@ export namespace waproto {
             AI_RICH_RESPONSE_TYPE_STANDARD = 1
         }
 
-        /** Properties of a AIRichResponseReelsMetadata. */
-        interface IAIRichResponseReelsMetadata {
-
-            /** AIRichResponseReelsMetadata reelsMetadata */
-            reelsMetadata?: (waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata[]|null);
-        }
-
-        /** Represents a AIRichResponseReelsMetadata. */
-        class AIRichResponseReelsMetadata implements IAIRichResponseReelsMetadata {
-
-            /**
-             * Constructs a new AIRichResponseReelsMetadata.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata);
-
-            /** AIRichResponseReelsMetadata reelsMetadata. */
-            public reelsMetadata: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata[];
-
-            /**
-             * Creates a new AIRichResponseReelsMetadata instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns AIRichResponseReelsMetadata instance
-             */
-            public static create(properties?: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
-
-            /**
-             * Encodes the specified AIRichResponseReelsMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.verify|verify} messages.
-             * @param message AIRichResponseReelsMetadata message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified AIRichResponseReelsMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.verify|verify} messages.
-             * @param message AIRichResponseReelsMetadata message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a AIRichResponseReelsMetadata message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns AIRichResponseReelsMetadata
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
-
-            /**
-             * Decodes a AIRichResponseReelsMetadata message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns AIRichResponseReelsMetadata
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
-
-            /**
-             * Verifies a AIRichResponseReelsMetadata message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a AIRichResponseReelsMetadata message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns AIRichResponseReelsMetadata
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata;
-
-            /**
-             * Creates a plain object from a AIRichResponseReelsMetadata message. Also converts values to other types if specified.
-             * @param message AIRichResponseReelsMetadata
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this AIRichResponseReelsMetadata to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for AIRichResponseReelsMetadata
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace AIRichResponseReelsMetadata {
-
-            /** Properties of a AIRichResponseReelMetadata. */
-            interface IAIRichResponseReelMetadata {
-
-                /** AIRichResponseReelMetadata title */
-                title?: (string|null);
-
-                /** AIRichResponseReelMetadata profileIconUrl */
-                profileIconUrl?: (string|null);
-
-                /** AIRichResponseReelMetadata previewUrl */
-                previewUrl?: (string|null);
-
-                /** AIRichResponseReelMetadata videoUrl */
-                videoUrl?: (string|null);
-            }
-
-            /** Represents a AIRichResponseReelMetadata. */
-            class AIRichResponseReelMetadata implements IAIRichResponseReelMetadata {
-
-                /**
-                 * Constructs a new AIRichResponseReelMetadata.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata);
-
-                /** AIRichResponseReelMetadata title. */
-                public title?: (string|null);
-
-                /** AIRichResponseReelMetadata profileIconUrl. */
-                public profileIconUrl?: (string|null);
-
-                /** AIRichResponseReelMetadata previewUrl. */
-                public previewUrl?: (string|null);
-
-                /** AIRichResponseReelMetadata videoUrl. */
-                public videoUrl?: (string|null);
-
-                /**
-                 * Creates a new AIRichResponseReelMetadata instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns AIRichResponseReelMetadata instance
-                 */
-                public static create(properties?: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
-
-                /**
-                 * Encodes the specified AIRichResponseReelMetadata message. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata.verify|verify} messages.
-                 * @param message AIRichResponseReelMetadata message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified AIRichResponseReelMetadata message, length delimited. Does not implicitly {@link waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata.verify|verify} messages.
-                 * @param message AIRichResponseReelMetadata message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.IAIRichResponseReelMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a AIRichResponseReelMetadata message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns AIRichResponseReelMetadata
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
-
-                /**
-                 * Decodes a AIRichResponseReelMetadata message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns AIRichResponseReelMetadata
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
-
-                /**
-                 * Verifies a AIRichResponseReelMetadata message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a AIRichResponseReelMetadata message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns AIRichResponseReelMetadata
-                 */
-                public static fromObject(object: { [k: string]: any }): waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata;
-
-                /**
-                 * Creates a plain object from a AIRichResponseReelMetadata message. Also converts values to other types if specified.
-                 * @param message AIRichResponseReelMetadata
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: waproto.AIRichResponseMessage.AIRichResponseReelsMetadata.AIRichResponseReelMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this AIRichResponseReelMetadata to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-
-                /**
-                 * Gets the default type url for AIRichResponseReelMetadata
-                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-                 * @returns The default type url
-                 */
-                public static getTypeUrl(typeUrlPrefix?: string): string;
-            }
-        }
-
         /** Properties of a AIRichResponseSubMessage. */
         interface IAIRichResponseSubMessage {
 
@@ -2202,8 +2314,8 @@ export namespace waproto {
             /** AIRichResponseSubMessage mapMetadata */
             mapMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseMapMetadata|null);
 
-            /** AIRichResponseSubMessage reelsMetadata */
-            reelsMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata|null);
+            /** AIRichResponseSubMessage contentItemsMetadata */
+            contentItemsMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseContentItemsMetadata|null);
         }
 
         /** Represents a AIRichResponseSubMessage. */
@@ -2242,8 +2354,8 @@ export namespace waproto {
             /** AIRichResponseSubMessage mapMetadata. */
             public mapMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseMapMetadata|null);
 
-            /** AIRichResponseSubMessage reelsMetadata. */
-            public reelsMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseReelsMetadata|null);
+            /** AIRichResponseSubMessage contentItemsMetadata. */
+            public contentItemsMetadata?: (waproto.AIRichResponseMessage.IAIRichResponseContentItemsMetadata|null);
 
             /**
              * Creates a new AIRichResponseSubMessage instance using the specified properties.
@@ -2334,7 +2446,7 @@ export namespace waproto {
             AI_RICH_RESPONSE_DYNAMIC = 6,
             AI_RICH_RESPONSE_MAP = 7,
             AI_RICH_RESPONSE_LATEX = 8,
-            AI_RICH_RESPONSE_INLINE_REELS = 9
+            AI_RICH_RESPONSE_CONTENT_ITEMS = 9
         }
 
         /** Properties of a AIRichResponseTableMetadata. */
@@ -3510,7 +3622,8 @@ export namespace waproto {
             RICH_RESPONSE_LATEX = 24,
             RICH_RESPONSE_MAPS = 25,
             RICH_RESPONSE_INLINE_REELS = 26,
-            AGENTIC_PLANNING = 27
+            AGENTIC_PLANNING = 27,
+            ACCOUNT_LINKING = 28
         }
     }
 
