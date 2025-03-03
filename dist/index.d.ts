@@ -2033,17 +2033,17 @@ export namespace waproto {
             /** AIRichResponseMapMetadata centerLatitude */
             centerLatitude?: (number|null);
 
-            /** AIRichResponseMapMetadata centerLongtitude */
-            centerLongtitude?: (number|null);
+            /** AIRichResponseMapMetadata centerLongitude */
+            centerLongitude?: (number|null);
 
             /** AIRichResponseMapMetadata latitudeDelta */
             latitudeDelta?: (number|null);
 
-            /** AIRichResponseMapMetadata longtitudeDelta */
-            longtitudeDelta?: (number|null);
+            /** AIRichResponseMapMetadata longitudeDelta */
+            longitudeDelta?: (number|null);
 
-            /** AIRichResponseMapMetadata anotations */
-            anotations?: (waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation[]|null);
+            /** AIRichResponseMapMetadata annotations */
+            annotations?: (waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation[]|null);
 
             /** AIRichResponseMapMetadata showInfoList */
             showInfoList?: (boolean|null);
@@ -2061,17 +2061,17 @@ export namespace waproto {
             /** AIRichResponseMapMetadata centerLatitude. */
             public centerLatitude?: (number|null);
 
-            /** AIRichResponseMapMetadata centerLongtitude. */
-            public centerLongtitude?: (number|null);
+            /** AIRichResponseMapMetadata centerLongitude. */
+            public centerLongitude?: (number|null);
 
             /** AIRichResponseMapMetadata latitudeDelta. */
             public latitudeDelta?: (number|null);
 
-            /** AIRichResponseMapMetadata longtitudeDelta. */
-            public longtitudeDelta?: (number|null);
+            /** AIRichResponseMapMetadata longitudeDelta. */
+            public longitudeDelta?: (number|null);
 
-            /** AIRichResponseMapMetadata anotations. */
-            public anotations: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation[];
+            /** AIRichResponseMapMetadata annotations. */
+            public annotations: waproto.AIRichResponseMessage.AIRichResponseMapMetadata.IAIRichResponseMapAnnotation[];
 
             /** AIRichResponseMapMetadata showInfoList. */
             public showInfoList?: (boolean|null);
@@ -2165,8 +2165,8 @@ export namespace waproto {
                 /** AIRichResponseMapAnnotation latitude */
                 latitude?: (number|null);
 
-                /** AIRichResponseMapAnnotation longtitude */
-                longtitude?: (number|null);
+                /** AIRichResponseMapAnnotation longitude */
+                longitude?: (number|null);
 
                 /** AIRichResponseMapAnnotation title */
                 title?: (string|null);
@@ -2190,8 +2190,8 @@ export namespace waproto {
                 /** AIRichResponseMapAnnotation latitude. */
                 public latitude?: (number|null);
 
-                /** AIRichResponseMapAnnotation longtitude. */
-                public longtitude?: (number|null);
+                /** AIRichResponseMapAnnotation longitude. */
+                public longitude?: (number|null);
 
                 /** AIRichResponseMapAnnotation title. */
                 public title?: (string|null);

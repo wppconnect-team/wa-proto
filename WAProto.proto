@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020486526
+/// WhatsApp Version: 2.3000.1020532457
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -140,15 +140,15 @@ message AIRichResponseMessage {
     
     message AIRichResponseMapMetadata {
         optional double centerLatitude = 1;
-        optional double centerLongtitude = 2;
+        optional double centerLongitude = 2;
         optional double latitudeDelta = 3;
-        optional double longtitudeDelta = 4;
-        repeated AIRichResponseMapAnnotation anotations = 5;
+        optional double longitudeDelta = 4;
+        repeated AIRichResponseMapAnnotation annotations = 5;
         optional bool showInfoList = 6;
         message AIRichResponseMapAnnotation {
             optional uint32 annotationNumber = 1;
             optional double latitude = 2;
-            optional double longtitude = 3;
+            optional double longitude = 3;
             optional string title = 4;
             optional string body = 5;
         }
