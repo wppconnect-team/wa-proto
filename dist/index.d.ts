@@ -11052,6 +11052,9 @@ export namespace waproto {
 
         /** Conversation accountLid */
         accountLid?: (string|null);
+
+        /** Conversation limitSharing */
+        limitSharing?: (boolean|null);
     }
 
     /** Represents a Conversation. */
@@ -11209,6 +11212,9 @@ export namespace waproto {
 
         /** Conversation accountLid. */
         public accountLid?: (string|null);
+
+        /** Conversation limitSharing. */
+        public limitSharing?: (boolean|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
