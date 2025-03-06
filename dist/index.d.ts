@@ -4453,6 +4453,9 @@ export namespace waproto {
 
         /** BotMetadata botLinkedAccountsMetadata */
         botLinkedAccountsMetadata?: (waproto.IBotLinkedAccountsMetadata|null);
+
+        /** BotMetadata richResponseSourcesMetadata */
+        richResponseSourcesMetadata?: (waproto.IBotSourcesMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -4517,6 +4520,9 @@ export namespace waproto {
 
         /** BotMetadata botLinkedAccountsMetadata. */
         public botLinkedAccountsMetadata?: (waproto.IBotLinkedAccountsMetadata|null);
+
+        /** BotMetadata richResponseSourcesMetadata. */
+        public richResponseSourcesMetadata?: (waproto.IBotSourcesMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -4614,7 +4620,11 @@ export namespace waproto {
         PROFILE_MESSAGE_BUTTON = 14,
         FORWARD = 15,
         APP_SHORTCUT = 16,
-        FF_FAMILY = 17
+        FF_FAMILY = 17,
+        AI_TAB = 18,
+        AI_HOME = 19,
+        AI_DEEPLINK_IMMERSIVE = 20,
+        AI_DEEPLINK = 21
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -4625,6 +4635,9 @@ export namespace waproto {
 
         /** BotMetricsMetadata destinationEntryPoint */
         destinationEntryPoint?: (waproto.BotMetricsEntryPoint|null);
+
+        /** BotMetricsMetadata threadOrigin */
+        threadOrigin?: (waproto.BotMetricsThreadEntryPoint|null);
     }
 
     /** Represents a BotMetricsMetadata. */
@@ -4641,6 +4654,9 @@ export namespace waproto {
 
         /** BotMetricsMetadata destinationEntryPoint. */
         public destinationEntryPoint?: (waproto.BotMetricsEntryPoint|null);
+
+        /** BotMetricsMetadata threadOrigin. */
+        public threadOrigin?: (waproto.BotMetricsThreadEntryPoint|null);
 
         /**
          * Creates a new BotMetricsMetadata instance using the specified properties.
@@ -4718,6 +4734,14 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** BotMetricsThreadEntryPoint enum. */
+    enum BotMetricsThreadEntryPoint {
+        AI_TAB_THREAD = 1,
+        AI_HOME_THREAD = 2,
+        AI_DEEPLINK_IMMERSIVE_THREAD = 3,
+        AI_DEEPLINK_THREAD = 4
     }
 
     /** Properties of a BotModelMetadata. */
@@ -6041,6 +6065,244 @@ export namespace waproto {
         EMU_FLASH = 4,
         EMU_FLASH_FOLLOWUP = 5,
         VOICE = 6
+    }
+
+    /** Properties of a BotSourcesMetadata. */
+    interface IBotSourcesMetadata {
+
+        /** BotSourcesMetadata sources */
+        sources?: (waproto.BotSourcesMetadata.IBotSourceItem[]|null);
+    }
+
+    /** Represents a BotSourcesMetadata. */
+    class BotSourcesMetadata implements IBotSourcesMetadata {
+
+        /**
+         * Constructs a new BotSourcesMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotSourcesMetadata);
+
+        /** BotSourcesMetadata sources. */
+        public sources: waproto.BotSourcesMetadata.IBotSourceItem[];
+
+        /**
+         * Creates a new BotSourcesMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotSourcesMetadata instance
+         */
+        public static create(properties?: waproto.IBotSourcesMetadata): waproto.BotSourcesMetadata;
+
+        /**
+         * Encodes the specified BotSourcesMetadata message. Does not implicitly {@link waproto.BotSourcesMetadata.verify|verify} messages.
+         * @param message BotSourcesMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotSourcesMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotSourcesMetadata message, length delimited. Does not implicitly {@link waproto.BotSourcesMetadata.verify|verify} messages.
+         * @param message BotSourcesMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotSourcesMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotSourcesMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotSourcesMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotSourcesMetadata;
+
+        /**
+         * Decodes a BotSourcesMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotSourcesMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotSourcesMetadata;
+
+        /**
+         * Verifies a BotSourcesMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotSourcesMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotSourcesMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotSourcesMetadata;
+
+        /**
+         * Creates a plain object from a BotSourcesMetadata message. Also converts values to other types if specified.
+         * @param message BotSourcesMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotSourcesMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotSourcesMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotSourcesMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotSourcesMetadata {
+
+        /** Properties of a BotSourceItem. */
+        interface IBotSourceItem {
+
+            /** BotSourceItem provider */
+            provider?: (waproto.BotSourcesMetadata.BotSourceItem.SourceProvider|null);
+
+            /** BotSourceItem thumbnailCdnUrl */
+            thumbnailCdnUrl?: (string|null);
+
+            /** BotSourceItem sourceProviderUrl */
+            sourceProviderUrl?: (string|null);
+
+            /** BotSourceItem sourceQuery */
+            sourceQuery?: (string|null);
+
+            /** BotSourceItem faviconCdnUrl */
+            faviconCdnUrl?: (string|null);
+
+            /** BotSourceItem citationNumber */
+            citationNumber?: (number|null);
+        }
+
+        /** Represents a BotSourceItem. */
+        class BotSourceItem implements IBotSourceItem {
+
+            /**
+             * Constructs a new BotSourceItem.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BotSourcesMetadata.IBotSourceItem);
+
+            /** BotSourceItem provider. */
+            public provider?: (waproto.BotSourcesMetadata.BotSourceItem.SourceProvider|null);
+
+            /** BotSourceItem thumbnailCdnUrl. */
+            public thumbnailCdnUrl?: (string|null);
+
+            /** BotSourceItem sourceProviderUrl. */
+            public sourceProviderUrl?: (string|null);
+
+            /** BotSourceItem sourceQuery. */
+            public sourceQuery?: (string|null);
+
+            /** BotSourceItem faviconCdnUrl. */
+            public faviconCdnUrl?: (string|null);
+
+            /** BotSourceItem citationNumber. */
+            public citationNumber?: (number|null);
+
+            /**
+             * Creates a new BotSourceItem instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BotSourceItem instance
+             */
+            public static create(properties?: waproto.BotSourcesMetadata.IBotSourceItem): waproto.BotSourcesMetadata.BotSourceItem;
+
+            /**
+             * Encodes the specified BotSourceItem message. Does not implicitly {@link waproto.BotSourcesMetadata.BotSourceItem.verify|verify} messages.
+             * @param message BotSourceItem message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.BotSourcesMetadata.IBotSourceItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BotSourceItem message, length delimited. Does not implicitly {@link waproto.BotSourcesMetadata.BotSourceItem.verify|verify} messages.
+             * @param message BotSourceItem message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.BotSourcesMetadata.IBotSourceItem, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BotSourceItem message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BotSourceItem
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotSourcesMetadata.BotSourceItem;
+
+            /**
+             * Decodes a BotSourceItem message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BotSourceItem
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotSourcesMetadata.BotSourceItem;
+
+            /**
+             * Verifies a BotSourceItem message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BotSourceItem message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BotSourceItem
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.BotSourcesMetadata.BotSourceItem;
+
+            /**
+             * Creates a plain object from a BotSourceItem message. Also converts values to other types if specified.
+             * @param message BotSourceItem
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.BotSourcesMetadata.BotSourceItem, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BotSourceItem to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for BotSourceItem
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace BotSourceItem {
+
+            /** SourceProvider enum. */
+            enum SourceProvider {
+                UNKNOWN = 0,
+                BING = 1,
+                GOOGLE = 2,
+                SUPPORT = 3
+            }
+        }
     }
 
     /** Properties of a BotSuggestedPromptMetadata. */
