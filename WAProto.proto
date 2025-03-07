@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020651838
+/// WhatsApp Version: 2.3000.1020685987
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1113,6 +1113,7 @@ message Conversation {
     optional bool capiCreatedGroup = 48;
     optional string accountLid = 49;
     optional bool limitSharing = 50;
+    optional int64 limitSharingSettingTimestamp = 51;
     enum EndOfHistoryTransferType {
         COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0;
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
@@ -2955,6 +2956,7 @@ message MessageAssociation {
         STATUS_NOTIFICATION = 9;
         HD_IMAGE_DUAL_UPLOAD = 10;
         STICKER_ANNOTATION = 11;
+        MOTION_PHOTO = 12;
     }
 }
 

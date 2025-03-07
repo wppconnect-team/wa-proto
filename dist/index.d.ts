@@ -11317,6 +11317,9 @@ export namespace waproto {
 
         /** Conversation limitSharing */
         limitSharing?: (boolean|null);
+
+        /** Conversation limitSharingSettingTimestamp */
+        limitSharingSettingTimestamp?: (number|Long|null);
     }
 
     /** Represents a Conversation. */
@@ -11477,6 +11480,9 @@ export namespace waproto {
 
         /** Conversation limitSharing. */
         public limitSharing?: (boolean|null);
+
+        /** Conversation limitSharingSettingTimestamp. */
+        public limitSharingSettingTimestamp?: (number|Long|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
@@ -33495,7 +33501,8 @@ export namespace waproto {
             STATUS_ADD_YOURS = 8,
             STATUS_NOTIFICATION = 9,
             HD_IMAGE_DUAL_UPLOAD = 10,
-            STICKER_ANNOTATION = 11
+            STICKER_ANNOTATION = 11,
+            MOTION_PHOTO = 12
         }
     }
 
