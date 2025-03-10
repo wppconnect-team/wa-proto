@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020685987
+/// WhatsApp Version: 2.3000.1020736211
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -193,6 +193,13 @@ message AIRichResponseMessage {
         
     }
     
+}
+
+message Account {
+    optional string lid = 1;
+    optional string username = 2;
+    optional string countryCode = 3;
+    optional bool isUsernameDeleted = 4;
 }
 
 message ActionLink {
@@ -456,11 +463,18 @@ message BotProgressIndicatorMetadata {
     repeated BotPlanningStepMetadata stepsMetadata = 2;
     message BotPlanningStepMetadata {
         optional string statusTitle = 1;
-        optional string statusBody = 2;
         repeated BotPlanningSearchSourcesMetadata sourcesMetadata = 3;
         optional PlanningStepStatus status = 4;
         optional bool isReasoning = 5;
         optional bool isEnhancedSearch = 6;
+        repeated BotPlanningStepSectionMetadata sections = 7;
+        message BotPlanningSearchSourceMetadata {
+            optional string title = 1;
+            optional BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotSearchSourceProvider provider = 2;
+            optional string sourceUrl = 3;
+            optional string favIconUrl = 4;
+        }
+        
         message BotPlanningSearchSourcesMetadata {
             optional string sourceTitle = 1;
             optional BotPlanningSearchSourceProvider provider = 2;
@@ -473,6 +487,18 @@ message BotProgressIndicatorMetadata {
             }
         }
         
+        message BotPlanningStepSectionMetadata {
+            optional string sectionTitle = 1;
+            optional string sectionBody = 2;
+            repeated BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata sourcesMetadata = 3;
+        }
+        
+        enum BotSearchSourceProvider {
+            UNKNOWNPROVIDER = 0;
+            OTHER = 1;
+            GOOGLE = 2;
+            BING = 3;
+        }
         enum PlanningStepStatus {
             UNKNOWN = 0;
             PLANNED = 1;
@@ -1378,6 +1404,7 @@ message HistorySync {
     repeated PhoneNumberToLIDMapping phoneNumberToLidMappings = 15;
     optional string companionMetaNonce = 16;
     optional bytes shareableChatIdentifierEncryptionKey = 17;
+    repeated Account accounts = 18;
     enum BotAIWaitListState {
         IN_WAITLIST = 0;
         AI_AVAILABLE = 1;
