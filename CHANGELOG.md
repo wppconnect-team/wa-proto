@@ -1,3 +1,7 @@
+## 1.1.45 (2025-03-10)
+
+
+
 ## [1.1.44](https://github.com/wppconnect-team/wa-proto/compare/v1.1.43...v1.1.44) (2025-03-10)
 
 
