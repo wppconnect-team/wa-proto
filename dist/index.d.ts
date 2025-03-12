@@ -5271,6 +5271,9 @@ export namespace waproto {
             /** BotPlanningStepMetadata statusTitle */
             statusTitle?: (string|null);
 
+            /** BotPlanningStepMetadata statusBody */
+            statusBody?: (string|null);
+
             /** BotPlanningStepMetadata sourcesMetadata */
             sourcesMetadata?: (waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata[]|null);
 
@@ -5298,6 +5301,9 @@ export namespace waproto {
 
             /** BotPlanningStepMetadata statusTitle. */
             public statusTitle?: (string|null);
+
+            /** BotPlanningStepMetadata statusBody. */
+            public statusBody?: (string|null);
 
             /** BotPlanningStepMetadata sourcesMetadata. */
             public sourcesMetadata: waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.IBotPlanningSearchSourcesMetadata[];
@@ -5740,7 +5746,7 @@ export namespace waproto {
 
             /** BotSearchSourceProvider enum. */
             enum BotSearchSourceProvider {
-                UNKNOWNPROVIDER = 0,
+                UNKNOWN_PROVIDER = 0,
                 OTHER = 1,
                 GOOGLE = 2,
                 BING = 3
@@ -8336,6 +8342,9 @@ export namespace waproto {
 
         /** ClientPayload trafficAnonymization */
         trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
+
+        /** ClientPayload lidDbMigrated */
+        lidDbMigrated?: (boolean|null);
     }
 
     /** Represents a ClientPayload. */
@@ -8430,6 +8439,9 @@ export namespace waproto {
 
         /** ClientPayload trafficAnonymization. */
         public trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
+
+        /** ClientPayload lidDbMigrated. */
+        public lidDbMigrated?: (boolean|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -17627,6 +17639,9 @@ export namespace waproto {
 
         /** Message statusNotificationMessage */
         statusNotificationMessage?: (waproto.Message.IStatusNotificationMessage|null);
+
+        /** Message limitSharingMessage */
+        limitSharingMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -17883,6 +17898,9 @@ export namespace waproto {
 
         /** Message statusNotificationMessage. */
         public statusNotificationMessage?: (waproto.Message.IStatusNotificationMessage|null);
+
+        /** Message limitSharingMessage. */
+        public limitSharingMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -22004,6 +22022,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage faviconMMSMetadata */
             faviconMMSMetadata?: (waproto.Message.IMMSThumbnailMetadata|null);
+
+            /** ExtendedTextMessage linkPreviewMetadata */
+            linkPreviewMetadata?: (waproto.Message.ExtendedTextMessage.ILinkPreviewMetadata|null);
         }
 
         /** Represents an ExtendedTextMessage. */
@@ -22092,6 +22113,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage faviconMMSMetadata. */
             public faviconMMSMetadata?: (waproto.Message.IMMSThumbnailMetadata|null);
+
+            /** ExtendedTextMessage linkPreviewMetadata. */
+            public linkPreviewMetadata?: (waproto.Message.ExtendedTextMessage.ILinkPreviewMetadata|null);
 
             /**
              * Creates a new ExtendedTextMessage instance using the specified properties.
@@ -22191,6 +22215,103 @@ export namespace waproto {
                 PARENT = 1,
                 SUB = 2,
                 DEFAULT_SUB = 3
+            }
+
+            /** Properties of a LinkPreviewMetadata. */
+            interface ILinkPreviewMetadata {
+
+                /** LinkPreviewMetadata paymentLinkMetadata */
+                paymentLinkMetadata?: (waproto.Message.IPaymentLinkMetadata|null);
+            }
+
+            /** Represents a LinkPreviewMetadata. */
+            class LinkPreviewMetadata implements ILinkPreviewMetadata {
+
+                /**
+                 * Constructs a new LinkPreviewMetadata.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.ExtendedTextMessage.ILinkPreviewMetadata);
+
+                /** LinkPreviewMetadata paymentLinkMetadata. */
+                public paymentLinkMetadata?: (waproto.Message.IPaymentLinkMetadata|null);
+
+                /**
+                 * Creates a new LinkPreviewMetadata instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns LinkPreviewMetadata instance
+                 */
+                public static create(properties?: waproto.Message.ExtendedTextMessage.ILinkPreviewMetadata): waproto.Message.ExtendedTextMessage.LinkPreviewMetadata;
+
+                /**
+                 * Encodes the specified LinkPreviewMetadata message. Does not implicitly {@link waproto.Message.ExtendedTextMessage.LinkPreviewMetadata.verify|verify} messages.
+                 * @param message LinkPreviewMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.ExtendedTextMessage.ILinkPreviewMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified LinkPreviewMetadata message, length delimited. Does not implicitly {@link waproto.Message.ExtendedTextMessage.LinkPreviewMetadata.verify|verify} messages.
+                 * @param message LinkPreviewMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.ExtendedTextMessage.ILinkPreviewMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a LinkPreviewMetadata message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns LinkPreviewMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ExtendedTextMessage.LinkPreviewMetadata;
+
+                /**
+                 * Decodes a LinkPreviewMetadata message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns LinkPreviewMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ExtendedTextMessage.LinkPreviewMetadata;
+
+                /**
+                 * Verifies a LinkPreviewMetadata message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a LinkPreviewMetadata message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns LinkPreviewMetadata
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.ExtendedTextMessage.LinkPreviewMetadata;
+
+                /**
+                 * Creates a plain object from a LinkPreviewMetadata message. Also converts values to other types if specified.
+                 * @param message LinkPreviewMetadata
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.ExtendedTextMessage.LinkPreviewMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this LinkPreviewMetadata to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for LinkPreviewMetadata
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
             }
 
             /** PreviewType enum. */
@@ -27493,6 +27614,315 @@ export namespace waproto {
                 FBPAY = 1,
                 NOVI = 2,
                 UPI = 3
+            }
+        }
+
+        /** Properties of a PaymentLinkMetadata. */
+        interface IPaymentLinkMetadata {
+
+            /** PaymentLinkMetadata button */
+            button?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkButton|null);
+
+            /** PaymentLinkMetadata header */
+            header?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader|null);
+        }
+
+        /** Represents a PaymentLinkMetadata. */
+        class PaymentLinkMetadata implements IPaymentLinkMetadata {
+
+            /**
+             * Constructs a new PaymentLinkMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IPaymentLinkMetadata);
+
+            /** PaymentLinkMetadata button. */
+            public button?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkButton|null);
+
+            /** PaymentLinkMetadata header. */
+            public header?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader|null);
+
+            /**
+             * Creates a new PaymentLinkMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PaymentLinkMetadata instance
+             */
+            public static create(properties?: waproto.Message.IPaymentLinkMetadata): waproto.Message.PaymentLinkMetadata;
+
+            /**
+             * Encodes the specified PaymentLinkMetadata message. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.verify|verify} messages.
+             * @param message PaymentLinkMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IPaymentLinkMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PaymentLinkMetadata message, length delimited. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.verify|verify} messages.
+             * @param message PaymentLinkMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IPaymentLinkMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PaymentLinkMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PaymentLinkMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PaymentLinkMetadata;
+
+            /**
+             * Decodes a PaymentLinkMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PaymentLinkMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PaymentLinkMetadata;
+
+            /**
+             * Verifies a PaymentLinkMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PaymentLinkMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PaymentLinkMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.PaymentLinkMetadata;
+
+            /**
+             * Creates a plain object from a PaymentLinkMetadata message. Also converts values to other types if specified.
+             * @param message PaymentLinkMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.PaymentLinkMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PaymentLinkMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PaymentLinkMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace PaymentLinkMetadata {
+
+            /** Properties of a PaymentLinkButton. */
+            interface IPaymentLinkButton {
+
+                /** PaymentLinkButton displayText */
+                displayText: string;
+            }
+
+            /** Represents a PaymentLinkButton. */
+            class PaymentLinkButton implements IPaymentLinkButton {
+
+                /**
+                 * Constructs a new PaymentLinkButton.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.PaymentLinkMetadata.IPaymentLinkButton);
+
+                /** PaymentLinkButton displayText. */
+                public displayText: string;
+
+                /**
+                 * Creates a new PaymentLinkButton instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns PaymentLinkButton instance
+                 */
+                public static create(properties?: waproto.Message.PaymentLinkMetadata.IPaymentLinkButton): waproto.Message.PaymentLinkMetadata.PaymentLinkButton;
+
+                /**
+                 * Encodes the specified PaymentLinkButton message. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.PaymentLinkButton.verify|verify} messages.
+                 * @param message PaymentLinkButton message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.PaymentLinkMetadata.IPaymentLinkButton, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified PaymentLinkButton message, length delimited. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.PaymentLinkButton.verify|verify} messages.
+                 * @param message PaymentLinkButton message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.PaymentLinkMetadata.IPaymentLinkButton, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a PaymentLinkButton message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns PaymentLinkButton
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PaymentLinkMetadata.PaymentLinkButton;
+
+                /**
+                 * Decodes a PaymentLinkButton message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns PaymentLinkButton
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PaymentLinkMetadata.PaymentLinkButton;
+
+                /**
+                 * Verifies a PaymentLinkButton message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a PaymentLinkButton message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns PaymentLinkButton
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.PaymentLinkMetadata.PaymentLinkButton;
+
+                /**
+                 * Creates a plain object from a PaymentLinkButton message. Also converts values to other types if specified.
+                 * @param message PaymentLinkButton
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.PaymentLinkMetadata.PaymentLinkButton, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this PaymentLinkButton to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for PaymentLinkButton
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** Properties of a PaymentLinkHeader. */
+            interface IPaymentLinkHeader {
+
+                /** PaymentLinkHeader headerType */
+                headerType: waproto.Message.PaymentLinkMetadata.PaymentLinkHeader.PaymentLinkHeaderType;
+            }
+
+            /** Represents a PaymentLinkHeader. */
+            class PaymentLinkHeader implements IPaymentLinkHeader {
+
+                /**
+                 * Constructs a new PaymentLinkHeader.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader);
+
+                /** PaymentLinkHeader headerType. */
+                public headerType: waproto.Message.PaymentLinkMetadata.PaymentLinkHeader.PaymentLinkHeaderType;
+
+                /**
+                 * Creates a new PaymentLinkHeader instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns PaymentLinkHeader instance
+                 */
+                public static create(properties?: waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader): waproto.Message.PaymentLinkMetadata.PaymentLinkHeader;
+
+                /**
+                 * Encodes the specified PaymentLinkHeader message. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.PaymentLinkHeader.verify|verify} messages.
+                 * @param message PaymentLinkHeader message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified PaymentLinkHeader message, length delimited. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.PaymentLinkHeader.verify|verify} messages.
+                 * @param message PaymentLinkHeader message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a PaymentLinkHeader message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns PaymentLinkHeader
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PaymentLinkMetadata.PaymentLinkHeader;
+
+                /**
+                 * Decodes a PaymentLinkHeader message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns PaymentLinkHeader
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PaymentLinkMetadata.PaymentLinkHeader;
+
+                /**
+                 * Verifies a PaymentLinkHeader message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a PaymentLinkHeader message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns PaymentLinkHeader
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.PaymentLinkMetadata.PaymentLinkHeader;
+
+                /**
+                 * Creates a plain object from a PaymentLinkHeader message. Also converts values to other types if specified.
+                 * @param message PaymentLinkHeader
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.PaymentLinkMetadata.PaymentLinkHeader, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this PaymentLinkHeader to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for PaymentLinkHeader
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            namespace PaymentLinkHeader {
+
+                /** PaymentLinkHeaderType enum. */
+                enum PaymentLinkHeaderType {
+                    LINK_PREVIEW = 0,
+                    ORDER = 1
+                }
             }
         }
 
@@ -33292,9 +33722,6 @@ export namespace waproto {
 
             /** VideoMessage processedVideos */
             processedVideos?: (waproto.IProcessedVideo[]|null);
-
-            /** VideoMessage externalShareFullVideoDurationInSeconds */
-            externalShareFullVideoDurationInSeconds?: (number|null);
         }
 
         /** Represents a VideoMessage. */
@@ -33383,9 +33810,6 @@ export namespace waproto {
 
             /** VideoMessage processedVideos. */
             public processedVideos: waproto.IProcessedVideo[];
-
-            /** VideoMessage externalShareFullVideoDurationInSeconds. */
-            public externalShareFullVideoDurationInSeconds?: (number|null);
 
             /**
              * Creates a new VideoMessage instance using the specified properties.

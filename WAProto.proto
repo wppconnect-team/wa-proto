@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020740375
+/// WhatsApp Version: 2.3000.1020837445
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -463,6 +463,7 @@ message BotProgressIndicatorMetadata {
     repeated BotPlanningStepMetadata stepsMetadata = 2;
     message BotPlanningStepMetadata {
         optional string statusTitle = 1;
+        optional string statusBody = 2;
         repeated BotPlanningSearchSourcesMetadata sourcesMetadata = 3;
         optional PlanningStepStatus status = 4;
         optional bool isReasoning = 5;
@@ -494,7 +495,7 @@ message BotProgressIndicatorMetadata {
         }
         
         enum BotSearchSourceProvider {
-            UNKNOWNPROVIDER = 0;
+            UNKNOWN_PROVIDER = 0;
             OTHER = 1;
             GOOGLE = 2;
             BING = 3;
@@ -738,6 +739,7 @@ message ClientPayload {
     optional int32 memClass = 37;
     optional InteropData interopData = 38;
     optional TrafficAnonymization trafficAnonymization = 40;
+    optional bool lidDbMigrated = 41;
     enum ConnectReason {
         PUSH = 0;
         USER_ACTIVATED = 1;
@@ -1650,6 +1652,7 @@ message Message {
     optional FutureProofMessage groupStatusMessage = 96;
     optional AIRichResponseMessage richResponseMessage = 97;
     optional StatusNotificationMessage statusNotificationMessage = 98;
+    optional FutureProofMessage limitSharingMessage = 99;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -1998,6 +2001,7 @@ message Message {
         optional uint32 videoHeight = 31;
         optional uint32 videoWidth = 32;
         optional Message.MMSThumbnailMetadata faviconMMSMetadata = 33;
+        optional LinkPreviewMetadata linkPreviewMetadata = 34;
         enum FontType {
             SYSTEM = 0;
             SYSTEM_TEXT = 1;
@@ -2014,6 +2018,10 @@ message Message {
             SUB = 2;
             DEFAULT_SUB = 3;
         }
+        message LinkPreviewMetadata {
+            optional Message.PaymentLinkMetadata paymentLinkMetadata = 1;
+        }
+        
         enum PreviewType {
             NONE = 0;
             VIDEO = 1;
@@ -2446,6 +2454,23 @@ message Message {
             NOVI = 2;
             UPI = 3;
         }
+    }
+    
+    message PaymentLinkMetadata {
+        optional PaymentLinkButton button = 1;
+        optional PaymentLinkHeader header = 2;
+        message PaymentLinkButton {
+            required string displayText = 1;
+        }
+        
+        message PaymentLinkHeader {
+            required PaymentLinkHeaderType headerType = 1;
+            enum PaymentLinkHeaderType {
+                LINK_PREVIEW = 0;
+                ORDER = 1;
+            }
+        }
+        
     }
     
     message PeerDataOperationRequestMessage {
@@ -2933,7 +2958,6 @@ message Message {
         repeated InteractiveAnnotation annotations = 25;
         optional string accessibilityLabel = 26;
         repeated ProcessedVideo processedVideos = 27;
-        optional uint32 externalShareFullVideoDurationInSeconds = 28;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
