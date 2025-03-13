@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020837445
+/// WhatsApp Version: 2.3000.1020861636
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1038,6 +1038,7 @@ message ContextInfo {
         optional string ctaPayload = 20;
         optional bool disableNudge = 21;
         optional string originalImageUrl = 22;
+        optional bool wtwaAdFormat = 23;
         enum MediaType {
             NONE = 0;
             IMAGE = 1;

@@ -10884,6 +10884,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo originalImageUrl */
             originalImageUrl?: (string|null);
+
+            /** ExternalAdReplyInfo wtwaAdFormat */
+            wtwaAdFormat?: (boolean|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -10960,6 +10963,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo originalImageUrl. */
             public originalImageUrl?: (string|null);
+
+            /** ExternalAdReplyInfo wtwaAdFormat. */
+            public wtwaAdFormat?: (boolean|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
