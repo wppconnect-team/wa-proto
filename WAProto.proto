@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020861636
+/// WhatsApp Version: 2.3000.1020903593
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1468,11 +1468,17 @@ message InteractiveAnnotation {
     repeated Point polygonVertices = 1;
     optional bool shouldSkipConfirmation = 4;
     optional EmbeddedContent embeddedContent = 5;
+    optional StatusLinkType statusLinkType = 8;
     oneof action {
         Location location = 2;
         ContextInfo.ForwardedNewsletterMessageInfo newsletter = 3;
         bool embeddedAction = 6;
         TapLinkAction tapAction = 7;
+    }
+    enum StatusLinkType {
+        RASTERIZED_LINK_PREVIEW = 1;
+        RASTERIZED_LINK_TRUNCATED = 2;
+        RASTERIZED_LINK_FULL_URL = 3;
     }
 }
 
@@ -3009,6 +3015,8 @@ message MessageAssociation {
         HD_IMAGE_DUAL_UPLOAD = 10;
         STICKER_ANNOTATION = 11;
         MOTION_PHOTO = 12;
+        STATUS_LINK_ACTION = 13;
+        VIEW_ALL_REPLIES = 14;
     }
 }
 

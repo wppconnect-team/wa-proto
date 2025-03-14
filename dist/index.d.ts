@@ -15846,6 +15846,9 @@ export namespace waproto {
         /** InteractiveAnnotation embeddedContent */
         embeddedContent?: (waproto.IEmbeddedContent|null);
 
+        /** InteractiveAnnotation statusLinkType */
+        statusLinkType?: (waproto.InteractiveAnnotation.StatusLinkType|null);
+
         /** InteractiveAnnotation location */
         location?: (waproto.ILocation|null);
 
@@ -15876,6 +15879,9 @@ export namespace waproto {
 
         /** InteractiveAnnotation embeddedContent. */
         public embeddedContent?: (waproto.IEmbeddedContent|null);
+
+        /** InteractiveAnnotation statusLinkType. */
+        public statusLinkType?: (waproto.InteractiveAnnotation.StatusLinkType|null);
 
         /** InteractiveAnnotation location. */
         public location?: (waproto.ILocation|null);
@@ -15968,6 +15974,16 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace InteractiveAnnotation {
+
+        /** StatusLinkType enum. */
+        enum StatusLinkType {
+            RASTERIZED_LINK_PREVIEW = 1,
+            RASTERIZED_LINK_TRUNCATED = 2,
+            RASTERIZED_LINK_FULL_URL = 3
+        }
     }
 
     /** Properties of a KeepInChat. */
@@ -34285,7 +34301,9 @@ export namespace waproto {
             STATUS_NOTIFICATION = 9,
             HD_IMAGE_DUAL_UPLOAD = 10,
             STICKER_ANNOTATION = 11,
-            MOTION_PHOTO = 12
+            MOTION_PHOTO = 12,
+            STATUS_LINK_ACTION = 13,
+            VIEW_ALL_REPLIES = 14
         }
     }
 
