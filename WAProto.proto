@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1020903593
+/// WhatsApp Version: 2.3000.1021001764
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2467,11 +2467,11 @@ message Message {
         optional PaymentLinkButton button = 1;
         optional PaymentLinkHeader header = 2;
         message PaymentLinkButton {
-            required string displayText = 1;
+            optional string displayText = 1;
         }
         
         message PaymentLinkHeader {
-            required PaymentLinkHeaderType headerType = 1;
+            optional PaymentLinkHeaderType headerType = 1;
             enum PaymentLinkHeaderType {
                 LINK_PREVIEW = 0;
                 ORDER = 1;
@@ -2965,6 +2965,7 @@ message Message {
         repeated InteractiveAnnotation annotations = 25;
         optional string accessibilityLabel = 26;
         repeated ProcessedVideo processedVideos = 27;
+        optional uint32 externalShareFullVideoDurationInSeconds = 28;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
@@ -3008,7 +3009,7 @@ message MessageAssociation {
         EVENT_COVER_IMAGE = 3;
         STATUS_POLL = 4;
         HD_VIDEO_DUAL_UPLOAD = 5;
-        STATUS_TAPPABLE_MESSAGE = 6;
+        STATUS_EXTERNAL_RESHARE = 6;
         MEDIA_POLL = 7;
         STATUS_ADD_YOURS = 8;
         STATUS_NOTIFICATION = 9;
