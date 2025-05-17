@@ -95,11 +95,10 @@ async function findAppModules() {
 
   // This one list of types is so long that it's split into two JavaScript declarations.
   // The module finder below can't handle it, so just patch it manually here.
-  const patchedQrData = qrData.replace(
-    't.ActionLinkSpec=void 0,t.TemplateButtonSpec',
-    't.ActionLinkSpec=t.TemplateButtonSpec'
+  const patchedQrData = qrData.replaceAll(
+    'LimitSharing$Trigger',
+    'LimitSharing$TriggerType'
   );
-  //const patchedQrData = qrData.replace("Spec=void 0,t.", "Spec=t.")
 
   const qrModules = acorn.parse(patchedQrData).body;
   
@@ -168,7 +167,8 @@ async function findAppModules() {
         if(
             left.property?.name && 
             left.property?.name !== 'internalSpec' && 
-            left.property?.name !== 'internalDefaults'
+            left.property?.name !== 'internalDefaults' &&
+            left.property?.name !== 'name'
         ) {
           assignments.push(left);
         }
