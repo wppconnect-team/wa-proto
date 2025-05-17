@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18.20.7
+          node-version: 22
 
       - name: Get npm cache directory
         id: npm-cache
@@ -73,7 +73,8 @@ jobs:
         if: steps.check_changes.outputs.result == 'changes_detected'
         run: |
           git add .
-          git commit -m "Update WAProto.proto"
+          VERSION=$(cat WAProto.proto | grep "WhatsApp Version" | cut -d":" -f2 | awk '{$1=$1;print}')
+          git commit -m "Update WAProto.proto to $VERSION"
           
       - name: Push Changes
         if: steps.check_changes.outputs.result == 'changes_detected'
@@ -85,4 +86,6 @@ jobs:
 
       - name: Release
         if: steps.check_changes.outputs.result == 'changes_detected'
-        run: 'npx release-it --increment patch'
+        run: |
+          VERSION=$(cat WAProto.proto | grep "WhatsApp Version" | cut -d":" -f2 | awk '{$1=$1;print}')
+          npx release-it --increment $VERSION
