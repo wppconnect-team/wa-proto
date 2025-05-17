@@ -7,29 +7,60 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/wppconnect-team/wa-proto/update-proto.yml?branch=main)](https://github.com/wppconnect/wa-proto/actions)
 [![release-it](https://img.shields.io/badge/%F0%9F%93%A6%F0%9F%9A%80-release--it-e10079.svg)](https://github.com/release-it/release-it)
 
-> WPPConnect/WA-Proto is a open source project with extracted protobuf files from WhatsApp WEB based on https://github.com/WhiskeySockets/Baileys/tree/master/WAProto
+> **WPPConnect/WA-Proto** is an open-source package providing up-to-date Protocol Buffer (`.proto`) definitions extracted from WhatsApp Web (2.3000.x series). It enables Node.js and TypeScript developers to encode, decode, and work with WhatsApp message structures using the [protobufjs](https://github.com/protobufjs/protobuf.js) library.
 
-> This project works with Protobuf files for 2.3000.x versions of Whatsapp
+## Features
 
-## Our online channels
+- Official WhatsApp Web `.proto` schema for 2.3000.x versions
+- Ready for use with Node.js and TypeScript
+- Ideal for bots, integrations, and WhatsApp research
+- Compatible with [protobufjs](https://github.com/protobufjs/protobuf.js)
 
-[![Discord](https://img.shields.io/discord/844351092758413353?color=blueviolet&label=Discord&logo=discord&style=flat)](https://discord.gg/JU5JGGKGNG)
-[![Telegram Group](https://img.shields.io/badge/Telegram-Group-32AFED?logo=telegram)](https://t.me/wppconnect)
-[![WhatsApp Group](https://img.shields.io/badge/WhatsApp-Group-25D366?logo=whatsapp)](https://chat.whatsapp.com/LJaQu6ZyNvnBPNAVRbX00K)
-[![YouTube](https://img.shields.io/youtube/channel/subscribers/UCD7J9LG08PmGQrF5IS7Yv9A?label=YouTube)](https://www.youtube.com/c/wppconnect)
+## Installation
+
+```sh
+npm install @wppconnect/wa-proto
+```
+
+## Usage Example (Node.js & TypeScript)
+
+Below is an example showing how to use the static build from the `dist` folder, accessing the WhatsApp proto definitions directly:
+
+```ts
+// TypeScript example using the static build from 'dist'
+import { waproto } from "@wppconnect/wa-proto";
+// // Node.js version
+// const { waproto } = require("@wppconnect/wa-proto");
+
+// Create a new message payload
+const payload = {
+  conversation: "Hello from WA-Proto!"
+  // ...set other fields as needed
+};
+
+// Verify the payload
+const errMsg = waproto.Message.verify(payload);
+if (errMsg) throw Error(errMsg);
+
+// Create a message instance
+const message = waproto.Message.create(payload);
+
+// Encode the message to a buffer
+const buffer = waproto.Message.encode(message).finish();
+
+// Decode the buffer back to a message
+const decoded = waproto.Message.decode(buffer);
+
+console.log("Decoded message:", decoded);
+```
+
+> **Tip:** You can also generate static JS/TS code using `protobufjs-cli` for better TypeScript integration:
+>
+> ```sh
+> npx pbjs -t static-module -w commonjs -o dist/index.js WAProto.proto
+> npx pbts -o dist/index.d.ts dist/index.js
+> ```
 
 ## License
 
-Copyright 2023 WPPConnect Team
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Apache 2.0 - See [LICENSE](./LICENSE) for details.
