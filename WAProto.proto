@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1023054691
+/// WhatsApp Version: 2.3000.1023399589
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1873,7 +1873,8 @@ message Message {
             BOT_FEEDBACK_MULTIPLE_POSITIVE_GENERIC = 1;
         }
         enum ReportKind {
-            GENERIC = 0;
+            NONE = 0;
+            GENERIC = 1;
         }
     }
     
@@ -3188,6 +3189,7 @@ message MessageContextInfo {
     optional string supportPayload = 12;
     optional LimitSharing limitSharing = 13;
     optional LimitSharing limitSharingV2 = 14;
+    repeated ThreadID threadId = 15;
     enum MessageAddonExpiryType {
         STATIC = 1;
         DEPENDENT_ON_PARENT = 2;
@@ -4205,6 +4207,15 @@ message TemplateButton {
         optional Message.HighlyStructuredMessage url = 2;
     }
     
+}
+
+message ThreadID {
+    optional ThreadType threadType = 1;
+    optional MessageKey threadKey = 2;
+    enum ThreadType {
+        UNKNOWN = 0;
+        VIEW_REPLIES = 1;
+    }
 }
 
 message UrlTrackingMap {
