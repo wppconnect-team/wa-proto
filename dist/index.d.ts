@@ -4834,6 +4834,9 @@ export namespace waproto {
 
         /** BotMetadata botAgeCollectionMetadata */
         botAgeCollectionMetadata?: (waproto.IBotAgeCollectionMetadata|null);
+
+        /** BotMetadata conversationStarterPromptId */
+        conversationStarterPromptId?: (string|null);
     }
 
     /** Represents a BotMetadata. */
@@ -4916,6 +4919,9 @@ export namespace waproto {
 
         /** BotMetadata botAgeCollectionMetadata. */
         public botAgeCollectionMetadata?: (waproto.IBotAgeCollectionMetadata|null);
+
+        /** BotMetadata conversationStarterPromptId. */
+        public conversationStarterPromptId?: (string|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -10878,6 +10884,9 @@ export namespace waproto {
 
         /** ContextInfo statusSourceType */
         statusSourceType?: (waproto.ContextInfo.StatusSourceType|null);
+
+        /** ContextInfo statusAttributions */
+        statusAttributions?: (waproto.IStatusAttribution[]|null);
     }
 
     /** Represents a ContextInfo. */
@@ -11029,6 +11038,9 @@ export namespace waproto {
 
         /** ContextInfo statusSourceType. */
         public statusSourceType?: (waproto.ContextInfo.StatusSourceType|null);
+
+        /** ContextInfo statusAttributions. */
+        public statusAttributions: waproto.IStatusAttribution[];
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -18593,6 +18605,12 @@ export namespace waproto {
 
         /** Message messageHistoryNotice */
         messageHistoryNotice?: (waproto.Message.IMessageHistoryNotice|null);
+
+        /** Message groupStatusMessageV2 */
+        groupStatusMessageV2?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message botForwardedMessage */
+        botForwardedMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -18861,6 +18879,12 @@ export namespace waproto {
 
         /** Message messageHistoryNotice. */
         public messageHistoryNotice?: (waproto.Message.IMessageHistoryNotice|null);
+
+        /** Message groupStatusMessageV2. */
+        public groupStatusMessageV2?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message botForwardedMessage. */
+        public botForwardedMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -28945,6 +28969,9 @@ export namespace waproto {
 
             /** PaymentLinkMetadata header */
             header?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader|null);
+
+            /** PaymentLinkMetadata provider */
+            provider?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkProvider|null);
         }
 
         /** Represents a PaymentLinkMetadata. */
@@ -28961,6 +28988,9 @@ export namespace waproto {
 
             /** PaymentLinkMetadata header. */
             public header?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkHeader|null);
+
+            /** PaymentLinkMetadata provider. */
+            public provider?: (waproto.Message.PaymentLinkMetadata.IPaymentLinkProvider|null);
 
             /**
              * Creates a new PaymentLinkMetadata instance using the specified properties.
@@ -29243,6 +29273,103 @@ export namespace waproto {
                     LINK_PREVIEW = 0,
                     ORDER = 1
                 }
+            }
+
+            /** Properties of a PaymentLinkProvider. */
+            interface IPaymentLinkProvider {
+
+                /** PaymentLinkProvider paramsJson */
+                paramsJson?: (string|null);
+            }
+
+            /** Represents a PaymentLinkProvider. */
+            class PaymentLinkProvider implements IPaymentLinkProvider {
+
+                /**
+                 * Constructs a new PaymentLinkProvider.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.PaymentLinkMetadata.IPaymentLinkProvider);
+
+                /** PaymentLinkProvider paramsJson. */
+                public paramsJson?: (string|null);
+
+                /**
+                 * Creates a new PaymentLinkProvider instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns PaymentLinkProvider instance
+                 */
+                public static create(properties?: waproto.Message.PaymentLinkMetadata.IPaymentLinkProvider): waproto.Message.PaymentLinkMetadata.PaymentLinkProvider;
+
+                /**
+                 * Encodes the specified PaymentLinkProvider message. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.PaymentLinkProvider.verify|verify} messages.
+                 * @param message PaymentLinkProvider message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.PaymentLinkMetadata.IPaymentLinkProvider, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified PaymentLinkProvider message, length delimited. Does not implicitly {@link waproto.Message.PaymentLinkMetadata.PaymentLinkProvider.verify|verify} messages.
+                 * @param message PaymentLinkProvider message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.PaymentLinkMetadata.IPaymentLinkProvider, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a PaymentLinkProvider message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns PaymentLinkProvider
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PaymentLinkMetadata.PaymentLinkProvider;
+
+                /**
+                 * Decodes a PaymentLinkProvider message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns PaymentLinkProvider
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PaymentLinkMetadata.PaymentLinkProvider;
+
+                /**
+                 * Verifies a PaymentLinkProvider message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a PaymentLinkProvider message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns PaymentLinkProvider
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.PaymentLinkMetadata.PaymentLinkProvider;
+
+                /**
+                 * Creates a plain object from a PaymentLinkProvider message. Also converts values to other types if specified.
+                 * @param message PaymentLinkProvider
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.PaymentLinkMetadata.PaymentLinkProvider, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this PaymentLinkProvider to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for PaymentLinkProvider
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
             }
         }
 
@@ -35383,6 +35510,15 @@ export namespace waproto {
 
             /** VideoMessage externalShareFullVideoDurationInSeconds */
             externalShareFullVideoDurationInSeconds?: (number|null);
+
+            /** VideoMessage motionPhotoPresentationOffsetMs */
+            motionPhotoPresentationOffsetMs?: (number|Long|null);
+
+            /** VideoMessage metadataUrl */
+            metadataUrl?: (string|null);
+
+            /** VideoMessage videoSourceType */
+            videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
         }
 
         /** Represents a VideoMessage. */
@@ -35475,6 +35611,15 @@ export namespace waproto {
             /** VideoMessage externalShareFullVideoDurationInSeconds. */
             public externalShareFullVideoDurationInSeconds?: (number|null);
 
+            /** VideoMessage motionPhotoPresentationOffsetMs. */
+            public motionPhotoPresentationOffsetMs?: (number|Long|null);
+
+            /** VideoMessage metadataUrl. */
+            public metadataUrl?: (string|null);
+
+            /** VideoMessage videoSourceType. */
+            public videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -35560,6 +35705,12 @@ export namespace waproto {
                 NONE = 0,
                 GIPHY = 1,
                 TENOR = 2
+            }
+
+            /** VideoSourceType enum. */
+            enum VideoSourceType {
+                USER_VIDEO = 0,
+                AI_GENERATED = 1
             }
         }
     }
@@ -42771,6 +42922,623 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a StatusAttribution. */
+    interface IStatusAttribution {
+
+        /** StatusAttribution type */
+        type?: (waproto.StatusAttribution.Type|null);
+
+        /** StatusAttribution actionUrl */
+        actionUrl?: (string|null);
+
+        /** StatusAttribution statusReshare */
+        statusReshare?: (waproto.StatusAttribution.IStatusReshare|null);
+
+        /** StatusAttribution externalShare */
+        externalShare?: (waproto.StatusAttribution.IExternalShare|null);
+
+        /** StatusAttribution music */
+        music?: (waproto.StatusAttribution.IMusic|null);
+    }
+
+    /** Represents a StatusAttribution. */
+    class StatusAttribution implements IStatusAttribution {
+
+        /**
+         * Constructs a new StatusAttribution.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IStatusAttribution);
+
+        /** StatusAttribution type. */
+        public type?: (waproto.StatusAttribution.Type|null);
+
+        /** StatusAttribution actionUrl. */
+        public actionUrl?: (string|null);
+
+        /** StatusAttribution statusReshare. */
+        public statusReshare?: (waproto.StatusAttribution.IStatusReshare|null);
+
+        /** StatusAttribution externalShare. */
+        public externalShare?: (waproto.StatusAttribution.IExternalShare|null);
+
+        /** StatusAttribution music. */
+        public music?: (waproto.StatusAttribution.IMusic|null);
+
+        /** StatusAttribution attributionData. */
+        public attributionData?: ("statusReshare"|"externalShare"|"music");
+
+        /**
+         * Creates a new StatusAttribution instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns StatusAttribution instance
+         */
+        public static create(properties?: waproto.IStatusAttribution): waproto.StatusAttribution;
+
+        /**
+         * Encodes the specified StatusAttribution message. Does not implicitly {@link waproto.StatusAttribution.verify|verify} messages.
+         * @param message StatusAttribution message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IStatusAttribution, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified StatusAttribution message, length delimited. Does not implicitly {@link waproto.StatusAttribution.verify|verify} messages.
+         * @param message StatusAttribution message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IStatusAttribution, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a StatusAttribution message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns StatusAttribution
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution;
+
+        /**
+         * Decodes a StatusAttribution message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns StatusAttribution
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution;
+
+        /**
+         * Verifies a StatusAttribution message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a StatusAttribution message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns StatusAttribution
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.StatusAttribution;
+
+        /**
+         * Creates a plain object from a StatusAttribution message. Also converts values to other types if specified.
+         * @param message StatusAttribution
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.StatusAttribution, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this StatusAttribution to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for StatusAttribution
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace StatusAttribution {
+
+        /** Properties of an ExternalShare. */
+        interface IExternalShare {
+
+            /** ExternalShare actionUrl */
+            actionUrl?: (string|null);
+
+            /** ExternalShare source */
+            source?: (waproto.StatusAttribution.ExternalShare.Source|null);
+
+            /** ExternalShare duration */
+            duration?: (number|null);
+
+            /** ExternalShare actionFallbackUrl */
+            actionFallbackUrl?: (string|null);
+        }
+
+        /** Represents an ExternalShare. */
+        class ExternalShare implements IExternalShare {
+
+            /**
+             * Constructs a new ExternalShare.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.StatusAttribution.IExternalShare);
+
+            /** ExternalShare actionUrl. */
+            public actionUrl?: (string|null);
+
+            /** ExternalShare source. */
+            public source?: (waproto.StatusAttribution.ExternalShare.Source|null);
+
+            /** ExternalShare duration. */
+            public duration?: (number|null);
+
+            /** ExternalShare actionFallbackUrl. */
+            public actionFallbackUrl?: (string|null);
+
+            /**
+             * Creates a new ExternalShare instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ExternalShare instance
+             */
+            public static create(properties?: waproto.StatusAttribution.IExternalShare): waproto.StatusAttribution.ExternalShare;
+
+            /**
+             * Encodes the specified ExternalShare message. Does not implicitly {@link waproto.StatusAttribution.ExternalShare.verify|verify} messages.
+             * @param message ExternalShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.StatusAttribution.IExternalShare, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ExternalShare message, length delimited. Does not implicitly {@link waproto.StatusAttribution.ExternalShare.verify|verify} messages.
+             * @param message ExternalShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.StatusAttribution.IExternalShare, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an ExternalShare message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ExternalShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution.ExternalShare;
+
+            /**
+             * Decodes an ExternalShare message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ExternalShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution.ExternalShare;
+
+            /**
+             * Verifies an ExternalShare message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an ExternalShare message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ExternalShare
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.StatusAttribution.ExternalShare;
+
+            /**
+             * Creates a plain object from an ExternalShare message. Also converts values to other types if specified.
+             * @param message ExternalShare
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.StatusAttribution.ExternalShare, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ExternalShare to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for ExternalShare
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace ExternalShare {
+
+            /** Source enum. */
+            enum Source {
+                UNKNOWN = 0,
+                INSTAGRAM = 1,
+                FACEBOOK = 2,
+                MESSENGER = 3,
+                SPOTIFY = 4
+            }
+        }
+
+        /** Properties of a Music. */
+        interface IMusic {
+
+            /** Music authorName */
+            authorName?: (string|null);
+
+            /** Music songId */
+            songId?: (string|null);
+
+            /** Music title */
+            title?: (string|null);
+
+            /** Music author */
+            author?: (string|null);
+
+            /** Music artistAttribution */
+            artistAttribution?: (string|null);
+
+            /** Music isExplicit */
+            isExplicit?: (boolean|null);
+        }
+
+        /** Represents a Music. */
+        class Music implements IMusic {
+
+            /**
+             * Constructs a new Music.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.StatusAttribution.IMusic);
+
+            /** Music authorName. */
+            public authorName?: (string|null);
+
+            /** Music songId. */
+            public songId?: (string|null);
+
+            /** Music title. */
+            public title?: (string|null);
+
+            /** Music author. */
+            public author?: (string|null);
+
+            /** Music artistAttribution. */
+            public artistAttribution?: (string|null);
+
+            /** Music isExplicit. */
+            public isExplicit?: (boolean|null);
+
+            /**
+             * Creates a new Music instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Music instance
+             */
+            public static create(properties?: waproto.StatusAttribution.IMusic): waproto.StatusAttribution.Music;
+
+            /**
+             * Encodes the specified Music message. Does not implicitly {@link waproto.StatusAttribution.Music.verify|verify} messages.
+             * @param message Music message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.StatusAttribution.IMusic, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Music message, length delimited. Does not implicitly {@link waproto.StatusAttribution.Music.verify|verify} messages.
+             * @param message Music message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.StatusAttribution.IMusic, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Music message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Music
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution.Music;
+
+            /**
+             * Decodes a Music message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Music
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution.Music;
+
+            /**
+             * Verifies a Music message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Music message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Music
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.StatusAttribution.Music;
+
+            /**
+             * Creates a plain object from a Music message. Also converts values to other types if specified.
+             * @param message Music
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.StatusAttribution.Music, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Music to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for Music
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a StatusReshare. */
+        interface IStatusReshare {
+
+            /** StatusReshare source */
+            source?: (waproto.StatusAttribution.StatusReshare.Source|null);
+
+            /** StatusReshare metadata */
+            metadata?: (waproto.StatusAttribution.StatusReshare.IMetadata|null);
+        }
+
+        /** Represents a StatusReshare. */
+        class StatusReshare implements IStatusReshare {
+
+            /**
+             * Constructs a new StatusReshare.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.StatusAttribution.IStatusReshare);
+
+            /** StatusReshare source. */
+            public source?: (waproto.StatusAttribution.StatusReshare.Source|null);
+
+            /** StatusReshare metadata. */
+            public metadata?: (waproto.StatusAttribution.StatusReshare.IMetadata|null);
+
+            /**
+             * Creates a new StatusReshare instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusReshare instance
+             */
+            public static create(properties?: waproto.StatusAttribution.IStatusReshare): waproto.StatusAttribution.StatusReshare;
+
+            /**
+             * Encodes the specified StatusReshare message. Does not implicitly {@link waproto.StatusAttribution.StatusReshare.verify|verify} messages.
+             * @param message StatusReshare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.StatusAttribution.IStatusReshare, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusReshare message, length delimited. Does not implicitly {@link waproto.StatusAttribution.StatusReshare.verify|verify} messages.
+             * @param message StatusReshare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.StatusAttribution.IStatusReshare, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusReshare message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns StatusReshare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution.StatusReshare;
+
+            /**
+             * Decodes a StatusReshare message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns StatusReshare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution.StatusReshare;
+
+            /**
+             * Verifies a StatusReshare message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusReshare message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusReshare
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.StatusAttribution.StatusReshare;
+
+            /**
+             * Creates a plain object from a StatusReshare message. Also converts values to other types if specified.
+             * @param message StatusReshare
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.StatusAttribution.StatusReshare, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusReshare to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for StatusReshare
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace StatusReshare {
+
+            /** Properties of a Metadata. */
+            interface IMetadata {
+
+                /** Metadata duration */
+                duration?: (number|null);
+
+                /** Metadata channelJid */
+                channelJid?: (string|null);
+
+                /** Metadata channelMessageId */
+                channelMessageId?: (number|null);
+
+                /** Metadata hasMultipleReshares */
+                hasMultipleReshares?: (boolean|null);
+            }
+
+            /** Represents a Metadata. */
+            class Metadata implements IMetadata {
+
+                /**
+                 * Constructs a new Metadata.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.StatusAttribution.StatusReshare.IMetadata);
+
+                /** Metadata duration. */
+                public duration?: (number|null);
+
+                /** Metadata channelJid. */
+                public channelJid?: (string|null);
+
+                /** Metadata channelMessageId. */
+                public channelMessageId?: (number|null);
+
+                /** Metadata hasMultipleReshares. */
+                public hasMultipleReshares?: (boolean|null);
+
+                /**
+                 * Creates a new Metadata instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Metadata instance
+                 */
+                public static create(properties?: waproto.StatusAttribution.StatusReshare.IMetadata): waproto.StatusAttribution.StatusReshare.Metadata;
+
+                /**
+                 * Encodes the specified Metadata message. Does not implicitly {@link waproto.StatusAttribution.StatusReshare.Metadata.verify|verify} messages.
+                 * @param message Metadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.StatusAttribution.StatusReshare.IMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Metadata message, length delimited. Does not implicitly {@link waproto.StatusAttribution.StatusReshare.Metadata.verify|verify} messages.
+                 * @param message Metadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.StatusAttribution.StatusReshare.IMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Metadata message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Metadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution.StatusReshare.Metadata;
+
+                /**
+                 * Decodes a Metadata message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Metadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution.StatusReshare.Metadata;
+
+                /**
+                 * Verifies a Metadata message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Metadata message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Metadata
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.StatusAttribution.StatusReshare.Metadata;
+
+                /**
+                 * Creates a plain object from a Metadata message. Also converts values to other types if specified.
+                 * @param message Metadata
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.StatusAttribution.StatusReshare.Metadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Metadata to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for Metadata
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            /** Source enum. */
+            enum Source {
+                UNKNOWN = 0,
+                INTERNAL_RESHARE = 1,
+                MENTION_RESHARE = 2,
+                CHANNEL_RESHARE = 3
+            }
+        }
+
+        /** Type enum. */
+        enum Type {
+            RESHARE = 0,
+            EXTERNAL_SHARE = 1,
+            MUSIC = 2
+        }
+    }
+
     /** Properties of a StatusMentionMessage. */
     interface IStatusMentionMessage {
 
@@ -43422,6 +44190,9 @@ export namespace waproto {
 
         /** SyncActionValue paymentTosAction */
         paymentTosAction?: (waproto.SyncActionValue.IPaymentTosAction|null);
+
+        /** SyncActionValue privacySettingChannelsPersonalisedRecommendationAction */
+        privacySettingChannelsPersonalisedRecommendationAction?: (waproto.SyncActionValue.IPrivacySettingChannelsPersonalisedRecommendationAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -43603,6 +44374,9 @@ export namespace waproto {
 
         /** SyncActionValue paymentTosAction. */
         public paymentTosAction?: (waproto.SyncActionValue.IPaymentTosAction|null);
+
+        /** SyncActionValue privacySettingChannelsPersonalisedRecommendationAction. */
+        public privacySettingChannelsPersonalisedRecommendationAction?: (waproto.SyncActionValue.IPrivacySettingChannelsPersonalisedRecommendationAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -47867,6 +48641,103 @@ export namespace waproto {
 
             /**
              * Gets the default type url for PrimaryVersionAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a PrivacySettingChannelsPersonalisedRecommendationAction. */
+        interface IPrivacySettingChannelsPersonalisedRecommendationAction {
+
+            /** PrivacySettingChannelsPersonalisedRecommendationAction isUserOptedOut */
+            isUserOptedOut?: (boolean|null);
+        }
+
+        /** Represents a PrivacySettingChannelsPersonalisedRecommendationAction. */
+        class PrivacySettingChannelsPersonalisedRecommendationAction implements IPrivacySettingChannelsPersonalisedRecommendationAction {
+
+            /**
+             * Constructs a new PrivacySettingChannelsPersonalisedRecommendationAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IPrivacySettingChannelsPersonalisedRecommendationAction);
+
+            /** PrivacySettingChannelsPersonalisedRecommendationAction isUserOptedOut. */
+            public isUserOptedOut?: (boolean|null);
+
+            /**
+             * Creates a new PrivacySettingChannelsPersonalisedRecommendationAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PrivacySettingChannelsPersonalisedRecommendationAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IPrivacySettingChannelsPersonalisedRecommendationAction): waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction;
+
+            /**
+             * Encodes the specified PrivacySettingChannelsPersonalisedRecommendationAction message. Does not implicitly {@link waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction.verify|verify} messages.
+             * @param message PrivacySettingChannelsPersonalisedRecommendationAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IPrivacySettingChannelsPersonalisedRecommendationAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PrivacySettingChannelsPersonalisedRecommendationAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction.verify|verify} messages.
+             * @param message PrivacySettingChannelsPersonalisedRecommendationAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IPrivacySettingChannelsPersonalisedRecommendationAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PrivacySettingChannelsPersonalisedRecommendationAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PrivacySettingChannelsPersonalisedRecommendationAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction;
+
+            /**
+             * Decodes a PrivacySettingChannelsPersonalisedRecommendationAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PrivacySettingChannelsPersonalisedRecommendationAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction;
+
+            /**
+             * Verifies a PrivacySettingChannelsPersonalisedRecommendationAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PrivacySettingChannelsPersonalisedRecommendationAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PrivacySettingChannelsPersonalisedRecommendationAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction;
+
+            /**
+             * Creates a plain object from a PrivacySettingChannelsPersonalisedRecommendationAction message. Also converts values to other types if specified.
+             * @param message PrivacySettingChannelsPersonalisedRecommendationAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PrivacySettingChannelsPersonalisedRecommendationAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PrivacySettingChannelsPersonalisedRecommendationAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1023406265
+/// WhatsApp Version: 2.3000.1023443745
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -407,6 +407,7 @@ message BotMetadata {
     optional BotModeSelectionMetadata botModeSelectionMetadata = 22;
     optional BotQuotaMetadata botQuotaMetadata = 23;
     optional BotAgeCollectionMetadata botAgeCollectionMetadata = 24;
+    optional string conversationStarterPromptId = 25;
 }
 
 enum BotMetricsEntryPoint {
@@ -1056,6 +1057,7 @@ message ContextInfo {
     optional MemberLabel memberLabel = 62;
     optional bool isQuestion = 63;
     optional StatusSourceType statusSourceType = 64;
+    repeated StatusAttribution statusAttributions = 65;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1763,6 +1765,8 @@ message Message {
     optional FutureProofMessage botTaskMessage = 100;
     optional FutureProofMessage questionMessage = 101;
     optional MessageHistoryNotice messageHistoryNotice = 102;
+    optional FutureProofMessage groupStatusMessageV2 = 103;
+    optional FutureProofMessage botForwardedMessage = 104;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2595,6 +2599,7 @@ message Message {
     message PaymentLinkMetadata {
         optional PaymentLinkButton button = 1;
         optional PaymentLinkHeader header = 2;
+        optional PaymentLinkProvider provider = 3;
         message PaymentLinkButton {
             optional string displayText = 1;
         }
@@ -2605,6 +2610,10 @@ message Message {
                 LINK_PREVIEW = 0;
                 ORDER = 1;
             }
+        }
+        
+        message PaymentLinkProvider {
+            optional string paramsJson = 1;
         }
         
     }
@@ -3119,10 +3128,17 @@ message Message {
         optional string accessibilityLabel = 26;
         repeated ProcessedVideo processedVideos = 27;
         optional uint32 externalShareFullVideoDurationInSeconds = 28;
+        optional uint64 motionPhotoPresentationOffsetMs = 29;
+        optional string metadataUrl = 30;
+        optional VideoSourceType videoSourceType = 31;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
             TENOR = 2;
+        }
+        enum VideoSourceType {
+            USER_VIDEO = 0;
+            AI_GENERATED = 1;
         }
     }
     
@@ -3700,6 +3716,62 @@ message SignedPreKeyRecordStructure {
     optional fixed64 timestamp = 5;
 }
 
+message StatusAttribution {
+    optional Type type = 1;
+    optional string actionUrl = 2;
+    oneof attributionData {
+        StatusAttribution.StatusReshare statusReshare = 3;
+        StatusAttribution.ExternalShare externalShare = 4;
+        StatusAttribution.Music music = 5;
+    }
+    message ExternalShare {
+        optional string actionUrl = 1;
+        optional Source source = 2;
+        optional int32 duration = 3;
+        optional string actionFallbackUrl = 4;
+        enum Source {
+            UNKNOWN = 0;
+            INSTAGRAM = 1;
+            FACEBOOK = 2;
+            MESSENGER = 3;
+            SPOTIFY = 4;
+        }
+    }
+    
+    message Music {
+        optional string authorName = 1;
+        optional string songId = 2;
+        optional string title = 3;
+        optional string author = 4;
+        optional string artistAttribution = 5;
+        optional bool isExplicit = 6;
+    }
+    
+    message StatusReshare {
+        optional Source source = 1;
+        optional Metadata metadata = 2;
+        message Metadata {
+            optional int32 duration = 1;
+            optional string channelJid = 2;
+            optional int32 channelMessageId = 3;
+            optional bool hasMultipleReshares = 4;
+        }
+        
+        enum Source {
+            UNKNOWN = 0;
+            INTERNAL_RESHARE = 1;
+            MENTION_RESHARE = 2;
+            CHANNEL_RESHARE = 3;
+        }
+    }
+    
+    enum Type {
+        RESHARE = 0;
+        EXTERNAL_SHARE = 1;
+        MUSIC = 2;
+    }
+}
+
 message StatusMentionMessage {
     optional Message quotedStatus = 1;
 }
@@ -3789,6 +3861,7 @@ message SyncActionValue {
     optional LidContactAction lidContactAction = 61;
     optional CtwaPerCustomerDataSharingAction ctwaPerCustomerDataSharingAction = 62;
     optional PaymentTosAction paymentTosAction = 63;
+    optional PrivacySettingChannelsPersonalisedRecommendationAction privacySettingChannelsPersonalisedRecommendationAction = 64;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4018,6 +4091,10 @@ message SyncActionValue {
     
     message PrimaryVersionAction {
         optional string version = 1;
+    }
+    
+    message PrivacySettingChannelsPersonalisedRecommendationAction {
+        optional bool isUserOptedOut = 1;
     }
     
     message PrivacySettingDisableLinkPreviewsAction {
