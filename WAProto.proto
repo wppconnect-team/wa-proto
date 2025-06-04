@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1023443745
+/// WhatsApp Version: 2.3000.1023482657
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -192,6 +192,7 @@ message AIRichResponseMessage {
     }
     message AIRichResponseTableMetadata {
         repeated AIRichResponseTableRow rows = 1;
+        optional string title = 2;
         message AIRichResponseTableRow {
             repeated string items = 1;
             optional bool isHeading = 2;

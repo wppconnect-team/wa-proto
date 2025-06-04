@@ -2490,6 +2490,9 @@ export namespace waproto {
 
             /** AIRichResponseTableMetadata rows */
             rows?: (waproto.AIRichResponseMessage.AIRichResponseTableMetadata.IAIRichResponseTableRow[]|null);
+
+            /** AIRichResponseTableMetadata title */
+            title?: (string|null);
         }
 
         /** Represents a AIRichResponseTableMetadata. */
@@ -2503,6 +2506,9 @@ export namespace waproto {
 
             /** AIRichResponseTableMetadata rows. */
             public rows: waproto.AIRichResponseMessage.AIRichResponseTableMetadata.IAIRichResponseTableRow[];
+
+            /** AIRichResponseTableMetadata title. */
+            public title?: (string|null);
 
             /**
              * Creates a new AIRichResponseTableMetadata instance using the specified properties.
