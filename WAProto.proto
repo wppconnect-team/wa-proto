@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1023482657
+/// WhatsApp Version: 2.3000.1023529440
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -52,6 +52,7 @@ message AIRichResponseMessage {
     optional AIRichResponseMessageType messageType = 1;
     repeated AIRichResponseSubMessage submessages = 2;
     optional AIRichResponseUnifiedResponse unifiedResponse = 3;
+    optional ContextInfo contextInfo = 4;
     message AIRichResponseCodeMetadata {
         optional string codeLanguage = 1;
         repeated AIRichResponseCodeBlock codeBlocks = 2;
@@ -3724,6 +3725,7 @@ message StatusAttribution {
         StatusAttribution.StatusReshare statusReshare = 3;
         StatusAttribution.ExternalShare externalShare = 4;
         StatusAttribution.Music music = 5;
+        StatusAttribution.GroupStatus groupStatus = 6;
     }
     message ExternalShare {
         optional string actionUrl = 1;
@@ -3737,6 +3739,10 @@ message StatusAttribution {
             MESSENGER = 3;
             SPOTIFY = 4;
         }
+    }
+    
+    message GroupStatus {
+        optional string authorJid = 1;
     }
     
     message Music {
@@ -3770,6 +3776,8 @@ message StatusAttribution {
         RESHARE = 0;
         EXTERNAL_SHARE = 1;
         MUSIC = 2;
+        STATUS_MENTION = 3;
+        GROUP_STATUS = 4;
     }
 }
 
