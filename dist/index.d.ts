@@ -26640,6 +26640,12 @@ export namespace waproto {
 
             /** LinkPreviewMetadata fbExperimentId */
             fbExperimentId?: (number|null);
+
+            /** LinkPreviewMetadata linkMediaDuration */
+            linkMediaDuration?: (number|null);
+
+            /** LinkPreviewMetadata socialMediaPostType */
+            socialMediaPostType?: (waproto.Message.LinkPreviewMetadata.SocialMediaPostType|null);
         }
 
         /** Represents a LinkPreviewMetadata. */
@@ -26659,6 +26665,12 @@ export namespace waproto {
 
             /** LinkPreviewMetadata fbExperimentId. */
             public fbExperimentId?: (number|null);
+
+            /** LinkPreviewMetadata linkMediaDuration. */
+            public linkMediaDuration?: (number|null);
+
+            /** LinkPreviewMetadata socialMediaPostType. */
+            public socialMediaPostType?: (waproto.Message.LinkPreviewMetadata.SocialMediaPostType|null);
 
             /**
              * Creates a new LinkPreviewMetadata instance using the specified properties.
@@ -26736,6 +26748,19 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace LinkPreviewMetadata {
+
+            /** SocialMediaPostType enum. */
+            enum SocialMediaPostType {
+                NONE = 0,
+                REEL = 1,
+                LIVE_VIDEO = 2,
+                LONG_VIDEO = 3,
+                SINGLE_IMAGE = 4,
+                CAROUSEL = 5
+            }
         }
 
         /** Properties of a ListMessage. */
@@ -36108,7 +36133,8 @@ export namespace waproto {
             STICKER_ANNOTATION = 11,
             MOTION_PHOTO = 12,
             STATUS_LINK_ACTION = 13,
-            VIEW_ALL_REPLIES = 14
+            VIEW_ALL_REPLIES = 14,
+            STATUS_ADD_YOURS_AI_IMAGINE = 15
         }
     }
 
