@@ -3993,7 +3993,8 @@ export namespace waproto {
             QUERY_PLAN = 32,
             PROACTIVE_MESSAGE = 33,
             RICH_RESPONSE_UNIFIED_RESPONSE = 34,
-            PROMOTION_MESSAGE = 35
+            PROMOTION_MESSAGE = 35,
+            SIMPLIFIED_PROFILE_PAGE = 36
         }
     }
 
@@ -4849,6 +4850,12 @@ export namespace waproto {
 
         /** BotMetadata conversationStarterPromptId */
         conversationStarterPromptId?: (string|null);
+
+        /** BotMetadata botResponseId */
+        botResponseId?: (string|null);
+
+        /** BotMetadata verificationMetadata */
+        verificationMetadata?: (waproto.IBotSignatureVerificationMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -4934,6 +4941,12 @@ export namespace waproto {
 
         /** BotMetadata conversationStarterPromptId. */
         public conversationStarterPromptId?: (string|null);
+
+        /** BotMetadata botResponseId. */
+        public botResponseId?: (string|null);
+
+        /** BotMetadata verificationMetadata. */
+        public verificationMetadata?: (waproto.IBotSignatureVerificationMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -7154,6 +7167,226 @@ export namespace waproto {
         EMU_FLASH = 4,
         EMU_FLASH_FOLLOWUP = 5,
         VOICE = 6
+    }
+
+    /** Properties of a BotSignatureVerificationMetadata. */
+    interface IBotSignatureVerificationMetadata {
+
+        /** BotSignatureVerificationMetadata proofs */
+        proofs?: (waproto.IBotSignatureVerificationUseCaseProof[]|null);
+    }
+
+    /** Represents a BotSignatureVerificationMetadata. */
+    class BotSignatureVerificationMetadata implements IBotSignatureVerificationMetadata {
+
+        /**
+         * Constructs a new BotSignatureVerificationMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotSignatureVerificationMetadata);
+
+        /** BotSignatureVerificationMetadata proofs. */
+        public proofs: waproto.IBotSignatureVerificationUseCaseProof[];
+
+        /**
+         * Creates a new BotSignatureVerificationMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotSignatureVerificationMetadata instance
+         */
+        public static create(properties?: waproto.IBotSignatureVerificationMetadata): waproto.BotSignatureVerificationMetadata;
+
+        /**
+         * Encodes the specified BotSignatureVerificationMetadata message. Does not implicitly {@link waproto.BotSignatureVerificationMetadata.verify|verify} messages.
+         * @param message BotSignatureVerificationMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotSignatureVerificationMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotSignatureVerificationMetadata message, length delimited. Does not implicitly {@link waproto.BotSignatureVerificationMetadata.verify|verify} messages.
+         * @param message BotSignatureVerificationMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotSignatureVerificationMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotSignatureVerificationMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotSignatureVerificationMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotSignatureVerificationMetadata;
+
+        /**
+         * Decodes a BotSignatureVerificationMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotSignatureVerificationMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotSignatureVerificationMetadata;
+
+        /**
+         * Verifies a BotSignatureVerificationMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotSignatureVerificationMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotSignatureVerificationMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotSignatureVerificationMetadata;
+
+        /**
+         * Creates a plain object from a BotSignatureVerificationMetadata message. Also converts values to other types if specified.
+         * @param message BotSignatureVerificationMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotSignatureVerificationMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotSignatureVerificationMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotSignatureVerificationMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BotSignatureVerificationUseCaseProof. */
+    interface IBotSignatureVerificationUseCaseProof {
+
+        /** BotSignatureVerificationUseCaseProof version */
+        version?: (number|null);
+
+        /** BotSignatureVerificationUseCaseProof useCase */
+        useCase?: (waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+        /** BotSignatureVerificationUseCaseProof signature */
+        signature?: (Uint8Array|null);
+
+        /** BotSignatureVerificationUseCaseProof certificateChain */
+        certificateChain?: (Uint8Array|null);
+    }
+
+    /** Represents a BotSignatureVerificationUseCaseProof. */
+    class BotSignatureVerificationUseCaseProof implements IBotSignatureVerificationUseCaseProof {
+
+        /**
+         * Constructs a new BotSignatureVerificationUseCaseProof.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotSignatureVerificationUseCaseProof);
+
+        /** BotSignatureVerificationUseCaseProof version. */
+        public version?: (number|null);
+
+        /** BotSignatureVerificationUseCaseProof useCase. */
+        public useCase?: (waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+        /** BotSignatureVerificationUseCaseProof signature. */
+        public signature?: (Uint8Array|null);
+
+        /** BotSignatureVerificationUseCaseProof certificateChain. */
+        public certificateChain?: (Uint8Array|null);
+
+        /**
+         * Creates a new BotSignatureVerificationUseCaseProof instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotSignatureVerificationUseCaseProof instance
+         */
+        public static create(properties?: waproto.IBotSignatureVerificationUseCaseProof): waproto.BotSignatureVerificationUseCaseProof;
+
+        /**
+         * Encodes the specified BotSignatureVerificationUseCaseProof message. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.verify|verify} messages.
+         * @param message BotSignatureVerificationUseCaseProof message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotSignatureVerificationUseCaseProof, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotSignatureVerificationUseCaseProof message, length delimited. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.verify|verify} messages.
+         * @param message BotSignatureVerificationUseCaseProof message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotSignatureVerificationUseCaseProof, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotSignatureVerificationUseCaseProof message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotSignatureVerificationUseCaseProof
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotSignatureVerificationUseCaseProof;
+
+        /**
+         * Decodes a BotSignatureVerificationUseCaseProof message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotSignatureVerificationUseCaseProof
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotSignatureVerificationUseCaseProof;
+
+        /**
+         * Verifies a BotSignatureVerificationUseCaseProof message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotSignatureVerificationUseCaseProof message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotSignatureVerificationUseCaseProof
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotSignatureVerificationUseCaseProof;
+
+        /**
+         * Creates a plain object from a BotSignatureVerificationUseCaseProof message. Also converts values to other types if specified.
+         * @param message BotSignatureVerificationUseCaseProof
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotSignatureVerificationUseCaseProof, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotSignatureVerificationUseCaseProof to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotSignatureVerificationUseCaseProof
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotSignatureVerificationUseCaseProof {
+
+        /** BotSignatureUseCase enum. */
+        enum BotSignatureUseCase {
+            WA_BOT_MSG = 0
+        }
     }
 
     /** Properties of a BotSourcesMetadata. */
@@ -30319,6 +30552,9 @@ export namespace waproto {
 
                 /** PeerDataOperationResult syncdSnapshotFatalRecoveryResponse */
                 syncdSnapshotFatalRecoveryResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse|null);
+
+                /** PeerDataOperationResult companionCanonicalUserNonceFetchRequestResponse */
+                companionCanonicalUserNonceFetchRequestResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionCanonicalUserNonceFetchResponse|null);
             }
 
             /** Represents a PeerDataOperationResult. */
@@ -30353,6 +30589,9 @@ export namespace waproto {
 
                 /** PeerDataOperationResult syncdSnapshotFatalRecoveryResponse. */
                 public syncdSnapshotFatalRecoveryResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ISyncDSnapshotFatalRecoveryResponse|null);
+
+                /** PeerDataOperationResult companionCanonicalUserNonceFetchRequestResponse. */
+                public companionCanonicalUserNonceFetchRequestResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionCanonicalUserNonceFetchResponse|null);
 
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
@@ -30433,6 +30672,103 @@ export namespace waproto {
             }
 
             namespace PeerDataOperationResult {
+
+                /** Properties of a CompanionCanonicalUserNonceFetchResponse. */
+                interface ICompanionCanonicalUserNonceFetchResponse {
+
+                    /** CompanionCanonicalUserNonceFetchResponse nonce */
+                    nonce?: (string|null);
+                }
+
+                /** Represents a CompanionCanonicalUserNonceFetchResponse. */
+                class CompanionCanonicalUserNonceFetchResponse implements ICompanionCanonicalUserNonceFetchResponse {
+
+                    /**
+                     * Constructs a new CompanionCanonicalUserNonceFetchResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionCanonicalUserNonceFetchResponse);
+
+                    /** CompanionCanonicalUserNonceFetchResponse nonce. */
+                    public nonce?: (string|null);
+
+                    /**
+                     * Creates a new CompanionCanonicalUserNonceFetchResponse instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns CompanionCanonicalUserNonceFetchResponse instance
+                     */
+                    public static create(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionCanonicalUserNonceFetchResponse): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse;
+
+                    /**
+                     * Encodes the specified CompanionCanonicalUserNonceFetchResponse message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse.verify|verify} messages.
+                     * @param message CompanionCanonicalUserNonceFetchResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionCanonicalUserNonceFetchResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified CompanionCanonicalUserNonceFetchResponse message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse.verify|verify} messages.
+                     * @param message CompanionCanonicalUserNonceFetchResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ICompanionCanonicalUserNonceFetchResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a CompanionCanonicalUserNonceFetchResponse message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns CompanionCanonicalUserNonceFetchResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse;
+
+                    /**
+                     * Decodes a CompanionCanonicalUserNonceFetchResponse message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns CompanionCanonicalUserNonceFetchResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse;
+
+                    /**
+                     * Verifies a CompanionCanonicalUserNonceFetchResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a CompanionCanonicalUserNonceFetchResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns CompanionCanonicalUserNonceFetchResponse
+                     */
+                    public static fromObject(object: { [k: string]: any }): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse;
+
+                    /**
+                     * Creates a plain object from a CompanionCanonicalUserNonceFetchResponse message. Also converts values to other types if specified.
+                     * @param message CompanionCanonicalUserNonceFetchResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this CompanionCanonicalUserNonceFetchResponse to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the default type url for CompanionCanonicalUserNonceFetchResponse
+                     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns The default type url
+                     */
+                    public static getTypeUrl(typeUrlPrefix?: string): string;
+                }
 
                 /** Properties of a CompanionMetaNonceFetchResponse. */
                 interface ICompanionMetaNonceFetchResponse {
@@ -31229,7 +31565,8 @@ export namespace waproto {
             WAFFLE_LINKING_NONCE_FETCH = 5,
             FULL_HISTORY_SYNC_ON_DEMAND = 6,
             COMPANION_META_NONCE_FETCH = 7,
-            COMPANION_SYNCD_SNAPSHOT_FATAL_RECOVERY = 8
+            COMPANION_SYNCD_SNAPSHOT_FATAL_RECOVERY = 8,
+            COMPANION_CANONICAL_USER_NONCE_FETCH = 9
         }
 
         /** Properties of a PinInChatMessage. */
@@ -43221,7 +43558,9 @@ export namespace waproto {
                 INSTAGRAM = 1,
                 FACEBOOK = 2,
                 MESSENGER = 3,
-                SPOTIFY = 4
+                SPOTIFY = 4,
+                YOUTUBE = 5,
+                PINTEREST = 6
             }
         }
 
