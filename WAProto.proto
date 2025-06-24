@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1023970185
+/// WhatsApp Version: 2.3000.1024117973
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4765,6 +4765,7 @@ message WebMessageInfo {
         CHANGE_LIMIT_SHARING = 216;
         GROUP_MEMBER_LINK_MODE = 217;
         BIZ_AUTOMATICALLY_LABELED_CHAT_SYSTEM_MESSAGE = 218;
+        PHONE_NUMBER_HIDING_CHAT_DEPRECATED_MESSAGE = 219;
     }
 }
 
