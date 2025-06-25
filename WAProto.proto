@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1024117973
+/// WhatsApp Version: 2.3000.1024182093
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -442,6 +442,7 @@ enum BotMetricsEntryPoint {
     UGC_CHAT_SHORTCUT_AI_STUDIO = 23;
     NEW_CHAT_AI_STUDIO = 24;
     AIVOICE_FAVICON_CALL_HISTORY = 25;
+    ASK_META_AI_CONTEXT_MENU = 26;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
@@ -454,6 +455,7 @@ enum BotMetricsThreadEntryPoint {
     AI_HOME_THREAD = 2;
     AI_DEEPLINK_IMMERSIVE_THREAD = 3;
     AI_DEEPLINK_THREAD = 4;
+    ASK_META_AI_CONTEXT_MENU_THREAD = 5;
 }
 message BotModeSelectionMetadata {
     repeated BotUserSelectionMode mode = 1;
@@ -655,6 +657,7 @@ message BotSourcesMetadata {
         optional string sourceQuery = 4;
         optional string faviconCdnUrl = 5;
         optional uint32 citationNumber = 6;
+        optional string sourceTitle = 7;
         enum SourceProvider {
             UNKNOWN = 0;
             BING = 1;
@@ -1969,6 +1972,7 @@ message Message {
         optional string ctwaSignals = 5;
         optional bytes ctwaPayload = 6;
         optional ContextInfo contextInfo = 7;
+        optional string nativeFlowCallButtonPayload = 8;
     }
     
     message CallLogMessage {
