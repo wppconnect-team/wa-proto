@@ -5053,8 +5053,7 @@ export namespace waproto {
         META_AI_CHAT_SHORTCUT_AI_STUDIO = 22,
         UGC_CHAT_SHORTCUT_AI_STUDIO = 23,
         NEW_CHAT_AI_STUDIO = 24,
-        AIVOICE_FAVICON_CALL_HISTORY = 25,
-        ASK_META_AI_CONTEXT_MENU = 26
+        AIVOICE_FAVICON_CALL_HISTORY = 25
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -5171,8 +5170,7 @@ export namespace waproto {
         AI_TAB_THREAD = 1,
         AI_HOME_THREAD = 2,
         AI_DEEPLINK_IMMERSIVE_THREAD = 3,
-        AI_DEEPLINK_THREAD = 4,
-        ASK_META_AI_CONTEXT_MENU_THREAD = 5
+        AI_DEEPLINK_THREAD = 4
     }
 
     /** Properties of a BotModeSelectionMetadata. */
@@ -7511,9 +7509,6 @@ export namespace waproto {
 
             /** BotSourceItem citationNumber */
             citationNumber?: (number|null);
-
-            /** BotSourceItem sourceTitle */
-            sourceTitle?: (string|null);
         }
 
         /** Represents a BotSourceItem. */
@@ -7542,9 +7537,6 @@ export namespace waproto {
 
             /** BotSourceItem citationNumber. */
             public citationNumber?: (number|null);
-
-            /** BotSourceItem sourceTitle. */
-            public sourceTitle?: (string|null);
 
             /**
              * Creates a new BotSourceItem instance using the specified properties.
@@ -21178,9 +21170,6 @@ export namespace waproto {
 
             /** Call contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
-
-            /** Call nativeFlowCallButtonPayload */
-            nativeFlowCallButtonPayload?: (string|null);
         }
 
         /** Represents a Call. */
@@ -21212,9 +21201,6 @@ export namespace waproto {
 
             /** Call contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
-
-            /** Call nativeFlowCallButtonPayload. */
-            public nativeFlowCallButtonPayload?: (string|null);
 
             /**
              * Creates a new Call instance using the specified properties.
