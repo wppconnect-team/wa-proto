@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1024182093
+/// WhatsApp Version: 2.3000.1024449876
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -329,6 +329,7 @@ message BotCapabilityMetadata {
         PROMOTION_MESSAGE = 35;
         SIMPLIFIED_PROFILE_PAGE = 36;
         RICH_RESPONSE_SOURCES_IN_MESSAGE = 37;
+        RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38;
     }
 }
 
@@ -2153,6 +2154,7 @@ message Message {
         optional Message.MMSThumbnailMetadata faviconMMSMetadata = 33;
         optional Message.LinkPreviewMetadata linkPreviewMetadata = 34;
         optional Message.PaymentLinkMetadata paymentLinkMetadata = 35;
+        repeated Message.VideoEndCard endCardTiles = 36;
         enum FontType {
             SYSTEM = 0;
             SYSTEM_TEXT = 1;
@@ -3141,6 +3143,13 @@ message Message {
         optional uint32 fbExperimentId = 1;
     }
     
+    message VideoEndCard {
+        required string username = 1;
+        required string caption = 2;
+        required string thumbnailImageUrl = 3;
+        required string profilePictureUrl = 4;
+    }
+    
     message VideoMessage {
         optional string url = 1;
         optional string mimetype = 2;
@@ -3914,6 +3923,8 @@ message SyncActionValue {
     optional PaymentTosAction paymentTosAction = 63;
     optional PrivacySettingChannelsPersonalisedRecommendationAction privacySettingChannelsPersonalisedRecommendationAction = 64;
     optional BusinessBroadcastAssociationAction businessBroadcastAssociationAction = 65;
+    optional DetectedOutcomesStatusAction detectedOutcomesStatusAction = 66;
+    optional MaibaAIFeaturesControlAction maibaAiFeaturesControlAction = 67;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -3996,6 +4007,10 @@ message SyncActionValue {
         optional int64 messageTimestamp = 2;
     }
     
+    message DetectedOutcomesStatusAction {
+        optional bool isEnabled = 1;
+    }
+    
     message ExternalWebBetaAction {
         optional bool isOptIn = 1;
     }
@@ -4054,6 +4069,15 @@ message SyncActionValue {
     
     message LockChatAction {
         optional bool locked = 1;
+    }
+    
+    message MaibaAIFeaturesControlAction {
+        optional MaibaAIFeatureStatus aiFeatureStatus = 1;
+        enum MaibaAIFeatureStatus {
+            ENABLED = 0;
+            ENABLED_HAS_LEARNING = 1;
+            DISABLED = 2;
+        }
     }
     
     message MarkChatAsReadAction {

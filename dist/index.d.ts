@@ -3995,7 +3995,8 @@ export namespace waproto {
             RICH_RESPONSE_UNIFIED_RESPONSE = 34,
             PROMOTION_MESSAGE = 35,
             SIMPLIFIED_PROFILE_PAGE = 36,
-            RICH_RESPONSE_SOURCES_IN_MESSAGE = 37
+            RICH_RESPONSE_SOURCES_IN_MESSAGE = 37,
+            RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38
         }
     }
 
@@ -23402,6 +23403,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage paymentLinkMetadata */
             paymentLinkMetadata?: (waproto.Message.IPaymentLinkMetadata|null);
+
+            /** ExtendedTextMessage endCardTiles */
+            endCardTiles?: (waproto.Message.IVideoEndCard[]|null);
         }
 
         /** Represents an ExtendedTextMessage. */
@@ -23496,6 +23500,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage paymentLinkMetadata. */
             public paymentLinkMetadata?: (waproto.Message.IPaymentLinkMetadata|null);
+
+            /** ExtendedTextMessage endCardTiles. */
+            public endCardTiles: waproto.Message.IVideoEndCard[];
 
             /**
              * Creates a new ExtendedTextMessage instance using the specified properties.
@@ -35822,6 +35829,121 @@ export namespace waproto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a VideoEndCard. */
+        interface IVideoEndCard {
+
+            /** VideoEndCard username */
+            username: string;
+
+            /** VideoEndCard caption */
+            caption: string;
+
+            /** VideoEndCard thumbnailImageUrl */
+            thumbnailImageUrl: string;
+
+            /** VideoEndCard profilePictureUrl */
+            profilePictureUrl: string;
+        }
+
+        /** Represents a VideoEndCard. */
+        class VideoEndCard implements IVideoEndCard {
+
+            /**
+             * Constructs a new VideoEndCard.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IVideoEndCard);
+
+            /** VideoEndCard username. */
+            public username: string;
+
+            /** VideoEndCard caption. */
+            public caption: string;
+
+            /** VideoEndCard thumbnailImageUrl. */
+            public thumbnailImageUrl: string;
+
+            /** VideoEndCard profilePictureUrl. */
+            public profilePictureUrl: string;
+
+            /**
+             * Creates a new VideoEndCard instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns VideoEndCard instance
+             */
+            public static create(properties?: waproto.Message.IVideoEndCard): waproto.Message.VideoEndCard;
+
+            /**
+             * Encodes the specified VideoEndCard message. Does not implicitly {@link waproto.Message.VideoEndCard.verify|verify} messages.
+             * @param message VideoEndCard message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IVideoEndCard, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified VideoEndCard message, length delimited. Does not implicitly {@link waproto.Message.VideoEndCard.verify|verify} messages.
+             * @param message VideoEndCard message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IVideoEndCard, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a VideoEndCard message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns VideoEndCard
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.VideoEndCard;
+
+            /**
+             * Decodes a VideoEndCard message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns VideoEndCard
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.VideoEndCard;
+
+            /**
+             * Verifies a VideoEndCard message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a VideoEndCard message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns VideoEndCard
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.VideoEndCard;
+
+            /**
+             * Creates a plain object from a VideoEndCard message. Also converts values to other types if specified.
+             * @param message VideoEndCard
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.VideoEndCard, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this VideoEndCard to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for VideoEndCard
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of a VideoMessage. */
         interface IVideoMessage {
 
@@ -44699,6 +44821,12 @@ export namespace waproto {
 
         /** SyncActionValue businessBroadcastAssociationAction */
         businessBroadcastAssociationAction?: (waproto.SyncActionValue.IBusinessBroadcastAssociationAction|null);
+
+        /** SyncActionValue detectedOutcomesStatusAction */
+        detectedOutcomesStatusAction?: (waproto.SyncActionValue.IDetectedOutcomesStatusAction|null);
+
+        /** SyncActionValue maibaAiFeaturesControlAction */
+        maibaAiFeaturesControlAction?: (waproto.SyncActionValue.IMaibaAIFeaturesControlAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -44886,6 +45014,12 @@ export namespace waproto {
 
         /** SyncActionValue businessBroadcastAssociationAction. */
         public businessBroadcastAssociationAction?: (waproto.SyncActionValue.IBusinessBroadcastAssociationAction|null);
+
+        /** SyncActionValue detectedOutcomesStatusAction. */
+        public detectedOutcomesStatusAction?: (waproto.SyncActionValue.IDetectedOutcomesStatusAction|null);
+
+        /** SyncActionValue maibaAiFeaturesControlAction. */
+        public maibaAiFeaturesControlAction?: (waproto.SyncActionValue.IMaibaAIFeaturesControlAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -46700,6 +46834,103 @@ export namespace waproto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a DetectedOutcomesStatusAction. */
+        interface IDetectedOutcomesStatusAction {
+
+            /** DetectedOutcomesStatusAction isEnabled */
+            isEnabled?: (boolean|null);
+        }
+
+        /** Represents a DetectedOutcomesStatusAction. */
+        class DetectedOutcomesStatusAction implements IDetectedOutcomesStatusAction {
+
+            /**
+             * Constructs a new DetectedOutcomesStatusAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IDetectedOutcomesStatusAction);
+
+            /** DetectedOutcomesStatusAction isEnabled. */
+            public isEnabled?: (boolean|null);
+
+            /**
+             * Creates a new DetectedOutcomesStatusAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns DetectedOutcomesStatusAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IDetectedOutcomesStatusAction): waproto.SyncActionValue.DetectedOutcomesStatusAction;
+
+            /**
+             * Encodes the specified DetectedOutcomesStatusAction message. Does not implicitly {@link waproto.SyncActionValue.DetectedOutcomesStatusAction.verify|verify} messages.
+             * @param message DetectedOutcomesStatusAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IDetectedOutcomesStatusAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified DetectedOutcomesStatusAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.DetectedOutcomesStatusAction.verify|verify} messages.
+             * @param message DetectedOutcomesStatusAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IDetectedOutcomesStatusAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a DetectedOutcomesStatusAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns DetectedOutcomesStatusAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.DetectedOutcomesStatusAction;
+
+            /**
+             * Decodes a DetectedOutcomesStatusAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns DetectedOutcomesStatusAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.DetectedOutcomesStatusAction;
+
+            /**
+             * Verifies a DetectedOutcomesStatusAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a DetectedOutcomesStatusAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns DetectedOutcomesStatusAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.DetectedOutcomesStatusAction;
+
+            /**
+             * Creates a plain object from a DetectedOutcomesStatusAction message. Also converts values to other types if specified.
+             * @param message DetectedOutcomesStatusAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.DetectedOutcomesStatusAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this DetectedOutcomesStatusAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for DetectedOutcomesStatusAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of an ExternalWebBetaAction. */
         interface IExternalWebBetaAction {
 
@@ -47746,6 +47977,113 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a MaibaAIFeaturesControlAction. */
+        interface IMaibaAIFeaturesControlAction {
+
+            /** MaibaAIFeaturesControlAction aiFeatureStatus */
+            aiFeatureStatus?: (waproto.SyncActionValue.MaibaAIFeaturesControlAction.MaibaAIFeatureStatus|null);
+        }
+
+        /** Represents a MaibaAIFeaturesControlAction. */
+        class MaibaAIFeaturesControlAction implements IMaibaAIFeaturesControlAction {
+
+            /**
+             * Constructs a new MaibaAIFeaturesControlAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IMaibaAIFeaturesControlAction);
+
+            /** MaibaAIFeaturesControlAction aiFeatureStatus. */
+            public aiFeatureStatus?: (waproto.SyncActionValue.MaibaAIFeaturesControlAction.MaibaAIFeatureStatus|null);
+
+            /**
+             * Creates a new MaibaAIFeaturesControlAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MaibaAIFeaturesControlAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IMaibaAIFeaturesControlAction): waproto.SyncActionValue.MaibaAIFeaturesControlAction;
+
+            /**
+             * Encodes the specified MaibaAIFeaturesControlAction message. Does not implicitly {@link waproto.SyncActionValue.MaibaAIFeaturesControlAction.verify|verify} messages.
+             * @param message MaibaAIFeaturesControlAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IMaibaAIFeaturesControlAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MaibaAIFeaturesControlAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.MaibaAIFeaturesControlAction.verify|verify} messages.
+             * @param message MaibaAIFeaturesControlAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IMaibaAIFeaturesControlAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MaibaAIFeaturesControlAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MaibaAIFeaturesControlAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.MaibaAIFeaturesControlAction;
+
+            /**
+             * Decodes a MaibaAIFeaturesControlAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MaibaAIFeaturesControlAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.MaibaAIFeaturesControlAction;
+
+            /**
+             * Verifies a MaibaAIFeaturesControlAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MaibaAIFeaturesControlAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MaibaAIFeaturesControlAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.MaibaAIFeaturesControlAction;
+
+            /**
+             * Creates a plain object from a MaibaAIFeaturesControlAction message. Also converts values to other types if specified.
+             * @param message MaibaAIFeaturesControlAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.MaibaAIFeaturesControlAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MaibaAIFeaturesControlAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for MaibaAIFeaturesControlAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace MaibaAIFeaturesControlAction {
+
+            /** MaibaAIFeatureStatus enum. */
+            enum MaibaAIFeatureStatus {
+                ENABLED = 0,
+                ENABLED_HAS_LEARNING = 1,
+                DISABLED = 2
+            }
         }
 
         /** Properties of a MarkChatAsReadAction. */
