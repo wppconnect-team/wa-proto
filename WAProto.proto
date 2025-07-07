@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1024449876
+/// WhatsApp Version: 2.3000.1024478481
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -444,6 +444,8 @@ enum BotMetricsEntryPoint {
     NEW_CHAT_AI_STUDIO = 24;
     AIVOICE_FAVICON_CALL_HISTORY = 25;
     ASK_META_AI_CONTEXT_MENU = 26;
+    ASK_META_AI_CONTEXT_MENU_1ON1 = 27;
+    ASK_META_AI_CONTEXT_MENU_GROUP = 28;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
@@ -1083,6 +1085,7 @@ message ContextInfo {
     optional bool isQuestion = 63;
     optional StatusSourceType statusSourceType = 64;
     repeated StatusAttribution statusAttributions = 65;
+    optional bool isGroupStatus = 66;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1189,6 +1192,7 @@ message ContextInfo {
         NONE = 0;
         RESHARED_FROM_MENTION = 1;
         RESHARED_FROM_POST = 2;
+        FORWARDED_FROM_STATUS = 3;
     }
     enum StatusSourceType {
         IMAGE = 0;
@@ -1792,6 +1796,7 @@ message Message {
     optional MessageHistoryNotice messageHistoryNotice = 102;
     optional FutureProofMessage groupStatusMessageV2 = 103;
     optional FutureProofMessage botForwardedMessage = 104;
+    optional StatusQuestionAnswerMessage statusQuestionAnswerMessage = 105;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2741,6 +2746,7 @@ message Message {
                 optional string matchText = 6;
                 optional string previewType = 7;
                 optional LinkPreviewHighQualityThumbnail hqThumbnail = 8;
+                optional PaymentLinkPreviewMetadata previewMetadata = 9;
                 message LinkPreviewHighQualityThumbnail {
                     optional string directPath = 1;
                     optional string thumbHash = 2;
@@ -2749,6 +2755,11 @@ message Message {
                     optional int64 mediaKeyTimestampMs = 5;
                     optional int32 thumbWidth = 6;
                     optional int32 thumbHeight = 7;
+                }
+                
+                message PaymentLinkPreviewMetadata {
+                    optional bool isBusinessVerified = 1;
+                    optional string providerName = 2;
                 }
                 
             }
@@ -3024,6 +3035,11 @@ message Message {
         }
     }
     
+    message StatusQuestionAnswerMessage {
+        optional MessageKey key = 1;
+        optional string text = 2;
+    }
+    
     message StickerMessage {
         optional string url = 1;
         optional bytes fileSha256 = 2;
@@ -3238,6 +3254,7 @@ message MessageAssociation {
         STATUS_LINK_ACTION = 13;
         VIEW_ALL_REPLIES = 14;
         STATUS_ADD_YOURS_AI_IMAGINE = 15;
+        STATUS_QUESTION = 16;
     }
 }
 
@@ -3775,6 +3792,7 @@ message StatusAttribution {
         StatusAttribution.ExternalShare externalShare = 4;
         StatusAttribution.Music music = 5;
         StatusAttribution.GroupStatus groupStatus = 6;
+        StatusAttribution.RLAttribution rlAttribution = 7;
     }
     message ExternalShare {
         optional string actionUrl = 1;
@@ -3805,6 +3823,15 @@ message StatusAttribution {
         optional bool isExplicit = 6;
     }
     
+    message RLAttribution {
+        optional Source source = 1;
+        enum Source {
+            UNKNOWN = 0;
+            RAY_BAN_META_GLASSES = 1;
+            OAKLEY_META_GLASSES = 2;
+        }
+    }
+    
     message StatusReshare {
         optional Source source = 1;
         optional Metadata metadata = 2;
@@ -3824,11 +3851,13 @@ message StatusAttribution {
     }
     
     enum Type {
-        RESHARE = 0;
-        EXTERNAL_SHARE = 1;
-        MUSIC = 2;
-        STATUS_MENTION = 3;
-        GROUP_STATUS = 4;
+        UNKNOWN = 0;
+        RESHARE = 1;
+        EXTERNAL_SHARE = 2;
+        MUSIC = 3;
+        STATUS_MENTION = 4;
+        GROUP_STATUS = 5;
+        RL_ATTRIBUTION = 6;
     }
 }
 

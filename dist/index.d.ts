@@ -5055,7 +5055,9 @@ export namespace waproto {
         UGC_CHAT_SHORTCUT_AI_STUDIO = 23,
         NEW_CHAT_AI_STUDIO = 24,
         AIVOICE_FAVICON_CALL_HISTORY = 25,
-        ASK_META_AI_CONTEXT_MENU = 26
+        ASK_META_AI_CONTEXT_MENU = 26,
+        ASK_META_AI_CONTEXT_MENU_1ON1 = 27,
+        ASK_META_AI_CONTEXT_MENU_GROUP = 28
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -11148,6 +11150,9 @@ export namespace waproto {
 
         /** ContextInfo statusAttributions */
         statusAttributions?: (waproto.IStatusAttribution[]|null);
+
+        /** ContextInfo isGroupStatus */
+        isGroupStatus?: (boolean|null);
     }
 
     /** Represents a ContextInfo. */
@@ -11302,6 +11307,9 @@ export namespace waproto {
 
         /** ContextInfo statusAttributions. */
         public statusAttributions: waproto.IStatusAttribution[];
+
+        /** ContextInfo isGroupStatus. */
+        public isGroupStatus?: (boolean|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -12465,7 +12473,8 @@ export namespace waproto {
         enum StatusAttributionType {
             NONE = 0,
             RESHARED_FROM_MENTION = 1,
-            RESHARED_FROM_POST = 2
+            RESHARED_FROM_POST = 2,
+            FORWARDED_FROM_STATUS = 3
         }
 
         /** StatusSourceType enum. */
@@ -18872,6 +18881,9 @@ export namespace waproto {
 
         /** Message botForwardedMessage */
         botForwardedMessage?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message statusQuestionAnswerMessage */
+        statusQuestionAnswerMessage?: (waproto.Message.IStatusQuestionAnswerMessage|null);
     }
 
     /** Represents a Message. */
@@ -19146,6 +19158,9 @@ export namespace waproto {
 
         /** Message botForwardedMessage. */
         public botForwardedMessage?: (waproto.Message.IFutureProofMessage|null);
+
+        /** Message statusQuestionAnswerMessage. */
+        public statusQuestionAnswerMessage?: (waproto.Message.IStatusQuestionAnswerMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -31026,6 +31041,9 @@ export namespace waproto {
 
                     /** LinkPreviewResponse hqThumbnail */
                     hqThumbnail?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.ILinkPreviewHighQualityThumbnail|null);
+
+                    /** LinkPreviewResponse previewMetadata */
+                    previewMetadata?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.IPaymentLinkPreviewMetadata|null);
                 }
 
                 /** Represents a LinkPreviewResponse. */
@@ -31057,6 +31075,9 @@ export namespace waproto {
 
                     /** LinkPreviewResponse hqThumbnail. */
                     public hqThumbnail?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.ILinkPreviewHighQualityThumbnail|null);
+
+                    /** LinkPreviewResponse previewMetadata. */
+                    public previewMetadata?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.IPaymentLinkPreviewMetadata|null);
 
                     /**
                      * Creates a new LinkPreviewResponse instance using the specified properties.
@@ -31265,6 +31286,109 @@ export namespace waproto {
 
                         /**
                          * Gets the default type url for LinkPreviewHighQualityThumbnail
+                         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                         * @returns The default type url
+                         */
+                        public static getTypeUrl(typeUrlPrefix?: string): string;
+                    }
+
+                    /** Properties of a PaymentLinkPreviewMetadata. */
+                    interface IPaymentLinkPreviewMetadata {
+
+                        /** PaymentLinkPreviewMetadata isBusinessVerified */
+                        isBusinessVerified?: (boolean|null);
+
+                        /** PaymentLinkPreviewMetadata providerName */
+                        providerName?: (string|null);
+                    }
+
+                    /** Represents a PaymentLinkPreviewMetadata. */
+                    class PaymentLinkPreviewMetadata implements IPaymentLinkPreviewMetadata {
+
+                        /**
+                         * Constructs a new PaymentLinkPreviewMetadata.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.IPaymentLinkPreviewMetadata);
+
+                        /** PaymentLinkPreviewMetadata isBusinessVerified. */
+                        public isBusinessVerified?: (boolean|null);
+
+                        /** PaymentLinkPreviewMetadata providerName. */
+                        public providerName?: (string|null);
+
+                        /**
+                         * Creates a new PaymentLinkPreviewMetadata instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns PaymentLinkPreviewMetadata instance
+                         */
+                        public static create(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.IPaymentLinkPreviewMetadata): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata;
+
+                        /**
+                         * Encodes the specified PaymentLinkPreviewMetadata message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata.verify|verify} messages.
+                         * @param message PaymentLinkPreviewMetadata message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encode(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.IPaymentLinkPreviewMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified PaymentLinkPreviewMetadata message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata.verify|verify} messages.
+                         * @param message PaymentLinkPreviewMetadata message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        public static encodeDelimited(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.IPaymentLinkPreviewMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a PaymentLinkPreviewMetadata message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns PaymentLinkPreviewMetadata
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata;
+
+                        /**
+                         * Decodes a PaymentLinkPreviewMetadata message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns PaymentLinkPreviewMetadata
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata;
+
+                        /**
+                         * Verifies a PaymentLinkPreviewMetadata message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        public static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a PaymentLinkPreviewMetadata message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns PaymentLinkPreviewMetadata
+                         */
+                        public static fromObject(object: { [k: string]: any }): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata;
+
+                        /**
+                         * Creates a plain object from a PaymentLinkPreviewMetadata message. Also converts values to other types if specified.
+                         * @param message PaymentLinkPreviewMetadata
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        public static toObject(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this PaymentLinkPreviewMetadata to JSON.
+                         * @returns JSON object
+                         */
+                        public toJSON(): { [k: string]: any };
+
+                        /**
+                         * Gets the default type url for PaymentLinkPreviewMetadata
                          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
                          * @returns The default type url
                          */
@@ -34502,6 +34626,109 @@ export namespace waproto {
             }
         }
 
+        /** Properties of a StatusQuestionAnswerMessage. */
+        interface IStatusQuestionAnswerMessage {
+
+            /** StatusQuestionAnswerMessage key */
+            key?: (waproto.IMessageKey|null);
+
+            /** StatusQuestionAnswerMessage text */
+            text?: (string|null);
+        }
+
+        /** Represents a StatusQuestionAnswerMessage. */
+        class StatusQuestionAnswerMessage implements IStatusQuestionAnswerMessage {
+
+            /**
+             * Constructs a new StatusQuestionAnswerMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IStatusQuestionAnswerMessage);
+
+            /** StatusQuestionAnswerMessage key. */
+            public key?: (waproto.IMessageKey|null);
+
+            /** StatusQuestionAnswerMessage text. */
+            public text?: (string|null);
+
+            /**
+             * Creates a new StatusQuestionAnswerMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusQuestionAnswerMessage instance
+             */
+            public static create(properties?: waproto.Message.IStatusQuestionAnswerMessage): waproto.Message.StatusQuestionAnswerMessage;
+
+            /**
+             * Encodes the specified StatusQuestionAnswerMessage message. Does not implicitly {@link waproto.Message.StatusQuestionAnswerMessage.verify|verify} messages.
+             * @param message StatusQuestionAnswerMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IStatusQuestionAnswerMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusQuestionAnswerMessage message, length delimited. Does not implicitly {@link waproto.Message.StatusQuestionAnswerMessage.verify|verify} messages.
+             * @param message StatusQuestionAnswerMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IStatusQuestionAnswerMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusQuestionAnswerMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns StatusQuestionAnswerMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.StatusQuestionAnswerMessage;
+
+            /**
+             * Decodes a StatusQuestionAnswerMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns StatusQuestionAnswerMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.StatusQuestionAnswerMessage;
+
+            /**
+             * Verifies a StatusQuestionAnswerMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusQuestionAnswerMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusQuestionAnswerMessage
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.StatusQuestionAnswerMessage;
+
+            /**
+             * Creates a plain object from a StatusQuestionAnswerMessage message. Also converts values to other types if specified.
+             * @param message StatusQuestionAnswerMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.StatusQuestionAnswerMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusQuestionAnswerMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for StatusQuestionAnswerMessage
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of a StickerMessage. */
         interface IStickerMessage {
 
@@ -36614,7 +36841,8 @@ export namespace waproto {
             MOTION_PHOTO = 12,
             STATUS_LINK_ACTION = 13,
             VIEW_ALL_REPLIES = 14,
-            STATUS_ADD_YOURS_AI_IMAGINE = 15
+            STATUS_ADD_YOURS_AI_IMAGINE = 15,
+            STATUS_QUESTION = 16
         }
     }
 
@@ -43460,6 +43688,9 @@ export namespace waproto {
 
         /** StatusAttribution groupStatus */
         groupStatus?: (waproto.StatusAttribution.IGroupStatus|null);
+
+        /** StatusAttribution rlAttribution */
+        rlAttribution?: (waproto.StatusAttribution.IRLAttribution|null);
     }
 
     /** Represents a StatusAttribution. */
@@ -43489,8 +43720,11 @@ export namespace waproto {
         /** StatusAttribution groupStatus. */
         public groupStatus?: (waproto.StatusAttribution.IGroupStatus|null);
 
+        /** StatusAttribution rlAttribution. */
+        public rlAttribution?: (waproto.StatusAttribution.IRLAttribution|null);
+
         /** StatusAttribution attributionData. */
-        public attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus");
+        public attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution");
 
         /**
          * Creates a new StatusAttribution instance using the specified properties.
@@ -43925,6 +44159,113 @@ export namespace waproto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a RLAttribution. */
+        interface IRLAttribution {
+
+            /** RLAttribution source */
+            source?: (waproto.StatusAttribution.RLAttribution.Source|null);
+        }
+
+        /** Represents a RLAttribution. */
+        class RLAttribution implements IRLAttribution {
+
+            /**
+             * Constructs a new RLAttribution.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.StatusAttribution.IRLAttribution);
+
+            /** RLAttribution source. */
+            public source?: (waproto.StatusAttribution.RLAttribution.Source|null);
+
+            /**
+             * Creates a new RLAttribution instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RLAttribution instance
+             */
+            public static create(properties?: waproto.StatusAttribution.IRLAttribution): waproto.StatusAttribution.RLAttribution;
+
+            /**
+             * Encodes the specified RLAttribution message. Does not implicitly {@link waproto.StatusAttribution.RLAttribution.verify|verify} messages.
+             * @param message RLAttribution message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.StatusAttribution.IRLAttribution, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RLAttribution message, length delimited. Does not implicitly {@link waproto.StatusAttribution.RLAttribution.verify|verify} messages.
+             * @param message RLAttribution message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.StatusAttribution.IRLAttribution, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RLAttribution message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RLAttribution
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution.RLAttribution;
+
+            /**
+             * Decodes a RLAttribution message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RLAttribution
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution.RLAttribution;
+
+            /**
+             * Verifies a RLAttribution message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RLAttribution message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RLAttribution
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.StatusAttribution.RLAttribution;
+
+            /**
+             * Creates a plain object from a RLAttribution message. Also converts values to other types if specified.
+             * @param message RLAttribution
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.StatusAttribution.RLAttribution, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RLAttribution to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for RLAttribution
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace RLAttribution {
+
+            /** Source enum. */
+            enum Source {
+                UNKNOWN = 0,
+                RAY_BAN_META_GLASSES = 1,
+                OAKLEY_META_GLASSES = 2
+            }
+        }
+
         /** Properties of a StatusReshare. */
         interface IStatusReshare {
 
@@ -44156,11 +44497,13 @@ export namespace waproto {
 
         /** Type enum. */
         enum Type {
-            RESHARE = 0,
-            EXTERNAL_SHARE = 1,
-            MUSIC = 2,
-            STATUS_MENTION = 3,
-            GROUP_STATUS = 4
+            UNKNOWN = 0,
+            RESHARE = 1,
+            EXTERNAL_SHARE = 2,
+            MUSIC = 3,
+            STATUS_MENTION = 4,
+            GROUP_STATUS = 5,
+            RL_ATTRIBUTION = 6
         }
     }
 
