@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1024478481
+/// WhatsApp Version: 2.3000.1024551647
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -415,6 +415,7 @@ message BotMetadata {
     optional string conversationStarterPromptId = 25;
     optional string botResponseId = 26;
     optional BotSignatureVerificationMetadata verificationMetadata = 27;
+    optional BotUnifiedResponseMutation unifiedResponseMutation = 28;
 }
 
 enum BotMetricsEntryPoint {
@@ -666,6 +667,7 @@ message BotSourcesMetadata {
             BING = 1;
             GOOGLE = 2;
             SUPPORT = 3;
+            OTHER = 4;
         }
     }
     
@@ -676,6 +678,14 @@ message BotSuggestedPromptMetadata {
     optional uint32 selectedPromptIndex = 2;
     optional BotPromptSuggestions promptSuggestions = 3;
     optional string selectedPromptId = 4;
+}
+
+message BotUnifiedResponseMutation {
+    optional SideBySideMetadata sbsMetadata = 1;
+    message SideBySideMetadata {
+        optional string primaryResponseId = 1;
+    }
+    
 }
 
 message CallLogRecord {
@@ -976,6 +986,7 @@ message ClientPayload {
             IPAD = 33;
             TEST = 34;
             SMART_GLASSES = 35;
+            BLUE_VR = 36;
         }
         enum ReleaseChannel {
             RELEASE = 0;
@@ -1797,6 +1808,7 @@ message Message {
     optional FutureProofMessage groupStatusMessageV2 = 103;
     optional FutureProofMessage botForwardedMessage = 104;
     optional StatusQuestionAnswerMessage statusQuestionAnswerMessage = 105;
+    optional QuestionAdminReplyMessage questionAdminReplyMessage = 106;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2950,6 +2962,17 @@ message Message {
             AI_QUERY_FANOUT = 29;
             GROUP_MEMBER_LABEL_CHANGE = 30;
         }
+    }
+    
+    message QuestionAdminReplyMessage {
+        optional Message adminReplyMessage = 1;
+        optional QuotedQuestionAdminReplyMessage quotedMessage = 2;
+        message QuotedQuestionAdminReplyMessage {
+            optional int32 serverQuestionId = 1;
+            optional Message quotedQuestion = 2;
+            optional Message quotedFollowerResponse = 3;
+        }
+        
     }
     
     message ReactionMessage {

@@ -4858,6 +4858,9 @@ export namespace waproto {
 
         /** BotMetadata verificationMetadata */
         verificationMetadata?: (waproto.IBotSignatureVerificationMetadata|null);
+
+        /** BotMetadata unifiedResponseMutation */
+        unifiedResponseMutation?: (waproto.IBotUnifiedResponseMutation|null);
     }
 
     /** Represents a BotMetadata. */
@@ -4949,6 +4952,9 @@ export namespace waproto {
 
         /** BotMetadata verificationMetadata. */
         public verificationMetadata?: (waproto.IBotSignatureVerificationMetadata|null);
+
+        /** BotMetadata unifiedResponseMutation. */
+        public unifiedResponseMutation?: (waproto.IBotUnifiedResponseMutation|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -7634,7 +7640,8 @@ export namespace waproto {
                 UNKNOWN = 0,
                 BING = 1,
                 GOOGLE = 2,
-                SUPPORT = 3
+                SUPPORT = 3,
+                OTHER = 4
             }
         }
     }
@@ -7752,6 +7759,203 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BotUnifiedResponseMutation. */
+    interface IBotUnifiedResponseMutation {
+
+        /** BotUnifiedResponseMutation sbsMetadata */
+        sbsMetadata?: (waproto.BotUnifiedResponseMutation.ISideBySideMetadata|null);
+    }
+
+    /** Represents a BotUnifiedResponseMutation. */
+    class BotUnifiedResponseMutation implements IBotUnifiedResponseMutation {
+
+        /**
+         * Constructs a new BotUnifiedResponseMutation.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotUnifiedResponseMutation);
+
+        /** BotUnifiedResponseMutation sbsMetadata. */
+        public sbsMetadata?: (waproto.BotUnifiedResponseMutation.ISideBySideMetadata|null);
+
+        /**
+         * Creates a new BotUnifiedResponseMutation instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotUnifiedResponseMutation instance
+         */
+        public static create(properties?: waproto.IBotUnifiedResponseMutation): waproto.BotUnifiedResponseMutation;
+
+        /**
+         * Encodes the specified BotUnifiedResponseMutation message. Does not implicitly {@link waproto.BotUnifiedResponseMutation.verify|verify} messages.
+         * @param message BotUnifiedResponseMutation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotUnifiedResponseMutation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotUnifiedResponseMutation message, length delimited. Does not implicitly {@link waproto.BotUnifiedResponseMutation.verify|verify} messages.
+         * @param message BotUnifiedResponseMutation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotUnifiedResponseMutation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotUnifiedResponseMutation message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotUnifiedResponseMutation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotUnifiedResponseMutation;
+
+        /**
+         * Decodes a BotUnifiedResponseMutation message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotUnifiedResponseMutation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotUnifiedResponseMutation;
+
+        /**
+         * Verifies a BotUnifiedResponseMutation message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotUnifiedResponseMutation message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotUnifiedResponseMutation
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotUnifiedResponseMutation;
+
+        /**
+         * Creates a plain object from a BotUnifiedResponseMutation message. Also converts values to other types if specified.
+         * @param message BotUnifiedResponseMutation
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotUnifiedResponseMutation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotUnifiedResponseMutation to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotUnifiedResponseMutation
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace BotUnifiedResponseMutation {
+
+        /** Properties of a SideBySideMetadata. */
+        interface ISideBySideMetadata {
+
+            /** SideBySideMetadata primaryResponseId */
+            primaryResponseId?: (string|null);
+        }
+
+        /** Represents a SideBySideMetadata. */
+        class SideBySideMetadata implements ISideBySideMetadata {
+
+            /**
+             * Constructs a new SideBySideMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BotUnifiedResponseMutation.ISideBySideMetadata);
+
+            /** SideBySideMetadata primaryResponseId. */
+            public primaryResponseId?: (string|null);
+
+            /**
+             * Creates a new SideBySideMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SideBySideMetadata instance
+             */
+            public static create(properties?: waproto.BotUnifiedResponseMutation.ISideBySideMetadata): waproto.BotUnifiedResponseMutation.SideBySideMetadata;
+
+            /**
+             * Encodes the specified SideBySideMetadata message. Does not implicitly {@link waproto.BotUnifiedResponseMutation.SideBySideMetadata.verify|verify} messages.
+             * @param message SideBySideMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.BotUnifiedResponseMutation.ISideBySideMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SideBySideMetadata message, length delimited. Does not implicitly {@link waproto.BotUnifiedResponseMutation.SideBySideMetadata.verify|verify} messages.
+             * @param message SideBySideMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.BotUnifiedResponseMutation.ISideBySideMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SideBySideMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SideBySideMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotUnifiedResponseMutation.SideBySideMetadata;
+
+            /**
+             * Decodes a SideBySideMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SideBySideMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotUnifiedResponseMutation.SideBySideMetadata;
+
+            /**
+             * Verifies a SideBySideMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SideBySideMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SideBySideMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.BotUnifiedResponseMutation.SideBySideMetadata;
+
+            /**
+             * Creates a plain object from a SideBySideMetadata message. Also converts values to other types if specified.
+             * @param message SideBySideMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.BotUnifiedResponseMutation.SideBySideMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SideBySideMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SideBySideMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
     }
 
     /** Properties of a CallLogRecord. */
@@ -10294,7 +10498,8 @@ export namespace waproto {
                 BLUE_WEB = 32,
                 IPAD = 33,
                 TEST = 34,
-                SMART_GLASSES = 35
+                SMART_GLASSES = 35,
+                BLUE_VR = 36
             }
 
             /** ReleaseChannel enum. */
@@ -18884,6 +19089,9 @@ export namespace waproto {
 
         /** Message statusQuestionAnswerMessage */
         statusQuestionAnswerMessage?: (waproto.Message.IStatusQuestionAnswerMessage|null);
+
+        /** Message questionAdminReplyMessage */
+        questionAdminReplyMessage?: (waproto.Message.IQuestionAdminReplyMessage|null);
     }
 
     /** Represents a Message. */
@@ -19161,6 +19369,9 @@ export namespace waproto {
 
         /** Message statusQuestionAnswerMessage. */
         public statusQuestionAnswerMessage?: (waproto.Message.IStatusQuestionAnswerMessage|null);
+
+        /** Message questionAdminReplyMessage. */
+        public questionAdminReplyMessage?: (waproto.Message.IQuestionAdminReplyMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -33485,6 +33696,221 @@ export namespace waproto {
                 AI_PSI_METADATA = 28,
                 AI_QUERY_FANOUT = 29,
                 GROUP_MEMBER_LABEL_CHANGE = 30
+            }
+        }
+
+        /** Properties of a QuestionAdminReplyMessage. */
+        interface IQuestionAdminReplyMessage {
+
+            /** QuestionAdminReplyMessage adminReplyMessage */
+            adminReplyMessage?: (waproto.IMessage|null);
+
+            /** QuestionAdminReplyMessage quotedMessage */
+            quotedMessage?: (waproto.Message.QuestionAdminReplyMessage.IQuotedQuestionAdminReplyMessage|null);
+        }
+
+        /** Represents a QuestionAdminReplyMessage. */
+        class QuestionAdminReplyMessage implements IQuestionAdminReplyMessage {
+
+            /**
+             * Constructs a new QuestionAdminReplyMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IQuestionAdminReplyMessage);
+
+            /** QuestionAdminReplyMessage adminReplyMessage. */
+            public adminReplyMessage?: (waproto.IMessage|null);
+
+            /** QuestionAdminReplyMessage quotedMessage. */
+            public quotedMessage?: (waproto.Message.QuestionAdminReplyMessage.IQuotedQuestionAdminReplyMessage|null);
+
+            /**
+             * Creates a new QuestionAdminReplyMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns QuestionAdminReplyMessage instance
+             */
+            public static create(properties?: waproto.Message.IQuestionAdminReplyMessage): waproto.Message.QuestionAdminReplyMessage;
+
+            /**
+             * Encodes the specified QuestionAdminReplyMessage message. Does not implicitly {@link waproto.Message.QuestionAdminReplyMessage.verify|verify} messages.
+             * @param message QuestionAdminReplyMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IQuestionAdminReplyMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified QuestionAdminReplyMessage message, length delimited. Does not implicitly {@link waproto.Message.QuestionAdminReplyMessage.verify|verify} messages.
+             * @param message QuestionAdminReplyMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IQuestionAdminReplyMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a QuestionAdminReplyMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns QuestionAdminReplyMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.QuestionAdminReplyMessage;
+
+            /**
+             * Decodes a QuestionAdminReplyMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns QuestionAdminReplyMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.QuestionAdminReplyMessage;
+
+            /**
+             * Verifies a QuestionAdminReplyMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a QuestionAdminReplyMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns QuestionAdminReplyMessage
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.QuestionAdminReplyMessage;
+
+            /**
+             * Creates a plain object from a QuestionAdminReplyMessage message. Also converts values to other types if specified.
+             * @param message QuestionAdminReplyMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.QuestionAdminReplyMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this QuestionAdminReplyMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for QuestionAdminReplyMessage
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace QuestionAdminReplyMessage {
+
+            /** Properties of a QuotedQuestionAdminReplyMessage. */
+            interface IQuotedQuestionAdminReplyMessage {
+
+                /** QuotedQuestionAdminReplyMessage serverQuestionId */
+                serverQuestionId?: (number|null);
+
+                /** QuotedQuestionAdminReplyMessage quotedQuestion */
+                quotedQuestion?: (waproto.IMessage|null);
+
+                /** QuotedQuestionAdminReplyMessage quotedFollowerResponse */
+                quotedFollowerResponse?: (waproto.IMessage|null);
+            }
+
+            /** Represents a QuotedQuestionAdminReplyMessage. */
+            class QuotedQuestionAdminReplyMessage implements IQuotedQuestionAdminReplyMessage {
+
+                /**
+                 * Constructs a new QuotedQuestionAdminReplyMessage.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.QuestionAdminReplyMessage.IQuotedQuestionAdminReplyMessage);
+
+                /** QuotedQuestionAdminReplyMessage serverQuestionId. */
+                public serverQuestionId?: (number|null);
+
+                /** QuotedQuestionAdminReplyMessage quotedQuestion. */
+                public quotedQuestion?: (waproto.IMessage|null);
+
+                /** QuotedQuestionAdminReplyMessage quotedFollowerResponse. */
+                public quotedFollowerResponse?: (waproto.IMessage|null);
+
+                /**
+                 * Creates a new QuotedQuestionAdminReplyMessage instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns QuotedQuestionAdminReplyMessage instance
+                 */
+                public static create(properties?: waproto.Message.QuestionAdminReplyMessage.IQuotedQuestionAdminReplyMessage): waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage;
+
+                /**
+                 * Encodes the specified QuotedQuestionAdminReplyMessage message. Does not implicitly {@link waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage.verify|verify} messages.
+                 * @param message QuotedQuestionAdminReplyMessage message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.QuestionAdminReplyMessage.IQuotedQuestionAdminReplyMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified QuotedQuestionAdminReplyMessage message, length delimited. Does not implicitly {@link waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage.verify|verify} messages.
+                 * @param message QuotedQuestionAdminReplyMessage message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.QuestionAdminReplyMessage.IQuotedQuestionAdminReplyMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a QuotedQuestionAdminReplyMessage message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns QuotedQuestionAdminReplyMessage
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage;
+
+                /**
+                 * Decodes a QuotedQuestionAdminReplyMessage message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns QuotedQuestionAdminReplyMessage
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage;
+
+                /**
+                 * Verifies a QuotedQuestionAdminReplyMessage message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a QuotedQuestionAdminReplyMessage message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns QuotedQuestionAdminReplyMessage
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage;
+
+                /**
+                 * Creates a plain object from a QuotedQuestionAdminReplyMessage message. Also converts values to other types if specified.
+                 * @param message QuotedQuestionAdminReplyMessage
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.QuestionAdminReplyMessage.QuotedQuestionAdminReplyMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this QuotedQuestionAdminReplyMessage to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for QuotedQuestionAdminReplyMessage
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
             }
         }
 
