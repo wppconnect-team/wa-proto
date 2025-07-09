@@ -5063,7 +5063,9 @@ export namespace waproto {
         AIVOICE_FAVICON_CALL_HISTORY = 25,
         ASK_META_AI_CONTEXT_MENU = 26,
         ASK_META_AI_CONTEXT_MENU_1ON1 = 27,
-        ASK_META_AI_CONTEXT_MENU_GROUP = 28
+        ASK_META_AI_CONTEXT_MENU_GROUP = 28,
+        INVOKE_META_AI_1ON1 = 29,
+        INVOKE_META_AI_GROUP = 30
     }
 
     /** Properties of a BotMetricsMetadata. */
