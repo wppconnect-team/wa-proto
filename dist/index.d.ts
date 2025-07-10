@@ -20329,6 +20329,9 @@ export namespace waproto {
 
             /** AudioMessage accessibilityLabel */
             accessibilityLabel?: (string|null);
+
+            /** AudioMessage mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents an AudioMessage. */
@@ -20387,6 +20390,9 @@ export namespace waproto {
 
             /** AudioMessage accessibilityLabel. */
             public accessibilityLabel?: (string|null);
+
+            /** AudioMessage mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new AudioMessage instance using the specified properties.
@@ -22795,6 +22801,9 @@ export namespace waproto {
 
             /** DocumentMessage accessibilityLabel */
             accessibilityLabel?: (string|null);
+
+            /** DocumentMessage mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents a DocumentMessage. */
@@ -22868,6 +22877,9 @@ export namespace waproto {
 
             /** DocumentMessage accessibilityLabel. */
             public accessibilityLabel?: (string|null);
+
+            /** DocumentMessage mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new DocumentMessage instance using the specified properties.
@@ -23634,6 +23646,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage endCardTiles */
             endCardTiles?: (waproto.Message.IVideoEndCard[]|null);
+
+            /** ExtendedTextMessage mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents an ExtendedTextMessage. */
@@ -23731,6 +23746,9 @@ export namespace waproto {
 
             /** ExtendedTextMessage endCardTiles. */
             public endCardTiles: waproto.Message.IVideoEndCard[];
+
+            /** ExtendedTextMessage mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new ExtendedTextMessage instance using the specified properties.
@@ -25189,6 +25207,9 @@ export namespace waproto {
 
             /** ImageMessage accessibilityLabel */
             accessibilityLabel?: (string|null);
+
+            /** ImageMessage mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents an ImageMessage. */
@@ -25286,6 +25307,9 @@ export namespace waproto {
 
             /** ImageMessage accessibilityLabel. */
             public accessibilityLabel?: (string|null);
+
+            /** ImageMessage mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new ImageMessage instance using the specified properties.
@@ -28589,6 +28613,9 @@ export namespace waproto {
 
             /** MMSThumbnailMetadata thumbnailWidth */
             thumbnailWidth?: (number|null);
+
+            /** MMSThumbnailMetadata mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents a MMSThumbnailMetadata. */
@@ -28620,6 +28647,9 @@ export namespace waproto {
 
             /** MMSThumbnailMetadata thumbnailWidth. */
             public thumbnailWidth?: (number|null);
+
+            /** MMSThumbnailMetadata mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new MMSThumbnailMetadata instance using the specified properties.
@@ -28697,6 +28727,15 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** MediaKeyDomain enum. */
+        enum MediaKeyDomain {
+            UNSET = 0,
+            E2EE_CHAT = 1,
+            STATUS = 2,
+            CAPI = 3,
+            BOT = 4
         }
 
         /** Properties of a MessageHistoryBundle. */
@@ -35219,6 +35258,9 @@ export namespace waproto {
 
             /** StickerMessage accessibilityLabel */
             accessibilityLabel?: (string|null);
+
+            /** StickerMessage mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents a StickerMessage. */
@@ -35289,6 +35331,9 @@ export namespace waproto {
 
             /** StickerMessage accessibilityLabel. */
             public accessibilityLabel?: (string|null);
+
+            /** StickerMessage mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new StickerMessage instance using the specified properties.
@@ -36691,6 +36736,9 @@ export namespace waproto {
 
             /** VideoMessage videoSourceType */
             videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
+
+            /** VideoMessage mediaKeyDomain */
+            mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
         }
 
         /** Represents a VideoMessage. */
@@ -36791,6 +36839,9 @@ export namespace waproto {
 
             /** VideoMessage videoSourceType. */
             public videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
+
+            /** VideoMessage mediaKeyDomain. */
+            public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
 
             /**
              * Creates a new VideoMessage instance using the specified properties.
@@ -44359,7 +44410,8 @@ export namespace waproto {
                 MESSENGER = 3,
                 SPOTIFY = 4,
                 YOUTUBE = 5,
-                PINTEREST = 6
+                PINTEREST = 6,
+                THREADS = 7
             }
         }
 
