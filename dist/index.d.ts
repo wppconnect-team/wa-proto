@@ -13957,6 +13957,9 @@ export namespace waproto {
 
             /** HistorySyncConfig supportMessageAssociation */
             supportMessageAssociation?: (boolean|null);
+
+            /** HistorySyncConfig supportGroupHistory */
+            supportGroupHistory?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -14009,6 +14012,9 @@ export namespace waproto {
 
             /** HistorySyncConfig supportMessageAssociation. */
             public supportMessageAssociation?: (boolean|null);
+
+            /** HistorySyncConfig supportGroupHistory. */
+            public supportGroupHistory?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
@@ -35089,7 +35095,8 @@ export namespace waproto {
             enum StatusNotificationType {
                 UNKNOWN = 0,
                 STATUS_ADD_YOURS = 1,
-                STATUS_RESHARE = 2
+                STATUS_RESHARE = 2,
+                STATUS_QUESTION_ANSWER_RESHARE = 3
             }
         }
 

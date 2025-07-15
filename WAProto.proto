@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1024617758
+/// WhatsApp Version: 2.3000.1024744989
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1342,6 +1342,7 @@ message DeviceProps {
         optional bool supportFbidBotChatHistory = 12;
         optional bool supportAddOnHistorySyncMigration = 13;
         optional bool supportMessageAssociation = 14;
+        optional bool supportGroupHistory = 15;
     }
     
     enum PlatformType {
@@ -3069,6 +3070,7 @@ message Message {
             UNKNOWN = 0;
             STATUS_ADD_YOURS = 1;
             STATUS_RESHARE = 2;
+            STATUS_QUESTION_ANSWER_RESHARE = 3;
         }
     }
     
