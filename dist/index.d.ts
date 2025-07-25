@@ -12368,6 +12368,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo adType */
             adType?: (waproto.ContextInfo.ExternalAdReplyInfo.AdType|null);
+
+            /** ExternalAdReplyInfo wtwaWebsiteUrl */
+            wtwaWebsiteUrl?: (string|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -12453,6 +12456,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo adType. */
             public adType?: (waproto.ContextInfo.ExternalAdReplyInfo.AdType|null);
+
+            /** ExternalAdReplyInfo wtwaWebsiteUrl. */
+            public wtwaWebsiteUrl?: (string|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -22472,6 +22478,9 @@ export namespace waproto {
 
             /** CloudAPIThreadControlNotification notificationContent */
             notificationContent?: (waproto.Message.CloudAPIThreadControlNotification.ICloudAPIThreadControlNotificationContent|null);
+
+            /** CloudAPIThreadControlNotification shouldSuppressNotification */
+            shouldSuppressNotification?: (boolean|null);
         }
 
         /** Represents a CloudAPIThreadControlNotification. */
@@ -22497,6 +22506,9 @@ export namespace waproto {
 
             /** CloudAPIThreadControlNotification notificationContent. */
             public notificationContent?: (waproto.Message.CloudAPIThreadControlNotification.ICloudAPIThreadControlNotificationContent|null);
+
+            /** CloudAPIThreadControlNotification shouldSuppressNotification. */
+            public shouldSuppressNotification?: (boolean|null);
 
             /**
              * Creates a new CloudAPIThreadControlNotification instance using the specified properties.

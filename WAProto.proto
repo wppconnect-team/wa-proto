@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025139211
+/// WhatsApp Version: 2.3000.1025150051
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1175,6 +1175,7 @@ message ContextInfo {
         optional string automatedGreetingMessageCtaType = 23;
         optional bool wtwaAdFormat = 24;
         optional AdType adType = 25;
+        optional string wtwaWebsiteUrl = 26;
         enum AdType {
             CTWA = 0;
             CAWC = 1;
@@ -2083,6 +2084,7 @@ message Message {
         optional string consumerLid = 3;
         optional string consumerPhoneNumber = 4;
         optional CloudAPIThreadControlNotificationContent notificationContent = 5;
+        optional bool shouldSuppressNotification = 6;
         enum CloudAPIThreadControl {
             UNKNOWN = 0;
             CONTROL_PASSED = 1;
