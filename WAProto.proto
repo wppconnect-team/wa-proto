@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025126393
+/// WhatsApp Version: 2.3000.1025139211
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -387,6 +387,17 @@ message BotMemuMetadata {
     repeated BotMediaMetadata faceImages = 1;
 }
 
+message BotMessageOrigin {
+    optional BotMessageOriginType type = 1;
+    enum BotMessageOriginType {
+        BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED = 0;
+    }
+}
+
+message BotMessageOriginMetadata {
+    repeated BotMessageOrigin origins = 1;
+}
+
 message BotMetadata {
     optional BotAvatarMetadata avatarMetadata = 1;
     optional string personaId = 2;
@@ -416,6 +427,7 @@ message BotMetadata {
     optional string botResponseId = 26;
     optional BotSignatureVerificationMetadata verificationMetadata = 27;
     optional BotUnifiedResponseMutation unifiedResponseMutation = 28;
+    optional BotMessageOriginMetadata botMessageOriginMetadata = 29;
 }
 
 enum BotMetricsEntryPoint {
@@ -1099,6 +1111,9 @@ message ContextInfo {
     optional StatusSourceType statusSourceType = 64;
     repeated StatusAttribution statusAttributions = 65;
     optional bool isGroupStatus = 66;
+    optional ForwardOrigin forwardOrigin = 67;
+    optional QuestionReplyQuotedMessage questionReplyQuotedMessage = 68;
+    optional StatusAudienceMetadata statusAudienceMetadata = 69;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1119,6 +1134,11 @@ message ContextInfo {
         optional bool showMmDisclosure = 1;
         optional string encryptedSignalTokenConsented = 2;
         repeated Parameters parameters = 3;
+        optional int32 dataSharingFlags = 4;
+        enum DataSharingFlags {
+            SHOW_MM_DISCLOSURE_ON_CLICK = 1;
+            SHOW_MM_DISCLOSURE_ON_READ = 2;
+        }
         message Parameters {
             optional string key = 1;
             optional string stringData = 2;
@@ -1173,6 +1193,12 @@ message ContextInfo {
         optional bool canBeReshared = 4;
     }
     
+    enum ForwardOrigin {
+        UNKNOWN = 0;
+        CHAT = 1;
+        STATUS = 2;
+        CHANNELS = 3;
+    }
     message ForwardedAIBotMessageInfo {
         optional string botName = 1;
         optional string botJid = 2;
@@ -1201,12 +1227,27 @@ message ContextInfo {
         MOTION_PHOTO_PARENT = 5;
         MOTION_PHOTO_CHILD = 6;
     }
+    message QuestionReplyQuotedMessage {
+        optional int32 serverQuestionId = 1;
+        optional Message quotedQuestion = 2;
+        optional Message quotedResponse = 3;
+    }
+    
     enum StatusAttributionType {
         NONE = 0;
         RESHARED_FROM_MENTION = 1;
         RESHARED_FROM_POST = 2;
-        FORWARDED_FROM_STATUS = 3;
+        RESHARED_FROM_POST_MANY_TIMES = 3;
+        FORWARDED_FROM_STATUS = 4;
     }
+    message StatusAudienceMetadata {
+        optional AudienceType audienceType = 1;
+        enum AudienceType {
+            UNKNOWN = 0;
+            CLOSE_FRIENDS = 1;
+        }
+    }
+    
     enum StatusSourceType {
         IMAGE = 0;
         VIDEO = 1;
@@ -1343,6 +1384,7 @@ message DeviceProps {
         optional bool supportAddOnHistorySyncMigration = 13;
         optional bool supportMessageAssociation = 14;
         optional bool supportGroupHistory = 15;
+        optional bool onDemandReady = 16;
     }
     
     enum PlatformType {
@@ -1495,6 +1537,7 @@ message GroupMention {
 message GroupParticipant {
     required string userJid = 1;
     optional Rank rank = 2;
+    optional MemberLabel memberLabel = 3;
     enum Rank {
         REGULAR = 0;
         ADMIN = 1;
@@ -1811,7 +1854,6 @@ message Message {
     optional FutureProofMessage groupStatusMessageV2 = 103;
     optional FutureProofMessage botForwardedMessage = 104;
     optional StatusQuestionAnswerMessage statusQuestionAnswerMessage = 105;
-    optional QuestionAdminReplyMessage questionAdminReplyMessage = 106;
     optional QuestionResponseMessage questionResponseMessage = 107;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
@@ -2178,7 +2220,6 @@ message Message {
         optional Message.LinkPreviewMetadata linkPreviewMetadata = 34;
         optional Message.PaymentLinkMetadata paymentLinkMetadata = 35;
         repeated Message.VideoEndCard endCardTiles = 36;
-        optional Message.MediaKeyDomain mediaKeyDomain = 37;
         enum FontType {
             SYSTEM = 0;
             SYSTEM_TEXT = 1;
@@ -2978,17 +3019,6 @@ message Message {
             AI_QUERY_FANOUT = 29;
             GROUP_MEMBER_LABEL_CHANGE = 30;
         }
-    }
-    
-    message QuestionAdminReplyMessage {
-        optional Message adminReplyMessage = 1;
-        optional QuotedQuestionAdminReplyMessage quotedMessage = 2;
-        message QuotedQuestionAdminReplyMessage {
-            optional int32 serverQuestionId = 1;
-            optional Message quotedQuestion = 2;
-            optional Message quotedFollowerResponse = 3;
-        }
-        
     }
     
     message QuestionResponseMessage {
@@ -3931,6 +3961,7 @@ message StickerMetadata {
     optional float weight = 10;
     optional int64 lastStickerSentTs = 11;
     optional bool isLottie = 12;
+    optional bool isAvatarSticker = 13;
 }
 
 message SyncActionData {
@@ -4001,7 +4032,7 @@ message SyncActionValue {
     optional PrivacySettingChannelsPersonalisedRecommendationAction privacySettingChannelsPersonalisedRecommendationAction = 64;
     optional BusinessBroadcastAssociationAction businessBroadcastAssociationAction = 65;
     optional DetectedOutcomesStatusAction detectedOutcomesStatusAction = 66;
-    optional MaibaAIFeaturesControlAction maibaAiFeaturesControlAction = 67;
+    optional MaibaAIFeaturesControlAction maibaAiFeaturesControlAction = 68;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4312,6 +4343,7 @@ message SyncActionValue {
         optional bool isFavorite = 9;
         optional uint32 deviceIdHint = 10;
         optional bool isLottie = 11;
+        optional bool isAvatarSticker = 12;
     }
     
     message SubscriptionAction {
