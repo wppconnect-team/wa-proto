@@ -38340,6 +38340,12 @@ export namespace waproto {
         /** MsgOpaqueData eventEndTime */
         eventEndTime?: (number|Long|null);
 
+        /** MsgOpaqueData eventIsScheduledCall */
+        eventIsScheduledCall?: (boolean|null);
+
+        /** MsgOpaqueData eventExtraGuestsAllowed */
+        eventExtraGuestsAllowed?: (boolean|null);
+
         /** MsgOpaqueData plainProtobufBytes */
         plainProtobufBytes?: (Uint8Array|null);
     }
@@ -38466,6 +38472,12 @@ export namespace waproto {
 
         /** MsgOpaqueData eventEndTime. */
         public eventEndTime?: (number|Long|null);
+
+        /** MsgOpaqueData eventIsScheduledCall. */
+        public eventIsScheduledCall?: (boolean|null);
+
+        /** MsgOpaqueData eventExtraGuestsAllowed. */
+        public eventExtraGuestsAllowed?: (boolean|null);
 
         /** MsgOpaqueData plainProtobufBytes. */
         public plainProtobufBytes?: (Uint8Array|null);
