@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025178181
+/// WhatsApp Version: 2.3000.1025262493
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4037,6 +4037,7 @@ message SyncActionValue {
     optional BusinessBroadcastAssociationAction businessBroadcastAssociationAction = 65;
     optional DetectedOutcomesStatusAction detectedOutcomesStatusAction = 66;
     optional MaibaAIFeaturesControlAction maibaAiFeaturesControlAction = 68;
+    optional BusinessBroadcastListAction businessBroadcastListAction = 69;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4058,6 +4059,11 @@ message SyncActionValue {
     
     message BusinessBroadcastAssociationAction {
         optional bool deleted = 1;
+    }
+    
+    message BusinessBroadcastListAction {
+        optional bool deleted = 1;
+        repeated string phoneNumbers = 2;
     }
     
     message CallLogAction {

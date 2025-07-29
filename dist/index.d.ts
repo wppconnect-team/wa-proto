@@ -46043,6 +46043,9 @@ export namespace waproto {
 
         /** SyncActionValue maibaAiFeaturesControlAction */
         maibaAiFeaturesControlAction?: (waproto.SyncActionValue.IMaibaAIFeaturesControlAction|null);
+
+        /** SyncActionValue businessBroadcastListAction */
+        businessBroadcastListAction?: (waproto.SyncActionValue.IBusinessBroadcastListAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -46236,6 +46239,9 @@ export namespace waproto {
 
         /** SyncActionValue maibaAiFeaturesControlAction. */
         public maibaAiFeaturesControlAction?: (waproto.SyncActionValue.IMaibaAIFeaturesControlAction|null);
+
+        /** SyncActionValue businessBroadcastListAction. */
+        public businessBroadcastListAction?: (waproto.SyncActionValue.IBusinessBroadcastListAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -46814,6 +46820,109 @@ export namespace waproto {
 
             /**
              * Gets the default type url for BusinessBroadcastAssociationAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a BusinessBroadcastListAction. */
+        interface IBusinessBroadcastListAction {
+
+            /** BusinessBroadcastListAction deleted */
+            deleted?: (boolean|null);
+
+            /** BusinessBroadcastListAction phoneNumbers */
+            phoneNumbers?: (string[]|null);
+        }
+
+        /** Represents a BusinessBroadcastListAction. */
+        class BusinessBroadcastListAction implements IBusinessBroadcastListAction {
+
+            /**
+             * Constructs a new BusinessBroadcastListAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IBusinessBroadcastListAction);
+
+            /** BusinessBroadcastListAction deleted. */
+            public deleted?: (boolean|null);
+
+            /** BusinessBroadcastListAction phoneNumbers. */
+            public phoneNumbers: string[];
+
+            /**
+             * Creates a new BusinessBroadcastListAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BusinessBroadcastListAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IBusinessBroadcastListAction): waproto.SyncActionValue.BusinessBroadcastListAction;
+
+            /**
+             * Encodes the specified BusinessBroadcastListAction message. Does not implicitly {@link waproto.SyncActionValue.BusinessBroadcastListAction.verify|verify} messages.
+             * @param message BusinessBroadcastListAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IBusinessBroadcastListAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BusinessBroadcastListAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.BusinessBroadcastListAction.verify|verify} messages.
+             * @param message BusinessBroadcastListAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IBusinessBroadcastListAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BusinessBroadcastListAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BusinessBroadcastListAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.BusinessBroadcastListAction;
+
+            /**
+             * Decodes a BusinessBroadcastListAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BusinessBroadcastListAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.BusinessBroadcastListAction;
+
+            /**
+             * Verifies a BusinessBroadcastListAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BusinessBroadcastListAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BusinessBroadcastListAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.BusinessBroadcastListAction;
+
+            /**
+             * Creates a plain object from a BusinessBroadcastListAction message. Also converts values to other types if specified.
+             * @param message BusinessBroadcastListAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.BusinessBroadcastListAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BusinessBroadcastListAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for BusinessBroadcastListAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
