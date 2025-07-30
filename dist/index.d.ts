@@ -12674,7 +12674,8 @@ export namespace waproto {
             UNKNOWN = 0,
             CHAT = 1,
             STATUS = 2,
-            CHANNELS = 3
+            CHANNELS = 3,
+            META_AI = 4
         }
 
         /** Properties of a ForwardedAIBotMessageInfo. */
@@ -14431,6 +14432,9 @@ export namespace waproto {
 
             /** HistorySyncConfig onDemandReady */
             onDemandReady?: (boolean|null);
+
+            /** HistorySyncConfig supportGuestChatHistory */
+            supportGuestChatHistory?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -14489,6 +14493,9 @@ export namespace waproto {
 
             /** HistorySyncConfig onDemandReady. */
             public onDemandReady?: (boolean|null);
+
+            /** HistorySyncConfig supportGuestChatHistory. */
+            public supportGuestChatHistory?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
@@ -21902,6 +21909,9 @@ export namespace waproto {
 
             /** Call nativeFlowCallButtonPayload */
             nativeFlowCallButtonPayload?: (string|null);
+
+            /** Call deeplinkPayload */
+            deeplinkPayload?: (string|null);
         }
 
         /** Represents a Call. */
@@ -21936,6 +21946,9 @@ export namespace waproto {
 
             /** Call nativeFlowCallButtonPayload. */
             public nativeFlowCallButtonPayload?: (string|null);
+
+            /** Call deeplinkPayload. */
+            public deeplinkPayload?: (string|null);
 
             /**
              * Creates a new Call instance using the specified properties.
@@ -37302,7 +37315,8 @@ export namespace waproto {
             enum Attribution {
                 NONE = 0,
                 GIPHY = 1,
-                TENOR = 2
+                TENOR = 2,
+                KLIPY = 3
             }
 
             /** VideoSourceType enum. */
@@ -46834,6 +46848,9 @@ export namespace waproto {
 
             /** BusinessBroadcastListAction phoneNumbers */
             phoneNumbers?: (string[]|null);
+
+            /** BusinessBroadcastListAction listName */
+            listName?: (string|null);
         }
 
         /** Represents a BusinessBroadcastListAction. */
@@ -46850,6 +46867,9 @@ export namespace waproto {
 
             /** BusinessBroadcastListAction phoneNumbers. */
             public phoneNumbers: string[];
+
+            /** BusinessBroadcastListAction listName. */
+            public listName?: (string|null);
 
             /**
              * Creates a new BusinessBroadcastListAction instance using the specified properties.

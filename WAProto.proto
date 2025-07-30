@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025262493
+/// WhatsApp Version: 2.3000.1025312018
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1199,6 +1199,7 @@ message ContextInfo {
         CHAT = 1;
         STATUS = 2;
         CHANNELS = 3;
+        META_AI = 4;
     }
     message ForwardedAIBotMessageInfo {
         optional string botName = 1;
@@ -1386,6 +1387,7 @@ message DeviceProps {
         optional bool supportMessageAssociation = 14;
         optional bool supportGroupHistory = 15;
         optional bool onDemandReady = 16;
+        optional bool supportGuestChatHistory = 17;
     }
     
     enum PlatformType {
@@ -2039,6 +2041,7 @@ message Message {
         optional bytes ctwaPayload = 6;
         optional ContextInfo contextInfo = 7;
         optional string nativeFlowCallButtonPayload = 8;
+        optional string deeplinkPayload = 9;
     }
     
     message CallLogMessage {
@@ -3280,6 +3283,7 @@ message Message {
             NONE = 0;
             GIPHY = 1;
             TENOR = 2;
+            KLIPY = 3;
         }
         enum VideoSourceType {
             USER_VIDEO = 0;
@@ -4064,6 +4068,7 @@ message SyncActionValue {
     message BusinessBroadcastListAction {
         optional bool deleted = 1;
         repeated string phoneNumbers = 2;
+        optional string listName = 3;
     }
     
     message CallLogAction {
