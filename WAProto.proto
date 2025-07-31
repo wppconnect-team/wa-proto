@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025312018
+/// WhatsApp Version: 2.3000.1025363761
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1387,7 +1387,7 @@ message DeviceProps {
         optional bool supportMessageAssociation = 14;
         optional bool supportGroupHistory = 15;
         optional bool onDemandReady = 16;
-        optional bool supportGuestChatHistory = 17;
+        optional bool supportGuestChat = 17;
     }
     
     enum PlatformType {
@@ -1937,6 +1937,7 @@ message Message {
         optional uint64 kindNegative = 4;
         optional uint64 kindPositive = 5;
         optional ReportKind kindReport = 6;
+        optional SideBySideSurveyMetadata sideBySideSurveyMetadata = 7;
         enum BotFeedbackKind {
             BOT_FEEDBACK_POSITIVE = 0;
             BOT_FEEDBACK_NEGATIVE_GENERIC = 1;
@@ -1972,6 +1973,22 @@ message Message {
             NONE = 0;
             GENERIC = 1;
         }
+        message SideBySideSurveyMetadata {
+            optional string selectedRequestId = 1;
+            optional uint32 surveyId = 2;
+            optional string simonSessionFbid = 3;
+            optional string responseOtid = 4;
+            optional string responseTimestampMsString = 5;
+            optional bool isSelectedResponsePrimary = 6;
+            optional string messageIdToEdit = 7;
+            optional SideBySideSurveyAnalyticsData analyticsData = 8;
+            message SideBySideSurveyAnalyticsData {
+                optional string tessaEvent = 1;
+                optional string tessaSessionFbid = 2;
+            }
+            
+        }
+        
     }
     
     message ButtonsMessage {
@@ -4042,6 +4059,7 @@ message SyncActionValue {
     optional DetectedOutcomesStatusAction detectedOutcomesStatusAction = 66;
     optional MaibaAIFeaturesControlAction maibaAiFeaturesControlAction = 68;
     optional BusinessBroadcastListAction businessBroadcastListAction = 69;
+    optional MusicUserIdAction musicUserIdAction = 70;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4234,6 +4252,10 @@ message SyncActionValue {
             ACTIVE = 0;
             INACTIVE = 1;
         }
+    }
+    
+    message MusicUserIdAction {
+        optional string musicUserId = 1;
     }
     
     message MuteAction {
