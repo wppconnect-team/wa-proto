@@ -5273,7 +5273,8 @@ export namespace waproto {
         ASK_META_AI_CONTEXT_MENU_1ON1 = 27,
         ASK_META_AI_CONTEXT_MENU_GROUP = 28,
         INVOKE_META_AI_1ON1 = 29,
-        INVOKE_META_AI_GROUP = 30
+        INVOKE_META_AI_GROUP = 30,
+        META_AI_FORWARD = 31
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -19585,6 +19586,9 @@ export namespace waproto {
         /** Message statusQuestionAnswerMessage */
         statusQuestionAnswerMessage?: (waproto.Message.IStatusQuestionAnswerMessage|null);
 
+        /** Message questionReplyMessage */
+        questionReplyMessage?: (waproto.Message.IFutureProofMessage|null);
+
         /** Message questionResponseMessage */
         questionResponseMessage?: (waproto.Message.IQuestionResponseMessage|null);
     }
@@ -19864,6 +19868,9 @@ export namespace waproto {
 
         /** Message statusQuestionAnswerMessage. */
         public statusQuestionAnswerMessage?: (waproto.Message.IStatusQuestionAnswerMessage|null);
+
+        /** Message questionReplyMessage. */
+        public questionReplyMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /** Message questionResponseMessage. */
         public questionResponseMessage?: (waproto.Message.IQuestionResponseMessage|null);
