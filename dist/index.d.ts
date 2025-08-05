@@ -45885,6 +45885,9 @@ export namespace waproto {
         /** StickerMetadata isLottie */
         isLottie?: (boolean|null);
 
+        /** StickerMetadata imageHash */
+        imageHash?: (string|null);
+
         /** StickerMetadata isAvatarSticker */
         isAvatarSticker?: (boolean|null);
     }
@@ -45933,6 +45936,9 @@ export namespace waproto {
 
         /** StickerMetadata isLottie. */
         public isLottie?: (boolean|null);
+
+        /** StickerMetadata imageHash. */
+        public imageHash?: (string|null);
 
         /** StickerMetadata isAvatarSticker. */
         public isAvatarSticker?: (boolean|null);

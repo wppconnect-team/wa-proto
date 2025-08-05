@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025424768
+/// WhatsApp Version: 2.3000.1025503119
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3988,7 +3988,8 @@ message StickerMetadata {
     optional float weight = 10;
     optional int64 lastStickerSentTs = 11;
     optional bool isLottie = 12;
-    optional bool isAvatarSticker = 13;
+    optional string imageHash = 13;
+    optional bool isAvatarSticker = 14;
 }
 
 message SyncActionData {
