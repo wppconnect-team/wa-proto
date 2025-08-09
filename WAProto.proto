@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025503119
+/// WhatsApp Version: 2.3000.1025699514
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -428,6 +428,7 @@ message BotMetadata {
     optional BotSignatureVerificationMetadata verificationMetadata = 27;
     optional BotUnifiedResponseMutation unifiedResponseMutation = 28;
     optional BotMessageOriginMetadata botMessageOriginMetadata = 29;
+    optional InThreadSurveyMetadata inThreadSurveyMetadata = 30;
 }
 
 enum BotMetricsEntryPoint {
@@ -583,6 +584,7 @@ message BotPromotionMessageMetadata {
     enum BotPromotionType {
         UNKNOWN_TYPE = 0;
         C50 = 1;
+        SURVEY_PLATFORM = 2;
     }
 }
 
@@ -1177,6 +1179,7 @@ message ContextInfo {
         optional bool wtwaAdFormat = 24;
         optional AdType adType = 25;
         optional string wtwaWebsiteUrl = 26;
+        optional string adPreviewUrl = 27;
         enum AdType {
             CTWA = 0;
             CAWC = 1;
@@ -1644,6 +1647,43 @@ message HydratedTemplateButton {
 message IdentityKeyPairStructure {
     optional bytes publicKey = 1;
     optional bytes privateKey = 2;
+}
+
+message InThreadSurveyMetadata {
+    optional string tessaSessionId = 1;
+    optional string simonSessionId = 2;
+    optional string simonSurveyId = 3;
+    optional string tessaRootId = 4;
+    optional string requestId = 5;
+    optional string tessaEvent = 6;
+    optional string invitationHeaderText = 7;
+    optional string invitationBodyText = 8;
+    optional string invitationCtaText = 9;
+    optional string invitationCtaUrl = 10;
+    optional string surveyTitle = 11;
+    repeated InThreadSurveyQuestion questions = 12;
+    optional string surveyContinueButtonText = 13;
+    optional string surveySubmitButtonText = 14;
+    optional string privacyStatementFull = 15;
+    repeated InThreadSurveyPrivacyStatementPart privacyStatementParts = 16;
+    optional string feedbackToastText = 17;
+    message InThreadSurveyOption {
+        optional string stringValue = 1;
+        optional uint32 numericValue = 2;
+        optional string textTranslated = 3;
+    }
+    
+    message InThreadSurveyPrivacyStatementPart {
+        optional string text = 1;
+        optional string url = 2;
+    }
+    
+    message InThreadSurveyQuestion {
+        optional string questionText = 1;
+        optional string questionId = 2;
+        repeated InThreadSurveyMetadata.InThreadSurveyOption questionOptions = 3;
+    }
+    
 }
 
 message InteractiveAnnotation {
@@ -2441,6 +2481,11 @@ message Message {
         message CarouselMessage {
             repeated Message.InteractiveMessage cards = 1;
             optional int32 messageVersion = 2;
+            optional CarouselCardType carouselCardType = 3;
+            enum CarouselCardType {
+                DEFAULT = 0;
+                ALBUM = 1;
+            }
         }
         
         message CollectionMessage {
@@ -2676,7 +2721,7 @@ message Message {
     
     message MessageHistoryMetadata {
         repeated string historyReceivers = 1;
-        optional int64 firstMessageTimestamp = 2;
+        optional int64 oldestMessageTimestamp = 2;
         optional int64 messageCount = 3;
     }
     
@@ -2811,6 +2856,8 @@ message Message {
             optional CompanionCanonicalUserNonceFetchResponse companionCanonicalUserNonceFetchRequestResponse = 9;
             message CompanionCanonicalUserNonceFetchResponse {
                 optional string nonce = 1;
+                optional string waFbid = 2;
+                optional bool forceRefresh = 3;
             }
             
             message CompanionMetaNonceFetchResponse {
@@ -3115,6 +3162,7 @@ message Message {
         optional Message noteMessage = 2;
         optional MessageKey requestMessageKey = 3;
         optional PaymentBackground background = 4;
+        optional string transactionData = 5;
     }
     
     message SenderKeyDistributionMessage {
@@ -3934,6 +3982,7 @@ message StatusAttribution {
             UNKNOWN = 0;
             RAY_BAN_META_GLASSES = 1;
             OAKLEY_META_GLASSES = 2;
+            HYPERNOVA_GLASSES = 3;
         }
     }
     
@@ -4383,7 +4432,8 @@ message SyncActionValue {
         optional bool isFavorite = 9;
         optional uint32 deviceIdHint = 10;
         optional bool isLottie = 11;
-        optional bool isAvatarSticker = 12;
+        optional string imageHash = 12;
+        optional bool isAvatarSticker = 13;
     }
     
     message SubscriptionAction {

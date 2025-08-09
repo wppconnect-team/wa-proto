@@ -5066,6 +5066,9 @@ export namespace waproto {
 
         /** BotMetadata botMessageOriginMetadata */
         botMessageOriginMetadata?: (waproto.IBotMessageOriginMetadata|null);
+
+        /** BotMetadata inThreadSurveyMetadata */
+        inThreadSurveyMetadata?: (waproto.IInThreadSurveyMetadata|null);
     }
 
     /** Represents a BotMetadata. */
@@ -5163,6 +5166,9 @@ export namespace waproto {
 
         /** BotMetadata botMessageOriginMetadata. */
         public botMessageOriginMetadata?: (waproto.IBotMessageOriginMetadata|null);
+
+        /** BotMetadata inThreadSurveyMetadata. */
+        public inThreadSurveyMetadata?: (waproto.IInThreadSurveyMetadata|null);
 
         /**
          * Creates a new BotMetadata instance using the specified properties.
@@ -6512,7 +6518,8 @@ export namespace waproto {
         /** BotPromotionType enum. */
         enum BotPromotionType {
             UNKNOWN_TYPE = 0,
-            C50 = 1
+            C50 = 1,
+            SURVEY_PLATFORM = 2
         }
     }
 
@@ -12372,6 +12379,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo wtwaWebsiteUrl */
             wtwaWebsiteUrl?: (string|null);
+
+            /** ExternalAdReplyInfo adPreviewUrl */
+            adPreviewUrl?: (string|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -12460,6 +12470,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo wtwaWebsiteUrl. */
             public wtwaWebsiteUrl?: (string|null);
+
+            /** ExternalAdReplyInfo adPreviewUrl. */
+            public adPreviewUrl?: (string|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -17612,6 +17625,523 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of an InThreadSurveyMetadata. */
+    interface IInThreadSurveyMetadata {
+
+        /** InThreadSurveyMetadata tessaSessionId */
+        tessaSessionId?: (string|null);
+
+        /** InThreadSurveyMetadata simonSessionId */
+        simonSessionId?: (string|null);
+
+        /** InThreadSurveyMetadata simonSurveyId */
+        simonSurveyId?: (string|null);
+
+        /** InThreadSurveyMetadata tessaRootId */
+        tessaRootId?: (string|null);
+
+        /** InThreadSurveyMetadata requestId */
+        requestId?: (string|null);
+
+        /** InThreadSurveyMetadata tessaEvent */
+        tessaEvent?: (string|null);
+
+        /** InThreadSurveyMetadata invitationHeaderText */
+        invitationHeaderText?: (string|null);
+
+        /** InThreadSurveyMetadata invitationBodyText */
+        invitationBodyText?: (string|null);
+
+        /** InThreadSurveyMetadata invitationCtaText */
+        invitationCtaText?: (string|null);
+
+        /** InThreadSurveyMetadata invitationCtaUrl */
+        invitationCtaUrl?: (string|null);
+
+        /** InThreadSurveyMetadata surveyTitle */
+        surveyTitle?: (string|null);
+
+        /** InThreadSurveyMetadata questions */
+        questions?: (waproto.InThreadSurveyMetadata.IInThreadSurveyQuestion[]|null);
+
+        /** InThreadSurveyMetadata surveyContinueButtonText */
+        surveyContinueButtonText?: (string|null);
+
+        /** InThreadSurveyMetadata surveySubmitButtonText */
+        surveySubmitButtonText?: (string|null);
+
+        /** InThreadSurveyMetadata privacyStatementFull */
+        privacyStatementFull?: (string|null);
+
+        /** InThreadSurveyMetadata privacyStatementParts */
+        privacyStatementParts?: (waproto.InThreadSurveyMetadata.IInThreadSurveyPrivacyStatementPart[]|null);
+
+        /** InThreadSurveyMetadata feedbackToastText */
+        feedbackToastText?: (string|null);
+    }
+
+    /** Represents an InThreadSurveyMetadata. */
+    class InThreadSurveyMetadata implements IInThreadSurveyMetadata {
+
+        /**
+         * Constructs a new InThreadSurveyMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IInThreadSurveyMetadata);
+
+        /** InThreadSurveyMetadata tessaSessionId. */
+        public tessaSessionId?: (string|null);
+
+        /** InThreadSurveyMetadata simonSessionId. */
+        public simonSessionId?: (string|null);
+
+        /** InThreadSurveyMetadata simonSurveyId. */
+        public simonSurveyId?: (string|null);
+
+        /** InThreadSurveyMetadata tessaRootId. */
+        public tessaRootId?: (string|null);
+
+        /** InThreadSurveyMetadata requestId. */
+        public requestId?: (string|null);
+
+        /** InThreadSurveyMetadata tessaEvent. */
+        public tessaEvent?: (string|null);
+
+        /** InThreadSurveyMetadata invitationHeaderText. */
+        public invitationHeaderText?: (string|null);
+
+        /** InThreadSurveyMetadata invitationBodyText. */
+        public invitationBodyText?: (string|null);
+
+        /** InThreadSurveyMetadata invitationCtaText. */
+        public invitationCtaText?: (string|null);
+
+        /** InThreadSurveyMetadata invitationCtaUrl. */
+        public invitationCtaUrl?: (string|null);
+
+        /** InThreadSurveyMetadata surveyTitle. */
+        public surveyTitle?: (string|null);
+
+        /** InThreadSurveyMetadata questions. */
+        public questions: waproto.InThreadSurveyMetadata.IInThreadSurveyQuestion[];
+
+        /** InThreadSurveyMetadata surveyContinueButtonText. */
+        public surveyContinueButtonText?: (string|null);
+
+        /** InThreadSurveyMetadata surveySubmitButtonText. */
+        public surveySubmitButtonText?: (string|null);
+
+        /** InThreadSurveyMetadata privacyStatementFull. */
+        public privacyStatementFull?: (string|null);
+
+        /** InThreadSurveyMetadata privacyStatementParts. */
+        public privacyStatementParts: waproto.InThreadSurveyMetadata.IInThreadSurveyPrivacyStatementPart[];
+
+        /** InThreadSurveyMetadata feedbackToastText. */
+        public feedbackToastText?: (string|null);
+
+        /**
+         * Creates a new InThreadSurveyMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns InThreadSurveyMetadata instance
+         */
+        public static create(properties?: waproto.IInThreadSurveyMetadata): waproto.InThreadSurveyMetadata;
+
+        /**
+         * Encodes the specified InThreadSurveyMetadata message. Does not implicitly {@link waproto.InThreadSurveyMetadata.verify|verify} messages.
+         * @param message InThreadSurveyMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IInThreadSurveyMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified InThreadSurveyMetadata message, length delimited. Does not implicitly {@link waproto.InThreadSurveyMetadata.verify|verify} messages.
+         * @param message InThreadSurveyMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IInThreadSurveyMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an InThreadSurveyMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns InThreadSurveyMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.InThreadSurveyMetadata;
+
+        /**
+         * Decodes an InThreadSurveyMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns InThreadSurveyMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.InThreadSurveyMetadata;
+
+        /**
+         * Verifies an InThreadSurveyMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an InThreadSurveyMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns InThreadSurveyMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.InThreadSurveyMetadata;
+
+        /**
+         * Creates a plain object from an InThreadSurveyMetadata message. Also converts values to other types if specified.
+         * @param message InThreadSurveyMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.InThreadSurveyMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this InThreadSurveyMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for InThreadSurveyMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    namespace InThreadSurveyMetadata {
+
+        /** Properties of an InThreadSurveyOption. */
+        interface IInThreadSurveyOption {
+
+            /** InThreadSurveyOption stringValue */
+            stringValue?: (string|null);
+
+            /** InThreadSurveyOption numericValue */
+            numericValue?: (number|null);
+
+            /** InThreadSurveyOption textTranslated */
+            textTranslated?: (string|null);
+        }
+
+        /** Represents an InThreadSurveyOption. */
+        class InThreadSurveyOption implements IInThreadSurveyOption {
+
+            /**
+             * Constructs a new InThreadSurveyOption.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.InThreadSurveyMetadata.IInThreadSurveyOption);
+
+            /** InThreadSurveyOption stringValue. */
+            public stringValue?: (string|null);
+
+            /** InThreadSurveyOption numericValue. */
+            public numericValue?: (number|null);
+
+            /** InThreadSurveyOption textTranslated. */
+            public textTranslated?: (string|null);
+
+            /**
+             * Creates a new InThreadSurveyOption instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns InThreadSurveyOption instance
+             */
+            public static create(properties?: waproto.InThreadSurveyMetadata.IInThreadSurveyOption): waproto.InThreadSurveyMetadata.InThreadSurveyOption;
+
+            /**
+             * Encodes the specified InThreadSurveyOption message. Does not implicitly {@link waproto.InThreadSurveyMetadata.InThreadSurveyOption.verify|verify} messages.
+             * @param message InThreadSurveyOption message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.InThreadSurveyMetadata.IInThreadSurveyOption, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified InThreadSurveyOption message, length delimited. Does not implicitly {@link waproto.InThreadSurveyMetadata.InThreadSurveyOption.verify|verify} messages.
+             * @param message InThreadSurveyOption message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.InThreadSurveyMetadata.IInThreadSurveyOption, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an InThreadSurveyOption message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns InThreadSurveyOption
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.InThreadSurveyMetadata.InThreadSurveyOption;
+
+            /**
+             * Decodes an InThreadSurveyOption message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns InThreadSurveyOption
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.InThreadSurveyMetadata.InThreadSurveyOption;
+
+            /**
+             * Verifies an InThreadSurveyOption message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an InThreadSurveyOption message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns InThreadSurveyOption
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.InThreadSurveyMetadata.InThreadSurveyOption;
+
+            /**
+             * Creates a plain object from an InThreadSurveyOption message. Also converts values to other types if specified.
+             * @param message InThreadSurveyOption
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.InThreadSurveyMetadata.InThreadSurveyOption, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this InThreadSurveyOption to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for InThreadSurveyOption
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of an InThreadSurveyPrivacyStatementPart. */
+        interface IInThreadSurveyPrivacyStatementPart {
+
+            /** InThreadSurveyPrivacyStatementPart text */
+            text?: (string|null);
+
+            /** InThreadSurveyPrivacyStatementPart url */
+            url?: (string|null);
+        }
+
+        /** Represents an InThreadSurveyPrivacyStatementPart. */
+        class InThreadSurveyPrivacyStatementPart implements IInThreadSurveyPrivacyStatementPart {
+
+            /**
+             * Constructs a new InThreadSurveyPrivacyStatementPart.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.InThreadSurveyMetadata.IInThreadSurveyPrivacyStatementPart);
+
+            /** InThreadSurveyPrivacyStatementPart text. */
+            public text?: (string|null);
+
+            /** InThreadSurveyPrivacyStatementPart url. */
+            public url?: (string|null);
+
+            /**
+             * Creates a new InThreadSurveyPrivacyStatementPart instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns InThreadSurveyPrivacyStatementPart instance
+             */
+            public static create(properties?: waproto.InThreadSurveyMetadata.IInThreadSurveyPrivacyStatementPart): waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart;
+
+            /**
+             * Encodes the specified InThreadSurveyPrivacyStatementPart message. Does not implicitly {@link waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.verify|verify} messages.
+             * @param message InThreadSurveyPrivacyStatementPart message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.InThreadSurveyMetadata.IInThreadSurveyPrivacyStatementPart, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified InThreadSurveyPrivacyStatementPart message, length delimited. Does not implicitly {@link waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.verify|verify} messages.
+             * @param message InThreadSurveyPrivacyStatementPart message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.InThreadSurveyMetadata.IInThreadSurveyPrivacyStatementPart, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an InThreadSurveyPrivacyStatementPart message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns InThreadSurveyPrivacyStatementPart
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart;
+
+            /**
+             * Decodes an InThreadSurveyPrivacyStatementPart message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns InThreadSurveyPrivacyStatementPart
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart;
+
+            /**
+             * Verifies an InThreadSurveyPrivacyStatementPart message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an InThreadSurveyPrivacyStatementPart message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns InThreadSurveyPrivacyStatementPart
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart;
+
+            /**
+             * Creates a plain object from an InThreadSurveyPrivacyStatementPart message. Also converts values to other types if specified.
+             * @param message InThreadSurveyPrivacyStatementPart
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this InThreadSurveyPrivacyStatementPart to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for InThreadSurveyPrivacyStatementPart
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of an InThreadSurveyQuestion. */
+        interface IInThreadSurveyQuestion {
+
+            /** InThreadSurveyQuestion questionText */
+            questionText?: (string|null);
+
+            /** InThreadSurveyQuestion questionId */
+            questionId?: (string|null);
+
+            /** InThreadSurveyQuestion questionOptions */
+            questionOptions?: (waproto.InThreadSurveyMetadata.IInThreadSurveyOption[]|null);
+        }
+
+        /** Represents an InThreadSurveyQuestion. */
+        class InThreadSurveyQuestion implements IInThreadSurveyQuestion {
+
+            /**
+             * Constructs a new InThreadSurveyQuestion.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.InThreadSurveyMetadata.IInThreadSurveyQuestion);
+
+            /** InThreadSurveyQuestion questionText. */
+            public questionText?: (string|null);
+
+            /** InThreadSurveyQuestion questionId. */
+            public questionId?: (string|null);
+
+            /** InThreadSurveyQuestion questionOptions. */
+            public questionOptions: waproto.InThreadSurveyMetadata.IInThreadSurveyOption[];
+
+            /**
+             * Creates a new InThreadSurveyQuestion instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns InThreadSurveyQuestion instance
+             */
+            public static create(properties?: waproto.InThreadSurveyMetadata.IInThreadSurveyQuestion): waproto.InThreadSurveyMetadata.InThreadSurveyQuestion;
+
+            /**
+             * Encodes the specified InThreadSurveyQuestion message. Does not implicitly {@link waproto.InThreadSurveyMetadata.InThreadSurveyQuestion.verify|verify} messages.
+             * @param message InThreadSurveyQuestion message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.InThreadSurveyMetadata.IInThreadSurveyQuestion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified InThreadSurveyQuestion message, length delimited. Does not implicitly {@link waproto.InThreadSurveyMetadata.InThreadSurveyQuestion.verify|verify} messages.
+             * @param message InThreadSurveyQuestion message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.InThreadSurveyMetadata.IInThreadSurveyQuestion, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an InThreadSurveyQuestion message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns InThreadSurveyQuestion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.InThreadSurveyMetadata.InThreadSurveyQuestion;
+
+            /**
+             * Decodes an InThreadSurveyQuestion message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns InThreadSurveyQuestion
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.InThreadSurveyMetadata.InThreadSurveyQuestion;
+
+            /**
+             * Verifies an InThreadSurveyQuestion message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an InThreadSurveyQuestion message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns InThreadSurveyQuestion
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.InThreadSurveyMetadata.InThreadSurveyQuestion;
+
+            /**
+             * Creates a plain object from an InThreadSurveyQuestion message. Also converts values to other types if specified.
+             * @param message InThreadSurveyQuestion
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.InThreadSurveyMetadata.InThreadSurveyQuestion, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this InThreadSurveyQuestion to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for InThreadSurveyQuestion
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
     }
 
     /** Properties of an InteractiveAnnotation. */
@@ -26509,6 +27039,9 @@ export namespace waproto {
 
                 /** CarouselMessage messageVersion */
                 messageVersion?: (number|null);
+
+                /** CarouselMessage carouselCardType */
+                carouselCardType?: (waproto.Message.InteractiveMessage.CarouselMessage.CarouselCardType|null);
             }
 
             /** Represents a CarouselMessage. */
@@ -26525,6 +27058,9 @@ export namespace waproto {
 
                 /** CarouselMessage messageVersion. */
                 public messageVersion?: (number|null);
+
+                /** CarouselMessage carouselCardType. */
+                public carouselCardType?: (waproto.Message.InteractiveMessage.CarouselMessage.CarouselCardType|null);
 
                 /**
                  * Creates a new CarouselMessage instance using the specified properties.
@@ -26602,6 +27138,15 @@ export namespace waproto {
                  * @returns The default type url
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            namespace CarouselMessage {
+
+                /** CarouselCardType enum. */
+                enum CarouselCardType {
+                    DEFAULT = 0,
+                    ALBUM = 1
+                }
             }
 
             /** Properties of a CollectionMessage. */
@@ -29640,8 +30185,8 @@ export namespace waproto {
             /** MessageHistoryMetadata historyReceivers */
             historyReceivers?: (string[]|null);
 
-            /** MessageHistoryMetadata firstMessageTimestamp */
-            firstMessageTimestamp?: (number|Long|null);
+            /** MessageHistoryMetadata oldestMessageTimestamp */
+            oldestMessageTimestamp?: (number|Long|null);
 
             /** MessageHistoryMetadata messageCount */
             messageCount?: (number|Long|null);
@@ -29659,8 +30204,8 @@ export namespace waproto {
             /** MessageHistoryMetadata historyReceivers. */
             public historyReceivers: string[];
 
-            /** MessageHistoryMetadata firstMessageTimestamp. */
-            public firstMessageTimestamp?: (number|Long|null);
+            /** MessageHistoryMetadata oldestMessageTimestamp. */
+            public oldestMessageTimestamp?: (number|Long|null);
 
             /** MessageHistoryMetadata messageCount. */
             public messageCount?: (number|Long|null);
@@ -31724,6 +32269,12 @@ export namespace waproto {
 
                     /** CompanionCanonicalUserNonceFetchResponse nonce */
                     nonce?: (string|null);
+
+                    /** CompanionCanonicalUserNonceFetchResponse waFbid */
+                    waFbid?: (string|null);
+
+                    /** CompanionCanonicalUserNonceFetchResponse forceRefresh */
+                    forceRefresh?: (boolean|null);
                 }
 
                 /** Represents a CompanionCanonicalUserNonceFetchResponse. */
@@ -31737,6 +32288,12 @@ export namespace waproto {
 
                     /** CompanionCanonicalUserNonceFetchResponse nonce. */
                     public nonce?: (string|null);
+
+                    /** CompanionCanonicalUserNonceFetchResponse waFbid. */
+                    public waFbid?: (string|null);
+
+                    /** CompanionCanonicalUserNonceFetchResponse forceRefresh. */
+                    public forceRefresh?: (boolean|null);
 
                     /**
                      * Creates a new CompanionCanonicalUserNonceFetchResponse instance using the specified properties.
@@ -35418,6 +35975,9 @@ export namespace waproto {
 
             /** SendPaymentMessage background */
             background?: (waproto.IPaymentBackground|null);
+
+            /** SendPaymentMessage transactionData */
+            transactionData?: (string|null);
         }
 
         /** Represents a SendPaymentMessage. */
@@ -35437,6 +35997,9 @@ export namespace waproto {
 
             /** SendPaymentMessage background. */
             public background?: (waproto.IPaymentBackground|null);
+
+            /** SendPaymentMessage transactionData. */
+            public transactionData?: (string|null);
 
             /**
              * Creates a new SendPaymentMessage instance using the specified properties.
@@ -45401,7 +45964,8 @@ export namespace waproto {
             enum Source {
                 UNKNOWN = 0,
                 RAY_BAN_META_GLASSES = 1,
-                OAKLEY_META_GLASSES = 2
+                OAKLEY_META_GLASSES = 2,
+                HYPERNOVA_GLASSES = 3
             }
         }
 
@@ -52349,6 +52913,9 @@ export namespace waproto {
             /** StickerAction isLottie */
             isLottie?: (boolean|null);
 
+            /** StickerAction imageHash */
+            imageHash?: (string|null);
+
             /** StickerAction isAvatarSticker */
             isAvatarSticker?: (boolean|null);
         }
@@ -52394,6 +52961,9 @@ export namespace waproto {
 
             /** StickerAction isLottie. */
             public isLottie?: (boolean|null);
+
+            /** StickerAction imageHash. */
+            public imageHash?: (string|null);
 
             /** StickerAction isAvatarSticker. */
             public isAvatarSticker?: (boolean|null);
