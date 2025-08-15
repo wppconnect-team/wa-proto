@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025699514
+/// WhatsApp Version: 2.3000.1025943810
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -330,6 +330,7 @@ message BotCapabilityMetadata {
         SIMPLIFIED_PROFILE_PAGE = 36;
         RICH_RESPONSE_SOURCES_IN_MESSAGE = 37;
         RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38;
+        RICH_RESPONSE_UNIFIED_TEXT_COMPONENT = 39;
     }
 }
 
@@ -858,6 +859,7 @@ message ClientPayload {
     optional TrafficAnonymization trafficAnonymization = 40;
     optional bool lidDbMigrated = 41;
     optional AccountType accountType = 42;
+    optional sfixed32 connectionSequenceInfo = 43;
     enum AccountType {
         DEFAULT = 0;
         GUEST = 1;
@@ -2450,6 +2452,7 @@ message Message {
         optional ImageSourceType imageSourceType = 31;
         optional string accessibilityLabel = 32;
         optional Message.MediaKeyDomain mediaKeyDomain = 33;
+        optional string qrUrl = 34;
         enum ImageSourceType {
             USER_IMAGE = 0;
             AI_GENERATED = 1;
@@ -4137,7 +4140,7 @@ message SyncActionValue {
     
     message BusinessBroadcastListAction {
         optional bool deleted = 1;
-        repeated string phoneNumbers = 2;
+        repeated string lids = 2;
         optional string listName = 3;
     }
     

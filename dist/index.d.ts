@@ -3996,7 +3996,8 @@ export namespace waproto {
             PROMOTION_MESSAGE = 35,
             SIMPLIFIED_PROFILE_PAGE = 36,
             RICH_RESPONSE_SOURCES_IN_MESSAGE = 37,
-            RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38
+            RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38,
+            RICH_RESPONSE_UNIFIED_TEXT_COMPONENT = 39
         }
     }
 
@@ -9757,6 +9758,9 @@ export namespace waproto {
 
         /** ClientPayload accountType */
         accountType?: (waproto.ClientPayload.AccountType|null);
+
+        /** ClientPayload connectionSequenceInfo */
+        connectionSequenceInfo?: (number|null);
     }
 
     /** Represents a ClientPayload. */
@@ -9857,6 +9861,9 @@ export namespace waproto {
 
         /** ClientPayload accountType. */
         public accountType?: (waproto.ClientPayload.AccountType|null);
+
+        /** ClientPayload connectionSequenceInfo. */
+        public connectionSequenceInfo?: (number|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -26497,6 +26504,9 @@ export namespace waproto {
 
             /** ImageMessage mediaKeyDomain */
             mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
+
+            /** ImageMessage qrUrl */
+            qrUrl?: (string|null);
         }
 
         /** Represents an ImageMessage. */
@@ -26597,6 +26607,9 @@ export namespace waproto {
 
             /** ImageMessage mediaKeyDomain. */
             public mediaKeyDomain?: (waproto.Message.MediaKeyDomain|null);
+
+            /** ImageMessage qrUrl. */
+            public qrUrl?: (string|null);
 
             /**
              * Creates a new ImageMessage instance using the specified properties.
@@ -47680,8 +47693,8 @@ export namespace waproto {
             /** BusinessBroadcastListAction deleted */
             deleted?: (boolean|null);
 
-            /** BusinessBroadcastListAction phoneNumbers */
-            phoneNumbers?: (string[]|null);
+            /** BusinessBroadcastListAction lids */
+            lids?: (string[]|null);
 
             /** BusinessBroadcastListAction listName */
             listName?: (string|null);
@@ -47699,8 +47712,8 @@ export namespace waproto {
             /** BusinessBroadcastListAction deleted. */
             public deleted?: (boolean|null);
 
-            /** BusinessBroadcastListAction phoneNumbers. */
-            public phoneNumbers: string[];
+            /** BusinessBroadcastListAction lids. */
+            public lids: string[];
 
             /** BusinessBroadcastListAction listName. */
             public listName?: (string|null);
