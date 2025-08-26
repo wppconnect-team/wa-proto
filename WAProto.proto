@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1025943810
+/// WhatsApp Version: 2.3000.1026357738
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -207,6 +207,24 @@ message AIRichResponseMessage {
     
 }
 
+message AIThreadInfo {
+    optional AIThreadServerInfo serverInfo = 1;
+    optional AIThreadClientInfo clientInfo = 2;
+    message AIThreadClientInfo {
+        optional AIThreadType type = 1;
+        enum AIThreadType {
+            UNKNOWN = 0;
+            DEFAULT = 1;
+            INCOGNITO = 2;
+        }
+    }
+    
+    message AIThreadServerInfo {
+        optional string title = 1;
+    }
+    
+}
+
 message Account {
     optional string lid = 1;
     optional string username = 2;
@@ -331,6 +349,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_SOURCES_IN_MESSAGE = 37;
         RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38;
         RICH_RESPONSE_UNIFIED_TEXT_COMPONENT = 39;
+        AI_SHARED_MEMORY = 40;
     }
 }
 
@@ -430,6 +449,7 @@ message BotMetadata {
     optional BotUnifiedResponseMutation unifiedResponseMutation = 28;
     optional BotMessageOriginMetadata botMessageOriginMetadata = 29;
     optional InThreadSurveyMetadata inThreadSurveyMetadata = 30;
+    optional AIThreadInfo botThreadInfo = 31;
 }
 
 enum BotMetricsEntryPoint {
@@ -1119,6 +1139,7 @@ message ContextInfo {
     optional ForwardOrigin forwardOrigin = 67;
     optional QuestionReplyQuotedMessage questionReplyQuotedMessage = 68;
     optional StatusAudienceMetadata statusAudienceMetadata = 69;
+    optional uint32 nonJidMentions = 70;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1206,6 +1227,7 @@ message ContextInfo {
         STATUS = 2;
         CHANNELS = 3;
         META_AI = 4;
+        UGC = 5;
     }
     message ForwardedAIBotMessageInfo {
         optional string botName = 1;
@@ -2486,8 +2508,9 @@ message Message {
             optional int32 messageVersion = 2;
             optional CarouselCardType carouselCardType = 3;
             enum CarouselCardType {
-                DEFAULT = 0;
-                ALBUM = 1;
+                UNKNOWN = 0;
+                HSCROLL_CARDS = 1;
+                ALBUM_IMAGE = 2;
             }
         }
         
@@ -4015,6 +4038,7 @@ message StatusAttribution {
         STATUS_MENTION = 4;
         GROUP_STATUS = 5;
         RL_ATTRIBUTION = 6;
+        AI_CREATED = 7;
     }
 }
 
@@ -4115,6 +4139,7 @@ message SyncActionValue {
     optional MaibaAIFeaturesControlAction maibaAiFeaturesControlAction = 68;
     optional BusinessBroadcastListAction businessBroadcastListAction = 69;
     optional MusicUserIdAction musicUserIdAction = 70;
+    optional StatusPostOptInNotificationPreferencesAction statusPostOptInNotificationPreferencesAction = 71;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4134,13 +4159,18 @@ message SyncActionValue {
         optional bool isSent = 1;
     }
     
+    message BroadcastListParticipant {
+        required string lidJid = 1;
+        optional string pnJid = 2;
+    }
+    
     message BusinessBroadcastAssociationAction {
         optional bool deleted = 1;
     }
     
     message BusinessBroadcastListAction {
         optional bool deleted = 1;
-        repeated string lids = 2;
+        repeated SyncActionValue.BroadcastListParticipant participants = 2;
         optional string listName = 3;
     }
     
@@ -4413,6 +4443,10 @@ message SyncActionValue {
         optional bool starred = 1;
     }
     
+    message StatusPostOptInNotificationPreferencesAction {
+        optional bool enabled = 1;
+    }
+    
     message StatusPrivacyAction {
         optional StatusDistributionMode mode = 1;
         repeated string userJid = 2;
@@ -4574,6 +4608,7 @@ message ThreadID {
     enum ThreadType {
         UNKNOWN = 0;
         VIEW_REPLIES = 1;
+        AI_THREAD = 2;
     }
 }
 
