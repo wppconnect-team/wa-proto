@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1026408783
+/// WhatsApp Version: 2.3000.1026397464
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -350,8 +350,6 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_SIDE_BY_SIDE_SURVEY = 38;
         RICH_RESPONSE_UNIFIED_TEXT_COMPONENT = 39;
         AI_SHARED_MEMORY = 40;
-        RICH_RESPONSE_UNIFIED_SOURCES = 41;
-        RICH_RESPONSE_UNIFIED_DOMAIN_CITATIONS = 42;
     }
 }
 
@@ -882,7 +880,6 @@ message ClientPayload {
     optional bool lidDbMigrated = 41;
     optional AccountType accountType = 42;
     optional sfixed32 connectionSequenceInfo = 43;
-    optional bool paaLink = 44;
     enum AccountType {
         DEFAULT = 0;
         GUEST = 1;
