@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1026408783
+/// WhatsApp Version: 2.3000.1027216224
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1360,6 +1360,11 @@ message Conversation {
 message DeviceCapabilities {
     optional ChatLockSupportLevel chatLockSupportLevel = 1;
     optional LIDMigration lidMigration = 2;
+    optional BusinessBroadcast businessBroadcast = 3;
+    message BusinessBroadcast {
+        optional bool importListEnabled = 1;
+    }
+    
     enum ChatLockSupportLevel {
         NONE = 0;
         MINIMAL = 1;
