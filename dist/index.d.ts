@@ -13781,6 +13781,9 @@ export namespace waproto {
 
         /** Conversation limitSharingInitiatedByMe */
         limitSharingInitiatedByMe?: (boolean|null);
+
+        /** Conversation maibaAiThreadEnabled */
+        maibaAiThreadEnabled?: (boolean|null);
     }
 
     /** Represents a Conversation. */
@@ -13950,6 +13953,9 @@ export namespace waproto {
 
         /** Conversation limitSharingInitiatedByMe. */
         public limitSharingInitiatedByMe?: (boolean|null);
+
+        /** Conversation maibaAiThreadEnabled. */
+        public maibaAiThreadEnabled?: (boolean|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
