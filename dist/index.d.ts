@@ -17117,110 +17117,110 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    /** Properties of a GroupHistoryBundleMessage. */
-    interface IGroupHistoryBundleMessage {
+    /** Properties of a GroupHistoryBundleInfo. */
+    interface IGroupHistoryBundleInfo {
 
-        /** GroupHistoryBundleMessage messageHistoryBundle */
-        messageHistoryBundle?: (waproto.Message.IMessageHistoryBundle|null);
+        /** GroupHistoryBundleInfo deprecatedMessageHistoryBundle */
+        deprecatedMessageHistoryBundle?: (waproto.Message.IMessageHistoryBundle|null);
 
-        /** GroupHistoryBundleMessage processState */
-        processState?: (waproto.GroupHistoryBundleMessage.ProcessState|null);
+        /** GroupHistoryBundleInfo processState */
+        processState?: (waproto.GroupHistoryBundleInfo.ProcessState|null);
     }
 
-    /** Represents a GroupHistoryBundleMessage. */
-    class GroupHistoryBundleMessage implements IGroupHistoryBundleMessage {
+    /** Represents a GroupHistoryBundleInfo. */
+    class GroupHistoryBundleInfo implements IGroupHistoryBundleInfo {
 
         /**
-         * Constructs a new GroupHistoryBundleMessage.
+         * Constructs a new GroupHistoryBundleInfo.
          * @param [properties] Properties to set
          */
-        constructor(properties?: waproto.IGroupHistoryBundleMessage);
+        constructor(properties?: waproto.IGroupHistoryBundleInfo);
 
-        /** GroupHistoryBundleMessage messageHistoryBundle. */
-        public messageHistoryBundle?: (waproto.Message.IMessageHistoryBundle|null);
+        /** GroupHistoryBundleInfo deprecatedMessageHistoryBundle. */
+        public deprecatedMessageHistoryBundle?: (waproto.Message.IMessageHistoryBundle|null);
 
-        /** GroupHistoryBundleMessage processState. */
-        public processState?: (waproto.GroupHistoryBundleMessage.ProcessState|null);
+        /** GroupHistoryBundleInfo processState. */
+        public processState?: (waproto.GroupHistoryBundleInfo.ProcessState|null);
 
         /**
-         * Creates a new GroupHistoryBundleMessage instance using the specified properties.
+         * Creates a new GroupHistoryBundleInfo instance using the specified properties.
          * @param [properties] Properties to set
-         * @returns GroupHistoryBundleMessage instance
+         * @returns GroupHistoryBundleInfo instance
          */
-        public static create(properties?: waproto.IGroupHistoryBundleMessage): waproto.GroupHistoryBundleMessage;
+        public static create(properties?: waproto.IGroupHistoryBundleInfo): waproto.GroupHistoryBundleInfo;
 
         /**
-         * Encodes the specified GroupHistoryBundleMessage message. Does not implicitly {@link waproto.GroupHistoryBundleMessage.verify|verify} messages.
-         * @param message GroupHistoryBundleMessage message or plain object to encode
+         * Encodes the specified GroupHistoryBundleInfo message. Does not implicitly {@link waproto.GroupHistoryBundleInfo.verify|verify} messages.
+         * @param message GroupHistoryBundleInfo message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encode(message: waproto.IGroupHistoryBundleMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encode(message: waproto.IGroupHistoryBundleInfo, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Encodes the specified GroupHistoryBundleMessage message, length delimited. Does not implicitly {@link waproto.GroupHistoryBundleMessage.verify|verify} messages.
-         * @param message GroupHistoryBundleMessage message or plain object to encode
+         * Encodes the specified GroupHistoryBundleInfo message, length delimited. Does not implicitly {@link waproto.GroupHistoryBundleInfo.verify|verify} messages.
+         * @param message GroupHistoryBundleInfo message or plain object to encode
          * @param [writer] Writer to encode to
          * @returns Writer
          */
-        public static encodeDelimited(message: waproto.IGroupHistoryBundleMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+        public static encodeDelimited(message: waproto.IGroupHistoryBundleInfo, writer?: $protobuf.Writer): $protobuf.Writer;
 
         /**
-         * Decodes a GroupHistoryBundleMessage message from the specified reader or buffer.
+         * Decodes a GroupHistoryBundleInfo message from the specified reader or buffer.
          * @param reader Reader or buffer to decode from
          * @param [length] Message length if known beforehand
-         * @returns GroupHistoryBundleMessage
+         * @returns GroupHistoryBundleInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupHistoryBundleMessage;
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupHistoryBundleInfo;
 
         /**
-         * Decodes a GroupHistoryBundleMessage message from the specified reader or buffer, length delimited.
+         * Decodes a GroupHistoryBundleInfo message from the specified reader or buffer, length delimited.
          * @param reader Reader or buffer to decode from
-         * @returns GroupHistoryBundleMessage
+         * @returns GroupHistoryBundleInfo
          * @throws {Error} If the payload is not a reader or valid buffer
          * @throws {$protobuf.util.ProtocolError} If required fields are missing
          */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupHistoryBundleMessage;
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupHistoryBundleInfo;
 
         /**
-         * Verifies a GroupHistoryBundleMessage message.
+         * Verifies a GroupHistoryBundleInfo message.
          * @param message Plain object to verify
          * @returns `null` if valid, otherwise the reason why it is not
          */
         public static verify(message: { [k: string]: any }): (string|null);
 
         /**
-         * Creates a GroupHistoryBundleMessage message from a plain object. Also converts values to their respective internal types.
+         * Creates a GroupHistoryBundleInfo message from a plain object. Also converts values to their respective internal types.
          * @param object Plain object
-         * @returns GroupHistoryBundleMessage
+         * @returns GroupHistoryBundleInfo
          */
-        public static fromObject(object: { [k: string]: any }): waproto.GroupHistoryBundleMessage;
+        public static fromObject(object: { [k: string]: any }): waproto.GroupHistoryBundleInfo;
 
         /**
-         * Creates a plain object from a GroupHistoryBundleMessage message. Also converts values to other types if specified.
-         * @param message GroupHistoryBundleMessage
+         * Creates a plain object from a GroupHistoryBundleInfo message. Also converts values to other types if specified.
+         * @param message GroupHistoryBundleInfo
          * @param [options] Conversion options
          * @returns Plain object
          */
-        public static toObject(message: waproto.GroupHistoryBundleMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        public static toObject(message: waproto.GroupHistoryBundleInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
         /**
-         * Converts this GroupHistoryBundleMessage to JSON.
+         * Converts this GroupHistoryBundleInfo to JSON.
          * @returns JSON object
          */
         public toJSON(): { [k: string]: any };
 
         /**
-         * Gets the default type url for GroupHistoryBundleMessage
+         * Gets the default type url for GroupHistoryBundleInfo
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    namespace GroupHistoryBundleMessage {
+    namespace GroupHistoryBundleInfo {
 
         /** ProcessState enum. */
         enum ProcessState {
@@ -58752,8 +58752,8 @@ export namespace waproto {
         /** WebMessageInfo groupHistoryIndividualMessageInfo */
         groupHistoryIndividualMessageInfo?: (waproto.IGroupHistoryIndividualMessageInfo|null);
 
-        /** WebMessageInfo groupHistoryBundleMessage */
-        groupHistoryBundleMessage?: (waproto.IGroupHistoryBundleMessage|null);
+        /** WebMessageInfo groupHistoryBundleInfo */
+        groupHistoryBundleInfo?: (waproto.IGroupHistoryBundleInfo|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -58954,8 +58954,8 @@ export namespace waproto {
         /** WebMessageInfo groupHistoryIndividualMessageInfo. */
         public groupHistoryIndividualMessageInfo?: (waproto.IGroupHistoryIndividualMessageInfo|null);
 
-        /** WebMessageInfo groupHistoryBundleMessage. */
-        public groupHistoryBundleMessage?: (waproto.IGroupHistoryBundleMessage|null);
+        /** WebMessageInfo groupHistoryBundleInfo. */
+        public groupHistoryBundleInfo?: (waproto.IGroupHistoryBundleInfo|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
