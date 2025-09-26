@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027643558
+/// WhatsApp Version: 2.3000.1027646615
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -296,6 +296,11 @@ message BizIdentityInfo {
 message BotAgeCollectionMetadata {
     optional bool ageCollectionEligible = 1;
     optional bool shouldTriggerAgeCollectionOnClient = 2;
+    optional AgeCollectionType ageCollectionType = 3;
+    enum AgeCollectionType {
+        O18_BINARY = 0;
+        WAFFLE = 1;
+    }
 }
 
 message BotAvatarMetadata {
@@ -553,8 +558,10 @@ enum BotMetricsEntryPoint {
     INVOKE_META_AI_GROUP = 30;
     META_AI_FORWARD = 31;
     NEW_CHAT_AI_CONTACT = 32;
-    MESSAGE_QUICK_ACTION = 33;
-    ATTACHMENT_TRAY = 34;
+    MESSAGE_QUICK_ACTION_1_ON_1_CHAT = 33;
+    MESSAGE_QUICK_ACTION_GROUP_CHAT = 34;
+    ATTACHMENT_TRAY_1_ON_1_CHAT = 35;
+    ATTACHMENT_TRAY_GROUP_CHAT = 36;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
