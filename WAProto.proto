@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027646615
+/// WhatsApp Version: 2.3000.1027727608
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1446,6 +1446,7 @@ message DeviceCapabilities {
     optional ChatLockSupportLevel chatLockSupportLevel = 1;
     optional LIDMigration lidMigration = 2;
     optional BusinessBroadcast businessBroadcast = 3;
+    optional UserHasAvatar userHasAvatar = 4;
     message BusinessBroadcast {
         optional bool importListEnabled = 1;
     }
@@ -1457,6 +1458,10 @@ message DeviceCapabilities {
     }
     message LIDMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
+    }
+    
+    message UserHasAvatar {
+        optional bool userHasAvatar = 1;
     }
     
 }
@@ -3730,6 +3735,8 @@ message PatchDebugData {
         DARWIN = 6;
         IPAD = 7;
         WEAROS = 8;
+        WASG = 9;
+        WEARM = 10;
     }
 }
 
@@ -4257,6 +4264,7 @@ message SyncActionValue {
     optional BusinessBroadcastListAction businessBroadcastListAction = 69;
     optional MusicUserIdAction musicUserIdAction = 70;
     optional StatusPostOptInNotificationPreferencesAction statusPostOptInNotificationPreferencesAction = 71;
+    optional AvatarUpdatedAction avatarUpdatedAction = 72;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4270,6 +4278,16 @@ message SyncActionValue {
     message ArchiveChatAction {
         optional bool archived = 1;
         optional SyncActionValue.SyncActionMessageRange messageRange = 2;
+    }
+    
+    message AvatarUpdatedAction {
+        optional AvatarEventType eventType = 1;
+        repeated SyncActionValue.StickerAction recentAvatarStickers = 2;
+        enum AvatarEventType {
+            UPDATED = 0;
+            CREATED = 1;
+            DELETED = 2;
+        }
     }
     
     message BotWelcomeRequestAction {
