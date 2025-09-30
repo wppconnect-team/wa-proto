@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027727608
+/// WhatsApp Version: 2.3000.1027785551
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -967,6 +967,8 @@ message ClientPayload {
     optional AccountType accountType = 42;
     optional sfixed32 connectionSequenceInfo = 43;
     optional bool paaLink = 44;
+    optional int32 preacksCount = 45;
+    optional int32 processingQueueSize = 46;
     enum AccountType {
         DEFAULT = 0;
         GUEST = 1;
@@ -1639,6 +1641,8 @@ message ForwardedAIBotMessageInfo {
     optional string botName = 1;
     optional string botJid = 2;
     optional string creatorName = 3;
+    optional uint32 botEntryPointOrigin = 4;
+    optional uint32 forwardScore = 5;
 }
 
 message GlobalSettings {
@@ -2587,6 +2591,10 @@ message Message {
         
         message Footer {
             optional string text = 1;
+            optional bool hasMediaAttachment = 3;
+            oneof media {
+                Message.AudioMessage audioMessage = 2;
+            }
         }
         
         message Header {
@@ -4265,6 +4273,7 @@ message SyncActionValue {
     optional MusicUserIdAction musicUserIdAction = 70;
     optional StatusPostOptInNotificationPreferencesAction statusPostOptInNotificationPreferencesAction = 71;
     optional AvatarUpdatedAction avatarUpdatedAction = 72;
+    optional GalaxyFlowAction galaxyFlowAction = 73;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4382,6 +4391,13 @@ message SyncActionValue {
             optional string id = 1;
         }
         
+    }
+    
+    message GalaxyFlowAction {
+        required GalaxyFlowActionType type = 1;
+        enum GalaxyFlowActionType {
+            LAUNCH = 1;
+        }
     }
     
     message KeyExpiration {
