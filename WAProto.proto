@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027785551
+/// WhatsApp Version: 2.3000.1027840332
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2052,6 +2052,7 @@ message Message {
     optional QuestionResponseMessage questionResponseMessage = 107;
     optional NewsletterFollowerInviteMessage newsletterFollowerInviteMessage = 108;
     optional StatusQuotedMessage statusQuotedMessage = 109;
+    optional StatusStickerInteractionMessage statusStickerInteractionMessage = 110;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -3331,6 +3332,16 @@ message Message {
         }
     }
     
+    message StatusStickerInteractionMessage {
+        optional MessageKey key = 1;
+        optional string stickerKey = 2;
+        optional StatusStickerType type = 3;
+        enum StatusStickerType {
+            UNKNOWN = 0;
+            REACTION = 1;
+        }
+    }
+    
     message StickerMessage {
         optional string url = 1;
         optional bytes fileSha256 = 2;
@@ -3550,6 +3561,7 @@ message MessageAssociation {
         STATUS_ADD_YOURS_AI_IMAGINE = 15;
         STATUS_QUESTION = 16;
         STATUS_ADD_YOURS_DIWALI = 17;
+        STATUS_REACTION = 18;
     }
 }
 
@@ -4117,6 +4129,7 @@ message StatusAttribution {
             PINTEREST = 6;
             THREADS = 7;
             APPLE_MUSIC = 8;
+            SHARECHAT = 9;
         }
     }
     
