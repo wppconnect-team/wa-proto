@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027840332
+/// WhatsApp Version: 2.3000.1027894827
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -487,6 +487,11 @@ message BotMessageOrigin {
 
 message BotMessageOriginMetadata {
     repeated BotMessageOrigin origins = 1;
+}
+
+message BotMessageSharingInfo {
+    optional BotMetricsEntryPoint botEntryPointOrigin = 1;
+    optional uint32 forwardScore = 2;
 }
 
 message BotMetadata {
@@ -1230,6 +1235,7 @@ message ContextInfo {
     optional StatusAudienceMetadata statusAudienceMetadata = 69;
     optional uint32 nonJidMentions = 70;
     optional QuotedType quotedType = 71;
+    optional BotMessageSharingInfo botMessageSharingInfo = 72;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1341,6 +1347,8 @@ message ContextInfo {
         HD_IMAGE_CHILD = 4;
         MOTION_PHOTO_PARENT = 5;
         MOTION_PHOTO_CHILD = 6;
+        PAIRED_HEVC_PARENT = 7;
+        PAIRED_HEVC_CHILD = 8;
     }
     message QuestionReplyQuotedMessage {
         optional int32 serverQuestionId = 1;
@@ -1641,8 +1649,6 @@ message ForwardedAIBotMessageInfo {
     optional string botName = 1;
     optional string botJid = 2;
     optional string creatorName = 3;
-    optional uint32 botEntryPointOrigin = 4;
-    optional uint32 forwardScore = 5;
 }
 
 message GlobalSettings {
@@ -3562,6 +3568,7 @@ message MessageAssociation {
         STATUS_QUESTION = 16;
         STATUS_ADD_YOURS_DIWALI = 17;
         STATUS_REACTION = 18;
+        HEVC_VIDEO_DUAL_UPLOAD = 19;
     }
 }
 

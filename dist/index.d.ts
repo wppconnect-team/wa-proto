@@ -5730,6 +5730,109 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a BotMessageSharingInfo. */
+    interface IBotMessageSharingInfo {
+
+        /** BotMessageSharingInfo botEntryPointOrigin */
+        botEntryPointOrigin?: (waproto.BotMetricsEntryPoint|null);
+
+        /** BotMessageSharingInfo forwardScore */
+        forwardScore?: (number|null);
+    }
+
+    /** Represents a BotMessageSharingInfo. */
+    class BotMessageSharingInfo implements IBotMessageSharingInfo {
+
+        /**
+         * Constructs a new BotMessageSharingInfo.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotMessageSharingInfo);
+
+        /** BotMessageSharingInfo botEntryPointOrigin. */
+        public botEntryPointOrigin?: (waproto.BotMetricsEntryPoint|null);
+
+        /** BotMessageSharingInfo forwardScore. */
+        public forwardScore?: (number|null);
+
+        /**
+         * Creates a new BotMessageSharingInfo instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotMessageSharingInfo instance
+         */
+        public static create(properties?: waproto.IBotMessageSharingInfo): waproto.BotMessageSharingInfo;
+
+        /**
+         * Encodes the specified BotMessageSharingInfo message. Does not implicitly {@link waproto.BotMessageSharingInfo.verify|verify} messages.
+         * @param message BotMessageSharingInfo message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotMessageSharingInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotMessageSharingInfo message, length delimited. Does not implicitly {@link waproto.BotMessageSharingInfo.verify|verify} messages.
+         * @param message BotMessageSharingInfo message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotMessageSharingInfo, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotMessageSharingInfo message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotMessageSharingInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotMessageSharingInfo;
+
+        /**
+         * Decodes a BotMessageSharingInfo message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotMessageSharingInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotMessageSharingInfo;
+
+        /**
+         * Verifies a BotMessageSharingInfo message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotMessageSharingInfo message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotMessageSharingInfo
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotMessageSharingInfo;
+
+        /**
+         * Creates a plain object from a BotMessageSharingInfo message. Also converts values to other types if specified.
+         * @param message BotMessageSharingInfo
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotMessageSharingInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotMessageSharingInfo to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotMessageSharingInfo
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a BotMetadata. */
     interface IBotMetadata {
 
@@ -12502,6 +12605,9 @@ export namespace waproto {
 
         /** ContextInfo quotedType */
         quotedType?: (waproto.ContextInfo.QuotedType|null);
+
+        /** ContextInfo botMessageSharingInfo */
+        botMessageSharingInfo?: (waproto.IBotMessageSharingInfo|null);
     }
 
     /** Represents a ContextInfo. */
@@ -12674,6 +12780,9 @@ export namespace waproto {
 
         /** ContextInfo quotedType. */
         public quotedType?: (waproto.ContextInfo.QuotedType|null);
+
+        /** ContextInfo botMessageSharingInfo. */
+        public botMessageSharingInfo?: (waproto.IBotMessageSharingInfo|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -13761,7 +13870,9 @@ export namespace waproto {
             SD_IMAGE_PARENT = 3,
             HD_IMAGE_CHILD = 4,
             MOTION_PHOTO_PARENT = 5,
-            MOTION_PHOTO_CHILD = 6
+            MOTION_PHOTO_CHILD = 6,
+            PAIRED_HEVC_PARENT = 7,
+            PAIRED_HEVC_CHILD = 8
         }
 
         /** Properties of a QuestionReplyQuotedMessage. */
@@ -16940,12 +17051,6 @@ export namespace waproto {
 
         /** ForwardedAIBotMessageInfo creatorName */
         creatorName?: (string|null);
-
-        /** ForwardedAIBotMessageInfo botEntryPointOrigin */
-        botEntryPointOrigin?: (number|null);
-
-        /** ForwardedAIBotMessageInfo forwardScore */
-        forwardScore?: (number|null);
     }
 
     /** Represents a ForwardedAIBotMessageInfo. */
@@ -16965,12 +17070,6 @@ export namespace waproto {
 
         /** ForwardedAIBotMessageInfo creatorName. */
         public creatorName?: (string|null);
-
-        /** ForwardedAIBotMessageInfo botEntryPointOrigin. */
-        public botEntryPointOrigin?: (number|null);
-
-        /** ForwardedAIBotMessageInfo forwardScore. */
-        public forwardScore?: (number|null);
 
         /**
          * Creates a new ForwardedAIBotMessageInfo instance using the specified properties.
@@ -40179,7 +40278,8 @@ export namespace waproto {
             STATUS_ADD_YOURS_AI_IMAGINE = 15,
             STATUS_QUESTION = 16,
             STATUS_ADD_YOURS_DIWALI = 17,
-            STATUS_REACTION = 18
+            STATUS_REACTION = 18,
+            HEVC_VIDEO_DUAL_UPLOAD = 19
         }
     }
 
