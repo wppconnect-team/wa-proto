@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027894827
+/// WhatsApp Version: 2.3000.1027922738
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1347,8 +1347,8 @@ message ContextInfo {
         HD_IMAGE_CHILD = 4;
         MOTION_PHOTO_PARENT = 5;
         MOTION_PHOTO_CHILD = 6;
-        PAIRED_HEVC_PARENT = 7;
-        PAIRED_HEVC_CHILD = 8;
+        HEVC_VIDEO_PARENT = 7;
+        HEVC_VIDEO_CHILD = 8;
     }
     message QuestionReplyQuotedMessage {
         optional int32 serverQuestionId = 1;
@@ -1858,6 +1858,10 @@ message InteractiveAnnotation {
         RASTERIZED_LINK_TRUNCATED = 2;
         RASTERIZED_LINK_FULL_URL = 3;
     }
+}
+
+message InteractiveMessageAdditionalMetadata {
+    optional bool isGalaxyFlowCompleted = 1;
 }
 
 message KeepInChat {
@@ -4969,6 +4973,7 @@ message WebMessageInfo {
     optional string botTargetId = 73;
     optional GroupHistoryIndividualMessageInfo groupHistoryIndividualMessageInfo = 74;
     optional GroupHistoryBundleInfo groupHistoryBundleInfo = 75;
+    optional InteractiveMessageAdditionalMetadata interactiveMessageAdditionalMetadata = 76;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;

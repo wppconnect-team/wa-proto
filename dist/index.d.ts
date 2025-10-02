@@ -13871,8 +13871,8 @@ export namespace waproto {
             HD_IMAGE_CHILD = 4,
             MOTION_PHOTO_PARENT = 5,
             MOTION_PHOTO_CHILD = 6,
-            PAIRED_HEVC_PARENT = 7,
-            PAIRED_HEVC_CHILD = 8
+            HEVC_VIDEO_PARENT = 7,
+            HEVC_VIDEO_CHILD = 8
         }
 
         /** Properties of a QuestionReplyQuotedMessage. */
@@ -19787,6 +19787,103 @@ export namespace waproto {
             RASTERIZED_LINK_TRUNCATED = 2,
             RASTERIZED_LINK_FULL_URL = 3
         }
+    }
+
+    /** Properties of an InteractiveMessageAdditionalMetadata. */
+    interface IInteractiveMessageAdditionalMetadata {
+
+        /** InteractiveMessageAdditionalMetadata isGalaxyFlowCompleted */
+        isGalaxyFlowCompleted?: (boolean|null);
+    }
+
+    /** Represents an InteractiveMessageAdditionalMetadata. */
+    class InteractiveMessageAdditionalMetadata implements IInteractiveMessageAdditionalMetadata {
+
+        /**
+         * Constructs a new InteractiveMessageAdditionalMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IInteractiveMessageAdditionalMetadata);
+
+        /** InteractiveMessageAdditionalMetadata isGalaxyFlowCompleted. */
+        public isGalaxyFlowCompleted?: (boolean|null);
+
+        /**
+         * Creates a new InteractiveMessageAdditionalMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns InteractiveMessageAdditionalMetadata instance
+         */
+        public static create(properties?: waproto.IInteractiveMessageAdditionalMetadata): waproto.InteractiveMessageAdditionalMetadata;
+
+        /**
+         * Encodes the specified InteractiveMessageAdditionalMetadata message. Does not implicitly {@link waproto.InteractiveMessageAdditionalMetadata.verify|verify} messages.
+         * @param message InteractiveMessageAdditionalMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IInteractiveMessageAdditionalMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified InteractiveMessageAdditionalMetadata message, length delimited. Does not implicitly {@link waproto.InteractiveMessageAdditionalMetadata.verify|verify} messages.
+         * @param message InteractiveMessageAdditionalMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IInteractiveMessageAdditionalMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an InteractiveMessageAdditionalMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns InteractiveMessageAdditionalMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.InteractiveMessageAdditionalMetadata;
+
+        /**
+         * Decodes an InteractiveMessageAdditionalMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns InteractiveMessageAdditionalMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.InteractiveMessageAdditionalMetadata;
+
+        /**
+         * Verifies an InteractiveMessageAdditionalMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an InteractiveMessageAdditionalMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns InteractiveMessageAdditionalMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.InteractiveMessageAdditionalMetadata;
+
+        /**
+         * Creates a plain object from an InteractiveMessageAdditionalMetadata message. Also converts values to other types if specified.
+         * @param message InteractiveMessageAdditionalMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.InteractiveMessageAdditionalMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this InteractiveMessageAdditionalMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for InteractiveMessageAdditionalMetadata
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a KeepInChat. */
@@ -59371,6 +59468,9 @@ export namespace waproto {
 
         /** WebMessageInfo groupHistoryBundleInfo */
         groupHistoryBundleInfo?: (waproto.IGroupHistoryBundleInfo|null);
+
+        /** WebMessageInfo interactiveMessageAdditionalMetadata */
+        interactiveMessageAdditionalMetadata?: (waproto.IInteractiveMessageAdditionalMetadata|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -59573,6 +59673,9 @@ export namespace waproto {
 
         /** WebMessageInfo groupHistoryBundleInfo. */
         public groupHistoryBundleInfo?: (waproto.IGroupHistoryBundleInfo|null);
+
+        /** WebMessageInfo interactiveMessageAdditionalMetadata. */
+        public interactiveMessageAdditionalMetadata?: (waproto.IInteractiveMessageAdditionalMetadata|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
