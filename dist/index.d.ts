@@ -16138,9 +16138,6 @@ export namespace waproto {
         /** EmbeddedMusic artworkEncSha256 */
         artworkEncSha256?: (Uint8Array|null);
 
-        /** EmbeddedMusic artworkMediaKey */
-        artworkMediaKey?: (Uint8Array|null);
-
         /** EmbeddedMusic artistAttribution */
         artistAttribution?: (string|null);
 
@@ -16149,6 +16146,18 @@ export namespace waproto {
 
         /** EmbeddedMusic isExplicit */
         isExplicit?: (boolean|null);
+
+        /** EmbeddedMusic artworkMediaKey */
+        artworkMediaKey?: (Uint8Array|null);
+
+        /** EmbeddedMusic musicSongStartTimeInMs */
+        musicSongStartTimeInMs?: (number|Long|null);
+
+        /** EmbeddedMusic derivedContentStartTimeInMs */
+        derivedContentStartTimeInMs?: (number|Long|null);
+
+        /** EmbeddedMusic overlapDurationInMs */
+        overlapDurationInMs?: (number|Long|null);
     }
 
     /** Represents an EmbeddedMusic. */
@@ -16181,9 +16190,6 @@ export namespace waproto {
         /** EmbeddedMusic artworkEncSha256. */
         public artworkEncSha256?: (Uint8Array|null);
 
-        /** EmbeddedMusic artworkMediaKey. */
-        public artworkMediaKey?: (Uint8Array|null);
-
         /** EmbeddedMusic artistAttribution. */
         public artistAttribution?: (string|null);
 
@@ -16192,6 +16198,18 @@ export namespace waproto {
 
         /** EmbeddedMusic isExplicit. */
         public isExplicit?: (boolean|null);
+
+        /** EmbeddedMusic artworkMediaKey. */
+        public artworkMediaKey?: (Uint8Array|null);
+
+        /** EmbeddedMusic musicSongStartTimeInMs. */
+        public musicSongStartTimeInMs?: (number|Long|null);
+
+        /** EmbeddedMusic derivedContentStartTimeInMs. */
+        public derivedContentStartTimeInMs?: (number|Long|null);
+
+        /** EmbeddedMusic overlapDurationInMs. */
+        public overlapDurationInMs?: (number|Long|null);
 
         /**
          * Creates a new EmbeddedMusic instance using the specified properties.
@@ -21670,9 +21688,6 @@ export namespace waproto {
         /** Message pollCreationMessageV4 */
         pollCreationMessageV4?: (waproto.Message.IFutureProofMessage|null);
 
-        /** Message pollCreationMessageV5 */
-        pollCreationMessageV5?: (waproto.Message.IFutureProofMessage|null);
-
         /** Message statusAddYours */
         statusAddYours?: (waproto.Message.IFutureProofMessage|null);
 
@@ -21720,6 +21735,15 @@ export namespace waproto {
 
         /** Message statusStickerInteractionMessage */
         statusStickerInteractionMessage?: (waproto.Message.IStatusStickerInteractionMessage|null);
+
+        /** Message pollCreationMessageV5 */
+        pollCreationMessageV5?: (waproto.Message.IPollCreationMessage|null);
+
+        /** Message pollResultSnapshotMessageV2 */
+        pollResultSnapshotMessageV2?: (waproto.Message.IPollResultSnapshotMessage|null);
+
+        /** Message newsletterFollowerInviteMessageV2 */
+        newsletterFollowerInviteMessageV2?: (waproto.Message.INewsletterFollowerInviteMessage|null);
     }
 
     /** Represents a Message. */
@@ -21962,9 +21986,6 @@ export namespace waproto {
         /** Message pollCreationMessageV4. */
         public pollCreationMessageV4?: (waproto.Message.IFutureProofMessage|null);
 
-        /** Message pollCreationMessageV5. */
-        public pollCreationMessageV5?: (waproto.Message.IFutureProofMessage|null);
-
         /** Message statusAddYours. */
         public statusAddYours?: (waproto.Message.IFutureProofMessage|null);
 
@@ -22012,6 +22033,15 @@ export namespace waproto {
 
         /** Message statusStickerInteractionMessage. */
         public statusStickerInteractionMessage?: (waproto.Message.IStatusStickerInteractionMessage|null);
+
+        /** Message pollCreationMessageV5. */
+        public pollCreationMessageV5?: (waproto.Message.IPollCreationMessage|null);
+
+        /** Message pollResultSnapshotMessageV2. */
+        public pollResultSnapshotMessageV2?: (waproto.Message.IPollResultSnapshotMessage|null);
+
+        /** Message newsletterFollowerInviteMessageV2. */
+        public newsletterFollowerInviteMessageV2?: (waproto.Message.INewsletterFollowerInviteMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -35259,7 +35289,7 @@ export namespace waproto {
             pollContentType?: (waproto.Message.PollContentType|null);
 
             /** PollCreationMessage pollType */
-            pollType?: (waproto.Message.PollCreationMessage.PollType|null);
+            pollType?: (waproto.Message.PollType|null);
 
             /** PollCreationMessage correctAnswer */
             correctAnswer?: (waproto.Message.PollCreationMessage.IOption|null);
@@ -35293,7 +35323,7 @@ export namespace waproto {
             public pollContentType?: (waproto.Message.PollContentType|null);
 
             /** PollCreationMessage pollType. */
-            public pollType?: (waproto.Message.PollCreationMessage.PollType|null);
+            public pollType?: (waproto.Message.PollType|null);
 
             /** PollCreationMessage correctAnswer. */
             public correctAnswer?: (waproto.Message.PollCreationMessage.IOption|null);
@@ -35480,12 +35510,6 @@ export namespace waproto {
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
             }
-
-            /** PollType enum. */
-            enum PollType {
-                POLL = 0,
-                QUIZ = 1
-            }
         }
 
         /** Properties of a PollEncValue. */
@@ -35602,6 +35626,9 @@ export namespace waproto {
 
             /** PollResultSnapshotMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
+
+            /** PollResultSnapshotMessage pollType */
+            pollType?: (waproto.Message.PollType|null);
         }
 
         /** Represents a PollResultSnapshotMessage. */
@@ -35621,6 +35648,9 @@ export namespace waproto {
 
             /** PollResultSnapshotMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
+
+            /** PollResultSnapshotMessage pollType. */
+            public pollType?: (waproto.Message.PollType|null);
 
             /**
              * Creates a new PollResultSnapshotMessage instance using the specified properties.
@@ -35804,6 +35834,12 @@ export namespace waproto {
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
             }
+        }
+
+        /** PollType enum. */
+        enum PollType {
+            POLL = 0,
+            QUIZ = 1
         }
 
         /** Properties of a PollUpdateMessage. */
