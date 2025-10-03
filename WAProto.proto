@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1027922738
+/// WhatsApp Version: 2.3000.1027955130
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2926,9 +2926,19 @@ message Message {
         optional FullHistorySyncOnDemandRequest fullHistorySyncOnDemandRequest = 6;
         optional SyncDCollectionFatalRecoveryRequest syncdCollectionFatalRecoveryRequest = 7;
         optional HistorySyncChunkRetryRequest historySyncChunkRetryRequest = 8;
+        optional GalaxyFlowAction galaxyFlowAction = 9;
         message FullHistorySyncOnDemandRequest {
             optional Message.FullHistorySyncOnDemandRequestMetadata requestMetadata = 1;
             optional DeviceProps.HistorySyncConfig historySyncConfig = 2;
+        }
+        
+        message GalaxyFlowAction {
+            required GalaxyFlowActionType type = 1;
+            required string flowId = 2;
+            required string stanzaId = 3;
+            enum GalaxyFlowActionType {
+                NOTIFY_LAUNCH = 1;
+            }
         }
         
         message HistorySyncChunkRetryRequest {
@@ -3078,6 +3088,7 @@ message Message {
         COMPANION_SYNCD_SNAPSHOT_FATAL_RECOVERY = 8;
         COMPANION_CANONICAL_USER_NONCE_FETCH = 9;
         HISTORY_SYNC_CHUNK_RETRY = 10;
+        GALAXY_FLOW_ACTION = 11;
     }
     message PinInChatMessage {
         optional MessageKey key = 1;
@@ -3768,6 +3779,7 @@ message PatchDebugData {
         WEAROS = 8;
         WASG = 9;
         WEARM = 10;
+        CAPI = 11;
     }
 }
 
@@ -4195,6 +4207,7 @@ message StatusAttribution {
         GROUP_STATUS = 5;
         RL_ATTRIBUTION = 6;
         AI_CREATED = 7;
+        LAYOUTS = 8;
     }
 }
 
