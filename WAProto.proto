@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1028056377
+/// WhatsApp Version: 2.3000.1028088934
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -360,6 +360,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_UR_INLINE_REELS_ENABLED = 43;
         RICH_RESPONSE_UR_MEDIA_GRID_ENABLED = 44;
         RICH_RESPONSE_UR_TIMESTAMP_PLACEHOLDER = 45;
+        RICH_RESPONSE_IN_APP_SURVEY = 46;
     }
 }
 
@@ -1681,9 +1682,10 @@ message GroupHistoryBundleInfo {
     optional Message.MessageHistoryBundle deprecatedMessageHistoryBundle = 1;
     optional ProcessState processState = 2;
     enum ProcessState {
-        NOT_DOWNLOADED = 0;
-        DOWNLOADED = 1;
-        DOWNLOAD_FAILED = 2;
+        NOT_INJECTED = 0;
+        INJECTED = 1;
+        INJECTED_PARTIAL = 2;
+        INJECTION_FAILED = 3;
     }
 }
 
@@ -2707,6 +2709,9 @@ message Message {
         optional uint32 linkMediaDuration = 4;
         optional SocialMediaPostType socialMediaPostType = 5;
         optional bool linkInlineVideoMuted = 6;
+        optional string videoContentUrl = 7;
+        optional EmbeddedMusic musicMetadata = 8;
+        optional string videoContentCaption = 9;
         enum SocialMediaPostType {
             NONE = 0;
             REEL = 1;

@@ -4325,7 +4325,8 @@ export namespace waproto {
             RICH_RESPONSE_UNIFIED_DOMAIN_CITATIONS = 42,
             RICH_RESPONSE_UR_INLINE_REELS_ENABLED = 43,
             RICH_RESPONSE_UR_MEDIA_GRID_ENABLED = 44,
-            RICH_RESPONSE_UR_TIMESTAMP_PLACEHOLDER = 45
+            RICH_RESPONSE_UR_TIMESTAMP_PLACEHOLDER = 45,
+            RICH_RESPONSE_IN_APP_SURVEY = 46
         }
     }
 
@@ -17485,9 +17486,10 @@ export namespace waproto {
 
         /** ProcessState enum. */
         enum ProcessState {
-            NOT_DOWNLOADED = 0,
-            DOWNLOADED = 1,
-            DOWNLOAD_FAILED = 2
+            NOT_INJECTED = 0,
+            INJECTED = 1,
+            INJECTED_PARTIAL = 2,
+            INJECTION_FAILED = 3
         }
     }
 
@@ -29721,6 +29723,15 @@ export namespace waproto {
 
             /** LinkPreviewMetadata linkInlineVideoMuted */
             linkInlineVideoMuted?: (boolean|null);
+
+            /** LinkPreviewMetadata videoContentUrl */
+            videoContentUrl?: (string|null);
+
+            /** LinkPreviewMetadata musicMetadata */
+            musicMetadata?: (waproto.IEmbeddedMusic|null);
+
+            /** LinkPreviewMetadata videoContentCaption */
+            videoContentCaption?: (string|null);
         }
 
         /** Represents a LinkPreviewMetadata. */
@@ -29749,6 +29760,15 @@ export namespace waproto {
 
             /** LinkPreviewMetadata linkInlineVideoMuted. */
             public linkInlineVideoMuted?: (boolean|null);
+
+            /** LinkPreviewMetadata videoContentUrl. */
+            public videoContentUrl?: (string|null);
+
+            /** LinkPreviewMetadata musicMetadata. */
+            public musicMetadata?: (waproto.IEmbeddedMusic|null);
+
+            /** LinkPreviewMetadata videoContentCaption. */
+            public videoContentCaption?: (string|null);
 
             /**
              * Creates a new LinkPreviewMetadata instance using the specified properties.
