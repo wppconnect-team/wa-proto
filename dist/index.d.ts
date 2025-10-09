@@ -17498,6 +17498,9 @@ export namespace waproto {
 
         /** GroupHistoryIndividualMessageInfo bundleMessageKey */
         bundleMessageKey?: (waproto.IMessageKey|null);
+
+        /** GroupHistoryIndividualMessageInfo editedAfterReceivedAsHistory */
+        editedAfterReceivedAsHistory?: (boolean|null);
     }
 
     /** Represents a GroupHistoryIndividualMessageInfo. */
@@ -17511,6 +17514,9 @@ export namespace waproto {
 
         /** GroupHistoryIndividualMessageInfo bundleMessageKey. */
         public bundleMessageKey?: (waproto.IMessageKey|null);
+
+        /** GroupHistoryIndividualMessageInfo editedAfterReceivedAsHistory. */
+        public editedAfterReceivedAsHistory?: (boolean|null);
 
         /**
          * Creates a new GroupHistoryIndividualMessageInfo instance using the specified properties.
@@ -21729,9 +21735,6 @@ export namespace waproto {
         /** Message questionResponseMessage */
         questionResponseMessage?: (waproto.Message.IQuestionResponseMessage|null);
 
-        /** Message newsletterFollowerInviteMessage */
-        newsletterFollowerInviteMessage?: (waproto.Message.INewsletterFollowerInviteMessage|null);
-
         /** Message statusQuotedMessage */
         statusQuotedMessage?: (waproto.Message.IStatusQuotedMessage|null);
 
@@ -22029,9 +22032,6 @@ export namespace waproto {
 
         /** Message questionResponseMessage. */
         public questionResponseMessage?: (waproto.Message.IQuestionResponseMessage|null);
-
-        /** Message newsletterFollowerInviteMessage. */
-        public newsletterFollowerInviteMessage?: (waproto.Message.INewsletterFollowerInviteMessage|null);
 
         /** Message statusQuotedMessage. */
         public statusQuotedMessage?: (waproto.Message.IStatusQuotedMessage|null);
@@ -33007,13 +33007,13 @@ export namespace waproto {
             interface IGalaxyFlowAction {
 
                 /** GalaxyFlowAction type */
-                type: waproto.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.GalaxyFlowActionType;
+                type?: (waproto.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.GalaxyFlowActionType|null);
 
                 /** GalaxyFlowAction flowId */
-                flowId: string;
+                flowId?: (string|null);
 
                 /** GalaxyFlowAction stanzaId */
-                stanzaId: string;
+                stanzaId?: (string|null);
             }
 
             /** Represents a GalaxyFlowAction. */
@@ -33026,13 +33026,13 @@ export namespace waproto {
                 constructor(properties?: waproto.Message.PeerDataOperationRequestMessage.IGalaxyFlowAction);
 
                 /** GalaxyFlowAction type. */
-                public type: waproto.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.GalaxyFlowActionType;
+                public type?: (waproto.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.GalaxyFlowActionType|null);
 
                 /** GalaxyFlowAction flowId. */
-                public flowId: string;
+                public flowId?: (string|null);
 
                 /** GalaxyFlowAction stanzaId. */
-                public stanzaId: string;
+                public stanzaId?: (string|null);
 
                 /**
                  * Creates a new GalaxyFlowAction instance using the specified properties.

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1028088934
+/// WhatsApp Version: 2.3000.1028178858
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1691,6 +1691,7 @@ message GroupHistoryBundleInfo {
 
 message GroupHistoryIndividualMessageInfo {
     optional MessageKey bundleMessageKey = 1;
+    optional bool editedAfterReceivedAsHistory = 2;
 }
 
 message GroupMention {
@@ -2064,7 +2065,6 @@ message Message {
     optional StatusQuestionAnswerMessage statusQuestionAnswerMessage = 105;
     optional FutureProofMessage questionReplyMessage = 106;
     optional QuestionResponseMessage questionResponseMessage = 107;
-    optional NewsletterFollowerInviteMessage newsletterFollowerInviteMessage = 108;
     optional StatusQuotedMessage statusQuotedMessage = 109;
     optional StatusStickerInteractionMessage statusStickerInteractionMessage = 110;
     optional PollCreationMessage pollCreationMessageV5 = 111;
@@ -2951,9 +2951,9 @@ message Message {
         }
         
         message GalaxyFlowAction {
-            required GalaxyFlowActionType type = 1;
-            required string flowId = 2;
-            required string stanzaId = 3;
+            optional GalaxyFlowActionType type = 1;
+            optional string flowId = 2;
+            optional string stanzaId = 3;
             enum GalaxyFlowActionType {
                 NOTIFY_LAUNCH = 1;
             }
