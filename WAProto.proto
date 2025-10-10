@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1028178858
+/// WhatsApp Version: 2.3000.1028262443
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4307,6 +4307,7 @@ message SyncActionValue {
     optional ExternalWebBetaAction externalWebBetaAction = 40;
     optional PrivacySettingRelayAllCalls privacySettingRelayAllCalls = 41;
     optional CallLogAction callLogAction = 42;
+    optional UGCBot ugcBot = 43;
     optional StatusPrivacyAction statusPrivacy = 44;
     optional BotWelcomeRequestAction botWelcomeRequestAction = 45;
     optional DeleteIndividualCallLogAction deleteIndividualCallLog = 46;
@@ -4335,7 +4336,6 @@ message SyncActionValue {
     optional MusicUserIdAction musicUserIdAction = 70;
     optional StatusPostOptInNotificationPreferencesAction statusPostOptInNotificationPreferencesAction = 71;
     optional AvatarUpdatedAction avatarUpdatedAction = 72;
-    optional GalaxyFlowAction galaxyFlowAction = 73;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4453,13 +4453,6 @@ message SyncActionValue {
             optional string id = 1;
         }
         
-    }
-    
-    message GalaxyFlowAction {
-        required GalaxyFlowActionType type = 1;
-        enum GalaxyFlowActionType {
-            LAUNCH = 1;
-        }
     }
     
     message KeyExpiration {
@@ -4705,6 +4698,10 @@ message SyncActionValue {
     
     message TimeFormatAction {
         optional bool isTwentyFourHourFormatEnabled = 1;
+    }
+    
+    message UGCBot {
+        optional bytes definition = 1;
     }
     
     message UnarchiveChatsSetting {

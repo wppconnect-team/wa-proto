@@ -49189,6 +49189,9 @@ export namespace waproto {
         /** SyncActionValue callLogAction */
         callLogAction?: (waproto.SyncActionValue.ICallLogAction|null);
 
+        /** SyncActionValue ugcBot */
+        ugcBot?: (waproto.SyncActionValue.IUGCBot|null);
+
         /** SyncActionValue statusPrivacy */
         statusPrivacy?: (waproto.SyncActionValue.IStatusPrivacyAction|null);
 
@@ -49272,9 +49275,6 @@ export namespace waproto {
 
         /** SyncActionValue avatarUpdatedAction */
         avatarUpdatedAction?: (waproto.SyncActionValue.IAvatarUpdatedAction|null);
-
-        /** SyncActionValue galaxyFlowAction */
-        galaxyFlowAction?: (waproto.SyncActionValue.IGalaxyFlowAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -49397,6 +49397,9 @@ export namespace waproto {
         /** SyncActionValue callLogAction. */
         public callLogAction?: (waproto.SyncActionValue.ICallLogAction|null);
 
+        /** SyncActionValue ugcBot. */
+        public ugcBot?: (waproto.SyncActionValue.IUGCBot|null);
+
         /** SyncActionValue statusPrivacy. */
         public statusPrivacy?: (waproto.SyncActionValue.IStatusPrivacyAction|null);
 
@@ -49480,9 +49483,6 @@ export namespace waproto {
 
         /** SyncActionValue avatarUpdatedAction. */
         public avatarUpdatedAction?: (waproto.SyncActionValue.IAvatarUpdatedAction|null);
-
-        /** SyncActionValue galaxyFlowAction. */
-        public galaxyFlowAction?: (waproto.SyncActionValue.IGalaxyFlowAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -52010,111 +52010,6 @@ export namespace waproto {
                  * @returns The default type url
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
-            }
-        }
-
-        /** Properties of a GalaxyFlowAction. */
-        interface IGalaxyFlowAction {
-
-            /** GalaxyFlowAction type */
-            type: waproto.SyncActionValue.GalaxyFlowAction.GalaxyFlowActionType;
-        }
-
-        /** Represents a GalaxyFlowAction. */
-        class GalaxyFlowAction implements IGalaxyFlowAction {
-
-            /**
-             * Constructs a new GalaxyFlowAction.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.SyncActionValue.IGalaxyFlowAction);
-
-            /** GalaxyFlowAction type. */
-            public type: waproto.SyncActionValue.GalaxyFlowAction.GalaxyFlowActionType;
-
-            /**
-             * Creates a new GalaxyFlowAction instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns GalaxyFlowAction instance
-             */
-            public static create(properties?: waproto.SyncActionValue.IGalaxyFlowAction): waproto.SyncActionValue.GalaxyFlowAction;
-
-            /**
-             * Encodes the specified GalaxyFlowAction message. Does not implicitly {@link waproto.SyncActionValue.GalaxyFlowAction.verify|verify} messages.
-             * @param message GalaxyFlowAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.SyncActionValue.IGalaxyFlowAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified GalaxyFlowAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.GalaxyFlowAction.verify|verify} messages.
-             * @param message GalaxyFlowAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.SyncActionValue.IGalaxyFlowAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a GalaxyFlowAction message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns GalaxyFlowAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.GalaxyFlowAction;
-
-            /**
-             * Decodes a GalaxyFlowAction message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns GalaxyFlowAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.GalaxyFlowAction;
-
-            /**
-             * Verifies a GalaxyFlowAction message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a GalaxyFlowAction message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns GalaxyFlowAction
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.GalaxyFlowAction;
-
-            /**
-             * Creates a plain object from a GalaxyFlowAction message. Also converts values to other types if specified.
-             * @param message GalaxyFlowAction
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.SyncActionValue.GalaxyFlowAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this GalaxyFlowAction to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for GalaxyFlowAction
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace GalaxyFlowAction {
-
-            /** GalaxyFlowActionType enum. */
-            enum GalaxyFlowActionType {
-                LAUNCH = 1
             }
         }
 
@@ -56269,6 +56164,103 @@ export namespace waproto {
 
             /**
              * Gets the default type url for TimeFormatAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a UGCBot. */
+        interface IUGCBot {
+
+            /** UGCBot definition */
+            definition?: (Uint8Array|null);
+        }
+
+        /** Represents a UGCBot. */
+        class UGCBot implements IUGCBot {
+
+            /**
+             * Constructs a new UGCBot.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IUGCBot);
+
+            /** UGCBot definition. */
+            public definition?: (Uint8Array|null);
+
+            /**
+             * Creates a new UGCBot instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns UGCBot instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IUGCBot): waproto.SyncActionValue.UGCBot;
+
+            /**
+             * Encodes the specified UGCBot message. Does not implicitly {@link waproto.SyncActionValue.UGCBot.verify|verify} messages.
+             * @param message UGCBot message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IUGCBot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified UGCBot message, length delimited. Does not implicitly {@link waproto.SyncActionValue.UGCBot.verify|verify} messages.
+             * @param message UGCBot message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IUGCBot, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a UGCBot message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns UGCBot
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.UGCBot;
+
+            /**
+             * Decodes a UGCBot message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns UGCBot
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.UGCBot;
+
+            /**
+             * Verifies a UGCBot message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a UGCBot message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns UGCBot
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.UGCBot;
+
+            /**
+             * Creates a plain object from a UGCBot message. Also converts values to other types if specified.
+             * @param message UGCBot
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.UGCBot, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this UGCBot to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for UGCBot
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
