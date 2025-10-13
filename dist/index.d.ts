@@ -41385,6 +41385,9 @@ export namespace waproto {
         /** MsgOpaqueData pollContentType */
         pollContentType?: (waproto.MsgOpaqueData.PollContentType|null);
 
+        /** MsgOpaqueData pollType */
+        pollType?: (waproto.MsgOpaqueData.PollType|null);
+
         /** MsgOpaqueData pollVotesSnapshot */
         pollVotesSnapshot?: (waproto.MsgOpaqueData.IPollVotesSnapshot|null);
 
@@ -41517,6 +41520,9 @@ export namespace waproto {
 
         /** MsgOpaqueData pollContentType. */
         public pollContentType?: (waproto.MsgOpaqueData.PollContentType|null);
+
+        /** MsgOpaqueData pollType. */
+        public pollType?: (waproto.MsgOpaqueData.PollType|null);
 
         /** MsgOpaqueData pollVotesSnapshot. */
         public pollVotesSnapshot?: (waproto.MsgOpaqueData.IPollVotesSnapshot|null);
@@ -41887,6 +41893,12 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** PollType enum. */
+        enum PollType {
+            POLL = 0,
+            QUIZ = 1
         }
 
         /** Properties of a PollVoteSnapshot. */
