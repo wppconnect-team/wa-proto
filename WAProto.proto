@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1028340218
+/// WhatsApp Version: 2.3000.1028355510
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -416,9 +416,42 @@ message BotFeedbackMessage {
         optional bool isSelectedResponsePrimary = 6;
         optional string messageIdToEdit = 7;
         optional SideBySideSurveyAnalyticsData analyticsData = 8;
+        optional SidebySideSurveyMetaAiAnalyticsData metaAiAnalyticsData = 9;
         message SideBySideSurveyAnalyticsData {
             optional string tessaEvent = 1;
             optional string tessaSessionFbid = 2;
+        }
+        
+        message SidebySideSurveyMetaAiAnalyticsData {
+            optional uint32 surveyId = 1;
+            optional string primaryResponseId = 2;
+            optional string testArmName = 3;
+            optional string timestampMsString = 4;
+            optional SideBySideSurveyCTAImpressionEventData ctaImpressionEvent = 5;
+            optional SideBySideSurveyCTAClickEventData ctaClickEvent = 6;
+            optional SideBySideSurveyCardImpressionEventData cardImpressionEvent = 7;
+            optional SideBySideSurveyResponseEventData responseEvent = 8;
+            optional SideBySideSurveyAbandonEventData abandonEvent = 9;
+            message SideBySideSurveyAbandonEventData {
+                optional string abandonDwellTimeMsString = 1;
+            }
+            
+            message SideBySideSurveyCTAClickEventData {
+                optional bool isSurveyExpired = 1;
+                optional string clickDwellTimeMsString = 2;
+            }
+            
+            message SideBySideSurveyCTAImpressionEventData {
+                optional bool isSurveyExpired = 1;
+            }
+            
+            message SideBySideSurveyCardImpressionEventData {
+            }
+            
+            message SideBySideSurveyResponseEventData {
+                optional string responseDwellTimeMsString = 1;
+            }
+            
         }
         
     }
@@ -593,6 +626,7 @@ message BotModeSelectionMetadata {
 message BotModelMetadata {
     optional ModelType modelType = 1;
     optional PremiumModelStatus premiumModelStatus = 2;
+    optional string modelNameOverride = 3;
     enum ModelType {
         UNKNOWN_TYPE = 0;
         LLAMA_PROD = 1;
@@ -4010,6 +4044,11 @@ message Pushname {
     optional string pushname = 2;
 }
 
+message QuarantinedMessage {
+    optional bytes originalData = 1;
+    optional string extractedText = 2;
+}
+
 message Reaction {
     optional MessageKey key = 1;
     optional string text = 2;
@@ -4280,7 +4319,6 @@ message SyncActionValue {
     optional ContactAction contactAction = 3;
     optional MuteAction muteAction = 4;
     optional PinAction pinAction = 5;
-    optional SecurityNotificationSetting securityNotificationSetting = 6;
     optional PushNameSetting pushNameSetting = 7;
     optional QuickReplyAction quickReplyAction = 8;
     optional RecentEmojiWeightsAction recentEmojiWeightsAction = 11;
@@ -4341,6 +4379,7 @@ message SyncActionValue {
     optional MusicUserIdAction musicUserIdAction = 70;
     optional StatusPostOptInNotificationPreferencesAction statusPostOptInNotificationPreferencesAction = 71;
     optional AvatarUpdatedAction avatarUpdatedAction = 72;
+    optional PrivateProcessingSettingAction privateProcessingSettingAction = 74;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4497,7 +4536,6 @@ message SyncActionValue {
         optional string fullName = 1;
         optional string firstName = 2;
         optional string username = 3;
-        optional bool saveOnPrimaryAddressbook = 4;
     }
     
     message LocaleSetting {
@@ -4626,6 +4664,14 @@ message SyncActionValue {
         optional bool isEnabled = 1;
     }
     
+    message PrivateProcessingSettingAction {
+        optional PrivateProcessingStatus privateProcessingStatus = 1;
+        enum PrivateProcessingStatus {
+            ENABLED = 0;
+            DISABLED = 1;
+        }
+    }
+    
     message PushNameSetting {
         optional string name = 1;
     }
@@ -4644,10 +4690,6 @@ message SyncActionValue {
     
     message RemoveRecentStickerAction {
         optional int64 lastStickerSentTs = 1;
-    }
-    
-    message SecurityNotificationSetting {
-        optional bool showNotification = 1;
     }
     
     message StarAction {
@@ -4729,6 +4771,8 @@ message SyncActionValue {
         optional AccountLinkState linkState = 2;
         enum AccountLinkState {
             ACTIVE = 0;
+            PAUSED = 1;
+            UNLINKED = 2;
         }
     }
     
@@ -5014,6 +5058,7 @@ message WebMessageInfo {
     optional GroupHistoryIndividualMessageInfo groupHistoryIndividualMessageInfo = 74;
     optional GroupHistoryBundleInfo groupHistoryBundleInfo = 75;
     optional InteractiveMessageAdditionalMetadata interactiveMessageAdditionalMetadata = 76;
+    optional QuarantinedMessage quarantinedMessage = 77;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;
@@ -5249,6 +5294,7 @@ message WebMessageInfo {
         GROUP_MEMBER_LINK_MODE = 217;
         BIZ_AUTOMATICALLY_LABELED_CHAT_SYSTEM_MESSAGE = 218;
         PHONE_NUMBER_HIDING_CHAT_DEPRECATED_MESSAGE = 219;
+        QUARANTINED_MESSAGE = 220;
     }
 }
 
