@@ -4326,7 +4326,8 @@ export namespace waproto {
             RICH_RESPONSE_UR_INLINE_REELS_ENABLED = 43,
             RICH_RESPONSE_UR_MEDIA_GRID_ENABLED = 44,
             RICH_RESPONSE_UR_TIMESTAMP_PLACEHOLDER = 45,
-            RICH_RESPONSE_IN_APP_SURVEY = 46
+            RICH_RESPONSE_IN_APP_SURVEY = 46,
+            AI_RESPONSE_MODEL_BRANDING = 47
         }
     }
 
@@ -56342,7 +56343,8 @@ export namespace waproto {
             enum StatusDistributionMode {
                 ALLOW_LIST = 0,
                 DENY_LIST = 1,
-                CONTACTS = 2
+                CONTACTS = 2,
+                CLOSE_FRIENDS = 3
             }
         }
 
