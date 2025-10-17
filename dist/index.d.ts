@@ -42034,6 +42034,9 @@ export namespace waproto {
         /** MsgOpaqueData pollType */
         pollType?: (waproto.MsgOpaqueData.PollType|null);
 
+        /** MsgOpaqueData correctOptionIndex */
+        correctOptionIndex?: (number|null);
+
         /** MsgOpaqueData pollVotesSnapshot */
         pollVotesSnapshot?: (waproto.MsgOpaqueData.IPollVotesSnapshot|null);
 
@@ -42169,6 +42172,9 @@ export namespace waproto {
 
         /** MsgOpaqueData pollType. */
         public pollType?: (waproto.MsgOpaqueData.PollType|null);
+
+        /** MsgOpaqueData correctOptionIndex. */
+        public correctOptionIndex?: (number|null);
 
         /** MsgOpaqueData pollVotesSnapshot. */
         public pollVotesSnapshot?: (waproto.MsgOpaqueData.IPollVotesSnapshot|null);
