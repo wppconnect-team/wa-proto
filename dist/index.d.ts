@@ -4687,7 +4687,8 @@ export namespace waproto {
             RICH_RESPONSE_UR_TIMESTAMP_PLACEHOLDER = 45,
             RICH_RESPONSE_IN_APP_SURVEY = 46,
             AI_RESPONSE_MODEL_BRANDING = 47,
-            SESSION_TRANSPARENCY_SYSTEM_MESSAGE = 48
+            SESSION_TRANSPARENCY_SYSTEM_MESSAGE = 48,
+            RICH_RESPONSE_UR_REASONING = 49
         }
     }
 
@@ -61935,9 +61936,7 @@ export namespace waproto {
             GROUP_MEMBER_LINK_MODE = 217,
             BIZ_AUTOMATICALLY_LABELED_CHAT_SYSTEM_MESSAGE = 218,
             PHONE_NUMBER_HIDING_CHAT_DEPRECATED_MESSAGE = 219,
-            QUARANTINED_MESSAGE = 220,
-            FIRST_JOIN_VIA_LINK = 221,
-            FLOOD_OF_JOIN_VIA_LINK = 222
+            QUARANTINED_MESSAGE = 220
         }
     }
 

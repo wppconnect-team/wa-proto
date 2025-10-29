@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1028992245
+/// WhatsApp Version: 2.3000.1029098773
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -390,6 +390,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_IN_APP_SURVEY = 46;
         AI_RESPONSE_MODEL_BRANDING = 47;
         SESSION_TRANSPARENCY_SYSTEM_MESSAGE = 48;
+        RICH_RESPONSE_UR_REASONING = 49;
     }
 }
 
@@ -5368,8 +5369,6 @@ message WebMessageInfo {
         BIZ_AUTOMATICALLY_LABELED_CHAT_SYSTEM_MESSAGE = 218;
         PHONE_NUMBER_HIDING_CHAT_DEPRECATED_MESSAGE = 219;
         QUARANTINED_MESSAGE = 220;
-        FIRST_JOIN_VIA_LINK = 221;
-        FLOOD_OF_JOIN_VIA_LINK = 222;
     }
 }
 
