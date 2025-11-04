@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1029320063
+/// WhatsApp Version: 2.3000.1029365661
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1192,6 +1192,7 @@ message ClientPayload {
             TEST = 34;
             SMART_GLASSES = 35;
             BLUE_VR = 36;
+            AR_WRIST = 37;
         }
         enum ReleaseChannel {
             RELEASE = 0;
@@ -4441,10 +4442,16 @@ message SyncActionValue {
     optional AvatarUpdatedAction avatarUpdatedAction = 72;
     optional PrivateProcessingSettingAction privateProcessingSettingAction = 74;
     optional NewsletterSavedInterestsAction newsletterSavedInterestsAction = 75;
+    optional AiThreadRenameAction aiThreadRenameAction = 76;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
         optional bool isDeleted = 3;
+    }
+    
+    message AiThreadRenameAction {
+        optional string newTitle = 1;
+        optional bool isFromServer = 2;
     }
     
     message AndroidUnsupportedActions {
@@ -4588,6 +4595,7 @@ message SyncActionValue {
             COMMUNITY = 6;
             SERVER_ASSIGNED = 7;
             DRAFTED = 8;
+            AI_HANDOFF = 9;
         }
     }
     
