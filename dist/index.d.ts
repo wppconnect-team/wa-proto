@@ -13070,16 +13070,6 @@ export namespace waproto {
         }
     }
 
-    /** CollectionName enum. */
-    enum CollectionName {
-        COLLECTION_NAME_UNKNOWN = 0,
-        REGULAR = 1,
-        REGULAR_LOW = 2,
-        REGULAR_HIGH = 3,
-        CRITICAL_BLOCK = 4,
-        CRITICAL_UNBLOCK_LOW = 5
-    }
-
     /** Properties of a CommentMetadata. */
     interface ICommentMetadata {
 
@@ -43397,83 +43387,6 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
-    /** MutationProps enum. */
-    enum MutationProps {
-        STAR_ACTION = 2,
-        CONTACT_ACTION = 3,
-        MUTE_ACTION = 4,
-        PIN_ACTION = 5,
-        SECURITY_NOTIFICATION_SETTING = 6,
-        PUSH_NAME_SETTING = 7,
-        QUICK_REPLY_ACTION = 8,
-        RECENT_EMOJI_WEIGHTS_ACTION = 11,
-        LABEL_MESSAGE_ACTION = 13,
-        LABEL_EDIT_ACTION = 14,
-        LABEL_ASSOCIATION_ACTION = 15,
-        LOCALE_SETTING = 16,
-        ARCHIVE_CHAT_ACTION = 17,
-        DELETE_MESSAGE_FOR_ME_ACTION = 18,
-        KEY_EXPIRATION = 19,
-        MARK_CHAT_AS_READ_ACTION = 20,
-        CLEAR_CHAT_ACTION = 21,
-        DELETE_CHAT_ACTION = 22,
-        UNARCHIVE_CHATS_SETTING = 23,
-        PRIMARY_FEATURE = 24,
-        ANDROID_UNSUPPORTED_ACTIONS = 26,
-        AGENT_ACTION = 27,
-        SUBSCRIPTION_ACTION = 28,
-        USER_STATUS_MUTE_ACTION = 29,
-        TIME_FORMAT_ACTION = 30,
-        NUX_ACTION = 31,
-        PRIMARY_VERSION_ACTION = 32,
-        STICKER_ACTION = 33,
-        REMOVE_RECENT_STICKER_ACTION = 34,
-        CHAT_ASSIGNMENT = 35,
-        CHAT_ASSIGNMENT_OPENED_STATUS = 36,
-        PN_FOR_LID_CHAT_ACTION = 37,
-        MARKETING_MESSAGE_ACTION = 38,
-        MARKETING_MESSAGE_BROADCAST_ACTION = 39,
-        EXTERNAL_WEB_BETA_ACTION = 40,
-        PRIVACY_SETTING_RELAY_ALL_CALLS = 41,
-        CALL_LOG_ACTION = 42,
-        UGC_BOT = 43,
-        STATUS_PRIVACY = 44,
-        BOT_WELCOME_REQUEST_ACTION = 45,
-        DELETE_INDIVIDUAL_CALL_LOG = 46,
-        LABEL_REORDERING_ACTION = 47,
-        PAYMENT_INFO_ACTION = 48,
-        CUSTOM_PAYMENT_METHODS_ACTION = 49,
-        LOCK_CHAT_ACTION = 50,
-        CHAT_LOCK_SETTINGS = 51,
-        WAMO_USER_IDENTIFIER_ACTION = 52,
-        PRIVACY_SETTING_DISABLE_LINK_PREVIEWS_ACTION = 53,
-        DEVICE_CAPABILITIES = 54,
-        NOTE_EDIT_ACTION = 55,
-        FAVORITES_ACTION = 56,
-        MERCHANT_PAYMENT_PARTNER_ACTION = 57,
-        WAFFLE_ACCOUNT_LINK_STATE_ACTION = 58,
-        USERNAME_CHAT_START_MODE = 59,
-        NOTIFICATION_ACTIVITY_SETTING_ACTION = 60,
-        LID_CONTACT_ACTION = 61,
-        CTWA_PER_CUSTOMER_DATA_SHARING_ACTION = 62,
-        PAYMENT_TOS_ACTION = 63,
-        PRIVACY_SETTING_CHANNELS_PERSONALISED_RECOMMENDATION_ACTION = 64,
-        BUSINESS_BROADCAST_ASSOCIATION_ACTION = 65,
-        DETECTED_OUTCOMES_STATUS_ACTION = 66,
-        MAIBA_AI_FEATURES_CONTROL_ACTION = 68,
-        BUSINESS_BROADCAST_LIST_ACTION = 69,
-        MUSIC_USER_ID_ACTION = 70,
-        STATUS_POST_OPT_IN_NOTIFICATION_PREFERENCES_ACTION = 71,
-        AVATAR_UPDATED_ACTION = 72,
-        GALAXY_FLOW_ACTION = 73,
-        PRIVATE_PROCESSING_SETTING_ACTION = 74,
-        NEWSLETTER_SAVED_INTERESTS_ACTION = 75,
-        AI_THREAD_RENAME_ACTION = 76,
-        INTERACTIVE_MESSAGE_ACTION = 77,
-        SHARE_OWN_PN = 10001,
-        BUSINESS_BROADCAST_ACTION = 10002
-    }
-
     /** Properties of a NoiseCertificate. */
     interface INoiseCertificate {
 
@@ -48783,9 +48696,6 @@ export namespace waproto {
 
         /** SessionTransparencyMetadata hcaId */
         hcaId?: (string|null);
-
-        /** SessionTransparencyMetadata sessionTransparencyType */
-        sessionTransparencyType?: (waproto.SessionTransparencyType|null);
     }
 
     /** Represents a SessionTransparencyMetadata. */
@@ -48802,9 +48712,6 @@ export namespace waproto {
 
         /** SessionTransparencyMetadata hcaId. */
         public hcaId?: (string|null);
-
-        /** SessionTransparencyMetadata sessionTransparencyType. */
-        public sessionTransparencyType?: (waproto.SessionTransparencyType|null);
 
         /**
          * Creates a new SessionTransparencyMetadata instance using the specified properties.
@@ -48882,12 +48789,6 @@ export namespace waproto {
          * @returns The default type url
          */
         public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
-
-    /** SessionTransparencyType enum. */
-    enum SessionTransparencyType {
-        UNKNOWN_TYPE = 0,
-        NY_AI_SAFETY_DISCLAIMER = 1
     }
 
     /** Properties of a SignalMessage. */
@@ -50781,9 +50682,6 @@ export namespace waproto {
 
         /** SyncActionValue aiThreadRenameAction */
         aiThreadRenameAction?: (waproto.SyncActionValue.IAiThreadRenameAction|null);
-
-        /** SyncActionValue interactiveMessageAction */
-        interactiveMessageAction?: (waproto.SyncActionValue.IInteractiveMessageAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -50999,9 +50897,6 @@ export namespace waproto {
         /** SyncActionValue aiThreadRenameAction. */
         public aiThreadRenameAction?: (waproto.SyncActionValue.IAiThreadRenameAction|null);
 
-        /** SyncActionValue interactiveMessageAction. */
-        public interactiveMessageAction?: (waproto.SyncActionValue.IInteractiveMessageAction|null);
-
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -51196,6 +51091,9 @@ export namespace waproto {
 
             /** AiThreadRenameAction newTitle */
             newTitle?: (string|null);
+
+            /** AiThreadRenameAction isFromServer */
+            isFromServer?: (boolean|null);
         }
 
         /** Represents an AiThreadRenameAction. */
@@ -51209,6 +51107,9 @@ export namespace waproto {
 
             /** AiThreadRenameAction newTitle. */
             public newTitle?: (string|null);
+
+            /** AiThreadRenameAction isFromServer. */
+            public isFromServer?: (boolean|null);
 
             /**
              * Creates a new AiThreadRenameAction instance using the specified properties.
@@ -53625,111 +53526,6 @@ export namespace waproto {
                  * @returns The default type url
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
-            }
-        }
-
-        /** Properties of an InteractiveMessageAction. */
-        interface IInteractiveMessageAction {
-
-            /** InteractiveMessageAction type */
-            type: waproto.SyncActionValue.InteractiveMessageAction.InteractiveMessageActionMode;
-        }
-
-        /** Represents an InteractiveMessageAction. */
-        class InteractiveMessageAction implements IInteractiveMessageAction {
-
-            /**
-             * Constructs a new InteractiveMessageAction.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.SyncActionValue.IInteractiveMessageAction);
-
-            /** InteractiveMessageAction type. */
-            public type: waproto.SyncActionValue.InteractiveMessageAction.InteractiveMessageActionMode;
-
-            /**
-             * Creates a new InteractiveMessageAction instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns InteractiveMessageAction instance
-             */
-            public static create(properties?: waproto.SyncActionValue.IInteractiveMessageAction): waproto.SyncActionValue.InteractiveMessageAction;
-
-            /**
-             * Encodes the specified InteractiveMessageAction message. Does not implicitly {@link waproto.SyncActionValue.InteractiveMessageAction.verify|verify} messages.
-             * @param message InteractiveMessageAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.SyncActionValue.IInteractiveMessageAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified InteractiveMessageAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.InteractiveMessageAction.verify|verify} messages.
-             * @param message InteractiveMessageAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.SyncActionValue.IInteractiveMessageAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes an InteractiveMessageAction message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns InteractiveMessageAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.InteractiveMessageAction;
-
-            /**
-             * Decodes an InteractiveMessageAction message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns InteractiveMessageAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.InteractiveMessageAction;
-
-            /**
-             * Verifies an InteractiveMessageAction message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates an InteractiveMessageAction message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns InteractiveMessageAction
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.InteractiveMessageAction;
-
-            /**
-             * Creates a plain object from an InteractiveMessageAction message. Also converts values to other types if specified.
-             * @param message InteractiveMessageAction
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.SyncActionValue.InteractiveMessageAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this InteractiveMessageAction to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for InteractiveMessageAction
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace InteractiveMessageAction {
-
-            /** InteractiveMessageActionMode enum. */
-            enum InteractiveMessageActionMode {
-                DISABLE_CTA = 1
             }
         }
 
