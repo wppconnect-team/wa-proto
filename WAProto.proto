@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1029399661
+/// WhatsApp Version: 2.3000.1029564202
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1233,6 +1233,14 @@ message ClientPayload {
     
 }
 
+enum CollectionName {
+    COLLECTION_NAME_UNKNOWN = 0;
+    REGULAR = 1;
+    REGULAR_LOW = 2;
+    REGULAR_HIGH = 3;
+    CRITICAL_BLOCK = 4;
+    CRITICAL_UNBLOCK_LOW = 5;
+}
 message CommentMetadata {
     optional MessageKey commentParentKey = 1;
     optional uint32 replyCount = 2;
@@ -1531,6 +1539,16 @@ message DeviceCapabilities {
     optional BusinessBroadcast businessBroadcast = 3;
     optional UserHasAvatar userHasAvatar = 4;
     optional MemberNameTagPrimarySupport memberNameTagPrimarySupport = 5;
+    optional AiThread aiThread = 6;
+    message AiThread {
+        optional SupportLevel supportLevel = 1;
+        enum SupportLevel {
+            NONE = 0;
+            INFRA = 1;
+            FULL = 2;
+        }
+    }
+    
     message BusinessBroadcast {
         optional bool importListEnabled = 1;
     }
@@ -2150,8 +2168,7 @@ message Message {
     optional StatusStickerInteractionMessage statusStickerInteractionMessage = 110;
     optional PollCreationMessage pollCreationMessageV5 = 111;
     optional NewsletterFollowerInviteMessage newsletterFollowerInviteMessageV2 = 113;
-    optional RequestContactInfoMessage requestContactInfoMessage = 114;
-    optional PollResultSnapshotMessage pollResultSnapshotMessageV3 = 115;
+    optional PollResultSnapshotMessage pollResultSnapshotMessageV3 = 114;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2431,6 +2448,8 @@ message Message {
         optional int64 endTime = 8;
         optional bool extraGuestsAllowed = 9;
         optional bool isScheduleCall = 10;
+        optional bool hasReminder = 11;
+        optional int64 reminderOffsetSec = 12;
     }
     
     message EventResponseMessage {
@@ -3366,12 +3385,6 @@ message Message {
         optional int64 senderTimestampMs = 4;
     }
     
-    message RequestContactInfoMessage {
-        optional string text = 1;
-        optional string ctaButtonText = 2;
-        optional ContextInfo contextInfo = 3;
-    }
-    
     message RequestPaymentMessage {
         optional Message noteMessage = 4;
         optional string currencyCodeIso4217 = 1;
@@ -3824,6 +3837,81 @@ message MsgRowOpaqueData {
     optional MsgOpaqueData quotedMsg = 2;
 }
 
+enum MutationProps {
+    STAR_ACTION = 2;
+    CONTACT_ACTION = 3;
+    MUTE_ACTION = 4;
+    PIN_ACTION = 5;
+    SECURITY_NOTIFICATION_SETTING = 6;
+    PUSH_NAME_SETTING = 7;
+    QUICK_REPLY_ACTION = 8;
+    RECENT_EMOJI_WEIGHTS_ACTION = 11;
+    LABEL_MESSAGE_ACTION = 13;
+    LABEL_EDIT_ACTION = 14;
+    LABEL_ASSOCIATION_ACTION = 15;
+    LOCALE_SETTING = 16;
+    ARCHIVE_CHAT_ACTION = 17;
+    DELETE_MESSAGE_FOR_ME_ACTION = 18;
+    KEY_EXPIRATION = 19;
+    MARK_CHAT_AS_READ_ACTION = 20;
+    CLEAR_CHAT_ACTION = 21;
+    DELETE_CHAT_ACTION = 22;
+    UNARCHIVE_CHATS_SETTING = 23;
+    PRIMARY_FEATURE = 24;
+    ANDROID_UNSUPPORTED_ACTIONS = 26;
+    AGENT_ACTION = 27;
+    SUBSCRIPTION_ACTION = 28;
+    USER_STATUS_MUTE_ACTION = 29;
+    TIME_FORMAT_ACTION = 30;
+    NUX_ACTION = 31;
+    PRIMARY_VERSION_ACTION = 32;
+    STICKER_ACTION = 33;
+    REMOVE_RECENT_STICKER_ACTION = 34;
+    CHAT_ASSIGNMENT = 35;
+    CHAT_ASSIGNMENT_OPENED_STATUS = 36;
+    PN_FOR_LID_CHAT_ACTION = 37;
+    MARKETING_MESSAGE_ACTION = 38;
+    MARKETING_MESSAGE_BROADCAST_ACTION = 39;
+    EXTERNAL_WEB_BETA_ACTION = 40;
+    PRIVACY_SETTING_RELAY_ALL_CALLS = 41;
+    CALL_LOG_ACTION = 42;
+    UGC_BOT = 43;
+    STATUS_PRIVACY = 44;
+    BOT_WELCOME_REQUEST_ACTION = 45;
+    DELETE_INDIVIDUAL_CALL_LOG = 46;
+    LABEL_REORDERING_ACTION = 47;
+    PAYMENT_INFO_ACTION = 48;
+    CUSTOM_PAYMENT_METHODS_ACTION = 49;
+    LOCK_CHAT_ACTION = 50;
+    CHAT_LOCK_SETTINGS = 51;
+    WAMO_USER_IDENTIFIER_ACTION = 52;
+    PRIVACY_SETTING_DISABLE_LINK_PREVIEWS_ACTION = 53;
+    DEVICE_CAPABILITIES = 54;
+    NOTE_EDIT_ACTION = 55;
+    FAVORITES_ACTION = 56;
+    MERCHANT_PAYMENT_PARTNER_ACTION = 57;
+    WAFFLE_ACCOUNT_LINK_STATE_ACTION = 58;
+    USERNAME_CHAT_START_MODE = 59;
+    NOTIFICATION_ACTIVITY_SETTING_ACTION = 60;
+    LID_CONTACT_ACTION = 61;
+    CTWA_PER_CUSTOMER_DATA_SHARING_ACTION = 62;
+    PAYMENT_TOS_ACTION = 63;
+    PRIVACY_SETTING_CHANNELS_PERSONALISED_RECOMMENDATION_ACTION = 64;
+    BUSINESS_BROADCAST_ASSOCIATION_ACTION = 65;
+    DETECTED_OUTCOMES_STATUS_ACTION = 66;
+    MAIBA_AI_FEATURES_CONTROL_ACTION = 68;
+    BUSINESS_BROADCAST_LIST_ACTION = 69;
+    MUSIC_USER_ID_ACTION = 70;
+    STATUS_POST_OPT_IN_NOTIFICATION_PREFERENCES_ACTION = 71;
+    AVATAR_UPDATED_ACTION = 72;
+    GALAXY_FLOW_ACTION = 73;
+    PRIVATE_PROCESSING_SETTING_ACTION = 74;
+    NEWSLETTER_SAVED_INTERESTS_ACTION = 75;
+    AI_THREAD_RENAME_ACTION = 76;
+    INTERACTIVE_MESSAGE_ACTION = 77;
+    SHARE_OWN_PN = 10001;
+    BUSINESS_BROADCAST_ACTION = 10002;
+}
 message NoiseCertificate {
     optional bytes details = 1;
     optional bytes signature = 2;
@@ -4230,8 +4318,13 @@ message SessionStructure {
 message SessionTransparencyMetadata {
     optional string disclaimerText = 1;
     optional string hcaId = 2;
+    optional SessionTransparencyType sessionTransparencyType = 3;
 }
 
+enum SessionTransparencyType {
+    UNKNOWN_TYPE = 0;
+    NY_AI_SAFETY_DISCLAIMER = 1;
+}
 message SignalMessage {
     optional bytes ratchetKey = 1;
     optional uint32 counter = 2;
@@ -4443,6 +4536,7 @@ message SyncActionValue {
     optional PrivateProcessingSettingAction privateProcessingSettingAction = 74;
     optional NewsletterSavedInterestsAction newsletterSavedInterestsAction = 75;
     optional AiThreadRenameAction aiThreadRenameAction = 76;
+    optional InteractiveMessageAction interactiveMessageAction = 77;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4451,7 +4545,6 @@ message SyncActionValue {
     
     message AiThreadRenameAction {
         optional string newTitle = 1;
-        optional bool isFromServer = 2;
     }
     
     message AndroidUnsupportedActions {
@@ -4565,6 +4658,13 @@ message SyncActionValue {
             optional string id = 1;
         }
         
+    }
+    
+    message InteractiveMessageAction {
+        required InteractiveMessageActionMode type = 1;
+        enum InteractiveMessageActionMode {
+            DISABLE_CTA = 1;
+        }
     }
     
     message KeyExpiration {
