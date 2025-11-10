@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1029564202
+/// WhatsApp Version: 2.3000.1029659368
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1928,6 +1928,7 @@ message InThreadSurveyMetadata {
     optional string privacyStatementFull = 15;
     repeated InThreadSurveyPrivacyStatementPart privacyStatementParts = 16;
     optional string feedbackToastText = 17;
+    optional int32 startQuestionIndex = 18;
     message InThreadSurveyOption {
         optional string stringValue = 1;
         optional uint32 numericValue = 2;

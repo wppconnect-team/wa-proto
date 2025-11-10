@@ -20388,6 +20388,9 @@ export namespace waproto {
 
         /** InThreadSurveyMetadata feedbackToastText */
         feedbackToastText?: (string|null);
+
+        /** InThreadSurveyMetadata startQuestionIndex */
+        startQuestionIndex?: (number|null);
     }
 
     /** Represents an InThreadSurveyMetadata. */
@@ -20449,6 +20452,9 @@ export namespace waproto {
 
         /** InThreadSurveyMetadata feedbackToastText. */
         public feedbackToastText?: (string|null);
+
+        /** InThreadSurveyMetadata startQuestionIndex. */
+        public startQuestionIndex?: (number|null);
 
         /**
          * Creates a new InThreadSurveyMetadata instance using the specified properties.
