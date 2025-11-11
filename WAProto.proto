@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1029659368
+/// WhatsApp Version: 2.3000.1029710215
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -394,6 +394,14 @@ message BotCapabilityMetadata {
     }
 }
 
+message BotDocumentMessageMetadata {
+    optional DocumentPluginType pluginType = 1;
+    enum DocumentPluginType {
+        TEXT_EXTRACTION = 0;
+        OCR_AND_IMAGES = 1;
+    }
+}
+
 message BotFeedbackMessage {
     optional MessageKey messageKey = 1;
     optional BotFeedbackKind kind = 2;
@@ -488,6 +496,14 @@ message BotFeedbackMessage {
         
     }
     
+}
+
+message BotGroupMetadata {
+    repeated BotGroupParticipantMetadata participantsMetadata = 1;
+}
+
+message BotGroupParticipantMetadata {
+    optional string botFbid = 1;
 }
 
 message BotImagineMetadata {
@@ -594,6 +610,8 @@ message BotMetadata {
     optional AIThreadInfo botThreadInfo = 31;
     optional AIRegenerateMetadata regenerateMetadata = 32;
     optional SessionTransparencyMetadata sessionTransparencyMetadata = 33;
+    optional BotDocumentMessageMetadata botDocumentMessageMetadata = 34;
+    optional BotGroupMetadata botGroupMetadata = 35;
     optional bytes internalMetadata = 999;
 }
 
