@@ -25423,6 +25423,9 @@ export namespace waproto {
 
             /** Call deeplinkPayload */
             deeplinkPayload?: (string|null);
+
+            /** Call messageContextInfo */
+            messageContextInfo?: (waproto.IMessageContextInfo|null);
         }
 
         /** Represents a Call. */
@@ -25460,6 +25463,9 @@ export namespace waproto {
 
             /** Call deeplinkPayload. */
             public deeplinkPayload?: (string|null);
+
+            /** Call messageContextInfo. */
+            public messageContextInfo?: (waproto.IMessageContextInfo|null);
 
             /**
              * Creates a new Call instance using the specified properties.
