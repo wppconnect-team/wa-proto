@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1029982878
+/// WhatsApp Version: 2.3000.1030110621
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3932,6 +3932,7 @@ enum MutationProps {
     SETTINGS_SYNC_ACTION = 78;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
+    AI_THREAD_DELETE_ACTION = 10003;
 }
 message NoiseCertificate {
     optional bytes details = 1;
