@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1030110621
+/// WhatsApp Version: 2.3000.1030169719
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -655,6 +655,7 @@ enum BotMetricsEntryPoint {
     ATTACHMENT_TRAY_GROUP_CHAT = 36;
     ASK_META_AI_MEDIA_VIEWER_1ON1 = 37;
     ASK_META_AI_MEDIA_VIEWER_GROUP = 38;
+    META_AI_SETTINGS = 45;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
