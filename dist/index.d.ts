@@ -7495,6 +7495,8 @@ export namespace waproto {
         ATTACHMENT_TRAY_GROUP_CHAT = 36,
         ASK_META_AI_MEDIA_VIEWER_1ON1 = 37,
         ASK_META_AI_MEDIA_VIEWER_GROUP = 38,
+        MEDIA_PICKER_1_ON_1_CHAT = 39,
+        MEDIA_PICKER_GROUP_CHAT = 40,
         META_AI_SETTINGS = 45
     }
 
@@ -15118,6 +15120,9 @@ export namespace waproto {
 
             /** ForwardedNewsletterMessageInfo accessibilityText */
             accessibilityText?: (string|null);
+
+            /** ForwardedNewsletterMessageInfo profileName */
+            profileName?: (string|null);
         }
 
         /** Represents a ForwardedNewsletterMessageInfo. */
@@ -15143,6 +15148,9 @@ export namespace waproto {
 
             /** ForwardedNewsletterMessageInfo accessibilityText. */
             public accessibilityText?: (string|null);
+
+            /** ForwardedNewsletterMessageInfo profileName. */
+            public profileName?: (string|null);
 
             /**
              * Creates a new ForwardedNewsletterMessageInfo instance using the specified properties.
@@ -23263,6 +23271,9 @@ export namespace waproto {
 
         /** Message pollResultSnapshotMessageV3 */
         pollResultSnapshotMessageV3?: (waproto.Message.IPollResultSnapshotMessage|null);
+
+        /** Message newsletterAdminProfileMessage */
+        newsletterAdminProfileMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -23558,6 +23569,9 @@ export namespace waproto {
 
         /** Message pollResultSnapshotMessageV3. */
         public pollResultSnapshotMessageV3?: (waproto.Message.IPollResultSnapshotMessage|null);
+
+        /** Message newsletterAdminProfileMessage. */
+        public newsletterAdminProfileMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.

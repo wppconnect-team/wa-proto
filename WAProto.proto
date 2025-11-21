@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1030169719
+/// WhatsApp Version: 2.3000.1030235766
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -655,6 +655,8 @@ enum BotMetricsEntryPoint {
     ATTACHMENT_TRAY_GROUP_CHAT = 36;
     ASK_META_AI_MEDIA_VIEWER_1ON1 = 37;
     ASK_META_AI_MEDIA_VIEWER_GROUP = 38;
+    MEDIA_PICKER_1_ON_1_CHAT = 39;
+    MEDIA_PICKER_GROUP_CHAT = 40;
     META_AI_SETTINGS = 45;
 }
 message BotMetricsMetadata {
@@ -1433,6 +1435,7 @@ message ContextInfo {
         optional string newsletterName = 3;
         optional ContentType contentType = 4;
         optional string accessibilityText = 5;
+        optional string profileName = 6;
         enum ContentType {
             UPDATE = 1;
             UPDATE_CARD = 2;
@@ -2190,6 +2193,7 @@ message Message {
     optional PollCreationMessage pollCreationMessageV5 = 111;
     optional NewsletterFollowerInviteMessage newsletterFollowerInviteMessageV2 = 113;
     optional PollResultSnapshotMessage pollResultSnapshotMessageV3 = 115;
+    optional FutureProofMessage newsletterAdminProfileMessage = 116;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
