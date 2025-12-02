@@ -12473,9 +12473,7 @@ export namespace waproto {
                 HARDCODED = 2,
                 OVERRIDE = 3,
                 FALLBACK = 4,
-                MNS = 5,
-                MNS_SECONDARY = 6,
-                SOCKS_PROXY = 7
+                MNS = 5
             }
         }
 
