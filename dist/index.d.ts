@@ -13133,6 +13133,12 @@ export namespace waproto {
 
             /** WebInfo webSubPlatform */
             webSubPlatform?: (waproto.ClientPayload.WebInfo.WebSubPlatform|null);
+
+            /** WebInfo browser */
+            browser?: (string|null);
+
+            /** WebInfo browserVersion */
+            browserVersion?: (string|null);
         }
 
         /** Represents a WebInfo. */
@@ -13155,6 +13161,12 @@ export namespace waproto {
 
             /** WebInfo webSubPlatform. */
             public webSubPlatform?: (waproto.ClientPayload.WebInfo.WebSubPlatform|null);
+
+            /** WebInfo browser. */
+            public browser?: (string|null);
+
+            /** WebInfo browserVersion. */
+            public browserVersion?: (string|null);
 
             /**
              * Creates a new WebInfo instance using the specified properties.
