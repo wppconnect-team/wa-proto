@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1030683301
+/// WhatsApp Version: 2.3000.1030778328
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -394,6 +394,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_UR_ZEITGEIST_CITATIONS = 50;
         RICH_RESPONSE_UR_ZEITGEIST_CAROUSEL = 51;
         AI_IMAGINE_LOADING_INDICATOR = 52;
+        RICH_RESPONSE_UR_IMAGINE = 53;
     }
 }
 
@@ -662,14 +663,6 @@ enum BotMetricsEntryPoint {
     MEDIA_PICKER_GROUP_CHAT = 40;
     ASK_META_AI_NO_SEARCH_RESULTS = 41;
     META_AI_SETTINGS = 45;
-    AI_HOME_LEARN = 46;
-    AI_HOME_WRITE = 47;
-    AI_HOME_CREATE_IMAGE = 48;
-    AI_HOME_ANIMATE_PHOTO = 49;
-    AI_HOME_GET_ADVICE = 50;
-    AI_HOME_ANALYZE_FILE = 51;
-    AI_HOME_PLAN = 52;
-    AI_HOME_HAVE_FUN = 53;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
@@ -737,6 +730,7 @@ message BotPluginMetadata {
 message BotProgressIndicatorMetadata {
     optional string progressDescription = 1;
     repeated BotPlanningStepMetadata stepsMetadata = 2;
+    optional int64 estimatedCompletionTime = 3;
     message BotPlanningStepMetadata {
         optional string statusTitle = 1;
         optional string statusBody = 2;

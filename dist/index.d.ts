@@ -4691,7 +4691,8 @@ export namespace waproto {
             RICH_RESPONSE_UR_REASONING = 49,
             RICH_RESPONSE_UR_ZEITGEIST_CITATIONS = 50,
             RICH_RESPONSE_UR_ZEITGEIST_CAROUSEL = 51,
-            AI_IMAGINE_LOADING_INDICATOR = 52
+            AI_IMAGINE_LOADING_INDICATOR = 52,
+            RICH_RESPONSE_UR_IMAGINE = 53
         }
     }
 
@@ -7501,15 +7502,7 @@ export namespace waproto {
         MEDIA_PICKER_1_ON_1_CHAT = 39,
         MEDIA_PICKER_GROUP_CHAT = 40,
         ASK_META_AI_NO_SEARCH_RESULTS = 41,
-        META_AI_SETTINGS = 45,
-        AI_HOME_LEARN = 46,
-        AI_HOME_WRITE = 47,
-        AI_HOME_CREATE_IMAGE = 48,
-        AI_HOME_ANIMATE_PHOTO = 49,
-        AI_HOME_GET_ADVICE = 50,
-        AI_HOME_ANALYZE_FILE = 51,
-        AI_HOME_PLAN = 52,
-        AI_HOME_HAVE_FUN = 53
+        META_AI_SETTINGS = 45
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -8051,6 +8044,9 @@ export namespace waproto {
 
         /** BotProgressIndicatorMetadata stepsMetadata */
         stepsMetadata?: (waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata[]|null);
+
+        /** BotProgressIndicatorMetadata estimatedCompletionTime */
+        estimatedCompletionTime?: (number|Long|null);
     }
 
     /** Represents a BotProgressIndicatorMetadata. */
@@ -8067,6 +8063,9 @@ export namespace waproto {
 
         /** BotProgressIndicatorMetadata stepsMetadata. */
         public stepsMetadata: waproto.BotProgressIndicatorMetadata.IBotPlanningStepMetadata[];
+
+        /** BotProgressIndicatorMetadata estimatedCompletionTime. */
+        public estimatedCompletionTime?: (number|Long|null);
 
         /**
          * Creates a new BotProgressIndicatorMetadata instance using the specified properties.
