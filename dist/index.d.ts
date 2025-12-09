@@ -9630,7 +9630,8 @@ export namespace waproto {
         USER_INPUT = 3,
         EMU_FLASH = 4,
         EMU_FLASH_FOLLOWUP = 5,
-        VOICE = 6
+        VOICE = 6,
+        AI_HOME_SESSION = 7
     }
 
     /** Properties of a BotSignatureVerificationMetadata. */

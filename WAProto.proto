@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1030778328
+/// WhatsApp Version: 2.3000.1030818676
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -856,6 +856,7 @@ enum BotSessionSource {
     EMU_FLASH = 4;
     EMU_FLASH_FOLLOWUP = 5;
     VOICE = 6;
+    AI_HOME_SESSION = 7;
 }
 message BotSignatureVerificationMetadata {
     repeated BotSignatureVerificationUseCaseProof proofs = 1;
