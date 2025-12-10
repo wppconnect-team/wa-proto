@@ -4692,7 +4692,8 @@ export namespace waproto {
             RICH_RESPONSE_UR_ZEITGEIST_CITATIONS = 50,
             RICH_RESPONSE_UR_ZEITGEIST_CAROUSEL = 51,
             AI_IMAGINE_LOADING_INDICATOR = 52,
-            RICH_RESPONSE_UR_IMAGINE = 53
+            RICH_RESPONSE_UR_IMAGINE = 53,
+            AI_IMAGINE_UR_TO_NATIVE_LOADING_INDICATOR = 54
         }
     }
 
