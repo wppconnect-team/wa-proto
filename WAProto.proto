@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1030882912
+/// WhatsApp Version: 2.3000.1030947950
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -5346,6 +5346,7 @@ message WebMessageInfo {
     optional GroupHistoryBundleInfo groupHistoryBundleInfo = 75;
     optional InteractiveMessageAdditionalMetadata interactiveMessageAdditionalMetadata = 76;
     optional QuarantinedMessage quarantinedMessage = 77;
+    optional uint32 nonJidMentions = 78;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;

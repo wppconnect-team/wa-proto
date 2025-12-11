@@ -62378,6 +62378,9 @@ export namespace waproto {
 
         /** WebMessageInfo quarantinedMessage */
         quarantinedMessage?: (waproto.IQuarantinedMessage|null);
+
+        /** WebMessageInfo nonJidMentions */
+        nonJidMentions?: (number|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -62586,6 +62589,9 @@ export namespace waproto {
 
         /** WebMessageInfo quarantinedMessage. */
         public quarantinedMessage?: (waproto.IQuarantinedMessage|null);
+
+        /** WebMessageInfo nonJidMentions. */
+        public nonJidMentions?: (number|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
