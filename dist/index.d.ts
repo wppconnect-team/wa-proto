@@ -52397,6 +52397,9 @@ export namespace waproto {
 
             /** BusinessBroadcastListAction listName */
             listName?: (string|null);
+
+            /** BusinessBroadcastListAction labelIds */
+            labelIds?: (string[]|null);
         }
 
         /** Represents a BusinessBroadcastListAction. */
@@ -52416,6 +52419,9 @@ export namespace waproto {
 
             /** BusinessBroadcastListAction listName. */
             public listName?: (string|null);
+
+            /** BusinessBroadcastListAction labelIds. */
+            public labelIds: string[];
 
             /**
              * Creates a new BusinessBroadcastListAction instance using the specified properties.

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1031204599
+/// WhatsApp Version: 2.3000.1031424117
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4629,6 +4629,7 @@ message SyncActionValue {
         optional bool deleted = 1;
         repeated SyncActionValue.BroadcastListParticipant participants = 2;
         optional string listName = 3;
+        repeated string labelIds = 4;
     }
     
     message CallLogAction {
