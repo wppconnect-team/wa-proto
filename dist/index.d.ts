@@ -17246,6 +17246,9 @@ export namespace waproto {
 
             /** HistorySyncConfig thumbnailSyncDaysLimit */
             thumbnailSyncDaysLimit?: (number|null);
+
+            /** HistorySyncConfig initialSyncMaxMessagesPerChat */
+            initialSyncMaxMessagesPerChat?: (number|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -17313,6 +17316,9 @@ export namespace waproto {
 
             /** HistorySyncConfig thumbnailSyncDaysLimit. */
             public thumbnailSyncDaysLimit?: (number|null);
+
+            /** HistorySyncConfig initialSyncMaxMessagesPerChat. */
+            public initialSyncMaxMessagesPerChat?: (number|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
