@@ -718,6 +718,9 @@ export namespace waproto {
 
             /** AIHomeOption imageBackgroundColor */
             imageBackgroundColor?: (string|null);
+
+            /** AIHomeOption cardTypeId */
+            cardTypeId?: (string|null);
         }
 
         /** Represents a AIHomeOption. */
@@ -749,6 +752,9 @@ export namespace waproto {
 
             /** AIHomeOption imageBackgroundColor. */
             public imageBackgroundColor?: (string|null);
+
+            /** AIHomeOption cardTypeId. */
+            public cardTypeId?: (string|null);
 
             /**
              * Creates a new AIHomeOption instance using the specified properties.
@@ -26517,6 +26523,9 @@ export namespace waproto {
 
             /** ContactMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
+
+            /** ContactMessage isSelfContact */
+            isSelfContact?: (boolean|null);
         }
 
         /** Represents a ContactMessage. */
@@ -26536,6 +26545,9 @@ export namespace waproto {
 
             /** ContactMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
+
+            /** ContactMessage isSelfContact. */
+            public isSelfContact?: (boolean|null);
 
             /**
              * Creates a new ContactMessage instance using the specified properties.
@@ -34024,6 +34036,9 @@ export namespace waproto {
 
             /** PaymentInviteMessage expiryTimestamp */
             expiryTimestamp?: (number|Long|null);
+
+            /** PaymentInviteMessage incentiveEligible */
+            incentiveEligible?: (boolean|null);
         }
 
         /** Represents a PaymentInviteMessage. */
@@ -34040,6 +34055,9 @@ export namespace waproto {
 
             /** PaymentInviteMessage expiryTimestamp. */
             public expiryTimestamp?: (number|Long|null);
+
+            /** PaymentInviteMessage incentiveEligible. */
+            public incentiveEligible?: (boolean|null);
 
             /**
              * Creates a new PaymentInviteMessage instance using the specified properties.

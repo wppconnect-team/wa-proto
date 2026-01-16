@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1032045955
+/// WhatsApp Version: 2.3000.1032094433
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -54,6 +54,7 @@ message AIHomeState {
         optional string imageWdsIdentifier = 5;
         optional string imageTintColor = 6;
         optional string imageBackgroundColor = 7;
+        optional string cardTypeId = 8;
         enum AIHomeActionType {
             PROMPT = 0;
             CREATE_IMAGE = 1;
@@ -2425,6 +2426,7 @@ message Message {
         optional string displayName = 1;
         optional string vcard = 16;
         optional ContextInfo contextInfo = 17;
+        optional bool isSelfContact = 18;
     }
     
     message ContactsArrayMessage {
@@ -3059,6 +3061,7 @@ message Message {
     message PaymentInviteMessage {
         optional ServiceType serviceType = 1;
         optional int64 expiryTimestamp = 2;
+        optional bool incentiveEligible = 3;
         enum ServiceType {
             UNKNOWN = 0;
             FBPAY = 1;
