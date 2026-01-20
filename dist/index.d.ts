@@ -6085,9 +6085,6 @@ export namespace waproto {
 
         /** BotImagineMetadata imagineType */
         imagineType?: (waproto.BotImagineMetadata.ImagineType|null);
-
-        /** BotImagineMetadata shortPrompt */
-        shortPrompt?: (string|null);
     }
 
     /** Represents a BotImagineMetadata. */
@@ -6101,9 +6098,6 @@ export namespace waproto {
 
         /** BotImagineMetadata imagineType. */
         public imagineType?: (waproto.BotImagineMetadata.ImagineType|null);
-
-        /** BotImagineMetadata shortPrompt. */
-        public shortPrompt?: (string|null);
 
         /**
          * Creates a new BotImagineMetadata instance using the specified properties.
