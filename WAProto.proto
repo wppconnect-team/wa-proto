@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1032191490
+/// WhatsApp Version: 2.3000.1032501536
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -526,6 +526,14 @@ message BotImagineMetadata {
     }
 }
 
+message BotInfrastructureDiagnostics {
+    optional BotBackend botBackend = 1;
+    enum BotBackend {
+        AAPI = 0;
+        CLIPPY = 1;
+    }
+}
+
 message BotLinkedAccount {
     optional BotLinkedAccountType type = 1;
     enum BotLinkedAccountType {
@@ -622,6 +630,7 @@ message BotMetadata {
     optional BotDocumentMessageMetadata botDocumentMessageMetadata = 34;
     optional BotGroupMetadata botGroupMetadata = 35;
     optional BotRenderingConfigMetadata botRenderingConfigMetadata = 36;
+    optional BotInfrastructureDiagnostics botInfrastructureDiagnostics = 37;
     optional bytes internalMetadata = 999;
 }
 
