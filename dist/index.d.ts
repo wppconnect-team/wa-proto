@@ -55832,6 +55832,9 @@ export namespace waproto {
 
             /** MuteAction autoMuted */
             autoMuted?: (boolean|null);
+
+            /** MuteAction muteEveryoneMentionEndTimestamp */
+            muteEveryoneMentionEndTimestamp?: (number|Long|null);
         }
 
         /** Represents a MuteAction. */
@@ -55851,6 +55854,9 @@ export namespace waproto {
 
             /** MuteAction autoMuted. */
             public autoMuted?: (boolean|null);
+
+            /** MuteAction muteEveryoneMentionEndTimestamp. */
+            public muteEveryoneMentionEndTimestamp?: (number|Long|null);
 
             /**
              * Creates a new MuteAction instance using the specified properties.
