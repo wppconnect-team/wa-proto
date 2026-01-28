@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1032501536
+/// WhatsApp Version: 2.3000.1032542123
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1504,6 +1504,8 @@ message ContextInfo {
     }
     message StatusAudienceMetadata {
         optional AudienceType audienceType = 1;
+        optional string listName = 2;
+        optional string listEmoji = 3;
         enum AudienceType {
             UNKNOWN = 0;
             CLOSE_FRIENDS = 1;
@@ -4494,6 +4496,7 @@ message StatusAttribution {
         RL_ATTRIBUTION = 6;
         AI_CREATED = 7;
         LAYOUTS = 8;
+        STATUS_CLOSE_SHARING = 9;
     }
 }
 
@@ -4957,11 +4960,24 @@ message SyncActionValue {
         optional bool isDocumentsAutodownloadEnabled = 21;
         optional bool disableLinkPreviews = 22;
         optional int32 notificationToneId = 23;
+        optional MediaQualitySetting mediaUploadQuality = 24;
+        optional bool isSpellCheckEnabled = 25;
+        optional bool isEnterToSendEnabled = 26;
+        optional bool isGroupMessageNotificationEnabled = 27;
+        optional bool isGroupReactionsNotificationEnabled = 28;
+        optional bool isStatusNotificationEnabled = 29;
+        optional int32 statusNotificationToneId = 30;
+        optional bool shouldPlaySoundForCallNotification = 31;
         enum DisplayMode {
             DISPLAY_MODE_UNKNOWN = 0;
             ALWAYS = 1;
             NEVER = 2;
             ONLY_WHEN_APP_IS_OPEN = 3;
+        }
+        enum MediaQualitySetting {
+            MEDIA_QUALITY_UNKNOWN = 0;
+            STANDARD = 1;
+            HD = 2;
         }
         enum SettingKey {
             SETTING_KEY_UNKNOWN = 0;
@@ -4988,6 +5004,14 @@ message SyncActionValue {
             IS_DOCUMENTS_AUTODOWNLOAD_ENABLED = 21;
             DISABLE_LINK_PREVIEWS = 22;
             NOTIFICATION_TONE_ID = 23;
+            MEDIA_UPLOAD_QUALITY = 24;
+            IS_SPELL_CHECK_ENABLED = 25;
+            IS_ENTER_TO_SEND_ENABLED = 26;
+            IS_GROUP_MESSAGE_NOTIFICATION_ENABLED = 27;
+            IS_GROUP_REACTIONS_NOTIFICATION_ENABLED = 28;
+            IS_STATUS_NOTIFICATION_ENABLED = 29;
+            STATUS_NOTIFICATION_TONE_ID = 30;
+            SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION = 31;
         }
         enum SettingPlatform {
             PLATFORM_UNKNOWN = 0;

@@ -15644,6 +15644,12 @@ export namespace waproto {
 
             /** StatusAudienceMetadata audienceType */
             audienceType?: (waproto.ContextInfo.StatusAudienceMetadata.AudienceType|null);
+
+            /** StatusAudienceMetadata listName */
+            listName?: (string|null);
+
+            /** StatusAudienceMetadata listEmoji */
+            listEmoji?: (string|null);
         }
 
         /** Represents a StatusAudienceMetadata. */
@@ -15657,6 +15663,12 @@ export namespace waproto {
 
             /** StatusAudienceMetadata audienceType. */
             public audienceType?: (waproto.ContextInfo.StatusAudienceMetadata.AudienceType|null);
+
+            /** StatusAudienceMetadata listName. */
+            public listName?: (string|null);
+
+            /** StatusAudienceMetadata listEmoji. */
+            public listEmoji?: (string|null);
 
             /**
              * Creates a new StatusAudienceMetadata instance using the specified properties.
@@ -50719,7 +50731,8 @@ export namespace waproto {
             GROUP_STATUS = 5,
             RL_ATTRIBUTION = 6,
             AI_CREATED = 7,
-            LAYOUTS = 8
+            LAYOUTS = 8,
+            STATUS_CLOSE_SHARING = 9
         }
     }
 
@@ -57826,6 +57839,30 @@ export namespace waproto {
 
             /** SettingsSyncAction notificationToneId */
             notificationToneId?: (number|null);
+
+            /** SettingsSyncAction mediaUploadQuality */
+            mediaUploadQuality?: (waproto.SyncActionValue.SettingsSyncAction.MediaQualitySetting|null);
+
+            /** SettingsSyncAction isSpellCheckEnabled */
+            isSpellCheckEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isEnterToSendEnabled */
+            isEnterToSendEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isGroupMessageNotificationEnabled */
+            isGroupMessageNotificationEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isGroupReactionsNotificationEnabled */
+            isGroupReactionsNotificationEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isStatusNotificationEnabled */
+            isStatusNotificationEnabled?: (boolean|null);
+
+            /** SettingsSyncAction statusNotificationToneId */
+            statusNotificationToneId?: (number|null);
+
+            /** SettingsSyncAction shouldPlaySoundForCallNotification */
+            shouldPlaySoundForCallNotification?: (boolean|null);
         }
 
         /** Represents a SettingsSyncAction. */
@@ -57905,6 +57942,30 @@ export namespace waproto {
 
             /** SettingsSyncAction notificationToneId. */
             public notificationToneId?: (number|null);
+
+            /** SettingsSyncAction mediaUploadQuality. */
+            public mediaUploadQuality?: (waproto.SyncActionValue.SettingsSyncAction.MediaQualitySetting|null);
+
+            /** SettingsSyncAction isSpellCheckEnabled. */
+            public isSpellCheckEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isEnterToSendEnabled. */
+            public isEnterToSendEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isGroupMessageNotificationEnabled. */
+            public isGroupMessageNotificationEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isGroupReactionsNotificationEnabled. */
+            public isGroupReactionsNotificationEnabled?: (boolean|null);
+
+            /** SettingsSyncAction isStatusNotificationEnabled. */
+            public isStatusNotificationEnabled?: (boolean|null);
+
+            /** SettingsSyncAction statusNotificationToneId. */
+            public statusNotificationToneId?: (number|null);
+
+            /** SettingsSyncAction shouldPlaySoundForCallNotification. */
+            public shouldPlaySoundForCallNotification?: (boolean|null);
 
             /**
              * Creates a new SettingsSyncAction instance using the specified properties.
@@ -57994,6 +58055,13 @@ export namespace waproto {
                 ONLY_WHEN_APP_IS_OPEN = 3
             }
 
+            /** MediaQualitySetting enum. */
+            enum MediaQualitySetting {
+                MEDIA_QUALITY_UNKNOWN = 0,
+                STANDARD = 1,
+                HD = 2
+            }
+
             /** SettingKey enum. */
             enum SettingKey {
                 SETTING_KEY_UNKNOWN = 0,
@@ -58019,7 +58087,15 @@ export namespace waproto {
                 IS_VIDEOS_AUTODOWNLOAD_ENABLED = 20,
                 IS_DOCUMENTS_AUTODOWNLOAD_ENABLED = 21,
                 DISABLE_LINK_PREVIEWS = 22,
-                NOTIFICATION_TONE_ID = 23
+                NOTIFICATION_TONE_ID = 23,
+                MEDIA_UPLOAD_QUALITY = 24,
+                IS_SPELL_CHECK_ENABLED = 25,
+                IS_ENTER_TO_SEND_ENABLED = 26,
+                IS_GROUP_MESSAGE_NOTIFICATION_ENABLED = 27,
+                IS_GROUP_REACTIONS_NOTIFICATION_ENABLED = 28,
+                IS_STATUS_NOTIFICATION_ENABLED = 29,
+                STATUS_NOTIFICATION_TONE_ID = 30,
+                SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION = 31
             }
 
             /** SettingPlatform enum. */
