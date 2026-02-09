@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1032570163
+/// WhatsApp Version: 2.3000.1033151707
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -60,6 +60,7 @@ message AIHomeState {
             CREATE_IMAGE = 1;
             ANIMATE_PHOTO = 2;
             ANALYZE_FILE = 3;
+            COLLABORATE = 4;
         }
     }
     
@@ -399,6 +400,7 @@ message BotCapabilityMetadata {
         AI_IMAGINE_UR_TO_NATIVE_LOADING_INDICATOR = 54;
         RICH_RESPONSE_UR_BLOKS_ENABLED = 55;
         RICH_RESPONSE_INLINE_LINKS_ENABLED = 56;
+        RICH_RESPONSE_UR_IMAGINE_VIDEO = 57;
     }
 }
 
@@ -528,6 +530,7 @@ message BotImagineMetadata {
 
 message BotInfrastructureDiagnostics {
     optional BotBackend botBackend = 1;
+    repeated string toolsUsed = 2;
     enum BotBackend {
         AAPI = 0;
         CLIPPY = 1;
@@ -694,6 +697,7 @@ enum BotMetricsThreadEntryPoint {
 }
 message BotModeSelectionMetadata {
     repeated BotUserSelectionMode mode = 1;
+    repeated uint32 overrideMode = 2;
     enum BotUserSelectionMode {
         DEFAULT_MODE = 0;
         THINK_HARD_MODE = 1;
@@ -1370,6 +1374,9 @@ message ContextInfo {
     optional uint32 nonJidMentions = 70;
     optional QuotedType quotedType = 71;
     optional BotMessageSharingInfo botMessageSharingInfo = 72;
+    optional bool isSpoiler = 73;
+    optional MediaDomainInfo mediaDomainInfo = 74;
+    optional PartiallySelectedContent partiallySelectedContent = 75;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1485,6 +1492,10 @@ message ContextInfo {
         HEVC_VIDEO_PARENT = 7;
         HEVC_VIDEO_CHILD = 8;
     }
+    message PartiallySelectedContent {
+        optional string text = 1;
+    }
+    
     message QuestionReplyQuotedMessage {
         optional int32 serverQuestionId = 1;
         optional Message quotedQuestion = 2;
@@ -2103,6 +2114,16 @@ message MediaData {
     optional string localPath = 1;
 }
 
+message MediaDomainInfo {
+    optional MediaKeyDomain mediaKeyDomain = 1;
+    optional bytes e2EeMediaKey = 2;
+}
+
+enum MediaKeyDomain {
+    MEDIA_KEY_DOMAIN_UNKNOWN = 0;
+    MEDIA_KEY_DOMAIN_E2EE = 1;
+    MEDIA_KEY_DOMAIN_NON_E2EE = 2;
+}
 message MediaNotifyMessage {
     optional string expressPathUrl = 1;
     optional bytes fileEncSha256 = 2;
@@ -2230,6 +2251,8 @@ message Message {
     optional PollResultSnapshotMessage pollResultSnapshotMessageV3 = 115;
     optional FutureProofMessage newsletterAdminProfileMessage = 116;
     optional FutureProofMessage newsletterAdminProfileMessageV2 = 117;
+    optional FutureProofMessage spoilerMessage = 118;
+    optional FutureProofMessage pollCreationMessageV6 = 119;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2287,7 +2310,6 @@ message Message {
         optional fixed32 backgroundArgb = 20;
         optional bool viewOnce = 21;
         optional string accessibilityLabel = 22;
-        optional Message.MediaKeyDomain mediaKeyDomain = 23;
     }
     
     message BCallMessage {
@@ -2479,7 +2501,6 @@ message Message {
         optional uint32 thumbnailWidth = 19;
         optional string caption = 20;
         optional string accessibilityLabel = 21;
-        optional Message.MediaKeyDomain mediaKeyDomain = 22;
     }
     
     message EncCommentMessage {
@@ -2731,7 +2752,6 @@ message Message {
         repeated InteractiveAnnotation annotations = 30;
         optional ImageSourceType imageSourceType = 31;
         optional string accessibilityLabel = 32;
-        optional Message.MediaKeyDomain mediaKeyDomain = 33;
         optional string qrUrl = 34;
         enum ImageSourceType {
             USER_IMAGE = 0;
@@ -2990,16 +3010,8 @@ message Message {
         optional int64 mediaKeyTimestamp = 5;
         optional uint32 thumbnailHeight = 6;
         optional uint32 thumbnailWidth = 7;
-        optional Message.MediaKeyDomain mediaKeyDomain = 8;
     }
     
-    enum MediaKeyDomain {
-        UNSET = 0;
-        E2EE_CHAT = 1;
-        STATUS = 2;
-        CAPI = 3;
-        BOT = 4;
-    }
     message MessageHistoryBundle {
         optional string mimetype = 1;
         optional bytes fileSha256 = 2;
@@ -3015,6 +3027,7 @@ message Message {
         repeated string historyReceivers = 1;
         optional int64 oldestMessageTimestamp = 2;
         optional int64 messageCount = 3;
+        repeated string nonHistoryReceivers = 4;
     }
     
     message MessageHistoryNotice {
@@ -3309,6 +3322,8 @@ message Message {
         optional Message.PollContentType pollContentType = 6;
         optional Message.PollType pollType = 7;
         optional Option correctAnswer = 8;
+        optional int64 endTime = 9;
+        optional bool hideParticipantName = 10;
         message Option {
             optional string optionName = 1;
             optional string optionHash = 2;
@@ -3495,10 +3510,13 @@ message Message {
         optional bytes encPayload = 2;
         optional bytes encIv = 3;
         optional SecretEncType secretEncType = 4;
+        optional string remoteKeyId = 5;
         enum SecretEncType {
             UNKNOWN = 0;
             EVENT_EDIT = 1;
             MESSAGE_EDIT = 2;
+            MESSAGE_SCHEDULE = 3;
+            POLL_EDIT = 4;
         }
     }
     
@@ -3572,7 +3590,6 @@ message Message {
         optional bool isAiSticker = 20;
         optional bool isLottie = 21;
         optional string accessibilityLabel = 22;
-        optional Message.MediaKeyDomain mediaKeyDomain = 23;
     }
     
     message StickerPackMessage {
@@ -3709,7 +3726,6 @@ message Message {
         optional uint64 motionPhotoPresentationOffsetMs = 29;
         optional string metadataUrl = 30;
         optional VideoSourceType videoSourceType = 31;
-        optional Message.MediaKeyDomain mediaKeyDomain = 32;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
@@ -4496,7 +4512,7 @@ message StatusAttribution {
         RL_ATTRIBUTION = 6;
         AI_CREATED = 7;
         LAYOUTS = 8;
-        STATUS_CLOSE_SHARING = 9;
+        NEWSLETTER_STATUS = 9;
     }
 }
 
