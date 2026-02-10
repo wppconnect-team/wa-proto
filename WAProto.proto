@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033151707
+/// WhatsApp Version: 2.3000.1033214233
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -64,6 +64,16 @@ message AIHomeState {
         }
     }
     
+}
+
+message AIMediaCollectionMessage {
+    optional string collectionId = 1;
+    optional uint32 expectedMediaCount = 2;
+    optional bool hasGlobalCaption = 3;
+}
+
+message AIMediaCollectionMetadata {
+    optional string collectionId = 1;
 }
 
 message AIQueryFanout {
@@ -634,6 +644,7 @@ message BotMetadata {
     optional BotGroupMetadata botGroupMetadata = 35;
     optional BotRenderingConfigMetadata botRenderingConfigMetadata = 36;
     optional BotInfrastructureDiagnostics botInfrastructureDiagnostics = 37;
+    optional AIMediaCollectionMetadata aiMediaCollectionMetadata = 38;
     optional bytes internalMetadata = 999;
 }
 
@@ -3421,6 +3432,7 @@ message Message {
         optional bytes aiPsiMetadata = 25;
         optional AIQueryFanout aiQueryFanout = 26;
         optional MemberLabel memberLabel = 27;
+        optional AIMediaCollectionMessage aiMediaCollectionMessage = 28;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -3448,6 +3460,7 @@ message Message {
             AI_PSI_METADATA = 28;
             AI_QUERY_FANOUT = 29;
             GROUP_MEMBER_LABEL_CHANGE = 30;
+            AI_MEDIA_COLLECTION_MESSAGE = 31;
         }
     }
     
@@ -3590,6 +3603,7 @@ message Message {
         optional bool isAiSticker = 20;
         optional bool isLottie = 21;
         optional string accessibilityLabel = 22;
+        optional int32 premium = 24;
     }
     
     message StickerPackMessage {
