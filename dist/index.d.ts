@@ -34605,6 +34605,9 @@ export namespace waproto {
 
             /** PaymentInviteMessage incentiveEligible */
             incentiveEligible?: (boolean|null);
+
+            /** PaymentInviteMessage referralId */
+            referralId?: (string|null);
         }
 
         /** Represents a PaymentInviteMessage. */
@@ -34624,6 +34627,9 @@ export namespace waproto {
 
             /** PaymentInviteMessage incentiveEligible. */
             public incentiveEligible?: (boolean|null);
+
+            /** PaymentInviteMessage referralId. */
+            public referralId?: (string|null);
 
             /**
              * Creates a new PaymentInviteMessage instance using the specified properties.
@@ -39344,7 +39350,8 @@ export namespace waproto {
                 AI_PSI_METADATA = 28,
                 AI_QUERY_FANOUT = 29,
                 GROUP_MEMBER_LABEL_CHANGE = 30,
-                AI_MEDIA_COLLECTION_MESSAGE = 31
+                AI_MEDIA_COLLECTION_MESSAGE = 31,
+                MESSAGE_UNSCHEDULE = 32
             }
         }
 
