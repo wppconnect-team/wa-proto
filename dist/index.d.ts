@@ -43742,6 +43742,9 @@ export namespace waproto {
 
         /** MsgOpaqueData plainProtobufBytes */
         plainProtobufBytes?: (Uint8Array|null);
+
+        /** MsgOpaqueData quarantineExtractedText */
+        quarantineExtractedText?: (string|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -43881,6 +43884,9 @@ export namespace waproto {
 
         /** MsgOpaqueData plainProtobufBytes. */
         public plainProtobufBytes?: (Uint8Array|null);
+
+        /** MsgOpaqueData quarantineExtractedText. */
+        public quarantineExtractedText?: (string|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
