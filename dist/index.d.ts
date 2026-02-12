@@ -6411,9 +6411,6 @@ export namespace waproto {
 
         /** BotInfrastructureDiagnostics toolsUsed */
         toolsUsed?: (string[]|null);
-
-        /** BotInfrastructureDiagnostics isThinking */
-        isThinking?: (boolean|null);
     }
 
     /** Represents a BotInfrastructureDiagnostics. */
@@ -6430,9 +6427,6 @@ export namespace waproto {
 
         /** BotInfrastructureDiagnostics toolsUsed. */
         public toolsUsed: string[];
-
-        /** BotInfrastructureDiagnostics isThinking. */
-        public isThinking?: (boolean|null);
 
         /**
          * Creates a new BotInfrastructureDiagnostics instance using the specified properties.
@@ -7861,9 +7855,7 @@ export namespace waproto {
         MEDIA_PICKER_1_ON_1_CHAT = 39,
         MEDIA_PICKER_GROUP_CHAT = 40,
         ASK_META_AI_NO_SEARCH_RESULTS = 41,
-        META_AI_SETTINGS = 45,
-        WEB_INTRO_PANEL = 46,
-        WEB_NAVIGATION_BAR = 47
+        META_AI_SETTINGS = 45
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -30429,9 +30421,6 @@ export namespace waproto {
             /** InteractiveMessage footer */
             footer?: (waproto.Message.InteractiveMessage.IFooter|null);
 
-            /** InteractiveMessage bloksWidget */
-            bloksWidget?: (waproto.Message.InteractiveMessage.IBloksWidget|null);
-
             /** InteractiveMessage contextInfo */
             contextInfo?: (waproto.IContextInfo|null);
 
@@ -30468,9 +30457,6 @@ export namespace waproto {
 
             /** InteractiveMessage footer. */
             public footer?: (waproto.Message.InteractiveMessage.IFooter|null);
-
-            /** InteractiveMessage bloksWidget. */
-            public bloksWidget?: (waproto.Message.InteractiveMessage.IBloksWidget|null);
 
             /** InteractiveMessage contextInfo. */
             public contextInfo?: (waproto.IContextInfo|null);
@@ -30572,115 +30558,6 @@ export namespace waproto {
         }
 
         namespace InteractiveMessage {
-
-            /** Properties of a BloksWidget. */
-            interface IBloksWidget {
-
-                /** BloksWidget uuid */
-                uuid?: (string|null);
-
-                /** BloksWidget data */
-                data?: (string|null);
-
-                /** BloksWidget type */
-                type?: (string|null);
-            }
-
-            /** Represents a BloksWidget. */
-            class BloksWidget implements IBloksWidget {
-
-                /**
-                 * Constructs a new BloksWidget.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: waproto.Message.InteractiveMessage.IBloksWidget);
-
-                /** BloksWidget uuid. */
-                public uuid?: (string|null);
-
-                /** BloksWidget data. */
-                public data?: (string|null);
-
-                /** BloksWidget type. */
-                public type?: (string|null);
-
-                /**
-                 * Creates a new BloksWidget instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns BloksWidget instance
-                 */
-                public static create(properties?: waproto.Message.InteractiveMessage.IBloksWidget): waproto.Message.InteractiveMessage.BloksWidget;
-
-                /**
-                 * Encodes the specified BloksWidget message. Does not implicitly {@link waproto.Message.InteractiveMessage.BloksWidget.verify|verify} messages.
-                 * @param message BloksWidget message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: waproto.Message.InteractiveMessage.IBloksWidget, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified BloksWidget message, length delimited. Does not implicitly {@link waproto.Message.InteractiveMessage.BloksWidget.verify|verify} messages.
-                 * @param message BloksWidget message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: waproto.Message.InteractiveMessage.IBloksWidget, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a BloksWidget message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns BloksWidget
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.InteractiveMessage.BloksWidget;
-
-                /**
-                 * Decodes a BloksWidget message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns BloksWidget
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.InteractiveMessage.BloksWidget;
-
-                /**
-                 * Verifies a BloksWidget message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a BloksWidget message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns BloksWidget
-                 */
-                public static fromObject(object: { [k: string]: any }): waproto.Message.InteractiveMessage.BloksWidget;
-
-                /**
-                 * Creates a plain object from a BloksWidget message. Also converts values to other types if specified.
-                 * @param message BloksWidget
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: waproto.Message.InteractiveMessage.BloksWidget, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this BloksWidget to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-
-                /**
-                 * Gets the default type url for BloksWidget
-                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-                 * @returns The default type url
-                 */
-                public static getTypeUrl(typeUrlPrefix?: string): string;
-            }
 
             /** Properties of a Body. */
             interface IBody {
@@ -31131,9 +31008,6 @@ export namespace waproto {
                 /** Header hasMediaAttachment */
                 hasMediaAttachment?: (boolean|null);
 
-                /** Header bloksWidget */
-                bloksWidget?: (waproto.Message.InteractiveMessage.IBloksWidget|null);
-
                 /** Header documentMessage */
                 documentMessage?: (waproto.Message.IDocumentMessage|null);
 
@@ -31170,9 +31044,6 @@ export namespace waproto {
 
                 /** Header hasMediaAttachment. */
                 public hasMediaAttachment?: (boolean|null);
-
-                /** Header bloksWidget. */
-                public bloksWidget?: (waproto.Message.InteractiveMessage.IBloksWidget|null);
 
                 /** Header documentMessage. */
                 public documentMessage?: (waproto.Message.IDocumentMessage|null);
