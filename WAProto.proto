@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033332639
+/// WhatsApp Version: 2.3000.1033343091
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -541,6 +541,7 @@ message BotImagineMetadata {
 message BotInfrastructureDiagnostics {
     optional BotBackend botBackend = 1;
     repeated string toolsUsed = 2;
+    optional bool isThinking = 3;
     enum BotBackend {
         AAPI = 0;
         CLIPPY = 1;
@@ -692,6 +693,8 @@ enum BotMetricsEntryPoint {
     MEDIA_PICKER_GROUP_CHAT = 40;
     ASK_META_AI_NO_SEARCH_RESULTS = 41;
     META_AI_SETTINGS = 45;
+    WEB_INTRO_PANEL = 46;
+    WEB_NAVIGATION_BAR = 47;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
@@ -2780,6 +2783,7 @@ message Message {
         optional Header header = 1;
         optional Body body = 2;
         optional Footer footer = 3;
+        optional BloksWidget bloksWidget = 8;
         optional ContextInfo contextInfo = 15;
         optional UrlTrackingMap urlTrackingMap = 16;
         oneof interactiveMessage {
@@ -2788,6 +2792,12 @@ message Message {
             Message.InteractiveMessage.NativeFlowMessage nativeFlowMessage = 6;
             Message.InteractiveMessage.CarouselMessage carouselMessage = 7;
         }
+        message BloksWidget {
+            optional string uuid = 1;
+            optional string data = 2;
+            optional string type = 3;
+        }
+        
         message Body {
             optional string text = 1;
         }
@@ -2821,6 +2831,7 @@ message Message {
             optional string title = 1;
             optional string subtitle = 2;
             optional bool hasMediaAttachment = 5;
+            optional Message.InteractiveMessage.BloksWidget bloksWidget = 10;
             oneof media {
                 Message.DocumentMessage documentMessage = 3;
                 Message.ImageMessage imageMessage = 4;
