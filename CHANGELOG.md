@@ -1,3 +1,7 @@
+## [2.3000.1033429536](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1033412827...v2.3000.1033429536) (2026-02-13)
+
+
+
 ## [2.3000.1033412827](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1033363813...v2.3000.1033412827) (2026-02-13)
 
 
