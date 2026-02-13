@@ -4630,127 +4630,6 @@ export namespace waproto {
         }
     }
 
-    /** Properties of a BotAvatarMetadata. */
-    interface IBotAvatarMetadata {
-
-        /** BotAvatarMetadata sentiment */
-        sentiment?: (number|null);
-
-        /** BotAvatarMetadata behaviorGraph */
-        behaviorGraph?: (string|null);
-
-        /** BotAvatarMetadata action */
-        action?: (number|null);
-
-        /** BotAvatarMetadata intensity */
-        intensity?: (number|null);
-
-        /** BotAvatarMetadata wordCount */
-        wordCount?: (number|null);
-    }
-
-    /** Represents a BotAvatarMetadata. */
-    class BotAvatarMetadata implements IBotAvatarMetadata {
-
-        /**
-         * Constructs a new BotAvatarMetadata.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.IBotAvatarMetadata);
-
-        /** BotAvatarMetadata sentiment. */
-        public sentiment?: (number|null);
-
-        /** BotAvatarMetadata behaviorGraph. */
-        public behaviorGraph?: (string|null);
-
-        /** BotAvatarMetadata action. */
-        public action?: (number|null);
-
-        /** BotAvatarMetadata intensity. */
-        public intensity?: (number|null);
-
-        /** BotAvatarMetadata wordCount. */
-        public wordCount?: (number|null);
-
-        /**
-         * Creates a new BotAvatarMetadata instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns BotAvatarMetadata instance
-         */
-        public static create(properties?: waproto.IBotAvatarMetadata): waproto.BotAvatarMetadata;
-
-        /**
-         * Encodes the specified BotAvatarMetadata message. Does not implicitly {@link waproto.BotAvatarMetadata.verify|verify} messages.
-         * @param message BotAvatarMetadata message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: waproto.IBotAvatarMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified BotAvatarMetadata message, length delimited. Does not implicitly {@link waproto.BotAvatarMetadata.verify|verify} messages.
-         * @param message BotAvatarMetadata message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: waproto.IBotAvatarMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a BotAvatarMetadata message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns BotAvatarMetadata
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotAvatarMetadata;
-
-        /**
-         * Decodes a BotAvatarMetadata message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns BotAvatarMetadata
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotAvatarMetadata;
-
-        /**
-         * Verifies a BotAvatarMetadata message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a BotAvatarMetadata message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns BotAvatarMetadata
-         */
-        public static fromObject(object: { [k: string]: any }): waproto.BotAvatarMetadata;
-
-        /**
-         * Creates a plain object from a BotAvatarMetadata message. Also converts values to other types if specified.
-         * @param message BotAvatarMetadata
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: waproto.BotAvatarMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this BotAvatarMetadata to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the default type url for BotAvatarMetadata
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
-
     /** Properties of a BotCapabilityMetadata. */
     interface IBotCapabilityMetadata {
 
@@ -7495,9 +7374,6 @@ export namespace waproto {
     /** Properties of a BotMetadata. */
     interface IBotMetadata {
 
-        /** BotMetadata avatarMetadata */
-        avatarMetadata?: (waproto.IBotAvatarMetadata|null);
-
         /** BotMetadata personaId */
         personaId?: (string|null);
 
@@ -7621,9 +7497,6 @@ export namespace waproto {
          * @param [properties] Properties to set
          */
         constructor(properties?: waproto.IBotMetadata);
-
-        /** BotMetadata avatarMetadata. */
-        public avatarMetadata?: (waproto.IBotAvatarMetadata|null);
 
         /** BotMetadata personaId. */
         public personaId?: (string|null);
@@ -28680,11 +28553,120 @@ export namespace waproto {
             }
         }
 
+        /** Properties of a FullHistorySyncOnDemandConfig. */
+        interface IFullHistorySyncOnDemandConfig {
+
+            /** FullHistorySyncOnDemandConfig historyFromTimestamp */
+            historyFromTimestamp?: (number|Long|null);
+
+            /** FullHistorySyncOnDemandConfig historyDurationDays */
+            historyDurationDays?: (number|null);
+        }
+
+        /** Represents a FullHistorySyncOnDemandConfig. */
+        class FullHistorySyncOnDemandConfig implements IFullHistorySyncOnDemandConfig {
+
+            /**
+             * Constructs a new FullHistorySyncOnDemandConfig.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IFullHistorySyncOnDemandConfig);
+
+            /** FullHistorySyncOnDemandConfig historyFromTimestamp. */
+            public historyFromTimestamp?: (number|Long|null);
+
+            /** FullHistorySyncOnDemandConfig historyDurationDays. */
+            public historyDurationDays?: (number|null);
+
+            /**
+             * Creates a new FullHistorySyncOnDemandConfig instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns FullHistorySyncOnDemandConfig instance
+             */
+            public static create(properties?: waproto.Message.IFullHistorySyncOnDemandConfig): waproto.Message.FullHistorySyncOnDemandConfig;
+
+            /**
+             * Encodes the specified FullHistorySyncOnDemandConfig message. Does not implicitly {@link waproto.Message.FullHistorySyncOnDemandConfig.verify|verify} messages.
+             * @param message FullHistorySyncOnDemandConfig message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IFullHistorySyncOnDemandConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified FullHistorySyncOnDemandConfig message, length delimited. Does not implicitly {@link waproto.Message.FullHistorySyncOnDemandConfig.verify|verify} messages.
+             * @param message FullHistorySyncOnDemandConfig message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IFullHistorySyncOnDemandConfig, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a FullHistorySyncOnDemandConfig message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns FullHistorySyncOnDemandConfig
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.FullHistorySyncOnDemandConfig;
+
+            /**
+             * Decodes a FullHistorySyncOnDemandConfig message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns FullHistorySyncOnDemandConfig
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.FullHistorySyncOnDemandConfig;
+
+            /**
+             * Verifies a FullHistorySyncOnDemandConfig message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a FullHistorySyncOnDemandConfig message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns FullHistorySyncOnDemandConfig
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.FullHistorySyncOnDemandConfig;
+
+            /**
+             * Creates a plain object from a FullHistorySyncOnDemandConfig message. Also converts values to other types if specified.
+             * @param message FullHistorySyncOnDemandConfig
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.FullHistorySyncOnDemandConfig, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this FullHistorySyncOnDemandConfig to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for FullHistorySyncOnDemandConfig
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** Properties of a FullHistorySyncOnDemandRequestMetadata. */
         interface IFullHistorySyncOnDemandRequestMetadata {
 
             /** FullHistorySyncOnDemandRequestMetadata requestId */
             requestId?: (string|null);
+
+            /** FullHistorySyncOnDemandRequestMetadata businessProduct */
+            businessProduct?: (string|null);
+
+            /** FullHistorySyncOnDemandRequestMetadata opaqueClientData */
+            opaqueClientData?: (Uint8Array|null);
         }
 
         /** Represents a FullHistorySyncOnDemandRequestMetadata. */
@@ -28698,6 +28680,12 @@ export namespace waproto {
 
             /** FullHistorySyncOnDemandRequestMetadata requestId. */
             public requestId?: (string|null);
+
+            /** FullHistorySyncOnDemandRequestMetadata businessProduct. */
+            public businessProduct?: (string|null);
+
+            /** FullHistorySyncOnDemandRequestMetadata opaqueClientData. */
+            public opaqueClientData?: (Uint8Array|null);
 
             /**
              * Creates a new FullHistorySyncOnDemandRequestMetadata instance using the specified properties.
@@ -35519,6 +35507,9 @@ export namespace waproto {
 
                 /** FullHistorySyncOnDemandRequest historySyncConfig */
                 historySyncConfig?: (waproto.DeviceProps.IHistorySyncConfig|null);
+
+                /** FullHistorySyncOnDemandRequest fullHistorySyncOnDemandConfig */
+                fullHistorySyncOnDemandConfig?: (waproto.Message.IFullHistorySyncOnDemandConfig|null);
             }
 
             /** Represents a FullHistorySyncOnDemandRequest. */
@@ -35535,6 +35526,9 @@ export namespace waproto {
 
                 /** FullHistorySyncOnDemandRequest historySyncConfig. */
                 public historySyncConfig?: (waproto.DeviceProps.IHistorySyncConfig|null);
+
+                /** FullHistorySyncOnDemandRequest fullHistorySyncOnDemandConfig. */
+                public fullHistorySyncOnDemandConfig?: (waproto.Message.IFullHistorySyncOnDemandConfig|null);
 
                 /**
                  * Creates a new FullHistorySyncOnDemandRequest instance using the specified properties.
@@ -39406,6 +39400,9 @@ export namespace waproto {
 
             /** ProtocolMessage aiMediaCollectionMessage */
             aiMediaCollectionMessage?: (waproto.IAIMediaCollectionMessage|null);
+
+            /** ProtocolMessage afterReadDurationMs */
+            afterReadDurationMs?: (number|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -39491,6 +39488,9 @@ export namespace waproto {
 
             /** ProtocolMessage aiMediaCollectionMessage. */
             public aiMediaCollectionMessage?: (waproto.IAIMediaCollectionMessage|null);
+
+            /** ProtocolMessage afterReadDurationMs. */
+            public afterReadDurationMs?: (number|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.

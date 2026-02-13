@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033412827
+/// WhatsApp Version: 2.3000.1033429536
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -342,14 +342,6 @@ message BotAgeCollectionMetadata {
     }
 }
 
-message BotAvatarMetadata {
-    optional uint32 sentiment = 1;
-    optional string behaviorGraph = 2;
-    optional uint32 action = 3;
-    optional uint32 intensity = 4;
-    optional uint32 wordCount = 5;
-}
-
 message BotCapabilityMetadata {
     repeated BotCapabilityType capabilities = 1;
     enum BotCapabilityType {
@@ -608,7 +600,6 @@ message BotMessageSharingInfo {
 }
 
 message BotMetadata {
-    optional BotAvatarMetadata avatarMetadata = 1;
     optional string personaId = 2;
     optional BotPluginMetadata pluginMetadata = 3;
     optional BotSuggestedPromptMetadata suggestedPromptMetadata = 4;
@@ -2621,8 +2612,15 @@ message Message {
         }
     }
     
+    message FullHistorySyncOnDemandConfig {
+        optional uint64 historyFromTimestamp = 1;
+        optional uint32 historyDurationDays = 2;
+    }
+    
     message FullHistorySyncOnDemandRequestMetadata {
         optional string requestId = 1;
+        optional string businessProduct = 2;
+        optional bytes opaqueClientData = 3;
     }
     
     message FutureProofMessage {
@@ -3158,6 +3156,7 @@ message Message {
         message FullHistorySyncOnDemandRequest {
             optional Message.FullHistorySyncOnDemandRequestMetadata requestMetadata = 1;
             optional DeviceProps.HistorySyncConfig historySyncConfig = 2;
+            optional Message.FullHistorySyncOnDemandConfig fullHistorySyncOnDemandConfig = 3;
         }
         
         message GalaxyFlowAction {
@@ -3453,6 +3452,7 @@ message Message {
         optional AIQueryFanout aiQueryFanout = 26;
         optional MemberLabel memberLabel = 27;
         optional AIMediaCollectionMessage aiMediaCollectionMessage = 28;
+        optional uint32 afterReadDurationMs = 29;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
