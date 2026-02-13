@@ -44839,6 +44839,7 @@ export namespace waproto {
         AI_THREAD_RENAME_ACTION = 76,
         INTERACTIVE_MESSAGE_ACTION = 77,
         SETTINGS_SYNC_ACTION = 78,
+        OUT_CONTACT_ACTION = 79,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -52155,6 +52156,9 @@ export namespace waproto {
 
         /** SyncActionValue settingsSyncAction */
         settingsSyncAction?: (waproto.SyncActionValue.ISettingsSyncAction|null);
+
+        /** SyncActionValue outContactAction */
+        outContactAction?: (waproto.SyncActionValue.IOutContactAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -52372,6 +52376,9 @@ export namespace waproto {
 
         /** SyncActionValue settingsSyncAction. */
         public settingsSyncAction?: (waproto.SyncActionValue.ISettingsSyncAction|null);
+
+        /** SyncActionValue outContactAction. */
+        public outContactAction?: (waproto.SyncActionValue.IOutContactAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -57082,6 +57089,109 @@ export namespace waproto {
 
             /**
              * Gets the default type url for NuxAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of an OutContactAction. */
+        interface IOutContactAction {
+
+            /** OutContactAction fullName */
+            fullName?: (string|null);
+
+            /** OutContactAction firstName */
+            firstName?: (string|null);
+        }
+
+        /** Represents an OutContactAction. */
+        class OutContactAction implements IOutContactAction {
+
+            /**
+             * Constructs a new OutContactAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IOutContactAction);
+
+            /** OutContactAction fullName. */
+            public fullName?: (string|null);
+
+            /** OutContactAction firstName. */
+            public firstName?: (string|null);
+
+            /**
+             * Creates a new OutContactAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns OutContactAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IOutContactAction): waproto.SyncActionValue.OutContactAction;
+
+            /**
+             * Encodes the specified OutContactAction message. Does not implicitly {@link waproto.SyncActionValue.OutContactAction.verify|verify} messages.
+             * @param message OutContactAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IOutContactAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified OutContactAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.OutContactAction.verify|verify} messages.
+             * @param message OutContactAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IOutContactAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an OutContactAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns OutContactAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.OutContactAction;
+
+            /**
+             * Decodes an OutContactAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns OutContactAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.OutContactAction;
+
+            /**
+             * Verifies an OutContactAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an OutContactAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns OutContactAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.OutContactAction;
+
+            /**
+             * Creates a plain object from an OutContactAction message. Also converts values to other types if specified.
+             * @param message OutContactAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.OutContactAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this OutContactAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for OutContactAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
