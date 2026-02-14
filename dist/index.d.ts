@@ -44171,6 +44171,12 @@ export namespace waproto {
 
         /** MsgOpaqueData quarantineExtractedText */
         quarantineExtractedText?: (string|null);
+
+        /** MsgOpaqueData pollEndTime */
+        pollEndTime?: (number|Long|null);
+
+        /** MsgOpaqueData pollHideVoterNames */
+        pollHideVoterNames?: (boolean|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -44313,6 +44319,12 @@ export namespace waproto {
 
         /** MsgOpaqueData quarantineExtractedText. */
         public quarantineExtractedText?: (string|null);
+
+        /** MsgOpaqueData pollEndTime. */
+        public pollEndTime?: (number|Long|null);
+
+        /** MsgOpaqueData pollHideVoterNames. */
+        public pollHideVoterNames?: (boolean|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
