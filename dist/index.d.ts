@@ -26072,6 +26072,9 @@ export namespace waproto {
 
             /** Call messageContextInfo */
             messageContextInfo?: (waproto.IMessageContextInfo|null);
+
+            /** Call callEntryPoint */
+            callEntryPoint?: (number|null);
         }
 
         /** Represents a Call. */
@@ -26112,6 +26115,9 @@ export namespace waproto {
 
             /** Call messageContextInfo. */
             public messageContextInfo?: (waproto.IMessageContextInfo|null);
+
+            /** Call callEntryPoint. */
+            public callEntryPoint?: (number|null);
 
             /**
              * Creates a new Call instance using the specified properties.
@@ -35619,6 +35625,12 @@ export namespace waproto {
 
                 /** GalaxyFlowAction stanzaId */
                 stanzaId?: (string|null);
+
+                /** GalaxyFlowAction galaxyFlowDownloadRequestId */
+                galaxyFlowDownloadRequestId?: (string|null);
+
+                /** GalaxyFlowAction agmId */
+                agmId?: (string|null);
             }
 
             /** Represents a GalaxyFlowAction. */
@@ -35638,6 +35650,12 @@ export namespace waproto {
 
                 /** GalaxyFlowAction stanzaId. */
                 public stanzaId?: (string|null);
+
+                /** GalaxyFlowAction galaxyFlowDownloadRequestId. */
+                public galaxyFlowDownloadRequestId?: (string|null);
+
+                /** GalaxyFlowAction agmId. */
+                public agmId?: (string|null);
 
                 /**
                  * Creates a new GalaxyFlowAction instance using the specified properties.
@@ -35721,7 +35739,8 @@ export namespace waproto {
 
                 /** GalaxyFlowActionType enum. */
                 enum GalaxyFlowActionType {
-                    NOTIFY_LAUNCH = 1
+                    NOTIFY_LAUNCH = 1,
+                    DOWNLOAD_RESPONSES = 2
                 }
             }
 
@@ -36511,6 +36530,9 @@ export namespace waproto {
 
                 /** PeerDataOperationResult historySyncChunkRetryResponse */
                 historySyncChunkRetryResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IHistorySyncChunkRetryResponse|null);
+
+                /** PeerDataOperationResult flowResponsesCsvBundle */
+                flowResponsesCsvBundle?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle|null);
             }
 
             /** Represents a PeerDataOperationResult. */
@@ -36551,6 +36573,9 @@ export namespace waproto {
 
                 /** PeerDataOperationResult historySyncChunkRetryResponse. */
                 public historySyncChunkRetryResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IHistorySyncChunkRetryResponse|null);
+
+                /** PeerDataOperationResult flowResponsesCsvBundle. */
+                public flowResponsesCsvBundle?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle|null);
 
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
@@ -36832,6 +36857,157 @@ export namespace waproto {
 
                     /**
                      * Gets the default type url for CompanionMetaNonceFetchResponse
+                     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns The default type url
+                     */
+                    public static getTypeUrl(typeUrlPrefix?: string): string;
+                }
+
+                /** Properties of a FlowResponsesCsvBundle. */
+                interface IFlowResponsesCsvBundle {
+
+                    /** FlowResponsesCsvBundle flowId */
+                    flowId?: (string|null);
+
+                    /** FlowResponsesCsvBundle galaxyFlowDownloadRequestId */
+                    galaxyFlowDownloadRequestId?: (string|null);
+
+                    /** FlowResponsesCsvBundle fileName */
+                    fileName?: (string|null);
+
+                    /** FlowResponsesCsvBundle mimetype */
+                    mimetype?: (string|null);
+
+                    /** FlowResponsesCsvBundle fileSha256 */
+                    fileSha256?: (Uint8Array|null);
+
+                    /** FlowResponsesCsvBundle mediaKey */
+                    mediaKey?: (Uint8Array|null);
+
+                    /** FlowResponsesCsvBundle fileEncSha256 */
+                    fileEncSha256?: (Uint8Array|null);
+
+                    /** FlowResponsesCsvBundle directPath */
+                    directPath?: (string|null);
+
+                    /** FlowResponsesCsvBundle mediaKeyTimestamp */
+                    mediaKeyTimestamp?: (number|Long|null);
+
+                    /** FlowResponsesCsvBundle fileLength */
+                    fileLength?: (number|Long|null);
+                }
+
+                /** Represents a FlowResponsesCsvBundle. */
+                class FlowResponsesCsvBundle implements IFlowResponsesCsvBundle {
+
+                    /**
+                     * Constructs a new FlowResponsesCsvBundle.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle);
+
+                    /** FlowResponsesCsvBundle flowId. */
+                    public flowId?: (string|null);
+
+                    /** FlowResponsesCsvBundle galaxyFlowDownloadRequestId. */
+                    public galaxyFlowDownloadRequestId?: (string|null);
+
+                    /** FlowResponsesCsvBundle fileName. */
+                    public fileName?: (string|null);
+
+                    /** FlowResponsesCsvBundle mimetype. */
+                    public mimetype?: (string|null);
+
+                    /** FlowResponsesCsvBundle fileSha256. */
+                    public fileSha256?: (Uint8Array|null);
+
+                    /** FlowResponsesCsvBundle mediaKey. */
+                    public mediaKey?: (Uint8Array|null);
+
+                    /** FlowResponsesCsvBundle fileEncSha256. */
+                    public fileEncSha256?: (Uint8Array|null);
+
+                    /** FlowResponsesCsvBundle directPath. */
+                    public directPath?: (string|null);
+
+                    /** FlowResponsesCsvBundle mediaKeyTimestamp. */
+                    public mediaKeyTimestamp?: (number|Long|null);
+
+                    /** FlowResponsesCsvBundle fileLength. */
+                    public fileLength?: (number|Long|null);
+
+                    /**
+                     * Creates a new FlowResponsesCsvBundle instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns FlowResponsesCsvBundle instance
+                     */
+                    public static create(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle;
+
+                    /**
+                     * Encodes the specified FlowResponsesCsvBundle message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.verify|verify} messages.
+                     * @param message FlowResponsesCsvBundle message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encode(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified FlowResponsesCsvBundle message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.verify|verify} messages.
+                     * @param message FlowResponsesCsvBundle message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    public static encodeDelimited(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a FlowResponsesCsvBundle message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns FlowResponsesCsvBundle
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle;
+
+                    /**
+                     * Decodes a FlowResponsesCsvBundle message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns FlowResponsesCsvBundle
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle;
+
+                    /**
+                     * Verifies a FlowResponsesCsvBundle message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    public static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a FlowResponsesCsvBundle message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns FlowResponsesCsvBundle
+                     */
+                    public static fromObject(object: { [k: string]: any }): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle;
+
+                    /**
+                     * Creates a plain object from a FlowResponsesCsvBundle message. Also converts values to other types if specified.
+                     * @param message FlowResponsesCsvBundle
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    public static toObject(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this FlowResponsesCsvBundle to JSON.
+                     * @returns JSON object
+                     */
+                    public toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the default type url for FlowResponsesCsvBundle
                      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
                      * @returns The default type url
                      */
@@ -44840,6 +45016,7 @@ export namespace waproto {
         INTERACTIVE_MESSAGE_ACTION = 77,
         SETTINGS_SYNC_ACTION = 78,
         OUT_CONTACT_ACTION = 79,
+        NCT_SALT_SYNC_ACTION = 80,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -52159,6 +52336,9 @@ export namespace waproto {
 
         /** SyncActionValue outContactAction */
         outContactAction?: (waproto.SyncActionValue.IOutContactAction|null);
+
+        /** SyncActionValue nctSaltSyncAction */
+        nctSaltSyncAction?: (waproto.SyncActionValue.INctSaltSyncAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -52379,6 +52559,9 @@ export namespace waproto {
 
         /** SyncActionValue outContactAction. */
         public outContactAction?: (waproto.SyncActionValue.IOutContactAction|null);
+
+        /** SyncActionValue nctSaltSyncAction. */
+        public nctSaltSyncAction?: (waproto.SyncActionValue.INctSaltSyncAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -55017,6 +55200,9 @@ export namespace waproto {
 
             /** InteractiveMessageAction type */
             type: waproto.SyncActionValue.InteractiveMessageAction.InteractiveMessageActionMode;
+
+            /** InteractiveMessageAction agmId */
+            agmId?: (string|null);
         }
 
         /** Represents an InteractiveMessageAction. */
@@ -55030,6 +55216,9 @@ export namespace waproto {
 
             /** InteractiveMessageAction type. */
             public type: waproto.SyncActionValue.InteractiveMessageAction.InteractiveMessageActionMode;
+
+            /** InteractiveMessageAction agmId. */
+            public agmId?: (string|null);
 
             /**
              * Creates a new InteractiveMessageAction instance using the specified properties.
@@ -56657,6 +56846,103 @@ export namespace waproto {
 
             /**
              * Gets the default type url for MuteAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a NctSaltSyncAction. */
+        interface INctSaltSyncAction {
+
+            /** NctSaltSyncAction salt */
+            salt?: (Uint8Array|null);
+        }
+
+        /** Represents a NctSaltSyncAction. */
+        class NctSaltSyncAction implements INctSaltSyncAction {
+
+            /**
+             * Constructs a new NctSaltSyncAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.INctSaltSyncAction);
+
+            /** NctSaltSyncAction salt. */
+            public salt?: (Uint8Array|null);
+
+            /**
+             * Creates a new NctSaltSyncAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns NctSaltSyncAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.INctSaltSyncAction): waproto.SyncActionValue.NctSaltSyncAction;
+
+            /**
+             * Encodes the specified NctSaltSyncAction message. Does not implicitly {@link waproto.SyncActionValue.NctSaltSyncAction.verify|verify} messages.
+             * @param message NctSaltSyncAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.INctSaltSyncAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified NctSaltSyncAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.NctSaltSyncAction.verify|verify} messages.
+             * @param message NctSaltSyncAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.INctSaltSyncAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a NctSaltSyncAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns NctSaltSyncAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.NctSaltSyncAction;
+
+            /**
+             * Decodes a NctSaltSyncAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns NctSaltSyncAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.NctSaltSyncAction;
+
+            /**
+             * Verifies a NctSaltSyncAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a NctSaltSyncAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns NctSaltSyncAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.NctSaltSyncAction;
+
+            /**
+             * Creates a plain object from a NctSaltSyncAction message. Also converts values to other types if specified.
+             * @param message NctSaltSyncAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.NctSaltSyncAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this NctSaltSyncAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for NctSaltSyncAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */

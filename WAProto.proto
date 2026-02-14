@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033429536
+/// WhatsApp Version: 2.3000.1033472679
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2398,6 +2398,7 @@ message Message {
         optional string nativeFlowCallButtonPayload = 8;
         optional string deeplinkPayload = 9;
         optional MessageContextInfo messageContextInfo = 10;
+        optional uint32 callEntryPoint = 11;
     }
     
     message CallLogMessage {
@@ -3163,8 +3164,11 @@ message Message {
             optional GalaxyFlowActionType type = 1;
             optional string flowId = 2;
             optional string stanzaId = 3;
+            optional string galaxyFlowDownloadRequestId = 4;
+            optional string agmId = 5;
             enum GalaxyFlowActionType {
                 NOTIFY_LAUNCH = 1;
+                DOWNLOAD_RESPONSES = 2;
             }
         }
         
@@ -3219,6 +3223,7 @@ message Message {
             optional SyncDSnapshotFatalRecoveryResponse syncdSnapshotFatalRecoveryResponse = 8;
             optional CompanionCanonicalUserNonceFetchResponse companionCanonicalUserNonceFetchRequestResponse = 9;
             optional HistorySyncChunkRetryResponse historySyncChunkRetryResponse = 10;
+            optional FlowResponsesCsvBundle flowResponsesCsvBundle = 11;
             message CompanionCanonicalUserNonceFetchResponse {
                 optional string nonce = 1;
                 optional string waFbid = 2;
@@ -3227,6 +3232,19 @@ message Message {
             
             message CompanionMetaNonceFetchResponse {
                 optional string nonce = 1;
+            }
+            
+            message FlowResponsesCsvBundle {
+                optional string flowId = 1;
+                optional string galaxyFlowDownloadRequestId = 2;
+                optional string fileName = 3;
+                optional string mimetype = 4;
+                optional bytes fileSha256 = 5;
+                optional bytes mediaKey = 6;
+                optional bytes fileEncSha256 = 7;
+                optional string directPath = 8;
+                optional int64 mediaKeyTimestamp = 9;
+                optional uint64 fileLength = 10;
             }
             
             message FullHistorySyncOnDemandRequestResponse {
@@ -4026,6 +4044,7 @@ enum MutationProps {
     INTERACTIVE_MESSAGE_ACTION = 77;
     SETTINGS_SYNC_ACTION = 78;
     OUT_CONTACT_ACTION = 79;
+    NCT_SALT_SYNC_ACTION = 80;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -4657,6 +4676,7 @@ message SyncActionValue {
     optional InteractiveMessageAction interactiveMessageAction = 77;
     optional SettingsSyncAction settingsSyncAction = 78;
     optional OutContactAction outContactAction = 79;
+    optional NctSaltSyncAction nctSaltSyncAction = 80;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4783,6 +4803,7 @@ message SyncActionValue {
     
     message InteractiveMessageAction {
         required InteractiveMessageActionMode type = 1;
+        optional string agmId = 2;
         enum InteractiveMessageActionMode {
             DISABLE_CTA = 1;
         }
@@ -4890,6 +4911,10 @@ message SyncActionValue {
         optional int64 muteEndTimestamp = 2;
         optional bool autoMuted = 3;
         optional int64 muteEveryoneMentionEndTimestamp = 4;
+    }
+    
+    message NctSaltSyncAction {
+        optional bytes salt = 1;
     }
     
     message NewsletterSavedInterestsAction {
