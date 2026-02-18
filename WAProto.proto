@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033598431
+/// WhatsApp Version: 2.3000.1033636062
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -342,6 +342,14 @@ message BotAgeCollectionMetadata {
     }
 }
 
+message BotAvatarMetadata {
+    optional uint32 sentiment = 1;
+    optional string behaviorGraph = 2;
+    optional uint32 action = 3;
+    optional uint32 intensity = 4;
+    optional uint32 wordCount = 5;
+}
+
 message BotCapabilityMetadata {
     repeated BotCapabilityType capabilities = 1;
     enum BotCapabilityType {
@@ -600,6 +608,7 @@ message BotMessageSharingInfo {
 }
 
 message BotMetadata {
+    optional BotAvatarMetadata avatarMetadata = 1;
     optional string personaId = 2;
     optional BotPluginMetadata pluginMetadata = 3;
     optional BotSuggestedPromptMetadata suggestedPromptMetadata = 4;
@@ -1382,6 +1391,7 @@ message ContextInfo {
     optional bool isSpoiler = 73;
     optional MediaDomainInfo mediaDomainInfo = 74;
     optional PartiallySelectedContent partiallySelectedContent = 75;
+    optional uint32 afterReadDurationMs = 76;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -3532,9 +3542,14 @@ message Message {
     
     message RequestWelcomeMessageMetadata {
         optional LocalChatState localChatState = 1;
+        optional WelcomeTrigger welcomeTrigger = 2;
         enum LocalChatState {
             EMPTY = 0;
             NON_EMPTY = 1;
+        }
+        enum WelcomeTrigger {
+            CHAT_OPEN = 0;
+            COMPANION_PAIRING = 1;
         }
     }
     
@@ -3676,6 +3691,7 @@ message Message {
             optional string accessibilityLabel = 4;
             optional bool isLottie = 5;
             optional string mimetype = 6;
+            optional int32 premium = 7;
         }
         
         enum StickerPackOrigin {
@@ -4572,6 +4588,7 @@ message StatusAttribution {
         AI_CREATED = 7;
         LAYOUTS = 8;
         NEWSLETTER_STATUS = 9;
+        STATUS_CLOSE_SHARING = 10;
     }
 }
 
