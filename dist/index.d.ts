@@ -17609,6 +17609,9 @@ export namespace waproto {
 
             /** HistorySyncConfig initialSyncMaxMessagesPerChat */
             initialSyncMaxMessagesPerChat?: (number|null);
+
+            /** HistorySyncConfig supportManusHistory */
+            supportManusHistory?: (boolean|null);
         }
 
         /** Represents a HistorySyncConfig. */
@@ -17679,6 +17682,9 @@ export namespace waproto {
 
             /** HistorySyncConfig initialSyncMaxMessagesPerChat. */
             public initialSyncMaxMessagesPerChat?: (number|null);
+
+            /** HistorySyncConfig supportManusHistory. */
+            public supportManusHistory?: (boolean|null);
 
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
