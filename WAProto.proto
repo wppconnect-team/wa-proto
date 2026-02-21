@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033705001
+/// WhatsApp Version: 2.3000.1033825359
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2269,7 +2269,7 @@ message Message {
     optional FutureProofMessage newsletterAdminProfileMessage = 116;
     optional FutureProofMessage newsletterAdminProfileMessageV2 = 117;
     optional FutureProofMessage spoilerMessage = 118;
-    optional FutureProofMessage pollCreationMessageV6 = 119;
+    optional PollCreationMessage pollCreationMessageV6 = 119;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -5373,6 +5373,7 @@ message VerifiedNameCertificate {
 message WallpaperSettings {
     optional string filename = 1;
     optional uint32 opacity = 2;
+    optional bool isGenAi = 3;
 }
 
 message WebFeatures {

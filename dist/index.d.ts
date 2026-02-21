@@ -24035,7 +24035,7 @@ export namespace waproto {
         spoilerMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /** Message pollCreationMessageV6 */
-        pollCreationMessageV6?: (waproto.Message.IFutureProofMessage|null);
+        pollCreationMessageV6?: (waproto.Message.IPollCreationMessage|null);
     }
 
     /** Represents a Message. */
@@ -24342,7 +24342,7 @@ export namespace waproto {
         public spoilerMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /** Message pollCreationMessageV6. */
-        public pollCreationMessageV6?: (waproto.Message.IFutureProofMessage|null);
+        public pollCreationMessageV6?: (waproto.Message.IPollCreationMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -63339,6 +63339,9 @@ export namespace waproto {
 
         /** WallpaperSettings opacity */
         opacity?: (number|null);
+
+        /** WallpaperSettings isGenAi */
+        isGenAi?: (boolean|null);
     }
 
     /** Represents a WallpaperSettings. */
@@ -63355,6 +63358,9 @@ export namespace waproto {
 
         /** WallpaperSettings opacity. */
         public opacity?: (number|null);
+
+        /** WallpaperSettings isGenAi. */
+        public isGenAi?: (boolean|null);
 
         /**
          * Creates a new WallpaperSettings instance using the specified properties.
