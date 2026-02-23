@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033825359
+/// WhatsApp Version: 2.3000.1033885303
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4065,6 +4065,7 @@ enum MutationProps {
     SETTINGS_SYNC_ACTION = 78;
     OUT_CONTACT_ACTION = 79;
     NCT_SALT_SYNC_ACTION = 80;
+    BUSINESS_BROADCAST_CAMPAIGN_ACTION = 81;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -4698,6 +4699,7 @@ message SyncActionValue {
     optional SettingsSyncAction settingsSyncAction = 78;
     optional OutContactAction outContactAction = 79;
     optional NctSaltSyncAction nctSaltSyncAction = 80;
+    optional BusinessBroadcastCampaignAction businessBroadcastCampaignAction = 81;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4740,6 +4742,29 @@ message SyncActionValue {
         optional bool deleted = 1;
     }
     
+    message BusinessBroadcastCampaignAction {
+        optional int32 deviceId = 1;
+        optional string adId = 2;
+        optional string name = 3;
+        optional string msgId = 4;
+        optional string broadcastJid = 5;
+        optional int32 reservedQuota = 6;
+        optional int64 scheduledTimestamp = 7;
+        optional int64 createTimestamp = 8;
+        optional SyncActionValue.BusinessBroadcastCampaignStatus status = 9;
+        optional string messageBody = 10;
+        optional bytes mediaData = 11;
+        optional string mediaMetadata = 12;
+        optional string ctaButtonJson = 13;
+    }
+    
+    enum BusinessBroadcastCampaignStatus {
+        DRAFT = 1;
+        SCHEDULED = 2;
+        PROCESSING = 3;
+        FAILED = 4;
+        SENT = 5;
+    }
     message BusinessBroadcastListAction {
         optional bool deleted = 1;
         repeated SyncActionValue.BroadcastListParticipant participants = 2;
