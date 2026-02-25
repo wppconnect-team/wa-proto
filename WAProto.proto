@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1033885303
+/// WhatsApp Version: 2.3000.1034028152
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -5164,6 +5164,8 @@ message SyncActionValue {
     message StatusPrivacyAction {
         optional StatusDistributionMode mode = 1;
         repeated string userJid = 2;
+        optional bool shareToFB = 3;
+        optional bool shareToIG = 4;
         enum StatusDistributionMode {
             ALLOW_LIST = 0;
             DENY_LIST = 1;

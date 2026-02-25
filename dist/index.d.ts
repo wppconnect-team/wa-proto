@@ -59788,6 +59788,12 @@ export namespace waproto {
 
             /** StatusPrivacyAction userJid */
             userJid?: (string[]|null);
+
+            /** StatusPrivacyAction shareToFB */
+            shareToFB?: (boolean|null);
+
+            /** StatusPrivacyAction shareToIG */
+            shareToIG?: (boolean|null);
         }
 
         /** Represents a StatusPrivacyAction. */
@@ -59804,6 +59810,12 @@ export namespace waproto {
 
             /** StatusPrivacyAction userJid. */
             public userJid: string[];
+
+            /** StatusPrivacyAction shareToFB. */
+            public shareToFB?: (boolean|null);
+
+            /** StatusPrivacyAction shareToIG. */
+            public shareToIG?: (boolean|null);
 
             /**
              * Creates a new StatusPrivacyAction instance using the specified properties.
