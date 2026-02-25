@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1034028152
+/// WhatsApp Version: 2.3000.1034039949
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -909,6 +909,7 @@ message BotSignatureVerificationUseCaseProof {
     enum BotSignatureUseCase {
         UNSPECIFIED = 0;
         WA_BOT_MSG = 1;
+        WA_TEE_BOT_MSG = 2;
     }
 }
 
@@ -1940,6 +1941,7 @@ message HistorySync {
     optional string companionMetaNonce = 16;
     optional bytes shareableChatIdentifierEncryptionKey = 17;
     repeated Account accounts = 18;
+    optional bytes nctSalt = 19;
     enum BotAIWaitListState {
         IN_WAITLIST = 0;
         AI_AVAILABLE = 1;
@@ -2112,6 +2114,7 @@ message LimitSharing {
         CHAT_SETTING = 1;
         BIZ_SUPPORTS_FB_HOSTING = 2;
         UNKNOWN_GROUP = 3;
+        DEPRECATION = 4;
     }
 }
 
@@ -2270,6 +2273,7 @@ message Message {
     optional FutureProofMessage newsletterAdminProfileMessageV2 = 117;
     optional FutureProofMessage spoilerMessage = 118;
     optional PollCreationMessage pollCreationMessageV6 = 119;
+    optional ConditionalRevealMessage conditionalRevealMessage = 120;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2472,6 +2476,17 @@ message Message {
     message CommentMessage {
         optional Message message = 1;
         optional MessageKey targetMessageKey = 2;
+    }
+    
+    message ConditionalRevealMessage {
+        optional bytes encPayload = 1;
+        optional bytes encIv = 2;
+        optional ConditionalRevealMessageType conditionalRevealMessageType = 3;
+        optional string revealKeyId = 4;
+        enum ConditionalRevealMessageType {
+            UNKNOWN = 0;
+            SCHEDULED_MESSAGE = 1;
+        }
     }
     
     message ContactMessage {
