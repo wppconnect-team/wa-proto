@@ -4630,127 +4630,6 @@ export namespace waproto {
         }
     }
 
-    /** Properties of a BotAvatarMetadata. */
-    interface IBotAvatarMetadata {
-
-        /** BotAvatarMetadata sentiment */
-        sentiment?: (number|null);
-
-        /** BotAvatarMetadata behaviorGraph */
-        behaviorGraph?: (string|null);
-
-        /** BotAvatarMetadata action */
-        action?: (number|null);
-
-        /** BotAvatarMetadata intensity */
-        intensity?: (number|null);
-
-        /** BotAvatarMetadata wordCount */
-        wordCount?: (number|null);
-    }
-
-    /** Represents a BotAvatarMetadata. */
-    class BotAvatarMetadata implements IBotAvatarMetadata {
-
-        /**
-         * Constructs a new BotAvatarMetadata.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.IBotAvatarMetadata);
-
-        /** BotAvatarMetadata sentiment. */
-        public sentiment?: (number|null);
-
-        /** BotAvatarMetadata behaviorGraph. */
-        public behaviorGraph?: (string|null);
-
-        /** BotAvatarMetadata action. */
-        public action?: (number|null);
-
-        /** BotAvatarMetadata intensity. */
-        public intensity?: (number|null);
-
-        /** BotAvatarMetadata wordCount. */
-        public wordCount?: (number|null);
-
-        /**
-         * Creates a new BotAvatarMetadata instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns BotAvatarMetadata instance
-         */
-        public static create(properties?: waproto.IBotAvatarMetadata): waproto.BotAvatarMetadata;
-
-        /**
-         * Encodes the specified BotAvatarMetadata message. Does not implicitly {@link waproto.BotAvatarMetadata.verify|verify} messages.
-         * @param message BotAvatarMetadata message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encode(message: waproto.IBotAvatarMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified BotAvatarMetadata message, length delimited. Does not implicitly {@link waproto.BotAvatarMetadata.verify|verify} messages.
-         * @param message BotAvatarMetadata message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        public static encodeDelimited(message: waproto.IBotAvatarMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a BotAvatarMetadata message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns BotAvatarMetadata
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotAvatarMetadata;
-
-        /**
-         * Decodes a BotAvatarMetadata message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns BotAvatarMetadata
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotAvatarMetadata;
-
-        /**
-         * Verifies a BotAvatarMetadata message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        public static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a BotAvatarMetadata message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns BotAvatarMetadata
-         */
-        public static fromObject(object: { [k: string]: any }): waproto.BotAvatarMetadata;
-
-        /**
-         * Creates a plain object from a BotAvatarMetadata message. Also converts values to other types if specified.
-         * @param message BotAvatarMetadata
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        public static toObject(message: waproto.BotAvatarMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this BotAvatarMetadata to JSON.
-         * @returns JSON object
-         */
-        public toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the default type url for BotAvatarMetadata
-         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-         * @returns The default type url
-         */
-        public static getTypeUrl(typeUrlPrefix?: string): string;
-    }
-
     /** Properties of a BotCapabilityMetadata. */
     interface IBotCapabilityMetadata {
 
@@ -7495,9 +7374,6 @@ export namespace waproto {
     /** Properties of a BotMetadata. */
     interface IBotMetadata {
 
-        /** BotMetadata avatarMetadata */
-        avatarMetadata?: (waproto.IBotAvatarMetadata|null);
-
         /** BotMetadata personaId */
         personaId?: (string|null);
 
@@ -7621,9 +7497,6 @@ export namespace waproto {
          * @param [properties] Properties to set
          */
         constructor(properties?: waproto.IBotMetadata);
-
-        /** BotMetadata avatarMetadata. */
-        public avatarMetadata?: (waproto.IBotAvatarMetadata|null);
 
         /** BotMetadata personaId. */
         public personaId?: (string|null);
@@ -14488,8 +14361,8 @@ export namespace waproto {
         /** ContextInfo partiallySelectedContent */
         partiallySelectedContent?: (waproto.ContextInfo.IPartiallySelectedContent|null);
 
-        /** ContextInfo afterReadDurationMs */
-        afterReadDurationMs?: (number|null);
+        /** ContextInfo afterReadDuration */
+        afterReadDuration?: (number|null);
     }
 
     /** Represents a ContextInfo. */
@@ -14675,8 +14548,8 @@ export namespace waproto {
         /** ContextInfo partiallySelectedContent. */
         public partiallySelectedContent?: (waproto.ContextInfo.IPartiallySelectedContent|null);
 
-        /** ContextInfo afterReadDurationMs. */
-        public afterReadDurationMs?: (number|null);
+        /** ContextInfo afterReadDuration. */
+        public afterReadDuration?: (number|null);
 
         /**
          * Creates a new ContextInfo instance using the specified properties.
@@ -16392,6 +16265,9 @@ export namespace waproto {
 
         /** Conversation maibaAiThreadEnabled */
         maibaAiThreadEnabled?: (boolean|null);
+
+        /** Conversation isMarketingMessageThread */
+        isMarketingMessageThread?: (boolean|null);
     }
 
     /** Represents a Conversation. */
@@ -16564,6 +16440,9 @@ export namespace waproto {
 
         /** Conversation maibaAiThreadEnabled. */
         public maibaAiThreadEnabled?: (boolean|null);
+
+        /** Conversation isMarketingMessageThread. */
+        public isMarketingMessageThread?: (boolean|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
@@ -24047,6 +23926,9 @@ export namespace waproto {
 
         /** Message conditionalRevealMessage */
         conditionalRevealMessage?: (waproto.Message.IConditionalRevealMessage|null);
+
+        /** Message pollAddOptionMessage */
+        pollAddOptionMessage?: (waproto.Message.IPollAddOptionMessage|null);
     }
 
     /** Represents a Message. */
@@ -24357,6 +24239,9 @@ export namespace waproto {
 
         /** Message conditionalRevealMessage. */
         public conditionalRevealMessage?: (waproto.Message.IConditionalRevealMessage|null);
+
+        /** Message pollAddOptionMessage. */
+        public pollAddOptionMessage?: (waproto.Message.IPollAddOptionMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -38478,6 +38363,109 @@ export namespace waproto {
             }
         }
 
+        /** Properties of a PollAddOptionMessage. */
+        interface IPollAddOptionMessage {
+
+            /** PollAddOptionMessage pollCreationMessageKey */
+            pollCreationMessageKey?: (waproto.IMessageKey|null);
+
+            /** PollAddOptionMessage addOption */
+            addOption?: (waproto.Message.PollCreationMessage.IOption|null);
+        }
+
+        /** Represents a PollAddOptionMessage. */
+        class PollAddOptionMessage implements IPollAddOptionMessage {
+
+            /**
+             * Constructs a new PollAddOptionMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IPollAddOptionMessage);
+
+            /** PollAddOptionMessage pollCreationMessageKey. */
+            public pollCreationMessageKey?: (waproto.IMessageKey|null);
+
+            /** PollAddOptionMessage addOption. */
+            public addOption?: (waproto.Message.PollCreationMessage.IOption|null);
+
+            /**
+             * Creates a new PollAddOptionMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PollAddOptionMessage instance
+             */
+            public static create(properties?: waproto.Message.IPollAddOptionMessage): waproto.Message.PollAddOptionMessage;
+
+            /**
+             * Encodes the specified PollAddOptionMessage message. Does not implicitly {@link waproto.Message.PollAddOptionMessage.verify|verify} messages.
+             * @param message PollAddOptionMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IPollAddOptionMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PollAddOptionMessage message, length delimited. Does not implicitly {@link waproto.Message.PollAddOptionMessage.verify|verify} messages.
+             * @param message PollAddOptionMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IPollAddOptionMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PollAddOptionMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns PollAddOptionMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PollAddOptionMessage;
+
+            /**
+             * Decodes a PollAddOptionMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns PollAddOptionMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PollAddOptionMessage;
+
+            /**
+             * Verifies a PollAddOptionMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PollAddOptionMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PollAddOptionMessage
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.PollAddOptionMessage;
+
+            /**
+             * Creates a plain object from a PollAddOptionMessage message. Also converts values to other types if specified.
+             * @param message PollAddOptionMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.PollAddOptionMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PollAddOptionMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for PollAddOptionMessage
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
         /** PollContentType enum. */
         enum PollContentType {
             UNKNOWN = 0,
@@ -38517,6 +38505,9 @@ export namespace waproto {
 
             /** PollCreationMessage hideParticipantName */
             hideParticipantName?: (boolean|null);
+
+            /** PollCreationMessage allowAddOption */
+            allowAddOption?: (boolean|null);
         }
 
         /** Represents a PollCreationMessage. */
@@ -38557,6 +38548,9 @@ export namespace waproto {
 
             /** PollCreationMessage hideParticipantName. */
             public hideParticipantName?: (boolean|null);
+
+            /** PollCreationMessage allowAddOption. */
+            public allowAddOption?: (boolean|null);
 
             /**
              * Creates a new PollCreationMessage instance using the specified properties.
@@ -39855,8 +39849,8 @@ export namespace waproto {
             /** ProtocolMessage aiMediaCollectionMessage */
             aiMediaCollectionMessage?: (waproto.IAIMediaCollectionMessage|null);
 
-            /** ProtocolMessage afterReadDurationMs */
-            afterReadDurationMs?: (number|null);
+            /** ProtocolMessage afterReadDuration */
+            afterReadDuration?: (number|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -39943,8 +39937,8 @@ export namespace waproto {
             /** ProtocolMessage aiMediaCollectionMessage. */
             public aiMediaCollectionMessage?: (waproto.IAIMediaCollectionMessage|null);
 
-            /** ProtocolMessage afterReadDurationMs. */
-            public afterReadDurationMs?: (number|null);
+            /** ProtocolMessage afterReadDuration. */
+            public afterReadDuration?: (number|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -40985,7 +40979,8 @@ export namespace waproto {
                 EVENT_EDIT = 1,
                 MESSAGE_EDIT = 2,
                 MESSAGE_SCHEDULE = 3,
-                POLL_EDIT = 4
+                POLL_EDIT = 4,
+                POLL_ADD_OPTION = 5
             }
         }
 
@@ -43800,7 +43795,8 @@ export namespace waproto {
             STATUS_QUESTION = 16,
             STATUS_ADD_YOURS_DIWALI = 17,
             STATUS_REACTION = 18,
-            HEVC_VIDEO_DUAL_UPLOAD = 19
+            HEVC_VIDEO_DUAL_UPLOAD = 19,
+            POLL_ADD_OPTION = 20
         }
     }
 
@@ -45326,6 +45322,7 @@ export namespace waproto {
         OUT_CONTACT_ACTION = 79,
         NCT_SALT_SYNC_ACTION = 80,
         BUSINESS_BROADCAST_CAMPAIGN_ACTION = 81,
+        BUSINESS_BROADCAST_INSIGHTS_ACTION = 82,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -52652,6 +52649,9 @@ export namespace waproto {
 
         /** SyncActionValue businessBroadcastCampaignAction */
         businessBroadcastCampaignAction?: (waproto.SyncActionValue.IBusinessBroadcastCampaignAction|null);
+
+        /** SyncActionValue businessBroadcastInsightsAction */
+        businessBroadcastInsightsAction?: (waproto.SyncActionValue.IBusinessBroadcastInsightsAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -52878,6 +52878,9 @@ export namespace waproto {
 
         /** SyncActionValue businessBroadcastCampaignAction. */
         public businessBroadcastCampaignAction?: (waproto.SyncActionValue.IBusinessBroadcastCampaignAction|null);
+
+        /** SyncActionValue businessBroadcastInsightsAction. */
+        public businessBroadcastInsightsAction?: (waproto.SyncActionValue.IBusinessBroadcastInsightsAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -53804,18 +53807,6 @@ export namespace waproto {
 
             /** BusinessBroadcastCampaignAction status */
             status?: (waproto.SyncActionValue.BusinessBroadcastCampaignStatus|null);
-
-            /** BusinessBroadcastCampaignAction messageBody */
-            messageBody?: (string|null);
-
-            /** BusinessBroadcastCampaignAction mediaData */
-            mediaData?: (Uint8Array|null);
-
-            /** BusinessBroadcastCampaignAction mediaMetadata */
-            mediaMetadata?: (string|null);
-
-            /** BusinessBroadcastCampaignAction ctaButtonJson */
-            ctaButtonJson?: (string|null);
         }
 
         /** Represents a BusinessBroadcastCampaignAction. */
@@ -53853,18 +53844,6 @@ export namespace waproto {
 
             /** BusinessBroadcastCampaignAction status. */
             public status?: (waproto.SyncActionValue.BusinessBroadcastCampaignStatus|null);
-
-            /** BusinessBroadcastCampaignAction messageBody. */
-            public messageBody?: (string|null);
-
-            /** BusinessBroadcastCampaignAction mediaData. */
-            public mediaData?: (Uint8Array|null);
-
-            /** BusinessBroadcastCampaignAction mediaMetadata. */
-            public mediaMetadata?: (string|null);
-
-            /** BusinessBroadcastCampaignAction ctaButtonJson. */
-            public ctaButtonJson?: (string|null);
 
             /**
              * Creates a new BusinessBroadcastCampaignAction instance using the specified properties.
@@ -53951,6 +53930,127 @@ export namespace waproto {
             PROCESSING = 3,
             FAILED = 4,
             SENT = 5
+        }
+
+        /** Properties of a BusinessBroadcastInsightsAction. */
+        interface IBusinessBroadcastInsightsAction {
+
+            /** BusinessBroadcastInsightsAction recipientCount */
+            recipientCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction deliveredCount */
+            deliveredCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction readCount */
+            readCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction repliedCount */
+            repliedCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction quickReplyCount */
+            quickReplyCount?: (number|null);
+        }
+
+        /** Represents a BusinessBroadcastInsightsAction. */
+        class BusinessBroadcastInsightsAction implements IBusinessBroadcastInsightsAction {
+
+            /**
+             * Constructs a new BusinessBroadcastInsightsAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IBusinessBroadcastInsightsAction);
+
+            /** BusinessBroadcastInsightsAction recipientCount. */
+            public recipientCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction deliveredCount. */
+            public deliveredCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction readCount. */
+            public readCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction repliedCount. */
+            public repliedCount?: (number|null);
+
+            /** BusinessBroadcastInsightsAction quickReplyCount. */
+            public quickReplyCount?: (number|null);
+
+            /**
+             * Creates a new BusinessBroadcastInsightsAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BusinessBroadcastInsightsAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IBusinessBroadcastInsightsAction): waproto.SyncActionValue.BusinessBroadcastInsightsAction;
+
+            /**
+             * Encodes the specified BusinessBroadcastInsightsAction message. Does not implicitly {@link waproto.SyncActionValue.BusinessBroadcastInsightsAction.verify|verify} messages.
+             * @param message BusinessBroadcastInsightsAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IBusinessBroadcastInsightsAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BusinessBroadcastInsightsAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.BusinessBroadcastInsightsAction.verify|verify} messages.
+             * @param message BusinessBroadcastInsightsAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IBusinessBroadcastInsightsAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BusinessBroadcastInsightsAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BusinessBroadcastInsightsAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.BusinessBroadcastInsightsAction;
+
+            /**
+             * Decodes a BusinessBroadcastInsightsAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BusinessBroadcastInsightsAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.BusinessBroadcastInsightsAction;
+
+            /**
+             * Verifies a BusinessBroadcastInsightsAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BusinessBroadcastInsightsAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BusinessBroadcastInsightsAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.BusinessBroadcastInsightsAction;
+
+            /**
+             * Creates a plain object from a BusinessBroadcastInsightsAction message. Also converts values to other types if specified.
+             * @param message BusinessBroadcastInsightsAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.BusinessBroadcastInsightsAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BusinessBroadcastInsightsAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for BusinessBroadcastInsightsAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         /** Properties of a BusinessBroadcastListAction. */
@@ -56152,7 +56252,8 @@ export namespace waproto {
                 COMMUNITY = 6,
                 SERVER_ASSIGNED = 7,
                 DRAFTED = 8,
-                AI_HANDOFF = 9
+                AI_HANDOFF = 9,
+                CHANNELS = 10
             }
         }
 
@@ -62643,6 +62744,9 @@ export namespace waproto {
 
         /** ThreadID threadKey */
         threadKey?: (waproto.IMessageKey|null);
+
+        /** ThreadID sourceChatJid */
+        sourceChatJid?: (string|null);
     }
 
     /** Represents a ThreadID. */
@@ -62659,6 +62763,9 @@ export namespace waproto {
 
         /** ThreadID threadKey. */
         public threadKey?: (waproto.IMessageKey|null);
+
+        /** ThreadID sourceChatJid. */
+        public sourceChatJid?: (string|null);
 
         /**
          * Creates a new ThreadID instance using the specified properties.
@@ -64356,6 +64463,9 @@ export namespace waproto {
 
         /** WebMessageInfo nonJidMentions */
         nonJidMentions?: (number|null);
+
+        /** WebMessageInfo hsmTag */
+        hsmTag?: (string|null);
     }
 
     /** Represents a WebMessageInfo. */
@@ -64567,6 +64677,9 @@ export namespace waproto {
 
         /** WebMessageInfo nonJidMentions. */
         public nonJidMentions?: (number|null);
+
+        /** WebMessageInfo hsmTag. */
+        public hsmTag?: (string|null);
 
         /**
          * Creates a new WebMessageInfo instance using the specified properties.

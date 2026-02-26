@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1034039949
+/// WhatsApp Version: 2.3000.1034143497
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -342,14 +342,6 @@ message BotAgeCollectionMetadata {
     }
 }
 
-message BotAvatarMetadata {
-    optional uint32 sentiment = 1;
-    optional string behaviorGraph = 2;
-    optional uint32 action = 3;
-    optional uint32 intensity = 4;
-    optional uint32 wordCount = 5;
-}
-
 message BotCapabilityMetadata {
     repeated BotCapabilityType capabilities = 1;
     enum BotCapabilityType {
@@ -608,7 +600,6 @@ message BotMessageSharingInfo {
 }
 
 message BotMetadata {
-    optional BotAvatarMetadata avatarMetadata = 1;
     optional string personaId = 2;
     optional BotPluginMetadata pluginMetadata = 3;
     optional BotSuggestedPromptMetadata suggestedPromptMetadata = 4;
@@ -1393,7 +1384,7 @@ message ContextInfo {
     optional bool isSpoiler = 73;
     optional MediaDomainInfo mediaDomainInfo = 74;
     optional PartiallySelectedContent partiallySelectedContent = 75;
-    optional uint32 afterReadDurationMs = 76;
+    optional uint32 afterReadDuration = 76;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1610,6 +1601,7 @@ message Conversation {
     optional LimitSharing.TriggerType limitSharingTrigger = 52;
     optional bool limitSharingInitiatedByMe = 53;
     optional bool maibaAiThreadEnabled = 54;
+    optional bool isMarketingMessageThread = 55;
     enum EndOfHistoryTransferType {
         COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0;
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
@@ -2274,6 +2266,7 @@ message Message {
     optional FutureProofMessage spoilerMessage = 118;
     optional PollCreationMessage pollCreationMessageV6 = 119;
     optional ConditionalRevealMessage conditionalRevealMessage = 120;
+    optional PollAddOptionMessage pollAddOptionMessage = 121;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -3383,6 +3376,11 @@ message Message {
         }
     }
     
+    message PollAddOptionMessage {
+        optional MessageKey pollCreationMessageKey = 1;
+        optional Message.PollCreationMessage.Option addOption = 2;
+    }
+    
     enum PollContentType {
         UNKNOWN = 0;
         TEXT = 1;
@@ -3399,6 +3397,7 @@ message Message {
         optional Option correctAnswer = 8;
         optional int64 endTime = 9;
         optional bool hideParticipantName = 10;
+        optional bool allowAddOption = 11;
         message Option {
             optional string optionName = 1;
             optional string optionHash = 2;
@@ -3497,7 +3496,7 @@ message Message {
         optional AIQueryFanout aiQueryFanout = 26;
         optional MemberLabel memberLabel = 27;
         optional AIMediaCollectionMessage aiMediaCollectionMessage = 28;
-        optional uint32 afterReadDurationMs = 29;
+        optional uint32 afterReadDuration = 29;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -3601,6 +3600,7 @@ message Message {
             MESSAGE_EDIT = 2;
             MESSAGE_SCHEDULE = 3;
             POLL_EDIT = 4;
+            POLL_ADD_OPTION = 5;
         }
     }
     
@@ -3874,6 +3874,7 @@ message MessageAssociation {
         STATUS_ADD_YOURS_DIWALI = 17;
         STATUS_REACTION = 18;
         HEVC_VIDEO_DUAL_UPLOAD = 19;
+        POLL_ADD_OPTION = 20;
     }
 }
 
@@ -4081,6 +4082,7 @@ enum MutationProps {
     OUT_CONTACT_ACTION = 79;
     NCT_SALT_SYNC_ACTION = 80;
     BUSINESS_BROADCAST_CAMPAIGN_ACTION = 81;
+    BUSINESS_BROADCAST_INSIGHTS_ACTION = 82;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -4715,6 +4717,7 @@ message SyncActionValue {
     optional OutContactAction outContactAction = 79;
     optional NctSaltSyncAction nctSaltSyncAction = 80;
     optional BusinessBroadcastCampaignAction businessBroadcastCampaignAction = 81;
+    optional BusinessBroadcastInsightsAction businessBroadcastInsightsAction = 82;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceID = 2;
@@ -4767,10 +4770,6 @@ message SyncActionValue {
         optional int64 scheduledTimestamp = 7;
         optional int64 createTimestamp = 8;
         optional SyncActionValue.BusinessBroadcastCampaignStatus status = 9;
-        optional string messageBody = 10;
-        optional bytes mediaData = 11;
-        optional string mediaMetadata = 12;
-        optional string ctaButtonJson = 13;
     }
     
     enum BusinessBroadcastCampaignStatus {
@@ -4780,6 +4779,14 @@ message SyncActionValue {
         FAILED = 4;
         SENT = 5;
     }
+    message BusinessBroadcastInsightsAction {
+        optional int32 recipientCount = 1;
+        optional int32 deliveredCount = 2;
+        optional int32 readCount = 3;
+        optional int32 repliedCount = 4;
+        optional int32 quickReplyCount = 5;
+    }
+    
     message BusinessBroadcastListAction {
         optional bool deleted = 1;
         repeated SyncActionValue.BroadcastListParticipant participants = 2;
@@ -4899,6 +4906,7 @@ message SyncActionValue {
             SERVER_ASSIGNED = 7;
             DRAFTED = 8;
             AI_HANDOFF = 9;
+            CHANNELS = 10;
         }
     }
     
@@ -5343,6 +5351,7 @@ message TemplateButton {
 message ThreadID {
     optional ThreadType threadType = 1;
     optional MessageKey threadKey = 2;
+    optional string sourceChatJid = 3;
     enum ThreadType {
         UNKNOWN = 0;
         VIEW_REPLIES = 1;
@@ -5544,6 +5553,7 @@ message WebMessageInfo {
     optional InteractiveMessageAdditionalMetadata interactiveMessageAdditionalMetadata = 76;
     optional QuarantinedMessage quarantinedMessage = 77;
     optional uint32 nonJidMentions = 78;
+    optional string hsmTag = 79;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;
