@@ -44469,6 +44469,9 @@ export namespace waproto {
 
         /** MsgOpaqueData pollHideVoterNames */
         pollHideVoterNames?: (boolean|null);
+
+        /** MsgOpaqueData pollAllowAddOption */
+        pollAllowAddOption?: (boolean|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -44617,6 +44620,9 @@ export namespace waproto {
 
         /** MsgOpaqueData pollHideVoterNames. */
         public pollHideVoterNames?: (boolean|null);
+
+        /** MsgOpaqueData pollAllowAddOption. */
+        public pollAllowAddOption?: (boolean|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
