@@ -4997,7 +4997,8 @@ export namespace waproto {
             RICH_RESPONSE_INLINE_LINKS_ENABLED = 56,
             RICH_RESPONSE_UR_IMAGINE_VIDEO = 57,
             JSON_PATCH_STREAMING = 58,
-            AI_TAB_FORCE_CLIPPY = 59
+            AI_TAB_FORCE_CLIPPY = 59,
+            UNIFIED_RESPONSE_EMBEDDED_SCREENS = 60
         }
     }
 
@@ -15403,6 +15404,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo adPreviewUrl */
             adPreviewUrl?: (string|null);
+
+            /** ExternalAdReplyInfo containsCtwaFlowsAutoReply */
+            containsCtwaFlowsAutoReply?: (boolean|null);
         }
 
         /** Represents an ExternalAdReplyInfo. */
@@ -15494,6 +15498,9 @@ export namespace waproto {
 
             /** ExternalAdReplyInfo adPreviewUrl. */
             public adPreviewUrl?: (string|null);
+
+            /** ExternalAdReplyInfo containsCtwaFlowsAutoReply. */
+            public containsCtwaFlowsAutoReply?: (boolean|null);
 
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
@@ -16493,6 +16500,9 @@ export namespace waproto {
 
         /** Conversation isSenderNewAccount */
         isSenderNewAccount?: (boolean|null);
+
+        /** Conversation afterReadDuration */
+        afterReadDuration?: (number|null);
     }
 
     /** Represents a Conversation. */
@@ -16671,6 +16681,9 @@ export namespace waproto {
 
         /** Conversation isSenderNewAccount. */
         public isSenderNewAccount?: (boolean|null);
+
+        /** Conversation afterReadDuration. */
+        public afterReadDuration?: (number|null);
 
         /**
          * Creates a new Conversation instance using the specified properties.
@@ -40929,7 +40942,8 @@ export namespace waproto {
                 AI_QUERY_FANOUT = 29,
                 GROUP_MEMBER_LABEL_CHANGE = 30,
                 AI_MEDIA_COLLECTION_MESSAGE = 31,
-                MESSAGE_UNSCHEDULE = 32
+                MESSAGE_UNSCHEDULE = 32,
+                BOT_UNLINK_MESSAGE = 33
             }
         }
 
