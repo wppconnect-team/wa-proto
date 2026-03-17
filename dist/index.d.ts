@@ -20380,6 +20380,9 @@ export namespace waproto {
 
             /** ClientHello simulateXxkemFs */
             simulateXxkemFs?: (boolean|null);
+
+            /** ClientHello pqMode */
+            pqMode?: (waproto.HandshakeMessage.HandshakePqMode|null);
         }
 
         /** Represents a ClientHello. */
@@ -20414,6 +20417,9 @@ export namespace waproto {
 
             /** ClientHello simulateXxkemFs. */
             public simulateXxkemFs?: (boolean|null);
+
+            /** ClientHello pqMode. */
+            public pqMode?: (waproto.HandshakeMessage.HandshakePqMode|null);
 
             /**
              * Creates a new ClientHello instance using the specified properties.
@@ -20491,6 +20497,19 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** HandshakePqMode enum. */
+        enum HandshakePqMode {
+            HANDSHAKE_PQ_MODE_UNKNOWN = 0,
+            XXKEM = 1,
+            XXKEM_FS = 2,
+            WA_CLASSICAL = 3,
+            WA_PQ = 4,
+            IKKEM = 5,
+            IKKEM_FS = 6,
+            XXKEM_2 = 7,
+            IKKEM_2 = 8
         }
 
         /** Properties of a ServerHello. */
