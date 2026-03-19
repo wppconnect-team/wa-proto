@@ -23170,8 +23170,7 @@ export namespace waproto {
             UNKNOWN = 0,
             CHAT_SETTING = 1,
             BIZ_SUPPORTS_FB_HOSTING = 2,
-            UNKNOWN_GROUP = 3,
-            DEPRECATION = 4
+            UNKNOWN_GROUP = 3
         }
     }
 
@@ -55015,6 +55014,9 @@ export namespace waproto {
 
             /** BusinessBroadcastListAction labelIds */
             labelIds?: (string[]|null);
+
+            /** BusinessBroadcastListAction audienceExpression */
+            audienceExpression?: (string|null);
         }
 
         /** Represents a BusinessBroadcastListAction. */
@@ -55037,6 +55039,9 @@ export namespace waproto {
 
             /** BusinessBroadcastListAction labelIds. */
             public labelIds: string[];
+
+            /** BusinessBroadcastListAction audienceExpression. */
+            public audienceExpression?: (string|null);
 
             /**
              * Creates a new BusinessBroadcastListAction instance using the specified properties.
