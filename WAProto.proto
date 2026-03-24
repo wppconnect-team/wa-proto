@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1035617621
+/// WhatsApp Version: 2.3000.1035790540
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -5306,7 +5306,7 @@ message SyncActionValue {
         optional bool shareToIG = 4;
         repeated CustomList customLists = 5;
         message CustomList {
-            optional int64 id = 1;
+            optional string listId = 1;
             optional string name = 2;
             optional string emoji = 3;
             optional bool isSelected = 4;

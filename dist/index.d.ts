@@ -61255,8 +61255,8 @@ export namespace waproto {
             /** Properties of a CustomList. */
             interface ICustomList {
 
-                /** CustomList id */
-                id?: (number|Long|null);
+                /** CustomList listId */
+                listId?: (string|null);
 
                 /** CustomList name */
                 name?: (string|null);
@@ -61280,8 +61280,8 @@ export namespace waproto {
                  */
                 constructor(properties?: waproto.SyncActionValue.StatusPrivacyAction.ICustomList);
 
-                /** CustomList id. */
-                public id?: (number|Long|null);
+                /** CustomList listId. */
+                public listId?: (string|null);
 
                 /** CustomList name. */
                 public name?: (string|null);
