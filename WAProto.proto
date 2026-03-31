@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1036239581
+/// WhatsApp Version: 2.3000.1036335964
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1664,6 +1664,7 @@ message DeviceCapabilities {
         optional bool companionSupportEnabled = 2;
         optional bool campaignSyncEnabled = 3;
         optional bool insightsSyncEnabled = 4;
+        optional int32 recipientLimit = 5;
     }
     
     enum ChatLockSupportLevel {
@@ -5998,6 +5999,7 @@ message WebMessageInfo {
         GROUP_OPEN_BOT_ADDED = 222;
         GROUP_TEE_BOT_ADDED = 223;
         CONTACT_INFO = 224;
+        SCHEDULED_MESSAGE_CREATED = 225;
     }
 }
 

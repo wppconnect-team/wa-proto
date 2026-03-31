@@ -17165,6 +17165,9 @@ export namespace waproto {
 
             /** BusinessBroadcast insightsSyncEnabled */
             insightsSyncEnabled?: (boolean|null);
+
+            /** BusinessBroadcast recipientLimit */
+            recipientLimit?: (number|null);
         }
 
         /** Represents a BusinessBroadcast. */
@@ -17187,6 +17190,9 @@ export namespace waproto {
 
             /** BusinessBroadcast insightsSyncEnabled. */
             public insightsSyncEnabled?: (boolean|null);
+
+            /** BusinessBroadcast recipientLimit. */
+            public recipientLimit?: (number|null);
 
             /**
              * Creates a new BusinessBroadcast instance using the specified properties.
@@ -67352,7 +67358,8 @@ export namespace waproto {
             GROUP_MEMBER_SHARE_GROUP_HISTORY_MODE = 221,
             GROUP_OPEN_BOT_ADDED = 222,
             GROUP_TEE_BOT_ADDED = 223,
-            CONTACT_INFO = 224
+            CONTACT_INFO = 224,
+            SCHEDULED_MESSAGE_CREATED = 225
         }
     }
 
