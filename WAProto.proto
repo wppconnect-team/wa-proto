@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1036335964
+/// WhatsApp Version: 2.3000.1037013887
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3321,6 +3321,7 @@ message Message {
             optional int32 onDemandMsgCount = 4;
             optional int64 oldestMsgTimestampMs = 5;
             optional string accountLid = 6;
+            optional bool supportInlineResponse = 7;
         }
         
         message PlaceholderMessageResendRequest {

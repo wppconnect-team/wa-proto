@@ -37250,6 +37250,9 @@ export namespace waproto {
 
                 /** HistorySyncOnDemandRequest accountLid */
                 accountLid?: (string|null);
+
+                /** HistorySyncOnDemandRequest supportInlineResponse */
+                supportInlineResponse?: (boolean|null);
             }
 
             /** Represents a HistorySyncOnDemandRequest. */
@@ -37278,6 +37281,9 @@ export namespace waproto {
 
                 /** HistorySyncOnDemandRequest accountLid. */
                 public accountLid?: (string|null);
+
+                /** HistorySyncOnDemandRequest supportInlineResponse. */
+                public supportInlineResponse?: (boolean|null);
 
                 /**
                  * Creates a new HistorySyncOnDemandRequest instance using the specified properties.
