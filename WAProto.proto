@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1037828507
+/// WhatsApp Version: 2.3000.1038469210
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -14,6 +14,7 @@ message ADVDeviceIdentity {
 enum ADVEncryptionType {
     E2EE = 0;
     HOSTED = 1;
+    NON_E2EE = 2;
 }
 message ADVKeyIndexList {
     optional uint32 rawId = 1;
@@ -61,6 +62,7 @@ message AIHomeState {
             ANIMATE_PHOTO = 2;
             ANALYZE_FILE = 3;
             COLLABORATE = 4;
+            OPEN_GREETING_CARD = 5;
         }
     }
     
@@ -245,6 +247,16 @@ message AIRichResponseTableMetadata {
 
 message AIRichResponseUnifiedResponse {
     optional bytes data = 1;
+}
+
+enum AISubscriptionRequestType {
+    UNSPECIFIED = 0;
+    THINK_HARD = 1;
+    IMAGE_GEN = 2;
+    VIDEO_GEN = 3;
+}
+message AISubscriptionUpsellMetadata {
+    optional AISubscriptionRequestType requestType = 1;
 }
 
 message AIThreadInfo {
@@ -659,6 +671,8 @@ message BotMetadata {
     optional BotInfrastructureDiagnostics botInfrastructureDiagnostics = 37;
     optional AIMediaCollectionMetadata aiMediaCollectionMetadata = 38;
     optional BotCommandMetadata commandMetadata = 39;
+    optional BotResolvedToolCallMetadata resolvedToolCallMetadata = 40;
+    optional AISubscriptionUpsellMetadata subscriptionUpsellMetadata = 41;
     optional bytes internalMetadata = 999;
 }
 
@@ -897,6 +911,11 @@ message BotRenderingMetadata {
     
 }
 
+message BotResolvedToolCallMetadata {
+    optional string toolCallId = 1;
+    optional string resolutionDataSerialized = 2;
+}
+
 message BotSessionMetadata {
     optional string sessionId = 1;
     optional BotSessionSource sessionSource = 2;
@@ -1132,6 +1151,7 @@ message ClientPayload {
     optional int32 preacksCount = 45;
     optional int32 processingQueueSize = 46;
     repeated string pairedPeripherals = 47;
+    optional bytes testIsolationId = 48;
     enum AccountType {
         DEFAULT = 0;
         GUEST = 1;
@@ -1227,6 +1247,7 @@ message ClientPayload {
         optional string deviceExpId = 14;
         optional DeviceType deviceType = 15;
         optional string deviceModelType = 16;
+        optional DistributionChannel distributionChannel = 17;
         message AppVersion {
             optional uint32 primary = 1;
             optional uint32 secondary = 2;
@@ -1241,6 +1262,12 @@ message ClientPayload {
             DESKTOP = 2;
             WEARABLE = 3;
             VR = 4;
+        }
+        enum DistributionChannel {
+            APPSTORE = 0;
+            WEBSITE = 1;
+            TESTFLIGHT = 2;
+            INTERNAL = 3;
         }
         enum Platform {
             ANDROID = 0;
@@ -1411,6 +1438,9 @@ message ContextInfo {
     optional MediaDomainInfo mediaDomainInfo = 74;
     optional PartiallySelectedContent partiallySelectedContent = 75;
     optional uint32 afterReadDuration = 76;
+    optional CrossAppSource crossAppSource = 77;
+    optional BusinessInteractionPills businessInteractionPills = 78;
+    optional string posterStatusId = 79;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1423,10 +1453,47 @@ message ContextInfo {
         }
     }
     
+    message BusinessInteractionPills {
+        optional string businessJid = 1;
+        repeated Pill pills = 2;
+        optional EntryPoint entryPoint = 3;
+        enum EntryPoint {
+            ENTRY_POINT_UNKNOWN = 0;
+            P2P_LINK_SHARE = 1;
+            CONTACT_CARD_SHARING = 2;
+            PHONE_NUMBER = 3;
+            STATUS = 4;
+            IN_THREAD_CONTEXT_CARD = 5;
+        }
+        message Pill {
+            optional ContextInfo.BusinessInteractionPills.PillType pillType = 1;
+            optional string actionUrl = 2;
+        }
+        
+        enum PillType {
+            UNKNOWN = 0;
+            VIEW_BUSINESS = 1;
+            CHAT = 2;
+            CALL = 3;
+            CATALOG = 4;
+            CHANNEL = 5;
+            BOOK_APPOINTMENT = 6;
+            OFFERS = 7;
+            BESTSELLERS = 8;
+            MENU = 9;
+            ABOUT = 10;
+        }
+    }
+    
     message BusinessMessageForwardInfo {
         optional string businessOwnerJid = 1;
     }
     
+    enum CrossAppSource {
+        CROSS_APP_SOURCE_UNKNOWN = 0;
+        CROSS_APP_SOURCE_INSTAGRAM = 1;
+        CROSS_APP_SOURCE_FACEBOOK = 2;
+    }
     message DataSharingContext {
         optional bool showMmDisclosure = 1;
         optional string encryptedSignalTokenConsented = 2;
@@ -1635,6 +1702,7 @@ message Conversation {
     optional bool isMarketingMessageThread = 55;
     optional bool isSenderNewAccount = 56;
     optional uint32 afterReadDuration = 57;
+    optional bool isSenderSuspicious = 58;
     enum EndOfHistoryTransferType {
         COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0;
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
@@ -2348,6 +2416,8 @@ message Message {
     optional PollAddOptionMessage pollAddOptionMessage = 121;
     optional EventInviteMessage eventInviteMessage = 122;
     optional GroupRootKeyShare groupRootKeyShare = 123;
+    optional P2PPaymentReminderNotification p2PPaymentReminderNotification = 124;
+    optional SplitPaymentMessage splitPaymentMessage = 125;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -2528,6 +2598,41 @@ message Message {
         optional string id = 2;
     }
     
+    message ChatCustomImageWallpaper {
+        optional string directPath = 1;
+        optional bytes mediaKey = 2;
+        optional bytes fileEncSha256 = 3;
+        optional bytes fileSha256 = 4;
+        optional float dimLevel = 5;
+    }
+    
+    message ChatDefaultWallpaper {
+        optional bool isDoodleEnabled = 1;
+    }
+    
+    message ChatSolidColorWallpaper {
+        optional string colorLight = 1;
+        optional string colorDark = 2;
+        optional bool isDoodleEnabled = 3;
+    }
+    
+    message ChatStockImageWallpaper {
+        optional string stockImageId = 1;
+        optional float dimLevel = 2;
+    }
+    
+    message ChatThemeSetting {
+        optional int64 settingTimestampMs = 1;
+        optional bool clearTheme = 2;
+        optional string colorSchemeId = 3;
+        oneof wallpaper {
+            Message.ChatDefaultWallpaper defaultWallpaper = 10;
+            Message.ChatSolidColorWallpaper solidColor = 11;
+            Message.ChatStockImageWallpaper stockImage = 12;
+            Message.ChatCustomImageWallpaper customImage = 13;
+        }
+    }
+    
     message CloudAPIThreadControlNotification {
         optional CloudAPIThreadControl status = 1;
         optional int64 senderNotificationTimestampMs = 2;
@@ -2637,6 +2742,7 @@ message Message {
         optional int64 startTime = 5;
         optional string caption = 6;
         optional bool isCanceled = 7;
+        optional int64 endTime = 8;
     }
     
     message EventMessage {
@@ -3219,6 +3325,35 @@ message Message {
         }
     }
     
+    message P2PPaymentReminderNotification {
+        optional string reminderId = 1;
+        optional Money amount = 2;
+        optional ReminderFrequency frequency = 3;
+        optional int64 nextReminderTimestamp = 4;
+        optional int64 expiryTimestamp = 5;
+        optional ReminderState state = 6;
+        optional string description = 7;
+        optional string creatorJid = 8;
+        optional string receiverJid = 9;
+        optional string upiId = 10;
+        optional int64 createdTimestamp = 11;
+        enum ReminderFrequency {
+            UNKNOWN_FREQUENCY = 0;
+            WEEKLY = 1;
+            BIWEEKLY = 2;
+            MONTHLY = 3;
+            CUSTOM = 4;
+        }
+        enum ReminderState {
+            UNKNOWN_STATE = 0;
+            ACTIVE = 1;
+            PAUSED = 2;
+            STOPPED = 3;
+            EXPIRED = 4;
+            CANCELLED = 5;
+        }
+    }
+    
     message PaymentExtendedMetadata {
         optional uint32 type = 1;
         optional string platform = 2;
@@ -3628,6 +3763,7 @@ message Message {
         optional MemberLabel memberLabel = 27;
         optional AIMediaCollectionMessage aiMediaCollectionMessage = 28;
         optional uint32 afterReadDuration = 29;
+        optional Message.ChatThemeSetting chatThemeSetting = 30;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -3657,6 +3793,7 @@ message Message {
             GROUP_MEMBER_LABEL_CHANGE = 30;
             AI_MEDIA_COLLECTION_MESSAGE = 31;
             MESSAGE_UNSCHEDULE = 32;
+            CHAT_THEME_SETTING = 34;
         }
     }
     
@@ -3746,6 +3883,26 @@ message Message {
     message SenderKeyDistributionMessage {
         optional string groupId = 1;
         optional bytes axolotlSenderKeyDistributionMessage = 2;
+    }
+    
+    message SplitPaymentMessage {
+        optional string splitId = 1;
+        optional Money totalAmount = 2;
+        optional string description = 3;
+        optional string requesterJid = 4;
+        repeated Message.SplitPaymentParticipant participants = 5;
+        optional int64 createdAtMs = 6;
+        optional ContextInfo contextInfo = 17;
+    }
+    
+    message SplitPaymentParticipant {
+        optional string jid = 1;
+        optional Money amount = 2;
+        optional SplitPaymentStatus status = 3;
+        enum SplitPaymentStatus {
+            PENDING = 0;
+            PAID = 1;
+        }
     }
     
     message StatusNotificationMessage {
@@ -4698,6 +4855,7 @@ message StatusAttribution {
             SHARECHAT = 9;
             GOOGLE_PHOTOS = 10;
             SOUNDCLOUD = 11;
+            SHAZAM = 12;
         }
     }
     
@@ -4755,6 +4913,7 @@ message StatusAttribution {
         LAYOUTS = 8;
         NEWSLETTER_STATUS = 9;
         STATUS_CLOSE_SHARING = 10;
+        PAID_PARTNERSHIP = 11;
     }
 }
 
@@ -5266,6 +5425,7 @@ message SyncActionValue {
         repeated string keywords = 3;
         optional int32 count = 4;
         optional bool deleted = 5;
+        repeated string associatedLabelIds = 6;
     }
     
     message RecentEmojiWeightsAction {
@@ -5783,6 +5943,8 @@ message WebMessageInfo {
     optional string hsmTag = 79;
     optional uint64 ephemeralExpirationTimestamp = 80;
     optional ScheduledMessageMetadata scheduledMessageMetadata = 81;
+    optional string decisionId = 82;
+    repeated string decisionSources = 83;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;
