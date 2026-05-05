@@ -17154,6 +17154,18 @@ export namespace waproto {
 
         /** Conversation isSenderSuspicious */
         isSenderSuspicious?: (boolean|null);
+
+        /** Conversation appealStatus */
+        appealStatus?: (waproto.Conversation.GroupAppealStatus|null);
+
+        /** Conversation appealUpdateTime */
+        appealUpdateTime?: (number|Long|null);
+
+        /** Conversation authAgentParentCompanyName */
+        authAgentParentCompanyName?: (string|null);
+
+        /** Conversation authAgentObaPhoneNumber */
+        authAgentObaPhoneNumber?: (string|null);
     }
 
     /** Represents a Conversation. */
@@ -17339,6 +17351,18 @@ export namespace waproto {
         /** Conversation isSenderSuspicious. */
         public isSenderSuspicious?: (boolean|null);
 
+        /** Conversation appealStatus. */
+        public appealStatus?: (waproto.Conversation.GroupAppealStatus|null);
+
+        /** Conversation appealUpdateTime. */
+        public appealUpdateTime?: (number|Long|null);
+
+        /** Conversation authAgentParentCompanyName. */
+        public authAgentParentCompanyName?: (string|null);
+
+        /** Conversation authAgentObaPhoneNumber. */
+        public authAgentObaPhoneNumber?: (string|null);
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -17425,6 +17449,14 @@ export namespace waproto {
             COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1,
             COMPLETE_ON_DEMAND_SYNC_BUT_MORE_MSG_REMAIN_ON_PRIMARY = 2,
             COMPLETE_ON_DEMAND_SYNC_WITH_MORE_MSG_ON_PRIMARY_BUT_NO_ACCESS = 3
+        }
+
+        /** GroupAppealStatus enum. */
+        enum GroupAppealStatus {
+            NO_APPEAL = 0,
+            APPEAL_IN_REVIEW = 1,
+            APPEAL_APPROVED = 2,
+            APPEAL_REJECTED = 3
         }
     }
 
