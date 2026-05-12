@@ -59556,6 +59556,9 @@ export namespace waproto {
 
             /** LabelAssociationAction labeled */
             labeled?: (boolean|null);
+
+            /** LabelAssociationAction modelMetaData */
+            modelMetaData?: (waproto.SyncActionValue.IModelMetadata[]|null);
         }
 
         /** Represents a LabelAssociationAction. */
@@ -59569,6 +59572,9 @@ export namespace waproto {
 
             /** LabelAssociationAction labeled. */
             public labeled?: (boolean|null);
+
+            /** LabelAssociationAction modelMetaData. */
+            public modelMetaData: waproto.SyncActionValue.IModelMetadata[];
 
             /**
              * Creates a new LabelAssociationAction instance using the specified properties.
@@ -60782,6 +60788,115 @@ export namespace waproto {
                 ACTIVE = 0,
                 INACTIVE = 1
             }
+        }
+
+        /** Properties of a ModelMetadata. */
+        interface IModelMetadata {
+
+            /** ModelMetadata modelName */
+            modelName?: (string|null);
+
+            /** ModelMetadata isLatestModel */
+            isLatestModel?: (boolean|null);
+
+            /** ModelMetadata isDetected */
+            isDetected?: (boolean|null);
+        }
+
+        /** Represents a ModelMetadata. */
+        class ModelMetadata implements IModelMetadata {
+
+            /**
+             * Constructs a new ModelMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.IModelMetadata);
+
+            /** ModelMetadata modelName. */
+            public modelName?: (string|null);
+
+            /** ModelMetadata isLatestModel. */
+            public isLatestModel?: (boolean|null);
+
+            /** ModelMetadata isDetected. */
+            public isDetected?: (boolean|null);
+
+            /**
+             * Creates a new ModelMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ModelMetadata instance
+             */
+            public static create(properties?: waproto.SyncActionValue.IModelMetadata): waproto.SyncActionValue.ModelMetadata;
+
+            /**
+             * Encodes the specified ModelMetadata message. Does not implicitly {@link waproto.SyncActionValue.ModelMetadata.verify|verify} messages.
+             * @param message ModelMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.IModelMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ModelMetadata message, length delimited. Does not implicitly {@link waproto.SyncActionValue.ModelMetadata.verify|verify} messages.
+             * @param message ModelMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.IModelMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ModelMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ModelMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.ModelMetadata;
+
+            /**
+             * Decodes a ModelMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ModelMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.ModelMetadata;
+
+            /**
+             * Verifies a ModelMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ModelMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ModelMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.ModelMetadata;
+
+            /**
+             * Creates a plain object from a ModelMetadata message. Also converts values to other types if specified.
+             * @param message ModelMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.ModelMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ModelMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for ModelMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         /** Properties of a MusicUserIdAction. */
