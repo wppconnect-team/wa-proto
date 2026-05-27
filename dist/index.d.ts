@@ -1061,6 +1061,103 @@ export namespace waproto {
         public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
+    /** Properties of a AIMetadataOperation. */
+    interface IAIMetadataOperation {
+
+        /** AIMetadataOperation hatchMetadataSync */
+        hatchMetadataSync?: (waproto.IHatchMetadataSync|null);
+    }
+
+    /** Represents a AIMetadataOperation. */
+    class AIMetadataOperation implements IAIMetadataOperation {
+
+        /**
+         * Constructs a new AIMetadataOperation.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IAIMetadataOperation);
+
+        /** AIMetadataOperation hatchMetadataSync. */
+        public hatchMetadataSync?: (waproto.IHatchMetadataSync|null);
+
+        /**
+         * Creates a new AIMetadataOperation instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AIMetadataOperation instance
+         */
+        public static create(properties?: waproto.IAIMetadataOperation): waproto.AIMetadataOperation;
+
+        /**
+         * Encodes the specified AIMetadataOperation message. Does not implicitly {@link waproto.AIMetadataOperation.verify|verify} messages.
+         * @param message AIMetadataOperation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IAIMetadataOperation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AIMetadataOperation message, length delimited. Does not implicitly {@link waproto.AIMetadataOperation.verify|verify} messages.
+         * @param message AIMetadataOperation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IAIMetadataOperation, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a AIMetadataOperation message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns AIMetadataOperation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AIMetadataOperation;
+
+        /**
+         * Decodes a AIMetadataOperation message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns AIMetadataOperation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AIMetadataOperation;
+
+        /**
+         * Verifies a AIMetadataOperation message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a AIMetadataOperation message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AIMetadataOperation
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.AIMetadataOperation;
+
+        /**
+         * Creates a plain object from a AIMetadataOperation message. Also converts values to other types if specified.
+         * @param message AIMetadataOperation
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.AIMetadataOperation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AIMetadataOperation to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for AIMetadataOperation
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
     /** Properties of a AIQueryFanout. */
     interface IAIQueryFanout {
 
@@ -5109,7 +5206,8 @@ export namespace waproto {
             AI_SUBSCRIPTION_ENABLED = 61,
             UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED = 62,
             UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED = 63,
-            AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64
+            AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64,
+            AI_SUBSCRIPTION_METERING_ENABLED = 65
         }
     }
 
@@ -7924,6 +8022,9 @@ export namespace waproto {
         /** BotMetadata subscriptionUpsellMetadata */
         subscriptionUpsellMetadata?: (waproto.IAISubscriptionUpsellMetadata|null);
 
+        /** BotMetadata pttPromptMetadata */
+        pttPromptMetadata?: (waproto.IBotPttPromptMetadata|null);
+
         /** BotMetadata internalMetadata */
         internalMetadata?: (Uint8Array|null);
     }
@@ -8056,6 +8157,9 @@ export namespace waproto {
 
         /** BotMetadata subscriptionUpsellMetadata. */
         public subscriptionUpsellMetadata?: (waproto.IAISubscriptionUpsellMetadata|null);
+
+        /** BotMetadata pttPromptMetadata. */
+        public pttPromptMetadata?: (waproto.IBotPttPromptMetadata|null);
 
         /** BotMetadata internalMetadata. */
         public internalMetadata?: (Uint8Array|null);
@@ -9642,6 +9746,103 @@ export namespace waproto {
 
         /**
          * Gets the default type url for BotPromptSuggestions
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
+    }
+
+    /** Properties of a BotPttPromptMetadata. */
+    interface IBotPttPromptMetadata {
+
+        /** BotPttPromptMetadata transcript */
+        transcript?: (string|null);
+    }
+
+    /** Represents a BotPttPromptMetadata. */
+    class BotPttPromptMetadata implements IBotPttPromptMetadata {
+
+        /**
+         * Constructs a new BotPttPromptMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IBotPttPromptMetadata);
+
+        /** BotPttPromptMetadata transcript. */
+        public transcript?: (string|null);
+
+        /**
+         * Creates a new BotPttPromptMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotPttPromptMetadata instance
+         */
+        public static create(properties?: waproto.IBotPttPromptMetadata): waproto.BotPttPromptMetadata;
+
+        /**
+         * Encodes the specified BotPttPromptMetadata message. Does not implicitly {@link waproto.BotPttPromptMetadata.verify|verify} messages.
+         * @param message BotPttPromptMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IBotPttPromptMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotPttPromptMetadata message, length delimited. Does not implicitly {@link waproto.BotPttPromptMetadata.verify|verify} messages.
+         * @param message BotPttPromptMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IBotPttPromptMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotPttPromptMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns BotPttPromptMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotPttPromptMetadata;
+
+        /**
+         * Decodes a BotPttPromptMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns BotPttPromptMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotPttPromptMetadata;
+
+        /**
+         * Verifies a BotPttPromptMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotPttPromptMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotPttPromptMetadata
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.BotPttPromptMetadata;
+
+        /**
+         * Creates a plain object from a BotPttPromptMetadata message. Also converts values to other types if specified.
+         * @param message BotPttPromptMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.BotPttPromptMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotPttPromptMetadata to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for BotPttPromptMetadata
          * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
          * @returns The default type url
          */
@@ -20940,6 +21141,9 @@ export namespace waproto {
 
         /** GroupRootKeyShareEntry expiryTimestampMs */
         expiryTimestampMs?: (number|Long|null);
+
+        /** GroupRootKeyShareEntry createdTimestampMs */
+        createdTimestampMs?: (number|Long|null);
     }
 
     /** Represents a GroupRootKeyShareEntry. */
@@ -20959,6 +21163,9 @@ export namespace waproto {
 
         /** GroupRootKeyShareEntry expiryTimestampMs. */
         public expiryTimestampMs?: (number|Long|null);
+
+        /** GroupRootKeyShareEntry createdTimestampMs. */
+        public createdTimestampMs?: (number|Long|null);
 
         /**
          * Creates a new GroupRootKeyShareEntry instance using the specified properties.
@@ -21560,6 +21767,115 @@ export namespace waproto {
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
+    }
+
+    /** Properties of a HatchMetadataSync. */
+    interface IHatchMetadataSync {
+
+        /** HatchMetadataSync data */
+        data?: (Uint8Array|null);
+
+        /** HatchMetadataSync timestampMs */
+        timestampMs?: (number|Long|null);
+
+        /** HatchMetadataSync requestId */
+        requestId?: (string|null);
+    }
+
+    /** Represents a HatchMetadataSync. */
+    class HatchMetadataSync implements IHatchMetadataSync {
+
+        /**
+         * Constructs a new HatchMetadataSync.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.IHatchMetadataSync);
+
+        /** HatchMetadataSync data. */
+        public data?: (Uint8Array|null);
+
+        /** HatchMetadataSync timestampMs. */
+        public timestampMs?: (number|Long|null);
+
+        /** HatchMetadataSync requestId. */
+        public requestId?: (string|null);
+
+        /**
+         * Creates a new HatchMetadataSync instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns HatchMetadataSync instance
+         */
+        public static create(properties?: waproto.IHatchMetadataSync): waproto.HatchMetadataSync;
+
+        /**
+         * Encodes the specified HatchMetadataSync message. Does not implicitly {@link waproto.HatchMetadataSync.verify|verify} messages.
+         * @param message HatchMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: waproto.IHatchMetadataSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified HatchMetadataSync message, length delimited. Does not implicitly {@link waproto.HatchMetadataSync.verify|verify} messages.
+         * @param message HatchMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: waproto.IHatchMetadataSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a HatchMetadataSync message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns HatchMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.HatchMetadataSync;
+
+        /**
+         * Decodes a HatchMetadataSync message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns HatchMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.HatchMetadataSync;
+
+        /**
+         * Verifies a HatchMetadataSync message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a HatchMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns HatchMetadataSync
+         */
+        public static fromObject(object: { [k: string]: any }): waproto.HatchMetadataSync;
+
+        /**
+         * Creates a plain object from a HatchMetadataSync message. Also converts values to other types if specified.
+         * @param message HatchMetadataSync
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: waproto.HatchMetadataSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this HatchMetadataSync to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the default type url for HatchMetadataSync
+         * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns The default type url
+         */
+        public static getTypeUrl(typeUrlPrefix?: string): string;
     }
 
     /** Properties of a HistorySync. */
@@ -32872,6 +33188,9 @@ export namespace waproto {
 
                 /** BloksWidget type */
                 type?: (string|null);
+
+                /** BloksWidget fallback */
+                fallback?: (string|null);
             }
 
             /** Represents a BloksWidget. */
@@ -32891,6 +33210,9 @@ export namespace waproto {
 
                 /** BloksWidget type. */
                 public type?: (string|null);
+
+                /** BloksWidget fallback. */
+                public fallback?: (string|null);
 
                 /**
                  * Creates a new BloksWidget instance using the specified properties.
@@ -42603,6 +42925,9 @@ export namespace waproto {
 
             /** ProtocolMessage chatThemeSetting */
             chatThemeSetting?: (waproto.Message.IChatThemeSetting|null);
+
+            /** ProtocolMessage aiMetadataOperation */
+            aiMetadataOperation?: (waproto.IAIMetadataOperation|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -42694,6 +43019,9 @@ export namespace waproto {
 
             /** ProtocolMessage chatThemeSetting. */
             public chatThemeSetting?: (waproto.Message.IChatThemeSetting|null);
+
+            /** ProtocolMessage aiMetadataOperation. */
+            public aiMetadataOperation?: (waproto.IAIMetadataOperation|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -42805,7 +43133,8 @@ export namespace waproto {
                 GROUP_MEMBER_LABEL_CHANGE = 30,
                 AI_MEDIA_COLLECTION_MESSAGE = 31,
                 MESSAGE_UNSCHEDULE = 32,
-                CHAT_THEME_SETTING = 34
+                CHAT_THEME_SETTING = 34,
+                AI_METADATA_OPERATION = 35
             }
         }
 
@@ -59820,7 +60149,11 @@ export namespace waproto {
                 DRAFTED = 8,
                 AI_HANDOFF = 9,
                 CHANNELS = 10,
-                AI_RESPONDING = 11
+                AI_RESPONDING = 11,
+                ARCHIVED = 12,
+                LOCKED = 13,
+                INVITES = 14,
+                THIRD_PARTY = 15
             }
         }
 

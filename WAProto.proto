@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1039720809
+/// WhatsApp Version: 2.3000.1040237044
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -77,6 +77,10 @@ message AIMediaCollectionMessage {
 message AIMediaCollectionMetadata {
     optional string collectionId = 1;
     optional uint32 uploadOrderIndex = 2;
+}
+
+message AIMetadataOperation {
+    optional HatchMetadataSync hatchMetadataSync = 1;
 }
 
 message AIQueryFanout {
@@ -433,6 +437,7 @@ message BotCapabilityMetadata {
         UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED = 62;
         UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED = 63;
         AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64;
+        AI_SUBSCRIPTION_METERING_ENABLED = 65;
     }
 }
 
@@ -676,6 +681,7 @@ message BotMetadata {
     optional BotCommandMetadata commandMetadata = 39;
     optional BotResolvedToolCallMetadata resolvedToolCallMetadata = 40;
     optional AISubscriptionUpsellMetadata subscriptionUpsellMetadata = 41;
+    optional BotPttPromptMetadata pttPromptMetadata = 42;
     optional bytes internalMetadata = 999;
 }
 
@@ -863,6 +869,10 @@ message BotPromptSuggestion {
 
 message BotPromptSuggestions {
     repeated BotPromptSuggestion suggestions = 1;
+}
+
+message BotPttPromptMetadata {
+    optional string transcript = 1;
 }
 
 message BotQuotaMetadata {
@@ -2020,6 +2030,7 @@ message GroupRootKeyShareEntry {
     optional bytes groupRootKey = 1;
     optional string keyId = 2;
     optional int64 expiryTimestampMs = 3;
+    optional int64 createdTimestampMs = 4;
 }
 
 message HandshakeMessage {
@@ -2067,6 +2078,12 @@ message HandshakeMessage {
         optional bytes extendedCiphertext = 6;
     }
     
+}
+
+message HatchMetadataSync {
+    optional bytes data = 1;
+    optional int64 timestampMs = 2;
+    optional string requestId = 3;
 }
 
 message HistorySync {
@@ -3038,6 +3055,7 @@ message Message {
             optional string uuid = 1;
             optional string data = 2;
             optional string type = 3;
+            optional string fallback = 4;
         }
         
         message Body {
@@ -3780,6 +3798,7 @@ message Message {
         optional AIMediaCollectionMessage aiMediaCollectionMessage = 28;
         optional uint32 afterReadDuration = 29;
         optional Message.ChatThemeSetting chatThemeSetting = 30;
+        optional AIMetadataOperation aiMetadataOperation = 31;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -3810,6 +3829,7 @@ message Message {
             AI_MEDIA_COLLECTION_MESSAGE = 31;
             MESSAGE_UNSCHEDULE = 32;
             CHAT_THEME_SETTING = 34;
+            AI_METADATA_OPERATION = 35;
         }
     }
     
@@ -5269,6 +5289,10 @@ message SyncActionValue {
             AI_HANDOFF = 9;
             CHANNELS = 10;
             AI_RESPONDING = 11;
+            ARCHIVED = 12;
+            LOCKED = 13;
+            INVITES = 14;
+            THIRD_PARTY = 15;
         }
     }
     
