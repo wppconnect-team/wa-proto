@@ -47847,6 +47847,9 @@ export namespace waproto {
 
         /** MsgOpaqueData sharableEventInviteJpegThumbnail */
         sharableEventInviteJpegThumbnail?: (Uint8Array|null);
+
+        /** MsgOpaqueData sharableEventInviteCallLink */
+        sharableEventInviteCallLink?: (string|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -48019,6 +48022,9 @@ export namespace waproto {
 
         /** MsgOpaqueData sharableEventInviteJpegThumbnail. */
         public sharableEventInviteJpegThumbnail?: (Uint8Array|null);
+
+        /** MsgOpaqueData sharableEventInviteCallLink. */
+        public sharableEventInviteCallLink?: (string|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.

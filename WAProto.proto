@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1040641150
+/// WhatsApp Version: 2.3000.1040656236
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4302,6 +4302,7 @@ message MsgOpaqueData {
     optional string sharableEventInviteCaption = 57;
     optional bool sharableEventInviteIsCanceled = 58;
     optional bytes sharableEventInviteJpegThumbnail = 59;
+    optional string sharableEventInviteCallLink = 60;
     message EventLocation {
         optional double degreesLatitude = 1;
         optional double degreesLongitude = 2;
