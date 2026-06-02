@@ -47826,6 +47826,27 @@ export namespace waproto {
 
         /** MsgOpaqueData pollAllowAddOption */
         pollAllowAddOption?: (boolean|null);
+
+        /** MsgOpaqueData sharableEventInviteId */
+        sharableEventInviteId?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteTitle */
+        sharableEventInviteTitle?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteStartTime */
+        sharableEventInviteStartTime?: (number|Long|null);
+
+        /** MsgOpaqueData sharableEventInviteEndTime */
+        sharableEventInviteEndTime?: (number|Long|null);
+
+        /** MsgOpaqueData sharableEventInviteCaption */
+        sharableEventInviteCaption?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteIsCanceled */
+        sharableEventInviteIsCanceled?: (boolean|null);
+
+        /** MsgOpaqueData sharableEventInviteJpegThumbnail */
+        sharableEventInviteJpegThumbnail?: (Uint8Array|null);
     }
 
     /** Represents a MsgOpaqueData. */
@@ -47977,6 +47998,27 @@ export namespace waproto {
 
         /** MsgOpaqueData pollAllowAddOption. */
         public pollAllowAddOption?: (boolean|null);
+
+        /** MsgOpaqueData sharableEventInviteId. */
+        public sharableEventInviteId?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteTitle. */
+        public sharableEventInviteTitle?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteStartTime. */
+        public sharableEventInviteStartTime?: (number|Long|null);
+
+        /** MsgOpaqueData sharableEventInviteEndTime. */
+        public sharableEventInviteEndTime?: (number|Long|null);
+
+        /** MsgOpaqueData sharableEventInviteCaption. */
+        public sharableEventInviteCaption?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteIsCanceled. */
+        public sharableEventInviteIsCanceled?: (boolean|null);
+
+        /** MsgOpaqueData sharableEventInviteJpegThumbnail. */
+        public sharableEventInviteJpegThumbnail?: (Uint8Array|null);
 
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
