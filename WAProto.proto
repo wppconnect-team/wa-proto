@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1041558255
+/// WhatsApp Version: 2.3000.1041589577
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4440,6 +4440,8 @@ enum MutationProps {
     THREAD_PIN_ACTION = 85;
     AUTO_ORGANIZE_BUSINESS_CHAT_SETTING = 86;
     BIZ_AI_SETTINGS_NUDGE_ACTION = 87;
+    COEX_V2_VERSION_ACTION = 88;
+    WASA_ROOT_SECRET_ACTION = 89;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -5096,9 +5098,11 @@ message SyncActionValue {
     optional ThreadPinAction threadPinAction = 85;
     optional AutoOrganizeBusinessChatSetting autoOrganizeBusinessChatSetting = 86;
     optional BizAISettingsNudgeAction bizAiSettingsNudgeAction = 87;
+    optional CoexV2VersionAction coexV2VersionAction = 88;
+    optional WASARootSecretAction wasaRootSecretAction = 89;
     message AgentAction {
         optional string name = 1;
-        optional int32 deviceID = 2;
+        optional int32 deviceId = 2;
         optional bool isDeleted = 3;
     }
     
@@ -5196,7 +5200,7 @@ message SyncActionValue {
     }
     
     message ChatAssignmentAction {
-        optional string deviceAgentID = 1;
+        optional string deviceAgentId = 1;
     }
     
     message ChatAssignmentOpenedStatusAction {
@@ -5205,6 +5209,10 @@ message SyncActionValue {
     
     message ClearChatAction {
         optional SyncActionValue.SyncActionMessageRange messageRange = 1;
+    }
+    
+    message CoexV2VersionAction {
+        optional uint64 version = 1;
     }
     
     message ContactAction {
@@ -5615,8 +5623,8 @@ message SyncActionValue {
     message StatusPrivacyAction {
         optional StatusDistributionMode mode = 1;
         repeated string userJid = 2;
-        optional bool shareToFB = 3;
-        optional bool shareToIG = 4;
+        optional bool shareToFb = 3;
+        optional bool shareToIg = 4;
         repeated CustomList customLists = 5;
         repeated StatusDistributionMode modes = 6;
         message CustomList {
@@ -5718,6 +5726,16 @@ message SyncActionValue {
             LID = 1;
             PN = 2;
         }
+    }
+    
+    message WASARootSecretAction {
+        repeated RootSecretEntry secrets = 1;
+        message RootSecretEntry {
+            optional string id = 1;
+            optional bytes rootSecret = 2;
+            optional int64 epoch = 3;
+        }
+        
     }
     
     message WaffleAccountLinkStateAction {
