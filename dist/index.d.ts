@@ -48973,8 +48973,6 @@ export namespace waproto {
         THREAD_PIN_ACTION = 85,
         AUTO_ORGANIZE_BUSINESS_CHAT_SETTING = 86,
         BIZ_AI_SETTINGS_NUDGE_ACTION = 87,
-        COEX_V2_VERSION_ACTION = 88,
-        WASA_ROOT_SECRET_ACTION = 89,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -56549,12 +56547,6 @@ export namespace waproto {
 
         /** SyncActionValue bizAiSettingsNudgeAction */
         bizAiSettingsNudgeAction?: (waproto.SyncActionValue.IBizAISettingsNudgeAction|null);
-
-        /** SyncActionValue coexV2VersionAction */
-        coexV2VersionAction?: (waproto.SyncActionValue.ICoexV2VersionAction|null);
-
-        /** SyncActionValue wasaRootSecretAction */
-        wasaRootSecretAction?: (waproto.SyncActionValue.IWASARootSecretAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -56800,12 +56792,6 @@ export namespace waproto {
         /** SyncActionValue bizAiSettingsNudgeAction. */
         public bizAiSettingsNudgeAction?: (waproto.SyncActionValue.IBizAISettingsNudgeAction|null);
 
-        /** SyncActionValue coexV2VersionAction. */
-        public coexV2VersionAction?: (waproto.SyncActionValue.ICoexV2VersionAction|null);
-
-        /** SyncActionValue wasaRootSecretAction. */
-        public wasaRootSecretAction?: (waproto.SyncActionValue.IWASARootSecretAction|null);
-
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -56892,8 +56878,8 @@ export namespace waproto {
             /** AgentAction name */
             name?: (string|null);
 
-            /** AgentAction deviceId */
-            deviceId?: (number|null);
+            /** AgentAction deviceID */
+            deviceID?: (number|null);
 
             /** AgentAction isDeleted */
             isDeleted?: (boolean|null);
@@ -56911,8 +56897,8 @@ export namespace waproto {
             /** AgentAction name. */
             public name?: (string|null);
 
-            /** AgentAction deviceId. */
-            public deviceId?: (number|null);
+            /** AgentAction deviceID. */
+            public deviceID?: (number|null);
 
             /** AgentAction isDeleted. */
             public isDeleted?: (boolean|null);
@@ -58417,8 +58403,8 @@ export namespace waproto {
         /** Properties of a ChatAssignmentAction. */
         interface IChatAssignmentAction {
 
-            /** ChatAssignmentAction deviceAgentId */
-            deviceAgentId?: (string|null);
+            /** ChatAssignmentAction deviceAgentID */
+            deviceAgentID?: (string|null);
         }
 
         /** Represents a ChatAssignmentAction. */
@@ -58430,8 +58416,8 @@ export namespace waproto {
              */
             constructor(properties?: waproto.SyncActionValue.IChatAssignmentAction);
 
-            /** ChatAssignmentAction deviceAgentId. */
-            public deviceAgentId?: (string|null);
+            /** ChatAssignmentAction deviceAgentID. */
+            public deviceAgentID?: (string|null);
 
             /**
              * Creates a new ChatAssignmentAction instance using the specified properties.
@@ -58699,103 +58685,6 @@ export namespace waproto {
 
             /**
              * Gets the default type url for ClearChatAction
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        /** Properties of a CoexV2VersionAction. */
-        interface ICoexV2VersionAction {
-
-            /** CoexV2VersionAction version */
-            version?: (number|Long|null);
-        }
-
-        /** Represents a CoexV2VersionAction. */
-        class CoexV2VersionAction implements ICoexV2VersionAction {
-
-            /**
-             * Constructs a new CoexV2VersionAction.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.SyncActionValue.ICoexV2VersionAction);
-
-            /** CoexV2VersionAction version. */
-            public version?: (number|Long|null);
-
-            /**
-             * Creates a new CoexV2VersionAction instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns CoexV2VersionAction instance
-             */
-            public static create(properties?: waproto.SyncActionValue.ICoexV2VersionAction): waproto.SyncActionValue.CoexV2VersionAction;
-
-            /**
-             * Encodes the specified CoexV2VersionAction message. Does not implicitly {@link waproto.SyncActionValue.CoexV2VersionAction.verify|verify} messages.
-             * @param message CoexV2VersionAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.SyncActionValue.ICoexV2VersionAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified CoexV2VersionAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.CoexV2VersionAction.verify|verify} messages.
-             * @param message CoexV2VersionAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.SyncActionValue.ICoexV2VersionAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a CoexV2VersionAction message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns CoexV2VersionAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.CoexV2VersionAction;
-
-            /**
-             * Decodes a CoexV2VersionAction message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns CoexV2VersionAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.CoexV2VersionAction;
-
-            /**
-             * Verifies a CoexV2VersionAction message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a CoexV2VersionAction message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns CoexV2VersionAction
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.CoexV2VersionAction;
-
-            /**
-             * Creates a plain object from a CoexV2VersionAction message. Also converts values to other types if specified.
-             * @param message CoexV2VersionAction
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.SyncActionValue.CoexV2VersionAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this CoexV2VersionAction to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for CoexV2VersionAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
@@ -64475,11 +64364,11 @@ export namespace waproto {
             /** StatusPrivacyAction userJid */
             userJid?: (string[]|null);
 
-            /** StatusPrivacyAction shareToFb */
-            shareToFb?: (boolean|null);
+            /** StatusPrivacyAction shareToFB */
+            shareToFB?: (boolean|null);
 
-            /** StatusPrivacyAction shareToIg */
-            shareToIg?: (boolean|null);
+            /** StatusPrivacyAction shareToIG */
+            shareToIG?: (boolean|null);
 
             /** StatusPrivacyAction customLists */
             customLists?: (waproto.SyncActionValue.StatusPrivacyAction.ICustomList[]|null);
@@ -64503,11 +64392,11 @@ export namespace waproto {
             /** StatusPrivacyAction userJid. */
             public userJid: string[];
 
-            /** StatusPrivacyAction shareToFb. */
-            public shareToFb?: (boolean|null);
+            /** StatusPrivacyAction shareToFB. */
+            public shareToFB?: (boolean|null);
 
-            /** StatusPrivacyAction shareToIg. */
-            public shareToIg?: (boolean|null);
+            /** StatusPrivacyAction shareToIG. */
+            public shareToIG?: (boolean|null);
 
             /** StatusPrivacyAction customLists. */
             public customLists: waproto.SyncActionValue.StatusPrivacyAction.ICustomList[];
@@ -66164,215 +66053,6 @@ export namespace waproto {
             enum ChatStartMode {
                 LID = 1,
                 PN = 2
-            }
-        }
-
-        /** Properties of a WASARootSecretAction. */
-        interface IWASARootSecretAction {
-
-            /** WASARootSecretAction secrets */
-            secrets?: (waproto.SyncActionValue.WASARootSecretAction.IRootSecretEntry[]|null);
-        }
-
-        /** Represents a WASARootSecretAction. */
-        class WASARootSecretAction implements IWASARootSecretAction {
-
-            /**
-             * Constructs a new WASARootSecretAction.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.SyncActionValue.IWASARootSecretAction);
-
-            /** WASARootSecretAction secrets. */
-            public secrets: waproto.SyncActionValue.WASARootSecretAction.IRootSecretEntry[];
-
-            /**
-             * Creates a new WASARootSecretAction instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns WASARootSecretAction instance
-             */
-            public static create(properties?: waproto.SyncActionValue.IWASARootSecretAction): waproto.SyncActionValue.WASARootSecretAction;
-
-            /**
-             * Encodes the specified WASARootSecretAction message. Does not implicitly {@link waproto.SyncActionValue.WASARootSecretAction.verify|verify} messages.
-             * @param message WASARootSecretAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.SyncActionValue.IWASARootSecretAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified WASARootSecretAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.WASARootSecretAction.verify|verify} messages.
-             * @param message WASARootSecretAction message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.SyncActionValue.IWASARootSecretAction, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a WASARootSecretAction message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns WASARootSecretAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.WASARootSecretAction;
-
-            /**
-             * Decodes a WASARootSecretAction message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns WASARootSecretAction
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.WASARootSecretAction;
-
-            /**
-             * Verifies a WASARootSecretAction message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a WASARootSecretAction message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns WASARootSecretAction
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.WASARootSecretAction;
-
-            /**
-             * Creates a plain object from a WASARootSecretAction message. Also converts values to other types if specified.
-             * @param message WASARootSecretAction
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.SyncActionValue.WASARootSecretAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this WASARootSecretAction to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for WASARootSecretAction
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace WASARootSecretAction {
-
-            /** Properties of a RootSecretEntry. */
-            interface IRootSecretEntry {
-
-                /** RootSecretEntry id */
-                id?: (string|null);
-
-                /** RootSecretEntry rootSecret */
-                rootSecret?: (Uint8Array|null);
-
-                /** RootSecretEntry epoch */
-                epoch?: (number|Long|null);
-            }
-
-            /** Represents a RootSecretEntry. */
-            class RootSecretEntry implements IRootSecretEntry {
-
-                /**
-                 * Constructs a new RootSecretEntry.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: waproto.SyncActionValue.WASARootSecretAction.IRootSecretEntry);
-
-                /** RootSecretEntry id. */
-                public id?: (string|null);
-
-                /** RootSecretEntry rootSecret. */
-                public rootSecret?: (Uint8Array|null);
-
-                /** RootSecretEntry epoch. */
-                public epoch?: (number|Long|null);
-
-                /**
-                 * Creates a new RootSecretEntry instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns RootSecretEntry instance
-                 */
-                public static create(properties?: waproto.SyncActionValue.WASARootSecretAction.IRootSecretEntry): waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry;
-
-                /**
-                 * Encodes the specified RootSecretEntry message. Does not implicitly {@link waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry.verify|verify} messages.
-                 * @param message RootSecretEntry message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: waproto.SyncActionValue.WASARootSecretAction.IRootSecretEntry, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified RootSecretEntry message, length delimited. Does not implicitly {@link waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry.verify|verify} messages.
-                 * @param message RootSecretEntry message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: waproto.SyncActionValue.WASARootSecretAction.IRootSecretEntry, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a RootSecretEntry message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns RootSecretEntry
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry;
-
-                /**
-                 * Decodes a RootSecretEntry message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns RootSecretEntry
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry;
-
-                /**
-                 * Verifies a RootSecretEntry message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a RootSecretEntry message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns RootSecretEntry
-                 */
-                public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry;
-
-                /**
-                 * Creates a plain object from a RootSecretEntry message. Also converts values to other types if specified.
-                 * @param message RootSecretEntry
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this RootSecretEntry to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-
-                /**
-                 * Gets the default type url for RootSecretEntry
-                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-                 * @returns The default type url
-                 */
-                public static getTypeUrl(typeUrlPrefix?: string): string;
             }
         }
 
