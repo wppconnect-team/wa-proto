@@ -51280,6 +51280,12 @@ export namespace waproto {
 
         /** PreKeySignalMessage message */
         message?: (Uint8Array|null);
+
+        /** PreKeySignalMessage kyberPreKeyId */
+        kyberPreKeyId?: (number|null);
+
+        /** PreKeySignalMessage kyberCiphertext */
+        kyberCiphertext?: (Uint8Array|null);
     }
 
     /** Represents a PreKeySignalMessage. */
@@ -51308,6 +51314,12 @@ export namespace waproto {
 
         /** PreKeySignalMessage message. */
         public message?: (Uint8Array|null);
+
+        /** PreKeySignalMessage kyberPreKeyId. */
+        public kyberPreKeyId?: (number|null);
+
+        /** PreKeySignalMessage kyberCiphertext. */
+        public kyberCiphertext?: (Uint8Array|null);
 
         /**
          * Creates a new PreKeySignalMessage instance using the specified properties.
@@ -54197,6 +54209,12 @@ export namespace waproto {
 
             /** PendingPreKey baseKey */
             baseKey?: (Uint8Array|null);
+
+            /** PendingPreKey kyberPreKeyId */
+            kyberPreKeyId?: (number|null);
+
+            /** PendingPreKey kyberCiphertext */
+            kyberCiphertext?: (Uint8Array|null);
         }
 
         /** Represents a PendingPreKey. */
@@ -54216,6 +54234,12 @@ export namespace waproto {
 
             /** PendingPreKey baseKey. */
             public baseKey?: (Uint8Array|null);
+
+            /** PendingPreKey kyberPreKeyId. */
+            public kyberPreKeyId?: (number|null);
+
+            /** PendingPreKey kyberCiphertext. */
+            public kyberCiphertext?: (Uint8Array|null);
 
             /**
              * Creates a new PendingPreKey instance using the specified properties.

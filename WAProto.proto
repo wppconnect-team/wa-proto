@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1042381694
+/// WhatsApp Version: 2.3000.1042432568
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -4674,6 +4674,8 @@ message PreKeySignalMessage {
     optional bytes baseKey = 2;
     optional bytes identityKey = 3;
     optional bytes message = 4;
+    optional uint32 kyberPreKeyId = 7;
+    optional bytes kyberCiphertext = 8;
 }
 
 message PremiumMessageInfo {
@@ -4847,6 +4849,8 @@ message SessionStructure {
         optional uint32 preKeyId = 1;
         optional int32 signedPreKeyId = 3;
         optional bytes baseKey = 2;
+        optional uint32 kyberPreKeyId = 4;
+        optional bytes kyberCiphertext = 5;
     }
     
 }
