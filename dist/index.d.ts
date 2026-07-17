@@ -8610,7 +8610,8 @@ export namespace waproto {
         WEB_NAVIGATION_BAR = 47,
         GROUP_MEMBER = 54,
         CHATLIST_SEARCH = 55,
-        NEW_CHAT_LIST = 56
+        NEW_CHAT_LIST = 56,
+        CONTACTS_TAB = 57
     }
 
     /** Properties of a BotMetricsMetadata. */
@@ -14558,7 +14559,8 @@ export namespace waproto {
                 TEST = 34,
                 SMART_GLASSES = 35,
                 BLUE_VR = 36,
-                AR_WRIST = 37
+                AR_WRIST = 37,
+                WAIL = 38
             }
 
             /** ReleaseChannel enum. */
@@ -28950,6 +28952,9 @@ export namespace waproto {
 
             /** Call callEntryPoint */
             callEntryPoint?: (number|null);
+
+            /** Call callReason */
+            callReason?: (string|null);
         }
 
         /** Represents a Call. */
@@ -28993,6 +28998,9 @@ export namespace waproto {
 
             /** Call callEntryPoint. */
             public callEntryPoint?: (number|null);
+
+            /** Call callReason. */
+            public callReason?: (string|null);
 
             /**
              * Creates a new Call instance using the specified properties.
@@ -44292,6 +44300,9 @@ export namespace waproto {
 
             /** ProtocolMessage coexStateSync */
             coexStateSync?: (waproto.ICoexStateSync|null);
+
+            /** ProtocolMessage syncRequestMutationRetry */
+            syncRequestMutationRetry?: (waproto.Message.ISyncRequestMutationRetry|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -44392,6 +44403,9 @@ export namespace waproto {
 
             /** ProtocolMessage coexStateSync. */
             public coexStateSync?: (waproto.ICoexStateSync|null);
+
+            /** ProtocolMessage syncRequestMutationRetry. */
+            public syncRequestMutationRetry?: (waproto.Message.ISyncRequestMutationRetry|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -44506,7 +44520,8 @@ export namespace waproto {
                 CHAT_THEME_SETTING = 34,
                 AI_METADATA_OPERATION = 35,
                 MARK_AS_VERIFIED_ACTION = 36,
-                COEX_STATE_SYNC = 37
+                COEX_STATE_SYNC = 37,
+                SYNC_REQUEST_MUTATION_RETRY = 38
             }
         }
 
@@ -47276,6 +47291,215 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a SyncRequestMutationRetry. */
+        interface ISyncRequestMutationRetry {
+
+            /** SyncRequestMutationRetry collections */
+            collections?: (waproto.Message.SyncRequestMutationRetry.ICollection[]|null);
+
+            /** SyncRequestMutationRetry count */
+            count?: (number|null);
+        }
+
+        /** Represents a SyncRequestMutationRetry. */
+        class SyncRequestMutationRetry implements ISyncRequestMutationRetry {
+
+            /**
+             * Constructs a new SyncRequestMutationRetry.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ISyncRequestMutationRetry);
+
+            /** SyncRequestMutationRetry collections. */
+            public collections: waproto.Message.SyncRequestMutationRetry.ICollection[];
+
+            /** SyncRequestMutationRetry count. */
+            public count?: (number|null);
+
+            /**
+             * Creates a new SyncRequestMutationRetry instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SyncRequestMutationRetry instance
+             */
+            public static create(properties?: waproto.Message.ISyncRequestMutationRetry): waproto.Message.SyncRequestMutationRetry;
+
+            /**
+             * Encodes the specified SyncRequestMutationRetry message. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.verify|verify} messages.
+             * @param message SyncRequestMutationRetry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.ISyncRequestMutationRetry, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SyncRequestMutationRetry message, length delimited. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.verify|verify} messages.
+             * @param message SyncRequestMutationRetry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.ISyncRequestMutationRetry, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns SyncRequestMutationRetry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SyncRequestMutationRetry;
+
+            /**
+             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns SyncRequestMutationRetry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SyncRequestMutationRetry;
+
+            /**
+             * Verifies a SyncRequestMutationRetry message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SyncRequestMutationRetry message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SyncRequestMutationRetry
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.SyncRequestMutationRetry;
+
+            /**
+             * Creates a plain object from a SyncRequestMutationRetry message. Also converts values to other types if specified.
+             * @param message SyncRequestMutationRetry
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.SyncRequestMutationRetry, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SyncRequestMutationRetry to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for SyncRequestMutationRetry
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace SyncRequestMutationRetry {
+
+            /** Properties of a Collection. */
+            interface ICollection {
+
+                /** Collection name */
+                name?: (string|null);
+
+                /** Collection storedSyncdVersion */
+                storedSyncdVersion?: (number|Long|null);
+            }
+
+            /** Represents a Collection. */
+            class Collection implements ICollection {
+
+                /**
+                 * Constructs a new Collection.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.SyncRequestMutationRetry.ICollection);
+
+                /** Collection name. */
+                public name?: (string|null);
+
+                /** Collection storedSyncdVersion. */
+                public storedSyncdVersion?: (number|Long|null);
+
+                /**
+                 * Creates a new Collection instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Collection instance
+                 */
+                public static create(properties?: waproto.Message.SyncRequestMutationRetry.ICollection): waproto.Message.SyncRequestMutationRetry.Collection;
+
+                /**
+                 * Encodes the specified Collection message. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
+                 * @param message Collection message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: waproto.Message.SyncRequestMutationRetry.ICollection, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Collection message, length delimited. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
+                 * @param message Collection message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: waproto.Message.SyncRequestMutationRetry.ICollection, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Collection message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Collection
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SyncRequestMutationRetry.Collection;
+
+                /**
+                 * Decodes a Collection message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Collection
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SyncRequestMutationRetry.Collection;
+
+                /**
+                 * Verifies a Collection message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Collection message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Collection
+                 */
+                public static fromObject(object: { [k: string]: any }): waproto.Message.SyncRequestMutationRetry.Collection;
+
+                /**
+                 * Creates a plain object from a Collection message. Also converts values to other types if specified.
+                 * @param message Collection
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: waproto.Message.SyncRequestMutationRetry.Collection, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Collection to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the default type url for Collection
+                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                 * @returns The default type url
+                 */
+                public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
         }
 
         /** Properties of a TemplateButtonReplyMessage. */
@@ -50323,6 +50547,7 @@ export namespace waproto {
         COEX_V2_VERSION_ACTION = 88,
         WASA_ROOT_SECRET_ACTION = 89,
         BUBBLE_LOCK_MESSAGE_ACTION = 90,
+        LABEL_SUBLIST_ACTION = 91,
         SHARE_OWN_PN = 10001,
         BUSINESS_BROADCAST_ACTION = 10002,
         AI_THREAD_DELETE_ACTION = 10003
@@ -58044,6 +58269,9 @@ export namespace waproto {
 
         /** SyncActionValue bubbleLockMessageAction */
         bubbleLockMessageAction?: (waproto.SyncActionValue.IBubbleLockMessageAction|null);
+
+        /** SyncActionValue labelSublistAction */
+        labelSublistAction?: (waproto.SyncActionValue.ILabelSublistAction|null);
     }
 
     /** Represents a SyncActionValue. */
@@ -58297,6 +58525,9 @@ export namespace waproto {
 
         /** SyncActionValue bubbleLockMessageAction. */
         public bubbleLockMessageAction?: (waproto.SyncActionValue.IBubbleLockMessageAction|null);
+
+        /** SyncActionValue labelSublistAction. */
+        public labelSublistAction?: (waproto.SyncActionValue.ILabelSublistAction|null);
 
         /**
          * Creates a new SyncActionValue instance using the specified properties.
@@ -62357,6 +62588,103 @@ export namespace waproto {
 
             /**
              * Gets the default type url for LabelReorderingAction
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        /** Properties of a LabelSublistAction. */
+        interface ILabelSublistAction {
+
+            /** LabelSublistAction subListId */
+            subListId?: (number|null);
+        }
+
+        /** Represents a LabelSublistAction. */
+        class LabelSublistAction implements ILabelSublistAction {
+
+            /**
+             * Constructs a new LabelSublistAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.ILabelSublistAction);
+
+            /** LabelSublistAction subListId. */
+            public subListId?: (number|null);
+
+            /**
+             * Creates a new LabelSublistAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns LabelSublistAction instance
+             */
+            public static create(properties?: waproto.SyncActionValue.ILabelSublistAction): waproto.SyncActionValue.LabelSublistAction;
+
+            /**
+             * Encodes the specified LabelSublistAction message. Does not implicitly {@link waproto.SyncActionValue.LabelSublistAction.verify|verify} messages.
+             * @param message LabelSublistAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.SyncActionValue.ILabelSublistAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified LabelSublistAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.LabelSublistAction.verify|verify} messages.
+             * @param message LabelSublistAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.SyncActionValue.ILabelSublistAction, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a LabelSublistAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns LabelSublistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.LabelSublistAction;
+
+            /**
+             * Decodes a LabelSublistAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns LabelSublistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.LabelSublistAction;
+
+            /**
+             * Verifies a LabelSublistAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a LabelSublistAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns LabelSublistAction
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.LabelSublistAction;
+
+            /**
+             * Creates a plain object from a LabelSublistAction message. Also converts values to other types if specified.
+             * @param message LabelSublistAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.SyncActionValue.LabelSublistAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this LabelSublistAction to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for LabelSublistAction
              * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
              * @returns The default type url
              */
@@ -67872,6 +68200,9 @@ export namespace waproto {
 
                 /** RootSecretEntry epoch */
                 epoch?: (number|Long|null);
+
+                /** RootSecretEntry status */
+                status?: (waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status|null);
             }
 
             /** Represents a RootSecretEntry. */
@@ -67891,6 +68222,9 @@ export namespace waproto {
 
                 /** RootSecretEntry epoch. */
                 public epoch?: (number|Long|null);
+
+                /** RootSecretEntry status. */
+                public status?: (waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry.Status|null);
 
                 /**
                  * Creates a new RootSecretEntry instance using the specified properties.
@@ -67968,6 +68302,15 @@ export namespace waproto {
                  * @returns The default type url
                  */
                 public static getTypeUrl(typeUrlPrefix?: string): string;
+            }
+
+            namespace RootSecretEntry {
+
+                /** Status enum. */
+                enum Status {
+                    INACTIVE = 0,
+                    ACTIVE = 1
+                }
             }
         }
 
