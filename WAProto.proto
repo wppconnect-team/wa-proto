@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1043359815
+/// WhatsApp Version: 2.3000.1043460708
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3738,6 +3738,7 @@ message Message {
         GALAXY_FLOW_ACTION = 11;
         BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO = 12;
         BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13;
+        CONTACT_REFRESH_REQUEST = 14;
     }
     message PinInChatMessage {
         optional MessageKey key = 1;
