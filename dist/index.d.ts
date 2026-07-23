@@ -59347,7 +59347,8 @@ export namespace waproto {
                 RESPONSE_SETTINGS = 2,
                 EXAMPLE_RESPONSES = 3,
                 KNOWLEDGE = 4,
-                LEAD_GEN = 5
+                LEAD_GEN = 5,
+                HANDOFF_REMOVAL_TIMING = 6
             }
         }
 
