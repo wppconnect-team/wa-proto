@@ -126453,6 +126453,7 @@ $root.waproto = (function() {
                  * @property {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IHistorySyncChunkRetryResponse|null} [historySyncChunkRetryResponse] PeerDataOperationResult historySyncChunkRetryResponse
                  * @property {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IFlowResponsesCsvBundle|null} [flowResponsesCsvBundle] PeerDataOperationResult flowResponsesCsvBundle
                  * @property {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IBizBroadcastInsightsContactListResponse|null} [bizBroadcastInsightsContactListResponse] PeerDataOperationResult bizBroadcastInsightsContactListResponse
+                 * @property {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse|null} [contactRefreshResponse] PeerDataOperationResult contactRefreshResponse
                  */
 
                 /**
@@ -126566,6 +126567,14 @@ $root.waproto = (function() {
                  */
                 PeerDataOperationResult.prototype.bizBroadcastInsightsContactListResponse = null;
 
+                /**
+                 * PeerDataOperationResult contactRefreshResponse.
+                 * @member {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse|null|undefined} contactRefreshResponse
+                 * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult
+                 * @instance
+                 */
+                PeerDataOperationResult.prototype.contactRefreshResponse = null;
+
                 // OneOf field names bound to virtual getters and setters
                 var $oneOfFields;
 
@@ -126641,6 +126650,12 @@ $root.waproto = (function() {
                     set: $util.oneOfSetter($oneOfFields)
                 });
 
+                // Virtual OneOf for proto3 optional field
+                Object.defineProperty(PeerDataOperationResult.prototype, "_contactRefreshResponse", {
+                    get: $util.oneOfGetter($oneOfFields = ["contactRefreshResponse"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
                  * @function create
@@ -126689,6 +126704,8 @@ $root.waproto = (function() {
                         $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.encode(message.flowResponsesCsvBundle, writer.uint32(/* id 11, wireType 2 =*/90).fork()).ldelim();
                     if (message.bizBroadcastInsightsContactListResponse != null && Object.hasOwnProperty.call(message, "bizBroadcastInsightsContactListResponse"))
                         $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.encode(message.bizBroadcastInsightsContactListResponse, writer.uint32(/* id 12, wireType 2 =*/98).fork()).ldelim();
+                    if (message.contactRefreshResponse != null && Object.hasOwnProperty.call(message, "contactRefreshResponse"))
+                        $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.encode(message.contactRefreshResponse, writer.uint32(/* id 13, wireType 2 =*/106).fork()).ldelim();
                     return writer;
                 };
 
@@ -126769,6 +126786,10 @@ $root.waproto = (function() {
                             }
                         case 12: {
                                 message.bizBroadcastInsightsContactListResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(reader, reader.uint32());
+                                break;
+                            }
+                        case 13: {
+                                message.contactRefreshResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(reader, reader.uint32());
                                 break;
                             }
                         default:
@@ -126907,6 +126928,14 @@ $root.waproto = (function() {
                                 return "bizBroadcastInsightsContactListResponse." + error;
                         }
                     }
+                    if (message.contactRefreshResponse != null && message.hasOwnProperty("contactRefreshResponse")) {
+                        properties._contactRefreshResponse = 1;
+                        {
+                            var error = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify(message.contactRefreshResponse);
+                            if (error)
+                                return "contactRefreshResponse." + error;
+                        }
+                    }
                     return null;
                 };
 
@@ -127001,6 +127030,11 @@ $root.waproto = (function() {
                             throw TypeError(".waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.bizBroadcastInsightsContactListResponse: object expected");
                         message.bizBroadcastInsightsContactListResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.fromObject(object.bizBroadcastInsightsContactListResponse);
                     }
+                    if (object.contactRefreshResponse != null) {
+                        if (typeof object.contactRefreshResponse !== "object")
+                            throw TypeError(".waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.contactRefreshResponse: object expected");
+                        message.contactRefreshResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.fromObject(object.contactRefreshResponse);
+                    }
                     return message;
                 };
 
@@ -127076,6 +127110,11 @@ $root.waproto = (function() {
                         object.bizBroadcastInsightsContactListResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.toObject(message.bizBroadcastInsightsContactListResponse, options);
                         if (options.oneofs)
                             object._bizBroadcastInsightsContactListResponse = "bizBroadcastInsightsContactListResponse";
+                    }
+                    if (message.contactRefreshResponse != null && message.hasOwnProperty("contactRefreshResponse")) {
+                        object.contactRefreshResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.toObject(message.contactRefreshResponse, options);
+                        if (options.oneofs)
+                            object._contactRefreshResponse = "contactRefreshResponse";
                     }
                     return object;
                 };
@@ -128189,6 +128228,391 @@ $root.waproto = (function() {
                     };
 
                     return CompanionMetaNonceFetchResponse;
+                })();
+
+                PeerDataOperationResult.ContactRefreshResponse = (function() {
+
+                    /**
+                     * Properties of a ContactRefreshResponse.
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult
+                     * @interface IContactRefreshResponse
+                     * @property {Array.<string>|null} [coveredRequestIds] ContactRefreshResponse coveredRequestIds
+                     * @property {number|Long|null} [collectionVersion] ContactRefreshResponse collectionVersion
+                     * @property {number|Long|null} [primaryProcessStartTimestampMs] ContactRefreshResponse primaryProcessStartTimestampMs
+                     * @property {number|Long|null} [primaryProcessEndTimestampMs] ContactRefreshResponse primaryProcessEndTimestampMs
+                     * @property {number|null} [uploadedContactCount] ContactRefreshResponse uploadedContactCount
+                     */
+
+                    /**
+                     * Constructs a new ContactRefreshResponse.
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult
+                     * @classdesc Represents a ContactRefreshResponse.
+                     * @implements IContactRefreshResponse
+                     * @constructor
+                     * @param {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse=} [properties] Properties to set
+                     */
+                    function ContactRefreshResponse(properties) {
+                        this.coveredRequestIds = [];
+                        if (properties)
+                            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null)
+                                    this[keys[i]] = properties[keys[i]];
+                    }
+
+                    /**
+                     * ContactRefreshResponse coveredRequestIds.
+                     * @member {Array.<string>} coveredRequestIds
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.coveredRequestIds = $util.emptyArray;
+
+                    /**
+                     * ContactRefreshResponse collectionVersion.
+                     * @member {number|Long|null|undefined} collectionVersion
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.collectionVersion = null;
+
+                    /**
+                     * ContactRefreshResponse primaryProcessStartTimestampMs.
+                     * @member {number|Long|null|undefined} primaryProcessStartTimestampMs
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.primaryProcessStartTimestampMs = null;
+
+                    /**
+                     * ContactRefreshResponse primaryProcessEndTimestampMs.
+                     * @member {number|Long|null|undefined} primaryProcessEndTimestampMs
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.primaryProcessEndTimestampMs = null;
+
+                    /**
+                     * ContactRefreshResponse uploadedContactCount.
+                     * @member {number|null|undefined} uploadedContactCount
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     */
+                    ContactRefreshResponse.prototype.uploadedContactCount = null;
+
+                    // OneOf field names bound to virtual getters and setters
+                    var $oneOfFields;
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_collectionVersion", {
+                        get: $util.oneOfGetter($oneOfFields = ["collectionVersion"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_primaryProcessStartTimestampMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["primaryProcessStartTimestampMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_primaryProcessEndTimestampMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["primaryProcessEndTimestampMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_uploadedContactCount", {
+                        get: $util.oneOfGetter($oneOfFields = ["uploadedContactCount"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    /**
+                     * Creates a new ContactRefreshResponse instance using the specified properties.
+                     * @function create
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse=} [properties] Properties to set
+                     * @returns {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse instance
+                     */
+                    ContactRefreshResponse.create = function create(properties) {
+                        return new ContactRefreshResponse(properties);
+                    };
+
+                    /**
+                     * Encodes the specified ContactRefreshResponse message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify|verify} messages.
+                     * @function encode
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse} message ContactRefreshResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ContactRefreshResponse.encode = function encode(message, writer) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (message.coveredRequestIds != null && message.coveredRequestIds.length)
+                            for (var i = 0; i < message.coveredRequestIds.length; ++i)
+                                writer.uint32(/* id 1, wireType 2 =*/10).string(message.coveredRequestIds[i]);
+                        if (message.collectionVersion != null && Object.hasOwnProperty.call(message, "collectionVersion"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.collectionVersion);
+                        if (message.primaryProcessStartTimestampMs != null && Object.hasOwnProperty.call(message, "primaryProcessStartTimestampMs"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int64(message.primaryProcessStartTimestampMs);
+                        if (message.primaryProcessEndTimestampMs != null && Object.hasOwnProperty.call(message, "primaryProcessEndTimestampMs"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int64(message.primaryProcessEndTimestampMs);
+                        if (message.uploadedContactCount != null && Object.hasOwnProperty.call(message, "uploadedContactCount"))
+                            writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.uploadedContactCount);
+                        return writer;
+                    };
+
+                    /**
+                     * Encodes the specified ContactRefreshResponse message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.IContactRefreshResponse} message ContactRefreshResponse message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    ContactRefreshResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                        return this.encode(message, writer).ldelim();
+                    };
+
+                    /**
+                     * Decodes a ContactRefreshResponse message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ContactRefreshResponse.decode = function decode(reader, length) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        while (reader.pos < end) {
+                            var tag = reader.uint32();
+                            switch (tag >>> 3) {
+                            case 1: {
+                                    if (!(message.coveredRequestIds && message.coveredRequestIds.length))
+                                        message.coveredRequestIds = [];
+                                    message.coveredRequestIds.push(reader.string());
+                                    break;
+                                }
+                            case 2: {
+                                    message.collectionVersion = reader.uint64();
+                                    break;
+                                }
+                            case 3: {
+                                    message.primaryProcessStartTimestampMs = reader.int64();
+                                    break;
+                                }
+                            case 4: {
+                                    message.primaryProcessEndTimestampMs = reader.int64();
+                                    break;
+                                }
+                            case 5: {
+                                    message.uploadedContactCount = reader.uint32();
+                                    break;
+                                }
+                            default:
+                                reader.skipType(tag & 7);
+                                break;
+                            }
+                        }
+                        return message;
+                    };
+
+                    /**
+                     * Decodes a ContactRefreshResponse message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    ContactRefreshResponse.decodeDelimited = function decodeDelimited(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.uint32());
+                    };
+
+                    /**
+                     * Verifies a ContactRefreshResponse message.
+                     * @function verify
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    ContactRefreshResponse.verify = function verify(message) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        var properties = {};
+                        if (message.coveredRequestIds != null && message.hasOwnProperty("coveredRequestIds")) {
+                            if (!Array.isArray(message.coveredRequestIds))
+                                return "coveredRequestIds: array expected";
+                            for (var i = 0; i < message.coveredRequestIds.length; ++i)
+                                if (!$util.isString(message.coveredRequestIds[i]))
+                                    return "coveredRequestIds: string[] expected";
+                        }
+                        if (message.collectionVersion != null && message.hasOwnProperty("collectionVersion")) {
+                            properties._collectionVersion = 1;
+                            if (!$util.isInteger(message.collectionVersion) && !(message.collectionVersion && $util.isInteger(message.collectionVersion.low) && $util.isInteger(message.collectionVersion.high)))
+                                return "collectionVersion: integer|Long expected";
+                        }
+                        if (message.primaryProcessStartTimestampMs != null && message.hasOwnProperty("primaryProcessStartTimestampMs")) {
+                            properties._primaryProcessStartTimestampMs = 1;
+                            if (!$util.isInteger(message.primaryProcessStartTimestampMs) && !(message.primaryProcessStartTimestampMs && $util.isInteger(message.primaryProcessStartTimestampMs.low) && $util.isInteger(message.primaryProcessStartTimestampMs.high)))
+                                return "primaryProcessStartTimestampMs: integer|Long expected";
+                        }
+                        if (message.primaryProcessEndTimestampMs != null && message.hasOwnProperty("primaryProcessEndTimestampMs")) {
+                            properties._primaryProcessEndTimestampMs = 1;
+                            if (!$util.isInteger(message.primaryProcessEndTimestampMs) && !(message.primaryProcessEndTimestampMs && $util.isInteger(message.primaryProcessEndTimestampMs.low) && $util.isInteger(message.primaryProcessEndTimestampMs.high)))
+                                return "primaryProcessEndTimestampMs: integer|Long expected";
+                        }
+                        if (message.uploadedContactCount != null && message.hasOwnProperty("uploadedContactCount")) {
+                            properties._uploadedContactCount = 1;
+                            if (!$util.isInteger(message.uploadedContactCount))
+                                return "uploadedContactCount: integer expected";
+                        }
+                        return null;
+                    };
+
+                    /**
+                     * Creates a ContactRefreshResponse message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} ContactRefreshResponse
+                     */
+                    ContactRefreshResponse.fromObject = function fromObject(object) {
+                        if (object instanceof $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse)
+                            return object;
+                        var message = new $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse();
+                        if (object.coveredRequestIds) {
+                            if (!Array.isArray(object.coveredRequestIds))
+                                throw TypeError(".waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.coveredRequestIds: array expected");
+                            message.coveredRequestIds = [];
+                            for (var i = 0; i < object.coveredRequestIds.length; ++i)
+                                message.coveredRequestIds[i] = String(object.coveredRequestIds[i]);
+                        }
+                        if (object.collectionVersion != null)
+                            if ($util.Long)
+                                (message.collectionVersion = $util.Long.fromValue(object.collectionVersion)).unsigned = true;
+                            else if (typeof object.collectionVersion === "string")
+                                message.collectionVersion = parseInt(object.collectionVersion, 10);
+                            else if (typeof object.collectionVersion === "number")
+                                message.collectionVersion = object.collectionVersion;
+                            else if (typeof object.collectionVersion === "object")
+                                message.collectionVersion = new $util.LongBits(object.collectionVersion.low >>> 0, object.collectionVersion.high >>> 0).toNumber(true);
+                        if (object.primaryProcessStartTimestampMs != null)
+                            if ($util.Long)
+                                (message.primaryProcessStartTimestampMs = $util.Long.fromValue(object.primaryProcessStartTimestampMs)).unsigned = false;
+                            else if (typeof object.primaryProcessStartTimestampMs === "string")
+                                message.primaryProcessStartTimestampMs = parseInt(object.primaryProcessStartTimestampMs, 10);
+                            else if (typeof object.primaryProcessStartTimestampMs === "number")
+                                message.primaryProcessStartTimestampMs = object.primaryProcessStartTimestampMs;
+                            else if (typeof object.primaryProcessStartTimestampMs === "object")
+                                message.primaryProcessStartTimestampMs = new $util.LongBits(object.primaryProcessStartTimestampMs.low >>> 0, object.primaryProcessStartTimestampMs.high >>> 0).toNumber();
+                        if (object.primaryProcessEndTimestampMs != null)
+                            if ($util.Long)
+                                (message.primaryProcessEndTimestampMs = $util.Long.fromValue(object.primaryProcessEndTimestampMs)).unsigned = false;
+                            else if (typeof object.primaryProcessEndTimestampMs === "string")
+                                message.primaryProcessEndTimestampMs = parseInt(object.primaryProcessEndTimestampMs, 10);
+                            else if (typeof object.primaryProcessEndTimestampMs === "number")
+                                message.primaryProcessEndTimestampMs = object.primaryProcessEndTimestampMs;
+                            else if (typeof object.primaryProcessEndTimestampMs === "object")
+                                message.primaryProcessEndTimestampMs = new $util.LongBits(object.primaryProcessEndTimestampMs.low >>> 0, object.primaryProcessEndTimestampMs.high >>> 0).toNumber();
+                        if (object.uploadedContactCount != null)
+                            message.uploadedContactCount = object.uploadedContactCount >>> 0;
+                        return message;
+                    };
+
+                    /**
+                     * Creates a plain object from a ContactRefreshResponse message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse} message ContactRefreshResponse
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    ContactRefreshResponse.toObject = function toObject(message, options) {
+                        if (!options)
+                            options = {};
+                        var object = {};
+                        if (options.arrays || options.defaults)
+                            object.coveredRequestIds = [];
+                        if (message.coveredRequestIds && message.coveredRequestIds.length) {
+                            object.coveredRequestIds = [];
+                            for (var j = 0; j < message.coveredRequestIds.length; ++j)
+                                object.coveredRequestIds[j] = message.coveredRequestIds[j];
+                        }
+                        if (message.collectionVersion != null && message.hasOwnProperty("collectionVersion")) {
+                            if (typeof message.collectionVersion === "number")
+                                object.collectionVersion = options.longs === String ? String(message.collectionVersion) : message.collectionVersion;
+                            else
+                                object.collectionVersion = options.longs === String ? $util.Long.prototype.toString.call(message.collectionVersion) : options.longs === Number ? new $util.LongBits(message.collectionVersion.low >>> 0, message.collectionVersion.high >>> 0).toNumber(true) : message.collectionVersion;
+                            if (options.oneofs)
+                                object._collectionVersion = "collectionVersion";
+                        }
+                        if (message.primaryProcessStartTimestampMs != null && message.hasOwnProperty("primaryProcessStartTimestampMs")) {
+                            if (typeof message.primaryProcessStartTimestampMs === "number")
+                                object.primaryProcessStartTimestampMs = options.longs === String ? String(message.primaryProcessStartTimestampMs) : message.primaryProcessStartTimestampMs;
+                            else
+                                object.primaryProcessStartTimestampMs = options.longs === String ? $util.Long.prototype.toString.call(message.primaryProcessStartTimestampMs) : options.longs === Number ? new $util.LongBits(message.primaryProcessStartTimestampMs.low >>> 0, message.primaryProcessStartTimestampMs.high >>> 0).toNumber() : message.primaryProcessStartTimestampMs;
+                            if (options.oneofs)
+                                object._primaryProcessStartTimestampMs = "primaryProcessStartTimestampMs";
+                        }
+                        if (message.primaryProcessEndTimestampMs != null && message.hasOwnProperty("primaryProcessEndTimestampMs")) {
+                            if (typeof message.primaryProcessEndTimestampMs === "number")
+                                object.primaryProcessEndTimestampMs = options.longs === String ? String(message.primaryProcessEndTimestampMs) : message.primaryProcessEndTimestampMs;
+                            else
+                                object.primaryProcessEndTimestampMs = options.longs === String ? $util.Long.prototype.toString.call(message.primaryProcessEndTimestampMs) : options.longs === Number ? new $util.LongBits(message.primaryProcessEndTimestampMs.low >>> 0, message.primaryProcessEndTimestampMs.high >>> 0).toNumber() : message.primaryProcessEndTimestampMs;
+                            if (options.oneofs)
+                                object._primaryProcessEndTimestampMs = "primaryProcessEndTimestampMs";
+                        }
+                        if (message.uploadedContactCount != null && message.hasOwnProperty("uploadedContactCount")) {
+                            object.uploadedContactCount = message.uploadedContactCount;
+                            if (options.oneofs)
+                                object._uploadedContactCount = "uploadedContactCount";
+                        }
+                        return object;
+                    };
+
+                    /**
+                     * Converts this ContactRefreshResponse to JSON.
+                     * @function toJSON
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    ContactRefreshResponse.prototype.toJSON = function toJSON() {
+                        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    /**
+                     * Gets the default type url for ContactRefreshResponse
+                     * @function getTypeUrl
+                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
+                     * @static
+                     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+                     * @returns {string} The default type url
+                     */
+                    ContactRefreshResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                        if (typeUrlPrefix === undefined) {
+                            typeUrlPrefix = "type.googleapis.com";
+                        }
+                        return typeUrlPrefix + "/waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse";
+                    };
+
+                    return ContactRefreshResponse;
                 })();
 
                 PeerDataOperationResult.FlowResponsesCsvBundle = (function() {
@@ -174967,6 +175391,7 @@ $root.waproto = (function() {
                 case 9:
                 case 10:
                 case 11:
+                case 12:
                     break;
                 }
             }
@@ -175102,6 +175527,10 @@ $root.waproto = (function() {
             case "PAID_PARTNERSHIP":
             case 11:
                 message.type = 11;
+                break;
+            case "USERNAME_STATUS":
+            case 12:
+                message.type = 12;
                 break;
             }
             if (object.actionUrl != null)
@@ -177402,6 +177831,7 @@ $root.waproto = (function() {
          * @property {number} NEWSLETTER_STATUS=9 NEWSLETTER_STATUS value
          * @property {number} STATUS_CLOSE_SHARING=10 STATUS_CLOSE_SHARING value
          * @property {number} PAID_PARTNERSHIP=11 PAID_PARTNERSHIP value
+         * @property {number} USERNAME_STATUS=12 USERNAME_STATUS value
          */
         StatusAttribution.Type = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -177417,6 +177847,7 @@ $root.waproto = (function() {
             values[valuesById[9] = "NEWSLETTER_STATUS"] = 9;
             values[valuesById[10] = "STATUS_CLOSE_SHARING"] = 10;
             values[valuesById[11] = "PAID_PARTNERSHIP"] = 11;
+            values[valuesById[12] = "USERNAME_STATUS"] = 12;
             return values;
         })();
 
