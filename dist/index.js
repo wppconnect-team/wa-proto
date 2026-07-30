@@ -128238,9 +128238,8 @@ $root.waproto = (function() {
                      * @interface IContactRefreshResponse
                      * @property {Array.<string>|null} [coveredRequestIds] ContactRefreshResponse coveredRequestIds
                      * @property {number|Long|null} [collectionVersion] ContactRefreshResponse collectionVersion
-                     * @property {number|Long|null} [primaryProcessStartTimestampMs] ContactRefreshResponse primaryProcessStartTimestampMs
-                     * @property {number|Long|null} [primaryProcessEndTimestampMs] ContactRefreshResponse primaryProcessEndTimestampMs
-                     * @property {number|null} [uploadedContactCount] ContactRefreshResponse uploadedContactCount
+                     * @property {number|Long|null} [primaryDurationMs] ContactRefreshResponse primaryDurationMs
+                     * @property {number|null} [uniqueContactCount] ContactRefreshResponse uniqueContactCount
                      */
 
                     /**
@@ -128276,28 +128275,20 @@ $root.waproto = (function() {
                     ContactRefreshResponse.prototype.collectionVersion = null;
 
                     /**
-                     * ContactRefreshResponse primaryProcessStartTimestampMs.
-                     * @member {number|Long|null|undefined} primaryProcessStartTimestampMs
+                     * ContactRefreshResponse primaryDurationMs.
+                     * @member {number|Long|null|undefined} primaryDurationMs
                      * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
                      * @instance
                      */
-                    ContactRefreshResponse.prototype.primaryProcessStartTimestampMs = null;
+                    ContactRefreshResponse.prototype.primaryDurationMs = null;
 
                     /**
-                     * ContactRefreshResponse primaryProcessEndTimestampMs.
-                     * @member {number|Long|null|undefined} primaryProcessEndTimestampMs
+                     * ContactRefreshResponse uniqueContactCount.
+                     * @member {number|null|undefined} uniqueContactCount
                      * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
                      * @instance
                      */
-                    ContactRefreshResponse.prototype.primaryProcessEndTimestampMs = null;
-
-                    /**
-                     * ContactRefreshResponse uploadedContactCount.
-                     * @member {number|null|undefined} uploadedContactCount
-                     * @memberof waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse
-                     * @instance
-                     */
-                    ContactRefreshResponse.prototype.uploadedContactCount = null;
+                    ContactRefreshResponse.prototype.uniqueContactCount = null;
 
                     // OneOf field names bound to virtual getters and setters
                     var $oneOfFields;
@@ -128309,20 +128300,14 @@ $root.waproto = (function() {
                     });
 
                     // Virtual OneOf for proto3 optional field
-                    Object.defineProperty(ContactRefreshResponse.prototype, "_primaryProcessStartTimestampMs", {
-                        get: $util.oneOfGetter($oneOfFields = ["primaryProcessStartTimestampMs"]),
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_primaryDurationMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["primaryDurationMs"]),
                         set: $util.oneOfSetter($oneOfFields)
                     });
 
                     // Virtual OneOf for proto3 optional field
-                    Object.defineProperty(ContactRefreshResponse.prototype, "_primaryProcessEndTimestampMs", {
-                        get: $util.oneOfGetter($oneOfFields = ["primaryProcessEndTimestampMs"]),
-                        set: $util.oneOfSetter($oneOfFields)
-                    });
-
-                    // Virtual OneOf for proto3 optional field
-                    Object.defineProperty(ContactRefreshResponse.prototype, "_uploadedContactCount", {
-                        get: $util.oneOfGetter($oneOfFields = ["uploadedContactCount"]),
+                    Object.defineProperty(ContactRefreshResponse.prototype, "_uniqueContactCount", {
+                        get: $util.oneOfGetter($oneOfFields = ["uniqueContactCount"]),
                         set: $util.oneOfSetter($oneOfFields)
                     });
 
@@ -128355,12 +128340,10 @@ $root.waproto = (function() {
                                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.coveredRequestIds[i]);
                         if (message.collectionVersion != null && Object.hasOwnProperty.call(message, "collectionVersion"))
                             writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.collectionVersion);
-                        if (message.primaryProcessStartTimestampMs != null && Object.hasOwnProperty.call(message, "primaryProcessStartTimestampMs"))
-                            writer.uint32(/* id 3, wireType 0 =*/24).int64(message.primaryProcessStartTimestampMs);
-                        if (message.primaryProcessEndTimestampMs != null && Object.hasOwnProperty.call(message, "primaryProcessEndTimestampMs"))
-                            writer.uint32(/* id 4, wireType 0 =*/32).int64(message.primaryProcessEndTimestampMs);
-                        if (message.uploadedContactCount != null && Object.hasOwnProperty.call(message, "uploadedContactCount"))
-                            writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.uploadedContactCount);
+                        if (message.primaryDurationMs != null && Object.hasOwnProperty.call(message, "primaryDurationMs"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int64(message.primaryDurationMs);
+                        if (message.uniqueContactCount != null && Object.hasOwnProperty.call(message, "uniqueContactCount"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.uniqueContactCount);
                         return writer;
                     };
 
@@ -128406,15 +128389,11 @@ $root.waproto = (function() {
                                     break;
                                 }
                             case 3: {
-                                    message.primaryProcessStartTimestampMs = reader.int64();
+                                    message.primaryDurationMs = reader.int64();
                                     break;
                                 }
                             case 4: {
-                                    message.primaryProcessEndTimestampMs = reader.int64();
-                                    break;
-                                }
-                            case 5: {
-                                    message.uploadedContactCount = reader.uint32();
+                                    message.uniqueContactCount = reader.uint32();
                                     break;
                                 }
                             default:
@@ -128465,20 +128444,15 @@ $root.waproto = (function() {
                             if (!$util.isInteger(message.collectionVersion) && !(message.collectionVersion && $util.isInteger(message.collectionVersion.low) && $util.isInteger(message.collectionVersion.high)))
                                 return "collectionVersion: integer|Long expected";
                         }
-                        if (message.primaryProcessStartTimestampMs != null && message.hasOwnProperty("primaryProcessStartTimestampMs")) {
-                            properties._primaryProcessStartTimestampMs = 1;
-                            if (!$util.isInteger(message.primaryProcessStartTimestampMs) && !(message.primaryProcessStartTimestampMs && $util.isInteger(message.primaryProcessStartTimestampMs.low) && $util.isInteger(message.primaryProcessStartTimestampMs.high)))
-                                return "primaryProcessStartTimestampMs: integer|Long expected";
+                        if (message.primaryDurationMs != null && message.hasOwnProperty("primaryDurationMs")) {
+                            properties._primaryDurationMs = 1;
+                            if (!$util.isInteger(message.primaryDurationMs) && !(message.primaryDurationMs && $util.isInteger(message.primaryDurationMs.low) && $util.isInteger(message.primaryDurationMs.high)))
+                                return "primaryDurationMs: integer|Long expected";
                         }
-                        if (message.primaryProcessEndTimestampMs != null && message.hasOwnProperty("primaryProcessEndTimestampMs")) {
-                            properties._primaryProcessEndTimestampMs = 1;
-                            if (!$util.isInteger(message.primaryProcessEndTimestampMs) && !(message.primaryProcessEndTimestampMs && $util.isInteger(message.primaryProcessEndTimestampMs.low) && $util.isInteger(message.primaryProcessEndTimestampMs.high)))
-                                return "primaryProcessEndTimestampMs: integer|Long expected";
-                        }
-                        if (message.uploadedContactCount != null && message.hasOwnProperty("uploadedContactCount")) {
-                            properties._uploadedContactCount = 1;
-                            if (!$util.isInteger(message.uploadedContactCount))
-                                return "uploadedContactCount: integer expected";
+                        if (message.uniqueContactCount != null && message.hasOwnProperty("uniqueContactCount")) {
+                            properties._uniqueContactCount = 1;
+                            if (!$util.isInteger(message.uniqueContactCount))
+                                return "uniqueContactCount: integer expected";
                         }
                         return null;
                     };
@@ -128511,26 +128485,17 @@ $root.waproto = (function() {
                                 message.collectionVersion = object.collectionVersion;
                             else if (typeof object.collectionVersion === "object")
                                 message.collectionVersion = new $util.LongBits(object.collectionVersion.low >>> 0, object.collectionVersion.high >>> 0).toNumber(true);
-                        if (object.primaryProcessStartTimestampMs != null)
+                        if (object.primaryDurationMs != null)
                             if ($util.Long)
-                                (message.primaryProcessStartTimestampMs = $util.Long.fromValue(object.primaryProcessStartTimestampMs)).unsigned = false;
-                            else if (typeof object.primaryProcessStartTimestampMs === "string")
-                                message.primaryProcessStartTimestampMs = parseInt(object.primaryProcessStartTimestampMs, 10);
-                            else if (typeof object.primaryProcessStartTimestampMs === "number")
-                                message.primaryProcessStartTimestampMs = object.primaryProcessStartTimestampMs;
-                            else if (typeof object.primaryProcessStartTimestampMs === "object")
-                                message.primaryProcessStartTimestampMs = new $util.LongBits(object.primaryProcessStartTimestampMs.low >>> 0, object.primaryProcessStartTimestampMs.high >>> 0).toNumber();
-                        if (object.primaryProcessEndTimestampMs != null)
-                            if ($util.Long)
-                                (message.primaryProcessEndTimestampMs = $util.Long.fromValue(object.primaryProcessEndTimestampMs)).unsigned = false;
-                            else if (typeof object.primaryProcessEndTimestampMs === "string")
-                                message.primaryProcessEndTimestampMs = parseInt(object.primaryProcessEndTimestampMs, 10);
-                            else if (typeof object.primaryProcessEndTimestampMs === "number")
-                                message.primaryProcessEndTimestampMs = object.primaryProcessEndTimestampMs;
-                            else if (typeof object.primaryProcessEndTimestampMs === "object")
-                                message.primaryProcessEndTimestampMs = new $util.LongBits(object.primaryProcessEndTimestampMs.low >>> 0, object.primaryProcessEndTimestampMs.high >>> 0).toNumber();
-                        if (object.uploadedContactCount != null)
-                            message.uploadedContactCount = object.uploadedContactCount >>> 0;
+                                (message.primaryDurationMs = $util.Long.fromValue(object.primaryDurationMs)).unsigned = false;
+                            else if (typeof object.primaryDurationMs === "string")
+                                message.primaryDurationMs = parseInt(object.primaryDurationMs, 10);
+                            else if (typeof object.primaryDurationMs === "number")
+                                message.primaryDurationMs = object.primaryDurationMs;
+                            else if (typeof object.primaryDurationMs === "object")
+                                message.primaryDurationMs = new $util.LongBits(object.primaryDurationMs.low >>> 0, object.primaryDurationMs.high >>> 0).toNumber();
+                        if (object.uniqueContactCount != null)
+                            message.uniqueContactCount = object.uniqueContactCount >>> 0;
                         return message;
                     };
 
@@ -128562,26 +128527,18 @@ $root.waproto = (function() {
                             if (options.oneofs)
                                 object._collectionVersion = "collectionVersion";
                         }
-                        if (message.primaryProcessStartTimestampMs != null && message.hasOwnProperty("primaryProcessStartTimestampMs")) {
-                            if (typeof message.primaryProcessStartTimestampMs === "number")
-                                object.primaryProcessStartTimestampMs = options.longs === String ? String(message.primaryProcessStartTimestampMs) : message.primaryProcessStartTimestampMs;
+                        if (message.primaryDurationMs != null && message.hasOwnProperty("primaryDurationMs")) {
+                            if (typeof message.primaryDurationMs === "number")
+                                object.primaryDurationMs = options.longs === String ? String(message.primaryDurationMs) : message.primaryDurationMs;
                             else
-                                object.primaryProcessStartTimestampMs = options.longs === String ? $util.Long.prototype.toString.call(message.primaryProcessStartTimestampMs) : options.longs === Number ? new $util.LongBits(message.primaryProcessStartTimestampMs.low >>> 0, message.primaryProcessStartTimestampMs.high >>> 0).toNumber() : message.primaryProcessStartTimestampMs;
+                                object.primaryDurationMs = options.longs === String ? $util.Long.prototype.toString.call(message.primaryDurationMs) : options.longs === Number ? new $util.LongBits(message.primaryDurationMs.low >>> 0, message.primaryDurationMs.high >>> 0).toNumber() : message.primaryDurationMs;
                             if (options.oneofs)
-                                object._primaryProcessStartTimestampMs = "primaryProcessStartTimestampMs";
+                                object._primaryDurationMs = "primaryDurationMs";
                         }
-                        if (message.primaryProcessEndTimestampMs != null && message.hasOwnProperty("primaryProcessEndTimestampMs")) {
-                            if (typeof message.primaryProcessEndTimestampMs === "number")
-                                object.primaryProcessEndTimestampMs = options.longs === String ? String(message.primaryProcessEndTimestampMs) : message.primaryProcessEndTimestampMs;
-                            else
-                                object.primaryProcessEndTimestampMs = options.longs === String ? $util.Long.prototype.toString.call(message.primaryProcessEndTimestampMs) : options.longs === Number ? new $util.LongBits(message.primaryProcessEndTimestampMs.low >>> 0, message.primaryProcessEndTimestampMs.high >>> 0).toNumber() : message.primaryProcessEndTimestampMs;
+                        if (message.uniqueContactCount != null && message.hasOwnProperty("uniqueContactCount")) {
+                            object.uniqueContactCount = message.uniqueContactCount;
                             if (options.oneofs)
-                                object._primaryProcessEndTimestampMs = "primaryProcessEndTimestampMs";
-                        }
-                        if (message.uploadedContactCount != null && message.hasOwnProperty("uploadedContactCount")) {
-                            object.uploadedContactCount = message.uploadedContactCount;
-                            if (options.oneofs)
-                                object._uploadedContactCount = "uploadedContactCount";
+                                object._uniqueContactCount = "uniqueContactCount";
                         }
                         return object;
                     };

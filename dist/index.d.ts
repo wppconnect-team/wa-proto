@@ -41460,14 +41460,11 @@ export namespace waproto {
                     /** ContactRefreshResponse collectionVersion */
                     collectionVersion?: (number|Long|null);
 
-                    /** ContactRefreshResponse primaryProcessStartTimestampMs */
-                    primaryProcessStartTimestampMs?: (number|Long|null);
+                    /** ContactRefreshResponse primaryDurationMs */
+                    primaryDurationMs?: (number|Long|null);
 
-                    /** ContactRefreshResponse primaryProcessEndTimestampMs */
-                    primaryProcessEndTimestampMs?: (number|Long|null);
-
-                    /** ContactRefreshResponse uploadedContactCount */
-                    uploadedContactCount?: (number|null);
+                    /** ContactRefreshResponse uniqueContactCount */
+                    uniqueContactCount?: (number|null);
                 }
 
                 /** Represents a ContactRefreshResponse. */
@@ -41485,14 +41482,11 @@ export namespace waproto {
                     /** ContactRefreshResponse collectionVersion. */
                     public collectionVersion?: (number|Long|null);
 
-                    /** ContactRefreshResponse primaryProcessStartTimestampMs. */
-                    public primaryProcessStartTimestampMs?: (number|Long|null);
+                    /** ContactRefreshResponse primaryDurationMs. */
+                    public primaryDurationMs?: (number|Long|null);
 
-                    /** ContactRefreshResponse primaryProcessEndTimestampMs. */
-                    public primaryProcessEndTimestampMs?: (number|Long|null);
-
-                    /** ContactRefreshResponse uploadedContactCount. */
-                    public uploadedContactCount?: (number|null);
+                    /** ContactRefreshResponse uniqueContactCount. */
+                    public uniqueContactCount?: (number|null);
 
                     /**
                      * Creates a new ContactRefreshResponse instance using the specified properties.
