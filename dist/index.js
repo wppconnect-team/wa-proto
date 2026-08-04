@@ -157649,6 +157649,7 @@ $root.waproto = (function() {
      * @property {number} WASA_ROOT_SECRET_ACTION=89 WASA_ROOT_SECRET_ACTION value
      * @property {number} BUBBLE_LOCK_MESSAGE_ACTION=90 BUBBLE_LOCK_MESSAGE_ACTION value
      * @property {number} LABEL_SUBLIST_ACTION=91 LABEL_SUBLIST_ACTION value
+     * @property {number} DEVICE_CAPABILITIES_V2=92 DEVICE_CAPABILITIES_V2 value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -157740,6 +157741,7 @@ $root.waproto = (function() {
         values[valuesById[89] = "WASA_ROOT_SECRET_ACTION"] = 89;
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
+        values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -179386,6 +179388,7 @@ $root.waproto = (function() {
          * @property {waproto.SyncActionValue.IWASARootSecretAction|null} [wasaRootSecretAction] SyncActionValue wasaRootSecretAction
          * @property {waproto.SyncActionValue.IBubbleLockMessageAction|null} [bubbleLockMessageAction] SyncActionValue bubbleLockMessageAction
          * @property {waproto.SyncActionValue.ILabelSublistAction|null} [labelSublistAction] SyncActionValue labelSublistAction
+         * @property {waproto.IDeviceCapabilities|null} [deviceCapabilitiesV2] SyncActionValue deviceCapabilitiesV2
          */
 
         /**
@@ -180059,6 +180062,14 @@ $root.waproto = (function() {
          */
         SyncActionValue.prototype.labelSublistAction = null;
 
+        /**
+         * SyncActionValue deviceCapabilitiesV2.
+         * @member {waproto.IDeviceCapabilities|null|undefined} deviceCapabilitiesV2
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.deviceCapabilitiesV2 = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -180554,6 +180565,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_deviceCapabilitiesV2", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceCapabilitiesV2"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -180742,6 +180759,8 @@ $root.waproto = (function() {
                 $root.waproto.SyncActionValue.BubbleLockMessageAction.encode(message.bubbleLockMessageAction, writer.uint32(/* id 90, wireType 2 =*/722).fork()).ldelim();
             if (message.labelSublistAction != null && Object.hasOwnProperty.call(message, "labelSublistAction"))
                 $root.waproto.SyncActionValue.LabelSublistAction.encode(message.labelSublistAction, writer.uint32(/* id 91, wireType 2 =*/730).fork()).ldelim();
+            if (message.deviceCapabilitiesV2 != null && Object.hasOwnProperty.call(message, "deviceCapabilitiesV2"))
+                $root.waproto.DeviceCapabilities.encode(message.deviceCapabilitiesV2, writer.uint32(/* id 92, wireType 2 =*/738).fork()).ldelim();
             return writer;
         };
 
@@ -181102,6 +181121,10 @@ $root.waproto = (function() {
                     }
                 case 91: {
                         message.labelSublistAction = $root.waproto.SyncActionValue.LabelSublistAction.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 92: {
+                        message.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -181793,6 +181816,14 @@ $root.waproto = (function() {
                         return "labelSublistAction." + error;
                 }
             }
+            if (message.deviceCapabilitiesV2 != null && message.hasOwnProperty("deviceCapabilitiesV2")) {
+                properties._deviceCapabilitiesV2 = 1;
+                {
+                    var error = $root.waproto.DeviceCapabilities.verify(message.deviceCapabilitiesV2);
+                    if (error)
+                        return "deviceCapabilitiesV2." + error;
+                }
+            }
             return null;
         };
 
@@ -182222,6 +182253,11 @@ $root.waproto = (function() {
                     throw TypeError(".waproto.SyncActionValue.labelSublistAction: object expected");
                 message.labelSublistAction = $root.waproto.SyncActionValue.LabelSublistAction.fromObject(object.labelSublistAction);
             }
+            if (object.deviceCapabilitiesV2 != null) {
+                if (typeof object.deviceCapabilitiesV2 !== "object")
+                    throw TypeError(".waproto.SyncActionValue.deviceCapabilitiesV2: object expected");
+                message.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.fromObject(object.deviceCapabilitiesV2);
+            }
             return message;
         };
 
@@ -182650,6 +182686,11 @@ $root.waproto = (function() {
                 object.labelSublistAction = $root.waproto.SyncActionValue.LabelSublistAction.toObject(message.labelSublistAction, options);
                 if (options.oneofs)
                     object._labelSublistAction = "labelSublistAction";
+            }
+            if (message.deviceCapabilitiesV2 != null && message.hasOwnProperty("deviceCapabilitiesV2")) {
+                object.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.toObject(message.deviceCapabilitiesV2, options);
+                if (options.oneofs)
+                    object._deviceCapabilitiesV2 = "deviceCapabilitiesV2";
             }
             return object;
         };
