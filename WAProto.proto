@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1044429019
+/// WhatsApp Version: 2.3000.1044449815
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -5696,6 +5696,7 @@ message SyncActionValue {
         optional bool shouldPlaySoundForCallNotification = 31;
         optional string chatThemeId = 32;
         optional string colorSchemeId = 33;
+        optional string stockWallpaperImageId = 34;
         enum DisplayMode {
             DISPLAY_MODE_UNKNOWN = 0;
             ALWAYS = 1;
@@ -5742,6 +5743,7 @@ message SyncActionValue {
             SHOULD_PLAY_SOUND_FOR_CALL_NOTIFICATION = 31;
             CHAT_THEME_ID = 32;
             COLOR_SCHEME_ID = 33;
+            STOCK_WALLPAPER_IMAGE_ID = 34;
         }
         enum SettingPlatform {
             PLATFORM_UNKNOWN = 0;
