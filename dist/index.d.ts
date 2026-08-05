@@ -11166,6 +11166,9 @@ export namespace waproto {
 
         /** BotSignatureVerificationUseCaseProof certificateChain */
         certificateChain?: (Uint8Array[]|null);
+
+        /** BotSignatureVerificationUseCaseProof certificateChainSki */
+        certificateChainSki?: (waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI[]|null);
     }
 
     /** Represents a BotSignatureVerificationUseCaseProof. */
@@ -11188,6 +11191,9 @@ export namespace waproto {
 
         /** BotSignatureVerificationUseCaseProof certificateChain. */
         public certificateChain: Uint8Array[];
+
+        /** BotSignatureVerificationUseCaseProof certificateChainSki. */
+        public certificateChainSki: waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI[];
 
         /**
          * Creates a new BotSignatureVerificationUseCaseProof instance using the specified properties.
@@ -11274,7 +11280,112 @@ export namespace waproto {
             UNSPECIFIED = 0,
             WA_BOT_MSG = 1,
             WA_TEE_BOT_MSG = 2,
-            P2P_PILLS = 3
+            P2P_PILLS = 3,
+            WA_WAFFLE = 4,
+            WA_FEATURE_PKI = 5
+        }
+
+        /** Properties of a CertificateSKI. */
+        interface ICertificateSKI {
+
+            /** CertificateSKI useCase */
+            useCase?: (waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+            /** CertificateSKI ski */
+            ski?: (Uint8Array|null);
+        }
+
+        /** Represents a CertificateSKI. */
+        class CertificateSKI implements ICertificateSKI {
+
+            /**
+             * Constructs a new CertificateSKI.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI);
+
+            /** CertificateSKI useCase. */
+            public useCase?: (waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+            /** CertificateSKI ski. */
+            public ski?: (Uint8Array|null);
+
+            /**
+             * Creates a new CertificateSKI instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CertificateSKI instance
+             */
+            public static create(properties?: waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Encodes the specified CertificateSKI message. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @param message CertificateSKI message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CertificateSKI message, length delimited. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @param message CertificateSKI message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Verifies a CertificateSKI message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CertificateSKI message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CertificateSKI
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Creates a plain object from a CertificateSKI message. Also converts values to other types if specified.
+             * @param message CertificateSKI
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CertificateSKI to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for CertificateSKI
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
     }
 
@@ -20082,7 +20193,8 @@ export namespace waproto {
             UWP = 21,
             VR = 22,
             CLOUD_API = 23,
-            SMARTGLASSES = 24
+            SMARTGLASSES = 24,
+            WAIL = 25
         }
     }
 
@@ -22736,6 +22848,7 @@ export namespace waproto {
             HANDSHAKE_PQ_MODE_UNKNOWN = 0,
             XXKEM = 1,
             XXKEM_FS = 2,
+            XXKEM_EPH = 9,
             WA_CLASSICAL = 3,
             WA_PQ = 4,
             IKKEM = 5,
@@ -26640,6 +26753,15 @@ export namespace waproto {
 
         /** Message splitPaymentUpdateMessage */
         splitPaymentUpdateMessage?: (waproto.Message.ISplitPaymentUpdateMessage|null);
+
+        /** Message musicMessage */
+        musicMessage?: (waproto.Message.IMusicMessage|null);
+
+        /** Message statusLinkPreviewMetadata */
+        statusLinkPreviewMetadata?: (waproto.Message.IStatusLinkPreviewMetadata|null);
+
+        /** Message botPlatformRegistrationSuccessMessage */
+        botPlatformRegistrationSuccessMessage?: (waproto.Message.IFutureProofMessage|null);
     }
 
     /** Represents a Message. */
@@ -26974,6 +27096,15 @@ export namespace waproto {
 
         /** Message splitPaymentUpdateMessage. */
         public splitPaymentUpdateMessage?: (waproto.Message.ISplitPaymentUpdateMessage|null);
+
+        /** Message musicMessage. */
+        public musicMessage?: (waproto.Message.IMusicMessage|null);
+
+        /** Message statusLinkPreviewMetadata. */
+        public statusLinkPreviewMetadata?: (waproto.Message.IStatusLinkPreviewMetadata|null);
+
+        /** Message botPlatformRegistrationSuccessMessage. */
+        public botPlatformRegistrationSuccessMessage?: (waproto.Message.IFutureProofMessage|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -38137,6 +38268,135 @@ export namespace waproto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a MusicMessage. */
+        interface IMusicMessage {
+
+            /** MusicMessage embeddedMusic */
+            embeddedMusic?: (waproto.IEmbeddedMusic|null);
+
+            /** MusicMessage songUri */
+            songUri?: (string|null);
+
+            /** MusicMessage artworkUri */
+            artworkUri?: (string|null);
+
+            /** MusicMessage style */
+            style?: (number|null);
+
+            /** MusicMessage contextInfo */
+            contextInfo?: (waproto.IContextInfo|null);
+        }
+
+        /** Represents a MusicMessage. */
+        class MusicMessage implements IMusicMessage {
+
+            /**
+             * Constructs a new MusicMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IMusicMessage);
+
+            /** MusicMessage embeddedMusic. */
+            public embeddedMusic?: (waproto.IEmbeddedMusic|null);
+
+            /** MusicMessage songUri. */
+            public songUri?: (string|null);
+
+            /** MusicMessage artworkUri. */
+            public artworkUri?: (string|null);
+
+            /** MusicMessage style. */
+            public style?: (number|null);
+
+            /** MusicMessage contextInfo. */
+            public contextInfo?: (waproto.IContextInfo|null);
+
+            /**
+             * Creates a new MusicMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MusicMessage instance
+             */
+            public static create(properties?: waproto.Message.IMusicMessage): waproto.Message.MusicMessage;
+
+            /**
+             * Encodes the specified MusicMessage message. Does not implicitly {@link waproto.Message.MusicMessage.verify|verify} messages.
+             * @param message MusicMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IMusicMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MusicMessage message, length delimited. Does not implicitly {@link waproto.Message.MusicMessage.verify|verify} messages.
+             * @param message MusicMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IMusicMessage, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MusicMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns MusicMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.MusicMessage;
+
+            /**
+             * Decodes a MusicMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns MusicMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.MusicMessage;
+
+            /**
+             * Verifies a MusicMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MusicMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MusicMessage
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.MusicMessage;
+
+            /**
+             * Creates a plain object from a MusicMessage message. Also converts values to other types if specified.
+             * @param message MusicMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.MusicMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MusicMessage to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for MusicMessage
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace MusicMessage {
+
+            /** MusicMessageStyle enum. */
+            enum MusicMessageStyle {
+                UNKNOWN = 0
+            }
+        }
+
         /** Properties of a NewsletterAdminInviteMessage. */
         interface INewsletterAdminInviteMessage {
 
@@ -38824,7 +39084,8 @@ export namespace waproto {
                 UNKNOWN = 0,
                 FBPAY = 1,
                 NOVI = 2,
-                UPI = 3
+                UPI = 3,
+                PIX = 4
             }
         }
 
@@ -44425,9 +44686,6 @@ export namespace waproto {
 
             /** ProtocolMessage coexStateSync */
             coexStateSync?: (waproto.ICoexStateSync|null);
-
-            /** ProtocolMessage syncRequestMutationRetry */
-            syncRequestMutationRetry?: (waproto.Message.ISyncRequestMutationRetry|null);
         }
 
         /** Represents a ProtocolMessage. */
@@ -44528,9 +44786,6 @@ export namespace waproto {
 
             /** ProtocolMessage coexStateSync. */
             public coexStateSync?: (waproto.ICoexStateSync|null);
-
-            /** ProtocolMessage syncRequestMutationRetry. */
-            public syncRequestMutationRetry?: (waproto.Message.ISyncRequestMutationRetry|null);
 
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
@@ -44645,8 +44900,7 @@ export namespace waproto {
                 CHAT_THEME_SETTING = 34,
                 AI_METADATA_OPERATION = 35,
                 MARK_AS_VERIFIED_ACTION = 36,
-                COEX_STATE_SYNC = 37,
-                SYNC_REQUEST_MUTATION_RETRY = 38
+                COEX_STATE_SYNC = 37
             }
         }
 
@@ -46256,6 +46510,114 @@ export namespace waproto {
             public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
+        /** Properties of a StatusLinkPreviewMetadata. */
+        interface IStatusLinkPreviewMetadata {
+
+            /** StatusLinkPreviewMetadata style */
+            style?: (waproto.Message.StatusLinkPreviewMetadata.Style|null);
+        }
+
+        /** Represents a StatusLinkPreviewMetadata. */
+        class StatusLinkPreviewMetadata implements IStatusLinkPreviewMetadata {
+
+            /**
+             * Constructs a new StatusLinkPreviewMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.IStatusLinkPreviewMetadata);
+
+            /** StatusLinkPreviewMetadata style. */
+            public style?: (waproto.Message.StatusLinkPreviewMetadata.Style|null);
+
+            /**
+             * Creates a new StatusLinkPreviewMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusLinkPreviewMetadata instance
+             */
+            public static create(properties?: waproto.Message.IStatusLinkPreviewMetadata): waproto.Message.StatusLinkPreviewMetadata;
+
+            /**
+             * Encodes the specified StatusLinkPreviewMetadata message. Does not implicitly {@link waproto.Message.StatusLinkPreviewMetadata.verify|verify} messages.
+             * @param message StatusLinkPreviewMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.Message.IStatusLinkPreviewMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusLinkPreviewMetadata message, length delimited. Does not implicitly {@link waproto.Message.StatusLinkPreviewMetadata.verify|verify} messages.
+             * @param message StatusLinkPreviewMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.Message.IStatusLinkPreviewMetadata, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusLinkPreviewMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns StatusLinkPreviewMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.StatusLinkPreviewMetadata;
+
+            /**
+             * Decodes a StatusLinkPreviewMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns StatusLinkPreviewMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.StatusLinkPreviewMetadata;
+
+            /**
+             * Verifies a StatusLinkPreviewMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusLinkPreviewMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusLinkPreviewMetadata
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.Message.StatusLinkPreviewMetadata;
+
+            /**
+             * Creates a plain object from a StatusLinkPreviewMetadata message. Also converts values to other types if specified.
+             * @param message StatusLinkPreviewMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.Message.StatusLinkPreviewMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusLinkPreviewMetadata to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for StatusLinkPreviewMetadata
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
+        }
+
+        namespace StatusLinkPreviewMetadata {
+
+            /** Style enum. */
+            enum Style {
+                AUTO = 0,
+                COMPACT = 1,
+                FULL = 2,
+                IMMERSIVE = 3
+            }
+        }
+
         /** Properties of a StatusNotificationMessage. */
         interface IStatusNotificationMessage {
 
@@ -46372,7 +46734,8 @@ export namespace waproto {
                 UNKNOWN = 0,
                 STATUS_ADD_YOURS = 1,
                 STATUS_RESHARE = 2,
-                STATUS_QUESTION_ANSWER_RESHARE = 3
+                STATUS_QUESTION_ANSWER_RESHARE = 3,
+                STATUS_GROUP_STATUS_REPLY = 4
             }
         }
 
@@ -47416,215 +47779,6 @@ export namespace waproto {
              * @returns The default type url
              */
             public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        /** Properties of a SyncRequestMutationRetry. */
-        interface ISyncRequestMutationRetry {
-
-            /** SyncRequestMutationRetry collections */
-            collections?: (waproto.Message.SyncRequestMutationRetry.ICollection[]|null);
-
-            /** SyncRequestMutationRetry count */
-            count?: (number|null);
-        }
-
-        /** Represents a SyncRequestMutationRetry. */
-        class SyncRequestMutationRetry implements ISyncRequestMutationRetry {
-
-            /**
-             * Constructs a new SyncRequestMutationRetry.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: waproto.Message.ISyncRequestMutationRetry);
-
-            /** SyncRequestMutationRetry collections. */
-            public collections: waproto.Message.SyncRequestMutationRetry.ICollection[];
-
-            /** SyncRequestMutationRetry count. */
-            public count?: (number|null);
-
-            /**
-             * Creates a new SyncRequestMutationRetry instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns SyncRequestMutationRetry instance
-             */
-            public static create(properties?: waproto.Message.ISyncRequestMutationRetry): waproto.Message.SyncRequestMutationRetry;
-
-            /**
-             * Encodes the specified SyncRequestMutationRetry message. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.verify|verify} messages.
-             * @param message SyncRequestMutationRetry message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: waproto.Message.ISyncRequestMutationRetry, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified SyncRequestMutationRetry message, length delimited. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.verify|verify} messages.
-             * @param message SyncRequestMutationRetry message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: waproto.Message.ISyncRequestMutationRetry, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns SyncRequestMutationRetry
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SyncRequestMutationRetry;
-
-            /**
-             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns SyncRequestMutationRetry
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SyncRequestMutationRetry;
-
-            /**
-             * Verifies a SyncRequestMutationRetry message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates a SyncRequestMutationRetry message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns SyncRequestMutationRetry
-             */
-            public static fromObject(object: { [k: string]: any }): waproto.Message.SyncRequestMutationRetry;
-
-            /**
-             * Creates a plain object from a SyncRequestMutationRetry message. Also converts values to other types if specified.
-             * @param message SyncRequestMutationRetry
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: waproto.Message.SyncRequestMutationRetry, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this SyncRequestMutationRetry to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-
-            /**
-             * Gets the default type url for SyncRequestMutationRetry
-             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns The default type url
-             */
-            public static getTypeUrl(typeUrlPrefix?: string): string;
-        }
-
-        namespace SyncRequestMutationRetry {
-
-            /** Properties of a Collection. */
-            interface ICollection {
-
-                /** Collection name */
-                name?: (string|null);
-
-                /** Collection storedSyncdVersion */
-                storedSyncdVersion?: (number|Long|null);
-            }
-
-            /** Represents a Collection. */
-            class Collection implements ICollection {
-
-                /**
-                 * Constructs a new Collection.
-                 * @param [properties] Properties to set
-                 */
-                constructor(properties?: waproto.Message.SyncRequestMutationRetry.ICollection);
-
-                /** Collection name. */
-                public name?: (string|null);
-
-                /** Collection storedSyncdVersion. */
-                public storedSyncdVersion?: (number|Long|null);
-
-                /**
-                 * Creates a new Collection instance using the specified properties.
-                 * @param [properties] Properties to set
-                 * @returns Collection instance
-                 */
-                public static create(properties?: waproto.Message.SyncRequestMutationRetry.ICollection): waproto.Message.SyncRequestMutationRetry.Collection;
-
-                /**
-                 * Encodes the specified Collection message. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
-                 * @param message Collection message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encode(message: waproto.Message.SyncRequestMutationRetry.ICollection, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Encodes the specified Collection message, length delimited. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
-                 * @param message Collection message or plain object to encode
-                 * @param [writer] Writer to encode to
-                 * @returns Writer
-                 */
-                public static encodeDelimited(message: waproto.Message.SyncRequestMutationRetry.ICollection, writer?: $protobuf.Writer): $protobuf.Writer;
-
-                /**
-                 * Decodes a Collection message from the specified reader or buffer.
-                 * @param reader Reader or buffer to decode from
-                 * @param [length] Message length if known beforehand
-                 * @returns Collection
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SyncRequestMutationRetry.Collection;
-
-                /**
-                 * Decodes a Collection message from the specified reader or buffer, length delimited.
-                 * @param reader Reader or buffer to decode from
-                 * @returns Collection
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SyncRequestMutationRetry.Collection;
-
-                /**
-                 * Verifies a Collection message.
-                 * @param message Plain object to verify
-                 * @returns `null` if valid, otherwise the reason why it is not
-                 */
-                public static verify(message: { [k: string]: any }): (string|null);
-
-                /**
-                 * Creates a Collection message from a plain object. Also converts values to their respective internal types.
-                 * @param object Plain object
-                 * @returns Collection
-                 */
-                public static fromObject(object: { [k: string]: any }): waproto.Message.SyncRequestMutationRetry.Collection;
-
-                /**
-                 * Creates a plain object from a Collection message. Also converts values to other types if specified.
-                 * @param message Collection
-                 * @param [options] Conversion options
-                 * @returns Plain object
-                 */
-                public static toObject(message: waproto.Message.SyncRequestMutationRetry.Collection, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-                /**
-                 * Converts this Collection to JSON.
-                 * @returns JSON object
-                 */
-                public toJSON(): { [k: string]: any };
-
-                /**
-                 * Gets the default type url for Collection
-                 * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-                 * @returns The default type url
-                 */
-                public static getTypeUrl(typeUrlPrefix?: string): string;
-            }
         }
 
         /** Properties of a TemplateButtonReplyMessage. */

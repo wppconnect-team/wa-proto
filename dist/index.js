@@ -32109,6 +32109,7 @@ $root.waproto = (function() {
          * @property {waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null} [useCase] BotSignatureVerificationUseCaseProof useCase
          * @property {Uint8Array|null} [signature] BotSignatureVerificationUseCaseProof signature
          * @property {Array.<Uint8Array>|null} [certificateChain] BotSignatureVerificationUseCaseProof certificateChain
+         * @property {Array.<waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI>|null} [certificateChainSki] BotSignatureVerificationUseCaseProof certificateChainSki
          */
 
         /**
@@ -32121,6 +32122,7 @@ $root.waproto = (function() {
          */
         function BotSignatureVerificationUseCaseProof(properties) {
             this.certificateChain = [];
+            this.certificateChainSki = [];
             if (properties)
                 for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null)
@@ -32158,6 +32160,14 @@ $root.waproto = (function() {
          * @instance
          */
         BotSignatureVerificationUseCaseProof.prototype.certificateChain = $util.emptyArray;
+
+        /**
+         * BotSignatureVerificationUseCaseProof certificateChainSki.
+         * @member {Array.<waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI>} certificateChainSki
+         * @memberof waproto.BotSignatureVerificationUseCaseProof
+         * @instance
+         */
+        BotSignatureVerificationUseCaseProof.prototype.certificateChainSki = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
@@ -32213,6 +32223,9 @@ $root.waproto = (function() {
             if (message.certificateChain != null && message.certificateChain.length)
                 for (var i = 0; i < message.certificateChain.length; ++i)
                     writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.certificateChain[i]);
+            if (message.certificateChainSki != null && message.certificateChainSki.length)
+                for (var i = 0; i < message.certificateChainSki.length; ++i)
+                    $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.encode(message.certificateChainSki[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
             return writer;
         };
 
@@ -32265,6 +32278,12 @@ $root.waproto = (function() {
                         message.certificateChain.push(reader.bytes());
                         break;
                     }
+                case 5: {
+                        if (!(message.certificateChainSki && message.certificateChainSki.length))
+                            message.certificateChainSki = [];
+                        message.certificateChainSki.push($root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(reader, reader.uint32()));
+                        break;
+                    }
                 default:
                     reader.skipType(tag & 7);
                     break;
@@ -32315,6 +32334,8 @@ $root.waproto = (function() {
                 case 1:
                 case 2:
                 case 3:
+                case 4:
+                case 5:
                     break;
                 }
             }
@@ -32329,6 +32350,15 @@ $root.waproto = (function() {
                 for (var i = 0; i < message.certificateChain.length; ++i)
                     if (!(message.certificateChain[i] && typeof message.certificateChain[i].length === "number" || $util.isString(message.certificateChain[i])))
                         return "certificateChain: buffer[] expected";
+            }
+            if (message.certificateChainSki != null && message.hasOwnProperty("certificateChainSki")) {
+                if (!Array.isArray(message.certificateChainSki))
+                    return "certificateChainSki: array expected";
+                for (var i = 0; i < message.certificateChainSki.length; ++i) {
+                    var error = $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify(message.certificateChainSki[i]);
+                    if (error)
+                        return "certificateChainSki." + error;
+                }
             }
             return null;
         };
@@ -32370,6 +32400,14 @@ $root.waproto = (function() {
             case 3:
                 message.useCase = 3;
                 break;
+            case "WA_WAFFLE":
+            case 4:
+                message.useCase = 4;
+                break;
+            case "WA_FEATURE_PKI":
+            case 5:
+                message.useCase = 5;
+                break;
             }
             if (object.signature != null)
                 if (typeof object.signature === "string")
@@ -32385,6 +32423,16 @@ $root.waproto = (function() {
                         $util.base64.decode(object.certificateChain[i], message.certificateChain[i] = $util.newBuffer($util.base64.length(object.certificateChain[i])), 0);
                     else if (object.certificateChain[i].length >= 0)
                         message.certificateChain[i] = object.certificateChain[i];
+            }
+            if (object.certificateChainSki) {
+                if (!Array.isArray(object.certificateChainSki))
+                    throw TypeError(".waproto.BotSignatureVerificationUseCaseProof.certificateChainSki: array expected");
+                message.certificateChainSki = [];
+                for (var i = 0; i < object.certificateChainSki.length; ++i) {
+                    if (typeof object.certificateChainSki[i] !== "object")
+                        throw TypeError(".waproto.BotSignatureVerificationUseCaseProof.certificateChainSki: object expected");
+                    message.certificateChainSki[i] = $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.fromObject(object.certificateChainSki[i]);
+                }
             }
             return message;
         };
@@ -32402,8 +32450,10 @@ $root.waproto = (function() {
             if (!options)
                 options = {};
             var object = {};
-            if (options.arrays || options.defaults)
+            if (options.arrays || options.defaults) {
                 object.certificateChain = [];
+                object.certificateChainSki = [];
+            }
             if (message.version != null && message.hasOwnProperty("version")) {
                 object.version = message.version;
                 if (options.oneofs)
@@ -32423,6 +32473,11 @@ $root.waproto = (function() {
                 object.certificateChain = [];
                 for (var j = 0; j < message.certificateChain.length; ++j)
                     object.certificateChain[j] = options.bytes === String ? $util.base64.encode(message.certificateChain[j], 0, message.certificateChain[j].length) : options.bytes === Array ? Array.prototype.slice.call(message.certificateChain[j]) : message.certificateChain[j];
+            }
+            if (message.certificateChainSki && message.certificateChainSki.length) {
+                object.certificateChainSki = [];
+                for (var j = 0; j < message.certificateChainSki.length; ++j)
+                    object.certificateChainSki[j] = $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.toObject(message.certificateChainSki[j], options);
             }
             return object;
         };
@@ -32461,6 +32516,8 @@ $root.waproto = (function() {
          * @property {number} WA_BOT_MSG=1 WA_BOT_MSG value
          * @property {number} WA_TEE_BOT_MSG=2 WA_TEE_BOT_MSG value
          * @property {number} P2P_PILLS=3 P2P_PILLS value
+         * @property {number} WA_WAFFLE=4 WA_WAFFLE value
+         * @property {number} WA_FEATURE_PKI=5 WA_FEATURE_PKI value
          */
         BotSignatureVerificationUseCaseProof.BotSignatureUseCase = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -32468,7 +32525,300 @@ $root.waproto = (function() {
             values[valuesById[1] = "WA_BOT_MSG"] = 1;
             values[valuesById[2] = "WA_TEE_BOT_MSG"] = 2;
             values[valuesById[3] = "P2P_PILLS"] = 3;
+            values[valuesById[4] = "WA_WAFFLE"] = 4;
+            values[valuesById[5] = "WA_FEATURE_PKI"] = 5;
             return values;
+        })();
+
+        BotSignatureVerificationUseCaseProof.CertificateSKI = (function() {
+
+            /**
+             * Properties of a CertificateSKI.
+             * @memberof waproto.BotSignatureVerificationUseCaseProof
+             * @interface ICertificateSKI
+             * @property {waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null} [useCase] CertificateSKI useCase
+             * @property {Uint8Array|null} [ski] CertificateSKI ski
+             */
+
+            /**
+             * Constructs a new CertificateSKI.
+             * @memberof waproto.BotSignatureVerificationUseCaseProof
+             * @classdesc Represents a CertificateSKI.
+             * @implements ICertificateSKI
+             * @constructor
+             * @param {waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI=} [properties] Properties to set
+             */
+            function CertificateSKI(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * CertificateSKI useCase.
+             * @member {waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null|undefined} useCase
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @instance
+             */
+            CertificateSKI.prototype.useCase = null;
+
+            /**
+             * CertificateSKI ski.
+             * @member {Uint8Array|null|undefined} ski
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @instance
+             */
+            CertificateSKI.prototype.ski = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(CertificateSKI.prototype, "_useCase", {
+                get: $util.oneOfGetter($oneOfFields = ["useCase"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(CertificateSKI.prototype, "_ski", {
+                get: $util.oneOfGetter($oneOfFields = ["ski"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new CertificateSKI instance using the specified properties.
+             * @function create
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI=} [properties] Properties to set
+             * @returns {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI instance
+             */
+            CertificateSKI.create = function create(properties) {
+                return new CertificateSKI(properties);
+            };
+
+            /**
+             * Encodes the specified CertificateSKI message. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI} message CertificateSKI message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CertificateSKI.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.useCase != null && Object.hasOwnProperty.call(message, "useCase"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.useCase);
+                if (message.ski != null && Object.hasOwnProperty.call(message, "ski"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.ski);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified CertificateSKI message, length delimited. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {waproto.BotSignatureVerificationUseCaseProof.ICertificateSKI} message CertificateSKI message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CertificateSKI.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CertificateSKI.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.useCase = reader.int32();
+                            break;
+                        }
+                    case 2: {
+                            message.ski = reader.bytes();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CertificateSKI.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a CertificateSKI message.
+             * @function verify
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            CertificateSKI.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.useCase != null && message.hasOwnProperty("useCase")) {
+                    properties._useCase = 1;
+                    switch (message.useCase) {
+                    default:
+                        return "useCase: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                        break;
+                    }
+                }
+                if (message.ski != null && message.hasOwnProperty("ski")) {
+                    properties._ski = 1;
+                    if (!(message.ski && typeof message.ski.length === "number" || $util.isString(message.ski)))
+                        return "ski: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a CertificateSKI message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI} CertificateSKI
+             */
+            CertificateSKI.fromObject = function fromObject(object) {
+                if (object instanceof $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI)
+                    return object;
+                var message = new $root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI();
+                switch (object.useCase) {
+                default:
+                    if (typeof object.useCase === "number") {
+                        message.useCase = object.useCase;
+                        break;
+                    }
+                    break;
+                case "UNSPECIFIED":
+                case 0:
+                    message.useCase = 0;
+                    break;
+                case "WA_BOT_MSG":
+                case 1:
+                    message.useCase = 1;
+                    break;
+                case "WA_TEE_BOT_MSG":
+                case 2:
+                    message.useCase = 2;
+                    break;
+                case "P2P_PILLS":
+                case 3:
+                    message.useCase = 3;
+                    break;
+                case "WA_WAFFLE":
+                case 4:
+                    message.useCase = 4;
+                    break;
+                case "WA_FEATURE_PKI":
+                case 5:
+                    message.useCase = 5;
+                    break;
+                }
+                if (object.ski != null)
+                    if (typeof object.ski === "string")
+                        $util.base64.decode(object.ski, message.ski = $util.newBuffer($util.base64.length(object.ski)), 0);
+                    else if (object.ski.length >= 0)
+                        message.ski = object.ski;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a CertificateSKI message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI} message CertificateSKI
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            CertificateSKI.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.useCase != null && message.hasOwnProperty("useCase")) {
+                    object.useCase = options.enums === String ? $root.waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[message.useCase] === undefined ? message.useCase : $root.waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase[message.useCase] : message.useCase;
+                    if (options.oneofs)
+                        object._useCase = "useCase";
+                }
+                if (message.ski != null && message.hasOwnProperty("ski")) {
+                    object.ski = options.bytes === String ? $util.base64.encode(message.ski, 0, message.ski.length) : options.bytes === Array ? Array.prototype.slice.call(message.ski) : message.ski;
+                    if (options.oneofs)
+                        object._ski = "ski";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this CertificateSKI to JSON.
+             * @function toJSON
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            CertificateSKI.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for CertificateSKI
+             * @function getTypeUrl
+             * @memberof waproto.BotSignatureVerificationUseCaseProof.CertificateSKI
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            CertificateSKI.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/waproto.BotSignatureVerificationUseCaseProof.CertificateSKI";
+            };
+
+            return CertificateSKI;
         })();
 
         return BotSignatureVerificationUseCaseProof;
@@ -45795,6 +46145,7 @@ $root.waproto = (function() {
                 case 22:
                 case 23:
                 case 24:
+                case 25:
                     break;
                 }
             }
@@ -45929,6 +46280,10 @@ $root.waproto = (function() {
             case "SMARTGLASSES":
             case 24:
                 message.deviceType = 24;
+                break;
+            case "WAIL":
+            case 25:
+                message.deviceType = 25;
                 break;
             }
             if (object.ref != null)
@@ -60585,6 +60940,7 @@ $root.waproto = (function() {
                 case 22:
                 case 23:
                 case 24:
+                case 25:
                     break;
                 }
             }
@@ -60729,6 +61085,10 @@ $root.waproto = (function() {
             case "SMARTGLASSES":
             case 24:
                 message.platformType = 24;
+                break;
+            case "WAIL":
+            case 25:
+                message.platformType = 25;
                 break;
             }
             if (object.requireFullSync != null)
@@ -62200,6 +62560,7 @@ $root.waproto = (function() {
          * @property {number} VR=22 VR value
          * @property {number} CLOUD_API=23 CLOUD_API value
          * @property {number} SMARTGLASSES=24 SMARTGLASSES value
+         * @property {number} WAIL=25 WAIL value
          */
         DeviceProps.PlatformType = (function() {
             var valuesById = {}, values = Object.create(valuesById);
@@ -62228,6 +62589,7 @@ $root.waproto = (function() {
             values[valuesById[22] = "VR"] = 22;
             values[valuesById[23] = "CLOUD_API"] = 23;
             values[valuesById[24] = "SMARTGLASSES"] = 24;
+            values[valuesById[25] = "WAIL"] = 25;
             return values;
         })();
 
@@ -69931,6 +70293,7 @@ $root.waproto = (function() {
                     case 0:
                     case 1:
                     case 2:
+                    case 9:
                     case 3:
                     case 4:
                     case 5:
@@ -70009,6 +70372,10 @@ $root.waproto = (function() {
                 case "XXKEM_FS":
                 case 2:
                     message.pqMode = 2;
+                    break;
+                case "XXKEM_EPH":
+                case 9:
+                    message.pqMode = 9;
                     break;
                 case "WA_CLASSICAL":
                 case 3:
@@ -70145,6 +70512,7 @@ $root.waproto = (function() {
          * @property {number} HANDSHAKE_PQ_MODE_UNKNOWN=0 HANDSHAKE_PQ_MODE_UNKNOWN value
          * @property {number} XXKEM=1 XXKEM value
          * @property {number} XXKEM_FS=2 XXKEM_FS value
+         * @property {number} XXKEM_EPH=9 XXKEM_EPH value
          * @property {number} WA_CLASSICAL=3 WA_CLASSICAL value
          * @property {number} WA_PQ=4 WA_PQ value
          * @property {number} IKKEM=5 IKKEM value
@@ -70157,6 +70525,7 @@ $root.waproto = (function() {
             values[valuesById[0] = "HANDSHAKE_PQ_MODE_UNKNOWN"] = 0;
             values[valuesById[1] = "XXKEM"] = 1;
             values[valuesById[2] = "XXKEM_FS"] = 2;
+            values[valuesById[9] = "XXKEM_EPH"] = 9;
             values[valuesById[3] = "WA_CLASSICAL"] = 3;
             values[valuesById[4] = "WA_PQ"] = 4;
             values[valuesById[5] = "IKKEM"] = 5;
@@ -80591,6 +80960,9 @@ $root.waproto = (function() {
          * @property {waproto.Message.IFutureProofMessage|null} [newsletterAdminProfileStatusMessage] Message newsletterAdminProfileStatusMessage
          * @property {waproto.Message.IRootSecretDistributeMessage|null} [rootSecretDistributeMessage] Message rootSecretDistributeMessage
          * @property {waproto.Message.ISplitPaymentUpdateMessage|null} [splitPaymentUpdateMessage] Message splitPaymentUpdateMessage
+         * @property {waproto.Message.IMusicMessage|null} [musicMessage] Message musicMessage
+         * @property {waproto.Message.IStatusLinkPreviewMetadata|null} [statusLinkPreviewMetadata] Message statusLinkPreviewMetadata
+         * @property {waproto.Message.IFutureProofMessage|null} [botPlatformRegistrationSuccessMessage] Message botPlatformRegistrationSuccessMessage
          */
 
         /**
@@ -81472,6 +81844,30 @@ $root.waproto = (function() {
          */
         Message.prototype.splitPaymentUpdateMessage = null;
 
+        /**
+         * Message musicMessage.
+         * @member {waproto.Message.IMusicMessage|null|undefined} musicMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.musicMessage = null;
+
+        /**
+         * Message statusLinkPreviewMetadata.
+         * @member {waproto.Message.IStatusLinkPreviewMetadata|null|undefined} statusLinkPreviewMetadata
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.statusLinkPreviewMetadata = null;
+
+        /**
+         * Message botPlatformRegistrationSuccessMessage.
+         * @member {waproto.Message.IFutureProofMessage|null|undefined} botPlatformRegistrationSuccessMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.botPlatformRegistrationSuccessMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -82123,6 +82519,24 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(Message.prototype, "_musicMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["musicMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(Message.prototype, "_statusLinkPreviewMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["statusLinkPreviewMetadata"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(Message.prototype, "_botPlatformRegistrationSuccessMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["botPlatformRegistrationSuccessMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -82363,6 +82777,12 @@ $root.waproto = (function() {
                 $root.waproto.Message.RootSecretDistributeMessage.encode(message.rootSecretDistributeMessage, writer.uint32(/* id 127, wireType 2 =*/1018).fork()).ldelim();
             if (message.splitPaymentUpdateMessage != null && Object.hasOwnProperty.call(message, "splitPaymentUpdateMessage"))
                 $root.waproto.Message.SplitPaymentUpdateMessage.encode(message.splitPaymentUpdateMessage, writer.uint32(/* id 128, wireType 2 =*/1026).fork()).ldelim();
+            if (message.musicMessage != null && Object.hasOwnProperty.call(message, "musicMessage"))
+                $root.waproto.Message.MusicMessage.encode(message.musicMessage, writer.uint32(/* id 129, wireType 2 =*/1034).fork()).ldelim();
+            if (message.statusLinkPreviewMetadata != null && Object.hasOwnProperty.call(message, "statusLinkPreviewMetadata"))
+                $root.waproto.Message.StatusLinkPreviewMetadata.encode(message.statusLinkPreviewMetadata, writer.uint32(/* id 130, wireType 2 =*/1042).fork()).ldelim();
+            if (message.botPlatformRegistrationSuccessMessage != null && Object.hasOwnProperty.call(message, "botPlatformRegistrationSuccessMessage"))
+                $root.waproto.Message.FutureProofMessage.encode(message.botPlatformRegistrationSuccessMessage, writer.uint32(/* id 131, wireType 2 =*/1050).fork()).ldelim();
             return writer;
         };
 
@@ -82827,6 +83247,18 @@ $root.waproto = (function() {
                     }
                 case 128: {
                         message.splitPaymentUpdateMessage = $root.waproto.Message.SplitPaymentUpdateMessage.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 129: {
+                        message.musicMessage = $root.waproto.Message.MusicMessage.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 130: {
+                        message.statusLinkPreviewMetadata = $root.waproto.Message.StatusLinkPreviewMetadata.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 131: {
+                        message.botPlatformRegistrationSuccessMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -83726,6 +84158,30 @@ $root.waproto = (function() {
                         return "splitPaymentUpdateMessage." + error;
                 }
             }
+            if (message.musicMessage != null && message.hasOwnProperty("musicMessage")) {
+                properties._musicMessage = 1;
+                {
+                    var error = $root.waproto.Message.MusicMessage.verify(message.musicMessage);
+                    if (error)
+                        return "musicMessage." + error;
+                }
+            }
+            if (message.statusLinkPreviewMetadata != null && message.hasOwnProperty("statusLinkPreviewMetadata")) {
+                properties._statusLinkPreviewMetadata = 1;
+                {
+                    var error = $root.waproto.Message.StatusLinkPreviewMetadata.verify(message.statusLinkPreviewMetadata);
+                    if (error)
+                        return "statusLinkPreviewMetadata." + error;
+                }
+            }
+            if (message.botPlatformRegistrationSuccessMessage != null && message.hasOwnProperty("botPlatformRegistrationSuccessMessage")) {
+                properties._botPlatformRegistrationSuccessMessage = 1;
+                {
+                    var error = $root.waproto.Message.FutureProofMessage.verify(message.botPlatformRegistrationSuccessMessage);
+                    if (error)
+                        return "botPlatformRegistrationSuccessMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -84277,6 +84733,21 @@ $root.waproto = (function() {
                 if (typeof object.splitPaymentUpdateMessage !== "object")
                     throw TypeError(".waproto.Message.splitPaymentUpdateMessage: object expected");
                 message.splitPaymentUpdateMessage = $root.waproto.Message.SplitPaymentUpdateMessage.fromObject(object.splitPaymentUpdateMessage);
+            }
+            if (object.musicMessage != null) {
+                if (typeof object.musicMessage !== "object")
+                    throw TypeError(".waproto.Message.musicMessage: object expected");
+                message.musicMessage = $root.waproto.Message.MusicMessage.fromObject(object.musicMessage);
+            }
+            if (object.statusLinkPreviewMetadata != null) {
+                if (typeof object.statusLinkPreviewMetadata !== "object")
+                    throw TypeError(".waproto.Message.statusLinkPreviewMetadata: object expected");
+                message.statusLinkPreviewMetadata = $root.waproto.Message.StatusLinkPreviewMetadata.fromObject(object.statusLinkPreviewMetadata);
+            }
+            if (object.botPlatformRegistrationSuccessMessage != null) {
+                if (typeof object.botPlatformRegistrationSuccessMessage !== "object")
+                    throw TypeError(".waproto.Message.botPlatformRegistrationSuccessMessage: object expected");
+                message.botPlatformRegistrationSuccessMessage = $root.waproto.Message.FutureProofMessage.fromObject(object.botPlatformRegistrationSuccessMessage);
             }
             return message;
         };
@@ -84833,6 +85304,21 @@ $root.waproto = (function() {
                 object.splitPaymentUpdateMessage = $root.waproto.Message.SplitPaymentUpdateMessage.toObject(message.splitPaymentUpdateMessage, options);
                 if (options.oneofs)
                     object._splitPaymentUpdateMessage = "splitPaymentUpdateMessage";
+            }
+            if (message.musicMessage != null && message.hasOwnProperty("musicMessage")) {
+                object.musicMessage = $root.waproto.Message.MusicMessage.toObject(message.musicMessage, options);
+                if (options.oneofs)
+                    object._musicMessage = "musicMessage";
+            }
+            if (message.statusLinkPreviewMetadata != null && message.hasOwnProperty("statusLinkPreviewMetadata")) {
+                object.statusLinkPreviewMetadata = $root.waproto.Message.StatusLinkPreviewMetadata.toObject(message.statusLinkPreviewMetadata, options);
+                if (options.oneofs)
+                    object._statusLinkPreviewMetadata = "statusLinkPreviewMetadata";
+            }
+            if (message.botPlatformRegistrationSuccessMessage != null && message.hasOwnProperty("botPlatformRegistrationSuccessMessage")) {
+                object.botPlatformRegistrationSuccessMessage = $root.waproto.Message.FutureProofMessage.toObject(message.botPlatformRegistrationSuccessMessage, options);
+                if (options.oneofs)
+                    object._botPlatformRegistrationSuccessMessage = "botPlatformRegistrationSuccessMessage";
             }
             return object;
         };
@@ -118418,6 +118904,378 @@ $root.waproto = (function() {
             return MessageHistoryNotice;
         })();
 
+        Message.MusicMessage = (function() {
+
+            /**
+             * Properties of a MusicMessage.
+             * @memberof waproto.Message
+             * @interface IMusicMessage
+             * @property {waproto.IEmbeddedMusic|null} [embeddedMusic] MusicMessage embeddedMusic
+             * @property {string|null} [songUri] MusicMessage songUri
+             * @property {string|null} [artworkUri] MusicMessage artworkUri
+             * @property {number|null} [style] MusicMessage style
+             * @property {waproto.IContextInfo|null} [contextInfo] MusicMessage contextInfo
+             */
+
+            /**
+             * Constructs a new MusicMessage.
+             * @memberof waproto.Message
+             * @classdesc Represents a MusicMessage.
+             * @implements IMusicMessage
+             * @constructor
+             * @param {waproto.Message.IMusicMessage=} [properties] Properties to set
+             */
+            function MusicMessage(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * MusicMessage embeddedMusic.
+             * @member {waproto.IEmbeddedMusic|null|undefined} embeddedMusic
+             * @memberof waproto.Message.MusicMessage
+             * @instance
+             */
+            MusicMessage.prototype.embeddedMusic = null;
+
+            /**
+             * MusicMessage songUri.
+             * @member {string|null|undefined} songUri
+             * @memberof waproto.Message.MusicMessage
+             * @instance
+             */
+            MusicMessage.prototype.songUri = null;
+
+            /**
+             * MusicMessage artworkUri.
+             * @member {string|null|undefined} artworkUri
+             * @memberof waproto.Message.MusicMessage
+             * @instance
+             */
+            MusicMessage.prototype.artworkUri = null;
+
+            /**
+             * MusicMessage style.
+             * @member {number|null|undefined} style
+             * @memberof waproto.Message.MusicMessage
+             * @instance
+             */
+            MusicMessage.prototype.style = null;
+
+            /**
+             * MusicMessage contextInfo.
+             * @member {waproto.IContextInfo|null|undefined} contextInfo
+             * @memberof waproto.Message.MusicMessage
+             * @instance
+             */
+            MusicMessage.prototype.contextInfo = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicMessage.prototype, "_embeddedMusic", {
+                get: $util.oneOfGetter($oneOfFields = ["embeddedMusic"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicMessage.prototype, "_songUri", {
+                get: $util.oneOfGetter($oneOfFields = ["songUri"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicMessage.prototype, "_artworkUri", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkUri"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicMessage.prototype, "_style", {
+                get: $util.oneOfGetter($oneOfFields = ["style"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(MusicMessage.prototype, "_contextInfo", {
+                get: $util.oneOfGetter($oneOfFields = ["contextInfo"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new MusicMessage instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {waproto.Message.IMusicMessage=} [properties] Properties to set
+             * @returns {waproto.Message.MusicMessage} MusicMessage instance
+             */
+            MusicMessage.create = function create(properties) {
+                return new MusicMessage(properties);
+            };
+
+            /**
+             * Encodes the specified MusicMessage message. Does not implicitly {@link waproto.Message.MusicMessage.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {waproto.Message.IMusicMessage} message MusicMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MusicMessage.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.embeddedMusic != null && Object.hasOwnProperty.call(message, "embeddedMusic"))
+                    $root.waproto.EmbeddedMusic.encode(message.embeddedMusic, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.songUri != null && Object.hasOwnProperty.call(message, "songUri"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.songUri);
+                if (message.artworkUri != null && Object.hasOwnProperty.call(message, "artworkUri"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.artworkUri);
+                if (message.style != null && Object.hasOwnProperty.call(message, "style"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).int32(message.style);
+                if (message.contextInfo != null && Object.hasOwnProperty.call(message, "contextInfo"))
+                    $root.waproto.ContextInfo.encode(message.contextInfo, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MusicMessage message, length delimited. Does not implicitly {@link waproto.Message.MusicMessage.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {waproto.Message.IMusicMessage} message MusicMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MusicMessage.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a MusicMessage message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.MusicMessage} MusicMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MusicMessage.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.Message.MusicMessage();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.embeddedMusic = $root.waproto.EmbeddedMusic.decode(reader, reader.uint32());
+                            break;
+                        }
+                    case 2: {
+                            message.songUri = reader.string();
+                            break;
+                        }
+                    case 3: {
+                            message.artworkUri = reader.string();
+                            break;
+                        }
+                    case 4: {
+                            message.style = reader.int32();
+                            break;
+                        }
+                    case 5: {
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32());
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a MusicMessage message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.MusicMessage} MusicMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MusicMessage.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a MusicMessage message.
+             * @function verify
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MusicMessage.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.embeddedMusic != null && message.hasOwnProperty("embeddedMusic")) {
+                    properties._embeddedMusic = 1;
+                    {
+                        var error = $root.waproto.EmbeddedMusic.verify(message.embeddedMusic);
+                        if (error)
+                            return "embeddedMusic." + error;
+                    }
+                }
+                if (message.songUri != null && message.hasOwnProperty("songUri")) {
+                    properties._songUri = 1;
+                    if (!$util.isString(message.songUri))
+                        return "songUri: string expected";
+                }
+                if (message.artworkUri != null && message.hasOwnProperty("artworkUri")) {
+                    properties._artworkUri = 1;
+                    if (!$util.isString(message.artworkUri))
+                        return "artworkUri: string expected";
+                }
+                if (message.style != null && message.hasOwnProperty("style")) {
+                    properties._style = 1;
+                    if (!$util.isInteger(message.style))
+                        return "style: integer expected";
+                }
+                if (message.contextInfo != null && message.hasOwnProperty("contextInfo")) {
+                    properties._contextInfo = 1;
+                    {
+                        var error = $root.waproto.ContextInfo.verify(message.contextInfo);
+                        if (error)
+                            return "contextInfo." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a MusicMessage message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.MusicMessage} MusicMessage
+             */
+            MusicMessage.fromObject = function fromObject(object) {
+                if (object instanceof $root.waproto.Message.MusicMessage)
+                    return object;
+                var message = new $root.waproto.Message.MusicMessage();
+                if (object.embeddedMusic != null) {
+                    if (typeof object.embeddedMusic !== "object")
+                        throw TypeError(".waproto.Message.MusicMessage.embeddedMusic: object expected");
+                    message.embeddedMusic = $root.waproto.EmbeddedMusic.fromObject(object.embeddedMusic);
+                }
+                if (object.songUri != null)
+                    message.songUri = String(object.songUri);
+                if (object.artworkUri != null)
+                    message.artworkUri = String(object.artworkUri);
+                if (object.style != null)
+                    message.style = object.style | 0;
+                if (object.contextInfo != null) {
+                    if (typeof object.contextInfo !== "object")
+                        throw TypeError(".waproto.Message.MusicMessage.contextInfo: object expected");
+                    message.contextInfo = $root.waproto.ContextInfo.fromObject(object.contextInfo);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MusicMessage message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {waproto.Message.MusicMessage} message MusicMessage
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MusicMessage.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.embeddedMusic != null && message.hasOwnProperty("embeddedMusic")) {
+                    object.embeddedMusic = $root.waproto.EmbeddedMusic.toObject(message.embeddedMusic, options);
+                    if (options.oneofs)
+                        object._embeddedMusic = "embeddedMusic";
+                }
+                if (message.songUri != null && message.hasOwnProperty("songUri")) {
+                    object.songUri = message.songUri;
+                    if (options.oneofs)
+                        object._songUri = "songUri";
+                }
+                if (message.artworkUri != null && message.hasOwnProperty("artworkUri")) {
+                    object.artworkUri = message.artworkUri;
+                    if (options.oneofs)
+                        object._artworkUri = "artworkUri";
+                }
+                if (message.style != null && message.hasOwnProperty("style")) {
+                    object.style = message.style;
+                    if (options.oneofs)
+                        object._style = "style";
+                }
+                if (message.contextInfo != null && message.hasOwnProperty("contextInfo")) {
+                    object.contextInfo = $root.waproto.ContextInfo.toObject(message.contextInfo, options);
+                    if (options.oneofs)
+                        object._contextInfo = "contextInfo";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this MusicMessage to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.MusicMessage
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MusicMessage.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for MusicMessage
+             * @function getTypeUrl
+             * @memberof waproto.Message.MusicMessage
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            MusicMessage.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/waproto.Message.MusicMessage";
+            };
+
+            /**
+             * MusicMessageStyle enum.
+             * @name waproto.Message.MusicMessage.MusicMessageStyle
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             */
+            MusicMessage.MusicMessageStyle = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                return values;
+            })();
+
+            return MusicMessage;
+        })();
+
         Message.NewsletterAdminInviteMessage = (function() {
 
             /**
@@ -120460,6 +121318,7 @@ $root.waproto = (function() {
                     case 1:
                     case 2:
                     case 3:
+                    case 4:
                         break;
                     }
                 }
@@ -120525,6 +121384,10 @@ $root.waproto = (function() {
                 case "UPI":
                 case 3:
                     message.serviceType = 3;
+                    break;
+                case "PIX":
+                case 4:
+                    message.serviceType = 4;
                     break;
                 }
                 if (object.expiryTimestamp != null)
@@ -120651,6 +121514,7 @@ $root.waproto = (function() {
              * @property {number} FBPAY=1 FBPAY value
              * @property {number} NOVI=2 NOVI value
              * @property {number} UPI=3 UPI value
+             * @property {number} PIX=4 PIX value
              */
             PaymentInviteMessage.ServiceType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -120658,6 +121522,7 @@ $root.waproto = (function() {
                 values[valuesById[1] = "FBPAY"] = 1;
                 values[valuesById[2] = "NOVI"] = 2;
                 values[valuesById[3] = "UPI"] = 3;
+                values[valuesById[4] = "PIX"] = 4;
                 return values;
             })();
 
@@ -136706,7 +137571,6 @@ $root.waproto = (function() {
              * @property {waproto.IAIMetadataOperation|null} [aiMetadataOperation] ProtocolMessage aiMetadataOperation
              * @property {waproto.Message.IMarkAsVerifiedAction|null} [markAsVerifiedAction] ProtocolMessage markAsVerifiedAction
              * @property {waproto.ICoexStateSync|null} [coexStateSync] ProtocolMessage coexStateSync
-             * @property {waproto.Message.ISyncRequestMutationRetry|null} [syncRequestMutationRetry] ProtocolMessage syncRequestMutationRetry
              */
 
             /**
@@ -136964,14 +137828,6 @@ $root.waproto = (function() {
              */
             ProtocolMessage.prototype.coexStateSync = null;
 
-            /**
-             * ProtocolMessage syncRequestMutationRetry.
-             * @member {waproto.Message.ISyncRequestMutationRetry|null|undefined} syncRequestMutationRetry
-             * @memberof waproto.Message.ProtocolMessage
-             * @instance
-             */
-            ProtocolMessage.prototype.syncRequestMutationRetry = null;
-
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -137155,12 +138011,6 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
-            // Virtual OneOf for proto3 optional field
-            Object.defineProperty(ProtocolMessage.prototype, "_syncRequestMutationRetry", {
-                get: $util.oneOfGetter($oneOfFields = ["syncRequestMutationRetry"]),
-                set: $util.oneOfSetter($oneOfFields)
-            });
-
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @function create
@@ -137245,8 +138095,6 @@ $root.waproto = (function() {
                     $root.waproto.Message.MarkAsVerifiedAction.encode(message.markAsVerifiedAction, writer.uint32(/* id 32, wireType 2 =*/258).fork()).ldelim();
                 if (message.coexStateSync != null && Object.hasOwnProperty.call(message, "coexStateSync"))
                     $root.waproto.CoexStateSync.encode(message.coexStateSync, writer.uint32(/* id 33, wireType 2 =*/266).fork()).ldelim();
-                if (message.syncRequestMutationRetry != null && Object.hasOwnProperty.call(message, "syncRequestMutationRetry"))
-                    $root.waproto.Message.SyncRequestMutationRetry.encode(message.syncRequestMutationRetry, writer.uint32(/* id 34, wireType 2 =*/274).fork()).ldelim();
                 return writer;
             };
 
@@ -137401,10 +138249,6 @@ $root.waproto = (function() {
                             message.coexStateSync = $root.waproto.CoexStateSync.decode(reader, reader.uint32());
                             break;
                         }
-                    case 34: {
-                            message.syncRequestMutationRetry = $root.waproto.Message.SyncRequestMutationRetry.decode(reader, reader.uint32());
-                            break;
-                        }
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -137486,7 +138330,6 @@ $root.waproto = (function() {
                     case 35:
                     case 36:
                     case 37:
-                    case 38:
                         break;
                     }
                 }
@@ -137696,14 +138539,6 @@ $root.waproto = (function() {
                             return "coexStateSync." + error;
                     }
                 }
-                if (message.syncRequestMutationRetry != null && message.hasOwnProperty("syncRequestMutationRetry")) {
-                    properties._syncRequestMutationRetry = 1;
-                    {
-                        var error = $root.waproto.Message.SyncRequestMutationRetry.verify(message.syncRequestMutationRetry);
-                        if (error)
-                            return "syncRequestMutationRetry." + error;
-                    }
-                }
                 return null;
             };
 
@@ -137859,10 +138694,6 @@ $root.waproto = (function() {
                 case 37:
                     message.type = 37;
                     break;
-                case "SYNC_REQUEST_MUTATION_RETRY":
-                case 38:
-                    message.type = 38;
-                    break;
                 }
                 if (object.ephemeralExpiration != null)
                     message.ephemeralExpiration = object.ephemeralExpiration >>> 0;
@@ -138002,11 +138833,6 @@ $root.waproto = (function() {
                     if (typeof object.coexStateSync !== "object")
                         throw TypeError(".waproto.Message.ProtocolMessage.coexStateSync: object expected");
                     message.coexStateSync = $root.waproto.CoexStateSync.fromObject(object.coexStateSync);
-                }
-                if (object.syncRequestMutationRetry != null) {
-                    if (typeof object.syncRequestMutationRetry !== "object")
-                        throw TypeError(".waproto.Message.ProtocolMessage.syncRequestMutationRetry: object expected");
-                    message.syncRequestMutationRetry = $root.waproto.Message.SyncRequestMutationRetry.fromObject(object.syncRequestMutationRetry);
                 }
                 return message;
             };
@@ -138180,11 +139006,6 @@ $root.waproto = (function() {
                     if (options.oneofs)
                         object._coexStateSync = "coexStateSync";
                 }
-                if (message.syncRequestMutationRetry != null && message.hasOwnProperty("syncRequestMutationRetry")) {
-                    object.syncRequestMutationRetry = $root.waproto.Message.SyncRequestMutationRetry.toObject(message.syncRequestMutationRetry, options);
-                    if (options.oneofs)
-                        object._syncRequestMutationRetry = "syncRequestMutationRetry";
-                }
                 return object;
             };
 
@@ -138250,7 +139071,6 @@ $root.waproto = (function() {
              * @property {number} AI_METADATA_OPERATION=35 AI_METADATA_OPERATION value
              * @property {number} MARK_AS_VERIFIED_ACTION=36 MARK_AS_VERIFIED_ACTION value
              * @property {number} COEX_STATE_SYNC=37 COEX_STATE_SYNC value
-             * @property {number} SYNC_REQUEST_MUTATION_RETRY=38 SYNC_REQUEST_MUTATION_RETRY value
              */
             ProtocolMessage.Type = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -138286,7 +139106,6 @@ $root.waproto = (function() {
                 values[valuesById[35] = "AI_METADATA_OPERATION"] = 35;
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
-                values[valuesById[38] = "SYNC_REQUEST_MUTATION_RETRY"] = 38;
                 return values;
             })();
 
@@ -142767,6 +143586,269 @@ $root.waproto = (function() {
             return SplitPaymentUpdateMessage;
         })();
 
+        Message.StatusLinkPreviewMetadata = (function() {
+
+            /**
+             * Properties of a StatusLinkPreviewMetadata.
+             * @memberof waproto.Message
+             * @interface IStatusLinkPreviewMetadata
+             * @property {waproto.Message.StatusLinkPreviewMetadata.Style|null} [style] StatusLinkPreviewMetadata style
+             */
+
+            /**
+             * Constructs a new StatusLinkPreviewMetadata.
+             * @memberof waproto.Message
+             * @classdesc Represents a StatusLinkPreviewMetadata.
+             * @implements IStatusLinkPreviewMetadata
+             * @constructor
+             * @param {waproto.Message.IStatusLinkPreviewMetadata=} [properties] Properties to set
+             */
+            function StatusLinkPreviewMetadata(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * StatusLinkPreviewMetadata style.
+             * @member {waproto.Message.StatusLinkPreviewMetadata.Style|null|undefined} style
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @instance
+             */
+            StatusLinkPreviewMetadata.prototype.style = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(StatusLinkPreviewMetadata.prototype, "_style", {
+                get: $util.oneOfGetter($oneOfFields = ["style"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new StatusLinkPreviewMetadata instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {waproto.Message.IStatusLinkPreviewMetadata=} [properties] Properties to set
+             * @returns {waproto.Message.StatusLinkPreviewMetadata} StatusLinkPreviewMetadata instance
+             */
+            StatusLinkPreviewMetadata.create = function create(properties) {
+                return new StatusLinkPreviewMetadata(properties);
+            };
+
+            /**
+             * Encodes the specified StatusLinkPreviewMetadata message. Does not implicitly {@link waproto.Message.StatusLinkPreviewMetadata.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {waproto.Message.IStatusLinkPreviewMetadata} message StatusLinkPreviewMetadata message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusLinkPreviewMetadata.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.style != null && Object.hasOwnProperty.call(message, "style"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.style);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified StatusLinkPreviewMetadata message, length delimited. Does not implicitly {@link waproto.Message.StatusLinkPreviewMetadata.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {waproto.Message.IStatusLinkPreviewMetadata} message StatusLinkPreviewMetadata message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusLinkPreviewMetadata.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a StatusLinkPreviewMetadata message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.StatusLinkPreviewMetadata} StatusLinkPreviewMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusLinkPreviewMetadata.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.Message.StatusLinkPreviewMetadata();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.style = reader.int32();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a StatusLinkPreviewMetadata message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.StatusLinkPreviewMetadata} StatusLinkPreviewMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusLinkPreviewMetadata.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a StatusLinkPreviewMetadata message.
+             * @function verify
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            StatusLinkPreviewMetadata.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.style != null && message.hasOwnProperty("style")) {
+                    properties._style = 1;
+                    switch (message.style) {
+                    default:
+                        return "style: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        break;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a StatusLinkPreviewMetadata message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.StatusLinkPreviewMetadata} StatusLinkPreviewMetadata
+             */
+            StatusLinkPreviewMetadata.fromObject = function fromObject(object) {
+                if (object instanceof $root.waproto.Message.StatusLinkPreviewMetadata)
+                    return object;
+                var message = new $root.waproto.Message.StatusLinkPreviewMetadata();
+                switch (object.style) {
+                default:
+                    if (typeof object.style === "number") {
+                        message.style = object.style;
+                        break;
+                    }
+                    break;
+                case "AUTO":
+                case 0:
+                    message.style = 0;
+                    break;
+                case "COMPACT":
+                case 1:
+                    message.style = 1;
+                    break;
+                case "FULL":
+                case 2:
+                    message.style = 2;
+                    break;
+                case "IMMERSIVE":
+                case 3:
+                    message.style = 3;
+                    break;
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a StatusLinkPreviewMetadata message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {waproto.Message.StatusLinkPreviewMetadata} message StatusLinkPreviewMetadata
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            StatusLinkPreviewMetadata.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.style != null && message.hasOwnProperty("style")) {
+                    object.style = options.enums === String ? $root.waproto.Message.StatusLinkPreviewMetadata.Style[message.style] === undefined ? message.style : $root.waproto.Message.StatusLinkPreviewMetadata.Style[message.style] : message.style;
+                    if (options.oneofs)
+                        object._style = "style";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this StatusLinkPreviewMetadata to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            StatusLinkPreviewMetadata.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for StatusLinkPreviewMetadata
+             * @function getTypeUrl
+             * @memberof waproto.Message.StatusLinkPreviewMetadata
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            StatusLinkPreviewMetadata.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/waproto.Message.StatusLinkPreviewMetadata";
+            };
+
+            /**
+             * Style enum.
+             * @name waproto.Message.StatusLinkPreviewMetadata.Style
+             * @enum {number}
+             * @property {number} AUTO=0 AUTO value
+             * @property {number} COMPACT=1 COMPACT value
+             * @property {number} FULL=2 FULL value
+             * @property {number} IMMERSIVE=3 IMMERSIVE value
+             */
+            StatusLinkPreviewMetadata.Style = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "AUTO"] = 0;
+                values[valuesById[1] = "COMPACT"] = 1;
+                values[valuesById[2] = "FULL"] = 2;
+                values[valuesById[3] = "IMMERSIVE"] = 3;
+                return values;
+            })();
+
+            return StatusLinkPreviewMetadata;
+        })();
+
         Message.StatusNotificationMessage = (function() {
 
             /**
@@ -142975,6 +144057,7 @@ $root.waproto = (function() {
                     case 1:
                     case 2:
                     case 3:
+                    case 4:
                         break;
                     }
                 }
@@ -143025,6 +144108,10 @@ $root.waproto = (function() {
                 case "STATUS_QUESTION_ANSWER_RESHARE":
                 case 3:
                     message.type = 3;
+                    break;
+                case "STATUS_GROUP_STATUS_REPLY":
+                case 4:
+                    message.type = 4;
                     break;
                 }
                 return message;
@@ -143095,6 +144182,7 @@ $root.waproto = (function() {
              * @property {number} STATUS_ADD_YOURS=1 STATUS_ADD_YOURS value
              * @property {number} STATUS_RESHARE=2 STATUS_RESHARE value
              * @property {number} STATUS_QUESTION_ANSWER_RESHARE=3 STATUS_QUESTION_ANSWER_RESHARE value
+             * @property {number} STATUS_GROUP_STATUS_REPLY=4 STATUS_GROUP_STATUS_REPLY value
              */
             StatusNotificationMessage.StatusNotificationType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -143102,6 +144190,7 @@ $root.waproto = (function() {
                 values[valuesById[1] = "STATUS_ADD_YOURS"] = 1;
                 values[valuesById[2] = "STATUS_RESHARE"] = 2;
                 values[valuesById[3] = "STATUS_QUESTION_ANSWER_RESHARE"] = 3;
+                values[valuesById[4] = "STATUS_GROUP_STATUS_REPLY"] = 4;
                 return values;
             })();
 
@@ -146724,526 +147813,6 @@ $root.waproto = (function() {
             };
 
             return StickerSyncRMRMessage;
-        })();
-
-        Message.SyncRequestMutationRetry = (function() {
-
-            /**
-             * Properties of a SyncRequestMutationRetry.
-             * @memberof waproto.Message
-             * @interface ISyncRequestMutationRetry
-             * @property {Array.<waproto.Message.SyncRequestMutationRetry.ICollection>|null} [collections] SyncRequestMutationRetry collections
-             * @property {number|null} [count] SyncRequestMutationRetry count
-             */
-
-            /**
-             * Constructs a new SyncRequestMutationRetry.
-             * @memberof waproto.Message
-             * @classdesc Represents a SyncRequestMutationRetry.
-             * @implements ISyncRequestMutationRetry
-             * @constructor
-             * @param {waproto.Message.ISyncRequestMutationRetry=} [properties] Properties to set
-             */
-            function SyncRequestMutationRetry(properties) {
-                this.collections = [];
-                if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * SyncRequestMutationRetry collections.
-             * @member {Array.<waproto.Message.SyncRequestMutationRetry.ICollection>} collections
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @instance
-             */
-            SyncRequestMutationRetry.prototype.collections = $util.emptyArray;
-
-            /**
-             * SyncRequestMutationRetry count.
-             * @member {number|null|undefined} count
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @instance
-             */
-            SyncRequestMutationRetry.prototype.count = null;
-
-            // OneOf field names bound to virtual getters and setters
-            var $oneOfFields;
-
-            // Virtual OneOf for proto3 optional field
-            Object.defineProperty(SyncRequestMutationRetry.prototype, "_count", {
-                get: $util.oneOfGetter($oneOfFields = ["count"]),
-                set: $util.oneOfSetter($oneOfFields)
-            });
-
-            /**
-             * Creates a new SyncRequestMutationRetry instance using the specified properties.
-             * @function create
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {waproto.Message.ISyncRequestMutationRetry=} [properties] Properties to set
-             * @returns {waproto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry instance
-             */
-            SyncRequestMutationRetry.create = function create(properties) {
-                return new SyncRequestMutationRetry(properties);
-            };
-
-            /**
-             * Encodes the specified SyncRequestMutationRetry message. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.verify|verify} messages.
-             * @function encode
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {waproto.Message.ISyncRequestMutationRetry} message SyncRequestMutationRetry message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            SyncRequestMutationRetry.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.collections != null && message.collections.length)
-                    for (var i = 0; i < message.collections.length; ++i)
-                        $root.waproto.Message.SyncRequestMutationRetry.Collection.encode(message.collections[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-                if (message.count != null && Object.hasOwnProperty.call(message, "count"))
-                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.count);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified SyncRequestMutationRetry message, length delimited. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {waproto.Message.ISyncRequestMutationRetry} message SyncRequestMutationRetry message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            SyncRequestMutationRetry.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer.
-             * @function decode
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {waproto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            SyncRequestMutationRetry.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.Message.SyncRequestMutationRetry();
-                while (reader.pos < end) {
-                    var tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1: {
-                            if (!(message.collections && message.collections.length))
-                                message.collections = [];
-                            message.collections.push($root.waproto.Message.SyncRequestMutationRetry.Collection.decode(reader, reader.uint32()));
-                            break;
-                        }
-                    case 2: {
-                            message.count = reader.uint32();
-                            break;
-                        }
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes a SyncRequestMutationRetry message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {waproto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            SyncRequestMutationRetry.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies a SyncRequestMutationRetry message.
-             * @function verify
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            SyncRequestMutationRetry.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                var properties = {};
-                if (message.collections != null && message.hasOwnProperty("collections")) {
-                    if (!Array.isArray(message.collections))
-                        return "collections: array expected";
-                    for (var i = 0; i < message.collections.length; ++i) {
-                        var error = $root.waproto.Message.SyncRequestMutationRetry.Collection.verify(message.collections[i]);
-                        if (error)
-                            return "collections." + error;
-                    }
-                }
-                if (message.count != null && message.hasOwnProperty("count")) {
-                    properties._count = 1;
-                    if (!$util.isInteger(message.count))
-                        return "count: integer expected";
-                }
-                return null;
-            };
-
-            /**
-             * Creates a SyncRequestMutationRetry message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {waproto.Message.SyncRequestMutationRetry} SyncRequestMutationRetry
-             */
-            SyncRequestMutationRetry.fromObject = function fromObject(object) {
-                if (object instanceof $root.waproto.Message.SyncRequestMutationRetry)
-                    return object;
-                var message = new $root.waproto.Message.SyncRequestMutationRetry();
-                if (object.collections) {
-                    if (!Array.isArray(object.collections))
-                        throw TypeError(".waproto.Message.SyncRequestMutationRetry.collections: array expected");
-                    message.collections = [];
-                    for (var i = 0; i < object.collections.length; ++i) {
-                        if (typeof object.collections[i] !== "object")
-                            throw TypeError(".waproto.Message.SyncRequestMutationRetry.collections: object expected");
-                        message.collections[i] = $root.waproto.Message.SyncRequestMutationRetry.Collection.fromObject(object.collections[i]);
-                    }
-                }
-                if (object.count != null)
-                    message.count = object.count >>> 0;
-                return message;
-            };
-
-            /**
-             * Creates a plain object from a SyncRequestMutationRetry message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {waproto.Message.SyncRequestMutationRetry} message SyncRequestMutationRetry
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            SyncRequestMutationRetry.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                var object = {};
-                if (options.arrays || options.defaults)
-                    object.collections = [];
-                if (message.collections && message.collections.length) {
-                    object.collections = [];
-                    for (var j = 0; j < message.collections.length; ++j)
-                        object.collections[j] = $root.waproto.Message.SyncRequestMutationRetry.Collection.toObject(message.collections[j], options);
-                }
-                if (message.count != null && message.hasOwnProperty("count")) {
-                    object.count = message.count;
-                    if (options.oneofs)
-                        object._count = "count";
-                }
-                return object;
-            };
-
-            /**
-             * Converts this SyncRequestMutationRetry to JSON.
-             * @function toJSON
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            SyncRequestMutationRetry.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            /**
-             * Gets the default type url for SyncRequestMutationRetry
-             * @function getTypeUrl
-             * @memberof waproto.Message.SyncRequestMutationRetry
-             * @static
-             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-             * @returns {string} The default type url
-             */
-            SyncRequestMutationRetry.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                if (typeUrlPrefix === undefined) {
-                    typeUrlPrefix = "type.googleapis.com";
-                }
-                return typeUrlPrefix + "/waproto.Message.SyncRequestMutationRetry";
-            };
-
-            SyncRequestMutationRetry.Collection = (function() {
-
-                /**
-                 * Properties of a Collection.
-                 * @memberof waproto.Message.SyncRequestMutationRetry
-                 * @interface ICollection
-                 * @property {string|null} [name] Collection name
-                 * @property {number|Long|null} [storedSyncdVersion] Collection storedSyncdVersion
-                 */
-
-                /**
-                 * Constructs a new Collection.
-                 * @memberof waproto.Message.SyncRequestMutationRetry
-                 * @classdesc Represents a Collection.
-                 * @implements ICollection
-                 * @constructor
-                 * @param {waproto.Message.SyncRequestMutationRetry.ICollection=} [properties] Properties to set
-                 */
-                function Collection(properties) {
-                    if (properties)
-                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                            if (properties[keys[i]] != null)
-                                this[keys[i]] = properties[keys[i]];
-                }
-
-                /**
-                 * Collection name.
-                 * @member {string|null|undefined} name
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @instance
-                 */
-                Collection.prototype.name = null;
-
-                /**
-                 * Collection storedSyncdVersion.
-                 * @member {number|Long|null|undefined} storedSyncdVersion
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @instance
-                 */
-                Collection.prototype.storedSyncdVersion = null;
-
-                // OneOf field names bound to virtual getters and setters
-                var $oneOfFields;
-
-                // Virtual OneOf for proto3 optional field
-                Object.defineProperty(Collection.prototype, "_name", {
-                    get: $util.oneOfGetter($oneOfFields = ["name"]),
-                    set: $util.oneOfSetter($oneOfFields)
-                });
-
-                // Virtual OneOf for proto3 optional field
-                Object.defineProperty(Collection.prototype, "_storedSyncdVersion", {
-                    get: $util.oneOfGetter($oneOfFields = ["storedSyncdVersion"]),
-                    set: $util.oneOfSetter($oneOfFields)
-                });
-
-                /**
-                 * Creates a new Collection instance using the specified properties.
-                 * @function create
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {waproto.Message.SyncRequestMutationRetry.ICollection=} [properties] Properties to set
-                 * @returns {waproto.Message.SyncRequestMutationRetry.Collection} Collection instance
-                 */
-                Collection.create = function create(properties) {
-                    return new Collection(properties);
-                };
-
-                /**
-                 * Encodes the specified Collection message. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
-                 * @function encode
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {waproto.Message.SyncRequestMutationRetry.ICollection} message Collection message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Collection.encode = function encode(message, writer) {
-                    if (!writer)
-                        writer = $Writer.create();
-                    if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                    if (message.storedSyncdVersion != null && Object.hasOwnProperty.call(message, "storedSyncdVersion"))
-                        writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.storedSyncdVersion);
-                    return writer;
-                };
-
-                /**
-                 * Encodes the specified Collection message, length delimited. Does not implicitly {@link waproto.Message.SyncRequestMutationRetry.Collection.verify|verify} messages.
-                 * @function encodeDelimited
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {waproto.Message.SyncRequestMutationRetry.ICollection} message Collection message or plain object to encode
-                 * @param {$protobuf.Writer} [writer] Writer to encode to
-                 * @returns {$protobuf.Writer} Writer
-                 */
-                Collection.encodeDelimited = function encodeDelimited(message, writer) {
-                    return this.encode(message, writer).ldelim();
-                };
-
-                /**
-                 * Decodes a Collection message from the specified reader or buffer.
-                 * @function decode
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @param {number} [length] Message length if known beforehand
-                 * @returns {waproto.Message.SyncRequestMutationRetry.Collection} Collection
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Collection.decode = function decode(reader, length) {
-                    if (!(reader instanceof $Reader))
-                        reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.Message.SyncRequestMutationRetry.Collection();
-                    while (reader.pos < end) {
-                        var tag = reader.uint32();
-                        switch (tag >>> 3) {
-                        case 1: {
-                                message.name = reader.string();
-                                break;
-                            }
-                        case 2: {
-                                message.storedSyncdVersion = reader.uint64();
-                                break;
-                            }
-                        default:
-                            reader.skipType(tag & 7);
-                            break;
-                        }
-                    }
-                    return message;
-                };
-
-                /**
-                 * Decodes a Collection message from the specified reader or buffer, length delimited.
-                 * @function decodeDelimited
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {waproto.Message.SyncRequestMutationRetry.Collection} Collection
-                 * @throws {Error} If the payload is not a reader or valid buffer
-                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
-                 */
-                Collection.decodeDelimited = function decodeDelimited(reader) {
-                    if (!(reader instanceof $Reader))
-                        reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
-                };
-
-                /**
-                 * Verifies a Collection message.
-                 * @function verify
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {Object.<string,*>} message Plain object to verify
-                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
-                 */
-                Collection.verify = function verify(message) {
-                    if (typeof message !== "object" || message === null)
-                        return "object expected";
-                    var properties = {};
-                    if (message.name != null && message.hasOwnProperty("name")) {
-                        properties._name = 1;
-                        if (!$util.isString(message.name))
-                            return "name: string expected";
-                    }
-                    if (message.storedSyncdVersion != null && message.hasOwnProperty("storedSyncdVersion")) {
-                        properties._storedSyncdVersion = 1;
-                        if (!$util.isInteger(message.storedSyncdVersion) && !(message.storedSyncdVersion && $util.isInteger(message.storedSyncdVersion.low) && $util.isInteger(message.storedSyncdVersion.high)))
-                            return "storedSyncdVersion: integer|Long expected";
-                    }
-                    return null;
-                };
-
-                /**
-                 * Creates a Collection message from a plain object. Also converts values to their respective internal types.
-                 * @function fromObject
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {Object.<string,*>} object Plain object
-                 * @returns {waproto.Message.SyncRequestMutationRetry.Collection} Collection
-                 */
-                Collection.fromObject = function fromObject(object) {
-                    if (object instanceof $root.waproto.Message.SyncRequestMutationRetry.Collection)
-                        return object;
-                    var message = new $root.waproto.Message.SyncRequestMutationRetry.Collection();
-                    if (object.name != null)
-                        message.name = String(object.name);
-                    if (object.storedSyncdVersion != null)
-                        if ($util.Long)
-                            (message.storedSyncdVersion = $util.Long.fromValue(object.storedSyncdVersion)).unsigned = true;
-                        else if (typeof object.storedSyncdVersion === "string")
-                            message.storedSyncdVersion = parseInt(object.storedSyncdVersion, 10);
-                        else if (typeof object.storedSyncdVersion === "number")
-                            message.storedSyncdVersion = object.storedSyncdVersion;
-                        else if (typeof object.storedSyncdVersion === "object")
-                            message.storedSyncdVersion = new $util.LongBits(object.storedSyncdVersion.low >>> 0, object.storedSyncdVersion.high >>> 0).toNumber(true);
-                    return message;
-                };
-
-                /**
-                 * Creates a plain object from a Collection message. Also converts values to other types if specified.
-                 * @function toObject
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {waproto.Message.SyncRequestMutationRetry.Collection} message Collection
-                 * @param {$protobuf.IConversionOptions} [options] Conversion options
-                 * @returns {Object.<string,*>} Plain object
-                 */
-                Collection.toObject = function toObject(message, options) {
-                    if (!options)
-                        options = {};
-                    var object = {};
-                    if (message.name != null && message.hasOwnProperty("name")) {
-                        object.name = message.name;
-                        if (options.oneofs)
-                            object._name = "name";
-                    }
-                    if (message.storedSyncdVersion != null && message.hasOwnProperty("storedSyncdVersion")) {
-                        if (typeof message.storedSyncdVersion === "number")
-                            object.storedSyncdVersion = options.longs === String ? String(message.storedSyncdVersion) : message.storedSyncdVersion;
-                        else
-                            object.storedSyncdVersion = options.longs === String ? $util.Long.prototype.toString.call(message.storedSyncdVersion) : options.longs === Number ? new $util.LongBits(message.storedSyncdVersion.low >>> 0, message.storedSyncdVersion.high >>> 0).toNumber(true) : message.storedSyncdVersion;
-                        if (options.oneofs)
-                            object._storedSyncdVersion = "storedSyncdVersion";
-                    }
-                    return object;
-                };
-
-                /**
-                 * Converts this Collection to JSON.
-                 * @function toJSON
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @instance
-                 * @returns {Object.<string,*>} JSON object
-                 */
-                Collection.prototype.toJSON = function toJSON() {
-                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-                };
-
-                /**
-                 * Gets the default type url for Collection
-                 * @function getTypeUrl
-                 * @memberof waproto.Message.SyncRequestMutationRetry.Collection
-                 * @static
-                 * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
-                 * @returns {string} The default type url
-                 */
-                Collection.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
-                    if (typeUrlPrefix === undefined) {
-                        typeUrlPrefix = "type.googleapis.com";
-                    }
-                    return typeUrlPrefix + "/waproto.Message.SyncRequestMutationRetry.Collection";
-                };
-
-                return Collection;
-            })();
-
-            return SyncRequestMutationRetry;
         })();
 
         Message.TemplateButtonReplyMessage = (function() {
