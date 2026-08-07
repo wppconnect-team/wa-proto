@@ -18794,6 +18794,9 @@ export namespace waproto {
 
         /** DeviceCapabilities aiFbidMigration */
         aiFbidMigration?: (waproto.DeviceCapabilities.IAiFbidMigration|null);
+
+        /** DeviceCapabilities bizAiSettingsSync */
+        bizAiSettingsSync?: (waproto.DeviceCapabilities.IBizAiSettingsSync|null);
     }
 
     /** Represents a DeviceCapabilities. */
@@ -18825,6 +18828,9 @@ export namespace waproto {
 
         /** DeviceCapabilities aiFbidMigration. */
         public aiFbidMigration?: (waproto.DeviceCapabilities.IAiFbidMigration|null);
+
+        /** DeviceCapabilities bizAiSettingsSync. */
+        public bizAiSettingsSync?: (waproto.DeviceCapabilities.IBizAiSettingsSync|null);
 
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
@@ -19108,6 +19114,103 @@ export namespace waproto {
                 INFRA = 1,
                 FULL = 2
             }
+        }
+
+        /** Properties of a BizAiSettingsSync. */
+        interface IBizAiSettingsSync {
+
+            /** BizAiSettingsSync handoffRemovalTimingEnabled */
+            handoffRemovalTimingEnabled?: (boolean|null);
+        }
+
+        /** Represents a BizAiSettingsSync. */
+        class BizAiSettingsSync implements IBizAiSettingsSync {
+
+            /**
+             * Constructs a new BizAiSettingsSync.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.IBizAiSettingsSync);
+
+            /** BizAiSettingsSync handoffRemovalTimingEnabled. */
+            public handoffRemovalTimingEnabled?: (boolean|null);
+
+            /**
+             * Creates a new BizAiSettingsSync instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BizAiSettingsSync instance
+             */
+            public static create(properties?: waproto.DeviceCapabilities.IBizAiSettingsSync): waproto.DeviceCapabilities.BizAiSettingsSync;
+
+            /**
+             * Encodes the specified BizAiSettingsSync message. Does not implicitly {@link waproto.DeviceCapabilities.BizAiSettingsSync.verify|verify} messages.
+             * @param message BizAiSettingsSync message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: waproto.DeviceCapabilities.IBizAiSettingsSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BizAiSettingsSync message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.BizAiSettingsSync.verify|verify} messages.
+             * @param message BizAiSettingsSync message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: waproto.DeviceCapabilities.IBizAiSettingsSync, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BizAiSettingsSync message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns BizAiSettingsSync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.BizAiSettingsSync;
+
+            /**
+             * Decodes a BizAiSettingsSync message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns BizAiSettingsSync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.BizAiSettingsSync;
+
+            /**
+             * Verifies a BizAiSettingsSync message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BizAiSettingsSync message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BizAiSettingsSync
+             */
+            public static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.BizAiSettingsSync;
+
+            /**
+             * Creates a plain object from a BizAiSettingsSync message. Also converts values to other types if specified.
+             * @param message BizAiSettingsSync
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: waproto.DeviceCapabilities.BizAiSettingsSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BizAiSettingsSync to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the default type url for BizAiSettingsSync
+             * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns The default type url
+             */
+            public static getTypeUrl(typeUrlPrefix?: string): string;
         }
 
         /** Properties of a BusinessBroadcast. */
@@ -38393,7 +38496,8 @@ export namespace waproto {
 
             /** MusicMessageStyle enum. */
             enum MusicMessageStyle {
-                UNKNOWN = 0
+                UNKNOWN = 0,
+                VINYL = 1
             }
         }
 
@@ -62782,7 +62886,8 @@ export namespace waproto {
                 LOCKED = 13,
                 INVITES = 14,
                 THIRD_PARTY = 15,
-                LEAD = 16
+                LEAD = 16,
+                MENTIONS_AND_REPLIES = 17
             }
         }
 

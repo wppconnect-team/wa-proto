@@ -58086,6 +58086,7 @@ $root.waproto = (function() {
          * @property {waproto.DeviceCapabilities.MemberNameTagPrimarySupport|null} [memberNameTagPrimarySupport] DeviceCapabilities memberNameTagPrimarySupport
          * @property {waproto.DeviceCapabilities.IAiThread|null} [aiThread] DeviceCapabilities aiThread
          * @property {waproto.DeviceCapabilities.IAiFbidMigration|null} [aiFbidMigration] DeviceCapabilities aiFbidMigration
+         * @property {waproto.DeviceCapabilities.IBizAiSettingsSync|null} [bizAiSettingsSync] DeviceCapabilities bizAiSettingsSync
          */
 
         /**
@@ -58159,6 +58160,14 @@ $root.waproto = (function() {
          */
         DeviceCapabilities.prototype.aiFbidMigration = null;
 
+        /**
+         * DeviceCapabilities bizAiSettingsSync.
+         * @member {waproto.DeviceCapabilities.IBizAiSettingsSync|null|undefined} bizAiSettingsSync
+         * @memberof waproto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.bizAiSettingsSync = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -58204,6 +58213,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(DeviceCapabilities.prototype, "_bizAiSettingsSync", {
+            get: $util.oneOfGetter($oneOfFields = ["bizAiSettingsSync"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -58242,6 +58257,8 @@ $root.waproto = (function() {
                 $root.waproto.DeviceCapabilities.AiThread.encode(message.aiThread, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
             if (message.aiFbidMigration != null && Object.hasOwnProperty.call(message, "aiFbidMigration"))
                 $root.waproto.DeviceCapabilities.AiFbidMigration.encode(message.aiFbidMigration, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
+            if (message.bizAiSettingsSync != null && Object.hasOwnProperty.call(message, "bizAiSettingsSync"))
+                $root.waproto.DeviceCapabilities.BizAiSettingsSync.encode(message.bizAiSettingsSync, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
             return writer;
         };
 
@@ -58302,6 +58319,10 @@ $root.waproto = (function() {
                     }
                 case 7: {
                         message.aiFbidMigration = $root.waproto.DeviceCapabilities.AiFbidMigration.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 8: {
+                        message.bizAiSettingsSync = $root.waproto.DeviceCapabilities.BizAiSettingsSync.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -58402,6 +58423,14 @@ $root.waproto = (function() {
                         return "aiFbidMigration." + error;
                 }
             }
+            if (message.bizAiSettingsSync != null && message.hasOwnProperty("bizAiSettingsSync")) {
+                properties._bizAiSettingsSync = 1;
+                {
+                    var error = $root.waproto.DeviceCapabilities.BizAiSettingsSync.verify(message.bizAiSettingsSync);
+                    if (error)
+                        return "bizAiSettingsSync." + error;
+                }
+            }
             return null;
         };
 
@@ -58482,6 +58511,11 @@ $root.waproto = (function() {
                     throw TypeError(".waproto.DeviceCapabilities.aiFbidMigration: object expected");
                 message.aiFbidMigration = $root.waproto.DeviceCapabilities.AiFbidMigration.fromObject(object.aiFbidMigration);
             }
+            if (object.bizAiSettingsSync != null) {
+                if (typeof object.bizAiSettingsSync !== "object")
+                    throw TypeError(".waproto.DeviceCapabilities.bizAiSettingsSync: object expected");
+                message.bizAiSettingsSync = $root.waproto.DeviceCapabilities.BizAiSettingsSync.fromObject(object.bizAiSettingsSync);
+            }
             return message;
         };
 
@@ -58532,6 +58566,11 @@ $root.waproto = (function() {
                 object.aiFbidMigration = $root.waproto.DeviceCapabilities.AiFbidMigration.toObject(message.aiFbidMigration, options);
                 if (options.oneofs)
                     object._aiFbidMigration = "aiFbidMigration";
+            }
+            if (message.bizAiSettingsSync != null && message.hasOwnProperty("bizAiSettingsSync")) {
+                object.bizAiSettingsSync = $root.waproto.DeviceCapabilities.BizAiSettingsSync.toObject(message.bizAiSettingsSync, options);
+                if (options.oneofs)
+                    object._bizAiSettingsSync = "bizAiSettingsSync";
             }
             return object;
         };
@@ -59042,6 +59081,222 @@ $root.waproto = (function() {
             })();
 
             return AiThread;
+        })();
+
+        DeviceCapabilities.BizAiSettingsSync = (function() {
+
+            /**
+             * Properties of a BizAiSettingsSync.
+             * @memberof waproto.DeviceCapabilities
+             * @interface IBizAiSettingsSync
+             * @property {boolean|null} [handoffRemovalTimingEnabled] BizAiSettingsSync handoffRemovalTimingEnabled
+             */
+
+            /**
+             * Constructs a new BizAiSettingsSync.
+             * @memberof waproto.DeviceCapabilities
+             * @classdesc Represents a BizAiSettingsSync.
+             * @implements IBizAiSettingsSync
+             * @constructor
+             * @param {waproto.DeviceCapabilities.IBizAiSettingsSync=} [properties] Properties to set
+             */
+            function BizAiSettingsSync(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * BizAiSettingsSync handoffRemovalTimingEnabled.
+             * @member {boolean|null|undefined} handoffRemovalTimingEnabled
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @instance
+             */
+            BizAiSettingsSync.prototype.handoffRemovalTimingEnabled = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(BizAiSettingsSync.prototype, "_handoffRemovalTimingEnabled", {
+                get: $util.oneOfGetter($oneOfFields = ["handoffRemovalTimingEnabled"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new BizAiSettingsSync instance using the specified properties.
+             * @function create
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {waproto.DeviceCapabilities.IBizAiSettingsSync=} [properties] Properties to set
+             * @returns {waproto.DeviceCapabilities.BizAiSettingsSync} BizAiSettingsSync instance
+             */
+            BizAiSettingsSync.create = function create(properties) {
+                return new BizAiSettingsSync(properties);
+            };
+
+            /**
+             * Encodes the specified BizAiSettingsSync message. Does not implicitly {@link waproto.DeviceCapabilities.BizAiSettingsSync.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {waproto.DeviceCapabilities.IBizAiSettingsSync} message BizAiSettingsSync message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BizAiSettingsSync.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.handoffRemovalTimingEnabled != null && Object.hasOwnProperty.call(message, "handoffRemovalTimingEnabled"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.handoffRemovalTimingEnabled);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified BizAiSettingsSync message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.BizAiSettingsSync.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {waproto.DeviceCapabilities.IBizAiSettingsSync} message BizAiSettingsSync message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BizAiSettingsSync.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a BizAiSettingsSync message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.BizAiSettingsSync} BizAiSettingsSync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BizAiSettingsSync.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.DeviceCapabilities.BizAiSettingsSync();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.handoffRemovalTimingEnabled = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a BizAiSettingsSync message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.BizAiSettingsSync} BizAiSettingsSync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BizAiSettingsSync.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a BizAiSettingsSync message.
+             * @function verify
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            BizAiSettingsSync.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.handoffRemovalTimingEnabled != null && message.hasOwnProperty("handoffRemovalTimingEnabled")) {
+                    properties._handoffRemovalTimingEnabled = 1;
+                    if (typeof message.handoffRemovalTimingEnabled !== "boolean")
+                        return "handoffRemovalTimingEnabled: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a BizAiSettingsSync message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.DeviceCapabilities.BizAiSettingsSync} BizAiSettingsSync
+             */
+            BizAiSettingsSync.fromObject = function fromObject(object) {
+                if (object instanceof $root.waproto.DeviceCapabilities.BizAiSettingsSync)
+                    return object;
+                var message = new $root.waproto.DeviceCapabilities.BizAiSettingsSync();
+                if (object.handoffRemovalTimingEnabled != null)
+                    message.handoffRemovalTimingEnabled = Boolean(object.handoffRemovalTimingEnabled);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a BizAiSettingsSync message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {waproto.DeviceCapabilities.BizAiSettingsSync} message BizAiSettingsSync
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            BizAiSettingsSync.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.handoffRemovalTimingEnabled != null && message.hasOwnProperty("handoffRemovalTimingEnabled")) {
+                    object.handoffRemovalTimingEnabled = message.handoffRemovalTimingEnabled;
+                    if (options.oneofs)
+                        object._handoffRemovalTimingEnabled = "handoffRemovalTimingEnabled";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this BizAiSettingsSync to JSON.
+             * @function toJSON
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            BizAiSettingsSync.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for BizAiSettingsSync
+             * @function getTypeUrl
+             * @memberof waproto.DeviceCapabilities.BizAiSettingsSync
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            BizAiSettingsSync.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/waproto.DeviceCapabilities.BizAiSettingsSync";
+            };
+
+            return BizAiSettingsSync;
         })();
 
         DeviceCapabilities.BusinessBroadcast = (function() {
@@ -119266,10 +119521,12 @@ $root.waproto = (function() {
              * @name waproto.Message.MusicMessage.MusicMessageStyle
              * @enum {number}
              * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} VINYL=1 VINYL value
              */
             MusicMessage.MusicMessageStyle = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "VINYL"] = 1;
                 return values;
             })();
 
@@ -193061,6 +193318,7 @@ $root.waproto = (function() {
                     case 14:
                     case 15:
                     case 16:
+                    case 17:
                         break;
                     }
                 }
@@ -193175,6 +193433,10 @@ $root.waproto = (function() {
                 case "LEAD":
                 case 16:
                     message.type = 16;
+                    break;
+                case "MENTIONS_AND_REPLIES":
+                case 17:
+                    message.type = 17;
                     break;
                 }
                 if (object.isImmutable != null)
@@ -193302,6 +193564,7 @@ $root.waproto = (function() {
              * @property {number} INVITES=14 INVITES value
              * @property {number} THIRD_PARTY=15 THIRD_PARTY value
              * @property {number} LEAD=16 LEAD value
+             * @property {number} MENTIONS_AND_REPLIES=17 MENTIONS_AND_REPLIES value
              */
             LabelEditAction.ListType = (function() {
                 var valuesById = {}, values = Object.create(valuesById);
@@ -193322,6 +193585,7 @@ $root.waproto = (function() {
                 values[valuesById[14] = "INVITES"] = 14;
                 values[valuesById[15] = "THIRD_PARTY"] = 15;
                 values[valuesById[16] = "LEAD"] = 16;
+                values[valuesById[17] = "MENTIONS_AND_REPLIES"] = 17;
                 return values;
             })();
 
