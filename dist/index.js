@@ -158476,6 +158476,7 @@ $root.waproto = (function() {
      * @property {number} BUBBLE_LOCK_MESSAGE_ACTION=90 BUBBLE_LOCK_MESSAGE_ACTION value
      * @property {number} LABEL_SUBLIST_ACTION=91 LABEL_SUBLIST_ACTION value
      * @property {number} DEVICE_CAPABILITIES_V2=92 DEVICE_CAPABILITIES_V2 value
+     * @property {number} CTWA_MESSAGE_RECEIVED_ACTION=93 CTWA_MESSAGE_RECEIVED_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -158568,6 +158569,7 @@ $root.waproto = (function() {
         values[valuesById[90] = "BUBBLE_LOCK_MESSAGE_ACTION"] = 90;
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
+        values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -180215,6 +180217,7 @@ $root.waproto = (function() {
          * @property {waproto.SyncActionValue.IBubbleLockMessageAction|null} [bubbleLockMessageAction] SyncActionValue bubbleLockMessageAction
          * @property {waproto.SyncActionValue.ILabelSublistAction|null} [labelSublistAction] SyncActionValue labelSublistAction
          * @property {waproto.IDeviceCapabilities|null} [deviceCapabilitiesV2] SyncActionValue deviceCapabilitiesV2
+         * @property {waproto.SyncActionValue.ICtwaMessageReceivedAction|null} [ctwaMessageReceivedAction] SyncActionValue ctwaMessageReceivedAction
          */
 
         /**
@@ -180896,6 +180899,14 @@ $root.waproto = (function() {
          */
         SyncActionValue.prototype.deviceCapabilitiesV2 = null;
 
+        /**
+         * SyncActionValue ctwaMessageReceivedAction.
+         * @member {waproto.SyncActionValue.ICtwaMessageReceivedAction|null|undefined} ctwaMessageReceivedAction
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.ctwaMessageReceivedAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -181397,6 +181408,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        Object.defineProperty(SyncActionValue.prototype, "_ctwaMessageReceivedAction", {
+            get: $util.oneOfGetter($oneOfFields = ["ctwaMessageReceivedAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -181587,6 +181604,8 @@ $root.waproto = (function() {
                 $root.waproto.SyncActionValue.LabelSublistAction.encode(message.labelSublistAction, writer.uint32(/* id 91, wireType 2 =*/730).fork()).ldelim();
             if (message.deviceCapabilitiesV2 != null && Object.hasOwnProperty.call(message, "deviceCapabilitiesV2"))
                 $root.waproto.DeviceCapabilities.encode(message.deviceCapabilitiesV2, writer.uint32(/* id 92, wireType 2 =*/738).fork()).ldelim();
+            if (message.ctwaMessageReceivedAction != null && Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction"))
+                $root.waproto.SyncActionValue.CtwaMessageReceivedAction.encode(message.ctwaMessageReceivedAction, writer.uint32(/* id 93, wireType 2 =*/746).fork()).ldelim();
             return writer;
         };
 
@@ -181951,6 +181970,10 @@ $root.waproto = (function() {
                     }
                 case 92: {
                         message.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.decode(reader, reader.uint32());
+                        break;
+                    }
+                case 93: {
+                        message.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.decode(reader, reader.uint32());
                         break;
                     }
                 default:
@@ -182650,6 +182673,14 @@ $root.waproto = (function() {
                         return "deviceCapabilitiesV2." + error;
                 }
             }
+            if (message.ctwaMessageReceivedAction != null && message.hasOwnProperty("ctwaMessageReceivedAction")) {
+                properties._ctwaMessageReceivedAction = 1;
+                {
+                    var error = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.verify(message.ctwaMessageReceivedAction);
+                    if (error)
+                        return "ctwaMessageReceivedAction." + error;
+                }
+            }
             return null;
         };
 
@@ -183084,6 +183115,11 @@ $root.waproto = (function() {
                     throw TypeError(".waproto.SyncActionValue.deviceCapabilitiesV2: object expected");
                 message.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.fromObject(object.deviceCapabilitiesV2);
             }
+            if (object.ctwaMessageReceivedAction != null) {
+                if (typeof object.ctwaMessageReceivedAction !== "object")
+                    throw TypeError(".waproto.SyncActionValue.ctwaMessageReceivedAction: object expected");
+                message.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.fromObject(object.ctwaMessageReceivedAction);
+            }
             return message;
         };
 
@@ -183517,6 +183553,11 @@ $root.waproto = (function() {
                 object.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.toObject(message.deviceCapabilitiesV2, options);
                 if (options.oneofs)
                     object._deviceCapabilitiesV2 = "deviceCapabilitiesV2";
+            }
+            if (message.ctwaMessageReceivedAction != null && message.hasOwnProperty("ctwaMessageReceivedAction")) {
+                object.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.toObject(message.ctwaMessageReceivedAction, options);
+                if (options.oneofs)
+                    object._ctwaMessageReceivedAction = "ctwaMessageReceivedAction";
             }
             return object;
         };
@@ -189074,6 +189115,222 @@ $root.waproto = (function() {
             };
 
             return ContactAction;
+        })();
+
+        SyncActionValue.CtwaMessageReceivedAction = (function() {
+
+            /**
+             * Properties of a CtwaMessageReceivedAction.
+             * @memberof waproto.SyncActionValue
+             * @interface ICtwaMessageReceivedAction
+             * @property {boolean|null} [isCtwaMessageReceived] CtwaMessageReceivedAction isCtwaMessageReceived
+             */
+
+            /**
+             * Constructs a new CtwaMessageReceivedAction.
+             * @memberof waproto.SyncActionValue
+             * @classdesc Represents a CtwaMessageReceivedAction.
+             * @implements ICtwaMessageReceivedAction
+             * @constructor
+             * @param {waproto.SyncActionValue.ICtwaMessageReceivedAction=} [properties] Properties to set
+             */
+            function CtwaMessageReceivedAction(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * CtwaMessageReceivedAction isCtwaMessageReceived.
+             * @member {boolean|null|undefined} isCtwaMessageReceived
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @instance
+             */
+            CtwaMessageReceivedAction.prototype.isCtwaMessageReceived = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            Object.defineProperty(CtwaMessageReceivedAction.prototype, "_isCtwaMessageReceived", {
+                get: $util.oneOfGetter($oneOfFields = ["isCtwaMessageReceived"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new CtwaMessageReceivedAction instance using the specified properties.
+             * @function create
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {waproto.SyncActionValue.ICtwaMessageReceivedAction=} [properties] Properties to set
+             * @returns {waproto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction instance
+             */
+            CtwaMessageReceivedAction.create = function create(properties) {
+                return new CtwaMessageReceivedAction(properties);
+            };
+
+            /**
+             * Encodes the specified CtwaMessageReceivedAction message. Does not implicitly {@link waproto.SyncActionValue.CtwaMessageReceivedAction.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {waproto.SyncActionValue.ICtwaMessageReceivedAction} message CtwaMessageReceivedAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CtwaMessageReceivedAction.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.isCtwaMessageReceived != null && Object.hasOwnProperty.call(message, "isCtwaMessageReceived"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isCtwaMessageReceived);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified CtwaMessageReceivedAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.CtwaMessageReceivedAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {waproto.SyncActionValue.ICtwaMessageReceivedAction} message CtwaMessageReceivedAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CtwaMessageReceivedAction.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a CtwaMessageReceivedAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CtwaMessageReceivedAction.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.waproto.SyncActionValue.CtwaMessageReceivedAction();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1: {
+                            message.isCtwaMessageReceived = reader.bool();
+                            break;
+                        }
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a CtwaMessageReceivedAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CtwaMessageReceivedAction.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a CtwaMessageReceivedAction message.
+             * @function verify
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            CtwaMessageReceivedAction.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                var properties = {};
+                if (message.isCtwaMessageReceived != null && message.hasOwnProperty("isCtwaMessageReceived")) {
+                    properties._isCtwaMessageReceived = 1;
+                    if (typeof message.isCtwaMessageReceived !== "boolean")
+                        return "isCtwaMessageReceived: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a CtwaMessageReceivedAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.SyncActionValue.CtwaMessageReceivedAction} CtwaMessageReceivedAction
+             */
+            CtwaMessageReceivedAction.fromObject = function fromObject(object) {
+                if (object instanceof $root.waproto.SyncActionValue.CtwaMessageReceivedAction)
+                    return object;
+                var message = new $root.waproto.SyncActionValue.CtwaMessageReceivedAction();
+                if (object.isCtwaMessageReceived != null)
+                    message.isCtwaMessageReceived = Boolean(object.isCtwaMessageReceived);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a CtwaMessageReceivedAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {waproto.SyncActionValue.CtwaMessageReceivedAction} message CtwaMessageReceivedAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            CtwaMessageReceivedAction.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (message.isCtwaMessageReceived != null && message.hasOwnProperty("isCtwaMessageReceived")) {
+                    object.isCtwaMessageReceived = message.isCtwaMessageReceived;
+                    if (options.oneofs)
+                        object._isCtwaMessageReceived = "isCtwaMessageReceived";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this CtwaMessageReceivedAction to JSON.
+             * @function toJSON
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            CtwaMessageReceivedAction.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the default type url for CtwaMessageReceivedAction
+             * @function getTypeUrl
+             * @memberof waproto.SyncActionValue.CtwaMessageReceivedAction
+             * @static
+             * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+             * @returns {string} The default type url
+             */
+            CtwaMessageReceivedAction.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+                if (typeUrlPrefix === undefined) {
+                    typeUrlPrefix = "type.googleapis.com";
+                }
+                return typeUrlPrefix + "/waproto.SyncActionValue.CtwaMessageReceivedAction";
+            };
+
+            return CtwaMessageReceivedAction;
         })();
 
         SyncActionValue.CtwaPerCustomerDataSharingAction = (function() {
