@@ -18,10 +18,10 @@
  * Based on https://github.com/WhiskeySockets/Baileys/tree/master/WAProto
  *
  * Bundle discovery via puppeteer-real-browser (adapted from https://github.com/vinikjkkj/wa-diff): launches a real Chrome,
- * navigates to web.whatsapp.com, runs the in-page fetch.js to enumerate every loaded JS URL
+ * navigates to web.whatsapp.com, runs the in-page fetch.js to enumerate loaded JS URLs
  * (including lazy-loaded modules like WAWebProtobufsSyncdSnapshotRecovery_pb that the old
- * sw.js-only path missed), downloads them all, then feeds the concatenated source
- * through the same acorn-based `internalSpec` extractor as before.
+ * sw.js-only path missed), downloads them all, then parses every source independently
+ * with the same acorn-based `internalSpec` extractor as before.
  */
 const acorn = require('acorn');
 const walk = require('acorn-walk');
@@ -33,6 +33,9 @@ const WHATSAPP_URL = 'https://web.whatsapp.com/';
 const FETCH_SCRIPT_PATH = path.resolve(__dirname, 'fetch.js');
 const URL_WAIT_TIMEOUT_MS = 5 * 60 * 1000;
 const URL_POLL_INTERVAL_MS = 2000;
+const URL_STABLE_POLL_COUNT = 2;
+const BUNDLE_DOWNLOAD_ATTEMPTS = 3;
+const BUNDLE_RETRY_DELAY_MS = 500;
 
 let whatsAppVersion = 'latest';
 
@@ -74,9 +77,15 @@ const extractAllExpressions = (node) => {
   return expressions;
 };
 
-async function discoverBundleUrls(page, fetchScript) {
+async function discoverBundleUrls(page, fetchScript, options = {}) {
+  const timeoutMs = options.timeoutMs ?? URL_WAIT_TIMEOUT_MS;
+  const pollIntervalMs = options.pollIntervalMs ?? URL_POLL_INTERVAL_MS;
+  const stablePollCount = options.stablePollCount ?? URL_STABLE_POLL_COUNT;
+  const wait = options.sleep ?? sleep;
   const startedAt = Date.now();
-  while (Date.now() - startedAt < URL_WAIT_TIMEOUT_MS) {
+  let latestUrls = [];
+  let stablePolls = 0;
+  while (Date.now() - startedAt < timeoutMs) {
     const urls = await page.evaluate((scriptCode) => {
       try {
         const result = (0, eval)(scriptCode);
@@ -86,27 +95,109 @@ async function discoverBundleUrls(page, fetchScript) {
         return [];
       }
     }, fetchScript);
-    if (urls.length > 0) return [...new Set(urls)];
-    const elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
-    console.log(`[${elapsedSeconds}s] waiting for WhatsApp to load/login...`);
-    await sleep(URL_POLL_INTERVAL_MS);
-  }
-  return [];
-}
-
-async function downloadBundle(page, url) {
-  return page.evaluate(async (u) => {
-    try {
-      const response = await fetch(u);
-      if (!response.ok) return null;
-      return await response.text();
-    } catch {
-      return null;
+    const uniqueUrls = [...new Set(urls)].sort();
+    if (uniqueUrls.length > 0) {
+      const unchanged =
+        uniqueUrls.length === latestUrls.length &&
+        uniqueUrls.every((url, index) => url === latestUrls[index]);
+      stablePolls = unchanged ? stablePolls + 1 : 0;
+      latestUrls = uniqueUrls;
+      if (stablePolls >= stablePollCount) {
+        return latestUrls;
+      }
+    } else {
+      stablePolls = 0;
     }
-  }, url);
+    const elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+    console.log(
+      `[${elapsedSeconds}s] waiting for bundle discovery to stabilize ` +
+        `(${latestUrls.length} URLs, ${stablePolls}/${stablePollCount})...`
+    );
+    await wait(pollIntervalMs);
+  }
+  throw new Error(
+    `Bundle URL discovery did not stabilize within ${timeoutMs}ms ` +
+      `(last count: ${latestUrls.length}).`
+  );
 }
 
-async function downloadAllBundles(page, urls) {
+function getNumericEnumValue(node) {
+  if (node?.type === 'Literal' && typeof node.value === 'number') {
+    return node.value;
+  }
+  if (
+    node?.type === 'UnaryExpression' &&
+    (node.operator === '-' || node.operator === '+') &&
+    node.argument?.type === 'Literal' &&
+    typeof node.argument.value === 'number'
+  ) {
+    return node.operator === '-' ? -node.argument.value : node.argument.value;
+  }
+  return undefined;
+}
+
+function parseBundleSources(bundleSources) {
+  return bundleSources.flatMap((source, index) => {
+    const patchedSource = source.replaceAll(
+      'LimitSharing$Trigger',
+      'LimitSharing$TriggerType'
+    );
+    const options = { ecmaVersion: 'latest', allowHashBang: true };
+    try {
+      return acorn.parse(patchedSource, {
+        ...options,
+        sourceType: 'script',
+      }).body;
+    } catch (scriptError) {
+      try {
+        return acorn.parse(patchedSource, {
+          ...options,
+          sourceType: 'module',
+        }).body;
+      } catch (moduleError) {
+        throw new SyntaxError(
+          `Unable to parse bundle ${index + 1}: ${moduleError.message}; ` +
+            `script parse also failed: ${scriptError.message}`
+        );
+      }
+    }
+  });
+}
+
+async function downloadBundle(page, url, options = {}) {
+  const attempts = options.attempts ?? BUNDLE_DOWNLOAD_ATTEMPTS;
+  const wait = options.sleep ?? sleep;
+  const retryDelayMs = options.retryDelayMs ?? BUNDLE_RETRY_DELAY_MS;
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const source = await page.evaluate(async (u) => {
+        try {
+          const response = await fetch(u);
+          if (!response.ok) return null;
+          return await response.text();
+        } catch {
+          return null;
+        }
+      }, url);
+      if (typeof source === 'string' && source.length > 0) {
+        return source;
+      }
+      lastError = new Error('empty or unsuccessful response');
+    } catch (error) {
+      lastError = error;
+    }
+    if (attempt < attempts) {
+      await wait(retryDelayMs * attempt);
+    }
+  }
+  throw new Error(
+    `Failed to download bundle ${url} after ${attempts} attempts: ` +
+      `${lastError?.message || 'unknown error'}`
+  );
+}
+
+async function downloadAllBundles(page, urls, options = {}) {
   const results = new Array(urls.length);
   const concurrency = 16;
   let cursor = 0;
@@ -116,7 +207,7 @@ async function downloadAllBundles(page, urls) {
       const i = cursor;
       cursor += 1;
       if (i >= urls.length) return;
-      results[i] = await downloadBundle(page, urls[i]);
+      results[i] = await downloadBundle(page, urls[i], options);
       downloaded += 1;
       if (downloaded % 50 === 0 || downloaded === urls.length) {
         console.log(`Downloaded ${downloaded}/${urls.length} bundles`);
@@ -124,14 +215,14 @@ async function downloadAllBundles(page, urls) {
     }
   });
   await Promise.all(workers);
-  return results.filter((text) => typeof text === 'string' && text.length > 0);
+  return results;
 }
 
 async function findAppModules() {
   const fetchScript = await fs.readFile(FETCH_SCRIPT_PATH, 'utf8');
 
   const { browser } = await puppeteer.connect({ headless: true });
-  let combinedSource = '';
+  let bundles = [];
   try {
     const page = await browser.newPage();
     page.setDefaultNavigationTimeout(120000);
@@ -141,15 +232,19 @@ async function findAppModules() {
     try {
       const serviceworker = await page.evaluate(async () => {
         const r = await fetch('/sw.js');
+        if (!r.ok) {
+          throw new Error(`HTTP ${r.status}`);
+        }
         return r.text();
       });
       const match = serviceworker.match(/client_revision\\?":([\d.]+),/);
-      if (match) {
-        whatsAppVersion = `2.3000.${match[1]}`;
-        console.log(`Current version: ${whatsAppVersion}`);
+      if (!match) {
+        throw new Error('client_revision was not found in sw.js');
       }
+      whatsAppVersion = `2.3000.${match[1]}`;
+      console.log(`Current version: ${whatsAppVersion}`);
     } catch (error) {
-      console.warn('Could not detect WhatsApp version from sw.js:', error.message);
+      throw new Error(`Could not detect WhatsApp version: ${error.message}`);
     }
 
     const urls = await discoverBundleUrls(page, fetchScript);
@@ -158,20 +253,14 @@ async function findAppModules() {
     }
     console.log(`Found ${urls.length} bundle URLs, downloading...`);
 
-    const bundles = await downloadAllBundles(page, urls);
-    combinedSource = bundles.join('\n');
+    bundles = await downloadAllBundles(page, urls);
   } finally {
     await browser.close();
   }
 
   // This one list of types is so long that it's split into two JavaScript declarations.
   // The module finder below can't handle it, so just patch it manually here.
-  const patchedSource = combinedSource.replaceAll(
-    'LimitSharing$Trigger',
-    'LimitSharing$TriggerType'
-  );
-
-  const modules = acorn.parse(patchedSource, { ecmaVersion: 'latest' }).body;
+  const modules = parseBundleSources(bundles);
 
   const result = modules.filter((m) => {
     const expressions = extractAllExpressions(m);
@@ -184,7 +273,7 @@ async function findAppModules() {
   return result;
 }
 
-(async () => {
+async function main() {
   const unspecName = (name) =>
     name.endsWith('Spec') ? name.slice(0, -4) : name;
   const unnestName = (name) => name.split('$').slice(-1)[0];
@@ -291,13 +380,13 @@ async function findAppModules() {
           fatherNode?.type === 'VariableDeclarator' &&
           fatherNode?.init?.type === 'ObjectExpression' &&
           fatherNode.init.properties.length &&
-          fatherNode.init.properties.every((p) =>
-            p.value?.type === 'Literal' && typeof p.value.value === 'number'
+          fatherNode.init.properties.every(
+            (p) => getNumericEnumValue(p.value) !== undefined
           )
         ) {
           const values = fatherNode.init.properties.map((p) => ({
             name: p.key.name || p.key.value,
-            id: p.value.value,
+            id: getNumericEnumValue(p.value),
           }));
           enumAliases[fatherNode.id.name] = values;
         }
@@ -606,8 +695,31 @@ async function findAppModules() {
   const sortedStr = decodedProto.map((d) => decodedProtoMap[d]).join('\n');
 
   const decodedProtoStr = `syntax = "proto3";\npackage waproto;\n\n/// WhatsApp Version: ${whatsAppVersion}\n\n${sortedStr}`;
+  const unknownEntities = [...decodedProtoStr.matchAll(/\/\/ Unknown entity (.+)/g)].map(
+    (match) => match[1]
+  );
+  if (unknownEntities.length > 0) {
+    throw new Error(
+      `Unable to extract ${unknownEntities.length} emitted protobuf entities: ` +
+        unknownEntities.sort().join(', ')
+    );
+  }
   const destinationPath = 'WAProto.proto';
   await fs.writeFile(destinationPath, decodedProtoStr);
 
   console.log(`Extracted protobuf schema to "${destinationPath}"`);
-})();
+}
+
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = {
+  discoverBundleUrls,
+  downloadAllBundles,
+  getNumericEnumValue,
+  parseBundleSources,
+};

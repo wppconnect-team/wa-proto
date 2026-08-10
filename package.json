@@ -14,6 +14,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "test": "node --test test/*.test.js",
     "build": "npm run fetch && npm run compile",
     "compile": "npm run compile:js && npm run compile:ts",
     "compile:js": "pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",

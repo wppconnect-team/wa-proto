@@ -1,6 +1,8 @@
 ;(() => {
     const urls = new Set()
-    const allowedHost = 'static.whatsapp.net'
+    // web.whatsapp.com exposes non-fetchable composite resource identifiers.
+    // The independently downloadable JavaScript bundles are served by this CDN.
+    const allowedHosts = new Set(['static.whatsapp.net'])
     const jsFileRegex = /\.m?js(?:[?#]|$)/i
     const jsInTextRegex =
         /(?:https?:)?\/\/[^\s"'`<>]+?\.m?js(?:[?#][^\s"'`<>]*)?|(?:\/|\.\/|\.\.\/)[^\s"'`<>]+?\.m?js(?:[?#][^\s"'`<>]*)?/gi
@@ -22,7 +24,7 @@
             }
 
             const parsed = new URL(normalizedUrl, location.href)
-            if (parsed.hostname.toLowerCase() !== allowedHost) return
+            if (!allowedHosts.has(parsed.hostname.toLowerCase())) return
 
             urls.add(parsed.href)
         } catch {}
