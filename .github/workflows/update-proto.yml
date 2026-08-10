@@ -3,91 +3,87 @@ name: Update WAProto
 on:
   push:
     branches:
-      - '*'
+      - main
   pull_request:
     branches:
-      - '*'
+      - main
   schedule:
-    - cron: "0,30 * * * *"
+    - cron: '0,30 * * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
-  update-proto:
+  validate:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
-
-      - name: Setup GIT
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
+          cache: npm
 
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-            echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-      - name: Setup npm cache
-        uses: actions/cache@v4
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate current WhatsApp proto
+        run: npm run build
+
+  update:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v7
         with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }}
 
-      - name: Install Dependencies
-        run: npm ci || npm install
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Check update WAProto.proto
-        id: wa_proto_info
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build latest WhatsApp proto
         run: npm run build
         env:
           WA_COMMIT: true
-      
 
-      - name: Check for Changes
-        id: check_changes
+      - name: Check for changes
+        id: changes
+        shell: bash
         run: |
-          CHANGED_LINES=$(git diff --stat | tail -n1 | awk '{print $1}')
-          if [ -z "$CHANGED_LINES" ] || [ "$CHANGED_LINES" -le 1 ]; then
-            echo "::set-output name=result::no_changes"
+          if git diff --quiet; then
+            echo "detected=false" >> "${GITHUB_OUTPUT}"
           else
-            echo "::set-output name=result::changes_detected"
+            echo "detected=true" >> "${GITHUB_OUTPUT}"
           fi
-          
-      - name: Checkout main
-        if: steps.check_changes.outputs.result == 'changes_detected'
-        run: git checkout main
-  
-      - name: Commit Changes
-        if: steps.check_changes.outputs.result == 'changes_detected'
-        run: |
-          git add .
-          VERSION=$(cat WAProto.proto | grep "WhatsApp Version" | cut -d":" -f2 | awk '{$1=$1;print}')
-          git commit -m "Update WAProto.proto to $VERSION"
-          
-      - name: Push Changes
-        if: steps.check_changes.outputs.result == 'changes_detected'
-        run: git push
 
-      - name: Remove untracked files
-        if: steps.check_changes.outputs.result == 'changes_detected'
-        run: git clean -fd
-
-      - name: Release
-        if: steps.check_changes.outputs.result == 'changes_detected'
+      - name: Commit and release update
+        if: steps.changes.outputs.detected == 'true'
+        shell: bash
         run: |
-          VERSION=$(cat WAProto.proto | grep "WhatsApp Version" | cut -d":" -f2 | awk '{$1=$1;print}')
-          npx release-it --increment $VERSION
+          version=$(grep "WhatsApp Version" WAProto.proto | cut -d":" -f2 | xargs)
+          git add WAProto.proto dist/index.js dist/index.d.ts
+          git commit -m "Update WAProto.proto to ${version}"
+          git push origin HEAD:main
+          npx release-it --increment "${version}" --ci
