@@ -16,13 +16,32 @@
 
 /**
  * Based on https://github.com/WhiskeySockets/Baileys/tree/master/WAProto
+ *
+ * Bundle discovery via puppeteer-real-browser (adapted from https://github.com/vinikjkkj/wa-diff): launches a real Chrome,
+ * navigates to web.whatsapp.com, runs the in-page fetch.js to enumerate loaded JS URLs
+ * (including lazy-loaded modules like WAWebProtobufsSyncdSnapshotRecovery_pb that the old
+ * sw.js-only path missed), downloads them all, then parses every source independently
+ * with the same acorn-based `internalSpec` extractor as before.
  */
-const request = require('request-promise-native');
 const acorn = require('acorn');
 const walk = require('acorn-walk');
 const fs = require('fs/promises');
+const path = require('node:path');
+const puppeteer = require('puppeteer-real-browser');
+
+const WHATSAPP_URL = 'https://web.whatsapp.com/';
+const FETCH_SCRIPT_PATH = path.resolve(__dirname, 'fetch.js');
+const URL_WAIT_TIMEOUT_MS = 5 * 60 * 1000;
+const URL_POLL_INTERVAL_MS = 2000;
+const URL_STABLE_POLL_COUNT = 2;
+const BUNDLE_DOWNLOAD_ATTEMPTS = 3;
+const BUNDLE_RETRY_DELAY_MS = 500;
 
 let whatsAppVersion = 'latest';
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 const addPrefix = (lines, prefix) => lines.map((line) => prefix + line);
 
@@ -48,7 +67,7 @@ const extractAllExpressions = (node) => {
       }
     }
   }
-  
+
   if (node.expression?.expressions?.length) {
     for (const exp of node.expression?.expressions) {
       expressions.push(...extractAllExpressions(exp));
@@ -58,54 +77,195 @@ const extractAllExpressions = (node) => {
   return expressions;
 };
 
+async function discoverBundleUrls(page, fetchScript, options = {}) {
+  const timeoutMs = options.timeoutMs ?? URL_WAIT_TIMEOUT_MS;
+  const pollIntervalMs = options.pollIntervalMs ?? URL_POLL_INTERVAL_MS;
+  const stablePollCount = options.stablePollCount ?? URL_STABLE_POLL_COUNT;
+  const wait = options.sleep ?? sleep;
+  const startedAt = Date.now();
+  let latestUrls = [];
+  let stablePolls = 0;
+  while (Date.now() - startedAt < timeoutMs) {
+    const urls = await page.evaluate((scriptCode) => {
+      try {
+        const result = (0, eval)(scriptCode);
+        if (!Array.isArray(result)) return [];
+        return result.filter((url) => typeof url === 'string');
+      } catch {
+        return [];
+      }
+    }, fetchScript);
+    const uniqueUrls = [...new Set(urls)].sort();
+    if (uniqueUrls.length > 0) {
+      const unchanged =
+        uniqueUrls.length === latestUrls.length &&
+        uniqueUrls.every((url, index) => url === latestUrls[index]);
+      stablePolls = unchanged ? stablePolls + 1 : 0;
+      latestUrls = uniqueUrls;
+      if (stablePolls >= stablePollCount) {
+        return latestUrls;
+      }
+    } else {
+      stablePolls = 0;
+    }
+    const elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+    console.log(
+      `[${elapsedSeconds}s] waiting for bundle discovery to stabilize ` +
+        `(${latestUrls.length} URLs, ${stablePolls}/${stablePollCount})...`
+    );
+    await wait(pollIntervalMs);
+  }
+  throw new Error(
+    `Bundle URL discovery did not stabilize within ${timeoutMs}ms ` +
+      `(last count: ${latestUrls.length}).`
+  );
+}
+
+function getNumericEnumValue(node) {
+  if (node?.type === 'Literal' && typeof node.value === 'number') {
+    return node.value;
+  }
+  if (
+    node?.type === 'UnaryExpression' &&
+    (node.operator === '-' || node.operator === '+') &&
+    node.argument?.type === 'Literal' &&
+    typeof node.argument.value === 'number'
+  ) {
+    return node.operator === '-' ? -node.argument.value : node.argument.value;
+  }
+  return undefined;
+}
+
+function parseBundleSources(bundleSources) {
+  return bundleSources.flatMap((source, index) => {
+    const patchedSource = source.replaceAll(
+      'LimitSharing$Trigger',
+      'LimitSharing$TriggerType'
+    );
+    const options = { ecmaVersion: 'latest', allowHashBang: true };
+    try {
+      return acorn.parse(patchedSource, {
+        ...options,
+        sourceType: 'script',
+      }).body;
+    } catch (scriptError) {
+      try {
+        return acorn.parse(patchedSource, {
+          ...options,
+          sourceType: 'module',
+        }).body;
+      } catch (moduleError) {
+        throw new SyntaxError(
+          `Unable to parse bundle ${index + 1}: ${moduleError.message}; ` +
+            `script parse also failed: ${scriptError.message}`
+        );
+      }
+    }
+  });
+}
+
+async function downloadBundle(page, url, options = {}) {
+  const attempts = options.attempts ?? BUNDLE_DOWNLOAD_ATTEMPTS;
+  const wait = options.sleep ?? sleep;
+  const retryDelayMs = options.retryDelayMs ?? BUNDLE_RETRY_DELAY_MS;
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const source = await page.evaluate(async (u) => {
+        try {
+          const response = await fetch(u);
+          if (!response.ok) return null;
+          return await response.text();
+        } catch {
+          return null;
+        }
+      }, url);
+      if (typeof source === 'string' && source.length > 0) {
+        return source;
+      }
+      lastError = new Error('empty or unsuccessful response');
+    } catch (error) {
+      lastError = error;
+    }
+    if (attempt < attempts) {
+      await wait(retryDelayMs * attempt);
+    }
+  }
+  throw new Error(
+    `Failed to download bundle ${url} after ${attempts} attempts: ` +
+      `${lastError?.message || 'unknown error'}`
+  );
+}
+
+async function downloadAllBundles(page, urls, options = {}) {
+  const results = new Array(urls.length);
+  const concurrency = 16;
+  let cursor = 0;
+  let downloaded = 0;
+  const workers = Array.from({ length: concurrency }, async () => {
+    while (true) {
+      const i = cursor;
+      cursor += 1;
+      if (i >= urls.length) return;
+      results[i] = await downloadBundle(page, urls[i], options);
+      downloaded += 1;
+      if (downloaded % 50 === 0 || downloaded === urls.length) {
+        console.log(`Downloaded ${downloaded}/${urls.length} bundles`);
+      }
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
 
 async function findAppModules() {
-  const ua = {
-    headers: {
-      'User-Agent':
-        'Mozilla/5.0 (X11; Linux x86_64; rv:100.0) Gecko/20100101 Firefox/100.0',
-      'Sec-Fetch-Dest': 'script',
-      'Sec-Fetch-Mode': 'no-cors',
-      'Sec-Fetch-Site': 'same-origin',
-      Referer: 'https://web.whatsapp.com/',
-      Accept: '*/*',
-      'Accept-Language': 'Accept-Language: en-US,en;q=0.5',
-    },
-  };
-  const baseURL = 'https://web.whatsapp.com';
-  const serviceworker = await request.get(`${baseURL}/sw.js`, ua);
+  const fetchScript = await fs.readFile(FETCH_SCRIPT_PATH, 'utf8');
 
-  const versions = [
-    ...serviceworker.matchAll(/client_revision\\":([\d\.]+),/g),
-  ].map((r) => r[1]);
-  const version = versions[0];
-  console.log(`Current version: 2.3000.${version}`);
+  const { browser } = await puppeteer.connect({ headless: true });
+  let bundles = [];
+  try {
+    const page = await browser.newPage();
+    page.setDefaultNavigationTimeout(120000);
+    await page.goto(WHATSAPP_URL, { waitUntil: 'domcontentloaded' });
+    await sleep(3000);
 
-  const waVersion = `2.3000.${version}`;
-  whatsAppVersion = waVersion;
+    try {
+      const serviceworker = await page.evaluate(async () => {
+        const r = await fetch('/sw.js');
+        if (!r.ok) {
+          throw new Error(`HTTP ${r.status}`);
+        }
+        return r.text();
+      });
+      const match = serviceworker.match(/client_revision\\?":([\d.]+),/);
+      if (!match) {
+        throw new Error('client_revision was not found in sw.js');
+      }
+      whatsAppVersion = `2.3000.${match[1]}`;
+      console.log(`Current version: ${whatsAppVersion}`);
+    } catch (error) {
+      throw new Error(`Could not detect WhatsApp version: ${error.message}`);
+    }
 
-  let bootstrapQRURL = '';
-  const clearString = serviceworker.replaceAll('/*BTDS*/', '');
-  const URLScript = clearString.match(/(?<=importScripts\(["'])(.*?)(?=["']\);)/g);
-  bootstrapQRURL = new URL(URLScript[0].replaceAll("\\",'')).href;
+    const urls = await discoverBundleUrls(page, fetchScript);
+    if (urls.length === 0) {
+      throw new Error('No bundle URLs discovered.');
+    }
+    console.log(`Found ${urls.length} bundle URLs, downloading...`);
 
-  console.info('Found source JS URL:', bootstrapQRURL);
-
-  const qrData = await request.get(bootstrapQRURL, ua);
+    bundles = await downloadAllBundles(page, urls);
+  } finally {
+    await browser.close();
+  }
 
   // This one list of types is so long that it's split into two JavaScript declarations.
   // The module finder below can't handle it, so just patch it manually here.
-  const patchedQrData = qrData.replaceAll(
-    'LimitSharing$Trigger',
-    'LimitSharing$TriggerType'
-  );
+  const modules = parseBundleSources(bundles);
 
-  const qrModules = acorn.parse(patchedQrData).body;
-  
-  const result = qrModules.filter((m) => {
+  const result = modules.filter((m) => {
     const expressions = extractAllExpressions(m);
     return expressions?.find(
-      (e) => { 
+      (e) => {
         return e?.left?.property?.name === 'internalSpec'
       }
     );
@@ -113,7 +273,7 @@ async function findAppModules() {
   return result;
 }
 
-(async () => {
+async function main() {
   const unspecName = (name) =>
     name.endsWith('Spec') ? name.slice(0, -4) : name;
   const unnestName = (name) => name.split('$').slice(-1)[0];
@@ -165,8 +325,8 @@ async function findAppModules() {
       AssignmentExpression(node) {
         const left = node.left;
         if(
-            left.property?.name && 
-            left.property?.name !== 'internalSpec' && 
+            left.property?.name &&
+            left.property?.name !== 'internalSpec' &&
             left.property?.name !== 'internalDefaults' &&
             left.property?.name !== 'name'
         ) {
@@ -205,8 +365,8 @@ async function findAppModules() {
         const fatherNode = anc[anc.length - 3];
         const fatherFather = anc[anc.length - 4];
         if(
-          fatherNode?.type === 'AssignmentExpression' && 
-          fatherNode?.left?.property?.name == 'internalSpec' 
+          fatherNode?.type === 'AssignmentExpression' &&
+          fatherNode?.left?.property?.name == 'internalSpec'
           && fatherNode?.right?.properties.length
         ) {
           const values = fatherNode?.right?.properties.map((p) => ({
@@ -215,6 +375,20 @@ async function findAppModules() {
           }));
           const nameAlias = fatherNode?.left?.name;
           enumAliases[nameAlias] = values;
+        }
+        else if (
+          fatherNode?.type === 'VariableDeclarator' &&
+          fatherNode?.init?.type === 'ObjectExpression' &&
+          fatherNode.init.properties.length &&
+          fatherNode.init.properties.every(
+            (p) => getNumericEnumValue(p.value) !== undefined
+          )
+        ) {
+          const values = fatherNode.init.properties.map((p) => ({
+            name: p.key.name || p.key.value,
+            id: getNumericEnumValue(p.value),
+          }));
+          enumAliases[fatherNode.id.name] = values;
         }
         else if (node?.key && node?.key?.name && fatherNode.arguments?.length > 0) {
           const values = fatherNode.arguments?.[0]?.properties.map((p) => ({
@@ -319,7 +493,7 @@ async function findAppModules() {
             });
 
             // determine cross reference name from alias if this member has type "message" or "enum"
-            
+
             if (type === 'message' || type === 'enum') {
               const currLoc = ` from member '${name}' of message ${targetIdent.name}'`;
               if (elements[2].type === 'Identifier') {
@@ -333,9 +507,11 @@ async function findAppModules() {
                   );
                 }
               } else if (elements[2].type === 'MemberExpression') {
-                let crossRef = modInfo.crossRefs.find(
-                  (r) => r.alias === elements[2]?.object?.name || elements[2]?.object?.left?.name || elements[2]?.object?.callee?.name
-                );
+                const targetAlias =
+                  elements[2]?.object?.name ||
+                  elements[2]?.object?.left?.name ||
+                  elements[2]?.object?.callee?.name;
+                let crossRef = modInfo.crossRefs.find((r) => r.alias === targetAlias);
                 if(elements[1]?.property?.name === 'ENUM' && elements[2]?.property?.name?.includes('Type')) {
                   type = rename(elements[2]?.property?.name);
                 }
@@ -344,7 +520,7 @@ async function findAppModules() {
                 } else if (
                   crossRef &&
                   crossRef.module !== '$InternalEnum' &&
-                  modulesInfo[crossRef.module].identifiers[
+                  modulesInfo[crossRef.module]?.identifiers?.[
                     rename(elements[2].property.name)
                   ]
                 ) {
@@ -392,7 +568,7 @@ async function findAppModules() {
   for (const mod of modules) {
     const modInfo = modulesInfo[mod.expression.arguments[0].value];
     const identifiers = Object.values(modInfo?.identifiers);
-  
+
     // enum stringifying function
     const stringifyEnum = (ident, overrideName = null) =>
       [].concat(
@@ -519,8 +695,31 @@ async function findAppModules() {
   const sortedStr = decodedProto.map((d) => decodedProtoMap[d]).join('\n');
 
   const decodedProtoStr = `syntax = "proto3";\npackage waproto;\n\n/// WhatsApp Version: ${whatsAppVersion}\n\n${sortedStr}`;
+  const unknownEntities = [...decodedProtoStr.matchAll(/\/\/ Unknown entity (.+)/g)].map(
+    (match) => match[1]
+  );
+  if (unknownEntities.length > 0) {
+    throw new Error(
+      `Unable to extract ${unknownEntities.length} emitted protobuf entities: ` +
+        unknownEntities.sort().join(', ')
+    );
+  }
   const destinationPath = 'WAProto.proto';
   await fs.writeFile(destinationPath, decodedProtoStr);
 
   console.log(`Extracted protobuf schema to "${destinationPath}"`);
-})();
+}
+
+if (require.main === module) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = {
+  discoverBundleUrls,
+  downloadAllBundles,
+  getNumericEnumValue,
+  parseBundleSources,
+};
