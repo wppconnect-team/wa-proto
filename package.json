@@ -1,8 +1,12 @@
 {
   "name": "@wppconnect/wa-proto",
-  "version": "2.3000.1039300149",
+  "version": "2.3000.1044839451",
   "description": "Protobuf files from WhatsApp WEB",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wppconnect-team/wa-proto.git"
+  },
   "author": {
     "name": "Cleiton Costa",
     "url": "https://github.com/icleitoncosta"

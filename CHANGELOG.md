@@ -1,3 +1,87 @@
+## [2.3000.1044839451](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1044722137...v2.3000.1044839451) (2026-08-10)
+
+
+
+## [2.3000.1044722137](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1044534801...v2.3000.1044722137) (2026-08-07)
+
+
+
+## [2.3000.1044534801](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1044449815...v2.3000.1044534801) (2026-08-05)
+
+
+
+## [2.3000.1044449815](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1044429019...v2.3000.1044449815) (2026-08-04)
+
+
+
+## [2.3000.1044429019](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1044155486...v2.3000.1044429019) (2026-08-04)
+
+
+
+## [2.3000.1044155486](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1044065994...v2.3000.1044155486) (2026-07-30)
+
+
+
+## [2.3000.1044065994](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1043716065...v2.3000.1044065994) (2026-07-29)
+
+
+
+## [2.3000.1043716065](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1043632247...v2.3000.1043716065) (2026-07-23)
+
+
+
+## [2.3000.1043632247](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1043549335...v2.3000.1043632247) (2026-07-22)
+
+
+
+## [2.3000.1043549335](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1043460708...v2.3000.1043549335) (2026-07-21)
+
+
+
+## [2.3000.1043460708](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1043359815...v2.3000.1043460708) (2026-07-20)
+
+
+
+## 2.3000.1043359815 (2026-07-17)
+
+
+
+## [2.3000.1042581539](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1042432568...v2.3000.1042581539) (2026-07-02)
+
+
+
+## [2.3000.1042432568](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1042381694...v2.3000.1042432568) (2026-07-01)
+
+
+
+## 2.3000.1042381694 (2026-06-30)
+
+
+
+## [2.3000.1041589577](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1040735178...v2.3000.1041589577) (2026-06-16)
+
+
+
+## [2.3000.1040735178](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1040656236...v2.3000.1040735178) (2026-06-03)
+
+
+
+## [2.3000.1040656236](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1040641150...v2.3000.1040656236) (2026-06-02)
+
+
+
+## [2.3000.1040641150](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1040237044...v2.3000.1040641150) (2026-06-02)
+
+
+
+## [2.3000.1040237044](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1039720809...v2.3000.1040237044) (2026-05-27)
+
+
+
+## [2.3000.1039720809](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1039300149...v2.3000.1039720809) (2026-05-18)
+
+
+
 ## [2.3000.1039300149](https://github.com/wppconnect-team/wa-proto/compare/v2.3000.1038839325...v2.3000.1039300149) (2026-05-12)
 
 
