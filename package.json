@@ -17,24 +17,18 @@
     "test": "node --test test/*.test.js",
     "build": "npm run fetch && npm run compile",
     "compile": "npm run compile:js && npm run compile:ts",
-    "compile:js": "pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
+    "compile:js": "node scripts/patch-protobufjs-parser.js && pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
-    "fetch": "node index.js",
-    "changelog:last": "conventional-changelog -p angular -r 2",
-    "changelog:preview": "conventional-changelog -p angular -u",
-    "changelog:update": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "release-it"
+    "fetch": "node index.js"
   },
   "dependencies": {
     "long": "^5.3.2",
-    "protobufjs": "^7.4.0"
+    "protobufjs": "^7.6.5"
   },
   "devDependencies": {
     "acorn": "^8.16.0",
     "acorn-walk": "^8.3.5",
-    "conventional-changelog-cli": "^4.1.0",
-    "protobufjs-cli": "^1.1.3",
-    "puppeteer-real-browser": "^1.4.4",
-    "release-it": "^17.11.0"
+    "protobufjs-cli": "^1.3.3",
+    "puppeteer-real-browser": "^1.4.4"
   }
 }
