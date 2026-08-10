@@ -160,7 +160,7 @@ async function findAppModules() {
   // find all identifiers and, for enums, their array of values
   for (const mod of modules) {
     const modInfo = modulesInfo[mod.key.value];
-    const rename = makeRenameFunc(mod.key.value);
+    const rename = makeRenameFunc();
 
     // all identifiers will be initialized to "void 0" (i.e. "undefined") at the start, so capture them here
     walk.ancestor(mod, {
@@ -234,7 +234,7 @@ async function findAppModules() {
   // find the contents for all protobuf messages
   for (const mod of modules) {
     const modInfo = modulesInfo[mod.key.value];
-    const rename = makeRenameFunc(mod.key.value);
+    const rename = makeRenameFunc();
 
     // message specifications are stored in a "internalSpec" attribute of the respective identifier alias
     walk.simple(mod, {
