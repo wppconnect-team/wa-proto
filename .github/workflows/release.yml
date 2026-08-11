@@ -14,6 +14,7 @@ on:
           - major
 
 permissions:
+  actions: write
   contents: write
 
 jobs:
@@ -25,7 +26,6 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          token: ${{ secrets.PERSONAL_TOKEN }}
 
       - name: Setup Git
         run: |
@@ -45,6 +45,9 @@ jobs:
 
       - name: Release
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           tag=$(npm version "${{ inputs.increment }}" -m "chore(release): v%s")
           git push --atomic origin HEAD:main "${tag}"
+          gh workflow run publish.yml --ref "${tag}"
