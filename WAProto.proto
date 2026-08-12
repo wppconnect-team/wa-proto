@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1045021694
+/// WhatsApp Version: 2.3000.1045028006
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -2212,6 +2212,7 @@ message DeviceCapabilities {
     optional AiThread aiThread = 6;
     optional AiFbidMigration aiFbidMigration = 7;
     optional BizAiSettingsSync bizAiSettingsSync = 8;
+    optional ContactRefresh contactRefresh = 9;
     message AiFbidMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
     }
@@ -2242,6 +2243,10 @@ message DeviceCapabilities {
         MINIMAL = 1;
         FULL = 2;
     }
+    message ContactRefresh {
+        optional bool refreshSupported = 1;
+    }
+    
     message LIDMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
     }

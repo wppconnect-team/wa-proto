@@ -30738,6 +30738,9 @@ export namespace waproto {
         /** DeviceCapabilities bizAiSettingsSync. */
         bizAiSettingsSync?: (waproto.DeviceCapabilities.BizAiSettingsSync.$Properties|null);
 
+        /** DeviceCapabilities contactRefresh. */
+        contactRefresh?: (waproto.DeviceCapabilities.ContactRefresh.$Properties|null);
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @param [properties] Properties to set
@@ -30845,6 +30848,9 @@ export namespace waproto {
 
             /** DeviceCapabilities bizAiSettingsSync */
             bizAiSettingsSync?: (waproto.DeviceCapabilities.BizAiSettingsSync.$Properties|null);
+
+            /** DeviceCapabilities contactRefresh */
+            contactRefresh?: (waproto.DeviceCapabilities.ContactRefresh.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -31369,6 +31375,123 @@ export namespace waproto {
 
             /** FULL value */
             FULL = 2
+        }
+
+        /**
+         * Properties of a ContactRefresh.
+         * @deprecated Use waproto.DeviceCapabilities.ContactRefresh.$Properties instead.
+         */
+        interface IContactRefresh extends waproto.DeviceCapabilities.ContactRefresh.$Properties {
+        }
+
+        /** Represents a ContactRefresh. */
+        class ContactRefresh {
+
+            /**
+             * Constructs a new ContactRefresh.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.ContactRefresh.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ContactRefresh refreshSupported. */
+            refreshSupported?: (boolean|null);
+
+            /**
+             * Creates a new ContactRefresh instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ContactRefresh instance
+             */
+            static create(properties: waproto.DeviceCapabilities.ContactRefresh.$Shape): waproto.DeviceCapabilities.ContactRefresh & waproto.DeviceCapabilities.ContactRefresh.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.ContactRefresh.$Properties): waproto.DeviceCapabilities.ContactRefresh;
+
+            /**
+             * Encodes the specified ContactRefresh message. Does not implicitly {@link waproto.DeviceCapabilities.ContactRefresh.verify|verify} messages.
+             * @param message ContactRefresh message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.ContactRefresh.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ContactRefresh message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.ContactRefresh.verify|verify} messages.
+             * @param message ContactRefresh message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.ContactRefresh.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ContactRefresh message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.ContactRefresh & waproto.DeviceCapabilities.ContactRefresh.$Shape} ContactRefresh
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.ContactRefresh & waproto.DeviceCapabilities.ContactRefresh.$Shape;
+
+            /**
+             * Decodes a ContactRefresh message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.ContactRefresh & waproto.DeviceCapabilities.ContactRefresh.$Shape} ContactRefresh
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.ContactRefresh & waproto.DeviceCapabilities.ContactRefresh.$Shape;
+
+            /**
+             * Verifies a ContactRefresh message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ContactRefresh message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ContactRefresh
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.ContactRefresh;
+
+            /**
+             * Creates a plain object from a ContactRefresh message. Also converts values to other types if specified.
+             * @param message ContactRefresh
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.ContactRefresh, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ContactRefresh to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ContactRefresh
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ContactRefresh {
+
+            /** Properties of a ContactRefresh. */
+            interface $Properties {
+
+                /** ContactRefresh refreshSupported */
+                refreshSupported?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ContactRefresh. */
+            type $Shape = waproto.DeviceCapabilities.ContactRefresh.$Properties;
         }
 
         /**
