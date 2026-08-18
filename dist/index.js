@@ -136080,7 +136080,6 @@ $root.waproto = (function() {
          * @property {waproto.Message.NewsletterFollowerInviteMessage.$Properties|null} [newsletterFollowerInviteMessageV2] Message newsletterFollowerInviteMessageV2
          * @property {waproto.Message.PollResultSnapshotMessage.$Properties|null} [pollResultSnapshotMessageV3] Message pollResultSnapshotMessageV3
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [newsletterAdminProfileMessage] Message newsletterAdminProfileMessage
-         * @property {waproto.Message.FutureProofMessage.$Properties|null} [newsletterAdminProfileMessageV2] Message newsletterAdminProfileMessageV2
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [spoilerMessage] Message spoilerMessage
          * @property {waproto.Message.PollCreationMessage.$Properties|null} [pollCreationMessageV6] Message pollCreationMessageV6
          * @property {waproto.Message.ConditionalRevealMessage.$Properties|null} [conditionalRevealMessage] Message conditionalRevealMessage
@@ -136205,7 +136204,6 @@ $root.waproto = (function() {
          *   newsletterFollowerInviteMessageV2?: waproto.Message.NewsletterFollowerInviteMessage.$Shape|null;
          *   pollResultSnapshotMessageV3?: waproto.Message.PollResultSnapshotMessage.$Shape|null;
          *   newsletterAdminProfileMessage?: waproto.Message.FutureProofMessage.$Shape|null;
-         *   newsletterAdminProfileMessageV2?: waproto.Message.FutureProofMessage.$Shape|null;
          *   spoilerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
          *   pollCreationMessageV6?: waproto.Message.PollCreationMessage.$Shape|null;
          *   conditionalRevealMessage?: waproto.Message.ConditionalRevealMessage.$Shape|null;
@@ -137008,14 +137006,6 @@ $root.waproto = (function() {
         Message.prototype.newsletterAdminProfileMessage = null;
 
         /**
-         * Message newsletterAdminProfileMessageV2.
-         * @member {waproto.Message.FutureProofMessage.$Properties|null|undefined} newsletterAdminProfileMessageV2
-         * @memberof waproto.Message
-         * @instance
-         */
-        Message.prototype.newsletterAdminProfileMessageV2 = null;
-
-        /**
          * Message spoilerMessage.
          * @member {waproto.Message.FutureProofMessage.$Properties|null|undefined} spoilerMessage
          * @memberof waproto.Message
@@ -137707,12 +137697,6 @@ $root.waproto = (function() {
         });
 
         // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Message.prototype, "_newsletterAdminProfileMessageV2", {
-            get: $util.oneOfGetter($oneOfFields = ["newsletterAdminProfileMessageV2"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
         $Object.defineProperty(Message.prototype, "_spoilerMessage", {
             get: $util.oneOfGetter($oneOfFields = ["spoilerMessage"]),
             set: $util.oneOfSetter($oneOfFields)
@@ -138020,8 +138004,6 @@ $root.waproto = (function() {
                 $root.waproto.Message.PollResultSnapshotMessage.encode(message.pollResultSnapshotMessageV3, writer.uint32(/* id 115, wireType 2 =*/922).fork(), _depth + 1).ldelim();
             if (message.newsletterAdminProfileMessage != null && $Object.hasOwnProperty.call(message, "newsletterAdminProfileMessage"))
                 $root.waproto.Message.FutureProofMessage.encode(message.newsletterAdminProfileMessage, writer.uint32(/* id 116, wireType 2 =*/930).fork(), _depth + 1).ldelim();
-            if (message.newsletterAdminProfileMessageV2 != null && $Object.hasOwnProperty.call(message, "newsletterAdminProfileMessageV2"))
-                $root.waproto.Message.FutureProofMessage.encode(message.newsletterAdminProfileMessageV2, writer.uint32(/* id 117, wireType 2 =*/938).fork(), _depth + 1).ldelim();
             if (message.spoilerMessage != null && $Object.hasOwnProperty.call(message, "spoilerMessage"))
                 $root.waproto.Message.FutureProofMessage.encode(message.spoilerMessage, writer.uint32(/* id 118, wireType 2 =*/946).fork(), _depth + 1).ldelim();
             if (message.pollCreationMessageV6 != null && $Object.hasOwnProperty.call(message, "pollCreationMessageV6"))
@@ -138767,13 +138749,6 @@ $root.waproto = (function() {
                             break;
                         message.newsletterAdminProfileMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterAdminProfileMessage);
                         message._newsletterAdminProfileMessage = "newsletterAdminProfileMessage";
-                        continue;
-                    }
-                case 117: {
-                        if (wireType !== 2)
-                            break;
-                        message.newsletterAdminProfileMessageV2 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterAdminProfileMessageV2);
-                        message._newsletterAdminProfileMessageV2 = "newsletterAdminProfileMessageV2";
                         continue;
                     }
                 case 118: {
@@ -139683,14 +139658,6 @@ $root.waproto = (function() {
                         return "newsletterAdminProfileMessage." + error;
                 }
             }
-            if (message.newsletterAdminProfileMessageV2 != null && $Object.hasOwnProperty.call(message, "newsletterAdminProfileMessageV2")) {
-                properties._newsletterAdminProfileMessageV2 = 1;
-                {
-                    var error = $root.waproto.Message.FutureProofMessage.verify(message.newsletterAdminProfileMessageV2, _depth + 1);
-                    if (error)
-                        return "newsletterAdminProfileMessageV2." + error;
-                }
-            }
             if (message.spoilerMessage != null && $Object.hasOwnProperty.call(message, "spoilerMessage")) {
                 properties._spoilerMessage = 1;
                 {
@@ -140301,11 +140268,6 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.Message.newsletterAdminProfileMessage: object expected");
                 message.newsletterAdminProfileMessage = $root.waproto.Message.FutureProofMessage.fromObject(object.newsletterAdminProfileMessage, _depth + 1);
             }
-            if (object.newsletterAdminProfileMessageV2 != null) {
-                if (!$util.isObject(object.newsletterAdminProfileMessageV2))
-                    throw $TypeError(".waproto.Message.newsletterAdminProfileMessageV2: object expected");
-                message.newsletterAdminProfileMessageV2 = $root.waproto.Message.FutureProofMessage.fromObject(object.newsletterAdminProfileMessageV2, _depth + 1);
-            }
             if (object.spoilerMessage != null) {
                 if (!$util.isObject(object.spoilerMessage))
                     throw $TypeError(".waproto.Message.spoilerMessage: object expected");
@@ -140588,8 +140550,6 @@ $root.waproto = (function() {
                 object.pollResultSnapshotMessageV3 = $root.waproto.Message.PollResultSnapshotMessage.toObject(message.pollResultSnapshotMessageV3, options, _depth + 1);
             if (message.newsletterAdminProfileMessage != null && $Object.hasOwnProperty.call(message, "newsletterAdminProfileMessage"))
                 object.newsletterAdminProfileMessage = $root.waproto.Message.FutureProofMessage.toObject(message.newsletterAdminProfileMessage, options, _depth + 1);
-            if (message.newsletterAdminProfileMessageV2 != null && $Object.hasOwnProperty.call(message, "newsletterAdminProfileMessageV2"))
-                object.newsletterAdminProfileMessageV2 = $root.waproto.Message.FutureProofMessage.toObject(message.newsletterAdminProfileMessageV2, options, _depth + 1);
             if (message.spoilerMessage != null && $Object.hasOwnProperty.call(message, "spoilerMessage"))
                 object.spoilerMessage = $root.waproto.Message.FutureProofMessage.toObject(message.spoilerMessage, options, _depth + 1);
             if (message.pollCreationMessageV6 != null && $Object.hasOwnProperty.call(message, "pollCreationMessageV6"))

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1045477192
+/// WhatsApp Version: 2.3000.1045490272
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -3496,7 +3496,6 @@ message Message {
     optional NewsletterFollowerInviteMessage newsletterFollowerInviteMessageV2 = 113;
     optional PollResultSnapshotMessage pollResultSnapshotMessageV3 = 115;
     optional FutureProofMessage newsletterAdminProfileMessage = 116;
-    optional FutureProofMessage newsletterAdminProfileMessageV2 = 117;
     optional FutureProofMessage spoilerMessage = 118;
     optional PollCreationMessage pollCreationMessageV6 = 119;
     optional ConditionalRevealMessage conditionalRevealMessage = 120;

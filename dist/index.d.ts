@@ -48881,9 +48881,6 @@ export namespace waproto {
         /** Message newsletterAdminProfileMessage. */
         newsletterAdminProfileMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
-        /** Message newsletterAdminProfileMessageV2. */
-        newsletterAdminProfileMessageV2?: (waproto.Message.FutureProofMessage.$Properties|null);
-
         /** Message spoilerMessage. */
         spoilerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
@@ -49298,9 +49295,6 @@ export namespace waproto {
             /** Message newsletterAdminProfileMessage */
             newsletterAdminProfileMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
-            /** Message newsletterAdminProfileMessageV2 */
-            newsletterAdminProfileMessageV2?: (waproto.Message.FutureProofMessage.$Properties|null);
-
             /** Message spoilerMessage */
             spoilerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
@@ -49445,7 +49439,6 @@ export namespace waproto {
           newsletterFollowerInviteMessageV2?: waproto.Message.NewsletterFollowerInviteMessage.$Shape|null;
           pollResultSnapshotMessageV3?: waproto.Message.PollResultSnapshotMessage.$Shape|null;
           newsletterAdminProfileMessage?: waproto.Message.FutureProofMessage.$Shape|null;
-          newsletterAdminProfileMessageV2?: waproto.Message.FutureProofMessage.$Shape|null;
           spoilerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           pollCreationMessageV6?: waproto.Message.PollCreationMessage.$Shape|null;
           conditionalRevealMessage?: waproto.Message.ConditionalRevealMessage.$Shape|null;
