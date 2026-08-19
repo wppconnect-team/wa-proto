@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1045578446
+/// WhatsApp Version: 2.3000.1045589620
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
