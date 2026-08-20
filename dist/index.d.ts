@@ -81720,6 +81720,9 @@ export namespace waproto {
         /** CONTACT_MANAGER_METADATA_ACTION value */
         CONTACT_MANAGER_METADATA_ACTION = 95,
 
+        /** BUSINESS_FOLDER_ACTIVATION_ACTION value */
+        BUSINESS_FOLDER_ACTIVATION_ACTION = 96,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -92685,6 +92688,9 @@ export namespace waproto {
         /** SyncActionValue contactManagerMetadataAction. */
         contactManagerMetadataAction?: (waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null);
 
+        /** SyncActionValue businessFolderActivationAction. */
+        businessFolderActivationAction?: (waproto.SyncActionValue.BusinessFolderActivationAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -93027,6 +93033,9 @@ export namespace waproto {
             /** SyncActionValue contactManagerMetadataAction */
             contactManagerMetadataAction?: (waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null);
 
+            /** SyncActionValue businessFolderActivationAction */
+            businessFolderActivationAction?: (waproto.SyncActionValue.BusinessFolderActivationAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -93119,6 +93128,7 @@ export namespace waproto {
           ctwaMessageReceivedAction?: waproto.SyncActionValue.CtwaMessageReceivedAction.$Shape|null;
           sharedDeviceAllowlistAction?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape|null;
           contactManagerMetadataAction?: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape|null;
+          businessFolderActivationAction?: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -94959,6 +94969,123 @@ export namespace waproto {
 
             /** Shape of a BusinessBroadcastListAction. */
             type $Shape = waproto.SyncActionValue.BusinessBroadcastListAction.$Properties;
+        }
+
+        /**
+         * Properties of a BusinessFolderActivationAction.
+         * @deprecated Use waproto.SyncActionValue.BusinessFolderActivationAction.$Properties instead.
+         */
+        interface IBusinessFolderActivationAction extends waproto.SyncActionValue.BusinessFolderActivationAction.$Properties {
+        }
+
+        /** Represents a BusinessFolderActivationAction. */
+        class BusinessFolderActivationAction {
+
+            /**
+             * Constructs a new BusinessFolderActivationAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.BusinessFolderActivationAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** BusinessFolderActivationAction activated. */
+            activated?: (boolean|null);
+
+            /**
+             * Creates a new BusinessFolderActivationAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BusinessFolderActivationAction instance
+             */
+            static create(properties: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape): waproto.SyncActionValue.BusinessFolderActivationAction & waproto.SyncActionValue.BusinessFolderActivationAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.BusinessFolderActivationAction.$Properties): waproto.SyncActionValue.BusinessFolderActivationAction;
+
+            /**
+             * Encodes the specified BusinessFolderActivationAction message. Does not implicitly {@link waproto.SyncActionValue.BusinessFolderActivationAction.verify|verify} messages.
+             * @param message BusinessFolderActivationAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.BusinessFolderActivationAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BusinessFolderActivationAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.BusinessFolderActivationAction.verify|verify} messages.
+             * @param message BusinessFolderActivationAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.BusinessFolderActivationAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BusinessFolderActivationAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.BusinessFolderActivationAction & waproto.SyncActionValue.BusinessFolderActivationAction.$Shape} BusinessFolderActivationAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.BusinessFolderActivationAction & waproto.SyncActionValue.BusinessFolderActivationAction.$Shape;
+
+            /**
+             * Decodes a BusinessFolderActivationAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.BusinessFolderActivationAction & waproto.SyncActionValue.BusinessFolderActivationAction.$Shape} BusinessFolderActivationAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.BusinessFolderActivationAction & waproto.SyncActionValue.BusinessFolderActivationAction.$Shape;
+
+            /**
+             * Verifies a BusinessFolderActivationAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BusinessFolderActivationAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BusinessFolderActivationAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.BusinessFolderActivationAction;
+
+            /**
+             * Creates a plain object from a BusinessFolderActivationAction message. Also converts values to other types if specified.
+             * @param message BusinessFolderActivationAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.BusinessFolderActivationAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BusinessFolderActivationAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for BusinessFolderActivationAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BusinessFolderActivationAction {
+
+            /** Properties of a BusinessFolderActivationAction. */
+            interface $Properties {
+
+                /** BusinessFolderActivationAction activated */
+                activated?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a BusinessFolderActivationAction. */
+            type $Shape = waproto.SyncActionValue.BusinessFolderActivationAction.$Properties;
         }
 
         /**
