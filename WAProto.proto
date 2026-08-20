@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1045589620
+/// WhatsApp Version: 2.3000.1045601094
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -5748,6 +5748,8 @@ enum MutationProps {
     LABEL_SUBLIST_ACTION = 91;
     DEVICE_CAPABILITIES_V2 = 92;
     CTWA_MESSAGE_RECEIVED_ACTION = 93;
+    SHARED_DEVICE_ALLOWLIST_ACTION = 94;
+    CONTACT_MANAGER_METADATA_ACTION = 95;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -6522,6 +6524,8 @@ message SyncActionValue {
     optional LabelSublistAction labelSublistAction = 91;
     optional DeviceCapabilities deviceCapabilitiesV2 = 92;
     optional CtwaMessageReceivedAction ctwaMessageReceivedAction = 93;
+    optional SharedDeviceAllowlistAction sharedDeviceAllowlistAction = 94;
+    optional ContactManagerMetadataAction contactManagerMetadataAction = 95;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceId = 2;
@@ -6650,6 +6654,10 @@ message SyncActionValue {
         optional bool saveOnPrimaryAddressbook = 4;
         optional string pnJid = 5;
         optional string username = 6;
+    }
+    
+    message ContactManagerMetadataAction {
+        optional bool isHidden = 1;
     }
     
     message CtwaMessageReceivedAction {
@@ -7050,6 +7058,10 @@ message SyncActionValue {
             WINDOWS = 3;
             MAC = 4;
         }
+    }
+    
+    message SharedDeviceAllowlistAction {
+        optional bool allowed = 1;
     }
     
     message StarAction {

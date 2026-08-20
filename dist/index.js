@@ -233085,6 +233085,8 @@ $root.waproto = (function() {
      * @property {number} LABEL_SUBLIST_ACTION=91 LABEL_SUBLIST_ACTION value
      * @property {number} DEVICE_CAPABILITIES_V2=92 DEVICE_CAPABILITIES_V2 value
      * @property {number} CTWA_MESSAGE_RECEIVED_ACTION=93 CTWA_MESSAGE_RECEIVED_ACTION value
+     * @property {number} SHARED_DEVICE_ALLOWLIST_ACTION=94 SHARED_DEVICE_ALLOWLIST_ACTION value
+     * @property {number} CONTACT_MANAGER_METADATA_ACTION=95 CONTACT_MANAGER_METADATA_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -233178,6 +233180,8 @@ $root.waproto = (function() {
         values[valuesById[91] = "LABEL_SUBLIST_ACTION"] = 91;
         values[valuesById[92] = "DEVICE_CAPABILITIES_V2"] = 92;
         values[valuesById[93] = "CTWA_MESSAGE_RECEIVED_ACTION"] = 93;
+        values[valuesById[94] = "SHARED_DEVICE_ALLOWLIST_ACTION"] = 94;
+        values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -262614,6 +262618,8 @@ $root.waproto = (function() {
          * @property {waproto.SyncActionValue.LabelSublistAction.$Properties|null} [labelSublistAction] SyncActionValue labelSublistAction
          * @property {waproto.DeviceCapabilities.$Properties|null} [deviceCapabilitiesV2] SyncActionValue deviceCapabilitiesV2
          * @property {waproto.SyncActionValue.CtwaMessageReceivedAction.$Properties|null} [ctwaMessageReceivedAction] SyncActionValue ctwaMessageReceivedAction
+         * @property {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties|null} [sharedDeviceAllowlistAction] SyncActionValue sharedDeviceAllowlistAction
+         * @property {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null} [contactManagerMetadataAction] SyncActionValue contactManagerMetadataAction
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -262712,6 +262718,8 @@ $root.waproto = (function() {
          *   labelSublistAction?: waproto.SyncActionValue.LabelSublistAction.$Shape|null;
          *   deviceCapabilitiesV2?: waproto.DeviceCapabilities.$Shape|null;
          *   ctwaMessageReceivedAction?: waproto.SyncActionValue.CtwaMessageReceivedAction.$Shape|null;
+         *   sharedDeviceAllowlistAction?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape|null;
+         *   contactManagerMetadataAction?: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.SyncActionValue.$Shape
          */
@@ -263403,6 +263411,22 @@ $root.waproto = (function() {
          */
         SyncActionValue.prototype.ctwaMessageReceivedAction = null;
 
+        /**
+         * SyncActionValue sharedDeviceAllowlistAction.
+         * @member {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties|null|undefined} sharedDeviceAllowlistAction
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.sharedDeviceAllowlistAction = null;
+
+        /**
+         * SyncActionValue contactManagerMetadataAction.
+         * @member {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null|undefined} contactManagerMetadataAction
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.contactManagerMetadataAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -263910,6 +263934,18 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_sharedDeviceAllowlistAction", {
+            get: $util.oneOfGetter($oneOfFields = ["sharedDeviceAllowlistAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_contactManagerMetadataAction", {
+            get: $util.oneOfGetter($oneOfFields = ["contactManagerMetadataAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -264110,6 +264146,10 @@ $root.waproto = (function() {
                 $root.waproto.DeviceCapabilities.encode(message.deviceCapabilitiesV2, writer.uint32(/* id 92, wireType 2 =*/738).fork(), _depth + 1).ldelim();
             if (message.ctwaMessageReceivedAction != null && $Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction"))
                 $root.waproto.SyncActionValue.CtwaMessageReceivedAction.encode(message.ctwaMessageReceivedAction, writer.uint32(/* id 93, wireType 2 =*/746).fork(), _depth + 1).ldelim();
+            if (message.sharedDeviceAllowlistAction != null && $Object.hasOwnProperty.call(message, "sharedDeviceAllowlistAction"))
+                $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.encode(message.sharedDeviceAllowlistAction, writer.uint32(/* id 94, wireType 2 =*/754).fork(), _depth + 1).ldelim();
+            if (message.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(message, "contactManagerMetadataAction"))
+                $root.waproto.SyncActionValue.ContactManagerMetadataAction.encode(message.contactManagerMetadataAction, writer.uint32(/* id 95, wireType 2 =*/762).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -264743,6 +264783,20 @@ $root.waproto = (function() {
                             break;
                         message.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctwaMessageReceivedAction);
                         message._ctwaMessageReceivedAction = "ctwaMessageReceivedAction";
+                        continue;
+                    }
+                case 94: {
+                        if (wireType !== 2)
+                            break;
+                        message.sharedDeviceAllowlistAction = $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sharedDeviceAllowlistAction);
+                        message._sharedDeviceAllowlistAction = "sharedDeviceAllowlistAction";
+                        continue;
+                    }
+                case 95: {
+                        if (wireType !== 2)
+                            break;
+                        message.contactManagerMetadataAction = $root.waproto.SyncActionValue.ContactManagerMetadataAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactManagerMetadataAction);
+                        message._contactManagerMetadataAction = "contactManagerMetadataAction";
                         continue;
                     }
                 }
@@ -265458,6 +265512,22 @@ $root.waproto = (function() {
                         return "ctwaMessageReceivedAction." + error;
                 }
             }
+            if (message.sharedDeviceAllowlistAction != null && $Object.hasOwnProperty.call(message, "sharedDeviceAllowlistAction")) {
+                properties._sharedDeviceAllowlistAction = 1;
+                {
+                    var error = $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.verify(message.sharedDeviceAllowlistAction, _depth + 1);
+                    if (error)
+                        return "sharedDeviceAllowlistAction." + error;
+                }
+            }
+            if (message.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(message, "contactManagerMetadataAction")) {
+                properties._contactManagerMetadataAction = 1;
+                {
+                    var error = $root.waproto.SyncActionValue.ContactManagerMetadataAction.verify(message.contactManagerMetadataAction, _depth + 1);
+                    if (error)
+                        return "contactManagerMetadataAction." + error;
+                }
+            }
             return null;
         };
 
@@ -265903,6 +265973,16 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.SyncActionValue.ctwaMessageReceivedAction: object expected");
                 message.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.fromObject(object.ctwaMessageReceivedAction, _depth + 1);
             }
+            if (object.sharedDeviceAllowlistAction != null) {
+                if (!$util.isObject(object.sharedDeviceAllowlistAction))
+                    throw $TypeError(".waproto.SyncActionValue.sharedDeviceAllowlistAction: object expected");
+                message.sharedDeviceAllowlistAction = $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.fromObject(object.sharedDeviceAllowlistAction, _depth + 1);
+            }
+            if (object.contactManagerMetadataAction != null) {
+                if (!$util.isObject(object.contactManagerMetadataAction))
+                    throw $TypeError(".waproto.SyncActionValue.contactManagerMetadataAction: object expected");
+                message.contactManagerMetadataAction = $root.waproto.SyncActionValue.ContactManagerMetadataAction.fromObject(object.contactManagerMetadataAction, _depth + 1);
+            }
             return message;
         };
 
@@ -266096,6 +266176,10 @@ $root.waproto = (function() {
                 object.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.toObject(message.deviceCapabilitiesV2, options, _depth + 1);
             if (message.ctwaMessageReceivedAction != null && $Object.hasOwnProperty.call(message, "ctwaMessageReceivedAction"))
                 object.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.toObject(message.ctwaMessageReceivedAction, options, _depth + 1);
+            if (message.sharedDeviceAllowlistAction != null && $Object.hasOwnProperty.call(message, "sharedDeviceAllowlistAction"))
+                object.sharedDeviceAllowlistAction = $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.toObject(message.sharedDeviceAllowlistAction, options, _depth + 1);
+            if (message.contactManagerMetadataAction != null && $Object.hasOwnProperty.call(message, "contactManagerMetadataAction"))
+                object.contactManagerMetadataAction = $root.waproto.SyncActionValue.ContactManagerMetadataAction.toObject(message.contactManagerMetadataAction, options, _depth + 1);
             return object;
         };
 
@@ -272656,6 +272740,273 @@ $root.waproto = (function() {
             };
 
             return ContactAction;
+        })();
+
+        SyncActionValue.ContactManagerMetadataAction = (function() {
+
+            /**
+             * Properties of a ContactManagerMetadataAction.
+             * @typedef {Object} waproto.SyncActionValue.ContactManagerMetadataAction.$Properties
+             * @property {boolean|null} [isHidden] ContactManagerMetadataAction isHidden
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a ContactManagerMetadataAction.
+             * @memberof waproto.SyncActionValue
+             * @interface IContactManagerMetadataAction
+             * @augments waproto.SyncActionValue.ContactManagerMetadataAction.$Properties
+             * @deprecated Use waproto.SyncActionValue.ContactManagerMetadataAction.$Properties instead.
+             */
+
+            /**
+             * Shape of a ContactManagerMetadataAction.
+             * @typedef {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties} waproto.SyncActionValue.ContactManagerMetadataAction.$Shape
+             */
+
+            /**
+             * Constructs a new ContactManagerMetadataAction.
+             * @memberof waproto.SyncActionValue
+             * @classdesc Represents a ContactManagerMetadataAction.
+             * @constructor
+             * @param {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var ContactManagerMetadataAction = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * ContactManagerMetadataAction isHidden.
+             * @member {boolean|null|undefined} isHidden
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @instance
+             */
+            ContactManagerMetadataAction.prototype.isHidden = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ContactManagerMetadataAction.prototype, "_isHidden", {
+                get: $util.oneOfGetter($oneOfFields = ["isHidden"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new ContactManagerMetadataAction instance using the specified properties.
+             * @function create
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties=} [properties] Properties to set
+             * @returns {waproto.SyncActionValue.ContactManagerMetadataAction} ContactManagerMetadataAction instance
+             * @type {{
+             *   (properties: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape): waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape;
+             *   (properties?: waproto.SyncActionValue.ContactManagerMetadataAction.$Properties): waproto.SyncActionValue.ContactManagerMetadataAction;
+             * }}
+             */
+            ContactManagerMetadataAction.create = function(properties) {
+                return new ContactManagerMetadataAction(properties);
+            };
+
+            /**
+             * Encodes the specified ContactManagerMetadataAction message. Does not implicitly {@link waproto.SyncActionValue.ContactManagerMetadataAction.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties} message ContactManagerMetadataAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ContactManagerMetadataAction.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.isHidden != null && $Object.hasOwnProperty.call(message, "isHidden"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isHidden);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ContactManagerMetadataAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.ContactManagerMetadataAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties} message ContactManagerMetadataAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ContactManagerMetadataAction.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a ContactManagerMetadataAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape} ContactManagerMetadataAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ContactManagerMetadataAction.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.waproto.SyncActionValue.ContactManagerMetadataAction();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.isHidden = reader.bool();
+                            message._isHidden = "isHidden";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a ContactManagerMetadataAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape} ContactManagerMetadataAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ContactManagerMetadataAction.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ContactManagerMetadataAction message.
+             * @function verify
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ContactManagerMetadataAction.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.isHidden != null && $Object.hasOwnProperty.call(message, "isHidden")) {
+                    properties._isHidden = 1;
+                    if (typeof message.isHidden !== "boolean")
+                        return "isHidden: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a ContactManagerMetadataAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.SyncActionValue.ContactManagerMetadataAction} ContactManagerMetadataAction
+             */
+            ContactManagerMetadataAction.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.SyncActionValue.ContactManagerMetadataAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.SyncActionValue.ContactManagerMetadataAction: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.SyncActionValue.ContactManagerMetadataAction();
+                if (object.isHidden != null)
+                    message.isHidden = $Boolean(object.isHidden);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ContactManagerMetadataAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {waproto.SyncActionValue.ContactManagerMetadataAction} message ContactManagerMetadataAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ContactManagerMetadataAction.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.isHidden != null && $Object.hasOwnProperty.call(message, "isHidden"))
+                    object.isHidden = message.isHidden;
+                return object;
+            };
+
+            /**
+             * Converts this ContactManagerMetadataAction to JSON.
+             * @function toJSON
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ContactManagerMetadataAction.prototype.toJSON = function() {
+                return ContactManagerMetadataAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for ContactManagerMetadataAction
+             * @function getTypeUrl
+             * @memberof waproto.SyncActionValue.ContactManagerMetadataAction
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            ContactManagerMetadataAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.SyncActionValue.ContactManagerMetadataAction";
+            };
+
+            return ContactManagerMetadataAction;
         })();
 
         SyncActionValue.CtwaMessageReceivedAction = (function() {
@@ -289614,6 +289965,273 @@ $root.waproto = (function() {
             })();
 
             return SettingsSyncAction;
+        })();
+
+        SyncActionValue.SharedDeviceAllowlistAction = (function() {
+
+            /**
+             * Properties of a SharedDeviceAllowlistAction.
+             * @typedef {Object} waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties
+             * @property {boolean|null} [allowed] SharedDeviceAllowlistAction allowed
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a SharedDeviceAllowlistAction.
+             * @memberof waproto.SyncActionValue
+             * @interface ISharedDeviceAllowlistAction
+             * @augments waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties
+             * @deprecated Use waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties instead.
+             */
+
+            /**
+             * Shape of a SharedDeviceAllowlistAction.
+             * @typedef {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties} waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape
+             */
+
+            /**
+             * Constructs a new SharedDeviceAllowlistAction.
+             * @memberof waproto.SyncActionValue
+             * @classdesc Represents a SharedDeviceAllowlistAction.
+             * @constructor
+             * @param {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var SharedDeviceAllowlistAction = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * SharedDeviceAllowlistAction allowed.
+             * @member {boolean|null|undefined} allowed
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @instance
+             */
+            SharedDeviceAllowlistAction.prototype.allowed = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SharedDeviceAllowlistAction.prototype, "_allowed", {
+                get: $util.oneOfGetter($oneOfFields = ["allowed"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SharedDeviceAllowlistAction instance using the specified properties.
+             * @function create
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties=} [properties] Properties to set
+             * @returns {waproto.SyncActionValue.SharedDeviceAllowlistAction} SharedDeviceAllowlistAction instance
+             * @type {{
+             *   (properties: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape): waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape;
+             *   (properties?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties): waproto.SyncActionValue.SharedDeviceAllowlistAction;
+             * }}
+             */
+            SharedDeviceAllowlistAction.create = function(properties) {
+                return new SharedDeviceAllowlistAction(properties);
+            };
+
+            /**
+             * Encodes the specified SharedDeviceAllowlistAction message. Does not implicitly {@link waproto.SyncActionValue.SharedDeviceAllowlistAction.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties} message SharedDeviceAllowlistAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceAllowlistAction.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.allowed != null && $Object.hasOwnProperty.call(message, "allowed"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.allowed);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SharedDeviceAllowlistAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.SharedDeviceAllowlistAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties} message SharedDeviceAllowlistAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceAllowlistAction.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a SharedDeviceAllowlistAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape} SharedDeviceAllowlistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceAllowlistAction.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.waproto.SyncActionValue.SharedDeviceAllowlistAction();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.allowed = reader.bool();
+                            message._allowed = "allowed";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a SharedDeviceAllowlistAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape} SharedDeviceAllowlistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceAllowlistAction.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SharedDeviceAllowlistAction message.
+             * @function verify
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SharedDeviceAllowlistAction.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.allowed != null && $Object.hasOwnProperty.call(message, "allowed")) {
+                    properties._allowed = 1;
+                    if (typeof message.allowed !== "boolean")
+                        return "allowed: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SharedDeviceAllowlistAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.SyncActionValue.SharedDeviceAllowlistAction} SharedDeviceAllowlistAction
+             */
+            SharedDeviceAllowlistAction.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.SyncActionValue.SharedDeviceAllowlistAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.SyncActionValue.SharedDeviceAllowlistAction: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.SyncActionValue.SharedDeviceAllowlistAction();
+                if (object.allowed != null)
+                    message.allowed = $Boolean(object.allowed);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SharedDeviceAllowlistAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {waproto.SyncActionValue.SharedDeviceAllowlistAction} message SharedDeviceAllowlistAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SharedDeviceAllowlistAction.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.allowed != null && $Object.hasOwnProperty.call(message, "allowed"))
+                    object.allowed = message.allowed;
+                return object;
+            };
+
+            /**
+             * Converts this SharedDeviceAllowlistAction to JSON.
+             * @function toJSON
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SharedDeviceAllowlistAction.prototype.toJSON = function() {
+                return SharedDeviceAllowlistAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for SharedDeviceAllowlistAction
+             * @function getTypeUrl
+             * @memberof waproto.SyncActionValue.SharedDeviceAllowlistAction
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            SharedDeviceAllowlistAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.SyncActionValue.SharedDeviceAllowlistAction";
+            };
+
+            return SharedDeviceAllowlistAction;
         })();
 
         SyncActionValue.StarAction = (function() {

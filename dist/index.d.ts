@@ -81714,6 +81714,12 @@ export namespace waproto {
         /** CTWA_MESSAGE_RECEIVED_ACTION value */
         CTWA_MESSAGE_RECEIVED_ACTION = 93,
 
+        /** SHARED_DEVICE_ALLOWLIST_ACTION value */
+        SHARED_DEVICE_ALLOWLIST_ACTION = 94,
+
+        /** CONTACT_MANAGER_METADATA_ACTION value */
+        CONTACT_MANAGER_METADATA_ACTION = 95,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -92673,6 +92679,12 @@ export namespace waproto {
         /** SyncActionValue ctwaMessageReceivedAction. */
         ctwaMessageReceivedAction?: (waproto.SyncActionValue.CtwaMessageReceivedAction.$Properties|null);
 
+        /** SyncActionValue sharedDeviceAllowlistAction. */
+        sharedDeviceAllowlistAction?: (waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties|null);
+
+        /** SyncActionValue contactManagerMetadataAction. */
+        contactManagerMetadataAction?: (waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -93009,6 +93021,12 @@ export namespace waproto {
             /** SyncActionValue ctwaMessageReceivedAction */
             ctwaMessageReceivedAction?: (waproto.SyncActionValue.CtwaMessageReceivedAction.$Properties|null);
 
+            /** SyncActionValue sharedDeviceAllowlistAction */
+            sharedDeviceAllowlistAction?: (waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties|null);
+
+            /** SyncActionValue contactManagerMetadataAction */
+            contactManagerMetadataAction?: (waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -93099,6 +93117,8 @@ export namespace waproto {
           labelSublistAction?: waproto.SyncActionValue.LabelSublistAction.$Shape|null;
           deviceCapabilitiesV2?: waproto.DeviceCapabilities.$Shape|null;
           ctwaMessageReceivedAction?: waproto.SyncActionValue.CtwaMessageReceivedAction.$Shape|null;
+          sharedDeviceAllowlistAction?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape|null;
+          contactManagerMetadataAction?: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -95671,6 +95691,123 @@ export namespace waproto {
 
             /** Shape of a ContactAction. */
             type $Shape = waproto.SyncActionValue.ContactAction.$Properties;
+        }
+
+        /**
+         * Properties of a ContactManagerMetadataAction.
+         * @deprecated Use waproto.SyncActionValue.ContactManagerMetadataAction.$Properties instead.
+         */
+        interface IContactManagerMetadataAction extends waproto.SyncActionValue.ContactManagerMetadataAction.$Properties {
+        }
+
+        /** Represents a ContactManagerMetadataAction. */
+        class ContactManagerMetadataAction {
+
+            /**
+             * Constructs a new ContactManagerMetadataAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.ContactManagerMetadataAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ContactManagerMetadataAction isHidden. */
+            isHidden?: (boolean|null);
+
+            /**
+             * Creates a new ContactManagerMetadataAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ContactManagerMetadataAction instance
+             */
+            static create(properties: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape): waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.ContactManagerMetadataAction.$Properties): waproto.SyncActionValue.ContactManagerMetadataAction;
+
+            /**
+             * Encodes the specified ContactManagerMetadataAction message. Does not implicitly {@link waproto.SyncActionValue.ContactManagerMetadataAction.verify|verify} messages.
+             * @param message ContactManagerMetadataAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.ContactManagerMetadataAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ContactManagerMetadataAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.ContactManagerMetadataAction.verify|verify} messages.
+             * @param message ContactManagerMetadataAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.ContactManagerMetadataAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ContactManagerMetadataAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape} ContactManagerMetadataAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape;
+
+            /**
+             * Decodes a ContactManagerMetadataAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape} ContactManagerMetadataAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.ContactManagerMetadataAction & waproto.SyncActionValue.ContactManagerMetadataAction.$Shape;
+
+            /**
+             * Verifies a ContactManagerMetadataAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ContactManagerMetadataAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ContactManagerMetadataAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.ContactManagerMetadataAction;
+
+            /**
+             * Creates a plain object from a ContactManagerMetadataAction message. Also converts values to other types if specified.
+             * @param message ContactManagerMetadataAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.ContactManagerMetadataAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ContactManagerMetadataAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ContactManagerMetadataAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ContactManagerMetadataAction {
+
+            /** Properties of a ContactManagerMetadataAction. */
+            interface $Properties {
+
+                /** ContactManagerMetadataAction isHidden */
+                isHidden?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ContactManagerMetadataAction. */
+            type $Shape = waproto.SyncActionValue.ContactManagerMetadataAction.$Properties;
         }
 
         /**
@@ -102354,6 +102491,123 @@ export namespace waproto {
                 /** MAC value */
                 MAC = 4
             }
+        }
+
+        /**
+         * Properties of a SharedDeviceAllowlistAction.
+         * @deprecated Use waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties instead.
+         */
+        interface ISharedDeviceAllowlistAction extends waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties {
+        }
+
+        /** Represents a SharedDeviceAllowlistAction. */
+        class SharedDeviceAllowlistAction {
+
+            /**
+             * Constructs a new SharedDeviceAllowlistAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceAllowlistAction allowed. */
+            allowed?: (boolean|null);
+
+            /**
+             * Creates a new SharedDeviceAllowlistAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceAllowlistAction instance
+             */
+            static create(properties: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape): waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties): waproto.SyncActionValue.SharedDeviceAllowlistAction;
+
+            /**
+             * Encodes the specified SharedDeviceAllowlistAction message. Does not implicitly {@link waproto.SyncActionValue.SharedDeviceAllowlistAction.verify|verify} messages.
+             * @param message SharedDeviceAllowlistAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceAllowlistAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.SharedDeviceAllowlistAction.verify|verify} messages.
+             * @param message SharedDeviceAllowlistAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceAllowlistAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape} SharedDeviceAllowlistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape;
+
+            /**
+             * Decodes a SharedDeviceAllowlistAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape} SharedDeviceAllowlistAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.SharedDeviceAllowlistAction & waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape;
+
+            /**
+             * Verifies a SharedDeviceAllowlistAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceAllowlistAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceAllowlistAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.SharedDeviceAllowlistAction;
+
+            /**
+             * Creates a plain object from a SharedDeviceAllowlistAction message. Also converts values to other types if specified.
+             * @param message SharedDeviceAllowlistAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.SharedDeviceAllowlistAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceAllowlistAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceAllowlistAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceAllowlistAction {
+
+            /** Properties of a SharedDeviceAllowlistAction. */
+            interface $Properties {
+
+                /** SharedDeviceAllowlistAction allowed */
+                allowed?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceAllowlistAction. */
+            type $Shape = waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties;
         }
 
         /**
