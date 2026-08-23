@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1045835023
+/// WhatsApp Version: 2.3000.1045836822
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1759,6 +1759,7 @@ message ContextInfo {
     optional string posterStatusId = 79;
     optional InstagramThreadLink instagramThreadLink = 80;
     optional AIProvenance aiProvenance = 81;
+    repeated uint32 experienceIds = 82 [packed=true];
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -2974,6 +2975,7 @@ message Message {
     optional MusicMessage musicMessage = 129;
     optional StatusLinkPreviewMetadata statusLinkPreviewMetadata = 130;
     optional FutureProofMessage botPlatformRegistrationSuccessMessage = 131;
+    optional FutureProofMessage newsletterScheduledMessage = 132;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;

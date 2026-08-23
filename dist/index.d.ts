@@ -24157,6 +24157,9 @@ export namespace waproto {
         /** ContextInfo aiProvenance. */
         aiProvenance?: (waproto.AIProvenance.$Properties|null);
 
+        /** ContextInfo experienceIds. */
+        experienceIds: number[];
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -24433,6 +24436,9 @@ export namespace waproto {
             /** ContextInfo aiProvenance */
             aiProvenance?: (waproto.AIProvenance.$Properties|null);
 
+            /** ContextInfo experienceIds */
+            experienceIds?: (number[]|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -24503,6 +24509,7 @@ export namespace waproto {
           posterStatusId?: string|null;
           instagramThreadLink?: waproto.ContextInfo.InstagramThreadLink.$Shape|null;
           aiProvenance?: waproto.AIProvenance.$Shape|null;
+          experienceIds?: number[]|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -40184,6 +40191,9 @@ export namespace waproto {
         /** Message botPlatformRegistrationSuccessMessage. */
         botPlatformRegistrationSuccessMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+        /** Message newsletterScheduledMessage. */
+        newsletterScheduledMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -40598,6 +40608,9 @@ export namespace waproto {
             /** Message botPlatformRegistrationSuccessMessage */
             botPlatformRegistrationSuccessMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+            /** Message newsletterScheduledMessage */
+            newsletterScheduledMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -40714,6 +40727,7 @@ export namespace waproto {
           musicMessage?: waproto.Message.MusicMessage.$Shape|null;
           statusLinkPreviewMetadata?: waproto.Message.StatusLinkPreviewMetadata.$Shape|null;
           botPlatformRegistrationSuccessMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
