@@ -10336,6 +10336,7 @@ $root.waproto = (function() {
          * @property {Array.<waproto.AIRichResponseSubMessage.$Properties>|null} [submessages] AIRichResponseMessage submessages
          * @property {waproto.AIRichResponseUnifiedResponse.$Properties|null} [unifiedResponse] AIRichResponseMessage unifiedResponse
          * @property {waproto.ContextInfo.$Properties|null} [contextInfo] AIRichResponseMessage contextInfo
+         * @property {waproto.AIRichResponseUnifiedResponse.$Properties|null} [originalRecipientMetadata] AIRichResponseMessage originalRecipientMetadata
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -10354,6 +10355,7 @@ $root.waproto = (function() {
          *   submessages?: Array.<waproto.AIRichResponseSubMessage.$Shape>|null;
          *   unifiedResponse?: waproto.AIRichResponseUnifiedResponse.$Shape|null;
          *   contextInfo?: waproto.ContextInfo.$Shape|null;
+         *   originalRecipientMetadata?: waproto.AIRichResponseUnifiedResponse.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.AIRichResponseMessage.$Shape
          */
@@ -10406,6 +10408,14 @@ $root.waproto = (function() {
          */
         AIRichResponseMessage.prototype.contextInfo = null;
 
+        /**
+         * AIRichResponseMessage originalRecipientMetadata.
+         * @member {waproto.AIRichResponseUnifiedResponse.$Properties|null|undefined} originalRecipientMetadata
+         * @memberof waproto.AIRichResponseMessage
+         * @instance
+         */
+        AIRichResponseMessage.prototype.originalRecipientMetadata = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -10424,6 +10434,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(AIRichResponseMessage.prototype, "_contextInfo", {
             get: $util.oneOfGetter($oneOfFields = ["contextInfo"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AIRichResponseMessage.prototype, "_originalRecipientMetadata", {
+            get: $util.oneOfGetter($oneOfFields = ["originalRecipientMetadata"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -10468,6 +10484,8 @@ $root.waproto = (function() {
                 $root.waproto.AIRichResponseUnifiedResponse.encode(message.unifiedResponse, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
             if (message.contextInfo != null && $Object.hasOwnProperty.call(message, "contextInfo"))
                 $root.waproto.ContextInfo.encode(message.contextInfo, writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+            if (message.originalRecipientMetadata != null && $Object.hasOwnProperty.call(message, "originalRecipientMetadata"))
+                $root.waproto.AIRichResponseUnifiedResponse.encode(message.originalRecipientMetadata, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -10554,6 +10572,13 @@ $root.waproto = (function() {
                         message._contextInfo = "contextInfo";
                         continue;
                     }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.originalRecipientMetadata = $root.waproto.AIRichResponseUnifiedResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.originalRecipientMetadata);
+                        message._originalRecipientMetadata = "originalRecipientMetadata";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -10633,6 +10658,14 @@ $root.waproto = (function() {
                         return "contextInfo." + error;
                 }
             }
+            if (message.originalRecipientMetadata != null && $Object.hasOwnProperty.call(message, "originalRecipientMetadata")) {
+                properties._originalRecipientMetadata = 1;
+                {
+                    var error = $root.waproto.AIRichResponseUnifiedResponse.verify(message.originalRecipientMetadata, _depth + 1);
+                    if (error)
+                        return "originalRecipientMetadata." + error;
+                }
+            }
             return null;
         };
 
@@ -10687,6 +10720,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.AIRichResponseMessage.contextInfo: object expected");
                 message.contextInfo = $root.waproto.ContextInfo.fromObject(object.contextInfo, _depth + 1);
             }
+            if (object.originalRecipientMetadata != null) {
+                if (!$util.isObject(object.originalRecipientMetadata))
+                    throw $TypeError(".waproto.AIRichResponseMessage.originalRecipientMetadata: object expected");
+                message.originalRecipientMetadata = $root.waproto.AIRichResponseUnifiedResponse.fromObject(object.originalRecipientMetadata, _depth + 1);
+            }
             return message;
         };
 
@@ -10720,6 +10758,8 @@ $root.waproto = (function() {
                 object.unifiedResponse = $root.waproto.AIRichResponseUnifiedResponse.toObject(message.unifiedResponse, options, _depth + 1);
             if (message.contextInfo != null && $Object.hasOwnProperty.call(message, "contextInfo"))
                 object.contextInfo = $root.waproto.ContextInfo.toObject(message.contextInfo, options, _depth + 1);
+            if (message.originalRecipientMetadata != null && $Object.hasOwnProperty.call(message, "originalRecipientMetadata"))
+                object.originalRecipientMetadata = $root.waproto.AIRichResponseUnifiedResponse.toObject(message.originalRecipientMetadata, options, _depth + 1);
             return object;
         };
 
@@ -18747,6 +18787,10 @@ $root.waproto = (function() {
                     case 69:
                         message.capabilities[message.capabilities.length] = 69;
                         break;
+                    case "AI_STOP_GENERATION_ENABLED":
+                    case 70:
+                        message.capabilities[message.capabilities.length] = 70;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -18881,6 +18925,7 @@ $root.waproto = (function() {
          * @property {number} AI_RICH_RESPONSE_ARTIFACTS_ENABLED=67 AI_RICH_RESPONSE_ARTIFACTS_ENABLED value
          * @property {number} AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED=68 AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED value
          * @property {number} AI_RICH_RESPONSE_REMINDERS_ENABLED=69 AI_RICH_RESPONSE_REMINDERS_ENABLED value
+         * @property {number} AI_STOP_GENERATION_ENABLED=70 AI_STOP_GENERATION_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -18954,6 +18999,7 @@ $root.waproto = (function() {
             values[valuesById[67] = "AI_RICH_RESPONSE_ARTIFACTS_ENABLED"] = 67;
             values[valuesById[68] = "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED"] = 68;
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
+            values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             return values;
         })();
 
@@ -28033,6 +28079,10 @@ $root.waproto = (function() {
             case 57:
                 message.botEntryPointOrigin = 57;
                 break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                message.botEntryPointOrigin = 58;
+                break;
             default:
                 if (typeof object.botEntryPointOrigin === "number" && (object.botEntryPointOrigin | 0) === object.botEntryPointOrigin)
                     message.botEntryPointOrigin = object.botEntryPointOrigin;
@@ -28141,6 +28191,7 @@ $root.waproto = (function() {
          * @property {waproto.AISubscriptionUpsellMetadata.$Properties|null} [subscriptionUpsellMetadata] BotMetadata subscriptionUpsellMetadata
          * @property {waproto.BotPttPromptMetadata.$Properties|null} [pttPromptMetadata] BotMetadata pttPromptMetadata
          * @property {waproto.BotHistoryShareMetadata.$Properties|null} [botHistoryShareMetadata] BotMetadata botHistoryShareMetadata
+         * @property {boolean|null} [responseStoppedByUser] BotMetadata responseStoppedByUser
          * @property {Uint8Array|null} [internalMetadata] BotMetadata internalMetadata
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
@@ -28510,6 +28561,14 @@ $root.waproto = (function() {
         BotMetadata.prototype.botHistoryShareMetadata = null;
 
         /**
+         * BotMetadata responseStoppedByUser.
+         * @member {boolean|null|undefined} responseStoppedByUser
+         * @memberof waproto.BotMetadata
+         * @instance
+         */
+        BotMetadata.prototype.responseStoppedByUser = null;
+
+        /**
          * BotMetadata internalMetadata.
          * @member {Uint8Array|null|undefined} internalMetadata
          * @memberof waproto.BotMetadata
@@ -28773,6 +28832,12 @@ $root.waproto = (function() {
         });
 
         // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BotMetadata.prototype, "_responseStoppedByUser", {
+            get: $util.oneOfGetter($oneOfFields = ["responseStoppedByUser"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
         $Object.defineProperty(BotMetadata.prototype, "_internalMetadata", {
             get: $util.oneOfGetter($oneOfFields = ["internalMetadata"]),
             set: $util.oneOfSetter($oneOfFields)
@@ -28894,6 +28959,8 @@ $root.waproto = (function() {
                 $root.waproto.BotPttPromptMetadata.encode(message.pttPromptMetadata, writer.uint32(/* id 42, wireType 2 =*/338).fork(), _depth + 1).ldelim();
             if (message.botHistoryShareMetadata != null && $Object.hasOwnProperty.call(message, "botHistoryShareMetadata"))
                 $root.waproto.BotHistoryShareMetadata.encode(message.botHistoryShareMetadata, writer.uint32(/* id 43, wireType 2 =*/346).fork(), _depth + 1).ldelim();
+            if (message.responseStoppedByUser != null && $Object.hasOwnProperty.call(message, "responseStoppedByUser"))
+                writer.uint32(/* id 44, wireType 0 =*/352).bool(message.responseStoppedByUser);
             if (message.internalMetadata != null && $Object.hasOwnProperty.call(message, "internalMetadata"))
                 writer.uint32(/* id 999, wireType 2 =*/7994).bytes(message.internalMetadata);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
@@ -29245,6 +29312,13 @@ $root.waproto = (function() {
                             break;
                         message.botHistoryShareMetadata = $root.waproto.BotHistoryShareMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botHistoryShareMetadata);
                         message._botHistoryShareMetadata = "botHistoryShareMetadata";
+                        continue;
+                    }
+                case 44: {
+                        if (wireType !== 0)
+                            break;
+                        message.responseStoppedByUser = reader.bool();
+                        message._responseStoppedByUser = "responseStoppedByUser";
                         continue;
                     }
                 case 999: {
@@ -29618,6 +29692,11 @@ $root.waproto = (function() {
                         return "botHistoryShareMetadata." + error;
                 }
             }
+            if (message.responseStoppedByUser != null && $Object.hasOwnProperty.call(message, "responseStoppedByUser")) {
+                properties._responseStoppedByUser = 1;
+                if (typeof message.responseStoppedByUser !== "boolean")
+                    return "responseStoppedByUser: boolean expected";
+            }
             if (message.internalMetadata != null && $Object.hasOwnProperty.call(message, "internalMetadata")) {
                 properties._internalMetadata = 1;
                 if (!(message.internalMetadata && typeof message.internalMetadata.length === "number" || $util.isString(message.internalMetadata)))
@@ -29836,6 +29915,8 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.BotMetadata.botHistoryShareMetadata: object expected");
                 message.botHistoryShareMetadata = $root.waproto.BotHistoryShareMetadata.fromObject(object.botHistoryShareMetadata, _depth + 1);
             }
+            if (object.responseStoppedByUser != null)
+                message.responseStoppedByUser = $Boolean(object.responseStoppedByUser);
             if (object.internalMetadata != null)
                 if (typeof object.internalMetadata === "string")
                     $util.base64.decode(object.internalMetadata, message.internalMetadata = $util.newBuffer($util.base64.length(object.internalMetadata)), 0);
@@ -29945,6 +30026,8 @@ $root.waproto = (function() {
                 object.pttPromptMetadata = $root.waproto.BotPttPromptMetadata.toObject(message.pttPromptMetadata, options, _depth + 1);
             if (message.botHistoryShareMetadata != null && $Object.hasOwnProperty.call(message, "botHistoryShareMetadata"))
                 object.botHistoryShareMetadata = $root.waproto.BotHistoryShareMetadata.toObject(message.botHistoryShareMetadata, options, _depth + 1);
+            if (message.responseStoppedByUser != null && $Object.hasOwnProperty.call(message, "responseStoppedByUser"))
+                object.responseStoppedByUser = message.responseStoppedByUser;
             if (message.internalMetadata != null && $Object.hasOwnProperty.call(message, "internalMetadata"))
                 object.internalMetadata = options.bytes === $String ? $util.base64.encode(message.internalMetadata, 0, message.internalMetadata.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.internalMetadata) : message.internalMetadata;
             return object;
@@ -30031,6 +30114,7 @@ $root.waproto = (function() {
      * @property {number} CHATLIST_SEARCH=55 CHATLIST_SEARCH value
      * @property {number} NEW_CHAT_LIST=56 NEW_CHAT_LIST value
      * @property {number} CONTACTS_TAB=57 CONTACTS_TAB value
+     * @property {number} NEW_3P_AGENT_CREATION=58 NEW_3P_AGENT_CREATION value
      */
     waproto.BotMetricsEntryPoint = (function() {
         var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -30083,6 +30167,7 @@ $root.waproto = (function() {
         values[valuesById[55] = "CHATLIST_SEARCH"] = 55;
         values[valuesById[56] = "NEW_CHAT_LIST"] = 56;
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
+        values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
         return values;
     })();
 
@@ -30569,6 +30654,10 @@ $root.waproto = (function() {
             case "CONTACTS_TAB":
             case 57:
                 message.destinationEntryPoint = 57;
+                break;
+            case "NEW_3P_AGENT_CREATION":
+            case 58:
+                message.destinationEntryPoint = 58;
                 break;
             default:
                 if (typeof object.destinationEntryPoint === "number" && (object.destinationEntryPoint | 0) === object.destinationEntryPoint)
@@ -84372,6 +84461,7 @@ $root.waproto = (function() {
              * @property {boolean|null} [campaignSyncEnabled] BusinessBroadcast campaignSyncEnabled
              * @property {boolean|null} [insightsSyncEnabled] BusinessBroadcast insightsSyncEnabled
              * @property {number|null} [recipientLimit] BusinessBroadcast recipientLimit
+             * @property {boolean|null} [proCompanionSupportEnabled] BusinessBroadcast proCompanionSupportEnabled
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -84443,6 +84533,14 @@ $root.waproto = (function() {
              */
             BusinessBroadcast.prototype.recipientLimit = null;
 
+            /**
+             * BusinessBroadcast proCompanionSupportEnabled.
+             * @member {boolean|null|undefined} proCompanionSupportEnabled
+             * @memberof waproto.DeviceCapabilities.BusinessBroadcast
+             * @instance
+             */
+            BusinessBroadcast.prototype.proCompanionSupportEnabled = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -84473,6 +84571,12 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(BusinessBroadcast.prototype, "_recipientLimit", {
                 get: $util.oneOfGetter($oneOfFields = ["recipientLimit"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(BusinessBroadcast.prototype, "_proCompanionSupportEnabled", {
+                get: $util.oneOfGetter($oneOfFields = ["proCompanionSupportEnabled"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -84518,6 +84622,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 4, wireType 0 =*/32).bool(message.insightsSyncEnabled);
                 if (message.recipientLimit != null && $Object.hasOwnProperty.call(message, "recipientLimit"))
                     writer.uint32(/* id 5, wireType 0 =*/40).int32(message.recipientLimit);
+                if (message.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(message, "proCompanionSupportEnabled"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message.proCompanionSupportEnabled);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -84610,6 +84716,13 @@ $root.waproto = (function() {
                             message._recipientLimit = "recipientLimit";
                             continue;
                         }
+                    case 6: {
+                            if (wireType !== 0)
+                                break;
+                            message.proCompanionSupportEnabled = reader.bool();
+                            message._proCompanionSupportEnabled = "proCompanionSupportEnabled";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -84684,6 +84797,11 @@ $root.waproto = (function() {
                     if (!$util.isInteger(message.recipientLimit))
                         return "recipientLimit: integer expected";
                 }
+                if (message.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(message, "proCompanionSupportEnabled")) {
+                    properties._proCompanionSupportEnabled = 1;
+                    if (typeof message.proCompanionSupportEnabled !== "boolean")
+                        return "proCompanionSupportEnabled: boolean expected";
+                }
                 return null;
             };
 
@@ -84715,6 +84833,8 @@ $root.waproto = (function() {
                     message.insightsSyncEnabled = $Boolean(object.insightsSyncEnabled);
                 if (object.recipientLimit != null)
                     message.recipientLimit = object.recipientLimit | 0;
+                if (object.proCompanionSupportEnabled != null)
+                    message.proCompanionSupportEnabled = $Boolean(object.proCompanionSupportEnabled);
                 return message;
             };
 
@@ -84745,6 +84865,8 @@ $root.waproto = (function() {
                     object.insightsSyncEnabled = message.insightsSyncEnabled;
                 if (message.recipientLimit != null && $Object.hasOwnProperty.call(message, "recipientLimit"))
                     object.recipientLimit = message.recipientLimit;
+                if (message.proCompanionSupportEnabled != null && $Object.hasOwnProperty.call(message, "proCompanionSupportEnabled"))
+                    object.proCompanionSupportEnabled = message.proCompanionSupportEnabled;
                 return object;
             };
 
@@ -198188,6 +198310,7 @@ $root.waproto = (function() {
              * @property {number|Long|null} [motionPhotoPresentationOffsetMs] VideoMessage motionPhotoPresentationOffsetMs
              * @property {string|null} [metadataUrl] VideoMessage metadataUrl
              * @property {waproto.Message.VideoMessage.VideoSourceType|null} [videoSourceType] VideoMessage videoSourceType
+             * @property {string|null} [dashManifestUrl] VideoMessage dashManifestUrl
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -198232,6 +198355,7 @@ $root.waproto = (function() {
              *   motionPhotoPresentationOffsetMs?: number|Long|null;
              *   metadataUrl?: string|null;
              *   videoSourceType?: waproto.Message.VideoMessage.VideoSourceType|null;
+             *   dashManifestUrl?: string|null;
              *   $unknowns?: Array.<Uint8Array>;
              * }} waproto.Message.VideoMessage.$Shape
              */
@@ -198494,6 +198618,14 @@ $root.waproto = (function() {
              */
             VideoMessage.prototype.videoSourceType = null;
 
+            /**
+             * VideoMessage dashManifestUrl.
+             * @member {string|null|undefined} dashManifestUrl
+             * @memberof waproto.Message.VideoMessage
+             * @instance
+             */
+            VideoMessage.prototype.dashManifestUrl = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -198659,6 +198791,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VideoMessage.prototype, "_dashManifestUrl", {
+                get: $util.oneOfGetter($oneOfFields = ["dashManifestUrl"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @function create
@@ -198754,6 +198892,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 30, wireType 2 =*/242).string(message.metadataUrl);
                 if (message.videoSourceType != null && $Object.hasOwnProperty.call(message, "videoSourceType"))
                     writer.uint32(/* id 31, wireType 0 =*/248).int32(message.videoSourceType);
+                if (message.dashManifestUrl != null && $Object.hasOwnProperty.call(message, "dashManifestUrl"))
+                    writer.uint32(/* id 33, wireType 2 =*/266).string(message.dashManifestUrl);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -199024,6 +199164,13 @@ $root.waproto = (function() {
                             message._videoSourceType = "videoSourceType";
                             continue;
                         }
+                    case 33: {
+                            if (wireType !== 2)
+                                break;
+                            message.dashManifestUrl = reader.stringVerify();
+                            message._dashManifestUrl = "dashManifestUrl";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -199238,6 +199385,11 @@ $root.waproto = (function() {
                     if (typeof message.videoSourceType !== "number" || (message.videoSourceType | 0) !== message.videoSourceType)
                         return "videoSourceType: enum value expected";
                 }
+                if (message.dashManifestUrl != null && $Object.hasOwnProperty.call(message, "dashManifestUrl")) {
+                    properties._dashManifestUrl = 1;
+                    if (!$util.isString(message.dashManifestUrl))
+                        return "dashManifestUrl: string expected";
+                }
                 return null;
             };
 
@@ -199418,6 +199570,8 @@ $root.waproto = (function() {
                     if (typeof object.videoSourceType === "number" && (object.videoSourceType | 0) === object.videoSourceType)
                         message.videoSourceType = object.videoSourceType;
                 }
+                if (object.dashManifestUrl != null)
+                    message.dashManifestUrl = $String(object.dashManifestUrl);
                 return message;
             };
 
@@ -199527,6 +199681,8 @@ $root.waproto = (function() {
                     object.metadataUrl = message.metadataUrl;
                 if (message.videoSourceType != null && $Object.hasOwnProperty.call(message, "videoSourceType"))
                     object.videoSourceType = options.enums === $String ? $root.waproto.Message.VideoMessage.VideoSourceType[message.videoSourceType] === $undefined ? message.videoSourceType : $root.waproto.Message.VideoMessage.VideoSourceType[message.videoSourceType] : message.videoSourceType;
+                if (message.dashManifestUrl != null && $Object.hasOwnProperty.call(message, "dashManifestUrl"))
+                    object.dashManifestUrl = message.dashManifestUrl;
                 return object;
             };
 

@@ -3697,6 +3697,9 @@ export namespace waproto {
         /** AIRichResponseMessage contextInfo. */
         contextInfo?: (waproto.ContextInfo.$Properties|null);
 
+        /** AIRichResponseMessage originalRecipientMetadata. */
+        originalRecipientMetadata?: (waproto.AIRichResponseUnifiedResponse.$Properties|null);
+
         /**
          * Creates a new AIRichResponseMessage instance using the specified properties.
          * @param [properties] Properties to set
@@ -3793,6 +3796,9 @@ export namespace waproto {
             /** AIRichResponseMessage contextInfo */
             contextInfo?: (waproto.ContextInfo.$Properties|null);
 
+            /** AIRichResponseMessage originalRecipientMetadata */
+            originalRecipientMetadata?: (waproto.AIRichResponseUnifiedResponse.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -3803,6 +3809,7 @@ export namespace waproto {
           submessages?: waproto.AIRichResponseSubMessage.$Shape[]|null;
           unifiedResponse?: waproto.AIRichResponseUnifiedResponse.$Shape|null;
           contextInfo?: waproto.ContextInfo.$Shape|null;
+          originalRecipientMetadata?: waproto.AIRichResponseUnifiedResponse.$Shape|null;
           $unknowns?: Uint8Array[];
         };
     }
@@ -6868,7 +6875,10 @@ export namespace waproto {
             AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68,
 
             /** AI_RICH_RESPONSE_REMINDERS_ENABLED value */
-            AI_RICH_RESPONSE_REMINDERS_ENABLED = 69
+            AI_RICH_RESPONSE_REMINDERS_ENABLED = 69,
+
+            /** AI_STOP_GENERATION_ENABLED value */
+            AI_STOP_GENERATION_ENABLED = 70
         }
     }
 
@@ -10357,6 +10367,9 @@ export namespace waproto {
         /** BotMetadata botHistoryShareMetadata. */
         botHistoryShareMetadata?: (waproto.BotHistoryShareMetadata.$Properties|null);
 
+        /** BotMetadata responseStoppedByUser. */
+        responseStoppedByUser?: (boolean|null);
+
         /** BotMetadata internalMetadata. */
         internalMetadata?: (Uint8Array|null);
 
@@ -10570,6 +10583,9 @@ export namespace waproto {
             /** BotMetadata botHistoryShareMetadata */
             botHistoryShareMetadata?: (waproto.BotHistoryShareMetadata.$Properties|null);
 
+            /** BotMetadata responseStoppedByUser */
+            responseStoppedByUser?: (boolean|null);
+
             /** BotMetadata internalMetadata */
             internalMetadata?: (Uint8Array|null);
 
@@ -10729,7 +10745,10 @@ export namespace waproto {
         NEW_CHAT_LIST = 56,
 
         /** CONTACTS_TAB value */
-        CONTACTS_TAB = 57
+        CONTACTS_TAB = 57,
+
+        /** NEW_3P_AGENT_CREATION value */
+        NEW_3P_AGENT_CREATION = 58
     }
 
     /**
@@ -28960,6 +28979,9 @@ export namespace waproto {
             /** BusinessBroadcast recipientLimit. */
             recipientLimit?: (number|null);
 
+            /** BusinessBroadcast proCompanionSupportEnabled. */
+            proCompanionSupportEnabled?: (boolean|null);
+
             /**
              * Creates a new BusinessBroadcast instance using the specified properties.
              * @param [properties] Properties to set
@@ -29058,6 +29080,9 @@ export namespace waproto {
 
                 /** BusinessBroadcast recipientLimit */
                 recipientLimit?: (number|null);
+
+                /** BusinessBroadcast proCompanionSupportEnabled */
+                proCompanionSupportEnabled?: (boolean|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -66586,6 +66611,9 @@ export namespace waproto {
             /** VideoMessage videoSourceType. */
             videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
 
+            /** VideoMessage dashManifestUrl. */
+            dashManifestUrl?: (string|null);
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -66760,6 +66788,9 @@ export namespace waproto {
                 /** VideoMessage videoSourceType */
                 videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
 
+                /** VideoMessage dashManifestUrl */
+                dashManifestUrl?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -66796,6 +66827,7 @@ export namespace waproto {
               motionPhotoPresentationOffsetMs?: number|Long|null;
               metadataUrl?: string|null;
               videoSourceType?: waproto.Message.VideoMessage.VideoSourceType|null;
+              dashManifestUrl?: string|null;
               $unknowns?: Uint8Array[];
             };
 

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1046167339
+/// WhatsApp Version: 2.3000.1046196466
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -218,6 +218,7 @@ message AIRichResponseMessage {
     repeated AIRichResponseSubMessage submessages = 2;
     optional AIRichResponseUnifiedResponse unifiedResponse = 3;
     optional ContextInfo contextInfo = 4;
+    optional AIRichResponseUnifiedResponse originalRecipientMetadata = 5;
 }
 
 enum AIRichResponseMessageType {
@@ -466,6 +467,7 @@ message BotCapabilityMetadata {
         AI_RICH_RESPONSE_ARTIFACTS_ENABLED = 67;
         AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68;
         AI_RICH_RESPONSE_REMINDERS_ENABLED = 69;
+        AI_STOP_GENERATION_ENABLED = 70;
     }
 }
 
@@ -715,6 +717,7 @@ message BotMetadata {
     optional AISubscriptionUpsellMetadata subscriptionUpsellMetadata = 41;
     optional BotPttPromptMetadata pttPromptMetadata = 42;
     optional BotHistoryShareMetadata botHistoryShareMetadata = 43;
+    optional bool responseStoppedByUser = 44;
     optional bytes internalMetadata = 999;
 }
 
@@ -768,6 +771,7 @@ enum BotMetricsEntryPoint {
     CHATLIST_SEARCH = 55;
     NEW_CHAT_LIST = 56;
     CONTACTS_TAB = 57;
+    NEW_3P_AGENT_CREATION = 58;
 }
 message BotMetricsMetadata {
     optional string destinationId = 1;
@@ -2132,6 +2136,7 @@ message DeviceCapabilities {
         optional bool campaignSyncEnabled = 3;
         optional bool insightsSyncEnabled = 4;
         optional int32 recipientLimit = 5;
+        optional bool proCompanionSupportEnabled = 6;
     }
     
     enum ChatLockSupportLevel {
@@ -4732,6 +4737,7 @@ message Message {
         optional uint64 motionPhotoPresentationOffsetMs = 29;
         optional string metadataUrl = 30;
         optional VideoSourceType videoSourceType = 31;
+        optional string dashManifestUrl = 33;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
