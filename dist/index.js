@@ -46330,6 +46330,7 @@ $root.waproto = (function() {
          * @property {boolean|null} [isSyncdSnapshotRecoveryEnabled] ClientPairingProps isSyncdSnapshotRecoveryEnabled
          * @property {boolean|null} [isHsThumbnailSyncEnabled] ClientPairingProps isHsThumbnailSyncEnabled
          * @property {Uint8Array|null} [subscriptionSyncPayload] ClientPairingProps subscriptionSyncPayload
+         * @property {boolean|null} [isBotJidDbMigrated] ClientPairingProps isBotJidDbMigrated
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -46401,6 +46402,14 @@ $root.waproto = (function() {
          */
         ClientPairingProps.prototype.subscriptionSyncPayload = null;
 
+        /**
+         * ClientPairingProps isBotJidDbMigrated.
+         * @member {boolean|null|undefined} isBotJidDbMigrated
+         * @memberof waproto.ClientPairingProps
+         * @instance
+         */
+        ClientPairingProps.prototype.isBotJidDbMigrated = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -46431,6 +46440,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(ClientPairingProps.prototype, "_subscriptionSyncPayload", {
             get: $util.oneOfGetter($oneOfFields = ["subscriptionSyncPayload"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ClientPairingProps.prototype, "_isBotJidDbMigrated", {
+            get: $util.oneOfGetter($oneOfFields = ["isBotJidDbMigrated"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -46476,6 +46491,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.isHsThumbnailSyncEnabled);
             if (message.subscriptionSyncPayload != null && $Object.hasOwnProperty.call(message, "subscriptionSyncPayload"))
                 writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.subscriptionSyncPayload);
+            if (message.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(message, "isBotJidDbMigrated"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isBotJidDbMigrated);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -46568,6 +46585,13 @@ $root.waproto = (function() {
                         message._subscriptionSyncPayload = "subscriptionSyncPayload";
                         continue;
                     }
+                case 6: {
+                        if (wireType !== 0)
+                            break;
+                        message.isBotJidDbMigrated = reader.bool();
+                        message._isBotJidDbMigrated = "isBotJidDbMigrated";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -46642,6 +46666,11 @@ $root.waproto = (function() {
                 if (!(message.subscriptionSyncPayload && typeof message.subscriptionSyncPayload.length === "number" || $util.isString(message.subscriptionSyncPayload)))
                     return "subscriptionSyncPayload: buffer expected";
             }
+            if (message.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(message, "isBotJidDbMigrated")) {
+                properties._isBotJidDbMigrated = 1;
+                if (typeof message.isBotJidDbMigrated !== "boolean")
+                    return "isBotJidDbMigrated: boolean expected";
+            }
             return null;
         };
 
@@ -46676,6 +46705,8 @@ $root.waproto = (function() {
                     $util.base64.decode(object.subscriptionSyncPayload, message.subscriptionSyncPayload = $util.newBuffer($util.base64.length(object.subscriptionSyncPayload)), 0);
                 else if (object.subscriptionSyncPayload.length >= 0)
                     message.subscriptionSyncPayload = object.subscriptionSyncPayload;
+            if (object.isBotJidDbMigrated != null)
+                message.isBotJidDbMigrated = $Boolean(object.isBotJidDbMigrated);
             return message;
         };
 
@@ -46706,6 +46737,8 @@ $root.waproto = (function() {
                 object.isHsThumbnailSyncEnabled = message.isHsThumbnailSyncEnabled;
             if (message.subscriptionSyncPayload != null && $Object.hasOwnProperty.call(message, "subscriptionSyncPayload"))
                 object.subscriptionSyncPayload = options.bytes === $String ? $util.base64.encode(message.subscriptionSyncPayload, 0, message.subscriptionSyncPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.subscriptionSyncPayload) : message.subscriptionSyncPayload;
+            if (message.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(message, "isBotJidDbMigrated"))
+                object.isBotJidDbMigrated = message.isBotJidDbMigrated;
             return object;
         };
 
@@ -81088,6 +81121,7 @@ $root.waproto = (function() {
              * Properties of an AiFbidMigration.
              * @typedef {Object} waproto.DeviceCapabilities.AiFbidMigration.$Properties
              * @property {number|Long|null} [chatDbMigrationTimestamp] AiFbidMigration chatDbMigrationTimestamp
+             * @property {number|null} [supportVersion] AiFbidMigration supportVersion
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -81127,12 +81161,26 @@ $root.waproto = (function() {
              */
             AiFbidMigration.prototype.chatDbMigrationTimestamp = null;
 
+            /**
+             * AiFbidMigration supportVersion.
+             * @member {number|null|undefined} supportVersion
+             * @memberof waproto.DeviceCapabilities.AiFbidMigration
+             * @instance
+             */
+            AiFbidMigration.prototype.supportVersion = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(AiFbidMigration.prototype, "_chatDbMigrationTimestamp", {
                 get: $util.oneOfGetter($oneOfFields = ["chatDbMigrationTimestamp"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(AiFbidMigration.prototype, "_supportVersion", {
+                get: $util.oneOfGetter($oneOfFields = ["supportVersion"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -81170,6 +81218,8 @@ $root.waproto = (function() {
                     throw $Error("max depth exceeded");
                 if (message.chatDbMigrationTimestamp != null && $Object.hasOwnProperty.call(message, "chatDbMigrationTimestamp"))
                     writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.chatDbMigrationTimestamp);
+                if (message.supportVersion != null && $Object.hasOwnProperty.call(message, "supportVersion"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.supportVersion);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -81234,6 +81284,13 @@ $root.waproto = (function() {
                             message._chatDbMigrationTimestamp = "chatDbMigrationTimestamp";
                             continue;
                         }
+                    case 2: {
+                            if (wireType !== 0)
+                                break;
+                            message.supportVersion = reader.uint32();
+                            message._supportVersion = "supportVersion";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -81288,6 +81345,11 @@ $root.waproto = (function() {
                     if (!$util.isInteger(message.chatDbMigrationTimestamp) && !(message.chatDbMigrationTimestamp && $util.isInteger(message.chatDbMigrationTimestamp.low) && $util.isInteger(message.chatDbMigrationTimestamp.high)))
                         return "chatDbMigrationTimestamp: integer|Long expected";
                 }
+                if (message.supportVersion != null && $Object.hasOwnProperty.call(message, "supportVersion")) {
+                    properties._supportVersion = 1;
+                    if (!$util.isInteger(message.supportVersion))
+                        return "supportVersion: integer expected";
+                }
                 return null;
             };
 
@@ -81318,6 +81380,8 @@ $root.waproto = (function() {
                         message.chatDbMigrationTimestamp = object.chatDbMigrationTimestamp;
                     else if (typeof object.chatDbMigrationTimestamp === "object")
                         message.chatDbMigrationTimestamp = new $util.LongBits(object.chatDbMigrationTimestamp.low >>> 0, object.chatDbMigrationTimestamp.high >>> 0).toNumber(true);
+                if (object.supportVersion != null)
+                    message.supportVersion = object.supportVersion >>> 0;
                 return message;
             };
 
@@ -81345,6 +81409,8 @@ $root.waproto = (function() {
                         object.chatDbMigrationTimestamp = options.longs === $String ? $String(message.chatDbMigrationTimestamp) : message.chatDbMigrationTimestamp;
                     else
                         object.chatDbMigrationTimestamp = options.longs === $String ? $util.Long.prototype.toString.call(message.chatDbMigrationTimestamp) : options.longs === $Number ? new $util.LongBits(message.chatDbMigrationTimestamp.low >>> 0, message.chatDbMigrationTimestamp.high >>> 0).toNumber(true) : message.chatDbMigrationTimestamp;
+                if (message.supportVersion != null && $Object.hasOwnProperty.call(message, "supportVersion"))
+                    object.supportVersion = message.supportVersion;
                 return object;
             };
 

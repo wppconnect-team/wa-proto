@@ -16480,6 +16480,9 @@ export namespace waproto {
         /** ClientPairingProps subscriptionSyncPayload. */
         subscriptionSyncPayload?: (Uint8Array|null);
 
+        /** ClientPairingProps isBotJidDbMigrated. */
+        isBotJidDbMigrated?: (boolean|null);
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @param [properties] Properties to set
@@ -16578,6 +16581,9 @@ export namespace waproto {
 
             /** ClientPairingProps subscriptionSyncPayload */
             subscriptionSyncPayload?: (Uint8Array|null);
+
+            /** ClientPairingProps isBotJidDbMigrated */
+            isBotJidDbMigrated?: (boolean|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -27694,6 +27700,9 @@ export namespace waproto {
             /** AiFbidMigration chatDbMigrationTimestamp. */
             chatDbMigrationTimestamp?: (number|Long|null);
 
+            /** AiFbidMigration supportVersion. */
+            supportVersion?: (number|null);
+
             /**
              * Creates a new AiFbidMigration instance using the specified properties.
              * @param [properties] Properties to set
@@ -27780,6 +27789,9 @@ export namespace waproto {
 
                 /** AiFbidMigration chatDbMigrationTimestamp */
                 chatDbMigrationTimestamp?: (number|Long|null);
+
+                /** AiFbidMigration supportVersion */
+                supportVersion?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
