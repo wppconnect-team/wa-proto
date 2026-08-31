@@ -3684,6 +3684,7 @@ $root.waproto = (function() {
          * Properties of a AIMetadataOperation.
          * @typedef {Object} waproto.AIMetadataOperation.$Properties
          * @property {waproto.HatchMetadataSync.$Properties|null} [hatchMetadataSync] AIMetadataOperation hatchMetadataSync
+         * @property {waproto.BizAIMetadataSync.$Properties|null} [bizAiMetadataSync] AIMetadataOperation bizAiMetadataSync
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -3697,7 +3698,11 @@ $root.waproto = (function() {
 
         /**
          * Shape of a AIMetadataOperation.
-         * @typedef {waproto.AIMetadataOperation.$Properties} waproto.AIMetadataOperation.$Shape
+         * @typedef {{
+         *   hatchMetadataSync?: waproto.HatchMetadataSync.$Shape|null;
+         *   bizAiMetadataSync?: waproto.BizAIMetadataSync.$Shape|null;
+         *   $unknowns?: Array.<Uint8Array>;
+         * }} waproto.AIMetadataOperation.$Shape
          */
 
         /**
@@ -3723,12 +3728,26 @@ $root.waproto = (function() {
          */
         AIMetadataOperation.prototype.hatchMetadataSync = null;
 
+        /**
+         * AIMetadataOperation bizAiMetadataSync.
+         * @member {waproto.BizAIMetadataSync.$Properties|null|undefined} bizAiMetadataSync
+         * @memberof waproto.AIMetadataOperation
+         * @instance
+         */
+        AIMetadataOperation.prototype.bizAiMetadataSync = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(AIMetadataOperation.prototype, "_hatchMetadataSync", {
             get: $util.oneOfGetter($oneOfFields = ["hatchMetadataSync"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(AIMetadataOperation.prototype, "_bizAiMetadataSync", {
+            get: $util.oneOfGetter($oneOfFields = ["bizAiMetadataSync"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -3766,6 +3785,8 @@ $root.waproto = (function() {
                 throw $Error("max depth exceeded");
             if (message.hatchMetadataSync != null && $Object.hasOwnProperty.call(message, "hatchMetadataSync"))
                 $root.waproto.HatchMetadataSync.encode(message.hatchMetadataSync, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.bizAiMetadataSync != null && $Object.hasOwnProperty.call(message, "bizAiMetadataSync"))
+                $root.waproto.BizAIMetadataSync.encode(message.bizAiMetadataSync, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -3830,6 +3851,13 @@ $root.waproto = (function() {
                         message._hatchMetadataSync = "hatchMetadataSync";
                         continue;
                     }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.bizAiMetadataSync = $root.waproto.BizAIMetadataSync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizAiMetadataSync);
+                        message._bizAiMetadataSync = "bizAiMetadataSync";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -3887,6 +3915,14 @@ $root.waproto = (function() {
                         return "hatchMetadataSync." + error;
                 }
             }
+            if (message.bizAiMetadataSync != null && $Object.hasOwnProperty.call(message, "bizAiMetadataSync")) {
+                properties._bizAiMetadataSync = 1;
+                {
+                    var error = $root.waproto.BizAIMetadataSync.verify(message.bizAiMetadataSync, _depth + 1);
+                    if (error)
+                        return "bizAiMetadataSync." + error;
+                }
+            }
             return null;
         };
 
@@ -3913,6 +3949,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.AIMetadataOperation.hatchMetadataSync: object expected");
                 message.hatchMetadataSync = $root.waproto.HatchMetadataSync.fromObject(object.hatchMetadataSync, _depth + 1);
             }
+            if (object.bizAiMetadataSync != null) {
+                if (!$util.isObject(object.bizAiMetadataSync))
+                    throw $TypeError(".waproto.AIMetadataOperation.bizAiMetadataSync: object expected");
+                message.bizAiMetadataSync = $root.waproto.BizAIMetadataSync.fromObject(object.bizAiMetadataSync, _depth + 1);
+            }
             return message;
         };
 
@@ -3935,6 +3976,8 @@ $root.waproto = (function() {
             var object = {};
             if (message.hatchMetadataSync != null && $Object.hasOwnProperty.call(message, "hatchMetadataSync"))
                 object.hatchMetadataSync = $root.waproto.HatchMetadataSync.toObject(message.hatchMetadataSync, options, _depth + 1);
+            if (message.bizAiMetadataSync != null && $Object.hasOwnProperty.call(message, "bizAiMetadataSync"))
+                object.bizAiMetadataSync = $root.waproto.BizAIMetadataSync.toObject(message.bizAiMetadataSync, options, _depth + 1);
             return object;
         };
 
@@ -15506,6 +15549,962 @@ $root.waproto = (function() {
         };
 
         return AvatarUserSettings;
+    })();
+
+    waproto.BizAIMetadataSync = (function() {
+
+        /**
+         * Properties of a BizAIMetadataSync.
+         * @typedef {Object} waproto.BizAIMetadataSync.$Properties
+         * @property {waproto.BizAIMetadataSync.ServerEvent.$Properties|null} [serverEvent] BizAIMetadataSync serverEvent
+         * @property {"serverEvent"} [operation] BizAIMetadataSync operation
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a BizAIMetadataSync.
+         * @memberof waproto
+         * @interface IBizAIMetadataSync
+         * @augments waproto.BizAIMetadataSync.$Properties
+         * @deprecated Use waproto.BizAIMetadataSync.$Properties instead.
+         */
+
+        /**
+         * Narrowed shape of a BizAIMetadataSync.
+         * @typedef {{
+         *   serverEvent?: waproto.BizAIMetadataSync.ServerEvent.$Shape|null;
+         *   $unknowns?: Array.<Uint8Array>;
+         * } & (
+         *   ({ operation?: undefined; serverEvent?: null }|{ operation?: "serverEvent"; serverEvent: waproto.BizAIMetadataSync.ServerEvent.$Shape })
+         * )} waproto.BizAIMetadataSync.$Shape
+         */
+
+        /**
+         * Constructs a new BizAIMetadataSync.
+         * @memberof waproto
+         * @classdesc Represents a BizAIMetadataSync.
+         * @constructor
+         * @param {waproto.BizAIMetadataSync.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var BizAIMetadataSync = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * BizAIMetadataSync serverEvent.
+         * @member {waproto.BizAIMetadataSync.ServerEvent.$Properties|null|undefined} serverEvent
+         * @memberof waproto.BizAIMetadataSync
+         * @instance
+         */
+        BizAIMetadataSync.prototype.serverEvent = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        /**
+         * BizAIMetadataSync operation.
+         * @member {"serverEvent"|undefined} operation
+         * @memberof waproto.BizAIMetadataSync
+         * @instance
+         */
+        $Object.defineProperty(BizAIMetadataSync.prototype, "operation", {
+            get: $util.oneOfGetter($oneOfFields = ["serverEvent"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new BizAIMetadataSync instance using the specified properties.
+         * @function create
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {waproto.BizAIMetadataSync.$Properties=} [properties] Properties to set
+         * @returns {waproto.BizAIMetadataSync} BizAIMetadataSync instance
+         * @type {{
+         *   (properties: waproto.BizAIMetadataSync.$Shape): waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape;
+         *   (properties?: waproto.BizAIMetadataSync.$Properties): waproto.BizAIMetadataSync;
+         * }}
+         */
+        BizAIMetadataSync.create = function(properties) {
+            return new BizAIMetadataSync(properties);
+        };
+
+        /**
+         * Encodes the specified BizAIMetadataSync message. Does not implicitly {@link waproto.BizAIMetadataSync.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {waproto.BizAIMetadataSync.$Properties} message BizAIMetadataSync message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BizAIMetadataSync.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.serverEvent != null && $Object.hasOwnProperty.call(message, "serverEvent"))
+                $root.waproto.BizAIMetadataSync.ServerEvent.encode(message.serverEvent, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BizAIMetadataSync message, length delimited. Does not implicitly {@link waproto.BizAIMetadataSync.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {waproto.BizAIMetadataSync.$Properties} message BizAIMetadataSync message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BizAIMetadataSync.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape} BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BizAIMetadataSync.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.BizAIMetadataSync();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.serverEvent = $root.waproto.BizAIMetadataSync.ServerEvent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.serverEvent);
+                        message.operation = "serverEvent";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape} BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BizAIMetadataSync.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BizAIMetadataSync message.
+         * @function verify
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BizAIMetadataSync.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.serverEvent != null && $Object.hasOwnProperty.call(message, "serverEvent")) {
+                properties.operation = 1;
+                {
+                    var error = $root.waproto.BizAIMetadataSync.ServerEvent.verify(message.serverEvent, _depth + 1);
+                    if (error)
+                        return "serverEvent." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BizAIMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.BizAIMetadataSync} BizAIMetadataSync
+         */
+        BizAIMetadataSync.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.BizAIMetadataSync)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.BizAIMetadataSync: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.BizAIMetadataSync();
+            if (object.serverEvent != null) {
+                if (!$util.isObject(object.serverEvent))
+                    throw $TypeError(".waproto.BizAIMetadataSync.serverEvent: object expected");
+                message.serverEvent = $root.waproto.BizAIMetadataSync.ServerEvent.fromObject(object.serverEvent, _depth + 1);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BizAIMetadataSync message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {waproto.BizAIMetadataSync} message BizAIMetadataSync
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BizAIMetadataSync.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.serverEvent != null && $Object.hasOwnProperty.call(message, "serverEvent")) {
+                object.serverEvent = $root.waproto.BizAIMetadataSync.ServerEvent.toObject(message.serverEvent, options, _depth + 1);
+                if (options.oneofs)
+                    object.operation = "serverEvent";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this BizAIMetadataSync to JSON.
+         * @function toJSON
+         * @memberof waproto.BizAIMetadataSync
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BizAIMetadataSync.prototype.toJSON = function() {
+            return BizAIMetadataSync.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for BizAIMetadataSync
+         * @function getTypeUrl
+         * @memberof waproto.BizAIMetadataSync
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        BizAIMetadataSync.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.BizAIMetadataSync";
+        };
+
+        BizAIMetadataSync.ServerEvent = (function() {
+
+            /**
+             * Properties of a ServerEvent.
+             * @typedef {Object} waproto.BizAIMetadataSync.ServerEvent.$Properties
+             * @property {waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent|null} [protocolEvent] ServerEvent protocolEvent
+             * @property {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties|null} [agentOnboardingStarted] ServerEvent agentOnboardingStarted
+             * @property {"protocolEvent"|"agentOnboardingStarted"} [event] ServerEvent event
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a ServerEvent.
+             * @memberof waproto.BizAIMetadataSync
+             * @interface IServerEvent
+             * @augments waproto.BizAIMetadataSync.ServerEvent.$Properties
+             * @deprecated Use waproto.BizAIMetadataSync.ServerEvent.$Properties instead.
+             */
+
+            /**
+             * Narrowed shape of a ServerEvent.
+             * @typedef {{
+             *   protocolEvent?: waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent|null;
+             *   agentOnboardingStarted?: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape|null;
+             *   $unknowns?: Array.<Uint8Array>;
+             * } & (
+             *   ({ event?: undefined; protocolEvent?: null; agentOnboardingStarted?: null }|{ event?: "protocolEvent"; protocolEvent: waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent; agentOnboardingStarted?: null }|{ event?: "agentOnboardingStarted"; protocolEvent?: null; agentOnboardingStarted: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape })
+             * )} waproto.BizAIMetadataSync.ServerEvent.$Shape
+             */
+
+            /**
+             * Constructs a new ServerEvent.
+             * @memberof waproto.BizAIMetadataSync
+             * @classdesc Represents a ServerEvent.
+             * @constructor
+             * @param {waproto.BizAIMetadataSync.ServerEvent.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var ServerEvent = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * ServerEvent protocolEvent.
+             * @member {waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent|null|undefined} protocolEvent
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @instance
+             */
+            ServerEvent.prototype.protocolEvent = null;
+
+            /**
+             * ServerEvent agentOnboardingStarted.
+             * @member {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties|null|undefined} agentOnboardingStarted
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @instance
+             */
+            ServerEvent.prototype.agentOnboardingStarted = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            /**
+             * ServerEvent event.
+             * @member {"protocolEvent"|"agentOnboardingStarted"|undefined} event
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @instance
+             */
+            $Object.defineProperty(ServerEvent.prototype, "event", {
+                get: $util.oneOfGetter($oneOfFields = ["protocolEvent", "agentOnboardingStarted"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new ServerEvent instance using the specified properties.
+             * @function create
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {waproto.BizAIMetadataSync.ServerEvent.$Properties=} [properties] Properties to set
+             * @returns {waproto.BizAIMetadataSync.ServerEvent} ServerEvent instance
+             * @type {{
+             *   (properties: waproto.BizAIMetadataSync.ServerEvent.$Shape): waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape;
+             *   (properties?: waproto.BizAIMetadataSync.ServerEvent.$Properties): waproto.BizAIMetadataSync.ServerEvent;
+             * }}
+             */
+            ServerEvent.create = function(properties) {
+                return new ServerEvent(properties);
+            };
+
+            /**
+             * Encodes the specified ServerEvent message. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {waproto.BizAIMetadataSync.ServerEvent.$Properties} message ServerEvent message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ServerEvent.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.protocolEvent != null && $Object.hasOwnProperty.call(message, "protocolEvent"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.protocolEvent);
+                if (message.agentOnboardingStarted != null && $Object.hasOwnProperty.call(message, "agentOnboardingStarted"))
+                    $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.encode(message.agentOnboardingStarted, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ServerEvent message, length delimited. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {waproto.BizAIMetadataSync.ServerEvent.$Properties} message ServerEvent message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ServerEvent.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape} ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ServerEvent.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.BizAIMetadataSync.ServerEvent();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.protocolEvent = reader.int32();
+                            message.event = "protocolEvent";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 2)
+                                break;
+                            message.agentOnboardingStarted = $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(reader, reader.uint32(), $undefined, _depth + 1, message.agentOnboardingStarted);
+                            message.event = "agentOnboardingStarted";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape} ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ServerEvent.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ServerEvent message.
+             * @function verify
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ServerEvent.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.protocolEvent != null && $Object.hasOwnProperty.call(message, "protocolEvent")) {
+                    properties.event = 1;
+                    if (typeof message.protocolEvent !== "number" || (message.protocolEvent | 0) !== message.protocolEvent)
+                        return "protocolEvent: enum value expected";
+                }
+                if (message.agentOnboardingStarted != null && $Object.hasOwnProperty.call(message, "agentOnboardingStarted")) {
+                    if (properties.event === 1)
+                        return "event: multiple values";
+                    properties.event = 1;
+                    {
+                        var error = $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify(message.agentOnboardingStarted, _depth + 1);
+                        if (error)
+                            return "agentOnboardingStarted." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a ServerEvent message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.BizAIMetadataSync.ServerEvent} ServerEvent
+             */
+            ServerEvent.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.BizAIMetadataSync.ServerEvent)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.BizAIMetadataSync.ServerEvent: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.BizAIMetadataSync.ServerEvent();
+                switch (object.protocolEvent) {
+                case "UNSPECIFIED":
+                case 0:
+                    message.protocolEvent = 0;
+                    break;
+                case "AGENT_CHAT_READY":
+                case 1:
+                    message.protocolEvent = 1;
+                    break;
+                default:
+                    if (typeof object.protocolEvent === "number" && (object.protocolEvent | 0) === object.protocolEvent)
+                        message.protocolEvent = object.protocolEvent;
+                }
+                if (object.agentOnboardingStarted != null) {
+                    if (!$util.isObject(object.agentOnboardingStarted))
+                        throw $TypeError(".waproto.BizAIMetadataSync.ServerEvent.agentOnboardingStarted: object expected");
+                    message.agentOnboardingStarted = $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.fromObject(object.agentOnboardingStarted, _depth + 1);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ServerEvent message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {waproto.BizAIMetadataSync.ServerEvent} message ServerEvent
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ServerEvent.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.protocolEvent != null && $Object.hasOwnProperty.call(message, "protocolEvent")) {
+                    object.protocolEvent = options.enums === $String ? $root.waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent[message.protocolEvent] === $undefined ? message.protocolEvent : $root.waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent[message.protocolEvent] : message.protocolEvent;
+                    if (options.oneofs)
+                        object.event = "protocolEvent";
+                }
+                if (message.agentOnboardingStarted != null && $Object.hasOwnProperty.call(message, "agentOnboardingStarted")) {
+                    object.agentOnboardingStarted = $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.toObject(message.agentOnboardingStarted, options, _depth + 1);
+                    if (options.oneofs)
+                        object.event = "agentOnboardingStarted";
+                }
+                return object;
+            };
+
+            /**
+             * Converts this ServerEvent to JSON.
+             * @function toJSON
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ServerEvent.prototype.toJSON = function() {
+                return ServerEvent.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for ServerEvent
+             * @function getTypeUrl
+             * @memberof waproto.BizAIMetadataSync.ServerEvent
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            ServerEvent.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.BizAIMetadataSync.ServerEvent";
+            };
+
+            ServerEvent.AgentOnboardingStarted = (function() {
+
+                /**
+                 * Properties of an AgentOnboardingStarted.
+                 * @typedef {Object} waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties
+                 * @property {number|Long|null} [composerBlockDurationSecs] AgentOnboardingStarted composerBlockDurationSecs
+                 * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                 */
+
+                /**
+                 * Properties of an AgentOnboardingStarted.
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent
+                 * @interface IAgentOnboardingStarted
+                 * @augments waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties
+                 * @deprecated Use waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties instead.
+                 */
+
+                /**
+                 * Shape of an AgentOnboardingStarted.
+                 * @typedef {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties} waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape
+                 */
+
+                /**
+                 * Constructs a new AgentOnboardingStarted.
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent
+                 * @classdesc Represents an AgentOnboardingStarted.
+                 * @constructor
+                 * @param {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties=} [properties] Properties to set
+                 * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                 */
+                var AgentOnboardingStarted = function (properties) {
+                    if (properties)
+                        for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                this[keys[i]] = properties[keys[i]];
+                };
+
+                /**
+                 * AgentOnboardingStarted composerBlockDurationSecs.
+                 * @member {number|Long|null|undefined} composerBlockDurationSecs
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @instance
+                 */
+                AgentOnboardingStarted.prototype.composerBlockDurationSecs = null;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(AgentOnboardingStarted.prototype, "_composerBlockDurationSecs", {
+                    get: $util.oneOfGetter($oneOfFields = ["composerBlockDurationSecs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new AgentOnboardingStarted instance using the specified properties.
+                 * @function create
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties=} [properties] Properties to set
+                 * @returns {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} AgentOnboardingStarted instance
+                 * @type {{
+                 *   (properties: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape;
+                 *   (properties?: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+                 * }}
+                 */
+                AgentOnboardingStarted.create = function(properties) {
+                    return new AgentOnboardingStarted(properties);
+                };
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @function encode
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties} message AgentOnboardingStarted message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                AgentOnboardingStarted.encode = function (message, writer, _depth) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (message.composerBlockDurationSecs != null && $Object.hasOwnProperty.call(message, "composerBlockDurationSecs"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).int64(message.composerBlockDurationSecs);
+                    if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                        for (var i = 0; i < message.$unknowns.length; ++i)
+                            writer.raw(message.$unknowns[i]);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message, length delimited. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties} message AgentOnboardingStarted message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                AgentOnboardingStarted.encodeDelimited = function(message, writer) {
+                    return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+                };
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape} AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                AgentOnboardingStarted.decode = function (reader, length, _end, _depth, _target) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var end, message;
+                    if (length === $undefined)
+                        end = reader.len;
+                    else {
+                        end = reader.pos + length;
+                        if (end > reader.len)
+                            throw $RangeError("index out of range");
+                        length = reader.len;
+                        reader.len = end;
+                    }
+                    message = _target || new $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted();
+                    while (reader.pos < end) {
+                        var start = reader.pos;
+                        var tag = reader.tag();
+                        if (tag === _end) {
+                            _end = $undefined;
+                            break;
+                        }
+                        var wireType = tag & 7;
+                        switch (tag >>>= 3) {
+                        case 1: {
+                                if (wireType !== 0)
+                                    break;
+                                message.composerBlockDurationSecs = reader.int64();
+                                message._composerBlockDurationSecs = "composerBlockDurationSecs";
+                                continue;
+                            }
+                        }
+                        reader.skipType(wireType, _depth, tag);
+                        if (!reader.discardUnknown) {
+                            $util.makeProp(message, "$unknowns", false);
+                            (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                        }
+                    }
+                    if (length !== $undefined) {
+                        if (reader.pos !== end)
+                            throw $RangeError("index out of range");
+                        reader.len = length;
+                    }
+                    if (_end !== $undefined)
+                        throw $Error("missing end group");
+                    return message;
+                };
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape} AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                AgentOnboardingStarted.decodeDelimited = function(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies an AgentOnboardingStarted message.
+                 * @function verify
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                AgentOnboardingStarted.verify = function (message, _depth) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        return "max depth exceeded";
+                    var properties = {};
+                    if (message.composerBlockDurationSecs != null && $Object.hasOwnProperty.call(message, "composerBlockDurationSecs")) {
+                        properties._composerBlockDurationSecs = 1;
+                        if (!$util.isInteger(message.composerBlockDurationSecs) && !(message.composerBlockDurationSecs && $util.isInteger(message.composerBlockDurationSecs.low) && $util.isInteger(message.composerBlockDurationSecs.high)))
+                            return "composerBlockDurationSecs: integer|Long expected";
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates an AgentOnboardingStarted message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} AgentOnboardingStarted
+                 */
+                AgentOnboardingStarted.fromObject = function (object, _depth) {
+                    if (object instanceof $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted)
+                        return object;
+                    if (!$util.isObject(object))
+                        throw $TypeError(".waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted: object expected");
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var message = new $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted();
+                    if (object.composerBlockDurationSecs != null)
+                        if ($util.Long)
+                            message.composerBlockDurationSecs = $util.Long.fromValue(object.composerBlockDurationSecs, false);
+                        else if (typeof object.composerBlockDurationSecs === "string")
+                            message.composerBlockDurationSecs = $parseInt(object.composerBlockDurationSecs, 10);
+                        else if (typeof object.composerBlockDurationSecs === "number")
+                            message.composerBlockDurationSecs = object.composerBlockDurationSecs;
+                        else if (typeof object.composerBlockDurationSecs === "object")
+                            message.composerBlockDurationSecs = new $util.LongBits(object.composerBlockDurationSecs.low >>> 0, object.composerBlockDurationSecs.high >>> 0).toNumber();
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from an AgentOnboardingStarted message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted} message AgentOnboardingStarted
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                AgentOnboardingStarted.toObject = function (message, options, _depth) {
+                    if (!options)
+                        options = {};
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var object = {};
+                    if (message.composerBlockDurationSecs != null && $Object.hasOwnProperty.call(message, "composerBlockDurationSecs"))
+                        if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                            object.composerBlockDurationSecs = typeof message.composerBlockDurationSecs === "number" ? $BigInt(message.composerBlockDurationSecs) : $util.Long.fromBits(message.composerBlockDurationSecs.low >>> 0, message.composerBlockDurationSecs.high >>> 0, false).toBigInt();
+                        else if (typeof message.composerBlockDurationSecs === "number")
+                            object.composerBlockDurationSecs = options.longs === $String ? $String(message.composerBlockDurationSecs) : message.composerBlockDurationSecs;
+                        else
+                            object.composerBlockDurationSecs = options.longs === $String ? $util.Long.prototype.toString.call(message.composerBlockDurationSecs) : options.longs === $Number ? new $util.LongBits(message.composerBlockDurationSecs.low >>> 0, message.composerBlockDurationSecs.high >>> 0).toNumber() : message.composerBlockDurationSecs;
+                    return object;
+                };
+
+                /**
+                 * Converts this AgentOnboardingStarted to JSON.
+                 * @function toJSON
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                AgentOnboardingStarted.prototype.toJSON = function() {
+                    return AgentOnboardingStarted.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the type url for AgentOnboardingStarted
+                 * @function getTypeUrl
+                 * @memberof waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted
+                 * @static
+                 * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns {string} The type url
+                 */
+                AgentOnboardingStarted.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted";
+                };
+
+                return AgentOnboardingStarted;
+            })();
+
+            /**
+             * ProtocolEvent enum.
+             * @name waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent
+             * @enum {number}
+             * @property {number} UNSPECIFIED=0 UNSPECIFIED value
+             * @property {number} AGENT_CHAT_READY=1 AGENT_CHAT_READY value
+             */
+            ServerEvent.ProtocolEvent = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNSPECIFIED"] = 0;
+                values[valuesById[1] = "AGENT_CHAT_READY"] = 1;
+                return values;
+            })();
+
+            return ServerEvent;
+        })();
+
+        return BizAIMetadataSync;
     })();
 
     waproto.BizAccountLinkInfo = (function() {
@@ -195600,6 +196599,7 @@ $root.waproto = (function() {
          * @property {Uint8Array|null} [teeBotMetadata] MessageContextInfo teeBotMetadata
          * @property {waproto.NonE2EEAttestation.$Properties|null} [accountEncryptionAttestation] MessageContextInfo accountEncryptionAttestation
          * @property {Uint8Array|null} [associatedPrimaryIdentityKey] MessageContextInfo associatedPrimaryIdentityKey
+         * @property {string|null} [teeContextAnchorMessageId] MessageContextInfo teeContextAnchorMessageId
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -195784,6 +196784,14 @@ $root.waproto = (function() {
          */
         MessageContextInfo.prototype.associatedPrimaryIdentityKey = null;
 
+        /**
+         * MessageContextInfo teeContextAnchorMessageId.
+         * @member {string|null|undefined} teeContextAnchorMessageId
+         * @memberof waproto.MessageContextInfo
+         * @instance
+         */
+        MessageContextInfo.prototype.teeContextAnchorMessageId = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -195895,6 +196903,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MessageContextInfo.prototype, "_teeContextAnchorMessageId", {
+            get: $util.oneOfGetter($oneOfFields = ["teeContextAnchorMessageId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
          * @function create
@@ -195966,6 +196980,8 @@ $root.waproto = (function() {
                 $root.waproto.NonE2EEAttestation.encode(message.accountEncryptionAttestation, writer.uint32(/* id 18, wireType 2 =*/146).fork(), _depth + 1).ldelim();
             if (message.associatedPrimaryIdentityKey != null && $Object.hasOwnProperty.call(message, "associatedPrimaryIdentityKey"))
                 writer.uint32(/* id 19, wireType 2 =*/154).bytes(message.associatedPrimaryIdentityKey);
+            if (message.teeContextAnchorMessageId != null && $Object.hasOwnProperty.call(message, "teeContextAnchorMessageId"))
+                writer.uint32(/* id 20, wireType 2 =*/162).string(message.teeContextAnchorMessageId);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -196157,6 +197173,13 @@ $root.waproto = (function() {
                         message._associatedPrimaryIdentityKey = "associatedPrimaryIdentityKey";
                         continue;
                     }
+                case 20: {
+                        if (wireType !== 2)
+                            break;
+                        message.teeContextAnchorMessageId = reader.stringVerify();
+                        message._teeContextAnchorMessageId = "teeContextAnchorMessageId";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -196323,6 +197346,11 @@ $root.waproto = (function() {
                 if (!(message.associatedPrimaryIdentityKey && typeof message.associatedPrimaryIdentityKey.length === "number" || $util.isString(message.associatedPrimaryIdentityKey)))
                     return "associatedPrimaryIdentityKey: buffer expected";
             }
+            if (message.teeContextAnchorMessageId != null && $Object.hasOwnProperty.call(message, "teeContextAnchorMessageId")) {
+                properties._teeContextAnchorMessageId = 1;
+                if (!$util.isString(message.teeContextAnchorMessageId))
+                    return "teeContextAnchorMessageId: string expected";
+            }
             return null;
         };
 
@@ -196445,6 +197473,8 @@ $root.waproto = (function() {
                     $util.base64.decode(object.associatedPrimaryIdentityKey, message.associatedPrimaryIdentityKey = $util.newBuffer($util.base64.length(object.associatedPrimaryIdentityKey)), 0);
                 else if (object.associatedPrimaryIdentityKey.length >= 0)
                     message.associatedPrimaryIdentityKey = object.associatedPrimaryIdentityKey;
+            if (object.teeContextAnchorMessageId != null)
+                message.teeContextAnchorMessageId = $String(object.teeContextAnchorMessageId);
             return message;
         };
 
@@ -196508,6 +197538,8 @@ $root.waproto = (function() {
                 object.accountEncryptionAttestation = $root.waproto.NonE2EEAttestation.toObject(message.accountEncryptionAttestation, options, _depth + 1);
             if (message.associatedPrimaryIdentityKey != null && $Object.hasOwnProperty.call(message, "associatedPrimaryIdentityKey"))
                 object.associatedPrimaryIdentityKey = options.bytes === $String ? $util.base64.encode(message.associatedPrimaryIdentityKey, 0, message.associatedPrimaryIdentityKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.associatedPrimaryIdentityKey) : message.associatedPrimaryIdentityKey;
+            if (message.teeContextAnchorMessageId != null && $Object.hasOwnProperty.call(message, "teeContextAnchorMessageId"))
+                object.teeContextAnchorMessageId = message.teeContextAnchorMessageId;
             return object;
         };
 

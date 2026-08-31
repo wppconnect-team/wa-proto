@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1046406705
+/// WhatsApp Version: 2.3000.1046433563
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -81,6 +81,7 @@ message AIMediaCollectionMetadata {
 
 message AIMetadataOperation {
     optional HatchMetadataSync hatchMetadataSync = 1;
+    optional BizAIMetadataSync bizAiMetadataSync = 2;
 }
 
 message AIProvenance {
@@ -323,6 +324,27 @@ message AutoDownloadSettings {
 message AvatarUserSettings {
     optional string fbid = 1;
     optional string password = 2;
+}
+
+message BizAIMetadataSync {
+    oneof operation {
+        BizAIMetadataSync.ServerEvent serverEvent = 1;
+    }
+    message ServerEvent {
+        oneof event {
+            BizAIMetadataSync.ServerEvent.ProtocolEvent protocolEvent = 1;
+            BizAIMetadataSync.ServerEvent.AgentOnboardingStarted agentOnboardingStarted = 2;
+        }
+        message AgentOnboardingStarted {
+            optional int64 composerBlockDurationSecs = 1;
+        }
+        
+        enum ProtocolEvent {
+            UNSPECIFIED = 0;
+            AGENT_CHAT_READY = 1;
+        }
+    }
+    
 }
 
 message BizAccountLinkInfo {
@@ -4715,6 +4737,7 @@ message MessageContextInfo {
     optional bytes teeBotMetadata = 17;
     optional NonE2EEAttestation accountEncryptionAttestation = 18;
     optional bytes associatedPrimaryIdentityKey = 19;
+    optional string teeContextAnchorMessageId = 20;
     enum MessageAddonExpiryType {
         STATIC = 1;
         DEPENDENT_ON_PARENT = 2;

@@ -1276,6 +1276,9 @@ export namespace waproto {
         /** AIMetadataOperation hatchMetadataSync. */
         hatchMetadataSync?: (waproto.HatchMetadataSync.$Properties|null);
 
+        /** AIMetadataOperation bizAiMetadataSync. */
+        bizAiMetadataSync?: (waproto.BizAIMetadataSync.$Properties|null);
+
         /**
          * Creates a new AIMetadataOperation instance using the specified properties.
          * @param [properties] Properties to set
@@ -1363,12 +1366,19 @@ export namespace waproto {
             /** AIMetadataOperation hatchMetadataSync */
             hatchMetadataSync?: (waproto.HatchMetadataSync.$Properties|null);
 
+            /** AIMetadataOperation bizAiMetadataSync */
+            bizAiMetadataSync?: (waproto.BizAIMetadataSync.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
 
         /** Shape of a AIMetadataOperation. */
-        type $Shape = waproto.AIMetadataOperation.$Properties;
+        type $Shape = {
+          hatchMetadataSync?: waproto.HatchMetadataSync.$Shape|null;
+          bizAiMetadataSync?: waproto.BizAIMetadataSync.$Shape|null;
+          $unknowns?: Uint8Array[];
+        };
     }
 
     /**
@@ -5565,6 +5575,396 @@ export namespace waproto {
 
         /** Shape of an AvatarUserSettings. */
         type $Shape = waproto.AvatarUserSettings.$Properties;
+    }
+
+    /**
+     * Properties of a BizAIMetadataSync.
+     * @deprecated Use waproto.BizAIMetadataSync.$Properties instead.
+     */
+    interface IBizAIMetadataSync extends waproto.BizAIMetadataSync.$Properties {
+    }
+
+    /** Represents a BizAIMetadataSync. */
+    class BizAIMetadataSync {
+
+        /**
+         * Constructs a new BizAIMetadataSync.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.BizAIMetadataSync.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** BizAIMetadataSync serverEvent. */
+        serverEvent?: (waproto.BizAIMetadataSync.ServerEvent.$Properties|null);
+
+        /** BizAIMetadataSync operation. */
+        operation?: "serverEvent";
+
+        /**
+         * Creates a new BizAIMetadataSync instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BizAIMetadataSync instance
+         */
+        static create(properties: waproto.BizAIMetadataSync.$Shape): waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape;
+        static create(properties?: waproto.BizAIMetadataSync.$Properties): waproto.BizAIMetadataSync;
+
+        /**
+         * Encodes the specified BizAIMetadataSync message. Does not implicitly {@link waproto.BizAIMetadataSync.verify|verify} messages.
+         * @param message BizAIMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.BizAIMetadataSync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BizAIMetadataSync message, length delimited. Does not implicitly {@link waproto.BizAIMetadataSync.verify|verify} messages.
+         * @param message BizAIMetadataSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.BizAIMetadataSync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape} BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape;
+
+        /**
+         * Decodes a BizAIMetadataSync message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape} BizAIMetadataSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BizAIMetadataSync & waproto.BizAIMetadataSync.$Shape;
+
+        /**
+         * Verifies a BizAIMetadataSync message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BizAIMetadataSync message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BizAIMetadataSync
+         */
+        static fromObject(object: { [k: string]: any }): waproto.BizAIMetadataSync;
+
+        /**
+         * Creates a plain object from a BizAIMetadataSync message. Also converts values to other types if specified.
+         * @param message BizAIMetadataSync
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.BizAIMetadataSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BizAIMetadataSync to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for BizAIMetadataSync
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace BizAIMetadataSync {
+
+        /** Properties of a BizAIMetadataSync. */
+        interface $Properties {
+
+            /** BizAIMetadataSync serverEvent */
+            serverEvent?: (waproto.BizAIMetadataSync.ServerEvent.$Properties|null);
+
+            /** BizAIMetadataSync operation */
+            operation?: "serverEvent";
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Narrowed shape of a BizAIMetadataSync. */
+        type $Shape = {
+          serverEvent?: waproto.BizAIMetadataSync.ServerEvent.$Shape|null;
+          $unknowns?: Uint8Array[];
+        } & (
+          ({ operation?: undefined; serverEvent?: null }|{ operation?: "serverEvent"; serverEvent: waproto.BizAIMetadataSync.ServerEvent.$Shape })
+        );
+
+        /**
+         * Properties of a ServerEvent.
+         * @deprecated Use waproto.BizAIMetadataSync.ServerEvent.$Properties instead.
+         */
+        interface IServerEvent extends waproto.BizAIMetadataSync.ServerEvent.$Properties {
+        }
+
+        /** Represents a ServerEvent. */
+        class ServerEvent {
+
+            /**
+             * Constructs a new ServerEvent.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BizAIMetadataSync.ServerEvent.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ServerEvent protocolEvent. */
+            protocolEvent?: (waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent|null);
+
+            /** ServerEvent agentOnboardingStarted. */
+            agentOnboardingStarted?: (waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties|null);
+
+            /** ServerEvent event. */
+            event?: ("protocolEvent"|"agentOnboardingStarted");
+
+            /**
+             * Creates a new ServerEvent instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ServerEvent instance
+             */
+            static create(properties: waproto.BizAIMetadataSync.ServerEvent.$Shape): waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape;
+            static create(properties?: waproto.BizAIMetadataSync.ServerEvent.$Properties): waproto.BizAIMetadataSync.ServerEvent;
+
+            /**
+             * Encodes the specified ServerEvent message. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @param message ServerEvent message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.BizAIMetadataSync.ServerEvent.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ServerEvent message, length delimited. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.verify|verify} messages.
+             * @param message ServerEvent message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.BizAIMetadataSync.ServerEvent.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape} ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape;
+
+            /**
+             * Decodes a ServerEvent message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape} ServerEvent
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BizAIMetadataSync.ServerEvent & waproto.BizAIMetadataSync.ServerEvent.$Shape;
+
+            /**
+             * Verifies a ServerEvent message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ServerEvent message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ServerEvent
+             */
+            static fromObject(object: { [k: string]: any }): waproto.BizAIMetadataSync.ServerEvent;
+
+            /**
+             * Creates a plain object from a ServerEvent message. Also converts values to other types if specified.
+             * @param message ServerEvent
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.BizAIMetadataSync.ServerEvent, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ServerEvent to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ServerEvent
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ServerEvent {
+
+            /** Properties of a ServerEvent. */
+            interface $Properties {
+
+                /** ServerEvent protocolEvent */
+                protocolEvent?: (waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent|null);
+
+                /** ServerEvent agentOnboardingStarted */
+                agentOnboardingStarted?: (waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties|null);
+
+                /** ServerEvent event */
+                event?: ("protocolEvent"|"agentOnboardingStarted");
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Narrowed shape of a ServerEvent. */
+            type $Shape = {
+              protocolEvent?: waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent|null;
+              agentOnboardingStarted?: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape|null;
+              $unknowns?: Uint8Array[];
+            } & (
+              ({ event?: undefined; protocolEvent?: null; agentOnboardingStarted?: null }|{ event?: "protocolEvent"; protocolEvent: waproto.BizAIMetadataSync.ServerEvent.ProtocolEvent; agentOnboardingStarted?: null }|{ event?: "agentOnboardingStarted"; protocolEvent?: null; agentOnboardingStarted: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape })
+            );
+
+            /**
+             * Properties of an AgentOnboardingStarted.
+             * @deprecated Use waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties instead.
+             */
+            interface IAgentOnboardingStarted extends waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties {
+            }
+
+            /** Represents an AgentOnboardingStarted. */
+            class AgentOnboardingStarted {
+
+                /**
+                 * Constructs a new AgentOnboardingStarted.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** AgentOnboardingStarted composerBlockDurationSecs. */
+                composerBlockDurationSecs?: (number|Long|null);
+
+                /**
+                 * Creates a new AgentOnboardingStarted instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns AgentOnboardingStarted instance
+                 */
+                static create(properties: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape;
+                static create(properties?: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @param message AgentOnboardingStarted message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified AgentOnboardingStarted message, length delimited. Does not implicitly {@link waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.verify|verify} messages.
+                 * @param message AgentOnboardingStarted message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape} AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape;
+
+                /**
+                 * Decodes an AgentOnboardingStarted message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape} AgentOnboardingStarted
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted & waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Shape;
+
+                /**
+                 * Verifies an AgentOnboardingStarted message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an AgentOnboardingStarted message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns AgentOnboardingStarted
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted;
+
+                /**
+                 * Creates a plain object from an AgentOnboardingStarted message. Also converts values to other types if specified.
+                 * @param message AgentOnboardingStarted
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this AgentOnboardingStarted to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for AgentOnboardingStarted
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace AgentOnboardingStarted {
+
+                /** Properties of an AgentOnboardingStarted. */
+                interface $Properties {
+
+                    /** AgentOnboardingStarted composerBlockDurationSecs */
+                    composerBlockDurationSecs?: (number|Long|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of an AgentOnboardingStarted. */
+                type $Shape = waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.$Properties;
+            }
+
+            /** ProtocolEvent enum. */
+            enum ProtocolEvent {
+
+                /** UNSPECIFIED value */
+                UNSPECIFIED = 0,
+
+                /** AGENT_CHAT_READY value */
+                AGENT_CHAT_READY = 1
+            }
+        }
     }
 
     /**
@@ -65575,6 +65975,9 @@ export namespace waproto {
         /** MessageContextInfo associatedPrimaryIdentityKey. */
         associatedPrimaryIdentityKey?: (Uint8Array|null);
 
+        /** MessageContextInfo teeContextAnchorMessageId. */
+        teeContextAnchorMessageId?: (string|null);
+
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -65715,6 +66118,9 @@ export namespace waproto {
 
             /** MessageContextInfo associatedPrimaryIdentityKey */
             associatedPrimaryIdentityKey?: (Uint8Array|null);
+
+            /** MessageContextInfo teeContextAnchorMessageId */
+            teeContextAnchorMessageId?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
