@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1046623424
+/// WhatsApp Version: 2.3000.1046641093
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -1409,6 +1409,8 @@ message ClientPayload {
             BLUE_VR = 36;
             AR_WRIST = 37;
             WAIL = 38;
+            WORK_ANDROID = 39;
+            WORK_IOS = 40;
         }
         enum ReleaseChannel {
             RELEASE = 0;

@@ -18390,7 +18390,13 @@ export namespace waproto {
                 AR_WRIST = 37,
 
                 /** WAIL value */
-                WAIL = 38
+                WAIL = 38,
+
+                /** WORK_ANDROID value */
+                WORK_ANDROID = 39,
+
+                /** WORK_IOS value */
+                WORK_IOS = 40
             }
 
             /** ReleaseChannel enum. */
