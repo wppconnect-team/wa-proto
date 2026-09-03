@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1046721733
+/// WhatsApp Version: 2.3000.1046734560
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -326,6 +326,12 @@ message AvatarUserSettings {
     optional string password = 2;
 }
 
+message BackwardEdge {
+    optional bytes encryptedPrevEpochAnonId = 1;
+    optional bytes encryptedPrevEpochRootKey = 2;
+    optional bytes prevEpochRootKeyFingerprint = 3;
+}
+
 message BizAIMetadataSync {
     oneof operation {
         BizAIMetadataSync.ServerEvent serverEvent = 1;
@@ -484,6 +490,7 @@ message BotCapabilityMetadata {
         AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68;
         AI_RICH_RESPONSE_REMINDERS_ENABLED = 69;
         AI_STOP_GENERATION_ENABLED = 70;
+        AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71;
     }
 }
 
@@ -1067,12 +1074,6 @@ message BotUnifiedResponseMutation {
     
 }
 
-enum COMMAND_COMMAND_TYPE {
-    EVERYONE = 1;
-    SILENT = 2;
-    AI = 3;
-    AI_IMAGINE = 4;
-}
 message CallLogRecord {
     optional CallResult callResult = 1;
     optional bool isDndMode = 2;
@@ -1466,13 +1467,6 @@ message CombinedFingerprint {
     optional FingerprintData remoteFingerprint = 3;
 }
 
-message Command {
-    optional COMMAND_COMMAND_TYPE commandType = 1;
-    optional uint32 offset = 2;
-    optional uint32 length = 3;
-    optional string validationToken = 4;
-}
-
 message CommentMetadata {
     optional MessageKey commentParentKey = 1;
     optional uint32 replyCount = 2;
@@ -1861,6 +1855,43 @@ message Conversation {
     }
 }
 
+message CreateBackupInput {
+    required string recoveryCode = 1;
+    required uint64 userId = 2;
+}
+
+message CreateBackupOutput {
+    optional DeviceOutput device = 1;
+    optional VirtualDeviceOutput virtualDevice = 2;
+    optional Epoch0Output epoch0 = 3;
+    optional bytes mailboxRootKey = 4;
+    optional string error = 5;
+}
+
+message DecryptMessageInput {
+    required bytes epochRootKey = 1;
+    required bytes epochAnonId = 2;
+    required string threadId = 3;
+    required int32 encryptionVersion = 4;
+    required bytes ciphertext = 5;
+}
+
+message DecryptMessageOutput {
+    optional bytes plaintextPayload = 1;
+    optional string error = 2;
+}
+
+message DeriveMessageKeyInput {
+    required bytes epochRootKey = 1;
+    required bytes epochAnonId = 2;
+    required string threadId = 3;
+}
+
+message DeriveMessageKeyOutput {
+    optional bytes messageKey = 1;
+    optional string error = 2;
+}
+
 message DeviceCapabilities {
     optional ChatLockSupportLevel chatLockSupportLevel = 1;
     optional LIDMigration lidMigration = 2;
@@ -1936,6 +1967,19 @@ message DeviceListMetadata {
     optional bytes recipientKeyHash = 8;
     optional uint64 recipientTimestamp = 9;
     repeated uint32 recipientKeyIndexes = 10 [packed=true];
+}
+
+message DeviceOutput {
+    required bytes publicKey = 1;
+    required bytes epochAuthPublicKey = 2;
+    required bytes epochAuthPublicKeySig = 3;
+    required bytes epochStoragePublicKey = 4;
+    required bytes epochStoragePublicKeySig = 5;
+    repeated int32 supportedEncryptionVersions = 6;
+    required bytes encryptionVersionSignature = 7;
+    required int32 clientVersion = 8;
+    required bytes ocmfClientState = 9;
+    required bytes epochStoragePrivateKey = 10;
 }
 
 message DeviceProps {
@@ -2060,14 +2104,58 @@ message EmbeddedMusic {
     optional int64 overlapDurationInMs = 14;
 }
 
+message EncryptMessageInput {
+    required bytes epochRootKey = 1;
+    required bytes mailboxRootKey = 2;
+    required bytes orfClientState = 3;
+    required bytes epochAnonId = 4;
+    required uint64 epochId = 5;
+    required string threadId = 6;
+    required uint64 waCanonicalUserFbid = 7;
+    required uint64 timestampMs = 8;
+    required uint64 backupId = 9;
+    required bytes plaintextPayload = 10;
+    required string stanzaId = 11;
+}
+
+message EncryptMessageOutput {
+    optional bytes encryptedProtobuf = 1;
+    optional bytes orfThreadId = 2;
+    optional string valueSecretRef = 3;
+    optional uint64 offlineThreadingId = 4;
+    optional uint64 timestampMs = 5;
+    optional string error = 7;
+}
+
 message EncryptedPairingRequest {
     optional bytes encryptedPayload = 1;
     optional bytes iv = 2;
 }
 
+message EncryptedSecretValuesOutput {
+    required bytes encryptedDevicePrivateKey = 1;
+    required bytes encryptedObliviousValidationTokenBlob = 2;
+    required bytes encryptedEpochStoragePrivateKey = 3;
+    required bytes encryptedOcmfClientState = 4;
+    optional bytes encryptedOrfClientStateV2 = 5;
+    required bytes encryptedMailboxRootKeyBlob = 6;
+    required bytes encryptedEpochAnonId = 7;
+    required bytes encryptedEpochRootKey = 8;
+}
+
 message EphemeralSetting {
     optional sfixed32 duration = 1;
     optional sfixed64 timestamp = 2;
+}
+
+message Epoch0Output {
+    required uint64 epochFbid = 1;
+    required bytes epochAnonId = 2;
+    required bytes epochData = 3;
+    required bytes wrappedRootKeyForSelf = 4;
+    required bytes epochSignature = 5;
+    required bytes epochRootKeyFingerprint = 6;
+    optional bytes epochRootKey = 7;
 }
 
 message EventAdditionalMetadata {
@@ -2095,11 +2183,6 @@ message ExternalBlobReference {
     optional bytes fileEncSha256 = 6;
 }
 
-enum FUTURE_PROOF_BEHAVIOR {
-    PLACEHOLDER = 0;
-    NO_PLACEHOLDER = 1;
-    IGNORE = 2;
-}
 message Field {
     optional uint32 minVersion = 1;
     optional uint32 maxVersion = 2;
@@ -2443,6 +2526,17 @@ message LIDMigrationMappingSyncMessage {
     optional bytes encodedMappingPayload = 1;
 }
 
+message LabyrinthWaCommand {
+    oneof commandInput {
+        CreateBackupInput createBackupInput = 1;
+        EncryptMessageInput encryptMessageInput = 2;
+        DecryptMessageInput decryptMessageInput = 3;
+        OrfThreadIdInput orfThreadIdInput = 4;
+        DeriveMessageKeyInput deriveMessageKeyInput = 5;
+        RotateEpochInput rotateEpochInput = 6;
+    }
+}
+
 message LegacyMessage {
     optional Message.EventResponseMessage eventResponseMessage = 1;
     optional Message.PollVoteMessage pollVote = 2;
@@ -2473,9 +2567,6 @@ message Location {
     optional string name = 3;
 }
 
-enum MENTION_MENTION_TYPE {
-    PROFILE = 0;
-}
 message MediaData {
     optional string localPath = 1;
 }
@@ -2551,13 +2642,6 @@ enum MediaVisibility {
 message MemberLabel {
     optional string label = 1;
     optional int64 labelTimestamp = 2;
-}
-
-message Mention {
-    optional MENTION_MENTION_TYPE mentionType = 1;
-    optional string mentionedJid = 2;
-    optional uint32 offset = 3;
-    optional uint32 length = 4;
 }
 
 message Message {
@@ -4535,13 +4619,6 @@ message MessageSecretMessage {
     optional bytes encPayload = 3;
 }
 
-message MessageText {
-    optional string text = 1;
-    repeated string mentionedJid = 2;
-    repeated Command commands = 3;
-    repeated Mention mentions = 4;
-}
-
 message Money {
     optional int64 value = 1;
     optional uint32 offset = 2;
@@ -4774,6 +4851,16 @@ message NotificationSettings {
     optional bool lowPriorityNotifications = 4;
     optional bool reactionsMuted = 5;
     optional string callVibrate = 6;
+}
+
+message OrfThreadIdInput {
+    required bytes orfClientState = 1;
+    required string threadId = 2;
+}
+
+message OrfThreadIdOutput {
+    optional bytes orfThreadId = 1;
+    optional string error = 2;
 }
 
 message PairingRequest {
@@ -5101,6 +5188,37 @@ message ReportingTokenInfo {
     optional uint64 reportingTagTimestamp = 2;
 }
 
+message RotateEpochInput {
+    required bytes currentEpochRootKey = 1;
+    required bytes currentEpochAnonId = 2;
+    required uint64 currentEpochFbid = 3;
+    required bytes epochStoragePrivateKey = 4;
+    repeated RotateEpochMemberInput members = 5;
+}
+
+message RotateEpochMemberEdge {
+    optional uint64 deviceId = 1;
+    optional bytes encryptedEpochKey = 2;
+    optional bytes deviceEpochHmac = 3;
+}
+
+message RotateEpochMemberInput {
+    required uint64 deviceId = 1;
+    required bytes epochStoragePublicKey = 2;
+    required bytes devicePublicKey = 3;
+}
+
+message RotateEpochOutput {
+    optional bytes newEpochRootKey = 1;
+    optional uint64 newEpochAnonId = 2;
+    optional uint64 newEpochFbid = 8;
+    optional bytes epochAnonId = 3;
+    optional BackwardEdge backwardEdge = 4;
+    repeated RotateEpochMemberEdge memberEdges = 5;
+    optional bytes epochRootKeyFingerprint = 6;
+    optional string error = 7;
+}
+
 message RoutingInfo {
     repeated int32 regionId = 1;
     repeated int32 clusterId = 2;
@@ -5362,11 +5480,6 @@ message StickerMetadata {
     optional bool isLottie = 12;
     optional string imageHash = 13;
     optional bool isAvatarSticker = 14;
-}
-
-message SubProtocol {
-    optional bytes payload = 1;
-    optional int32 version = 2;
 }
 
 message SyncActionData {
@@ -6325,6 +6438,16 @@ message VerifiedNameCertificate {
         optional uint64 issueTime = 10;
     }
     
+}
+
+message VirtualDeviceOutput {
+    required bytes vdId = 1;
+    required bytes vdPublicKey = 2;
+    required bytes vdEpochStoragePublicKey = 3;
+    required bytes vdEpochStoragePublicKeySig = 4;
+    required bytes ocmfRotationToken = 5;
+    required bytes deviceEpochHmac = 6;
+    required EncryptedSecretValuesOutput encryptedSecretValues = 7;
 }
 
 message WallpaperSettings {

@@ -15551,6 +15551,363 @@ $root.waproto = (function() {
         return AvatarUserSettings;
     })();
 
+    waproto.BackwardEdge = (function() {
+
+        /**
+         * Properties of a BackwardEdge.
+         * @typedef {Object} waproto.BackwardEdge.$Properties
+         * @property {Uint8Array|null} [encryptedPrevEpochAnonId] BackwardEdge encryptedPrevEpochAnonId
+         * @property {Uint8Array|null} [encryptedPrevEpochRootKey] BackwardEdge encryptedPrevEpochRootKey
+         * @property {Uint8Array|null} [prevEpochRootKeyFingerprint] BackwardEdge prevEpochRootKeyFingerprint
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a BackwardEdge.
+         * @memberof waproto
+         * @interface IBackwardEdge
+         * @augments waproto.BackwardEdge.$Properties
+         * @deprecated Use waproto.BackwardEdge.$Properties instead.
+         */
+
+        /**
+         * Shape of a BackwardEdge.
+         * @typedef {waproto.BackwardEdge.$Properties} waproto.BackwardEdge.$Shape
+         */
+
+        /**
+         * Constructs a new BackwardEdge.
+         * @memberof waproto
+         * @classdesc Represents a BackwardEdge.
+         * @constructor
+         * @param {waproto.BackwardEdge.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var BackwardEdge = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * BackwardEdge encryptedPrevEpochAnonId.
+         * @member {Uint8Array|null|undefined} encryptedPrevEpochAnonId
+         * @memberof waproto.BackwardEdge
+         * @instance
+         */
+        BackwardEdge.prototype.encryptedPrevEpochAnonId = null;
+
+        /**
+         * BackwardEdge encryptedPrevEpochRootKey.
+         * @member {Uint8Array|null|undefined} encryptedPrevEpochRootKey
+         * @memberof waproto.BackwardEdge
+         * @instance
+         */
+        BackwardEdge.prototype.encryptedPrevEpochRootKey = null;
+
+        /**
+         * BackwardEdge prevEpochRootKeyFingerprint.
+         * @member {Uint8Array|null|undefined} prevEpochRootKeyFingerprint
+         * @memberof waproto.BackwardEdge
+         * @instance
+         */
+        BackwardEdge.prototype.prevEpochRootKeyFingerprint = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BackwardEdge.prototype, "_encryptedPrevEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedPrevEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BackwardEdge.prototype, "_encryptedPrevEpochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedPrevEpochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BackwardEdge.prototype, "_prevEpochRootKeyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["prevEpochRootKeyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new BackwardEdge instance using the specified properties.
+         * @function create
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {waproto.BackwardEdge.$Properties=} [properties] Properties to set
+         * @returns {waproto.BackwardEdge} BackwardEdge instance
+         * @type {{
+         *   (properties: waproto.BackwardEdge.$Shape): waproto.BackwardEdge & waproto.BackwardEdge.$Shape;
+         *   (properties?: waproto.BackwardEdge.$Properties): waproto.BackwardEdge;
+         * }}
+         */
+        BackwardEdge.create = function(properties) {
+            return new BackwardEdge(properties);
+        };
+
+        /**
+         * Encodes the specified BackwardEdge message. Does not implicitly {@link waproto.BackwardEdge.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {waproto.BackwardEdge.$Properties} message BackwardEdge message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BackwardEdge.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.encryptedPrevEpochAnonId != null && $Object.hasOwnProperty.call(message, "encryptedPrevEpochAnonId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.encryptedPrevEpochAnonId);
+            if (message.encryptedPrevEpochRootKey != null && $Object.hasOwnProperty.call(message, "encryptedPrevEpochRootKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.encryptedPrevEpochRootKey);
+            if (message.prevEpochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "prevEpochRootKeyFingerprint"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.prevEpochRootKeyFingerprint);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified BackwardEdge message, length delimited. Does not implicitly {@link waproto.BackwardEdge.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {waproto.BackwardEdge.$Properties} message BackwardEdge message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        BackwardEdge.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a BackwardEdge message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.BackwardEdge & waproto.BackwardEdge.$Shape} BackwardEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BackwardEdge.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.BackwardEdge();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedPrevEpochAnonId = reader.bytes();
+                        message._encryptedPrevEpochAnonId = "encryptedPrevEpochAnonId";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedPrevEpochRootKey = reader.bytes();
+                        message._encryptedPrevEpochRootKey = "encryptedPrevEpochRootKey";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.prevEpochRootKeyFingerprint = reader.bytes();
+                        message._prevEpochRootKeyFingerprint = "prevEpochRootKeyFingerprint";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a BackwardEdge message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.BackwardEdge & waproto.BackwardEdge.$Shape} BackwardEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        BackwardEdge.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a BackwardEdge message.
+         * @function verify
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        BackwardEdge.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.encryptedPrevEpochAnonId != null && $Object.hasOwnProperty.call(message, "encryptedPrevEpochAnonId")) {
+                properties._encryptedPrevEpochAnonId = 1;
+                if (!(message.encryptedPrevEpochAnonId && typeof message.encryptedPrevEpochAnonId.length === "number" || $util.isString(message.encryptedPrevEpochAnonId)))
+                    return "encryptedPrevEpochAnonId: buffer expected";
+            }
+            if (message.encryptedPrevEpochRootKey != null && $Object.hasOwnProperty.call(message, "encryptedPrevEpochRootKey")) {
+                properties._encryptedPrevEpochRootKey = 1;
+                if (!(message.encryptedPrevEpochRootKey && typeof message.encryptedPrevEpochRootKey.length === "number" || $util.isString(message.encryptedPrevEpochRootKey)))
+                    return "encryptedPrevEpochRootKey: buffer expected";
+            }
+            if (message.prevEpochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "prevEpochRootKeyFingerprint")) {
+                properties._prevEpochRootKeyFingerprint = 1;
+                if (!(message.prevEpochRootKeyFingerprint && typeof message.prevEpochRootKeyFingerprint.length === "number" || $util.isString(message.prevEpochRootKeyFingerprint)))
+                    return "prevEpochRootKeyFingerprint: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a BackwardEdge message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.BackwardEdge} BackwardEdge
+         */
+        BackwardEdge.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.BackwardEdge)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.BackwardEdge: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.BackwardEdge();
+            if (object.encryptedPrevEpochAnonId != null)
+                if (typeof object.encryptedPrevEpochAnonId === "string")
+                    $util.base64.decode(object.encryptedPrevEpochAnonId, message.encryptedPrevEpochAnonId = $util.newBuffer($util.base64.length(object.encryptedPrevEpochAnonId)), 0);
+                else if (object.encryptedPrevEpochAnonId.length >= 0)
+                    message.encryptedPrevEpochAnonId = object.encryptedPrevEpochAnonId;
+            if (object.encryptedPrevEpochRootKey != null)
+                if (typeof object.encryptedPrevEpochRootKey === "string")
+                    $util.base64.decode(object.encryptedPrevEpochRootKey, message.encryptedPrevEpochRootKey = $util.newBuffer($util.base64.length(object.encryptedPrevEpochRootKey)), 0);
+                else if (object.encryptedPrevEpochRootKey.length >= 0)
+                    message.encryptedPrevEpochRootKey = object.encryptedPrevEpochRootKey;
+            if (object.prevEpochRootKeyFingerprint != null)
+                if (typeof object.prevEpochRootKeyFingerprint === "string")
+                    $util.base64.decode(object.prevEpochRootKeyFingerprint, message.prevEpochRootKeyFingerprint = $util.newBuffer($util.base64.length(object.prevEpochRootKeyFingerprint)), 0);
+                else if (object.prevEpochRootKeyFingerprint.length >= 0)
+                    message.prevEpochRootKeyFingerprint = object.prevEpochRootKeyFingerprint;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a BackwardEdge message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {waproto.BackwardEdge} message BackwardEdge
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        BackwardEdge.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.encryptedPrevEpochAnonId != null && $Object.hasOwnProperty.call(message, "encryptedPrevEpochAnonId"))
+                object.encryptedPrevEpochAnonId = options.bytes === $String ? $util.base64.encode(message.encryptedPrevEpochAnonId, 0, message.encryptedPrevEpochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedPrevEpochAnonId) : message.encryptedPrevEpochAnonId;
+            if (message.encryptedPrevEpochRootKey != null && $Object.hasOwnProperty.call(message, "encryptedPrevEpochRootKey"))
+                object.encryptedPrevEpochRootKey = options.bytes === $String ? $util.base64.encode(message.encryptedPrevEpochRootKey, 0, message.encryptedPrevEpochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedPrevEpochRootKey) : message.encryptedPrevEpochRootKey;
+            if (message.prevEpochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "prevEpochRootKeyFingerprint"))
+                object.prevEpochRootKeyFingerprint = options.bytes === $String ? $util.base64.encode(message.prevEpochRootKeyFingerprint, 0, message.prevEpochRootKeyFingerprint.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.prevEpochRootKeyFingerprint) : message.prevEpochRootKeyFingerprint;
+            return object;
+        };
+
+        /**
+         * Converts this BackwardEdge to JSON.
+         * @function toJSON
+         * @memberof waproto.BackwardEdge
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        BackwardEdge.prototype.toJSON = function() {
+            return BackwardEdge.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for BackwardEdge
+         * @function getTypeUrl
+         * @memberof waproto.BackwardEdge
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        BackwardEdge.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.BackwardEdge";
+        };
+
+        return BackwardEdge;
+    })();
+
     waproto.BizAIMetadataSync = (function() {
 
         /**
@@ -19433,6 +19790,10 @@ $root.waproto = (function() {
                     case 70:
                         message.capabilities[message.capabilities.length] = 70;
                         break;
+                    case "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED":
+                    case 71:
+                        message.capabilities[message.capabilities.length] = 71;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -19568,6 +19929,7 @@ $root.waproto = (function() {
          * @property {number} AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED=68 AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED value
          * @property {number} AI_RICH_RESPONSE_REMINDERS_ENABLED=69 AI_RICH_RESPONSE_REMINDERS_ENABLED value
          * @property {number} AI_STOP_GENERATION_ENABLED=70 AI_STOP_GENERATION_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED=71 AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -19642,6 +20004,7 @@ $root.waproto = (function() {
             values[valuesById[68] = "AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED"] = 68;
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
             values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
+            values[valuesById[71] = "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED"] = 71;
             return values;
         })();
 
@@ -42411,24 +42774,6 @@ $root.waproto = (function() {
         return BotUnifiedResponseMutation;
     })();
 
-    /**
-     * COMMAND_COMMAND_TYPE enum.
-     * @name waproto.COMMAND_COMMAND_TYPE
-     * @enum {number}
-     * @property {number} EVERYONE=1 EVERYONE value
-     * @property {number} SILENT=2 SILENT value
-     * @property {number} AI=3 AI value
-     * @property {number} AI_IMAGINE=4 AI_IMAGINE value
-     */
-    waproto.COMMAND_COMMAND_TYPE = (function() {
-        var valuesById = $Object.create(null), values = $Object.create(valuesById);
-        values[valuesById[1] = "EVERYONE"] = 1;
-        values[valuesById[2] = "SILENT"] = 2;
-        values[valuesById[3] = "AI"] = 3;
-        values[valuesById[4] = "AI_IMAGINE"] = 4;
-        return values;
-    })();
-
     waproto.CallLogRecord = (function() {
 
         /**
@@ -54944,406 +55289,6 @@ $root.waproto = (function() {
         };
 
         return CombinedFingerprint;
-    })();
-
-    waproto.Command = (function() {
-
-        /**
-         * Properties of a Command.
-         * @typedef {Object} waproto.Command.$Properties
-         * @property {waproto.COMMAND_COMMAND_TYPE|null} [commandType] Command commandType
-         * @property {number|null} [offset] Command offset
-         * @property {number|null} [length] Command length
-         * @property {string|null} [validationToken] Command validationToken
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-
-        /**
-         * Properties of a Command.
-         * @memberof waproto
-         * @interface ICommand
-         * @augments waproto.Command.$Properties
-         * @deprecated Use waproto.Command.$Properties instead.
-         */
-
-        /**
-         * Shape of a Command.
-         * @typedef {waproto.Command.$Properties} waproto.Command.$Shape
-         */
-
-        /**
-         * Constructs a new Command.
-         * @memberof waproto
-         * @classdesc Represents a Command.
-         * @constructor
-         * @param {waproto.Command.$Properties=} [properties] Properties to set
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-        var Command = function (properties) {
-            if (properties)
-                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
-                        this[keys[i]] = properties[keys[i]];
-        };
-
-        /**
-         * Command commandType.
-         * @member {waproto.COMMAND_COMMAND_TYPE|null|undefined} commandType
-         * @memberof waproto.Command
-         * @instance
-         */
-        Command.prototype.commandType = null;
-
-        /**
-         * Command offset.
-         * @member {number|null|undefined} offset
-         * @memberof waproto.Command
-         * @instance
-         */
-        Command.prototype.offset = null;
-
-        /**
-         * Command length.
-         * @member {number|null|undefined} length
-         * @memberof waproto.Command
-         * @instance
-         */
-        Command.prototype.length = null;
-
-        /**
-         * Command validationToken.
-         * @member {string|null|undefined} validationToken
-         * @memberof waproto.Command
-         * @instance
-         */
-        Command.prototype.validationToken = null;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Command.prototype, "_commandType", {
-            get: $util.oneOfGetter($oneOfFields = ["commandType"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Command.prototype, "_offset", {
-            get: $util.oneOfGetter($oneOfFields = ["offset"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Command.prototype, "_length", {
-            get: $util.oneOfGetter($oneOfFields = ["length"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Command.prototype, "_validationToken", {
-            get: $util.oneOfGetter($oneOfFields = ["validationToken"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new Command instance using the specified properties.
-         * @function create
-         * @memberof waproto.Command
-         * @static
-         * @param {waproto.Command.$Properties=} [properties] Properties to set
-         * @returns {waproto.Command} Command instance
-         * @type {{
-         *   (properties: waproto.Command.$Shape): waproto.Command & waproto.Command.$Shape;
-         *   (properties?: waproto.Command.$Properties): waproto.Command;
-         * }}
-         */
-        Command.create = function(properties) {
-            return new Command(properties);
-        };
-
-        /**
-         * Encodes the specified Command message. Does not implicitly {@link waproto.Command.verify|verify} messages.
-         * @function encode
-         * @memberof waproto.Command
-         * @static
-         * @param {waproto.Command.$Properties} message Command message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Command.encode = function (message, writer, _depth) {
-            if (!writer)
-                writer = $Writer.create();
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            if (message.commandType != null && $Object.hasOwnProperty.call(message, "commandType"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.commandType);
-            if (message.offset != null && $Object.hasOwnProperty.call(message, "offset"))
-                writer.uint32(/* id 2, wireType 0 =*/16).uint32(message.offset);
-            if (message.length != null && $Object.hasOwnProperty.call(message, "length"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.length);
-            if (message.validationToken != null && $Object.hasOwnProperty.call(message, "validationToken"))
-                writer.uint32(/* id 4, wireType 2 =*/34).string(message.validationToken);
-            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
-                for (var i = 0; i < message.$unknowns.length; ++i)
-                    writer.raw(message.$unknowns[i]);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Command message, length delimited. Does not implicitly {@link waproto.Command.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof waproto.Command
-         * @static
-         * @param {waproto.Command.$Properties} message Command message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Command.encodeDelimited = function(message, writer) {
-            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
-        };
-
-        /**
-         * Decodes a Command message from the specified reader or buffer.
-         * @function decode
-         * @memberof waproto.Command
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {waproto.Command & waproto.Command.$Shape} Command
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Command.decode = function (reader, length, _end, _depth, _target) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $Reader.recursionLimit)
-                throw $Error("max depth exceeded");
-            var end, message, value;
-            if (length === $undefined)
-                end = reader.len;
-            else {
-                end = reader.pos + length;
-                if (end > reader.len)
-                    throw $RangeError("index out of range");
-                length = reader.len;
-                reader.len = end;
-            }
-            message = _target || new $root.waproto.Command();
-            while (reader.pos < end) {
-                var start = reader.pos;
-                var tag = reader.tag();
-                if (tag === _end) {
-                    _end = $undefined;
-                    break;
-                }
-                var wireType = tag & 7;
-                switch (tag >>>= 3) {
-                case 1: {
-                        if (wireType !== 0)
-                            break;
-                        message.commandType = reader.int32();
-                        message._commandType = "commandType";
-                        continue;
-                    }
-                case 2: {
-                        if (wireType !== 0)
-                            break;
-                        message.offset = reader.uint32();
-                        message._offset = "offset";
-                        continue;
-                    }
-                case 3: {
-                        if (wireType !== 0)
-                            break;
-                        message.length = reader.uint32();
-                        message._length = "length";
-                        continue;
-                    }
-                case 4: {
-                        if (wireType !== 2)
-                            break;
-                        message.validationToken = reader.stringVerify();
-                        message._validationToken = "validationToken";
-                        continue;
-                    }
-                }
-                reader.skipType(wireType, _depth, tag);
-                if (!reader.discardUnknown) {
-                    $util.makeProp(message, "$unknowns", false);
-                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
-                }
-            }
-            if (length !== $undefined) {
-                if (reader.pos !== end)
-                    throw $RangeError("index out of range");
-                reader.len = length;
-            }
-            if (_end !== $undefined)
-                throw $Error("missing end group");
-            return message;
-        };
-
-        /**
-         * Decodes a Command message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof waproto.Command
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {waproto.Command & waproto.Command.$Shape} Command
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Command.decodeDelimited = function(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a Command message.
-         * @function verify
-         * @memberof waproto.Command
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Command.verify = function (message, _depth) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                return "max depth exceeded";
-            var properties = {};
-            if (message.commandType != null && $Object.hasOwnProperty.call(message, "commandType")) {
-                properties._commandType = 1;
-                if (typeof message.commandType !== "number" || (message.commandType | 0) !== message.commandType)
-                    return "commandType: enum value expected";
-            }
-            if (message.offset != null && $Object.hasOwnProperty.call(message, "offset")) {
-                properties._offset = 1;
-                if (!$util.isInteger(message.offset))
-                    return "offset: integer expected";
-            }
-            if (message.length != null && $Object.hasOwnProperty.call(message, "length")) {
-                properties._length = 1;
-                if (!$util.isInteger(message.length))
-                    return "length: integer expected";
-            }
-            if (message.validationToken != null && $Object.hasOwnProperty.call(message, "validationToken")) {
-                properties._validationToken = 1;
-                if (!$util.isString(message.validationToken))
-                    return "validationToken: string expected";
-            }
-            return null;
-        };
-
-        /**
-         * Creates a Command message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof waproto.Command
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {waproto.Command} Command
-         */
-        Command.fromObject = function (object, _depth) {
-            if (object instanceof $root.waproto.Command)
-                return object;
-            if (!$util.isObject(object))
-                throw $TypeError(".waproto.Command: object expected");
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var message = new $root.waproto.Command();
-            switch (object.commandType) {
-            case "EVERYONE":
-            case 1:
-                message.commandType = 1;
-                break;
-            case "SILENT":
-            case 2:
-                message.commandType = 2;
-                break;
-            case "AI":
-            case 3:
-                message.commandType = 3;
-                break;
-            case "AI_IMAGINE":
-            case 4:
-                message.commandType = 4;
-                break;
-            default:
-                if (typeof object.commandType === "number" && (object.commandType | 0) === object.commandType)
-                    message.commandType = object.commandType;
-            }
-            if (object.offset != null)
-                message.offset = object.offset >>> 0;
-            if (object.length != null)
-                message.length = object.length >>> 0;
-            if (object.validationToken != null)
-                message.validationToken = $String(object.validationToken);
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a Command message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof waproto.Command
-         * @static
-         * @param {waproto.Command} message Command
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Command.toObject = function (message, options, _depth) {
-            if (!options)
-                options = {};
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var object = {};
-            if (message.commandType != null && $Object.hasOwnProperty.call(message, "commandType"))
-                object.commandType = options.enums === $String ? $root.waproto.COMMAND_COMMAND_TYPE[message.commandType] === $undefined ? message.commandType : $root.waproto.COMMAND_COMMAND_TYPE[message.commandType] : message.commandType;
-            if (message.offset != null && $Object.hasOwnProperty.call(message, "offset"))
-                object.offset = message.offset;
-            if (message.length != null && $Object.hasOwnProperty.call(message, "length"))
-                object.length = message.length;
-            if (message.validationToken != null && $Object.hasOwnProperty.call(message, "validationToken"))
-                object.validationToken = message.validationToken;
-            return object;
-        };
-
-        /**
-         * Converts this Command to JSON.
-         * @function toJSON
-         * @memberof waproto.Command
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Command.prototype.toJSON = function() {
-            return Command.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the type url for Command
-         * @function getTypeUrl
-         * @memberof waproto.Command
-         * @static
-         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns {string} The type url
-         */
-        Command.getTypeUrl = function(prefix) {
-            if (prefix === $undefined)
-                prefix = "type.googleapis.com";
-            return prefix + "/waproto.Command";
-        };
-
-        return Command;
     })();
 
     waproto.CommentMetadata = (function() {
@@ -69438,6 +69383,2129 @@ $root.waproto = (function() {
         return Conversation;
     })();
 
+    waproto.CreateBackupInput = (function() {
+
+        /**
+         * Properties of a CreateBackupInput.
+         * @typedef {Object} waproto.CreateBackupInput.$Properties
+         * @property {string} recoveryCode CreateBackupInput recoveryCode
+         * @property {number|Long} userId CreateBackupInput userId
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a CreateBackupInput.
+         * @memberof waproto
+         * @interface ICreateBackupInput
+         * @augments waproto.CreateBackupInput.$Properties
+         * @deprecated Use waproto.CreateBackupInput.$Properties instead.
+         */
+
+        /**
+         * Shape of a CreateBackupInput.
+         * @typedef {waproto.CreateBackupInput.$Properties} waproto.CreateBackupInput.$Shape
+         */
+
+        /**
+         * Constructs a new CreateBackupInput.
+         * @memberof waproto
+         * @classdesc Represents a CreateBackupInput.
+         * @constructor
+         * @param {waproto.CreateBackupInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var CreateBackupInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * CreateBackupInput recoveryCode.
+         * @member {string} recoveryCode
+         * @memberof waproto.CreateBackupInput
+         * @instance
+         */
+        CreateBackupInput.prototype.recoveryCode = "";
+
+        /**
+         * CreateBackupInput userId.
+         * @member {number|Long} userId
+         * @memberof waproto.CreateBackupInput
+         * @instance
+         */
+        CreateBackupInput.prototype.userId = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Creates a new CreateBackupInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {waproto.CreateBackupInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.CreateBackupInput} CreateBackupInput instance
+         * @type {{
+         *   (properties: waproto.CreateBackupInput.$Shape): waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape;
+         *   (properties?: waproto.CreateBackupInput.$Properties): waproto.CreateBackupInput;
+         * }}
+         */
+        CreateBackupInput.create = function(properties) {
+            return new CreateBackupInput(properties);
+        };
+
+        /**
+         * Encodes the specified CreateBackupInput message. Does not implicitly {@link waproto.CreateBackupInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {waproto.CreateBackupInput.$Properties} message CreateBackupInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateBackupInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.recoveryCode);
+            writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.userId);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified CreateBackupInput message, length delimited. Does not implicitly {@link waproto.CreateBackupInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {waproto.CreateBackupInput.$Properties} message CreateBackupInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateBackupInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a CreateBackupInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape} CreateBackupInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateBackupInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.CreateBackupInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.recoveryCode = reader.stringVerify();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.userId = reader.uint64();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "recoveryCode"))
+                throw $util.ProtocolError("missing required 'recoveryCode'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "userId"))
+                throw $util.ProtocolError("missing required 'userId'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a CreateBackupInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape} CreateBackupInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateBackupInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a CreateBackupInput message.
+         * @function verify
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CreateBackupInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!$util.isString(message.recoveryCode))
+                return "recoveryCode: string expected";
+            if (!$util.isInteger(message.userId) && !(message.userId && $util.isInteger(message.userId.low) && $util.isInteger(message.userId.high)))
+                return "userId: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a CreateBackupInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.CreateBackupInput} CreateBackupInput
+         */
+        CreateBackupInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.CreateBackupInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.CreateBackupInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.CreateBackupInput();
+            if (object.recoveryCode != null)
+                message.recoveryCode = $String(object.recoveryCode);
+            if (object.userId != null)
+                if ($util.Long)
+                    message.userId = $util.Long.fromValue(object.userId, true);
+                else if (typeof object.userId === "string")
+                    message.userId = $parseInt(object.userId, 10);
+                else if (typeof object.userId === "number")
+                    message.userId = object.userId;
+                else if (typeof object.userId === "object")
+                    message.userId = new $util.LongBits(object.userId.low >>> 0, object.userId.high >>> 0).toNumber(true);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a CreateBackupInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {waproto.CreateBackupInput} message CreateBackupInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CreateBackupInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                object.recoveryCode = "";
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.userId = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.userId = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+            }
+            if (message.recoveryCode != null && $Object.hasOwnProperty.call(message, "recoveryCode"))
+                object.recoveryCode = message.recoveryCode;
+            if (message.userId != null && $Object.hasOwnProperty.call(message, "userId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.userId = typeof message.userId === "number" ? $BigInt(message.userId) : $util.Long.fromBits(message.userId.low >>> 0, message.userId.high >>> 0, true).toBigInt();
+                else if (typeof message.userId === "number")
+                    object.userId = options.longs === $String ? $String(message.userId) : message.userId;
+                else
+                    object.userId = options.longs === $String ? $util.Long.prototype.toString.call(message.userId) : options.longs === $Number ? new $util.LongBits(message.userId.low >>> 0, message.userId.high >>> 0).toNumber(true) : message.userId;
+            return object;
+        };
+
+        /**
+         * Converts this CreateBackupInput to JSON.
+         * @function toJSON
+         * @memberof waproto.CreateBackupInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CreateBackupInput.prototype.toJSON = function() {
+            return CreateBackupInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for CreateBackupInput
+         * @function getTypeUrl
+         * @memberof waproto.CreateBackupInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        CreateBackupInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.CreateBackupInput";
+        };
+
+        return CreateBackupInput;
+    })();
+
+    waproto.CreateBackupOutput = (function() {
+
+        /**
+         * Properties of a CreateBackupOutput.
+         * @typedef {Object} waproto.CreateBackupOutput.$Properties
+         * @property {waproto.DeviceOutput.$Properties|null} [device] CreateBackupOutput device
+         * @property {waproto.VirtualDeviceOutput.$Properties|null} [virtualDevice] CreateBackupOutput virtualDevice
+         * @property {waproto.Epoch0Output.$Properties|null} [epoch0] CreateBackupOutput epoch0
+         * @property {Uint8Array|null} [mailboxRootKey] CreateBackupOutput mailboxRootKey
+         * @property {string|null} [error] CreateBackupOutput error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a CreateBackupOutput.
+         * @memberof waproto
+         * @interface ICreateBackupOutput
+         * @augments waproto.CreateBackupOutput.$Properties
+         * @deprecated Use waproto.CreateBackupOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of a CreateBackupOutput.
+         * @typedef {waproto.CreateBackupOutput.$Properties} waproto.CreateBackupOutput.$Shape
+         */
+
+        /**
+         * Constructs a new CreateBackupOutput.
+         * @memberof waproto
+         * @classdesc Represents a CreateBackupOutput.
+         * @constructor
+         * @param {waproto.CreateBackupOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var CreateBackupOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * CreateBackupOutput device.
+         * @member {waproto.DeviceOutput.$Properties|null|undefined} device
+         * @memberof waproto.CreateBackupOutput
+         * @instance
+         */
+        CreateBackupOutput.prototype.device = null;
+
+        /**
+         * CreateBackupOutput virtualDevice.
+         * @member {waproto.VirtualDeviceOutput.$Properties|null|undefined} virtualDevice
+         * @memberof waproto.CreateBackupOutput
+         * @instance
+         */
+        CreateBackupOutput.prototype.virtualDevice = null;
+
+        /**
+         * CreateBackupOutput epoch0.
+         * @member {waproto.Epoch0Output.$Properties|null|undefined} epoch0
+         * @memberof waproto.CreateBackupOutput
+         * @instance
+         */
+        CreateBackupOutput.prototype.epoch0 = null;
+
+        /**
+         * CreateBackupOutput mailboxRootKey.
+         * @member {Uint8Array|null|undefined} mailboxRootKey
+         * @memberof waproto.CreateBackupOutput
+         * @instance
+         */
+        CreateBackupOutput.prototype.mailboxRootKey = null;
+
+        /**
+         * CreateBackupOutput error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.CreateBackupOutput
+         * @instance
+         */
+        CreateBackupOutput.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupOutput.prototype, "_device", {
+            get: $util.oneOfGetter($oneOfFields = ["device"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupOutput.prototype, "_virtualDevice", {
+            get: $util.oneOfGetter($oneOfFields = ["virtualDevice"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupOutput.prototype, "_epoch0", {
+            get: $util.oneOfGetter($oneOfFields = ["epoch0"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupOutput.prototype, "_mailboxRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["mailboxRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CreateBackupOutput.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new CreateBackupOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {waproto.CreateBackupOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.CreateBackupOutput} CreateBackupOutput instance
+         * @type {{
+         *   (properties: waproto.CreateBackupOutput.$Shape): waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape;
+         *   (properties?: waproto.CreateBackupOutput.$Properties): waproto.CreateBackupOutput;
+         * }}
+         */
+        CreateBackupOutput.create = function(properties) {
+            return new CreateBackupOutput(properties);
+        };
+
+        /**
+         * Encodes the specified CreateBackupOutput message. Does not implicitly {@link waproto.CreateBackupOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {waproto.CreateBackupOutput.$Properties} message CreateBackupOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateBackupOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.device != null && $Object.hasOwnProperty.call(message, "device"))
+                $root.waproto.DeviceOutput.encode(message.device, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.virtualDevice != null && $Object.hasOwnProperty.call(message, "virtualDevice"))
+                $root.waproto.VirtualDeviceOutput.encode(message.virtualDevice, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+            if (message.epoch0 != null && $Object.hasOwnProperty.call(message, "epoch0"))
+                $root.waproto.Epoch0Output.encode(message.epoch0, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+            if (message.mailboxRootKey != null && $Object.hasOwnProperty.call(message, "mailboxRootKey"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.mailboxRootKey);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 5, wireType 2 =*/42).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified CreateBackupOutput message, length delimited. Does not implicitly {@link waproto.CreateBackupOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {waproto.CreateBackupOutput.$Properties} message CreateBackupOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateBackupOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a CreateBackupOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape} CreateBackupOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateBackupOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.CreateBackupOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.device = $root.waproto.DeviceOutput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.device);
+                        message._device = "device";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.virtualDevice = $root.waproto.VirtualDeviceOutput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.virtualDevice);
+                        message._virtualDevice = "virtualDevice";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.epoch0 = $root.waproto.Epoch0Output.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epoch0);
+                        message._epoch0 = "epoch0";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.mailboxRootKey = reader.bytes();
+                        message._mailboxRootKey = "mailboxRootKey";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a CreateBackupOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape} CreateBackupOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateBackupOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a CreateBackupOutput message.
+         * @function verify
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CreateBackupOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.device != null && $Object.hasOwnProperty.call(message, "device")) {
+                properties._device = 1;
+                {
+                    var error = $root.waproto.DeviceOutput.verify(message.device, _depth + 1);
+                    if (error)
+                        return "device." + error;
+                }
+            }
+            if (message.virtualDevice != null && $Object.hasOwnProperty.call(message, "virtualDevice")) {
+                properties._virtualDevice = 1;
+                {
+                    var error = $root.waproto.VirtualDeviceOutput.verify(message.virtualDevice, _depth + 1);
+                    if (error)
+                        return "virtualDevice." + error;
+                }
+            }
+            if (message.epoch0 != null && $Object.hasOwnProperty.call(message, "epoch0")) {
+                properties._epoch0 = 1;
+                {
+                    var error = $root.waproto.Epoch0Output.verify(message.epoch0, _depth + 1);
+                    if (error)
+                        return "epoch0." + error;
+                }
+            }
+            if (message.mailboxRootKey != null && $Object.hasOwnProperty.call(message, "mailboxRootKey")) {
+                properties._mailboxRootKey = 1;
+                if (!(message.mailboxRootKey && typeof message.mailboxRootKey.length === "number" || $util.isString(message.mailboxRootKey)))
+                    return "mailboxRootKey: buffer expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a CreateBackupOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.CreateBackupOutput} CreateBackupOutput
+         */
+        CreateBackupOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.CreateBackupOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.CreateBackupOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.CreateBackupOutput();
+            if (object.device != null) {
+                if (!$util.isObject(object.device))
+                    throw $TypeError(".waproto.CreateBackupOutput.device: object expected");
+                message.device = $root.waproto.DeviceOutput.fromObject(object.device, _depth + 1);
+            }
+            if (object.virtualDevice != null) {
+                if (!$util.isObject(object.virtualDevice))
+                    throw $TypeError(".waproto.CreateBackupOutput.virtualDevice: object expected");
+                message.virtualDevice = $root.waproto.VirtualDeviceOutput.fromObject(object.virtualDevice, _depth + 1);
+            }
+            if (object.epoch0 != null) {
+                if (!$util.isObject(object.epoch0))
+                    throw $TypeError(".waproto.CreateBackupOutput.epoch0: object expected");
+                message.epoch0 = $root.waproto.Epoch0Output.fromObject(object.epoch0, _depth + 1);
+            }
+            if (object.mailboxRootKey != null)
+                if (typeof object.mailboxRootKey === "string")
+                    $util.base64.decode(object.mailboxRootKey, message.mailboxRootKey = $util.newBuffer($util.base64.length(object.mailboxRootKey)), 0);
+                else if (object.mailboxRootKey.length >= 0)
+                    message.mailboxRootKey = object.mailboxRootKey;
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a CreateBackupOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {waproto.CreateBackupOutput} message CreateBackupOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CreateBackupOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.device != null && $Object.hasOwnProperty.call(message, "device"))
+                object.device = $root.waproto.DeviceOutput.toObject(message.device, options, _depth + 1);
+            if (message.virtualDevice != null && $Object.hasOwnProperty.call(message, "virtualDevice"))
+                object.virtualDevice = $root.waproto.VirtualDeviceOutput.toObject(message.virtualDevice, options, _depth + 1);
+            if (message.epoch0 != null && $Object.hasOwnProperty.call(message, "epoch0"))
+                object.epoch0 = $root.waproto.Epoch0Output.toObject(message.epoch0, options, _depth + 1);
+            if (message.mailboxRootKey != null && $Object.hasOwnProperty.call(message, "mailboxRootKey"))
+                object.mailboxRootKey = options.bytes === $String ? $util.base64.encode(message.mailboxRootKey, 0, message.mailboxRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.mailboxRootKey) : message.mailboxRootKey;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this CreateBackupOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.CreateBackupOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CreateBackupOutput.prototype.toJSON = function() {
+            return CreateBackupOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for CreateBackupOutput
+         * @function getTypeUrl
+         * @memberof waproto.CreateBackupOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        CreateBackupOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.CreateBackupOutput";
+        };
+
+        return CreateBackupOutput;
+    })();
+
+    waproto.DecryptMessageInput = (function() {
+
+        /**
+         * Properties of a DecryptMessageInput.
+         * @typedef {Object} waproto.DecryptMessageInput.$Properties
+         * @property {Uint8Array} epochRootKey DecryptMessageInput epochRootKey
+         * @property {Uint8Array} epochAnonId DecryptMessageInput epochAnonId
+         * @property {string} threadId DecryptMessageInput threadId
+         * @property {number} encryptionVersion DecryptMessageInput encryptionVersion
+         * @property {Uint8Array} ciphertext DecryptMessageInput ciphertext
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a DecryptMessageInput.
+         * @memberof waproto
+         * @interface IDecryptMessageInput
+         * @augments waproto.DecryptMessageInput.$Properties
+         * @deprecated Use waproto.DecryptMessageInput.$Properties instead.
+         */
+
+        /**
+         * Shape of a DecryptMessageInput.
+         * @typedef {waproto.DecryptMessageInput.$Properties} waproto.DecryptMessageInput.$Shape
+         */
+
+        /**
+         * Constructs a new DecryptMessageInput.
+         * @memberof waproto
+         * @classdesc Represents a DecryptMessageInput.
+         * @constructor
+         * @param {waproto.DecryptMessageInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var DecryptMessageInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * DecryptMessageInput epochRootKey.
+         * @member {Uint8Array} epochRootKey
+         * @memberof waproto.DecryptMessageInput
+         * @instance
+         */
+        DecryptMessageInput.prototype.epochRootKey = $util.newBuffer([]);
+
+        /**
+         * DecryptMessageInput epochAnonId.
+         * @member {Uint8Array} epochAnonId
+         * @memberof waproto.DecryptMessageInput
+         * @instance
+         */
+        DecryptMessageInput.prototype.epochAnonId = $util.newBuffer([]);
+
+        /**
+         * DecryptMessageInput threadId.
+         * @member {string} threadId
+         * @memberof waproto.DecryptMessageInput
+         * @instance
+         */
+        DecryptMessageInput.prototype.threadId = "";
+
+        /**
+         * DecryptMessageInput encryptionVersion.
+         * @member {number} encryptionVersion
+         * @memberof waproto.DecryptMessageInput
+         * @instance
+         */
+        DecryptMessageInput.prototype.encryptionVersion = 0;
+
+        /**
+         * DecryptMessageInput ciphertext.
+         * @member {Uint8Array} ciphertext
+         * @memberof waproto.DecryptMessageInput
+         * @instance
+         */
+        DecryptMessageInput.prototype.ciphertext = $util.newBuffer([]);
+
+        /**
+         * Creates a new DecryptMessageInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {waproto.DecryptMessageInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.DecryptMessageInput} DecryptMessageInput instance
+         * @type {{
+         *   (properties: waproto.DecryptMessageInput.$Shape): waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape;
+         *   (properties?: waproto.DecryptMessageInput.$Properties): waproto.DecryptMessageInput;
+         * }}
+         */
+        DecryptMessageInput.create = function(properties) {
+            return new DecryptMessageInput(properties);
+        };
+
+        /**
+         * Encodes the specified DecryptMessageInput message. Does not implicitly {@link waproto.DecryptMessageInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {waproto.DecryptMessageInput.$Properties} message DecryptMessageInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DecryptMessageInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.epochRootKey);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.epochAnonId);
+            writer.uint32(/* id 3, wireType 2 =*/26).string(message.threadId);
+            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.encryptionVersion);
+            writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.ciphertext);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DecryptMessageInput message, length delimited. Does not implicitly {@link waproto.DecryptMessageInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {waproto.DecryptMessageInput.$Properties} message DecryptMessageInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DecryptMessageInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a DecryptMessageInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape} DecryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DecryptMessageInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.DecryptMessageInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochRootKey = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAnonId = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.threadId = reader.stringVerify();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 0)
+                            break;
+                        message.encryptionVersion = reader.int32();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.ciphertext = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "epochRootKey"))
+                throw $util.ProtocolError("missing required 'epochRootKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochAnonId"))
+                throw $util.ProtocolError("missing required 'epochAnonId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "threadId"))
+                throw $util.ProtocolError("missing required 'threadId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptionVersion"))
+                throw $util.ProtocolError("missing required 'encryptionVersion'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "ciphertext"))
+                throw $util.ProtocolError("missing required 'ciphertext'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a DecryptMessageInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape} DecryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DecryptMessageInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DecryptMessageInput message.
+         * @function verify
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DecryptMessageInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.epochRootKey && typeof message.epochRootKey.length === "number" || $util.isString(message.epochRootKey)))
+                return "epochRootKey: buffer expected";
+            if (!(message.epochAnonId && typeof message.epochAnonId.length === "number" || $util.isString(message.epochAnonId)))
+                return "epochAnonId: buffer expected";
+            if (!$util.isString(message.threadId))
+                return "threadId: string expected";
+            if (!$util.isInteger(message.encryptionVersion))
+                return "encryptionVersion: integer expected";
+            if (!(message.ciphertext && typeof message.ciphertext.length === "number" || $util.isString(message.ciphertext)))
+                return "ciphertext: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a DecryptMessageInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.DecryptMessageInput} DecryptMessageInput
+         */
+        DecryptMessageInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.DecryptMessageInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.DecryptMessageInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.DecryptMessageInput();
+            if (object.epochRootKey != null)
+                if (typeof object.epochRootKey === "string")
+                    $util.base64.decode(object.epochRootKey, message.epochRootKey = $util.newBuffer($util.base64.length(object.epochRootKey)), 0);
+                else if (object.epochRootKey.length >= 0)
+                    message.epochRootKey = object.epochRootKey;
+            if (object.epochAnonId != null)
+                if (typeof object.epochAnonId === "string")
+                    $util.base64.decode(object.epochAnonId, message.epochAnonId = $util.newBuffer($util.base64.length(object.epochAnonId)), 0);
+                else if (object.epochAnonId.length >= 0)
+                    message.epochAnonId = object.epochAnonId;
+            if (object.threadId != null)
+                message.threadId = $String(object.threadId);
+            if (object.encryptionVersion != null)
+                message.encryptionVersion = object.encryptionVersion | 0;
+            if (object.ciphertext != null)
+                if (typeof object.ciphertext === "string")
+                    $util.base64.decode(object.ciphertext, message.ciphertext = $util.newBuffer($util.base64.length(object.ciphertext)), 0);
+                else if (object.ciphertext.length >= 0)
+                    message.ciphertext = object.ciphertext;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DecryptMessageInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {waproto.DecryptMessageInput} message DecryptMessageInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DecryptMessageInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.epochRootKey = "";
+                else {
+                    object.epochRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochRootKey = $util.newBuffer(object.epochRootKey);
+                }
+                if (options.bytes === $String)
+                    object.epochAnonId = "";
+                else {
+                    object.epochAnonId = [];
+                    if (options.bytes !== $Array)
+                        object.epochAnonId = $util.newBuffer(object.epochAnonId);
+                }
+                object.threadId = "";
+                object.encryptionVersion = 0;
+                if (options.bytes === $String)
+                    object.ciphertext = "";
+                else {
+                    object.ciphertext = [];
+                    if (options.bytes !== $Array)
+                        object.ciphertext = $util.newBuffer(object.ciphertext);
+                }
+            }
+            if (message.epochRootKey != null && $Object.hasOwnProperty.call(message, "epochRootKey"))
+                object.epochRootKey = options.bytes === $String ? $util.base64.encode(message.epochRootKey, 0, message.epochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochRootKey) : message.epochRootKey;
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId"))
+                object.epochAnonId = options.bytes === $String ? $util.base64.encode(message.epochAnonId, 0, message.epochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAnonId) : message.epochAnonId;
+            if (message.threadId != null && $Object.hasOwnProperty.call(message, "threadId"))
+                object.threadId = message.threadId;
+            if (message.encryptionVersion != null && $Object.hasOwnProperty.call(message, "encryptionVersion"))
+                object.encryptionVersion = message.encryptionVersion;
+            if (message.ciphertext != null && $Object.hasOwnProperty.call(message, "ciphertext"))
+                object.ciphertext = options.bytes === $String ? $util.base64.encode(message.ciphertext, 0, message.ciphertext.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.ciphertext) : message.ciphertext;
+            return object;
+        };
+
+        /**
+         * Converts this DecryptMessageInput to JSON.
+         * @function toJSON
+         * @memberof waproto.DecryptMessageInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DecryptMessageInput.prototype.toJSON = function() {
+            return DecryptMessageInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for DecryptMessageInput
+         * @function getTypeUrl
+         * @memberof waproto.DecryptMessageInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        DecryptMessageInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.DecryptMessageInput";
+        };
+
+        return DecryptMessageInput;
+    })();
+
+    waproto.DecryptMessageOutput = (function() {
+
+        /**
+         * Properties of a DecryptMessageOutput.
+         * @typedef {Object} waproto.DecryptMessageOutput.$Properties
+         * @property {Uint8Array|null} [plaintextPayload] DecryptMessageOutput plaintextPayload
+         * @property {string|null} [error] DecryptMessageOutput error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a DecryptMessageOutput.
+         * @memberof waproto
+         * @interface IDecryptMessageOutput
+         * @augments waproto.DecryptMessageOutput.$Properties
+         * @deprecated Use waproto.DecryptMessageOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of a DecryptMessageOutput.
+         * @typedef {waproto.DecryptMessageOutput.$Properties} waproto.DecryptMessageOutput.$Shape
+         */
+
+        /**
+         * Constructs a new DecryptMessageOutput.
+         * @memberof waproto
+         * @classdesc Represents a DecryptMessageOutput.
+         * @constructor
+         * @param {waproto.DecryptMessageOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var DecryptMessageOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * DecryptMessageOutput plaintextPayload.
+         * @member {Uint8Array|null|undefined} plaintextPayload
+         * @memberof waproto.DecryptMessageOutput
+         * @instance
+         */
+        DecryptMessageOutput.prototype.plaintextPayload = null;
+
+        /**
+         * DecryptMessageOutput error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.DecryptMessageOutput
+         * @instance
+         */
+        DecryptMessageOutput.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageOutput.prototype, "_plaintextPayload", {
+            get: $util.oneOfGetter($oneOfFields = ["plaintextPayload"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DecryptMessageOutput.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new DecryptMessageOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {waproto.DecryptMessageOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.DecryptMessageOutput} DecryptMessageOutput instance
+         * @type {{
+         *   (properties: waproto.DecryptMessageOutput.$Shape): waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape;
+         *   (properties?: waproto.DecryptMessageOutput.$Properties): waproto.DecryptMessageOutput;
+         * }}
+         */
+        DecryptMessageOutput.create = function(properties) {
+            return new DecryptMessageOutput(properties);
+        };
+
+        /**
+         * Encodes the specified DecryptMessageOutput message. Does not implicitly {@link waproto.DecryptMessageOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {waproto.DecryptMessageOutput.$Properties} message DecryptMessageOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DecryptMessageOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.plaintextPayload != null && $Object.hasOwnProperty.call(message, "plaintextPayload"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.plaintextPayload);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DecryptMessageOutput message, length delimited. Does not implicitly {@link waproto.DecryptMessageOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {waproto.DecryptMessageOutput.$Properties} message DecryptMessageOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DecryptMessageOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a DecryptMessageOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape} DecryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DecryptMessageOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.DecryptMessageOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.plaintextPayload = reader.bytes();
+                        message._plaintextPayload = "plaintextPayload";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a DecryptMessageOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape} DecryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DecryptMessageOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DecryptMessageOutput message.
+         * @function verify
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DecryptMessageOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.plaintextPayload != null && $Object.hasOwnProperty.call(message, "plaintextPayload")) {
+                properties._plaintextPayload = 1;
+                if (!(message.plaintextPayload && typeof message.plaintextPayload.length === "number" || $util.isString(message.plaintextPayload)))
+                    return "plaintextPayload: buffer expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a DecryptMessageOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.DecryptMessageOutput} DecryptMessageOutput
+         */
+        DecryptMessageOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.DecryptMessageOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.DecryptMessageOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.DecryptMessageOutput();
+            if (object.plaintextPayload != null)
+                if (typeof object.plaintextPayload === "string")
+                    $util.base64.decode(object.plaintextPayload, message.plaintextPayload = $util.newBuffer($util.base64.length(object.plaintextPayload)), 0);
+                else if (object.plaintextPayload.length >= 0)
+                    message.plaintextPayload = object.plaintextPayload;
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DecryptMessageOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {waproto.DecryptMessageOutput} message DecryptMessageOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DecryptMessageOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.plaintextPayload != null && $Object.hasOwnProperty.call(message, "plaintextPayload"))
+                object.plaintextPayload = options.bytes === $String ? $util.base64.encode(message.plaintextPayload, 0, message.plaintextPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.plaintextPayload) : message.plaintextPayload;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this DecryptMessageOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.DecryptMessageOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DecryptMessageOutput.prototype.toJSON = function() {
+            return DecryptMessageOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for DecryptMessageOutput
+         * @function getTypeUrl
+         * @memberof waproto.DecryptMessageOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        DecryptMessageOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.DecryptMessageOutput";
+        };
+
+        return DecryptMessageOutput;
+    })();
+
+    waproto.DeriveMessageKeyInput = (function() {
+
+        /**
+         * Properties of a DeriveMessageKeyInput.
+         * @typedef {Object} waproto.DeriveMessageKeyInput.$Properties
+         * @property {Uint8Array} epochRootKey DeriveMessageKeyInput epochRootKey
+         * @property {Uint8Array} epochAnonId DeriveMessageKeyInput epochAnonId
+         * @property {string} threadId DeriveMessageKeyInput threadId
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a DeriveMessageKeyInput.
+         * @memberof waproto
+         * @interface IDeriveMessageKeyInput
+         * @augments waproto.DeriveMessageKeyInput.$Properties
+         * @deprecated Use waproto.DeriveMessageKeyInput.$Properties instead.
+         */
+
+        /**
+         * Shape of a DeriveMessageKeyInput.
+         * @typedef {waproto.DeriveMessageKeyInput.$Properties} waproto.DeriveMessageKeyInput.$Shape
+         */
+
+        /**
+         * Constructs a new DeriveMessageKeyInput.
+         * @memberof waproto
+         * @classdesc Represents a DeriveMessageKeyInput.
+         * @constructor
+         * @param {waproto.DeriveMessageKeyInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var DeriveMessageKeyInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * DeriveMessageKeyInput epochRootKey.
+         * @member {Uint8Array} epochRootKey
+         * @memberof waproto.DeriveMessageKeyInput
+         * @instance
+         */
+        DeriveMessageKeyInput.prototype.epochRootKey = $util.newBuffer([]);
+
+        /**
+         * DeriveMessageKeyInput epochAnonId.
+         * @member {Uint8Array} epochAnonId
+         * @memberof waproto.DeriveMessageKeyInput
+         * @instance
+         */
+        DeriveMessageKeyInput.prototype.epochAnonId = $util.newBuffer([]);
+
+        /**
+         * DeriveMessageKeyInput threadId.
+         * @member {string} threadId
+         * @memberof waproto.DeriveMessageKeyInput
+         * @instance
+         */
+        DeriveMessageKeyInput.prototype.threadId = "";
+
+        /**
+         * Creates a new DeriveMessageKeyInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {waproto.DeriveMessageKeyInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.DeriveMessageKeyInput} DeriveMessageKeyInput instance
+         * @type {{
+         *   (properties: waproto.DeriveMessageKeyInput.$Shape): waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape;
+         *   (properties?: waproto.DeriveMessageKeyInput.$Properties): waproto.DeriveMessageKeyInput;
+         * }}
+         */
+        DeriveMessageKeyInput.create = function(properties) {
+            return new DeriveMessageKeyInput(properties);
+        };
+
+        /**
+         * Encodes the specified DeriveMessageKeyInput message. Does not implicitly {@link waproto.DeriveMessageKeyInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {waproto.DeriveMessageKeyInput.$Properties} message DeriveMessageKeyInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeriveMessageKeyInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.epochRootKey);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.epochAnonId);
+            writer.uint32(/* id 3, wireType 2 =*/26).string(message.threadId);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeriveMessageKeyInput message, length delimited. Does not implicitly {@link waproto.DeriveMessageKeyInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {waproto.DeriveMessageKeyInput.$Properties} message DeriveMessageKeyInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeriveMessageKeyInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a DeriveMessageKeyInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape} DeriveMessageKeyInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeriveMessageKeyInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.DeriveMessageKeyInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochRootKey = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAnonId = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.threadId = reader.stringVerify();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "epochRootKey"))
+                throw $util.ProtocolError("missing required 'epochRootKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochAnonId"))
+                throw $util.ProtocolError("missing required 'epochAnonId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "threadId"))
+                throw $util.ProtocolError("missing required 'threadId'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a DeriveMessageKeyInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape} DeriveMessageKeyInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeriveMessageKeyInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeriveMessageKeyInput message.
+         * @function verify
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeriveMessageKeyInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.epochRootKey && typeof message.epochRootKey.length === "number" || $util.isString(message.epochRootKey)))
+                return "epochRootKey: buffer expected";
+            if (!(message.epochAnonId && typeof message.epochAnonId.length === "number" || $util.isString(message.epochAnonId)))
+                return "epochAnonId: buffer expected";
+            if (!$util.isString(message.threadId))
+                return "threadId: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeriveMessageKeyInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.DeriveMessageKeyInput} DeriveMessageKeyInput
+         */
+        DeriveMessageKeyInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.DeriveMessageKeyInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.DeriveMessageKeyInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.DeriveMessageKeyInput();
+            if (object.epochRootKey != null)
+                if (typeof object.epochRootKey === "string")
+                    $util.base64.decode(object.epochRootKey, message.epochRootKey = $util.newBuffer($util.base64.length(object.epochRootKey)), 0);
+                else if (object.epochRootKey.length >= 0)
+                    message.epochRootKey = object.epochRootKey;
+            if (object.epochAnonId != null)
+                if (typeof object.epochAnonId === "string")
+                    $util.base64.decode(object.epochAnonId, message.epochAnonId = $util.newBuffer($util.base64.length(object.epochAnonId)), 0);
+                else if (object.epochAnonId.length >= 0)
+                    message.epochAnonId = object.epochAnonId;
+            if (object.threadId != null)
+                message.threadId = $String(object.threadId);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeriveMessageKeyInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {waproto.DeriveMessageKeyInput} message DeriveMessageKeyInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeriveMessageKeyInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.epochRootKey = "";
+                else {
+                    object.epochRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochRootKey = $util.newBuffer(object.epochRootKey);
+                }
+                if (options.bytes === $String)
+                    object.epochAnonId = "";
+                else {
+                    object.epochAnonId = [];
+                    if (options.bytes !== $Array)
+                        object.epochAnonId = $util.newBuffer(object.epochAnonId);
+                }
+                object.threadId = "";
+            }
+            if (message.epochRootKey != null && $Object.hasOwnProperty.call(message, "epochRootKey"))
+                object.epochRootKey = options.bytes === $String ? $util.base64.encode(message.epochRootKey, 0, message.epochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochRootKey) : message.epochRootKey;
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId"))
+                object.epochAnonId = options.bytes === $String ? $util.base64.encode(message.epochAnonId, 0, message.epochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAnonId) : message.epochAnonId;
+            if (message.threadId != null && $Object.hasOwnProperty.call(message, "threadId"))
+                object.threadId = message.threadId;
+            return object;
+        };
+
+        /**
+         * Converts this DeriveMessageKeyInput to JSON.
+         * @function toJSON
+         * @memberof waproto.DeriveMessageKeyInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeriveMessageKeyInput.prototype.toJSON = function() {
+            return DeriveMessageKeyInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for DeriveMessageKeyInput
+         * @function getTypeUrl
+         * @memberof waproto.DeriveMessageKeyInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        DeriveMessageKeyInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.DeriveMessageKeyInput";
+        };
+
+        return DeriveMessageKeyInput;
+    })();
+
+    waproto.DeriveMessageKeyOutput = (function() {
+
+        /**
+         * Properties of a DeriveMessageKeyOutput.
+         * @typedef {Object} waproto.DeriveMessageKeyOutput.$Properties
+         * @property {Uint8Array|null} [messageKey] DeriveMessageKeyOutput messageKey
+         * @property {string|null} [error] DeriveMessageKeyOutput error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a DeriveMessageKeyOutput.
+         * @memberof waproto
+         * @interface IDeriveMessageKeyOutput
+         * @augments waproto.DeriveMessageKeyOutput.$Properties
+         * @deprecated Use waproto.DeriveMessageKeyOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of a DeriveMessageKeyOutput.
+         * @typedef {waproto.DeriveMessageKeyOutput.$Properties} waproto.DeriveMessageKeyOutput.$Shape
+         */
+
+        /**
+         * Constructs a new DeriveMessageKeyOutput.
+         * @memberof waproto
+         * @classdesc Represents a DeriveMessageKeyOutput.
+         * @constructor
+         * @param {waproto.DeriveMessageKeyOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var DeriveMessageKeyOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * DeriveMessageKeyOutput messageKey.
+         * @member {Uint8Array|null|undefined} messageKey
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @instance
+         */
+        DeriveMessageKeyOutput.prototype.messageKey = null;
+
+        /**
+         * DeriveMessageKeyOutput error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @instance
+         */
+        DeriveMessageKeyOutput.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveMessageKeyOutput.prototype, "_messageKey", {
+            get: $util.oneOfGetter($oneOfFields = ["messageKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeriveMessageKeyOutput.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new DeriveMessageKeyOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {waproto.DeriveMessageKeyOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.DeriveMessageKeyOutput} DeriveMessageKeyOutput instance
+         * @type {{
+         *   (properties: waproto.DeriveMessageKeyOutput.$Shape): waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape;
+         *   (properties?: waproto.DeriveMessageKeyOutput.$Properties): waproto.DeriveMessageKeyOutput;
+         * }}
+         */
+        DeriveMessageKeyOutput.create = function(properties) {
+            return new DeriveMessageKeyOutput(properties);
+        };
+
+        /**
+         * Encodes the specified DeriveMessageKeyOutput message. Does not implicitly {@link waproto.DeriveMessageKeyOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {waproto.DeriveMessageKeyOutput.$Properties} message DeriveMessageKeyOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeriveMessageKeyOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.messageKey != null && $Object.hasOwnProperty.call(message, "messageKey"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.messageKey);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeriveMessageKeyOutput message, length delimited. Does not implicitly {@link waproto.DeriveMessageKeyOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {waproto.DeriveMessageKeyOutput.$Properties} message DeriveMessageKeyOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeriveMessageKeyOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a DeriveMessageKeyOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape} DeriveMessageKeyOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeriveMessageKeyOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.DeriveMessageKeyOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.messageKey = reader.bytes();
+                        message._messageKey = "messageKey";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a DeriveMessageKeyOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape} DeriveMessageKeyOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeriveMessageKeyOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeriveMessageKeyOutput message.
+         * @function verify
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeriveMessageKeyOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.messageKey != null && $Object.hasOwnProperty.call(message, "messageKey")) {
+                properties._messageKey = 1;
+                if (!(message.messageKey && typeof message.messageKey.length === "number" || $util.isString(message.messageKey)))
+                    return "messageKey: buffer expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a DeriveMessageKeyOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.DeriveMessageKeyOutput} DeriveMessageKeyOutput
+         */
+        DeriveMessageKeyOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.DeriveMessageKeyOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.DeriveMessageKeyOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.DeriveMessageKeyOutput();
+            if (object.messageKey != null)
+                if (typeof object.messageKey === "string")
+                    $util.base64.decode(object.messageKey, message.messageKey = $util.newBuffer($util.base64.length(object.messageKey)), 0);
+                else if (object.messageKey.length >= 0)
+                    message.messageKey = object.messageKey;
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeriveMessageKeyOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {waproto.DeriveMessageKeyOutput} message DeriveMessageKeyOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeriveMessageKeyOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.messageKey != null && $Object.hasOwnProperty.call(message, "messageKey"))
+                object.messageKey = options.bytes === $String ? $util.base64.encode(message.messageKey, 0, message.messageKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.messageKey) : message.messageKey;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this DeriveMessageKeyOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeriveMessageKeyOutput.prototype.toJSON = function() {
+            return DeriveMessageKeyOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for DeriveMessageKeyOutput
+         * @function getTypeUrl
+         * @memberof waproto.DeriveMessageKeyOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        DeriveMessageKeyOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.DeriveMessageKeyOutput";
+        };
+
+        return DeriveMessageKeyOutput;
+    })();
+
     waproto.DeviceCapabilities = (function() {
 
         /**
@@ -73232,6 +75300,597 @@ $root.waproto = (function() {
         };
 
         return DeviceListMetadata;
+    })();
+
+    waproto.DeviceOutput = (function() {
+
+        /**
+         * Properties of a DeviceOutput.
+         * @typedef {Object} waproto.DeviceOutput.$Properties
+         * @property {Uint8Array} publicKey DeviceOutput publicKey
+         * @property {Uint8Array} epochAuthPublicKey DeviceOutput epochAuthPublicKey
+         * @property {Uint8Array} epochAuthPublicKeySig DeviceOutput epochAuthPublicKeySig
+         * @property {Uint8Array} epochStoragePublicKey DeviceOutput epochStoragePublicKey
+         * @property {Uint8Array} epochStoragePublicKeySig DeviceOutput epochStoragePublicKeySig
+         * @property {Array.<number>|null} [supportedEncryptionVersions] DeviceOutput supportedEncryptionVersions
+         * @property {Uint8Array} encryptionVersionSignature DeviceOutput encryptionVersionSignature
+         * @property {number} clientVersion DeviceOutput clientVersion
+         * @property {Uint8Array} ocmfClientState DeviceOutput ocmfClientState
+         * @property {Uint8Array} epochStoragePrivateKey DeviceOutput epochStoragePrivateKey
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a DeviceOutput.
+         * @memberof waproto
+         * @interface IDeviceOutput
+         * @augments waproto.DeviceOutput.$Properties
+         * @deprecated Use waproto.DeviceOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of a DeviceOutput.
+         * @typedef {waproto.DeviceOutput.$Properties} waproto.DeviceOutput.$Shape
+         */
+
+        /**
+         * Constructs a new DeviceOutput.
+         * @memberof waproto
+         * @classdesc Represents a DeviceOutput.
+         * @constructor
+         * @param {waproto.DeviceOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var DeviceOutput = function (properties) {
+            this.supportedEncryptionVersions = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * DeviceOutput publicKey.
+         * @member {Uint8Array} publicKey
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.publicKey = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput epochAuthPublicKey.
+         * @member {Uint8Array} epochAuthPublicKey
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.epochAuthPublicKey = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput epochAuthPublicKeySig.
+         * @member {Uint8Array} epochAuthPublicKeySig
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.epochAuthPublicKeySig = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput epochStoragePublicKey.
+         * @member {Uint8Array} epochStoragePublicKey
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.epochStoragePublicKey = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput epochStoragePublicKeySig.
+         * @member {Uint8Array} epochStoragePublicKeySig
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.epochStoragePublicKeySig = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput supportedEncryptionVersions.
+         * @member {Array.<number>} supportedEncryptionVersions
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.supportedEncryptionVersions = $util.emptyArray;
+
+        /**
+         * DeviceOutput encryptionVersionSignature.
+         * @member {Uint8Array} encryptionVersionSignature
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.encryptionVersionSignature = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput clientVersion.
+         * @member {number} clientVersion
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.clientVersion = 0;
+
+        /**
+         * DeviceOutput ocmfClientState.
+         * @member {Uint8Array} ocmfClientState
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.ocmfClientState = $util.newBuffer([]);
+
+        /**
+         * DeviceOutput epochStoragePrivateKey.
+         * @member {Uint8Array} epochStoragePrivateKey
+         * @memberof waproto.DeviceOutput
+         * @instance
+         */
+        DeviceOutput.prototype.epochStoragePrivateKey = $util.newBuffer([]);
+
+        /**
+         * Creates a new DeviceOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {waproto.DeviceOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.DeviceOutput} DeviceOutput instance
+         * @type {{
+         *   (properties: waproto.DeviceOutput.$Shape): waproto.DeviceOutput & waproto.DeviceOutput.$Shape;
+         *   (properties?: waproto.DeviceOutput.$Properties): waproto.DeviceOutput;
+         * }}
+         */
+        DeviceOutput.create = function(properties) {
+            return new DeviceOutput(properties);
+        };
+
+        /**
+         * Encodes the specified DeviceOutput message. Does not implicitly {@link waproto.DeviceOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {waproto.DeviceOutput.$Properties} message DeviceOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeviceOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.publicKey);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.epochAuthPublicKey);
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.epochAuthPublicKeySig);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.epochStoragePublicKey);
+            writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.epochStoragePublicKeySig);
+            if (message.supportedEncryptionVersions != null && message.supportedEncryptionVersions.length)
+                writer.uint32(/* id 6, wireType 2 =*/50).int32s(message.supportedEncryptionVersions);
+            writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.encryptionVersionSignature);
+            writer.uint32(/* id 8, wireType 0 =*/64).int32(message.clientVersion);
+            writer.uint32(/* id 9, wireType 2 =*/74).bytes(message.ocmfClientState);
+            writer.uint32(/* id 10, wireType 2 =*/82).bytes(message.epochStoragePrivateKey);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeviceOutput message, length delimited. Does not implicitly {@link waproto.DeviceOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {waproto.DeviceOutput.$Properties} message DeviceOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeviceOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a DeviceOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.DeviceOutput & waproto.DeviceOutput.$Shape} DeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeviceOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.DeviceOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.publicKey = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAuthPublicKey = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAuthPublicKeySig = reader.bytes();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochStoragePublicKey = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochStoragePublicKeySig = reader.bytes();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType === 2) {
+                            if (!(message.supportedEncryptionVersions && message.supportedEncryptionVersions.length))
+                                message.supportedEncryptionVersions = [];
+                            reader.int32s(message.supportedEncryptionVersions);
+                            continue;
+                        }
+                        if (wireType !== 0)
+                            break;
+                        if (!(message.supportedEncryptionVersions && message.supportedEncryptionVersions.length))
+                            message.supportedEncryptionVersions = [];
+                        message.supportedEncryptionVersions.push(reader.int32());
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptionVersionSignature = reader.bytes();
+                        continue;
+                    }
+                case 8: {
+                        if (wireType !== 0)
+                            break;
+                        message.clientVersion = reader.int32();
+                        continue;
+                    }
+                case 9: {
+                        if (wireType !== 2)
+                            break;
+                        message.ocmfClientState = reader.bytes();
+                        continue;
+                    }
+                case 10: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochStoragePrivateKey = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "publicKey"))
+                throw $util.ProtocolError("missing required 'publicKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochAuthPublicKey"))
+                throw $util.ProtocolError("missing required 'epochAuthPublicKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochAuthPublicKeySig"))
+                throw $util.ProtocolError("missing required 'epochAuthPublicKeySig'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochStoragePublicKey"))
+                throw $util.ProtocolError("missing required 'epochStoragePublicKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochStoragePublicKeySig"))
+                throw $util.ProtocolError("missing required 'epochStoragePublicKeySig'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptionVersionSignature"))
+                throw $util.ProtocolError("missing required 'encryptionVersionSignature'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "clientVersion"))
+                throw $util.ProtocolError("missing required 'clientVersion'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "ocmfClientState"))
+                throw $util.ProtocolError("missing required 'ocmfClientState'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochStoragePrivateKey"))
+                throw $util.ProtocolError("missing required 'epochStoragePrivateKey'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a DeviceOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.DeviceOutput & waproto.DeviceOutput.$Shape} DeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeviceOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeviceOutput message.
+         * @function verify
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeviceOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.publicKey && typeof message.publicKey.length === "number" || $util.isString(message.publicKey)))
+                return "publicKey: buffer expected";
+            if (!(message.epochAuthPublicKey && typeof message.epochAuthPublicKey.length === "number" || $util.isString(message.epochAuthPublicKey)))
+                return "epochAuthPublicKey: buffer expected";
+            if (!(message.epochAuthPublicKeySig && typeof message.epochAuthPublicKeySig.length === "number" || $util.isString(message.epochAuthPublicKeySig)))
+                return "epochAuthPublicKeySig: buffer expected";
+            if (!(message.epochStoragePublicKey && typeof message.epochStoragePublicKey.length === "number" || $util.isString(message.epochStoragePublicKey)))
+                return "epochStoragePublicKey: buffer expected";
+            if (!(message.epochStoragePublicKeySig && typeof message.epochStoragePublicKeySig.length === "number" || $util.isString(message.epochStoragePublicKeySig)))
+                return "epochStoragePublicKeySig: buffer expected";
+            if (message.supportedEncryptionVersions != null && $Object.hasOwnProperty.call(message, "supportedEncryptionVersions")) {
+                if (!$Array.isArray(message.supportedEncryptionVersions))
+                    return "supportedEncryptionVersions: array expected";
+                for (var i = 0; i < message.supportedEncryptionVersions.length; ++i)
+                    if (!$util.isInteger(message.supportedEncryptionVersions[i]))
+                        return "supportedEncryptionVersions: integer[] expected";
+            }
+            if (!(message.encryptionVersionSignature && typeof message.encryptionVersionSignature.length === "number" || $util.isString(message.encryptionVersionSignature)))
+                return "encryptionVersionSignature: buffer expected";
+            if (!$util.isInteger(message.clientVersion))
+                return "clientVersion: integer expected";
+            if (!(message.ocmfClientState && typeof message.ocmfClientState.length === "number" || $util.isString(message.ocmfClientState)))
+                return "ocmfClientState: buffer expected";
+            if (!(message.epochStoragePrivateKey && typeof message.epochStoragePrivateKey.length === "number" || $util.isString(message.epochStoragePrivateKey)))
+                return "epochStoragePrivateKey: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeviceOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.DeviceOutput} DeviceOutput
+         */
+        DeviceOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.DeviceOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.DeviceOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.DeviceOutput();
+            if (object.publicKey != null)
+                if (typeof object.publicKey === "string")
+                    $util.base64.decode(object.publicKey, message.publicKey = $util.newBuffer($util.base64.length(object.publicKey)), 0);
+                else if (object.publicKey.length >= 0)
+                    message.publicKey = object.publicKey;
+            if (object.epochAuthPublicKey != null)
+                if (typeof object.epochAuthPublicKey === "string")
+                    $util.base64.decode(object.epochAuthPublicKey, message.epochAuthPublicKey = $util.newBuffer($util.base64.length(object.epochAuthPublicKey)), 0);
+                else if (object.epochAuthPublicKey.length >= 0)
+                    message.epochAuthPublicKey = object.epochAuthPublicKey;
+            if (object.epochAuthPublicKeySig != null)
+                if (typeof object.epochAuthPublicKeySig === "string")
+                    $util.base64.decode(object.epochAuthPublicKeySig, message.epochAuthPublicKeySig = $util.newBuffer($util.base64.length(object.epochAuthPublicKeySig)), 0);
+                else if (object.epochAuthPublicKeySig.length >= 0)
+                    message.epochAuthPublicKeySig = object.epochAuthPublicKeySig;
+            if (object.epochStoragePublicKey != null)
+                if (typeof object.epochStoragePublicKey === "string")
+                    $util.base64.decode(object.epochStoragePublicKey, message.epochStoragePublicKey = $util.newBuffer($util.base64.length(object.epochStoragePublicKey)), 0);
+                else if (object.epochStoragePublicKey.length >= 0)
+                    message.epochStoragePublicKey = object.epochStoragePublicKey;
+            if (object.epochStoragePublicKeySig != null)
+                if (typeof object.epochStoragePublicKeySig === "string")
+                    $util.base64.decode(object.epochStoragePublicKeySig, message.epochStoragePublicKeySig = $util.newBuffer($util.base64.length(object.epochStoragePublicKeySig)), 0);
+                else if (object.epochStoragePublicKeySig.length >= 0)
+                    message.epochStoragePublicKeySig = object.epochStoragePublicKeySig;
+            if (object.supportedEncryptionVersions) {
+                if (!$Array.isArray(object.supportedEncryptionVersions))
+                    throw $TypeError(".waproto.DeviceOutput.supportedEncryptionVersions: array expected");
+                message.supportedEncryptionVersions = $Array(object.supportedEncryptionVersions.length);
+                for (var i = 0; i < object.supportedEncryptionVersions.length; ++i)
+                    message.supportedEncryptionVersions[i] = object.supportedEncryptionVersions[i] | 0;
+            }
+            if (object.encryptionVersionSignature != null)
+                if (typeof object.encryptionVersionSignature === "string")
+                    $util.base64.decode(object.encryptionVersionSignature, message.encryptionVersionSignature = $util.newBuffer($util.base64.length(object.encryptionVersionSignature)), 0);
+                else if (object.encryptionVersionSignature.length >= 0)
+                    message.encryptionVersionSignature = object.encryptionVersionSignature;
+            if (object.clientVersion != null)
+                message.clientVersion = object.clientVersion | 0;
+            if (object.ocmfClientState != null)
+                if (typeof object.ocmfClientState === "string")
+                    $util.base64.decode(object.ocmfClientState, message.ocmfClientState = $util.newBuffer($util.base64.length(object.ocmfClientState)), 0);
+                else if (object.ocmfClientState.length >= 0)
+                    message.ocmfClientState = object.ocmfClientState;
+            if (object.epochStoragePrivateKey != null)
+                if (typeof object.epochStoragePrivateKey === "string")
+                    $util.base64.decode(object.epochStoragePrivateKey, message.epochStoragePrivateKey = $util.newBuffer($util.base64.length(object.epochStoragePrivateKey)), 0);
+                else if (object.epochStoragePrivateKey.length >= 0)
+                    message.epochStoragePrivateKey = object.epochStoragePrivateKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeviceOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {waproto.DeviceOutput} message DeviceOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeviceOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.supportedEncryptionVersions = [];
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.publicKey = "";
+                else {
+                    object.publicKey = [];
+                    if (options.bytes !== $Array)
+                        object.publicKey = $util.newBuffer(object.publicKey);
+                }
+                if (options.bytes === $String)
+                    object.epochAuthPublicKey = "";
+                else {
+                    object.epochAuthPublicKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochAuthPublicKey = $util.newBuffer(object.epochAuthPublicKey);
+                }
+                if (options.bytes === $String)
+                    object.epochAuthPublicKeySig = "";
+                else {
+                    object.epochAuthPublicKeySig = [];
+                    if (options.bytes !== $Array)
+                        object.epochAuthPublicKeySig = $util.newBuffer(object.epochAuthPublicKeySig);
+                }
+                if (options.bytes === $String)
+                    object.epochStoragePublicKey = "";
+                else {
+                    object.epochStoragePublicKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochStoragePublicKey = $util.newBuffer(object.epochStoragePublicKey);
+                }
+                if (options.bytes === $String)
+                    object.epochStoragePublicKeySig = "";
+                else {
+                    object.epochStoragePublicKeySig = [];
+                    if (options.bytes !== $Array)
+                        object.epochStoragePublicKeySig = $util.newBuffer(object.epochStoragePublicKeySig);
+                }
+                if (options.bytes === $String)
+                    object.encryptionVersionSignature = "";
+                else {
+                    object.encryptionVersionSignature = [];
+                    if (options.bytes !== $Array)
+                        object.encryptionVersionSignature = $util.newBuffer(object.encryptionVersionSignature);
+                }
+                object.clientVersion = 0;
+                if (options.bytes === $String)
+                    object.ocmfClientState = "";
+                else {
+                    object.ocmfClientState = [];
+                    if (options.bytes !== $Array)
+                        object.ocmfClientState = $util.newBuffer(object.ocmfClientState);
+                }
+                if (options.bytes === $String)
+                    object.epochStoragePrivateKey = "";
+                else {
+                    object.epochStoragePrivateKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochStoragePrivateKey = $util.newBuffer(object.epochStoragePrivateKey);
+                }
+            }
+            if (message.publicKey != null && $Object.hasOwnProperty.call(message, "publicKey"))
+                object.publicKey = options.bytes === $String ? $util.base64.encode(message.publicKey, 0, message.publicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.publicKey) : message.publicKey;
+            if (message.epochAuthPublicKey != null && $Object.hasOwnProperty.call(message, "epochAuthPublicKey"))
+                object.epochAuthPublicKey = options.bytes === $String ? $util.base64.encode(message.epochAuthPublicKey, 0, message.epochAuthPublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAuthPublicKey) : message.epochAuthPublicKey;
+            if (message.epochAuthPublicKeySig != null && $Object.hasOwnProperty.call(message, "epochAuthPublicKeySig"))
+                object.epochAuthPublicKeySig = options.bytes === $String ? $util.base64.encode(message.epochAuthPublicKeySig, 0, message.epochAuthPublicKeySig.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAuthPublicKeySig) : message.epochAuthPublicKeySig;
+            if (message.epochStoragePublicKey != null && $Object.hasOwnProperty.call(message, "epochStoragePublicKey"))
+                object.epochStoragePublicKey = options.bytes === $String ? $util.base64.encode(message.epochStoragePublicKey, 0, message.epochStoragePublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochStoragePublicKey) : message.epochStoragePublicKey;
+            if (message.epochStoragePublicKeySig != null && $Object.hasOwnProperty.call(message, "epochStoragePublicKeySig"))
+                object.epochStoragePublicKeySig = options.bytes === $String ? $util.base64.encode(message.epochStoragePublicKeySig, 0, message.epochStoragePublicKeySig.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochStoragePublicKeySig) : message.epochStoragePublicKeySig;
+            if (message.supportedEncryptionVersions && message.supportedEncryptionVersions.length) {
+                object.supportedEncryptionVersions = $Array(message.supportedEncryptionVersions.length);
+                for (var j = 0; j < message.supportedEncryptionVersions.length; ++j)
+                    object.supportedEncryptionVersions[j] = message.supportedEncryptionVersions[j];
+            }
+            if (message.encryptionVersionSignature != null && $Object.hasOwnProperty.call(message, "encryptionVersionSignature"))
+                object.encryptionVersionSignature = options.bytes === $String ? $util.base64.encode(message.encryptionVersionSignature, 0, message.encryptionVersionSignature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptionVersionSignature) : message.encryptionVersionSignature;
+            if (message.clientVersion != null && $Object.hasOwnProperty.call(message, "clientVersion"))
+                object.clientVersion = message.clientVersion;
+            if (message.ocmfClientState != null && $Object.hasOwnProperty.call(message, "ocmfClientState"))
+                object.ocmfClientState = options.bytes === $String ? $util.base64.encode(message.ocmfClientState, 0, message.ocmfClientState.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.ocmfClientState) : message.ocmfClientState;
+            if (message.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(message, "epochStoragePrivateKey"))
+                object.epochStoragePrivateKey = options.bytes === $String ? $util.base64.encode(message.epochStoragePrivateKey, 0, message.epochStoragePrivateKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochStoragePrivateKey) : message.epochStoragePrivateKey;
+            return object;
+        };
+
+        /**
+         * Converts this DeviceOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.DeviceOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeviceOutput.prototype.toJSON = function() {
+            return DeviceOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for DeviceOutput
+         * @function getTypeUrl
+         * @memberof waproto.DeviceOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        DeviceOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.DeviceOutput";
+        };
+
+        return DeviceOutput;
     })();
 
     waproto.DeviceProps = (function() {
@@ -77218,6 +79877,1114 @@ $root.waproto = (function() {
         return EmbeddedMusic;
     })();
 
+    waproto.EncryptMessageInput = (function() {
+
+        /**
+         * Properties of an EncryptMessageInput.
+         * @typedef {Object} waproto.EncryptMessageInput.$Properties
+         * @property {Uint8Array} epochRootKey EncryptMessageInput epochRootKey
+         * @property {Uint8Array} mailboxRootKey EncryptMessageInput mailboxRootKey
+         * @property {Uint8Array} orfClientState EncryptMessageInput orfClientState
+         * @property {Uint8Array} epochAnonId EncryptMessageInput epochAnonId
+         * @property {number|Long} epochId EncryptMessageInput epochId
+         * @property {string} threadId EncryptMessageInput threadId
+         * @property {number|Long} waCanonicalUserFbid EncryptMessageInput waCanonicalUserFbid
+         * @property {number|Long} timestampMs EncryptMessageInput timestampMs
+         * @property {number|Long} backupId EncryptMessageInput backupId
+         * @property {Uint8Array} plaintextPayload EncryptMessageInput plaintextPayload
+         * @property {string} stanzaId EncryptMessageInput stanzaId
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an EncryptMessageInput.
+         * @memberof waproto
+         * @interface IEncryptMessageInput
+         * @augments waproto.EncryptMessageInput.$Properties
+         * @deprecated Use waproto.EncryptMessageInput.$Properties instead.
+         */
+
+        /**
+         * Shape of an EncryptMessageInput.
+         * @typedef {waproto.EncryptMessageInput.$Properties} waproto.EncryptMessageInput.$Shape
+         */
+
+        /**
+         * Constructs a new EncryptMessageInput.
+         * @memberof waproto
+         * @classdesc Represents an EncryptMessageInput.
+         * @constructor
+         * @param {waproto.EncryptMessageInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var EncryptMessageInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * EncryptMessageInput epochRootKey.
+         * @member {Uint8Array} epochRootKey
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.epochRootKey = $util.newBuffer([]);
+
+        /**
+         * EncryptMessageInput mailboxRootKey.
+         * @member {Uint8Array} mailboxRootKey
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.mailboxRootKey = $util.newBuffer([]);
+
+        /**
+         * EncryptMessageInput orfClientState.
+         * @member {Uint8Array} orfClientState
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.orfClientState = $util.newBuffer([]);
+
+        /**
+         * EncryptMessageInput epochAnonId.
+         * @member {Uint8Array} epochAnonId
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.epochAnonId = $util.newBuffer([]);
+
+        /**
+         * EncryptMessageInput epochId.
+         * @member {number|Long} epochId
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.epochId = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * EncryptMessageInput threadId.
+         * @member {string} threadId
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.threadId = "";
+
+        /**
+         * EncryptMessageInput waCanonicalUserFbid.
+         * @member {number|Long} waCanonicalUserFbid
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.waCanonicalUserFbid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * EncryptMessageInput timestampMs.
+         * @member {number|Long} timestampMs
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.timestampMs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * EncryptMessageInput backupId.
+         * @member {number|Long} backupId
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.backupId = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * EncryptMessageInput plaintextPayload.
+         * @member {Uint8Array} plaintextPayload
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.plaintextPayload = $util.newBuffer([]);
+
+        /**
+         * EncryptMessageInput stanzaId.
+         * @member {string} stanzaId
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         */
+        EncryptMessageInput.prototype.stanzaId = "";
+
+        /**
+         * Creates a new EncryptMessageInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {waproto.EncryptMessageInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.EncryptMessageInput} EncryptMessageInput instance
+         * @type {{
+         *   (properties: waproto.EncryptMessageInput.$Shape): waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape;
+         *   (properties?: waproto.EncryptMessageInput.$Properties): waproto.EncryptMessageInput;
+         * }}
+         */
+        EncryptMessageInput.create = function(properties) {
+            return new EncryptMessageInput(properties);
+        };
+
+        /**
+         * Encodes the specified EncryptMessageInput message. Does not implicitly {@link waproto.EncryptMessageInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {waproto.EncryptMessageInput.$Properties} message EncryptMessageInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptMessageInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.epochRootKey);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.mailboxRootKey);
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.orfClientState);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.epochAnonId);
+            writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.epochId);
+            writer.uint32(/* id 6, wireType 2 =*/50).string(message.threadId);
+            writer.uint32(/* id 7, wireType 0 =*/56).uint64(message.waCanonicalUserFbid);
+            writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.timestampMs);
+            writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.backupId);
+            writer.uint32(/* id 10, wireType 2 =*/82).bytes(message.plaintextPayload);
+            writer.uint32(/* id 11, wireType 2 =*/90).string(message.stanzaId);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified EncryptMessageInput message, length delimited. Does not implicitly {@link waproto.EncryptMessageInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {waproto.EncryptMessageInput.$Properties} message EncryptMessageInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptMessageInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an EncryptMessageInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape} EncryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptMessageInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.EncryptMessageInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochRootKey = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.mailboxRootKey = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.orfClientState = reader.bytes();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAnonId = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.epochId = reader.uint64();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.threadId = reader.stringVerify();
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 0)
+                            break;
+                        message.waCanonicalUserFbid = reader.uint64();
+                        continue;
+                    }
+                case 8: {
+                        if (wireType !== 0)
+                            break;
+                        message.timestampMs = reader.uint64();
+                        continue;
+                    }
+                case 9: {
+                        if (wireType !== 0)
+                            break;
+                        message.backupId = reader.uint64();
+                        continue;
+                    }
+                case 10: {
+                        if (wireType !== 2)
+                            break;
+                        message.plaintextPayload = reader.bytes();
+                        continue;
+                    }
+                case 11: {
+                        if (wireType !== 2)
+                            break;
+                        message.stanzaId = reader.stringVerify();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "epochRootKey"))
+                throw $util.ProtocolError("missing required 'epochRootKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "mailboxRootKey"))
+                throw $util.ProtocolError("missing required 'mailboxRootKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "orfClientState"))
+                throw $util.ProtocolError("missing required 'orfClientState'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochAnonId"))
+                throw $util.ProtocolError("missing required 'epochAnonId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochId"))
+                throw $util.ProtocolError("missing required 'epochId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "threadId"))
+                throw $util.ProtocolError("missing required 'threadId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "waCanonicalUserFbid"))
+                throw $util.ProtocolError("missing required 'waCanonicalUserFbid'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "timestampMs"))
+                throw $util.ProtocolError("missing required 'timestampMs'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "backupId"))
+                throw $util.ProtocolError("missing required 'backupId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "plaintextPayload"))
+                throw $util.ProtocolError("missing required 'plaintextPayload'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "stanzaId"))
+                throw $util.ProtocolError("missing required 'stanzaId'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes an EncryptMessageInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape} EncryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptMessageInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an EncryptMessageInput message.
+         * @function verify
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        EncryptMessageInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.epochRootKey && typeof message.epochRootKey.length === "number" || $util.isString(message.epochRootKey)))
+                return "epochRootKey: buffer expected";
+            if (!(message.mailboxRootKey && typeof message.mailboxRootKey.length === "number" || $util.isString(message.mailboxRootKey)))
+                return "mailboxRootKey: buffer expected";
+            if (!(message.orfClientState && typeof message.orfClientState.length === "number" || $util.isString(message.orfClientState)))
+                return "orfClientState: buffer expected";
+            if (!(message.epochAnonId && typeof message.epochAnonId.length === "number" || $util.isString(message.epochAnonId)))
+                return "epochAnonId: buffer expected";
+            if (!$util.isInteger(message.epochId) && !(message.epochId && $util.isInteger(message.epochId.low) && $util.isInteger(message.epochId.high)))
+                return "epochId: integer|Long expected";
+            if (!$util.isString(message.threadId))
+                return "threadId: string expected";
+            if (!$util.isInteger(message.waCanonicalUserFbid) && !(message.waCanonicalUserFbid && $util.isInteger(message.waCanonicalUserFbid.low) && $util.isInteger(message.waCanonicalUserFbid.high)))
+                return "waCanonicalUserFbid: integer|Long expected";
+            if (!$util.isInteger(message.timestampMs) && !(message.timestampMs && $util.isInteger(message.timestampMs.low) && $util.isInteger(message.timestampMs.high)))
+                return "timestampMs: integer|Long expected";
+            if (!$util.isInteger(message.backupId) && !(message.backupId && $util.isInteger(message.backupId.low) && $util.isInteger(message.backupId.high)))
+                return "backupId: integer|Long expected";
+            if (!(message.plaintextPayload && typeof message.plaintextPayload.length === "number" || $util.isString(message.plaintextPayload)))
+                return "plaintextPayload: buffer expected";
+            if (!$util.isString(message.stanzaId))
+                return "stanzaId: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an EncryptMessageInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.EncryptMessageInput} EncryptMessageInput
+         */
+        EncryptMessageInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.EncryptMessageInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.EncryptMessageInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.EncryptMessageInput();
+            if (object.epochRootKey != null)
+                if (typeof object.epochRootKey === "string")
+                    $util.base64.decode(object.epochRootKey, message.epochRootKey = $util.newBuffer($util.base64.length(object.epochRootKey)), 0);
+                else if (object.epochRootKey.length >= 0)
+                    message.epochRootKey = object.epochRootKey;
+            if (object.mailboxRootKey != null)
+                if (typeof object.mailboxRootKey === "string")
+                    $util.base64.decode(object.mailboxRootKey, message.mailboxRootKey = $util.newBuffer($util.base64.length(object.mailboxRootKey)), 0);
+                else if (object.mailboxRootKey.length >= 0)
+                    message.mailboxRootKey = object.mailboxRootKey;
+            if (object.orfClientState != null)
+                if (typeof object.orfClientState === "string")
+                    $util.base64.decode(object.orfClientState, message.orfClientState = $util.newBuffer($util.base64.length(object.orfClientState)), 0);
+                else if (object.orfClientState.length >= 0)
+                    message.orfClientState = object.orfClientState;
+            if (object.epochAnonId != null)
+                if (typeof object.epochAnonId === "string")
+                    $util.base64.decode(object.epochAnonId, message.epochAnonId = $util.newBuffer($util.base64.length(object.epochAnonId)), 0);
+                else if (object.epochAnonId.length >= 0)
+                    message.epochAnonId = object.epochAnonId;
+            if (object.epochId != null)
+                if ($util.Long)
+                    message.epochId = $util.Long.fromValue(object.epochId, true);
+                else if (typeof object.epochId === "string")
+                    message.epochId = $parseInt(object.epochId, 10);
+                else if (typeof object.epochId === "number")
+                    message.epochId = object.epochId;
+                else if (typeof object.epochId === "object")
+                    message.epochId = new $util.LongBits(object.epochId.low >>> 0, object.epochId.high >>> 0).toNumber(true);
+            if (object.threadId != null)
+                message.threadId = $String(object.threadId);
+            if (object.waCanonicalUserFbid != null)
+                if ($util.Long)
+                    message.waCanonicalUserFbid = $util.Long.fromValue(object.waCanonicalUserFbid, true);
+                else if (typeof object.waCanonicalUserFbid === "string")
+                    message.waCanonicalUserFbid = $parseInt(object.waCanonicalUserFbid, 10);
+                else if (typeof object.waCanonicalUserFbid === "number")
+                    message.waCanonicalUserFbid = object.waCanonicalUserFbid;
+                else if (typeof object.waCanonicalUserFbid === "object")
+                    message.waCanonicalUserFbid = new $util.LongBits(object.waCanonicalUserFbid.low >>> 0, object.waCanonicalUserFbid.high >>> 0).toNumber(true);
+            if (object.timestampMs != null)
+                if ($util.Long)
+                    message.timestampMs = $util.Long.fromValue(object.timestampMs, true);
+                else if (typeof object.timestampMs === "string")
+                    message.timestampMs = $parseInt(object.timestampMs, 10);
+                else if (typeof object.timestampMs === "number")
+                    message.timestampMs = object.timestampMs;
+                else if (typeof object.timestampMs === "object")
+                    message.timestampMs = new $util.LongBits(object.timestampMs.low >>> 0, object.timestampMs.high >>> 0).toNumber(true);
+            if (object.backupId != null)
+                if ($util.Long)
+                    message.backupId = $util.Long.fromValue(object.backupId, true);
+                else if (typeof object.backupId === "string")
+                    message.backupId = $parseInt(object.backupId, 10);
+                else if (typeof object.backupId === "number")
+                    message.backupId = object.backupId;
+                else if (typeof object.backupId === "object")
+                    message.backupId = new $util.LongBits(object.backupId.low >>> 0, object.backupId.high >>> 0).toNumber(true);
+            if (object.plaintextPayload != null)
+                if (typeof object.plaintextPayload === "string")
+                    $util.base64.decode(object.plaintextPayload, message.plaintextPayload = $util.newBuffer($util.base64.length(object.plaintextPayload)), 0);
+                else if (object.plaintextPayload.length >= 0)
+                    message.plaintextPayload = object.plaintextPayload;
+            if (object.stanzaId != null)
+                message.stanzaId = $String(object.stanzaId);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an EncryptMessageInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {waproto.EncryptMessageInput} message EncryptMessageInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        EncryptMessageInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.epochRootKey = "";
+                else {
+                    object.epochRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochRootKey = $util.newBuffer(object.epochRootKey);
+                }
+                if (options.bytes === $String)
+                    object.mailboxRootKey = "";
+                else {
+                    object.mailboxRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.mailboxRootKey = $util.newBuffer(object.mailboxRootKey);
+                }
+                if (options.bytes === $String)
+                    object.orfClientState = "";
+                else {
+                    object.orfClientState = [];
+                    if (options.bytes !== $Array)
+                        object.orfClientState = $util.newBuffer(object.orfClientState);
+                }
+                if (options.bytes === $String)
+                    object.epochAnonId = "";
+                else {
+                    object.epochAnonId = [];
+                    if (options.bytes !== $Array)
+                        object.epochAnonId = $util.newBuffer(object.epochAnonId);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.epochId = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.epochId = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                object.threadId = "";
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.waCanonicalUserFbid = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.waCanonicalUserFbid = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.timestampMs = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.timestampMs = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.backupId = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.backupId = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if (options.bytes === $String)
+                    object.plaintextPayload = "";
+                else {
+                    object.plaintextPayload = [];
+                    if (options.bytes !== $Array)
+                        object.plaintextPayload = $util.newBuffer(object.plaintextPayload);
+                }
+                object.stanzaId = "";
+            }
+            if (message.epochRootKey != null && $Object.hasOwnProperty.call(message, "epochRootKey"))
+                object.epochRootKey = options.bytes === $String ? $util.base64.encode(message.epochRootKey, 0, message.epochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochRootKey) : message.epochRootKey;
+            if (message.mailboxRootKey != null && $Object.hasOwnProperty.call(message, "mailboxRootKey"))
+                object.mailboxRootKey = options.bytes === $String ? $util.base64.encode(message.mailboxRootKey, 0, message.mailboxRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.mailboxRootKey) : message.mailboxRootKey;
+            if (message.orfClientState != null && $Object.hasOwnProperty.call(message, "orfClientState"))
+                object.orfClientState = options.bytes === $String ? $util.base64.encode(message.orfClientState, 0, message.orfClientState.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.orfClientState) : message.orfClientState;
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId"))
+                object.epochAnonId = options.bytes === $String ? $util.base64.encode(message.epochAnonId, 0, message.epochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAnonId) : message.epochAnonId;
+            if (message.epochId != null && $Object.hasOwnProperty.call(message, "epochId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.epochId = typeof message.epochId === "number" ? $BigInt(message.epochId) : $util.Long.fromBits(message.epochId.low >>> 0, message.epochId.high >>> 0, true).toBigInt();
+                else if (typeof message.epochId === "number")
+                    object.epochId = options.longs === $String ? $String(message.epochId) : message.epochId;
+                else
+                    object.epochId = options.longs === $String ? $util.Long.prototype.toString.call(message.epochId) : options.longs === $Number ? new $util.LongBits(message.epochId.low >>> 0, message.epochId.high >>> 0).toNumber(true) : message.epochId;
+            if (message.threadId != null && $Object.hasOwnProperty.call(message, "threadId"))
+                object.threadId = message.threadId;
+            if (message.waCanonicalUserFbid != null && $Object.hasOwnProperty.call(message, "waCanonicalUserFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.waCanonicalUserFbid = typeof message.waCanonicalUserFbid === "number" ? $BigInt(message.waCanonicalUserFbid) : $util.Long.fromBits(message.waCanonicalUserFbid.low >>> 0, message.waCanonicalUserFbid.high >>> 0, true).toBigInt();
+                else if (typeof message.waCanonicalUserFbid === "number")
+                    object.waCanonicalUserFbid = options.longs === $String ? $String(message.waCanonicalUserFbid) : message.waCanonicalUserFbid;
+                else
+                    object.waCanonicalUserFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.waCanonicalUserFbid) : options.longs === $Number ? new $util.LongBits(message.waCanonicalUserFbid.low >>> 0, message.waCanonicalUserFbid.high >>> 0).toNumber(true) : message.waCanonicalUserFbid;
+            if (message.timestampMs != null && $Object.hasOwnProperty.call(message, "timestampMs"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.timestampMs = typeof message.timestampMs === "number" ? $BigInt(message.timestampMs) : $util.Long.fromBits(message.timestampMs.low >>> 0, message.timestampMs.high >>> 0, true).toBigInt();
+                else if (typeof message.timestampMs === "number")
+                    object.timestampMs = options.longs === $String ? $String(message.timestampMs) : message.timestampMs;
+                else
+                    object.timestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.timestampMs) : options.longs === $Number ? new $util.LongBits(message.timestampMs.low >>> 0, message.timestampMs.high >>> 0).toNumber(true) : message.timestampMs;
+            if (message.backupId != null && $Object.hasOwnProperty.call(message, "backupId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.backupId = typeof message.backupId === "number" ? $BigInt(message.backupId) : $util.Long.fromBits(message.backupId.low >>> 0, message.backupId.high >>> 0, true).toBigInt();
+                else if (typeof message.backupId === "number")
+                    object.backupId = options.longs === $String ? $String(message.backupId) : message.backupId;
+                else
+                    object.backupId = options.longs === $String ? $util.Long.prototype.toString.call(message.backupId) : options.longs === $Number ? new $util.LongBits(message.backupId.low >>> 0, message.backupId.high >>> 0).toNumber(true) : message.backupId;
+            if (message.plaintextPayload != null && $Object.hasOwnProperty.call(message, "plaintextPayload"))
+                object.plaintextPayload = options.bytes === $String ? $util.base64.encode(message.plaintextPayload, 0, message.plaintextPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.plaintextPayload) : message.plaintextPayload;
+            if (message.stanzaId != null && $Object.hasOwnProperty.call(message, "stanzaId"))
+                object.stanzaId = message.stanzaId;
+            return object;
+        };
+
+        /**
+         * Converts this EncryptMessageInput to JSON.
+         * @function toJSON
+         * @memberof waproto.EncryptMessageInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        EncryptMessageInput.prototype.toJSON = function() {
+            return EncryptMessageInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for EncryptMessageInput
+         * @function getTypeUrl
+         * @memberof waproto.EncryptMessageInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        EncryptMessageInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.EncryptMessageInput";
+        };
+
+        return EncryptMessageInput;
+    })();
+
+    waproto.EncryptMessageOutput = (function() {
+
+        /**
+         * Properties of an EncryptMessageOutput.
+         * @typedef {Object} waproto.EncryptMessageOutput.$Properties
+         * @property {Uint8Array|null} [encryptedProtobuf] EncryptMessageOutput encryptedProtobuf
+         * @property {Uint8Array|null} [orfThreadId] EncryptMessageOutput orfThreadId
+         * @property {string|null} [valueSecretRef] EncryptMessageOutput valueSecretRef
+         * @property {number|Long|null} [offlineThreadingId] EncryptMessageOutput offlineThreadingId
+         * @property {number|Long|null} [timestampMs] EncryptMessageOutput timestampMs
+         * @property {string|null} [error] EncryptMessageOutput error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an EncryptMessageOutput.
+         * @memberof waproto
+         * @interface IEncryptMessageOutput
+         * @augments waproto.EncryptMessageOutput.$Properties
+         * @deprecated Use waproto.EncryptMessageOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of an EncryptMessageOutput.
+         * @typedef {waproto.EncryptMessageOutput.$Properties} waproto.EncryptMessageOutput.$Shape
+         */
+
+        /**
+         * Constructs a new EncryptMessageOutput.
+         * @memberof waproto
+         * @classdesc Represents an EncryptMessageOutput.
+         * @constructor
+         * @param {waproto.EncryptMessageOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var EncryptMessageOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * EncryptMessageOutput encryptedProtobuf.
+         * @member {Uint8Array|null|undefined} encryptedProtobuf
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         */
+        EncryptMessageOutput.prototype.encryptedProtobuf = null;
+
+        /**
+         * EncryptMessageOutput orfThreadId.
+         * @member {Uint8Array|null|undefined} orfThreadId
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         */
+        EncryptMessageOutput.prototype.orfThreadId = null;
+
+        /**
+         * EncryptMessageOutput valueSecretRef.
+         * @member {string|null|undefined} valueSecretRef
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         */
+        EncryptMessageOutput.prototype.valueSecretRef = null;
+
+        /**
+         * EncryptMessageOutput offlineThreadingId.
+         * @member {number|Long|null|undefined} offlineThreadingId
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         */
+        EncryptMessageOutput.prototype.offlineThreadingId = null;
+
+        /**
+         * EncryptMessageOutput timestampMs.
+         * @member {number|Long|null|undefined} timestampMs
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         */
+        EncryptMessageOutput.prototype.timestampMs = null;
+
+        /**
+         * EncryptMessageOutput error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         */
+        EncryptMessageOutput.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageOutput.prototype, "_encryptedProtobuf", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedProtobuf"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageOutput.prototype, "_orfThreadId", {
+            get: $util.oneOfGetter($oneOfFields = ["orfThreadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageOutput.prototype, "_valueSecretRef", {
+            get: $util.oneOfGetter($oneOfFields = ["valueSecretRef"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageOutput.prototype, "_offlineThreadingId", {
+            get: $util.oneOfGetter($oneOfFields = ["offlineThreadingId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageOutput.prototype, "_timestampMs", {
+            get: $util.oneOfGetter($oneOfFields = ["timestampMs"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptMessageOutput.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new EncryptMessageOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {waproto.EncryptMessageOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.EncryptMessageOutput} EncryptMessageOutput instance
+         * @type {{
+         *   (properties: waproto.EncryptMessageOutput.$Shape): waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape;
+         *   (properties?: waproto.EncryptMessageOutput.$Properties): waproto.EncryptMessageOutput;
+         * }}
+         */
+        EncryptMessageOutput.create = function(properties) {
+            return new EncryptMessageOutput(properties);
+        };
+
+        /**
+         * Encodes the specified EncryptMessageOutput message. Does not implicitly {@link waproto.EncryptMessageOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {waproto.EncryptMessageOutput.$Properties} message EncryptMessageOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptMessageOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.encryptedProtobuf != null && $Object.hasOwnProperty.call(message, "encryptedProtobuf"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.encryptedProtobuf);
+            if (message.orfThreadId != null && $Object.hasOwnProperty.call(message, "orfThreadId"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.orfThreadId);
+            if (message.valueSecretRef != null && $Object.hasOwnProperty.call(message, "valueSecretRef"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.valueSecretRef);
+            if (message.offlineThreadingId != null && $Object.hasOwnProperty.call(message, "offlineThreadingId"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.offlineThreadingId);
+            if (message.timestampMs != null && $Object.hasOwnProperty.call(message, "timestampMs"))
+                writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.timestampMs);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified EncryptMessageOutput message, length delimited. Does not implicitly {@link waproto.EncryptMessageOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {waproto.EncryptMessageOutput.$Properties} message EncryptMessageOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptMessageOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an EncryptMessageOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape} EncryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptMessageOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.EncryptMessageOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedProtobuf = reader.bytes();
+                        message._encryptedProtobuf = "encryptedProtobuf";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.orfThreadId = reader.bytes();
+                        message._orfThreadId = "orfThreadId";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.valueSecretRef = reader.stringVerify();
+                        message._valueSecretRef = "valueSecretRef";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 0)
+                            break;
+                        message.offlineThreadingId = reader.uint64();
+                        message._offlineThreadingId = "offlineThreadingId";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.timestampMs = reader.uint64();
+                        message._timestampMs = "timestampMs";
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes an EncryptMessageOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape} EncryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptMessageOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an EncryptMessageOutput message.
+         * @function verify
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        EncryptMessageOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.encryptedProtobuf != null && $Object.hasOwnProperty.call(message, "encryptedProtobuf")) {
+                properties._encryptedProtobuf = 1;
+                if (!(message.encryptedProtobuf && typeof message.encryptedProtobuf.length === "number" || $util.isString(message.encryptedProtobuf)))
+                    return "encryptedProtobuf: buffer expected";
+            }
+            if (message.orfThreadId != null && $Object.hasOwnProperty.call(message, "orfThreadId")) {
+                properties._orfThreadId = 1;
+                if (!(message.orfThreadId && typeof message.orfThreadId.length === "number" || $util.isString(message.orfThreadId)))
+                    return "orfThreadId: buffer expected";
+            }
+            if (message.valueSecretRef != null && $Object.hasOwnProperty.call(message, "valueSecretRef")) {
+                properties._valueSecretRef = 1;
+                if (!$util.isString(message.valueSecretRef))
+                    return "valueSecretRef: string expected";
+            }
+            if (message.offlineThreadingId != null && $Object.hasOwnProperty.call(message, "offlineThreadingId")) {
+                properties._offlineThreadingId = 1;
+                if (!$util.isInteger(message.offlineThreadingId) && !(message.offlineThreadingId && $util.isInteger(message.offlineThreadingId.low) && $util.isInteger(message.offlineThreadingId.high)))
+                    return "offlineThreadingId: integer|Long expected";
+            }
+            if (message.timestampMs != null && $Object.hasOwnProperty.call(message, "timestampMs")) {
+                properties._timestampMs = 1;
+                if (!$util.isInteger(message.timestampMs) && !(message.timestampMs && $util.isInteger(message.timestampMs.low) && $util.isInteger(message.timestampMs.high)))
+                    return "timestampMs: integer|Long expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates an EncryptMessageOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.EncryptMessageOutput} EncryptMessageOutput
+         */
+        EncryptMessageOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.EncryptMessageOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.EncryptMessageOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.EncryptMessageOutput();
+            if (object.encryptedProtobuf != null)
+                if (typeof object.encryptedProtobuf === "string")
+                    $util.base64.decode(object.encryptedProtobuf, message.encryptedProtobuf = $util.newBuffer($util.base64.length(object.encryptedProtobuf)), 0);
+                else if (object.encryptedProtobuf.length >= 0)
+                    message.encryptedProtobuf = object.encryptedProtobuf;
+            if (object.orfThreadId != null)
+                if (typeof object.orfThreadId === "string")
+                    $util.base64.decode(object.orfThreadId, message.orfThreadId = $util.newBuffer($util.base64.length(object.orfThreadId)), 0);
+                else if (object.orfThreadId.length >= 0)
+                    message.orfThreadId = object.orfThreadId;
+            if (object.valueSecretRef != null)
+                message.valueSecretRef = $String(object.valueSecretRef);
+            if (object.offlineThreadingId != null)
+                if ($util.Long)
+                    message.offlineThreadingId = $util.Long.fromValue(object.offlineThreadingId, true);
+                else if (typeof object.offlineThreadingId === "string")
+                    message.offlineThreadingId = $parseInt(object.offlineThreadingId, 10);
+                else if (typeof object.offlineThreadingId === "number")
+                    message.offlineThreadingId = object.offlineThreadingId;
+                else if (typeof object.offlineThreadingId === "object")
+                    message.offlineThreadingId = new $util.LongBits(object.offlineThreadingId.low >>> 0, object.offlineThreadingId.high >>> 0).toNumber(true);
+            if (object.timestampMs != null)
+                if ($util.Long)
+                    message.timestampMs = $util.Long.fromValue(object.timestampMs, true);
+                else if (typeof object.timestampMs === "string")
+                    message.timestampMs = $parseInt(object.timestampMs, 10);
+                else if (typeof object.timestampMs === "number")
+                    message.timestampMs = object.timestampMs;
+                else if (typeof object.timestampMs === "object")
+                    message.timestampMs = new $util.LongBits(object.timestampMs.low >>> 0, object.timestampMs.high >>> 0).toNumber(true);
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an EncryptMessageOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {waproto.EncryptMessageOutput} message EncryptMessageOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        EncryptMessageOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.encryptedProtobuf != null && $Object.hasOwnProperty.call(message, "encryptedProtobuf"))
+                object.encryptedProtobuf = options.bytes === $String ? $util.base64.encode(message.encryptedProtobuf, 0, message.encryptedProtobuf.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedProtobuf) : message.encryptedProtobuf;
+            if (message.orfThreadId != null && $Object.hasOwnProperty.call(message, "orfThreadId"))
+                object.orfThreadId = options.bytes === $String ? $util.base64.encode(message.orfThreadId, 0, message.orfThreadId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.orfThreadId) : message.orfThreadId;
+            if (message.valueSecretRef != null && $Object.hasOwnProperty.call(message, "valueSecretRef"))
+                object.valueSecretRef = message.valueSecretRef;
+            if (message.offlineThreadingId != null && $Object.hasOwnProperty.call(message, "offlineThreadingId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.offlineThreadingId = typeof message.offlineThreadingId === "number" ? $BigInt(message.offlineThreadingId) : $util.Long.fromBits(message.offlineThreadingId.low >>> 0, message.offlineThreadingId.high >>> 0, true).toBigInt();
+                else if (typeof message.offlineThreadingId === "number")
+                    object.offlineThreadingId = options.longs === $String ? $String(message.offlineThreadingId) : message.offlineThreadingId;
+                else
+                    object.offlineThreadingId = options.longs === $String ? $util.Long.prototype.toString.call(message.offlineThreadingId) : options.longs === $Number ? new $util.LongBits(message.offlineThreadingId.low >>> 0, message.offlineThreadingId.high >>> 0).toNumber(true) : message.offlineThreadingId;
+            if (message.timestampMs != null && $Object.hasOwnProperty.call(message, "timestampMs"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.timestampMs = typeof message.timestampMs === "number" ? $BigInt(message.timestampMs) : $util.Long.fromBits(message.timestampMs.low >>> 0, message.timestampMs.high >>> 0, true).toBigInt();
+                else if (typeof message.timestampMs === "number")
+                    object.timestampMs = options.longs === $String ? $String(message.timestampMs) : message.timestampMs;
+                else
+                    object.timestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.timestampMs) : options.longs === $Number ? new $util.LongBits(message.timestampMs.low >>> 0, message.timestampMs.high >>> 0).toNumber(true) : message.timestampMs;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this EncryptMessageOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.EncryptMessageOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        EncryptMessageOutput.prototype.toJSON = function() {
+            return EncryptMessageOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for EncryptMessageOutput
+         * @function getTypeUrl
+         * @memberof waproto.EncryptMessageOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        EncryptMessageOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.EncryptMessageOutput";
+        };
+
+        return EncryptMessageOutput;
+    })();
+
     waproto.EncryptedPairingRequest = (function() {
 
         /**
@@ -77537,6 +81304,531 @@ $root.waproto = (function() {
         };
 
         return EncryptedPairingRequest;
+    })();
+
+    waproto.EncryptedSecretValuesOutput = (function() {
+
+        /**
+         * Properties of an EncryptedSecretValuesOutput.
+         * @typedef {Object} waproto.EncryptedSecretValuesOutput.$Properties
+         * @property {Uint8Array} encryptedDevicePrivateKey EncryptedSecretValuesOutput encryptedDevicePrivateKey
+         * @property {Uint8Array} encryptedObliviousValidationTokenBlob EncryptedSecretValuesOutput encryptedObliviousValidationTokenBlob
+         * @property {Uint8Array} encryptedEpochStoragePrivateKey EncryptedSecretValuesOutput encryptedEpochStoragePrivateKey
+         * @property {Uint8Array} encryptedOcmfClientState EncryptedSecretValuesOutput encryptedOcmfClientState
+         * @property {Uint8Array|null} [encryptedOrfClientStateV2] EncryptedSecretValuesOutput encryptedOrfClientStateV2
+         * @property {Uint8Array} encryptedMailboxRootKeyBlob EncryptedSecretValuesOutput encryptedMailboxRootKeyBlob
+         * @property {Uint8Array} encryptedEpochAnonId EncryptedSecretValuesOutput encryptedEpochAnonId
+         * @property {Uint8Array} encryptedEpochRootKey EncryptedSecretValuesOutput encryptedEpochRootKey
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an EncryptedSecretValuesOutput.
+         * @memberof waproto
+         * @interface IEncryptedSecretValuesOutput
+         * @augments waproto.EncryptedSecretValuesOutput.$Properties
+         * @deprecated Use waproto.EncryptedSecretValuesOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of an EncryptedSecretValuesOutput.
+         * @typedef {waproto.EncryptedSecretValuesOutput.$Properties} waproto.EncryptedSecretValuesOutput.$Shape
+         */
+
+        /**
+         * Constructs a new EncryptedSecretValuesOutput.
+         * @memberof waproto
+         * @classdesc Represents an EncryptedSecretValuesOutput.
+         * @constructor
+         * @param {waproto.EncryptedSecretValuesOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var EncryptedSecretValuesOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * EncryptedSecretValuesOutput encryptedDevicePrivateKey.
+         * @member {Uint8Array} encryptedDevicePrivateKey
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedDevicePrivateKey = $util.newBuffer([]);
+
+        /**
+         * EncryptedSecretValuesOutput encryptedObliviousValidationTokenBlob.
+         * @member {Uint8Array} encryptedObliviousValidationTokenBlob
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedObliviousValidationTokenBlob = $util.newBuffer([]);
+
+        /**
+         * EncryptedSecretValuesOutput encryptedEpochStoragePrivateKey.
+         * @member {Uint8Array} encryptedEpochStoragePrivateKey
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedEpochStoragePrivateKey = $util.newBuffer([]);
+
+        /**
+         * EncryptedSecretValuesOutput encryptedOcmfClientState.
+         * @member {Uint8Array} encryptedOcmfClientState
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedOcmfClientState = $util.newBuffer([]);
+
+        /**
+         * EncryptedSecretValuesOutput encryptedOrfClientStateV2.
+         * @member {Uint8Array|null|undefined} encryptedOrfClientStateV2
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedOrfClientStateV2 = null;
+
+        /**
+         * EncryptedSecretValuesOutput encryptedMailboxRootKeyBlob.
+         * @member {Uint8Array} encryptedMailboxRootKeyBlob
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedMailboxRootKeyBlob = $util.newBuffer([]);
+
+        /**
+         * EncryptedSecretValuesOutput encryptedEpochAnonId.
+         * @member {Uint8Array} encryptedEpochAnonId
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedEpochAnonId = $util.newBuffer([]);
+
+        /**
+         * EncryptedSecretValuesOutput encryptedEpochRootKey.
+         * @member {Uint8Array} encryptedEpochRootKey
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         */
+        EncryptedSecretValuesOutput.prototype.encryptedEpochRootKey = $util.newBuffer([]);
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedSecretValuesOutput.prototype, "_encryptedOrfClientStateV2", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedOrfClientStateV2"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new EncryptedSecretValuesOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {waproto.EncryptedSecretValuesOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.EncryptedSecretValuesOutput} EncryptedSecretValuesOutput instance
+         * @type {{
+         *   (properties: waproto.EncryptedSecretValuesOutput.$Shape): waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape;
+         *   (properties?: waproto.EncryptedSecretValuesOutput.$Properties): waproto.EncryptedSecretValuesOutput;
+         * }}
+         */
+        EncryptedSecretValuesOutput.create = function(properties) {
+            return new EncryptedSecretValuesOutput(properties);
+        };
+
+        /**
+         * Encodes the specified EncryptedSecretValuesOutput message. Does not implicitly {@link waproto.EncryptedSecretValuesOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {waproto.EncryptedSecretValuesOutput.$Properties} message EncryptedSecretValuesOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptedSecretValuesOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.encryptedDevicePrivateKey);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.encryptedObliviousValidationTokenBlob);
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.encryptedEpochStoragePrivateKey);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.encryptedOcmfClientState);
+            if (message.encryptedOrfClientStateV2 != null && $Object.hasOwnProperty.call(message, "encryptedOrfClientStateV2"))
+                writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.encryptedOrfClientStateV2);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.encryptedMailboxRootKeyBlob);
+            writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.encryptedEpochAnonId);
+            writer.uint32(/* id 8, wireType 2 =*/66).bytes(message.encryptedEpochRootKey);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified EncryptedSecretValuesOutput message, length delimited. Does not implicitly {@link waproto.EncryptedSecretValuesOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {waproto.EncryptedSecretValuesOutput.$Properties} message EncryptedSecretValuesOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptedSecretValuesOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an EncryptedSecretValuesOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape} EncryptedSecretValuesOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptedSecretValuesOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.EncryptedSecretValuesOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedDevicePrivateKey = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedObliviousValidationTokenBlob = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedEpochStoragePrivateKey = reader.bytes();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedOcmfClientState = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedOrfClientStateV2 = reader.bytes();
+                        message._encryptedOrfClientStateV2 = "encryptedOrfClientStateV2";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedMailboxRootKeyBlob = reader.bytes();
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedEpochAnonId = reader.bytes();
+                        continue;
+                    }
+                case 8: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedEpochRootKey = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "encryptedDevicePrivateKey"))
+                throw $util.ProtocolError("missing required 'encryptedDevicePrivateKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedObliviousValidationTokenBlob"))
+                throw $util.ProtocolError("missing required 'encryptedObliviousValidationTokenBlob'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedEpochStoragePrivateKey"))
+                throw $util.ProtocolError("missing required 'encryptedEpochStoragePrivateKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedOcmfClientState"))
+                throw $util.ProtocolError("missing required 'encryptedOcmfClientState'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedMailboxRootKeyBlob"))
+                throw $util.ProtocolError("missing required 'encryptedMailboxRootKeyBlob'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedEpochAnonId"))
+                throw $util.ProtocolError("missing required 'encryptedEpochAnonId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedEpochRootKey"))
+                throw $util.ProtocolError("missing required 'encryptedEpochRootKey'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes an EncryptedSecretValuesOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape} EncryptedSecretValuesOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptedSecretValuesOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an EncryptedSecretValuesOutput message.
+         * @function verify
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        EncryptedSecretValuesOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (!(message.encryptedDevicePrivateKey && typeof message.encryptedDevicePrivateKey.length === "number" || $util.isString(message.encryptedDevicePrivateKey)))
+                return "encryptedDevicePrivateKey: buffer expected";
+            if (!(message.encryptedObliviousValidationTokenBlob && typeof message.encryptedObliviousValidationTokenBlob.length === "number" || $util.isString(message.encryptedObliviousValidationTokenBlob)))
+                return "encryptedObliviousValidationTokenBlob: buffer expected";
+            if (!(message.encryptedEpochStoragePrivateKey && typeof message.encryptedEpochStoragePrivateKey.length === "number" || $util.isString(message.encryptedEpochStoragePrivateKey)))
+                return "encryptedEpochStoragePrivateKey: buffer expected";
+            if (!(message.encryptedOcmfClientState && typeof message.encryptedOcmfClientState.length === "number" || $util.isString(message.encryptedOcmfClientState)))
+                return "encryptedOcmfClientState: buffer expected";
+            if (message.encryptedOrfClientStateV2 != null && $Object.hasOwnProperty.call(message, "encryptedOrfClientStateV2")) {
+                properties._encryptedOrfClientStateV2 = 1;
+                if (!(message.encryptedOrfClientStateV2 && typeof message.encryptedOrfClientStateV2.length === "number" || $util.isString(message.encryptedOrfClientStateV2)))
+                    return "encryptedOrfClientStateV2: buffer expected";
+            }
+            if (!(message.encryptedMailboxRootKeyBlob && typeof message.encryptedMailboxRootKeyBlob.length === "number" || $util.isString(message.encryptedMailboxRootKeyBlob)))
+                return "encryptedMailboxRootKeyBlob: buffer expected";
+            if (!(message.encryptedEpochAnonId && typeof message.encryptedEpochAnonId.length === "number" || $util.isString(message.encryptedEpochAnonId)))
+                return "encryptedEpochAnonId: buffer expected";
+            if (!(message.encryptedEpochRootKey && typeof message.encryptedEpochRootKey.length === "number" || $util.isString(message.encryptedEpochRootKey)))
+                return "encryptedEpochRootKey: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates an EncryptedSecretValuesOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.EncryptedSecretValuesOutput} EncryptedSecretValuesOutput
+         */
+        EncryptedSecretValuesOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.EncryptedSecretValuesOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.EncryptedSecretValuesOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.EncryptedSecretValuesOutput();
+            if (object.encryptedDevicePrivateKey != null)
+                if (typeof object.encryptedDevicePrivateKey === "string")
+                    $util.base64.decode(object.encryptedDevicePrivateKey, message.encryptedDevicePrivateKey = $util.newBuffer($util.base64.length(object.encryptedDevicePrivateKey)), 0);
+                else if (object.encryptedDevicePrivateKey.length >= 0)
+                    message.encryptedDevicePrivateKey = object.encryptedDevicePrivateKey;
+            if (object.encryptedObliviousValidationTokenBlob != null)
+                if (typeof object.encryptedObliviousValidationTokenBlob === "string")
+                    $util.base64.decode(object.encryptedObliviousValidationTokenBlob, message.encryptedObliviousValidationTokenBlob = $util.newBuffer($util.base64.length(object.encryptedObliviousValidationTokenBlob)), 0);
+                else if (object.encryptedObliviousValidationTokenBlob.length >= 0)
+                    message.encryptedObliviousValidationTokenBlob = object.encryptedObliviousValidationTokenBlob;
+            if (object.encryptedEpochStoragePrivateKey != null)
+                if (typeof object.encryptedEpochStoragePrivateKey === "string")
+                    $util.base64.decode(object.encryptedEpochStoragePrivateKey, message.encryptedEpochStoragePrivateKey = $util.newBuffer($util.base64.length(object.encryptedEpochStoragePrivateKey)), 0);
+                else if (object.encryptedEpochStoragePrivateKey.length >= 0)
+                    message.encryptedEpochStoragePrivateKey = object.encryptedEpochStoragePrivateKey;
+            if (object.encryptedOcmfClientState != null)
+                if (typeof object.encryptedOcmfClientState === "string")
+                    $util.base64.decode(object.encryptedOcmfClientState, message.encryptedOcmfClientState = $util.newBuffer($util.base64.length(object.encryptedOcmfClientState)), 0);
+                else if (object.encryptedOcmfClientState.length >= 0)
+                    message.encryptedOcmfClientState = object.encryptedOcmfClientState;
+            if (object.encryptedOrfClientStateV2 != null)
+                if (typeof object.encryptedOrfClientStateV2 === "string")
+                    $util.base64.decode(object.encryptedOrfClientStateV2, message.encryptedOrfClientStateV2 = $util.newBuffer($util.base64.length(object.encryptedOrfClientStateV2)), 0);
+                else if (object.encryptedOrfClientStateV2.length >= 0)
+                    message.encryptedOrfClientStateV2 = object.encryptedOrfClientStateV2;
+            if (object.encryptedMailboxRootKeyBlob != null)
+                if (typeof object.encryptedMailboxRootKeyBlob === "string")
+                    $util.base64.decode(object.encryptedMailboxRootKeyBlob, message.encryptedMailboxRootKeyBlob = $util.newBuffer($util.base64.length(object.encryptedMailboxRootKeyBlob)), 0);
+                else if (object.encryptedMailboxRootKeyBlob.length >= 0)
+                    message.encryptedMailboxRootKeyBlob = object.encryptedMailboxRootKeyBlob;
+            if (object.encryptedEpochAnonId != null)
+                if (typeof object.encryptedEpochAnonId === "string")
+                    $util.base64.decode(object.encryptedEpochAnonId, message.encryptedEpochAnonId = $util.newBuffer($util.base64.length(object.encryptedEpochAnonId)), 0);
+                else if (object.encryptedEpochAnonId.length >= 0)
+                    message.encryptedEpochAnonId = object.encryptedEpochAnonId;
+            if (object.encryptedEpochRootKey != null)
+                if (typeof object.encryptedEpochRootKey === "string")
+                    $util.base64.decode(object.encryptedEpochRootKey, message.encryptedEpochRootKey = $util.newBuffer($util.base64.length(object.encryptedEpochRootKey)), 0);
+                else if (object.encryptedEpochRootKey.length >= 0)
+                    message.encryptedEpochRootKey = object.encryptedEpochRootKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an EncryptedSecretValuesOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {waproto.EncryptedSecretValuesOutput} message EncryptedSecretValuesOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        EncryptedSecretValuesOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.encryptedDevicePrivateKey = "";
+                else {
+                    object.encryptedDevicePrivateKey = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedDevicePrivateKey = $util.newBuffer(object.encryptedDevicePrivateKey);
+                }
+                if (options.bytes === $String)
+                    object.encryptedObliviousValidationTokenBlob = "";
+                else {
+                    object.encryptedObliviousValidationTokenBlob = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedObliviousValidationTokenBlob = $util.newBuffer(object.encryptedObliviousValidationTokenBlob);
+                }
+                if (options.bytes === $String)
+                    object.encryptedEpochStoragePrivateKey = "";
+                else {
+                    object.encryptedEpochStoragePrivateKey = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedEpochStoragePrivateKey = $util.newBuffer(object.encryptedEpochStoragePrivateKey);
+                }
+                if (options.bytes === $String)
+                    object.encryptedOcmfClientState = "";
+                else {
+                    object.encryptedOcmfClientState = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedOcmfClientState = $util.newBuffer(object.encryptedOcmfClientState);
+                }
+                if (options.bytes === $String)
+                    object.encryptedMailboxRootKeyBlob = "";
+                else {
+                    object.encryptedMailboxRootKeyBlob = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedMailboxRootKeyBlob = $util.newBuffer(object.encryptedMailboxRootKeyBlob);
+                }
+                if (options.bytes === $String)
+                    object.encryptedEpochAnonId = "";
+                else {
+                    object.encryptedEpochAnonId = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedEpochAnonId = $util.newBuffer(object.encryptedEpochAnonId);
+                }
+                if (options.bytes === $String)
+                    object.encryptedEpochRootKey = "";
+                else {
+                    object.encryptedEpochRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedEpochRootKey = $util.newBuffer(object.encryptedEpochRootKey);
+                }
+            }
+            if (message.encryptedDevicePrivateKey != null && $Object.hasOwnProperty.call(message, "encryptedDevicePrivateKey"))
+                object.encryptedDevicePrivateKey = options.bytes === $String ? $util.base64.encode(message.encryptedDevicePrivateKey, 0, message.encryptedDevicePrivateKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedDevicePrivateKey) : message.encryptedDevicePrivateKey;
+            if (message.encryptedObliviousValidationTokenBlob != null && $Object.hasOwnProperty.call(message, "encryptedObliviousValidationTokenBlob"))
+                object.encryptedObliviousValidationTokenBlob = options.bytes === $String ? $util.base64.encode(message.encryptedObliviousValidationTokenBlob, 0, message.encryptedObliviousValidationTokenBlob.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedObliviousValidationTokenBlob) : message.encryptedObliviousValidationTokenBlob;
+            if (message.encryptedEpochStoragePrivateKey != null && $Object.hasOwnProperty.call(message, "encryptedEpochStoragePrivateKey"))
+                object.encryptedEpochStoragePrivateKey = options.bytes === $String ? $util.base64.encode(message.encryptedEpochStoragePrivateKey, 0, message.encryptedEpochStoragePrivateKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedEpochStoragePrivateKey) : message.encryptedEpochStoragePrivateKey;
+            if (message.encryptedOcmfClientState != null && $Object.hasOwnProperty.call(message, "encryptedOcmfClientState"))
+                object.encryptedOcmfClientState = options.bytes === $String ? $util.base64.encode(message.encryptedOcmfClientState, 0, message.encryptedOcmfClientState.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedOcmfClientState) : message.encryptedOcmfClientState;
+            if (message.encryptedOrfClientStateV2 != null && $Object.hasOwnProperty.call(message, "encryptedOrfClientStateV2"))
+                object.encryptedOrfClientStateV2 = options.bytes === $String ? $util.base64.encode(message.encryptedOrfClientStateV2, 0, message.encryptedOrfClientStateV2.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedOrfClientStateV2) : message.encryptedOrfClientStateV2;
+            if (message.encryptedMailboxRootKeyBlob != null && $Object.hasOwnProperty.call(message, "encryptedMailboxRootKeyBlob"))
+                object.encryptedMailboxRootKeyBlob = options.bytes === $String ? $util.base64.encode(message.encryptedMailboxRootKeyBlob, 0, message.encryptedMailboxRootKeyBlob.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedMailboxRootKeyBlob) : message.encryptedMailboxRootKeyBlob;
+            if (message.encryptedEpochAnonId != null && $Object.hasOwnProperty.call(message, "encryptedEpochAnonId"))
+                object.encryptedEpochAnonId = options.bytes === $String ? $util.base64.encode(message.encryptedEpochAnonId, 0, message.encryptedEpochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedEpochAnonId) : message.encryptedEpochAnonId;
+            if (message.encryptedEpochRootKey != null && $Object.hasOwnProperty.call(message, "encryptedEpochRootKey"))
+                object.encryptedEpochRootKey = options.bytes === $String ? $util.base64.encode(message.encryptedEpochRootKey, 0, message.encryptedEpochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedEpochRootKey) : message.encryptedEpochRootKey;
+            return object;
+        };
+
+        /**
+         * Converts this EncryptedSecretValuesOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        EncryptedSecretValuesOutput.prototype.toJSON = function() {
+            return EncryptedSecretValuesOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for EncryptedSecretValuesOutput
+         * @function getTypeUrl
+         * @memberof waproto.EncryptedSecretValuesOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        EncryptedSecretValuesOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.EncryptedSecretValuesOutput";
+        };
+
+        return EncryptedSecretValuesOutput;
     })();
 
     waproto.EphemeralSetting = (function() {
@@ -77864,6 +82156,504 @@ $root.waproto = (function() {
         };
 
         return EphemeralSetting;
+    })();
+
+    waproto.Epoch0Output = (function() {
+
+        /**
+         * Properties of an Epoch0Output.
+         * @typedef {Object} waproto.Epoch0Output.$Properties
+         * @property {number|Long} epochFbid Epoch0Output epochFbid
+         * @property {Uint8Array} epochAnonId Epoch0Output epochAnonId
+         * @property {Uint8Array} epochData Epoch0Output epochData
+         * @property {Uint8Array} wrappedRootKeyForSelf Epoch0Output wrappedRootKeyForSelf
+         * @property {Uint8Array} epochSignature Epoch0Output epochSignature
+         * @property {Uint8Array} epochRootKeyFingerprint Epoch0Output epochRootKeyFingerprint
+         * @property {Uint8Array|null} [epochRootKey] Epoch0Output epochRootKey
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an Epoch0Output.
+         * @memberof waproto
+         * @interface IEpoch0Output
+         * @augments waproto.Epoch0Output.$Properties
+         * @deprecated Use waproto.Epoch0Output.$Properties instead.
+         */
+
+        /**
+         * Shape of an Epoch0Output.
+         * @typedef {waproto.Epoch0Output.$Properties} waproto.Epoch0Output.$Shape
+         */
+
+        /**
+         * Constructs a new Epoch0Output.
+         * @memberof waproto
+         * @classdesc Represents an Epoch0Output.
+         * @constructor
+         * @param {waproto.Epoch0Output.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var Epoch0Output = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * Epoch0Output epochFbid.
+         * @member {number|Long} epochFbid
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.epochFbid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * Epoch0Output epochAnonId.
+         * @member {Uint8Array} epochAnonId
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.epochAnonId = $util.newBuffer([]);
+
+        /**
+         * Epoch0Output epochData.
+         * @member {Uint8Array} epochData
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.epochData = $util.newBuffer([]);
+
+        /**
+         * Epoch0Output wrappedRootKeyForSelf.
+         * @member {Uint8Array} wrappedRootKeyForSelf
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.wrappedRootKeyForSelf = $util.newBuffer([]);
+
+        /**
+         * Epoch0Output epochSignature.
+         * @member {Uint8Array} epochSignature
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.epochSignature = $util.newBuffer([]);
+
+        /**
+         * Epoch0Output epochRootKeyFingerprint.
+         * @member {Uint8Array} epochRootKeyFingerprint
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.epochRootKeyFingerprint = $util.newBuffer([]);
+
+        /**
+         * Epoch0Output epochRootKey.
+         * @member {Uint8Array|null|undefined} epochRootKey
+         * @memberof waproto.Epoch0Output
+         * @instance
+         */
+        Epoch0Output.prototype.epochRootKey = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Epoch0Output.prototype, "_epochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new Epoch0Output instance using the specified properties.
+         * @function create
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {waproto.Epoch0Output.$Properties=} [properties] Properties to set
+         * @returns {waproto.Epoch0Output} Epoch0Output instance
+         * @type {{
+         *   (properties: waproto.Epoch0Output.$Shape): waproto.Epoch0Output & waproto.Epoch0Output.$Shape;
+         *   (properties?: waproto.Epoch0Output.$Properties): waproto.Epoch0Output;
+         * }}
+         */
+        Epoch0Output.create = function(properties) {
+            return new Epoch0Output(properties);
+        };
+
+        /**
+         * Encodes the specified Epoch0Output message. Does not implicitly {@link waproto.Epoch0Output.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {waproto.Epoch0Output.$Properties} message Epoch0Output message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Epoch0Output.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.epochFbid);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.epochAnonId);
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.epochData);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.wrappedRootKeyForSelf);
+            writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.epochSignature);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.epochRootKeyFingerprint);
+            if (message.epochRootKey != null && $Object.hasOwnProperty.call(message, "epochRootKey"))
+                writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.epochRootKey);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Epoch0Output message, length delimited. Does not implicitly {@link waproto.Epoch0Output.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {waproto.Epoch0Output.$Properties} message Epoch0Output message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Epoch0Output.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an Epoch0Output message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.Epoch0Output & waproto.Epoch0Output.$Shape} Epoch0Output
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Epoch0Output.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.Epoch0Output();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.epochFbid = reader.uint64();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAnonId = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochData = reader.bytes();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.wrappedRootKeyForSelf = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochSignature = reader.bytes();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochRootKeyFingerprint = reader.bytes();
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochRootKey = reader.bytes();
+                        message._epochRootKey = "epochRootKey";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "epochFbid"))
+                throw $util.ProtocolError("missing required 'epochFbid'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochAnonId"))
+                throw $util.ProtocolError("missing required 'epochAnonId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochData"))
+                throw $util.ProtocolError("missing required 'epochData'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "wrappedRootKeyForSelf"))
+                throw $util.ProtocolError("missing required 'wrappedRootKeyForSelf'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochSignature"))
+                throw $util.ProtocolError("missing required 'epochSignature'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochRootKeyFingerprint"))
+                throw $util.ProtocolError("missing required 'epochRootKeyFingerprint'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes an Epoch0Output message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.Epoch0Output & waproto.Epoch0Output.$Shape} Epoch0Output
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Epoch0Output.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an Epoch0Output message.
+         * @function verify
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Epoch0Output.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (!$util.isInteger(message.epochFbid) && !(message.epochFbid && $util.isInteger(message.epochFbid.low) && $util.isInteger(message.epochFbid.high)))
+                return "epochFbid: integer|Long expected";
+            if (!(message.epochAnonId && typeof message.epochAnonId.length === "number" || $util.isString(message.epochAnonId)))
+                return "epochAnonId: buffer expected";
+            if (!(message.epochData && typeof message.epochData.length === "number" || $util.isString(message.epochData)))
+                return "epochData: buffer expected";
+            if (!(message.wrappedRootKeyForSelf && typeof message.wrappedRootKeyForSelf.length === "number" || $util.isString(message.wrappedRootKeyForSelf)))
+                return "wrappedRootKeyForSelf: buffer expected";
+            if (!(message.epochSignature && typeof message.epochSignature.length === "number" || $util.isString(message.epochSignature)))
+                return "epochSignature: buffer expected";
+            if (!(message.epochRootKeyFingerprint && typeof message.epochRootKeyFingerprint.length === "number" || $util.isString(message.epochRootKeyFingerprint)))
+                return "epochRootKeyFingerprint: buffer expected";
+            if (message.epochRootKey != null && $Object.hasOwnProperty.call(message, "epochRootKey")) {
+                properties._epochRootKey = 1;
+                if (!(message.epochRootKey && typeof message.epochRootKey.length === "number" || $util.isString(message.epochRootKey)))
+                    return "epochRootKey: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates an Epoch0Output message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.Epoch0Output} Epoch0Output
+         */
+        Epoch0Output.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.Epoch0Output)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.Epoch0Output: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.Epoch0Output();
+            if (object.epochFbid != null)
+                if ($util.Long)
+                    message.epochFbid = $util.Long.fromValue(object.epochFbid, true);
+                else if (typeof object.epochFbid === "string")
+                    message.epochFbid = $parseInt(object.epochFbid, 10);
+                else if (typeof object.epochFbid === "number")
+                    message.epochFbid = object.epochFbid;
+                else if (typeof object.epochFbid === "object")
+                    message.epochFbid = new $util.LongBits(object.epochFbid.low >>> 0, object.epochFbid.high >>> 0).toNumber(true);
+            if (object.epochAnonId != null)
+                if (typeof object.epochAnonId === "string")
+                    $util.base64.decode(object.epochAnonId, message.epochAnonId = $util.newBuffer($util.base64.length(object.epochAnonId)), 0);
+                else if (object.epochAnonId.length >= 0)
+                    message.epochAnonId = object.epochAnonId;
+            if (object.epochData != null)
+                if (typeof object.epochData === "string")
+                    $util.base64.decode(object.epochData, message.epochData = $util.newBuffer($util.base64.length(object.epochData)), 0);
+                else if (object.epochData.length >= 0)
+                    message.epochData = object.epochData;
+            if (object.wrappedRootKeyForSelf != null)
+                if (typeof object.wrappedRootKeyForSelf === "string")
+                    $util.base64.decode(object.wrappedRootKeyForSelf, message.wrappedRootKeyForSelf = $util.newBuffer($util.base64.length(object.wrappedRootKeyForSelf)), 0);
+                else if (object.wrappedRootKeyForSelf.length >= 0)
+                    message.wrappedRootKeyForSelf = object.wrappedRootKeyForSelf;
+            if (object.epochSignature != null)
+                if (typeof object.epochSignature === "string")
+                    $util.base64.decode(object.epochSignature, message.epochSignature = $util.newBuffer($util.base64.length(object.epochSignature)), 0);
+                else if (object.epochSignature.length >= 0)
+                    message.epochSignature = object.epochSignature;
+            if (object.epochRootKeyFingerprint != null)
+                if (typeof object.epochRootKeyFingerprint === "string")
+                    $util.base64.decode(object.epochRootKeyFingerprint, message.epochRootKeyFingerprint = $util.newBuffer($util.base64.length(object.epochRootKeyFingerprint)), 0);
+                else if (object.epochRootKeyFingerprint.length >= 0)
+                    message.epochRootKeyFingerprint = object.epochRootKeyFingerprint;
+            if (object.epochRootKey != null)
+                if (typeof object.epochRootKey === "string")
+                    $util.base64.decode(object.epochRootKey, message.epochRootKey = $util.newBuffer($util.base64.length(object.epochRootKey)), 0);
+                else if (object.epochRootKey.length >= 0)
+                    message.epochRootKey = object.epochRootKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an Epoch0Output message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {waproto.Epoch0Output} message Epoch0Output
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Epoch0Output.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.epochFbid = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.epochFbid = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if (options.bytes === $String)
+                    object.epochAnonId = "";
+                else {
+                    object.epochAnonId = [];
+                    if (options.bytes !== $Array)
+                        object.epochAnonId = $util.newBuffer(object.epochAnonId);
+                }
+                if (options.bytes === $String)
+                    object.epochData = "";
+                else {
+                    object.epochData = [];
+                    if (options.bytes !== $Array)
+                        object.epochData = $util.newBuffer(object.epochData);
+                }
+                if (options.bytes === $String)
+                    object.wrappedRootKeyForSelf = "";
+                else {
+                    object.wrappedRootKeyForSelf = [];
+                    if (options.bytes !== $Array)
+                        object.wrappedRootKeyForSelf = $util.newBuffer(object.wrappedRootKeyForSelf);
+                }
+                if (options.bytes === $String)
+                    object.epochSignature = "";
+                else {
+                    object.epochSignature = [];
+                    if (options.bytes !== $Array)
+                        object.epochSignature = $util.newBuffer(object.epochSignature);
+                }
+                if (options.bytes === $String)
+                    object.epochRootKeyFingerprint = "";
+                else {
+                    object.epochRootKeyFingerprint = [];
+                    if (options.bytes !== $Array)
+                        object.epochRootKeyFingerprint = $util.newBuffer(object.epochRootKeyFingerprint);
+                }
+            }
+            if (message.epochFbid != null && $Object.hasOwnProperty.call(message, "epochFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.epochFbid = typeof message.epochFbid === "number" ? $BigInt(message.epochFbid) : $util.Long.fromBits(message.epochFbid.low >>> 0, message.epochFbid.high >>> 0, true).toBigInt();
+                else if (typeof message.epochFbid === "number")
+                    object.epochFbid = options.longs === $String ? $String(message.epochFbid) : message.epochFbid;
+                else
+                    object.epochFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.epochFbid) : options.longs === $Number ? new $util.LongBits(message.epochFbid.low >>> 0, message.epochFbid.high >>> 0).toNumber(true) : message.epochFbid;
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId"))
+                object.epochAnonId = options.bytes === $String ? $util.base64.encode(message.epochAnonId, 0, message.epochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAnonId) : message.epochAnonId;
+            if (message.epochData != null && $Object.hasOwnProperty.call(message, "epochData"))
+                object.epochData = options.bytes === $String ? $util.base64.encode(message.epochData, 0, message.epochData.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochData) : message.epochData;
+            if (message.wrappedRootKeyForSelf != null && $Object.hasOwnProperty.call(message, "wrappedRootKeyForSelf"))
+                object.wrappedRootKeyForSelf = options.bytes === $String ? $util.base64.encode(message.wrappedRootKeyForSelf, 0, message.wrappedRootKeyForSelf.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.wrappedRootKeyForSelf) : message.wrappedRootKeyForSelf;
+            if (message.epochSignature != null && $Object.hasOwnProperty.call(message, "epochSignature"))
+                object.epochSignature = options.bytes === $String ? $util.base64.encode(message.epochSignature, 0, message.epochSignature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochSignature) : message.epochSignature;
+            if (message.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "epochRootKeyFingerprint"))
+                object.epochRootKeyFingerprint = options.bytes === $String ? $util.base64.encode(message.epochRootKeyFingerprint, 0, message.epochRootKeyFingerprint.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochRootKeyFingerprint) : message.epochRootKeyFingerprint;
+            if (message.epochRootKey != null && $Object.hasOwnProperty.call(message, "epochRootKey"))
+                object.epochRootKey = options.bytes === $String ? $util.base64.encode(message.epochRootKey, 0, message.epochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochRootKey) : message.epochRootKey;
+            return object;
+        };
+
+        /**
+         * Converts this Epoch0Output to JSON.
+         * @function toJSON
+         * @memberof waproto.Epoch0Output
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Epoch0Output.prototype.toJSON = function() {
+            return Epoch0Output.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for Epoch0Output
+         * @function getTypeUrl
+         * @memberof waproto.Epoch0Output
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        Epoch0Output.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.Epoch0Output";
+        };
+
+        return Epoch0Output;
     })();
 
     waproto.EventAdditionalMetadata = (function() {
@@ -79346,22 +84136,6 @@ $root.waproto = (function() {
         };
 
         return ExternalBlobReference;
-    })();
-
-    /**
-     * FUTURE_PROOF_BEHAVIOR enum.
-     * @name waproto.FUTURE_PROOF_BEHAVIOR
-     * @enum {number}
-     * @property {number} PLACEHOLDER=0 PLACEHOLDER value
-     * @property {number} NO_PLACEHOLDER=1 NO_PLACEHOLDER value
-     * @property {number} IGNORE=2 IGNORE value
-     */
-    waproto.FUTURE_PROOF_BEHAVIOR = (function() {
-        var valuesById = $Object.create(null), values = $Object.create(valuesById);
-        values[valuesById[0] = "PLACEHOLDER"] = 0;
-        values[valuesById[1] = "NO_PLACEHOLDER"] = 1;
-        values[valuesById[2] = "IGNORE"] = 2;
-        return values;
     })();
 
     waproto.Field = (function() {
@@ -95223,6 +99997,503 @@ $root.waproto = (function() {
         return LIDMigrationMappingSyncMessage;
     })();
 
+    waproto.LabyrinthWaCommand = (function() {
+
+        /**
+         * Properties of a LabyrinthWaCommand.
+         * @typedef {Object} waproto.LabyrinthWaCommand.$Properties
+         * @property {waproto.CreateBackupInput.$Properties|null} [createBackupInput] LabyrinthWaCommand createBackupInput
+         * @property {waproto.EncryptMessageInput.$Properties|null} [encryptMessageInput] LabyrinthWaCommand encryptMessageInput
+         * @property {waproto.DecryptMessageInput.$Properties|null} [decryptMessageInput] LabyrinthWaCommand decryptMessageInput
+         * @property {waproto.OrfThreadIdInput.$Properties|null} [orfThreadIdInput] LabyrinthWaCommand orfThreadIdInput
+         * @property {waproto.DeriveMessageKeyInput.$Properties|null} [deriveMessageKeyInput] LabyrinthWaCommand deriveMessageKeyInput
+         * @property {waproto.RotateEpochInput.$Properties|null} [rotateEpochInput] LabyrinthWaCommand rotateEpochInput
+         * @property {"createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"} [commandInput] LabyrinthWaCommand commandInput
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a LabyrinthWaCommand.
+         * @memberof waproto
+         * @interface ILabyrinthWaCommand
+         * @augments waproto.LabyrinthWaCommand.$Properties
+         * @deprecated Use waproto.LabyrinthWaCommand.$Properties instead.
+         */
+
+        /**
+         * Narrowed shape of a LabyrinthWaCommand.
+         * @typedef {{
+         *   createBackupInput?: waproto.CreateBackupInput.$Shape|null;
+         *   encryptMessageInput?: waproto.EncryptMessageInput.$Shape|null;
+         *   decryptMessageInput?: waproto.DecryptMessageInput.$Shape|null;
+         *   orfThreadIdInput?: waproto.OrfThreadIdInput.$Shape|null;
+         *   deriveMessageKeyInput?: waproto.DeriveMessageKeyInput.$Shape|null;
+         *   rotateEpochInput?: waproto.RotateEpochInput.$Shape|null;
+         *   $unknowns?: Array.<Uint8Array>;
+         * } & (
+         *   ({ commandInput?: undefined; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "createBackupInput"; createBackupInput: waproto.CreateBackupInput.$Shape; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "encryptMessageInput"; createBackupInput?: null; encryptMessageInput: waproto.EncryptMessageInput.$Shape; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "decryptMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput: waproto.DecryptMessageInput.$Shape; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "orfThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput: waproto.OrfThreadIdInput.$Shape; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "deriveMessageKeyInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput: waproto.DeriveMessageKeyInput.$Shape; rotateEpochInput?: null }|{ commandInput?: "rotateEpochInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput: waproto.RotateEpochInput.$Shape })
+         * )} waproto.LabyrinthWaCommand.$Shape
+         */
+
+        /**
+         * Constructs a new LabyrinthWaCommand.
+         * @memberof waproto
+         * @classdesc Represents a LabyrinthWaCommand.
+         * @constructor
+         * @param {waproto.LabyrinthWaCommand.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var LabyrinthWaCommand = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * LabyrinthWaCommand createBackupInput.
+         * @member {waproto.CreateBackupInput.$Properties|null|undefined} createBackupInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        LabyrinthWaCommand.prototype.createBackupInput = null;
+
+        /**
+         * LabyrinthWaCommand encryptMessageInput.
+         * @member {waproto.EncryptMessageInput.$Properties|null|undefined} encryptMessageInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        LabyrinthWaCommand.prototype.encryptMessageInput = null;
+
+        /**
+         * LabyrinthWaCommand decryptMessageInput.
+         * @member {waproto.DecryptMessageInput.$Properties|null|undefined} decryptMessageInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        LabyrinthWaCommand.prototype.decryptMessageInput = null;
+
+        /**
+         * LabyrinthWaCommand orfThreadIdInput.
+         * @member {waproto.OrfThreadIdInput.$Properties|null|undefined} orfThreadIdInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        LabyrinthWaCommand.prototype.orfThreadIdInput = null;
+
+        /**
+         * LabyrinthWaCommand deriveMessageKeyInput.
+         * @member {waproto.DeriveMessageKeyInput.$Properties|null|undefined} deriveMessageKeyInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        LabyrinthWaCommand.prototype.deriveMessageKeyInput = null;
+
+        /**
+         * LabyrinthWaCommand rotateEpochInput.
+         * @member {waproto.RotateEpochInput.$Properties|null|undefined} rotateEpochInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        LabyrinthWaCommand.prototype.rotateEpochInput = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        /**
+         * LabyrinthWaCommand commandInput.
+         * @member {"createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|undefined} commandInput
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         */
+        $Object.defineProperty(LabyrinthWaCommand.prototype, "commandInput", {
+            get: $util.oneOfGetter($oneOfFields = ["createBackupInput", "encryptMessageInput", "decryptMessageInput", "orfThreadIdInput", "deriveMessageKeyInput", "rotateEpochInput"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new LabyrinthWaCommand instance using the specified properties.
+         * @function create
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {waproto.LabyrinthWaCommand.$Properties=} [properties] Properties to set
+         * @returns {waproto.LabyrinthWaCommand} LabyrinthWaCommand instance
+         * @type {{
+         *   (properties: waproto.LabyrinthWaCommand.$Shape): waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape;
+         *   (properties?: waproto.LabyrinthWaCommand.$Properties): waproto.LabyrinthWaCommand;
+         * }}
+         */
+        LabyrinthWaCommand.create = function(properties) {
+            return new LabyrinthWaCommand(properties);
+        };
+
+        /**
+         * Encodes the specified LabyrinthWaCommand message. Does not implicitly {@link waproto.LabyrinthWaCommand.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {waproto.LabyrinthWaCommand.$Properties} message LabyrinthWaCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        LabyrinthWaCommand.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.createBackupInput != null && $Object.hasOwnProperty.call(message, "createBackupInput"))
+                $root.waproto.CreateBackupInput.encode(message.createBackupInput, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.encryptMessageInput != null && $Object.hasOwnProperty.call(message, "encryptMessageInput"))
+                $root.waproto.EncryptMessageInput.encode(message.encryptMessageInput, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+            if (message.decryptMessageInput != null && $Object.hasOwnProperty.call(message, "decryptMessageInput"))
+                $root.waproto.DecryptMessageInput.encode(message.decryptMessageInput, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+            if (message.orfThreadIdInput != null && $Object.hasOwnProperty.call(message, "orfThreadIdInput"))
+                $root.waproto.OrfThreadIdInput.encode(message.orfThreadIdInput, writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+            if (message.deriveMessageKeyInput != null && $Object.hasOwnProperty.call(message, "deriveMessageKeyInput"))
+                $root.waproto.DeriveMessageKeyInput.encode(message.deriveMessageKeyInput, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
+            if (message.rotateEpochInput != null && $Object.hasOwnProperty.call(message, "rotateEpochInput"))
+                $root.waproto.RotateEpochInput.encode(message.rotateEpochInput, writer.uint32(/* id 6, wireType 2 =*/50).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified LabyrinthWaCommand message, length delimited. Does not implicitly {@link waproto.LabyrinthWaCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {waproto.LabyrinthWaCommand.$Properties} message LabyrinthWaCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        LabyrinthWaCommand.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a LabyrinthWaCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape} LabyrinthWaCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        LabyrinthWaCommand.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.LabyrinthWaCommand();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.createBackupInput = $root.waproto.CreateBackupInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.createBackupInput);
+                        message.commandInput = "createBackupInput";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptMessageInput = $root.waproto.EncryptMessageInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encryptMessageInput);
+                        message.commandInput = "encryptMessageInput";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.decryptMessageInput = $root.waproto.DecryptMessageInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.decryptMessageInput);
+                        message.commandInput = "decryptMessageInput";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.orfThreadIdInput = $root.waproto.OrfThreadIdInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.orfThreadIdInput);
+                        message.commandInput = "orfThreadIdInput";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.deriveMessageKeyInput = $root.waproto.DeriveMessageKeyInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveMessageKeyInput);
+                        message.commandInput = "deriveMessageKeyInput";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.rotateEpochInput = $root.waproto.RotateEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.rotateEpochInput);
+                        message.commandInput = "rotateEpochInput";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a LabyrinthWaCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape} LabyrinthWaCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        LabyrinthWaCommand.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a LabyrinthWaCommand message.
+         * @function verify
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        LabyrinthWaCommand.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.createBackupInput != null && $Object.hasOwnProperty.call(message, "createBackupInput")) {
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.CreateBackupInput.verify(message.createBackupInput, _depth + 1);
+                    if (error)
+                        return "createBackupInput." + error;
+                }
+            }
+            if (message.encryptMessageInput != null && $Object.hasOwnProperty.call(message, "encryptMessageInput")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.EncryptMessageInput.verify(message.encryptMessageInput, _depth + 1);
+                    if (error)
+                        return "encryptMessageInput." + error;
+                }
+            }
+            if (message.decryptMessageInput != null && $Object.hasOwnProperty.call(message, "decryptMessageInput")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.DecryptMessageInput.verify(message.decryptMessageInput, _depth + 1);
+                    if (error)
+                        return "decryptMessageInput." + error;
+                }
+            }
+            if (message.orfThreadIdInput != null && $Object.hasOwnProperty.call(message, "orfThreadIdInput")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.OrfThreadIdInput.verify(message.orfThreadIdInput, _depth + 1);
+                    if (error)
+                        return "orfThreadIdInput." + error;
+                }
+            }
+            if (message.deriveMessageKeyInput != null && $Object.hasOwnProperty.call(message, "deriveMessageKeyInput")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.DeriveMessageKeyInput.verify(message.deriveMessageKeyInput, _depth + 1);
+                    if (error)
+                        return "deriveMessageKeyInput." + error;
+                }
+            }
+            if (message.rotateEpochInput != null && $Object.hasOwnProperty.call(message, "rotateEpochInput")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.RotateEpochInput.verify(message.rotateEpochInput, _depth + 1);
+                    if (error)
+                        return "rotateEpochInput." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a LabyrinthWaCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.LabyrinthWaCommand} LabyrinthWaCommand
+         */
+        LabyrinthWaCommand.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.LabyrinthWaCommand)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.LabyrinthWaCommand: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.LabyrinthWaCommand();
+            if (object.createBackupInput != null) {
+                if (!$util.isObject(object.createBackupInput))
+                    throw $TypeError(".waproto.LabyrinthWaCommand.createBackupInput: object expected");
+                message.createBackupInput = $root.waproto.CreateBackupInput.fromObject(object.createBackupInput, _depth + 1);
+            }
+            if (object.encryptMessageInput != null) {
+                if (!$util.isObject(object.encryptMessageInput))
+                    throw $TypeError(".waproto.LabyrinthWaCommand.encryptMessageInput: object expected");
+                message.encryptMessageInput = $root.waproto.EncryptMessageInput.fromObject(object.encryptMessageInput, _depth + 1);
+            }
+            if (object.decryptMessageInput != null) {
+                if (!$util.isObject(object.decryptMessageInput))
+                    throw $TypeError(".waproto.LabyrinthWaCommand.decryptMessageInput: object expected");
+                message.decryptMessageInput = $root.waproto.DecryptMessageInput.fromObject(object.decryptMessageInput, _depth + 1);
+            }
+            if (object.orfThreadIdInput != null) {
+                if (!$util.isObject(object.orfThreadIdInput))
+                    throw $TypeError(".waproto.LabyrinthWaCommand.orfThreadIdInput: object expected");
+                message.orfThreadIdInput = $root.waproto.OrfThreadIdInput.fromObject(object.orfThreadIdInput, _depth + 1);
+            }
+            if (object.deriveMessageKeyInput != null) {
+                if (!$util.isObject(object.deriveMessageKeyInput))
+                    throw $TypeError(".waproto.LabyrinthWaCommand.deriveMessageKeyInput: object expected");
+                message.deriveMessageKeyInput = $root.waproto.DeriveMessageKeyInput.fromObject(object.deriveMessageKeyInput, _depth + 1);
+            }
+            if (object.rotateEpochInput != null) {
+                if (!$util.isObject(object.rotateEpochInput))
+                    throw $TypeError(".waproto.LabyrinthWaCommand.rotateEpochInput: object expected");
+                message.rotateEpochInput = $root.waproto.RotateEpochInput.fromObject(object.rotateEpochInput, _depth + 1);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a LabyrinthWaCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {waproto.LabyrinthWaCommand} message LabyrinthWaCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        LabyrinthWaCommand.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.createBackupInput != null && $Object.hasOwnProperty.call(message, "createBackupInput")) {
+                object.createBackupInput = $root.waproto.CreateBackupInput.toObject(message.createBackupInput, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "createBackupInput";
+            }
+            if (message.encryptMessageInput != null && $Object.hasOwnProperty.call(message, "encryptMessageInput")) {
+                object.encryptMessageInput = $root.waproto.EncryptMessageInput.toObject(message.encryptMessageInput, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "encryptMessageInput";
+            }
+            if (message.decryptMessageInput != null && $Object.hasOwnProperty.call(message, "decryptMessageInput")) {
+                object.decryptMessageInput = $root.waproto.DecryptMessageInput.toObject(message.decryptMessageInput, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "decryptMessageInput";
+            }
+            if (message.orfThreadIdInput != null && $Object.hasOwnProperty.call(message, "orfThreadIdInput")) {
+                object.orfThreadIdInput = $root.waproto.OrfThreadIdInput.toObject(message.orfThreadIdInput, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "orfThreadIdInput";
+            }
+            if (message.deriveMessageKeyInput != null && $Object.hasOwnProperty.call(message, "deriveMessageKeyInput")) {
+                object.deriveMessageKeyInput = $root.waproto.DeriveMessageKeyInput.toObject(message.deriveMessageKeyInput, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "deriveMessageKeyInput";
+            }
+            if (message.rotateEpochInput != null && $Object.hasOwnProperty.call(message, "rotateEpochInput")) {
+                object.rotateEpochInput = $root.waproto.RotateEpochInput.toObject(message.rotateEpochInput, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "rotateEpochInput";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this LabyrinthWaCommand to JSON.
+         * @function toJSON
+         * @memberof waproto.LabyrinthWaCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        LabyrinthWaCommand.prototype.toJSON = function() {
+            return LabyrinthWaCommand.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for LabyrinthWaCommand
+         * @function getTypeUrl
+         * @memberof waproto.LabyrinthWaCommand
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        LabyrinthWaCommand.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.LabyrinthWaCommand";
+        };
+
+        return LabyrinthWaCommand;
+    })();
+
     waproto.LegacyMessage = (function() {
 
         /**
@@ -96674,18 +101945,6 @@ $root.waproto = (function() {
         };
 
         return Location;
-    })();
-
-    /**
-     * MENTION_MENTION_TYPE enum.
-     * @name waproto.MENTION_MENTION_TYPE
-     * @enum {number}
-     * @property {number} PROFILE=0 PROFILE value
-     */
-    waproto.MENTION_MENTION_TYPE = (function() {
-        var valuesById = $Object.create(null), values = $Object.create(valuesById);
-        values[valuesById[0] = "PROFILE"] = 0;
-        return values;
     })();
 
     waproto.MediaData = (function() {
@@ -100120,394 +105379,6 @@ $root.waproto = (function() {
         };
 
         return MemberLabel;
-    })();
-
-    waproto.Mention = (function() {
-
-        /**
-         * Properties of a Mention.
-         * @typedef {Object} waproto.Mention.$Properties
-         * @property {waproto.MENTION_MENTION_TYPE|null} [mentionType] Mention mentionType
-         * @property {string|null} [mentionedJid] Mention mentionedJid
-         * @property {number|null} [offset] Mention offset
-         * @property {number|null} [length] Mention length
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-
-        /**
-         * Properties of a Mention.
-         * @memberof waproto
-         * @interface IMention
-         * @augments waproto.Mention.$Properties
-         * @deprecated Use waproto.Mention.$Properties instead.
-         */
-
-        /**
-         * Shape of a Mention.
-         * @typedef {waproto.Mention.$Properties} waproto.Mention.$Shape
-         */
-
-        /**
-         * Constructs a new Mention.
-         * @memberof waproto
-         * @classdesc Represents a Mention.
-         * @constructor
-         * @param {waproto.Mention.$Properties=} [properties] Properties to set
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-        var Mention = function (properties) {
-            if (properties)
-                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
-                        this[keys[i]] = properties[keys[i]];
-        };
-
-        /**
-         * Mention mentionType.
-         * @member {waproto.MENTION_MENTION_TYPE|null|undefined} mentionType
-         * @memberof waproto.Mention
-         * @instance
-         */
-        Mention.prototype.mentionType = null;
-
-        /**
-         * Mention mentionedJid.
-         * @member {string|null|undefined} mentionedJid
-         * @memberof waproto.Mention
-         * @instance
-         */
-        Mention.prototype.mentionedJid = null;
-
-        /**
-         * Mention offset.
-         * @member {number|null|undefined} offset
-         * @memberof waproto.Mention
-         * @instance
-         */
-        Mention.prototype.offset = null;
-
-        /**
-         * Mention length.
-         * @member {number|null|undefined} length
-         * @memberof waproto.Mention
-         * @instance
-         */
-        Mention.prototype.length = null;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Mention.prototype, "_mentionType", {
-            get: $util.oneOfGetter($oneOfFields = ["mentionType"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Mention.prototype, "_mentionedJid", {
-            get: $util.oneOfGetter($oneOfFields = ["mentionedJid"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Mention.prototype, "_offset", {
-            get: $util.oneOfGetter($oneOfFields = ["offset"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(Mention.prototype, "_length", {
-            get: $util.oneOfGetter($oneOfFields = ["length"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new Mention instance using the specified properties.
-         * @function create
-         * @memberof waproto.Mention
-         * @static
-         * @param {waproto.Mention.$Properties=} [properties] Properties to set
-         * @returns {waproto.Mention} Mention instance
-         * @type {{
-         *   (properties: waproto.Mention.$Shape): waproto.Mention & waproto.Mention.$Shape;
-         *   (properties?: waproto.Mention.$Properties): waproto.Mention;
-         * }}
-         */
-        Mention.create = function(properties) {
-            return new Mention(properties);
-        };
-
-        /**
-         * Encodes the specified Mention message. Does not implicitly {@link waproto.Mention.verify|verify} messages.
-         * @function encode
-         * @memberof waproto.Mention
-         * @static
-         * @param {waproto.Mention.$Properties} message Mention message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Mention.encode = function (message, writer, _depth) {
-            if (!writer)
-                writer = $Writer.create();
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            if (message.mentionType != null && $Object.hasOwnProperty.call(message, "mentionType"))
-                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.mentionType);
-            if (message.mentionedJid != null && $Object.hasOwnProperty.call(message, "mentionedJid"))
-                writer.uint32(/* id 2, wireType 2 =*/18).string(message.mentionedJid);
-            if (message.offset != null && $Object.hasOwnProperty.call(message, "offset"))
-                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.offset);
-            if (message.length != null && $Object.hasOwnProperty.call(message, "length"))
-                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.length);
-            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
-                for (var i = 0; i < message.$unknowns.length; ++i)
-                    writer.raw(message.$unknowns[i]);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified Mention message, length delimited. Does not implicitly {@link waproto.Mention.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof waproto.Mention
-         * @static
-         * @param {waproto.Mention.$Properties} message Mention message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        Mention.encodeDelimited = function(message, writer) {
-            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
-        };
-
-        /**
-         * Decodes a Mention message from the specified reader or buffer.
-         * @function decode
-         * @memberof waproto.Mention
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {waproto.Mention & waproto.Mention.$Shape} Mention
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Mention.decode = function (reader, length, _end, _depth, _target) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $Reader.recursionLimit)
-                throw $Error("max depth exceeded");
-            var end, message, value;
-            if (length === $undefined)
-                end = reader.len;
-            else {
-                end = reader.pos + length;
-                if (end > reader.len)
-                    throw $RangeError("index out of range");
-                length = reader.len;
-                reader.len = end;
-            }
-            message = _target || new $root.waproto.Mention();
-            while (reader.pos < end) {
-                var start = reader.pos;
-                var tag = reader.tag();
-                if (tag === _end) {
-                    _end = $undefined;
-                    break;
-                }
-                var wireType = tag & 7;
-                switch (tag >>>= 3) {
-                case 1: {
-                        if (wireType !== 0)
-                            break;
-                        message.mentionType = reader.int32();
-                        message._mentionType = "mentionType";
-                        continue;
-                    }
-                case 2: {
-                        if (wireType !== 2)
-                            break;
-                        message.mentionedJid = reader.stringVerify();
-                        message._mentionedJid = "mentionedJid";
-                        continue;
-                    }
-                case 3: {
-                        if (wireType !== 0)
-                            break;
-                        message.offset = reader.uint32();
-                        message._offset = "offset";
-                        continue;
-                    }
-                case 4: {
-                        if (wireType !== 0)
-                            break;
-                        message.length = reader.uint32();
-                        message._length = "length";
-                        continue;
-                    }
-                }
-                reader.skipType(wireType, _depth, tag);
-                if (!reader.discardUnknown) {
-                    $util.makeProp(message, "$unknowns", false);
-                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
-                }
-            }
-            if (length !== $undefined) {
-                if (reader.pos !== end)
-                    throw $RangeError("index out of range");
-                reader.len = length;
-            }
-            if (_end !== $undefined)
-                throw $Error("missing end group");
-            return message;
-        };
-
-        /**
-         * Decodes a Mention message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof waproto.Mention
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {waproto.Mention & waproto.Mention.$Shape} Mention
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        Mention.decodeDelimited = function(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a Mention message.
-         * @function verify
-         * @memberof waproto.Mention
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        Mention.verify = function (message, _depth) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                return "max depth exceeded";
-            var properties = {};
-            if (message.mentionType != null && $Object.hasOwnProperty.call(message, "mentionType")) {
-                properties._mentionType = 1;
-                if (typeof message.mentionType !== "number" || (message.mentionType | 0) !== message.mentionType)
-                    return "mentionType: enum value expected";
-            }
-            if (message.mentionedJid != null && $Object.hasOwnProperty.call(message, "mentionedJid")) {
-                properties._mentionedJid = 1;
-                if (!$util.isString(message.mentionedJid))
-                    return "mentionedJid: string expected";
-            }
-            if (message.offset != null && $Object.hasOwnProperty.call(message, "offset")) {
-                properties._offset = 1;
-                if (!$util.isInteger(message.offset))
-                    return "offset: integer expected";
-            }
-            if (message.length != null && $Object.hasOwnProperty.call(message, "length")) {
-                properties._length = 1;
-                if (!$util.isInteger(message.length))
-                    return "length: integer expected";
-            }
-            return null;
-        };
-
-        /**
-         * Creates a Mention message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof waproto.Mention
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {waproto.Mention} Mention
-         */
-        Mention.fromObject = function (object, _depth) {
-            if (object instanceof $root.waproto.Mention)
-                return object;
-            if (!$util.isObject(object))
-                throw $TypeError(".waproto.Mention: object expected");
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var message = new $root.waproto.Mention();
-            switch (object.mentionType) {
-            case "PROFILE":
-            case 0:
-                message.mentionType = 0;
-                break;
-            default:
-                if (typeof object.mentionType === "number" && (object.mentionType | 0) === object.mentionType)
-                    message.mentionType = object.mentionType;
-            }
-            if (object.mentionedJid != null)
-                message.mentionedJid = $String(object.mentionedJid);
-            if (object.offset != null)
-                message.offset = object.offset >>> 0;
-            if (object.length != null)
-                message.length = object.length >>> 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a Mention message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof waproto.Mention
-         * @static
-         * @param {waproto.Mention} message Mention
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        Mention.toObject = function (message, options, _depth) {
-            if (!options)
-                options = {};
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var object = {};
-            if (message.mentionType != null && $Object.hasOwnProperty.call(message, "mentionType"))
-                object.mentionType = options.enums === $String ? $root.waproto.MENTION_MENTION_TYPE[message.mentionType] === $undefined ? message.mentionType : $root.waproto.MENTION_MENTION_TYPE[message.mentionType] : message.mentionType;
-            if (message.mentionedJid != null && $Object.hasOwnProperty.call(message, "mentionedJid"))
-                object.mentionedJid = message.mentionedJid;
-            if (message.offset != null && $Object.hasOwnProperty.call(message, "offset"))
-                object.offset = message.offset;
-            if (message.length != null && $Object.hasOwnProperty.call(message, "length"))
-                object.length = message.length;
-            return object;
-        };
-
-        /**
-         * Converts this Mention to JSON.
-         * @function toJSON
-         * @memberof waproto.Mention
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        Mention.prototype.toJSON = function() {
-            return Mention.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the type url for Mention
-         * @function getTypeUrl
-         * @memberof waproto.Mention
-         * @static
-         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns {string} The type url
-         */
-        Mention.getTypeUrl = function(prefix) {
-            if (prefix === $undefined)
-                prefix = "type.googleapis.com";
-            return prefix + "/waproto.Mention";
-        };
-
-        return Mention;
     })();
 
     waproto.Message = (function() {
@@ -186259,423 +191130,6 @@ $root.waproto = (function() {
         return MessageSecretMessage;
     })();
 
-    waproto.MessageText = (function() {
-
-        /**
-         * Properties of a MessageText.
-         * @typedef {Object} waproto.MessageText.$Properties
-         * @property {string|null} [text] MessageText text
-         * @property {Array.<string>|null} [mentionedJid] MessageText mentionedJid
-         * @property {Array.<waproto.Command.$Properties>|null} [commands] MessageText commands
-         * @property {Array.<waproto.Mention.$Properties>|null} [mentions] MessageText mentions
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-
-        /**
-         * Properties of a MessageText.
-         * @memberof waproto
-         * @interface IMessageText
-         * @augments waproto.MessageText.$Properties
-         * @deprecated Use waproto.MessageText.$Properties instead.
-         */
-
-        /**
-         * Shape of a MessageText.
-         * @typedef {waproto.MessageText.$Properties} waproto.MessageText.$Shape
-         */
-
-        /**
-         * Constructs a new MessageText.
-         * @memberof waproto
-         * @classdesc Represents a MessageText.
-         * @constructor
-         * @param {waproto.MessageText.$Properties=} [properties] Properties to set
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-        var MessageText = function (properties) {
-            this.mentionedJid = [];
-            this.commands = [];
-            this.mentions = [];
-            if (properties)
-                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
-                        this[keys[i]] = properties[keys[i]];
-        };
-
-        /**
-         * MessageText text.
-         * @member {string|null|undefined} text
-         * @memberof waproto.MessageText
-         * @instance
-         */
-        MessageText.prototype.text = null;
-
-        /**
-         * MessageText mentionedJid.
-         * @member {Array.<string>} mentionedJid
-         * @memberof waproto.MessageText
-         * @instance
-         */
-        MessageText.prototype.mentionedJid = $util.emptyArray;
-
-        /**
-         * MessageText commands.
-         * @member {Array.<waproto.Command.$Properties>} commands
-         * @memberof waproto.MessageText
-         * @instance
-         */
-        MessageText.prototype.commands = $util.emptyArray;
-
-        /**
-         * MessageText mentions.
-         * @member {Array.<waproto.Mention.$Properties>} mentions
-         * @memberof waproto.MessageText
-         * @instance
-         */
-        MessageText.prototype.mentions = $util.emptyArray;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(MessageText.prototype, "_text", {
-            get: $util.oneOfGetter($oneOfFields = ["text"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new MessageText instance using the specified properties.
-         * @function create
-         * @memberof waproto.MessageText
-         * @static
-         * @param {waproto.MessageText.$Properties=} [properties] Properties to set
-         * @returns {waproto.MessageText} MessageText instance
-         * @type {{
-         *   (properties: waproto.MessageText.$Shape): waproto.MessageText & waproto.MessageText.$Shape;
-         *   (properties?: waproto.MessageText.$Properties): waproto.MessageText;
-         * }}
-         */
-        MessageText.create = function(properties) {
-            return new MessageText(properties);
-        };
-
-        /**
-         * Encodes the specified MessageText message. Does not implicitly {@link waproto.MessageText.verify|verify} messages.
-         * @function encode
-         * @memberof waproto.MessageText
-         * @static
-         * @param {waproto.MessageText.$Properties} message MessageText message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        MessageText.encode = function (message, writer, _depth) {
-            if (!writer)
-                writer = $Writer.create();
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.text);
-            if (message.mentionedJid != null && message.mentionedJid.length)
-                for (var i = 0; i < message.mentionedJid.length; ++i)
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.mentionedJid[i]);
-            if (message.commands != null && message.commands.length)
-                for (var i = 0; i < message.commands.length; ++i)
-                    $root.waproto.Command.encode(message.commands[i], writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
-            if (message.mentions != null && message.mentions.length)
-                for (var i = 0; i < message.mentions.length; ++i)
-                    $root.waproto.Mention.encode(message.mentions[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
-            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
-                for (var i = 0; i < message.$unknowns.length; ++i)
-                    writer.raw(message.$unknowns[i]);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified MessageText message, length delimited. Does not implicitly {@link waproto.MessageText.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof waproto.MessageText
-         * @static
-         * @param {waproto.MessageText.$Properties} message MessageText message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        MessageText.encodeDelimited = function(message, writer) {
-            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
-        };
-
-        /**
-         * Decodes a MessageText message from the specified reader or buffer.
-         * @function decode
-         * @memberof waproto.MessageText
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {waproto.MessageText & waproto.MessageText.$Shape} MessageText
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        MessageText.decode = function (reader, length, _end, _depth, _target) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $Reader.recursionLimit)
-                throw $Error("max depth exceeded");
-            var end, message;
-            if (length === $undefined)
-                end = reader.len;
-            else {
-                end = reader.pos + length;
-                if (end > reader.len)
-                    throw $RangeError("index out of range");
-                length = reader.len;
-                reader.len = end;
-            }
-            message = _target || new $root.waproto.MessageText();
-            while (reader.pos < end) {
-                var start = reader.pos;
-                var tag = reader.tag();
-                if (tag === _end) {
-                    _end = $undefined;
-                    break;
-                }
-                var wireType = tag & 7;
-                switch (tag >>>= 3) {
-                case 1: {
-                        if (wireType !== 2)
-                            break;
-                        message.text = reader.stringVerify();
-                        message._text = "text";
-                        continue;
-                    }
-                case 2: {
-                        if (wireType !== 2)
-                            break;
-                        if (!(message.mentionedJid && message.mentionedJid.length))
-                            message.mentionedJid = [];
-                        message.mentionedJid.push(reader.stringVerify());
-                        continue;
-                    }
-                case 3: {
-                        if (wireType !== 2)
-                            break;
-                        if (!(message.commands && message.commands.length))
-                            message.commands = [];
-                        message.commands.push($root.waproto.Command.decode(reader, reader.uint32(), $undefined, _depth + 1));
-                        continue;
-                    }
-                case 4: {
-                        if (wireType !== 2)
-                            break;
-                        if (!(message.mentions && message.mentions.length))
-                            message.mentions = [];
-                        message.mentions.push($root.waproto.Mention.decode(reader, reader.uint32(), $undefined, _depth + 1));
-                        continue;
-                    }
-                }
-                reader.skipType(wireType, _depth, tag);
-                if (!reader.discardUnknown) {
-                    $util.makeProp(message, "$unknowns", false);
-                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
-                }
-            }
-            if (length !== $undefined) {
-                if (reader.pos !== end)
-                    throw $RangeError("index out of range");
-                reader.len = length;
-            }
-            if (_end !== $undefined)
-                throw $Error("missing end group");
-            return message;
-        };
-
-        /**
-         * Decodes a MessageText message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof waproto.MessageText
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {waproto.MessageText & waproto.MessageText.$Shape} MessageText
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        MessageText.decodeDelimited = function(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a MessageText message.
-         * @function verify
-         * @memberof waproto.MessageText
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        MessageText.verify = function (message, _depth) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                return "max depth exceeded";
-            var properties = {};
-            if (message.text != null && $Object.hasOwnProperty.call(message, "text")) {
-                properties._text = 1;
-                if (!$util.isString(message.text))
-                    return "text: string expected";
-            }
-            if (message.mentionedJid != null && $Object.hasOwnProperty.call(message, "mentionedJid")) {
-                if (!$Array.isArray(message.mentionedJid))
-                    return "mentionedJid: array expected";
-                for (var i = 0; i < message.mentionedJid.length; ++i)
-                    if (!$util.isString(message.mentionedJid[i]))
-                        return "mentionedJid: string[] expected";
-            }
-            if (message.commands != null && $Object.hasOwnProperty.call(message, "commands")) {
-                if (!$Array.isArray(message.commands))
-                    return "commands: array expected";
-                for (var i = 0; i < message.commands.length; ++i) {
-                    var error = $root.waproto.Command.verify(message.commands[i], _depth + 1);
-                    if (error)
-                        return "commands." + error;
-                }
-            }
-            if (message.mentions != null && $Object.hasOwnProperty.call(message, "mentions")) {
-                if (!$Array.isArray(message.mentions))
-                    return "mentions: array expected";
-                for (var i = 0; i < message.mentions.length; ++i) {
-                    var error = $root.waproto.Mention.verify(message.mentions[i], _depth + 1);
-                    if (error)
-                        return "mentions." + error;
-                }
-            }
-            return null;
-        };
-
-        /**
-         * Creates a MessageText message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof waproto.MessageText
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {waproto.MessageText} MessageText
-         */
-        MessageText.fromObject = function (object, _depth) {
-            if (object instanceof $root.waproto.MessageText)
-                return object;
-            if (!$util.isObject(object))
-                throw $TypeError(".waproto.MessageText: object expected");
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var message = new $root.waproto.MessageText();
-            if (object.text != null)
-                message.text = $String(object.text);
-            if (object.mentionedJid) {
-                if (!$Array.isArray(object.mentionedJid))
-                    throw $TypeError(".waproto.MessageText.mentionedJid: array expected");
-                message.mentionedJid = $Array(object.mentionedJid.length);
-                for (var i = 0; i < object.mentionedJid.length; ++i)
-                    message.mentionedJid[i] = $String(object.mentionedJid[i]);
-            }
-            if (object.commands) {
-                if (!$Array.isArray(object.commands))
-                    throw $TypeError(".waproto.MessageText.commands: array expected");
-                message.commands = $Array(object.commands.length);
-                for (var i = 0; i < object.commands.length; ++i) {
-                    if (!$util.isObject(object.commands[i]))
-                        throw $TypeError(".waproto.MessageText.commands: object expected");
-                    message.commands[i] = $root.waproto.Command.fromObject(object.commands[i], _depth + 1);
-                }
-            }
-            if (object.mentions) {
-                if (!$Array.isArray(object.mentions))
-                    throw $TypeError(".waproto.MessageText.mentions: array expected");
-                message.mentions = $Array(object.mentions.length);
-                for (var i = 0; i < object.mentions.length; ++i) {
-                    if (!$util.isObject(object.mentions[i]))
-                        throw $TypeError(".waproto.MessageText.mentions: object expected");
-                    message.mentions[i] = $root.waproto.Mention.fromObject(object.mentions[i], _depth + 1);
-                }
-            }
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a MessageText message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof waproto.MessageText
-         * @static
-         * @param {waproto.MessageText} message MessageText
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        MessageText.toObject = function (message, options, _depth) {
-            if (!options)
-                options = {};
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var object = {};
-            if (options.arrays || options.defaults) {
-                object.mentionedJid = [];
-                object.commands = [];
-                object.mentions = [];
-            }
-            if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
-                object.text = message.text;
-            if (message.mentionedJid && message.mentionedJid.length) {
-                object.mentionedJid = $Array(message.mentionedJid.length);
-                for (var j = 0; j < message.mentionedJid.length; ++j)
-                    object.mentionedJid[j] = message.mentionedJid[j];
-            }
-            if (message.commands && message.commands.length) {
-                object.commands = $Array(message.commands.length);
-                for (var j = 0; j < message.commands.length; ++j)
-                    object.commands[j] = $root.waproto.Command.toObject(message.commands[j], options, _depth + 1);
-            }
-            if (message.mentions && message.mentions.length) {
-                object.mentions = $Array(message.mentions.length);
-                for (var j = 0; j < message.mentions.length; ++j)
-                    object.mentions[j] = $root.waproto.Mention.toObject(message.mentions[j], options, _depth + 1);
-            }
-            return object;
-        };
-
-        /**
-         * Converts this MessageText to JSON.
-         * @function toJSON
-         * @memberof waproto.MessageText
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        MessageText.prototype.toJSON = function() {
-            return MessageText.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the type url for MessageText
-         * @function getTypeUrl
-         * @memberof waproto.MessageText
-         * @static
-         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns {string} The type url
-         */
-        MessageText.getTypeUrl = function(prefix) {
-            if (prefix === $undefined)
-                prefix = "type.googleapis.com";
-            return prefix + "/waproto.MessageText";
-        };
-
-        return MessageText;
-    })();
-
     waproto.Money = (function() {
 
         /**
@@ -193107,6 +197561,630 @@ $root.waproto = (function() {
         };
 
         return NotificationSettings;
+    })();
+
+    waproto.OrfThreadIdInput = (function() {
+
+        /**
+         * Properties of an OrfThreadIdInput.
+         * @typedef {Object} waproto.OrfThreadIdInput.$Properties
+         * @property {Uint8Array} orfClientState OrfThreadIdInput orfClientState
+         * @property {string} threadId OrfThreadIdInput threadId
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an OrfThreadIdInput.
+         * @memberof waproto
+         * @interface IOrfThreadIdInput
+         * @augments waproto.OrfThreadIdInput.$Properties
+         * @deprecated Use waproto.OrfThreadIdInput.$Properties instead.
+         */
+
+        /**
+         * Shape of an OrfThreadIdInput.
+         * @typedef {waproto.OrfThreadIdInput.$Properties} waproto.OrfThreadIdInput.$Shape
+         */
+
+        /**
+         * Constructs a new OrfThreadIdInput.
+         * @memberof waproto
+         * @classdesc Represents an OrfThreadIdInput.
+         * @constructor
+         * @param {waproto.OrfThreadIdInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var OrfThreadIdInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * OrfThreadIdInput orfClientState.
+         * @member {Uint8Array} orfClientState
+         * @memberof waproto.OrfThreadIdInput
+         * @instance
+         */
+        OrfThreadIdInput.prototype.orfClientState = $util.newBuffer([]);
+
+        /**
+         * OrfThreadIdInput threadId.
+         * @member {string} threadId
+         * @memberof waproto.OrfThreadIdInput
+         * @instance
+         */
+        OrfThreadIdInput.prototype.threadId = "";
+
+        /**
+         * Creates a new OrfThreadIdInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {waproto.OrfThreadIdInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.OrfThreadIdInput} OrfThreadIdInput instance
+         * @type {{
+         *   (properties: waproto.OrfThreadIdInput.$Shape): waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape;
+         *   (properties?: waproto.OrfThreadIdInput.$Properties): waproto.OrfThreadIdInput;
+         * }}
+         */
+        OrfThreadIdInput.create = function(properties) {
+            return new OrfThreadIdInput(properties);
+        };
+
+        /**
+         * Encodes the specified OrfThreadIdInput message. Does not implicitly {@link waproto.OrfThreadIdInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {waproto.OrfThreadIdInput.$Properties} message OrfThreadIdInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        OrfThreadIdInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.orfClientState);
+            writer.uint32(/* id 2, wireType 2 =*/18).string(message.threadId);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified OrfThreadIdInput message, length delimited. Does not implicitly {@link waproto.OrfThreadIdInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {waproto.OrfThreadIdInput.$Properties} message OrfThreadIdInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        OrfThreadIdInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an OrfThreadIdInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape} OrfThreadIdInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        OrfThreadIdInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.OrfThreadIdInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.orfClientState = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.threadId = reader.stringVerify();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "orfClientState"))
+                throw $util.ProtocolError("missing required 'orfClientState'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "threadId"))
+                throw $util.ProtocolError("missing required 'threadId'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes an OrfThreadIdInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape} OrfThreadIdInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        OrfThreadIdInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an OrfThreadIdInput message.
+         * @function verify
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        OrfThreadIdInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.orfClientState && typeof message.orfClientState.length === "number" || $util.isString(message.orfClientState)))
+                return "orfClientState: buffer expected";
+            if (!$util.isString(message.threadId))
+                return "threadId: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an OrfThreadIdInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.OrfThreadIdInput} OrfThreadIdInput
+         */
+        OrfThreadIdInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.OrfThreadIdInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.OrfThreadIdInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.OrfThreadIdInput();
+            if (object.orfClientState != null)
+                if (typeof object.orfClientState === "string")
+                    $util.base64.decode(object.orfClientState, message.orfClientState = $util.newBuffer($util.base64.length(object.orfClientState)), 0);
+                else if (object.orfClientState.length >= 0)
+                    message.orfClientState = object.orfClientState;
+            if (object.threadId != null)
+                message.threadId = $String(object.threadId);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an OrfThreadIdInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {waproto.OrfThreadIdInput} message OrfThreadIdInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        OrfThreadIdInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.orfClientState = "";
+                else {
+                    object.orfClientState = [];
+                    if (options.bytes !== $Array)
+                        object.orfClientState = $util.newBuffer(object.orfClientState);
+                }
+                object.threadId = "";
+            }
+            if (message.orfClientState != null && $Object.hasOwnProperty.call(message, "orfClientState"))
+                object.orfClientState = options.bytes === $String ? $util.base64.encode(message.orfClientState, 0, message.orfClientState.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.orfClientState) : message.orfClientState;
+            if (message.threadId != null && $Object.hasOwnProperty.call(message, "threadId"))
+                object.threadId = message.threadId;
+            return object;
+        };
+
+        /**
+         * Converts this OrfThreadIdInput to JSON.
+         * @function toJSON
+         * @memberof waproto.OrfThreadIdInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        OrfThreadIdInput.prototype.toJSON = function() {
+            return OrfThreadIdInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for OrfThreadIdInput
+         * @function getTypeUrl
+         * @memberof waproto.OrfThreadIdInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        OrfThreadIdInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.OrfThreadIdInput";
+        };
+
+        return OrfThreadIdInput;
+    })();
+
+    waproto.OrfThreadIdOutput = (function() {
+
+        /**
+         * Properties of an OrfThreadIdOutput.
+         * @typedef {Object} waproto.OrfThreadIdOutput.$Properties
+         * @property {Uint8Array|null} [orfThreadId] OrfThreadIdOutput orfThreadId
+         * @property {string|null} [error] OrfThreadIdOutput error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an OrfThreadIdOutput.
+         * @memberof waproto
+         * @interface IOrfThreadIdOutput
+         * @augments waproto.OrfThreadIdOutput.$Properties
+         * @deprecated Use waproto.OrfThreadIdOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of an OrfThreadIdOutput.
+         * @typedef {waproto.OrfThreadIdOutput.$Properties} waproto.OrfThreadIdOutput.$Shape
+         */
+
+        /**
+         * Constructs a new OrfThreadIdOutput.
+         * @memberof waproto
+         * @classdesc Represents an OrfThreadIdOutput.
+         * @constructor
+         * @param {waproto.OrfThreadIdOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var OrfThreadIdOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * OrfThreadIdOutput orfThreadId.
+         * @member {Uint8Array|null|undefined} orfThreadId
+         * @memberof waproto.OrfThreadIdOutput
+         * @instance
+         */
+        OrfThreadIdOutput.prototype.orfThreadId = null;
+
+        /**
+         * OrfThreadIdOutput error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.OrfThreadIdOutput
+         * @instance
+         */
+        OrfThreadIdOutput.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OrfThreadIdOutput.prototype, "_orfThreadId", {
+            get: $util.oneOfGetter($oneOfFields = ["orfThreadId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(OrfThreadIdOutput.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new OrfThreadIdOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {waproto.OrfThreadIdOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.OrfThreadIdOutput} OrfThreadIdOutput instance
+         * @type {{
+         *   (properties: waproto.OrfThreadIdOutput.$Shape): waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape;
+         *   (properties?: waproto.OrfThreadIdOutput.$Properties): waproto.OrfThreadIdOutput;
+         * }}
+         */
+        OrfThreadIdOutput.create = function(properties) {
+            return new OrfThreadIdOutput(properties);
+        };
+
+        /**
+         * Encodes the specified OrfThreadIdOutput message. Does not implicitly {@link waproto.OrfThreadIdOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {waproto.OrfThreadIdOutput.$Properties} message OrfThreadIdOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        OrfThreadIdOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.orfThreadId != null && $Object.hasOwnProperty.call(message, "orfThreadId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.orfThreadId);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified OrfThreadIdOutput message, length delimited. Does not implicitly {@link waproto.OrfThreadIdOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {waproto.OrfThreadIdOutput.$Properties} message OrfThreadIdOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        OrfThreadIdOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an OrfThreadIdOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape} OrfThreadIdOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        OrfThreadIdOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.OrfThreadIdOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.orfThreadId = reader.bytes();
+                        message._orfThreadId = "orfThreadId";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes an OrfThreadIdOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape} OrfThreadIdOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        OrfThreadIdOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an OrfThreadIdOutput message.
+         * @function verify
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        OrfThreadIdOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.orfThreadId != null && $Object.hasOwnProperty.call(message, "orfThreadId")) {
+                properties._orfThreadId = 1;
+                if (!(message.orfThreadId && typeof message.orfThreadId.length === "number" || $util.isString(message.orfThreadId)))
+                    return "orfThreadId: buffer expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates an OrfThreadIdOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.OrfThreadIdOutput} OrfThreadIdOutput
+         */
+        OrfThreadIdOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.OrfThreadIdOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.OrfThreadIdOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.OrfThreadIdOutput();
+            if (object.orfThreadId != null)
+                if (typeof object.orfThreadId === "string")
+                    $util.base64.decode(object.orfThreadId, message.orfThreadId = $util.newBuffer($util.base64.length(object.orfThreadId)), 0);
+                else if (object.orfThreadId.length >= 0)
+                    message.orfThreadId = object.orfThreadId;
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an OrfThreadIdOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {waproto.OrfThreadIdOutput} message OrfThreadIdOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        OrfThreadIdOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.orfThreadId != null && $Object.hasOwnProperty.call(message, "orfThreadId"))
+                object.orfThreadId = options.bytes === $String ? $util.base64.encode(message.orfThreadId, 0, message.orfThreadId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.orfThreadId) : message.orfThreadId;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this OrfThreadIdOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.OrfThreadIdOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        OrfThreadIdOutput.prototype.toJSON = function() {
+            return OrfThreadIdOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for OrfThreadIdOutput
+         * @function getTypeUrl
+         * @memberof waproto.OrfThreadIdOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        OrfThreadIdOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.OrfThreadIdOutput";
+        };
+
+        return OrfThreadIdOutput;
     })();
 
     waproto.PairingRequest = (function() {
@@ -206191,6 +211269,1731 @@ $root.waproto = (function() {
         return ReportingTokenInfo;
     })();
 
+    waproto.RotateEpochInput = (function() {
+
+        /**
+         * Properties of a RotateEpochInput.
+         * @typedef {Object} waproto.RotateEpochInput.$Properties
+         * @property {Uint8Array} currentEpochRootKey RotateEpochInput currentEpochRootKey
+         * @property {Uint8Array} currentEpochAnonId RotateEpochInput currentEpochAnonId
+         * @property {number|Long} currentEpochFbid RotateEpochInput currentEpochFbid
+         * @property {Uint8Array} epochStoragePrivateKey RotateEpochInput epochStoragePrivateKey
+         * @property {Array.<waproto.RotateEpochMemberInput.$Properties>|null} [members] RotateEpochInput members
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a RotateEpochInput.
+         * @memberof waproto
+         * @interface IRotateEpochInput
+         * @augments waproto.RotateEpochInput.$Properties
+         * @deprecated Use waproto.RotateEpochInput.$Properties instead.
+         */
+
+        /**
+         * Shape of a RotateEpochInput.
+         * @typedef {waproto.RotateEpochInput.$Properties} waproto.RotateEpochInput.$Shape
+         */
+
+        /**
+         * Constructs a new RotateEpochInput.
+         * @memberof waproto
+         * @classdesc Represents a RotateEpochInput.
+         * @constructor
+         * @param {waproto.RotateEpochInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var RotateEpochInput = function (properties) {
+            this.members = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * RotateEpochInput currentEpochRootKey.
+         * @member {Uint8Array} currentEpochRootKey
+         * @memberof waproto.RotateEpochInput
+         * @instance
+         */
+        RotateEpochInput.prototype.currentEpochRootKey = $util.newBuffer([]);
+
+        /**
+         * RotateEpochInput currentEpochAnonId.
+         * @member {Uint8Array} currentEpochAnonId
+         * @memberof waproto.RotateEpochInput
+         * @instance
+         */
+        RotateEpochInput.prototype.currentEpochAnonId = $util.newBuffer([]);
+
+        /**
+         * RotateEpochInput currentEpochFbid.
+         * @member {number|Long} currentEpochFbid
+         * @memberof waproto.RotateEpochInput
+         * @instance
+         */
+        RotateEpochInput.prototype.currentEpochFbid = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * RotateEpochInput epochStoragePrivateKey.
+         * @member {Uint8Array} epochStoragePrivateKey
+         * @memberof waproto.RotateEpochInput
+         * @instance
+         */
+        RotateEpochInput.prototype.epochStoragePrivateKey = $util.newBuffer([]);
+
+        /**
+         * RotateEpochInput members.
+         * @member {Array.<waproto.RotateEpochMemberInput.$Properties>} members
+         * @memberof waproto.RotateEpochInput
+         * @instance
+         */
+        RotateEpochInput.prototype.members = $util.emptyArray;
+
+        /**
+         * Creates a new RotateEpochInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {waproto.RotateEpochInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.RotateEpochInput} RotateEpochInput instance
+         * @type {{
+         *   (properties: waproto.RotateEpochInput.$Shape): waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape;
+         *   (properties?: waproto.RotateEpochInput.$Properties): waproto.RotateEpochInput;
+         * }}
+         */
+        RotateEpochInput.create = function(properties) {
+            return new RotateEpochInput(properties);
+        };
+
+        /**
+         * Encodes the specified RotateEpochInput message. Does not implicitly {@link waproto.RotateEpochInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {waproto.RotateEpochInput.$Properties} message RotateEpochInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.currentEpochRootKey);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.currentEpochAnonId);
+            writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.currentEpochFbid);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.epochStoragePrivateKey);
+            if (message.members != null && message.members.length)
+                for (var i = 0; i < message.members.length; ++i)
+                    $root.waproto.RotateEpochMemberInput.encode(message.members[i], writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RotateEpochInput message, length delimited. Does not implicitly {@link waproto.RotateEpochInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {waproto.RotateEpochInput.$Properties} message RotateEpochInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a RotateEpochInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape} RotateEpochInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.RotateEpochInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.currentEpochRootKey = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.currentEpochAnonId = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.currentEpochFbid = reader.uint64();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochStoragePrivateKey = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.members && message.members.length))
+                            message.members = [];
+                        message.members.push($root.waproto.RotateEpochMemberInput.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "currentEpochRootKey"))
+                throw $util.ProtocolError("missing required 'currentEpochRootKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "currentEpochAnonId"))
+                throw $util.ProtocolError("missing required 'currentEpochAnonId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "currentEpochFbid"))
+                throw $util.ProtocolError("missing required 'currentEpochFbid'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochStoragePrivateKey"))
+                throw $util.ProtocolError("missing required 'epochStoragePrivateKey'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a RotateEpochInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape} RotateEpochInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RotateEpochInput message.
+         * @function verify
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RotateEpochInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.currentEpochRootKey && typeof message.currentEpochRootKey.length === "number" || $util.isString(message.currentEpochRootKey)))
+                return "currentEpochRootKey: buffer expected";
+            if (!(message.currentEpochAnonId && typeof message.currentEpochAnonId.length === "number" || $util.isString(message.currentEpochAnonId)))
+                return "currentEpochAnonId: buffer expected";
+            if (!$util.isInteger(message.currentEpochFbid) && !(message.currentEpochFbid && $util.isInteger(message.currentEpochFbid.low) && $util.isInteger(message.currentEpochFbid.high)))
+                return "currentEpochFbid: integer|Long expected";
+            if (!(message.epochStoragePrivateKey && typeof message.epochStoragePrivateKey.length === "number" || $util.isString(message.epochStoragePrivateKey)))
+                return "epochStoragePrivateKey: buffer expected";
+            if (message.members != null && $Object.hasOwnProperty.call(message, "members")) {
+                if (!$Array.isArray(message.members))
+                    return "members: array expected";
+                for (var i = 0; i < message.members.length; ++i) {
+                    var error = $root.waproto.RotateEpochMemberInput.verify(message.members[i], _depth + 1);
+                    if (error)
+                        return "members." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RotateEpochInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.RotateEpochInput} RotateEpochInput
+         */
+        RotateEpochInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.RotateEpochInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.RotateEpochInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.RotateEpochInput();
+            if (object.currentEpochRootKey != null)
+                if (typeof object.currentEpochRootKey === "string")
+                    $util.base64.decode(object.currentEpochRootKey, message.currentEpochRootKey = $util.newBuffer($util.base64.length(object.currentEpochRootKey)), 0);
+                else if (object.currentEpochRootKey.length >= 0)
+                    message.currentEpochRootKey = object.currentEpochRootKey;
+            if (object.currentEpochAnonId != null)
+                if (typeof object.currentEpochAnonId === "string")
+                    $util.base64.decode(object.currentEpochAnonId, message.currentEpochAnonId = $util.newBuffer($util.base64.length(object.currentEpochAnonId)), 0);
+                else if (object.currentEpochAnonId.length >= 0)
+                    message.currentEpochAnonId = object.currentEpochAnonId;
+            if (object.currentEpochFbid != null)
+                if ($util.Long)
+                    message.currentEpochFbid = $util.Long.fromValue(object.currentEpochFbid, true);
+                else if (typeof object.currentEpochFbid === "string")
+                    message.currentEpochFbid = $parseInt(object.currentEpochFbid, 10);
+                else if (typeof object.currentEpochFbid === "number")
+                    message.currentEpochFbid = object.currentEpochFbid;
+                else if (typeof object.currentEpochFbid === "object")
+                    message.currentEpochFbid = new $util.LongBits(object.currentEpochFbid.low >>> 0, object.currentEpochFbid.high >>> 0).toNumber(true);
+            if (object.epochStoragePrivateKey != null)
+                if (typeof object.epochStoragePrivateKey === "string")
+                    $util.base64.decode(object.epochStoragePrivateKey, message.epochStoragePrivateKey = $util.newBuffer($util.base64.length(object.epochStoragePrivateKey)), 0);
+                else if (object.epochStoragePrivateKey.length >= 0)
+                    message.epochStoragePrivateKey = object.epochStoragePrivateKey;
+            if (object.members) {
+                if (!$Array.isArray(object.members))
+                    throw $TypeError(".waproto.RotateEpochInput.members: array expected");
+                message.members = $Array(object.members.length);
+                for (var i = 0; i < object.members.length; ++i) {
+                    if (!$util.isObject(object.members[i]))
+                        throw $TypeError(".waproto.RotateEpochInput.members: object expected");
+                    message.members[i] = $root.waproto.RotateEpochMemberInput.fromObject(object.members[i], _depth + 1);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RotateEpochInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {waproto.RotateEpochInput} message RotateEpochInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RotateEpochInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.members = [];
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.currentEpochRootKey = "";
+                else {
+                    object.currentEpochRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.currentEpochRootKey = $util.newBuffer(object.currentEpochRootKey);
+                }
+                if (options.bytes === $String)
+                    object.currentEpochAnonId = "";
+                else {
+                    object.currentEpochAnonId = [];
+                    if (options.bytes !== $Array)
+                        object.currentEpochAnonId = $util.newBuffer(object.currentEpochAnonId);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.currentEpochFbid = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.currentEpochFbid = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if (options.bytes === $String)
+                    object.epochStoragePrivateKey = "";
+                else {
+                    object.epochStoragePrivateKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochStoragePrivateKey = $util.newBuffer(object.epochStoragePrivateKey);
+                }
+            }
+            if (message.currentEpochRootKey != null && $Object.hasOwnProperty.call(message, "currentEpochRootKey"))
+                object.currentEpochRootKey = options.bytes === $String ? $util.base64.encode(message.currentEpochRootKey, 0, message.currentEpochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.currentEpochRootKey) : message.currentEpochRootKey;
+            if (message.currentEpochAnonId != null && $Object.hasOwnProperty.call(message, "currentEpochAnonId"))
+                object.currentEpochAnonId = options.bytes === $String ? $util.base64.encode(message.currentEpochAnonId, 0, message.currentEpochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.currentEpochAnonId) : message.currentEpochAnonId;
+            if (message.currentEpochFbid != null && $Object.hasOwnProperty.call(message, "currentEpochFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.currentEpochFbid = typeof message.currentEpochFbid === "number" ? $BigInt(message.currentEpochFbid) : $util.Long.fromBits(message.currentEpochFbid.low >>> 0, message.currentEpochFbid.high >>> 0, true).toBigInt();
+                else if (typeof message.currentEpochFbid === "number")
+                    object.currentEpochFbid = options.longs === $String ? $String(message.currentEpochFbid) : message.currentEpochFbid;
+                else
+                    object.currentEpochFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.currentEpochFbid) : options.longs === $Number ? new $util.LongBits(message.currentEpochFbid.low >>> 0, message.currentEpochFbid.high >>> 0).toNumber(true) : message.currentEpochFbid;
+            if (message.epochStoragePrivateKey != null && $Object.hasOwnProperty.call(message, "epochStoragePrivateKey"))
+                object.epochStoragePrivateKey = options.bytes === $String ? $util.base64.encode(message.epochStoragePrivateKey, 0, message.epochStoragePrivateKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochStoragePrivateKey) : message.epochStoragePrivateKey;
+            if (message.members && message.members.length) {
+                object.members = $Array(message.members.length);
+                for (var j = 0; j < message.members.length; ++j)
+                    object.members[j] = $root.waproto.RotateEpochMemberInput.toObject(message.members[j], options, _depth + 1);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this RotateEpochInput to JSON.
+         * @function toJSON
+         * @memberof waproto.RotateEpochInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RotateEpochInput.prototype.toJSON = function() {
+            return RotateEpochInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for RotateEpochInput
+         * @function getTypeUrl
+         * @memberof waproto.RotateEpochInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        RotateEpochInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.RotateEpochInput";
+        };
+
+        return RotateEpochInput;
+    })();
+
+    waproto.RotateEpochMemberEdge = (function() {
+
+        /**
+         * Properties of a RotateEpochMemberEdge.
+         * @typedef {Object} waproto.RotateEpochMemberEdge.$Properties
+         * @property {number|Long|null} [deviceId] RotateEpochMemberEdge deviceId
+         * @property {Uint8Array|null} [encryptedEpochKey] RotateEpochMemberEdge encryptedEpochKey
+         * @property {Uint8Array|null} [deviceEpochHmac] RotateEpochMemberEdge deviceEpochHmac
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a RotateEpochMemberEdge.
+         * @memberof waproto
+         * @interface IRotateEpochMemberEdge
+         * @augments waproto.RotateEpochMemberEdge.$Properties
+         * @deprecated Use waproto.RotateEpochMemberEdge.$Properties instead.
+         */
+
+        /**
+         * Shape of a RotateEpochMemberEdge.
+         * @typedef {waproto.RotateEpochMemberEdge.$Properties} waproto.RotateEpochMemberEdge.$Shape
+         */
+
+        /**
+         * Constructs a new RotateEpochMemberEdge.
+         * @memberof waproto
+         * @classdesc Represents a RotateEpochMemberEdge.
+         * @constructor
+         * @param {waproto.RotateEpochMemberEdge.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var RotateEpochMemberEdge = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * RotateEpochMemberEdge deviceId.
+         * @member {number|Long|null|undefined} deviceId
+         * @memberof waproto.RotateEpochMemberEdge
+         * @instance
+         */
+        RotateEpochMemberEdge.prototype.deviceId = null;
+
+        /**
+         * RotateEpochMemberEdge encryptedEpochKey.
+         * @member {Uint8Array|null|undefined} encryptedEpochKey
+         * @memberof waproto.RotateEpochMemberEdge
+         * @instance
+         */
+        RotateEpochMemberEdge.prototype.encryptedEpochKey = null;
+
+        /**
+         * RotateEpochMemberEdge deviceEpochHmac.
+         * @member {Uint8Array|null|undefined} deviceEpochHmac
+         * @memberof waproto.RotateEpochMemberEdge
+         * @instance
+         */
+        RotateEpochMemberEdge.prototype.deviceEpochHmac = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberEdge.prototype, "_deviceId", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberEdge.prototype, "_encryptedEpochKey", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedEpochKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochMemberEdge.prototype, "_deviceEpochHmac", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceEpochHmac"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new RotateEpochMemberEdge instance using the specified properties.
+         * @function create
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {waproto.RotateEpochMemberEdge.$Properties=} [properties] Properties to set
+         * @returns {waproto.RotateEpochMemberEdge} RotateEpochMemberEdge instance
+         * @type {{
+         *   (properties: waproto.RotateEpochMemberEdge.$Shape): waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape;
+         *   (properties?: waproto.RotateEpochMemberEdge.$Properties): waproto.RotateEpochMemberEdge;
+         * }}
+         */
+        RotateEpochMemberEdge.create = function(properties) {
+            return new RotateEpochMemberEdge(properties);
+        };
+
+        /**
+         * Encodes the specified RotateEpochMemberEdge message. Does not implicitly {@link waproto.RotateEpochMemberEdge.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {waproto.RotateEpochMemberEdge.$Properties} message RotateEpochMemberEdge message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochMemberEdge.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.deviceId != null && $Object.hasOwnProperty.call(message, "deviceId"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.deviceId);
+            if (message.encryptedEpochKey != null && $Object.hasOwnProperty.call(message, "encryptedEpochKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.encryptedEpochKey);
+            if (message.deviceEpochHmac != null && $Object.hasOwnProperty.call(message, "deviceEpochHmac"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.deviceEpochHmac);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RotateEpochMemberEdge message, length delimited. Does not implicitly {@link waproto.RotateEpochMemberEdge.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {waproto.RotateEpochMemberEdge.$Properties} message RotateEpochMemberEdge message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochMemberEdge.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a RotateEpochMemberEdge message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape} RotateEpochMemberEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochMemberEdge.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.RotateEpochMemberEdge();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.deviceId = reader.uint64();
+                        message._deviceId = "deviceId";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedEpochKey = reader.bytes();
+                        message._encryptedEpochKey = "encryptedEpochKey";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.deviceEpochHmac = reader.bytes();
+                        message._deviceEpochHmac = "deviceEpochHmac";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a RotateEpochMemberEdge message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape} RotateEpochMemberEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochMemberEdge.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RotateEpochMemberEdge message.
+         * @function verify
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RotateEpochMemberEdge.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.deviceId != null && $Object.hasOwnProperty.call(message, "deviceId")) {
+                properties._deviceId = 1;
+                if (!$util.isInteger(message.deviceId) && !(message.deviceId && $util.isInteger(message.deviceId.low) && $util.isInteger(message.deviceId.high)))
+                    return "deviceId: integer|Long expected";
+            }
+            if (message.encryptedEpochKey != null && $Object.hasOwnProperty.call(message, "encryptedEpochKey")) {
+                properties._encryptedEpochKey = 1;
+                if (!(message.encryptedEpochKey && typeof message.encryptedEpochKey.length === "number" || $util.isString(message.encryptedEpochKey)))
+                    return "encryptedEpochKey: buffer expected";
+            }
+            if (message.deviceEpochHmac != null && $Object.hasOwnProperty.call(message, "deviceEpochHmac")) {
+                properties._deviceEpochHmac = 1;
+                if (!(message.deviceEpochHmac && typeof message.deviceEpochHmac.length === "number" || $util.isString(message.deviceEpochHmac)))
+                    return "deviceEpochHmac: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RotateEpochMemberEdge message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.RotateEpochMemberEdge} RotateEpochMemberEdge
+         */
+        RotateEpochMemberEdge.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.RotateEpochMemberEdge)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.RotateEpochMemberEdge: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.RotateEpochMemberEdge();
+            if (object.deviceId != null)
+                if ($util.Long)
+                    message.deviceId = $util.Long.fromValue(object.deviceId, true);
+                else if (typeof object.deviceId === "string")
+                    message.deviceId = $parseInt(object.deviceId, 10);
+                else if (typeof object.deviceId === "number")
+                    message.deviceId = object.deviceId;
+                else if (typeof object.deviceId === "object")
+                    message.deviceId = new $util.LongBits(object.deviceId.low >>> 0, object.deviceId.high >>> 0).toNumber(true);
+            if (object.encryptedEpochKey != null)
+                if (typeof object.encryptedEpochKey === "string")
+                    $util.base64.decode(object.encryptedEpochKey, message.encryptedEpochKey = $util.newBuffer($util.base64.length(object.encryptedEpochKey)), 0);
+                else if (object.encryptedEpochKey.length >= 0)
+                    message.encryptedEpochKey = object.encryptedEpochKey;
+            if (object.deviceEpochHmac != null)
+                if (typeof object.deviceEpochHmac === "string")
+                    $util.base64.decode(object.deviceEpochHmac, message.deviceEpochHmac = $util.newBuffer($util.base64.length(object.deviceEpochHmac)), 0);
+                else if (object.deviceEpochHmac.length >= 0)
+                    message.deviceEpochHmac = object.deviceEpochHmac;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RotateEpochMemberEdge message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {waproto.RotateEpochMemberEdge} message RotateEpochMemberEdge
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RotateEpochMemberEdge.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.deviceId != null && $Object.hasOwnProperty.call(message, "deviceId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.deviceId = typeof message.deviceId === "number" ? $BigInt(message.deviceId) : $util.Long.fromBits(message.deviceId.low >>> 0, message.deviceId.high >>> 0, true).toBigInt();
+                else if (typeof message.deviceId === "number")
+                    object.deviceId = options.longs === $String ? $String(message.deviceId) : message.deviceId;
+                else
+                    object.deviceId = options.longs === $String ? $util.Long.prototype.toString.call(message.deviceId) : options.longs === $Number ? new $util.LongBits(message.deviceId.low >>> 0, message.deviceId.high >>> 0).toNumber(true) : message.deviceId;
+            if (message.encryptedEpochKey != null && $Object.hasOwnProperty.call(message, "encryptedEpochKey"))
+                object.encryptedEpochKey = options.bytes === $String ? $util.base64.encode(message.encryptedEpochKey, 0, message.encryptedEpochKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedEpochKey) : message.encryptedEpochKey;
+            if (message.deviceEpochHmac != null && $Object.hasOwnProperty.call(message, "deviceEpochHmac"))
+                object.deviceEpochHmac = options.bytes === $String ? $util.base64.encode(message.deviceEpochHmac, 0, message.deviceEpochHmac.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.deviceEpochHmac) : message.deviceEpochHmac;
+            return object;
+        };
+
+        /**
+         * Converts this RotateEpochMemberEdge to JSON.
+         * @function toJSON
+         * @memberof waproto.RotateEpochMemberEdge
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RotateEpochMemberEdge.prototype.toJSON = function() {
+            return RotateEpochMemberEdge.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for RotateEpochMemberEdge
+         * @function getTypeUrl
+         * @memberof waproto.RotateEpochMemberEdge
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        RotateEpochMemberEdge.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.RotateEpochMemberEdge";
+        };
+
+        return RotateEpochMemberEdge;
+    })();
+
+    waproto.RotateEpochMemberInput = (function() {
+
+        /**
+         * Properties of a RotateEpochMemberInput.
+         * @typedef {Object} waproto.RotateEpochMemberInput.$Properties
+         * @property {number|Long} deviceId RotateEpochMemberInput deviceId
+         * @property {Uint8Array} epochStoragePublicKey RotateEpochMemberInput epochStoragePublicKey
+         * @property {Uint8Array} devicePublicKey RotateEpochMemberInput devicePublicKey
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a RotateEpochMemberInput.
+         * @memberof waproto
+         * @interface IRotateEpochMemberInput
+         * @augments waproto.RotateEpochMemberInput.$Properties
+         * @deprecated Use waproto.RotateEpochMemberInput.$Properties instead.
+         */
+
+        /**
+         * Shape of a RotateEpochMemberInput.
+         * @typedef {waproto.RotateEpochMemberInput.$Properties} waproto.RotateEpochMemberInput.$Shape
+         */
+
+        /**
+         * Constructs a new RotateEpochMemberInput.
+         * @memberof waproto
+         * @classdesc Represents a RotateEpochMemberInput.
+         * @constructor
+         * @param {waproto.RotateEpochMemberInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var RotateEpochMemberInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * RotateEpochMemberInput deviceId.
+         * @member {number|Long} deviceId
+         * @memberof waproto.RotateEpochMemberInput
+         * @instance
+         */
+        RotateEpochMemberInput.prototype.deviceId = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * RotateEpochMemberInput epochStoragePublicKey.
+         * @member {Uint8Array} epochStoragePublicKey
+         * @memberof waproto.RotateEpochMemberInput
+         * @instance
+         */
+        RotateEpochMemberInput.prototype.epochStoragePublicKey = $util.newBuffer([]);
+
+        /**
+         * RotateEpochMemberInput devicePublicKey.
+         * @member {Uint8Array} devicePublicKey
+         * @memberof waproto.RotateEpochMemberInput
+         * @instance
+         */
+        RotateEpochMemberInput.prototype.devicePublicKey = $util.newBuffer([]);
+
+        /**
+         * Creates a new RotateEpochMemberInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {waproto.RotateEpochMemberInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.RotateEpochMemberInput} RotateEpochMemberInput instance
+         * @type {{
+         *   (properties: waproto.RotateEpochMemberInput.$Shape): waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape;
+         *   (properties?: waproto.RotateEpochMemberInput.$Properties): waproto.RotateEpochMemberInput;
+         * }}
+         */
+        RotateEpochMemberInput.create = function(properties) {
+            return new RotateEpochMemberInput(properties);
+        };
+
+        /**
+         * Encodes the specified RotateEpochMemberInput message. Does not implicitly {@link waproto.RotateEpochMemberInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {waproto.RotateEpochMemberInput.$Properties} message RotateEpochMemberInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochMemberInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 0 =*/8).uint64(message.deviceId);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.epochStoragePublicKey);
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.devicePublicKey);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RotateEpochMemberInput message, length delimited. Does not implicitly {@link waproto.RotateEpochMemberInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {waproto.RotateEpochMemberInput.$Properties} message RotateEpochMemberInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochMemberInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a RotateEpochMemberInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape} RotateEpochMemberInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochMemberInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.RotateEpochMemberInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.deviceId = reader.uint64();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochStoragePublicKey = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.devicePublicKey = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "deviceId"))
+                throw $util.ProtocolError("missing required 'deviceId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochStoragePublicKey"))
+                throw $util.ProtocolError("missing required 'epochStoragePublicKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "devicePublicKey"))
+                throw $util.ProtocolError("missing required 'devicePublicKey'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a RotateEpochMemberInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape} RotateEpochMemberInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochMemberInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RotateEpochMemberInput message.
+         * @function verify
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RotateEpochMemberInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!$util.isInteger(message.deviceId) && !(message.deviceId && $util.isInteger(message.deviceId.low) && $util.isInteger(message.deviceId.high)))
+                return "deviceId: integer|Long expected";
+            if (!(message.epochStoragePublicKey && typeof message.epochStoragePublicKey.length === "number" || $util.isString(message.epochStoragePublicKey)))
+                return "epochStoragePublicKey: buffer expected";
+            if (!(message.devicePublicKey && typeof message.devicePublicKey.length === "number" || $util.isString(message.devicePublicKey)))
+                return "devicePublicKey: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a RotateEpochMemberInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.RotateEpochMemberInput} RotateEpochMemberInput
+         */
+        RotateEpochMemberInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.RotateEpochMemberInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.RotateEpochMemberInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.RotateEpochMemberInput();
+            if (object.deviceId != null)
+                if ($util.Long)
+                    message.deviceId = $util.Long.fromValue(object.deviceId, true);
+                else if (typeof object.deviceId === "string")
+                    message.deviceId = $parseInt(object.deviceId, 10);
+                else if (typeof object.deviceId === "number")
+                    message.deviceId = object.deviceId;
+                else if (typeof object.deviceId === "object")
+                    message.deviceId = new $util.LongBits(object.deviceId.low >>> 0, object.deviceId.high >>> 0).toNumber(true);
+            if (object.epochStoragePublicKey != null)
+                if (typeof object.epochStoragePublicKey === "string")
+                    $util.base64.decode(object.epochStoragePublicKey, message.epochStoragePublicKey = $util.newBuffer($util.base64.length(object.epochStoragePublicKey)), 0);
+                else if (object.epochStoragePublicKey.length >= 0)
+                    message.epochStoragePublicKey = object.epochStoragePublicKey;
+            if (object.devicePublicKey != null)
+                if (typeof object.devicePublicKey === "string")
+                    $util.base64.decode(object.devicePublicKey, message.devicePublicKey = $util.newBuffer($util.base64.length(object.devicePublicKey)), 0);
+                else if (object.devicePublicKey.length >= 0)
+                    message.devicePublicKey = object.devicePublicKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RotateEpochMemberInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {waproto.RotateEpochMemberInput} message RotateEpochMemberInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RotateEpochMemberInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.deviceId = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.deviceId = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if (options.bytes === $String)
+                    object.epochStoragePublicKey = "";
+                else {
+                    object.epochStoragePublicKey = [];
+                    if (options.bytes !== $Array)
+                        object.epochStoragePublicKey = $util.newBuffer(object.epochStoragePublicKey);
+                }
+                if (options.bytes === $String)
+                    object.devicePublicKey = "";
+                else {
+                    object.devicePublicKey = [];
+                    if (options.bytes !== $Array)
+                        object.devicePublicKey = $util.newBuffer(object.devicePublicKey);
+                }
+            }
+            if (message.deviceId != null && $Object.hasOwnProperty.call(message, "deviceId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.deviceId = typeof message.deviceId === "number" ? $BigInt(message.deviceId) : $util.Long.fromBits(message.deviceId.low >>> 0, message.deviceId.high >>> 0, true).toBigInt();
+                else if (typeof message.deviceId === "number")
+                    object.deviceId = options.longs === $String ? $String(message.deviceId) : message.deviceId;
+                else
+                    object.deviceId = options.longs === $String ? $util.Long.prototype.toString.call(message.deviceId) : options.longs === $Number ? new $util.LongBits(message.deviceId.low >>> 0, message.deviceId.high >>> 0).toNumber(true) : message.deviceId;
+            if (message.epochStoragePublicKey != null && $Object.hasOwnProperty.call(message, "epochStoragePublicKey"))
+                object.epochStoragePublicKey = options.bytes === $String ? $util.base64.encode(message.epochStoragePublicKey, 0, message.epochStoragePublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochStoragePublicKey) : message.epochStoragePublicKey;
+            if (message.devicePublicKey != null && $Object.hasOwnProperty.call(message, "devicePublicKey"))
+                object.devicePublicKey = options.bytes === $String ? $util.base64.encode(message.devicePublicKey, 0, message.devicePublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.devicePublicKey) : message.devicePublicKey;
+            return object;
+        };
+
+        /**
+         * Converts this RotateEpochMemberInput to JSON.
+         * @function toJSON
+         * @memberof waproto.RotateEpochMemberInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RotateEpochMemberInput.prototype.toJSON = function() {
+            return RotateEpochMemberInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for RotateEpochMemberInput
+         * @function getTypeUrl
+         * @memberof waproto.RotateEpochMemberInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        RotateEpochMemberInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.RotateEpochMemberInput";
+        };
+
+        return RotateEpochMemberInput;
+    })();
+
+    waproto.RotateEpochOutput = (function() {
+
+        /**
+         * Properties of a RotateEpochOutput.
+         * @typedef {Object} waproto.RotateEpochOutput.$Properties
+         * @property {Uint8Array|null} [newEpochRootKey] RotateEpochOutput newEpochRootKey
+         * @property {number|Long|null} [newEpochAnonId] RotateEpochOutput newEpochAnonId
+         * @property {number|Long|null} [newEpochFbid] RotateEpochOutput newEpochFbid
+         * @property {Uint8Array|null} [epochAnonId] RotateEpochOutput epochAnonId
+         * @property {waproto.BackwardEdge.$Properties|null} [backwardEdge] RotateEpochOutput backwardEdge
+         * @property {Array.<waproto.RotateEpochMemberEdge.$Properties>|null} [memberEdges] RotateEpochOutput memberEdges
+         * @property {Uint8Array|null} [epochRootKeyFingerprint] RotateEpochOutput epochRootKeyFingerprint
+         * @property {string|null} [error] RotateEpochOutput error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a RotateEpochOutput.
+         * @memberof waproto
+         * @interface IRotateEpochOutput
+         * @augments waproto.RotateEpochOutput.$Properties
+         * @deprecated Use waproto.RotateEpochOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of a RotateEpochOutput.
+         * @typedef {waproto.RotateEpochOutput.$Properties} waproto.RotateEpochOutput.$Shape
+         */
+
+        /**
+         * Constructs a new RotateEpochOutput.
+         * @memberof waproto
+         * @classdesc Represents a RotateEpochOutput.
+         * @constructor
+         * @param {waproto.RotateEpochOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var RotateEpochOutput = function (properties) {
+            this.memberEdges = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * RotateEpochOutput newEpochRootKey.
+         * @member {Uint8Array|null|undefined} newEpochRootKey
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.newEpochRootKey = null;
+
+        /**
+         * RotateEpochOutput newEpochAnonId.
+         * @member {number|Long|null|undefined} newEpochAnonId
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.newEpochAnonId = null;
+
+        /**
+         * RotateEpochOutput newEpochFbid.
+         * @member {number|Long|null|undefined} newEpochFbid
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.newEpochFbid = null;
+
+        /**
+         * RotateEpochOutput epochAnonId.
+         * @member {Uint8Array|null|undefined} epochAnonId
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.epochAnonId = null;
+
+        /**
+         * RotateEpochOutput backwardEdge.
+         * @member {waproto.BackwardEdge.$Properties|null|undefined} backwardEdge
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.backwardEdge = null;
+
+        /**
+         * RotateEpochOutput memberEdges.
+         * @member {Array.<waproto.RotateEpochMemberEdge.$Properties>} memberEdges
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.memberEdges = $util.emptyArray;
+
+        /**
+         * RotateEpochOutput epochRootKeyFingerprint.
+         * @member {Uint8Array|null|undefined} epochRootKeyFingerprint
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.epochRootKeyFingerprint = null;
+
+        /**
+         * RotateEpochOutput error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         */
+        RotateEpochOutput.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_newEpochRootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["newEpochRootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_newEpochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["newEpochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_newEpochFbid", {
+            get: $util.oneOfGetter($oneOfFields = ["newEpochFbid"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_epochAnonId", {
+            get: $util.oneOfGetter($oneOfFields = ["epochAnonId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_backwardEdge", {
+            get: $util.oneOfGetter($oneOfFields = ["backwardEdge"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_epochRootKeyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["epochRootKeyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RotateEpochOutput.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new RotateEpochOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {waproto.RotateEpochOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.RotateEpochOutput} RotateEpochOutput instance
+         * @type {{
+         *   (properties: waproto.RotateEpochOutput.$Shape): waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape;
+         *   (properties?: waproto.RotateEpochOutput.$Properties): waproto.RotateEpochOutput;
+         * }}
+         */
+        RotateEpochOutput.create = function(properties) {
+            return new RotateEpochOutput(properties);
+        };
+
+        /**
+         * Encodes the specified RotateEpochOutput message. Does not implicitly {@link waproto.RotateEpochOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {waproto.RotateEpochOutput.$Properties} message RotateEpochOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.newEpochRootKey != null && $Object.hasOwnProperty.call(message, "newEpochRootKey"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.newEpochRootKey);
+            if (message.newEpochAnonId != null && $Object.hasOwnProperty.call(message, "newEpochAnonId"))
+                writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.newEpochAnonId);
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.epochAnonId);
+            if (message.backwardEdge != null && $Object.hasOwnProperty.call(message, "backwardEdge"))
+                $root.waproto.BackwardEdge.encode(message.backwardEdge, writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+            if (message.memberEdges != null && message.memberEdges.length)
+                for (var i = 0; i < message.memberEdges.length; ++i)
+                    $root.waproto.RotateEpochMemberEdge.encode(message.memberEdges[i], writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
+            if (message.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "epochRootKeyFingerprint"))
+                writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.epochRootKeyFingerprint);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 7, wireType 2 =*/58).string(message.error);
+            if (message.newEpochFbid != null && $Object.hasOwnProperty.call(message, "newEpochFbid"))
+                writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.newEpochFbid);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RotateEpochOutput message, length delimited. Does not implicitly {@link waproto.RotateEpochOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {waproto.RotateEpochOutput.$Properties} message RotateEpochOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RotateEpochOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a RotateEpochOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape} RotateEpochOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.RotateEpochOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.newEpochRootKey = reader.bytes();
+                        message._newEpochRootKey = "newEpochRootKey";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.newEpochAnonId = reader.uint64();
+                        message._newEpochAnonId = "newEpochAnonId";
+                        continue;
+                    }
+                case 8: {
+                        if (wireType !== 0)
+                            break;
+                        message.newEpochFbid = reader.uint64();
+                        message._newEpochFbid = "newEpochFbid";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochAnonId = reader.bytes();
+                        message._epochAnonId = "epochAnonId";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.backwardEdge = $root.waproto.BackwardEdge.decode(reader, reader.uint32(), $undefined, _depth + 1, message.backwardEdge);
+                        message._backwardEdge = "backwardEdge";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.memberEdges && message.memberEdges.length))
+                            message.memberEdges = [];
+                        message.memberEdges.push($root.waproto.RotateEpochMemberEdge.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.epochRootKeyFingerprint = reader.bytes();
+                        message._epochRootKeyFingerprint = "epochRootKeyFingerprint";
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a RotateEpochOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape} RotateEpochOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RotateEpochOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a RotateEpochOutput message.
+         * @function verify
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RotateEpochOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.newEpochRootKey != null && $Object.hasOwnProperty.call(message, "newEpochRootKey")) {
+                properties._newEpochRootKey = 1;
+                if (!(message.newEpochRootKey && typeof message.newEpochRootKey.length === "number" || $util.isString(message.newEpochRootKey)))
+                    return "newEpochRootKey: buffer expected";
+            }
+            if (message.newEpochAnonId != null && $Object.hasOwnProperty.call(message, "newEpochAnonId")) {
+                properties._newEpochAnonId = 1;
+                if (!$util.isInteger(message.newEpochAnonId) && !(message.newEpochAnonId && $util.isInteger(message.newEpochAnonId.low) && $util.isInteger(message.newEpochAnonId.high)))
+                    return "newEpochAnonId: integer|Long expected";
+            }
+            if (message.newEpochFbid != null && $Object.hasOwnProperty.call(message, "newEpochFbid")) {
+                properties._newEpochFbid = 1;
+                if (!$util.isInteger(message.newEpochFbid) && !(message.newEpochFbid && $util.isInteger(message.newEpochFbid.low) && $util.isInteger(message.newEpochFbid.high)))
+                    return "newEpochFbid: integer|Long expected";
+            }
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId")) {
+                properties._epochAnonId = 1;
+                if (!(message.epochAnonId && typeof message.epochAnonId.length === "number" || $util.isString(message.epochAnonId)))
+                    return "epochAnonId: buffer expected";
+            }
+            if (message.backwardEdge != null && $Object.hasOwnProperty.call(message, "backwardEdge")) {
+                properties._backwardEdge = 1;
+                {
+                    var error = $root.waproto.BackwardEdge.verify(message.backwardEdge, _depth + 1);
+                    if (error)
+                        return "backwardEdge." + error;
+                }
+            }
+            if (message.memberEdges != null && $Object.hasOwnProperty.call(message, "memberEdges")) {
+                if (!$Array.isArray(message.memberEdges))
+                    return "memberEdges: array expected";
+                for (var i = 0; i < message.memberEdges.length; ++i) {
+                    var error = $root.waproto.RotateEpochMemberEdge.verify(message.memberEdges[i], _depth + 1);
+                    if (error)
+                        return "memberEdges." + error;
+                }
+            }
+            if (message.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "epochRootKeyFingerprint")) {
+                properties._epochRootKeyFingerprint = 1;
+                if (!(message.epochRootKeyFingerprint && typeof message.epochRootKeyFingerprint.length === "number" || $util.isString(message.epochRootKeyFingerprint)))
+                    return "epochRootKeyFingerprint: buffer expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RotateEpochOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.RotateEpochOutput} RotateEpochOutput
+         */
+        RotateEpochOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.RotateEpochOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.RotateEpochOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.RotateEpochOutput();
+            if (object.newEpochRootKey != null)
+                if (typeof object.newEpochRootKey === "string")
+                    $util.base64.decode(object.newEpochRootKey, message.newEpochRootKey = $util.newBuffer($util.base64.length(object.newEpochRootKey)), 0);
+                else if (object.newEpochRootKey.length >= 0)
+                    message.newEpochRootKey = object.newEpochRootKey;
+            if (object.newEpochAnonId != null)
+                if ($util.Long)
+                    message.newEpochAnonId = $util.Long.fromValue(object.newEpochAnonId, true);
+                else if (typeof object.newEpochAnonId === "string")
+                    message.newEpochAnonId = $parseInt(object.newEpochAnonId, 10);
+                else if (typeof object.newEpochAnonId === "number")
+                    message.newEpochAnonId = object.newEpochAnonId;
+                else if (typeof object.newEpochAnonId === "object")
+                    message.newEpochAnonId = new $util.LongBits(object.newEpochAnonId.low >>> 0, object.newEpochAnonId.high >>> 0).toNumber(true);
+            if (object.newEpochFbid != null)
+                if ($util.Long)
+                    message.newEpochFbid = $util.Long.fromValue(object.newEpochFbid, true);
+                else if (typeof object.newEpochFbid === "string")
+                    message.newEpochFbid = $parseInt(object.newEpochFbid, 10);
+                else if (typeof object.newEpochFbid === "number")
+                    message.newEpochFbid = object.newEpochFbid;
+                else if (typeof object.newEpochFbid === "object")
+                    message.newEpochFbid = new $util.LongBits(object.newEpochFbid.low >>> 0, object.newEpochFbid.high >>> 0).toNumber(true);
+            if (object.epochAnonId != null)
+                if (typeof object.epochAnonId === "string")
+                    $util.base64.decode(object.epochAnonId, message.epochAnonId = $util.newBuffer($util.base64.length(object.epochAnonId)), 0);
+                else if (object.epochAnonId.length >= 0)
+                    message.epochAnonId = object.epochAnonId;
+            if (object.backwardEdge != null) {
+                if (!$util.isObject(object.backwardEdge))
+                    throw $TypeError(".waproto.RotateEpochOutput.backwardEdge: object expected");
+                message.backwardEdge = $root.waproto.BackwardEdge.fromObject(object.backwardEdge, _depth + 1);
+            }
+            if (object.memberEdges) {
+                if (!$Array.isArray(object.memberEdges))
+                    throw $TypeError(".waproto.RotateEpochOutput.memberEdges: array expected");
+                message.memberEdges = $Array(object.memberEdges.length);
+                for (var i = 0; i < object.memberEdges.length; ++i) {
+                    if (!$util.isObject(object.memberEdges[i]))
+                        throw $TypeError(".waproto.RotateEpochOutput.memberEdges: object expected");
+                    message.memberEdges[i] = $root.waproto.RotateEpochMemberEdge.fromObject(object.memberEdges[i], _depth + 1);
+                }
+            }
+            if (object.epochRootKeyFingerprint != null)
+                if (typeof object.epochRootKeyFingerprint === "string")
+                    $util.base64.decode(object.epochRootKeyFingerprint, message.epochRootKeyFingerprint = $util.newBuffer($util.base64.length(object.epochRootKeyFingerprint)), 0);
+                else if (object.epochRootKeyFingerprint.length >= 0)
+                    message.epochRootKeyFingerprint = object.epochRootKeyFingerprint;
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RotateEpochOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {waproto.RotateEpochOutput} message RotateEpochOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RotateEpochOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.memberEdges = [];
+            if (message.newEpochRootKey != null && $Object.hasOwnProperty.call(message, "newEpochRootKey"))
+                object.newEpochRootKey = options.bytes === $String ? $util.base64.encode(message.newEpochRootKey, 0, message.newEpochRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.newEpochRootKey) : message.newEpochRootKey;
+            if (message.newEpochAnonId != null && $Object.hasOwnProperty.call(message, "newEpochAnonId"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.newEpochAnonId = typeof message.newEpochAnonId === "number" ? $BigInt(message.newEpochAnonId) : $util.Long.fromBits(message.newEpochAnonId.low >>> 0, message.newEpochAnonId.high >>> 0, true).toBigInt();
+                else if (typeof message.newEpochAnonId === "number")
+                    object.newEpochAnonId = options.longs === $String ? $String(message.newEpochAnonId) : message.newEpochAnonId;
+                else
+                    object.newEpochAnonId = options.longs === $String ? $util.Long.prototype.toString.call(message.newEpochAnonId) : options.longs === $Number ? new $util.LongBits(message.newEpochAnonId.low >>> 0, message.newEpochAnonId.high >>> 0).toNumber(true) : message.newEpochAnonId;
+            if (message.epochAnonId != null && $Object.hasOwnProperty.call(message, "epochAnonId"))
+                object.epochAnonId = options.bytes === $String ? $util.base64.encode(message.epochAnonId, 0, message.epochAnonId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochAnonId) : message.epochAnonId;
+            if (message.backwardEdge != null && $Object.hasOwnProperty.call(message, "backwardEdge"))
+                object.backwardEdge = $root.waproto.BackwardEdge.toObject(message.backwardEdge, options, _depth + 1);
+            if (message.memberEdges && message.memberEdges.length) {
+                object.memberEdges = $Array(message.memberEdges.length);
+                for (var j = 0; j < message.memberEdges.length; ++j)
+                    object.memberEdges[j] = $root.waproto.RotateEpochMemberEdge.toObject(message.memberEdges[j], options, _depth + 1);
+            }
+            if (message.epochRootKeyFingerprint != null && $Object.hasOwnProperty.call(message, "epochRootKeyFingerprint"))
+                object.epochRootKeyFingerprint = options.bytes === $String ? $util.base64.encode(message.epochRootKeyFingerprint, 0, message.epochRootKeyFingerprint.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.epochRootKeyFingerprint) : message.epochRootKeyFingerprint;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            if (message.newEpochFbid != null && $Object.hasOwnProperty.call(message, "newEpochFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.newEpochFbid = typeof message.newEpochFbid === "number" ? $BigInt(message.newEpochFbid) : $util.Long.fromBits(message.newEpochFbid.low >>> 0, message.newEpochFbid.high >>> 0, true).toBigInt();
+                else if (typeof message.newEpochFbid === "number")
+                    object.newEpochFbid = options.longs === $String ? $String(message.newEpochFbid) : message.newEpochFbid;
+                else
+                    object.newEpochFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.newEpochFbid) : options.longs === $Number ? new $util.LongBits(message.newEpochFbid.low >>> 0, message.newEpochFbid.high >>> 0).toNumber(true) : message.newEpochFbid;
+            return object;
+        };
+
+        /**
+         * Converts this RotateEpochOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.RotateEpochOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RotateEpochOutput.prototype.toJSON = function() {
+            return RotateEpochOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for RotateEpochOutput
+         * @function getTypeUrl
+         * @memberof waproto.RotateEpochOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        RotateEpochOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.RotateEpochOutput";
+        };
+
+        return RotateEpochOutput;
+    })();
+
     waproto.RoutingInfo = (function() {
 
         /**
@@ -218258,324 +225061,6 @@ $root.waproto = (function() {
         };
 
         return StickerMetadata;
-    })();
-
-    waproto.SubProtocol = (function() {
-
-        /**
-         * Properties of a SubProtocol.
-         * @typedef {Object} waproto.SubProtocol.$Properties
-         * @property {Uint8Array|null} [payload] SubProtocol payload
-         * @property {number|null} [version] SubProtocol version
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-
-        /**
-         * Properties of a SubProtocol.
-         * @memberof waproto
-         * @interface ISubProtocol
-         * @augments waproto.SubProtocol.$Properties
-         * @deprecated Use waproto.SubProtocol.$Properties instead.
-         */
-
-        /**
-         * Shape of a SubProtocol.
-         * @typedef {waproto.SubProtocol.$Properties} waproto.SubProtocol.$Shape
-         */
-
-        /**
-         * Constructs a new SubProtocol.
-         * @memberof waproto
-         * @classdesc Represents a SubProtocol.
-         * @constructor
-         * @param {waproto.SubProtocol.$Properties=} [properties] Properties to set
-         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
-         */
-        var SubProtocol = function (properties) {
-            if (properties)
-                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
-                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
-                        this[keys[i]] = properties[keys[i]];
-        };
-
-        /**
-         * SubProtocol payload.
-         * @member {Uint8Array|null|undefined} payload
-         * @memberof waproto.SubProtocol
-         * @instance
-         */
-        SubProtocol.prototype.payload = null;
-
-        /**
-         * SubProtocol version.
-         * @member {number|null|undefined} version
-         * @memberof waproto.SubProtocol
-         * @instance
-         */
-        SubProtocol.prototype.version = null;
-
-        // OneOf field names bound to virtual getters and setters
-        var $oneOfFields;
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(SubProtocol.prototype, "_payload", {
-            get: $util.oneOfGetter($oneOfFields = ["payload"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        // Virtual OneOf for proto3 optional field
-        $Object.defineProperty(SubProtocol.prototype, "_version", {
-            get: $util.oneOfGetter($oneOfFields = ["version"]),
-            set: $util.oneOfSetter($oneOfFields)
-        });
-
-        /**
-         * Creates a new SubProtocol instance using the specified properties.
-         * @function create
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {waproto.SubProtocol.$Properties=} [properties] Properties to set
-         * @returns {waproto.SubProtocol} SubProtocol instance
-         * @type {{
-         *   (properties: waproto.SubProtocol.$Shape): waproto.SubProtocol & waproto.SubProtocol.$Shape;
-         *   (properties?: waproto.SubProtocol.$Properties): waproto.SubProtocol;
-         * }}
-         */
-        SubProtocol.create = function(properties) {
-            return new SubProtocol(properties);
-        };
-
-        /**
-         * Encodes the specified SubProtocol message. Does not implicitly {@link waproto.SubProtocol.verify|verify} messages.
-         * @function encode
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {waproto.SubProtocol.$Properties} message SubProtocol message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SubProtocol.encode = function (message, writer, _depth) {
-            if (!writer)
-                writer = $Writer.create();
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            if (message.payload != null && $Object.hasOwnProperty.call(message, "payload"))
-                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.payload);
-            if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
-                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.version);
-            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
-                for (var i = 0; i < message.$unknowns.length; ++i)
-                    writer.raw(message.$unknowns[i]);
-            return writer;
-        };
-
-        /**
-         * Encodes the specified SubProtocol message, length delimited. Does not implicitly {@link waproto.SubProtocol.verify|verify} messages.
-         * @function encodeDelimited
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {waproto.SubProtocol.$Properties} message SubProtocol message or plain object to encode
-         * @param {$protobuf.Writer} [writer] Writer to encode to
-         * @returns {$protobuf.Writer} Writer
-         */
-        SubProtocol.encodeDelimited = function(message, writer) {
-            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
-        };
-
-        /**
-         * Decodes a SubProtocol message from the specified reader or buffer.
-         * @function decode
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @param {number} [length] Message length if known beforehand
-         * @returns {waproto.SubProtocol & waproto.SubProtocol.$Shape} SubProtocol
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SubProtocol.decode = function (reader, length, _end, _depth, _target) {
-            if (!(reader instanceof $Reader))
-                reader = $Reader.create(reader);
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $Reader.recursionLimit)
-                throw $Error("max depth exceeded");
-            var end, message;
-            if (length === $undefined)
-                end = reader.len;
-            else {
-                end = reader.pos + length;
-                if (end > reader.len)
-                    throw $RangeError("index out of range");
-                length = reader.len;
-                reader.len = end;
-            }
-            message = _target || new $root.waproto.SubProtocol();
-            while (reader.pos < end) {
-                var start = reader.pos;
-                var tag = reader.tag();
-                if (tag === _end) {
-                    _end = $undefined;
-                    break;
-                }
-                var wireType = tag & 7;
-                switch (tag >>>= 3) {
-                case 1: {
-                        if (wireType !== 2)
-                            break;
-                        message.payload = reader.bytes();
-                        message._payload = "payload";
-                        continue;
-                    }
-                case 2: {
-                        if (wireType !== 0)
-                            break;
-                        message.version = reader.int32();
-                        message._version = "version";
-                        continue;
-                    }
-                }
-                reader.skipType(wireType, _depth, tag);
-                if (!reader.discardUnknown) {
-                    $util.makeProp(message, "$unknowns", false);
-                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
-                }
-            }
-            if (length !== $undefined) {
-                if (reader.pos !== end)
-                    throw $RangeError("index out of range");
-                reader.len = length;
-            }
-            if (_end !== $undefined)
-                throw $Error("missing end group");
-            return message;
-        };
-
-        /**
-         * Decodes a SubProtocol message from the specified reader or buffer, length delimited.
-         * @function decodeDelimited
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-         * @returns {waproto.SubProtocol & waproto.SubProtocol.$Shape} SubProtocol
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        SubProtocol.decodeDelimited = function(reader) {
-            if (!(reader instanceof $Reader))
-                reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
-        };
-
-        /**
-         * Verifies a SubProtocol message.
-         * @function verify
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {Object.<string,*>} message Plain object to verify
-         * @returns {string|null} `null` if valid, otherwise the reason why it is not
-         */
-        SubProtocol.verify = function (message, _depth) {
-            if (typeof message !== "object" || message === null)
-                return "object expected";
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                return "max depth exceeded";
-            var properties = {};
-            if (message.payload != null && $Object.hasOwnProperty.call(message, "payload")) {
-                properties._payload = 1;
-                if (!(message.payload && typeof message.payload.length === "number" || $util.isString(message.payload)))
-                    return "payload: buffer expected";
-            }
-            if (message.version != null && $Object.hasOwnProperty.call(message, "version")) {
-                properties._version = 1;
-                if (!$util.isInteger(message.version))
-                    return "version: integer expected";
-            }
-            return null;
-        };
-
-        /**
-         * Creates a SubProtocol message from a plain object. Also converts values to their respective internal types.
-         * @function fromObject
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {Object.<string,*>} object Plain object
-         * @returns {waproto.SubProtocol} SubProtocol
-         */
-        SubProtocol.fromObject = function (object, _depth) {
-            if (object instanceof $root.waproto.SubProtocol)
-                return object;
-            if (!$util.isObject(object))
-                throw $TypeError(".waproto.SubProtocol: object expected");
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var message = new $root.waproto.SubProtocol();
-            if (object.payload != null)
-                if (typeof object.payload === "string")
-                    $util.base64.decode(object.payload, message.payload = $util.newBuffer($util.base64.length(object.payload)), 0);
-                else if (object.payload.length >= 0)
-                    message.payload = object.payload;
-            if (object.version != null)
-                message.version = object.version | 0;
-            return message;
-        };
-
-        /**
-         * Creates a plain object from a SubProtocol message. Also converts values to other types if specified.
-         * @function toObject
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {waproto.SubProtocol} message SubProtocol
-         * @param {$protobuf.IConversionOptions} [options] Conversion options
-         * @returns {Object.<string,*>} Plain object
-         */
-        SubProtocol.toObject = function (message, options, _depth) {
-            if (!options)
-                options = {};
-            if (_depth === $undefined)
-                _depth = 0;
-            if (_depth > $util.recursionLimit)
-                throw $Error("max depth exceeded");
-            var object = {};
-            if (message.payload != null && $Object.hasOwnProperty.call(message, "payload"))
-                object.payload = options.bytes === $String ? $util.base64.encode(message.payload, 0, message.payload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.payload) : message.payload;
-            if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
-                object.version = message.version;
-            return object;
-        };
-
-        /**
-         * Converts this SubProtocol to JSON.
-         * @function toJSON
-         * @memberof waproto.SubProtocol
-         * @instance
-         * @returns {Object.<string,*>} JSON object
-         */
-        SubProtocol.prototype.toJSON = function() {
-            return SubProtocol.toObject(this, $protobuf.util.toJSONOptions);
-        };
-
-        /**
-         * Gets the type url for SubProtocol
-         * @function getTypeUrl
-         * @memberof waproto.SubProtocol
-         * @static
-         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns {string} The type url
-         */
-        SubProtocol.getTypeUrl = function(prefix) {
-            if (prefix === $undefined)
-                prefix = "type.googleapis.com";
-            return prefix + "/waproto.SubProtocol";
-        };
-
-        return SubProtocol;
     })();
 
     waproto.SyncActionData = (function() {
@@ -265329,6 +271814,488 @@ $root.waproto = (function() {
         })();
 
         return VerifiedNameCertificate;
+    })();
+
+    waproto.VirtualDeviceOutput = (function() {
+
+        /**
+         * Properties of a VirtualDeviceOutput.
+         * @typedef {Object} waproto.VirtualDeviceOutput.$Properties
+         * @property {Uint8Array} vdId VirtualDeviceOutput vdId
+         * @property {Uint8Array} vdPublicKey VirtualDeviceOutput vdPublicKey
+         * @property {Uint8Array} vdEpochStoragePublicKey VirtualDeviceOutput vdEpochStoragePublicKey
+         * @property {Uint8Array} vdEpochStoragePublicKeySig VirtualDeviceOutput vdEpochStoragePublicKeySig
+         * @property {Uint8Array} ocmfRotationToken VirtualDeviceOutput ocmfRotationToken
+         * @property {Uint8Array} deviceEpochHmac VirtualDeviceOutput deviceEpochHmac
+         * @property {waproto.EncryptedSecretValuesOutput.$Properties} encryptedSecretValues VirtualDeviceOutput encryptedSecretValues
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VirtualDeviceOutput.
+         * @memberof waproto
+         * @interface IVirtualDeviceOutput
+         * @augments waproto.VirtualDeviceOutput.$Properties
+         * @deprecated Use waproto.VirtualDeviceOutput.$Properties instead.
+         */
+
+        /**
+         * Shape of a VirtualDeviceOutput.
+         * @typedef {waproto.VirtualDeviceOutput.$Properties} waproto.VirtualDeviceOutput.$Shape
+         */
+
+        /**
+         * Constructs a new VirtualDeviceOutput.
+         * @memberof waproto
+         * @classdesc Represents a VirtualDeviceOutput.
+         * @constructor
+         * @param {waproto.VirtualDeviceOutput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VirtualDeviceOutput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VirtualDeviceOutput vdId.
+         * @member {Uint8Array} vdId
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.vdId = $util.newBuffer([]);
+
+        /**
+         * VirtualDeviceOutput vdPublicKey.
+         * @member {Uint8Array} vdPublicKey
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.vdPublicKey = $util.newBuffer([]);
+
+        /**
+         * VirtualDeviceOutput vdEpochStoragePublicKey.
+         * @member {Uint8Array} vdEpochStoragePublicKey
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.vdEpochStoragePublicKey = $util.newBuffer([]);
+
+        /**
+         * VirtualDeviceOutput vdEpochStoragePublicKeySig.
+         * @member {Uint8Array} vdEpochStoragePublicKeySig
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.vdEpochStoragePublicKeySig = $util.newBuffer([]);
+
+        /**
+         * VirtualDeviceOutput ocmfRotationToken.
+         * @member {Uint8Array} ocmfRotationToken
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.ocmfRotationToken = $util.newBuffer([]);
+
+        /**
+         * VirtualDeviceOutput deviceEpochHmac.
+         * @member {Uint8Array} deviceEpochHmac
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.deviceEpochHmac = $util.newBuffer([]);
+
+        /**
+         * VirtualDeviceOutput encryptedSecretValues.
+         * @member {waproto.EncryptedSecretValuesOutput.$Properties} encryptedSecretValues
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         */
+        VirtualDeviceOutput.prototype.encryptedSecretValues = null;
+
+        /**
+         * Creates a new VirtualDeviceOutput instance using the specified properties.
+         * @function create
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {waproto.VirtualDeviceOutput.$Properties=} [properties] Properties to set
+         * @returns {waproto.VirtualDeviceOutput} VirtualDeviceOutput instance
+         * @type {{
+         *   (properties: waproto.VirtualDeviceOutput.$Shape): waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape;
+         *   (properties?: waproto.VirtualDeviceOutput.$Properties): waproto.VirtualDeviceOutput;
+         * }}
+         */
+        VirtualDeviceOutput.create = function(properties) {
+            return new VirtualDeviceOutput(properties);
+        };
+
+        /**
+         * Encodes the specified VirtualDeviceOutput message. Does not implicitly {@link waproto.VirtualDeviceOutput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {waproto.VirtualDeviceOutput.$Properties} message VirtualDeviceOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VirtualDeviceOutput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.vdId);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.vdPublicKey);
+            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.vdEpochStoragePublicKey);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.vdEpochStoragePublicKeySig);
+            writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.ocmfRotationToken);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.deviceEpochHmac);
+            $root.waproto.EncryptedSecretValuesOutput.encode(message.encryptedSecretValues, writer.uint32(/* id 7, wireType 2 =*/58).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VirtualDeviceOutput message, length delimited. Does not implicitly {@link waproto.VirtualDeviceOutput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {waproto.VirtualDeviceOutput.$Properties} message VirtualDeviceOutput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VirtualDeviceOutput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VirtualDeviceOutput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape} VirtualDeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VirtualDeviceOutput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VirtualDeviceOutput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.vdId = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.vdPublicKey = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.vdEpochStoragePublicKey = reader.bytes();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.vdEpochStoragePublicKeySig = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.ocmfRotationToken = reader.bytes();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.deviceEpochHmac = reader.bytes();
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedSecretValues = $root.waproto.EncryptedSecretValuesOutput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encryptedSecretValues);
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "vdId"))
+                throw $util.ProtocolError("missing required 'vdId'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "vdPublicKey"))
+                throw $util.ProtocolError("missing required 'vdPublicKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "vdEpochStoragePublicKey"))
+                throw $util.ProtocolError("missing required 'vdEpochStoragePublicKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "vdEpochStoragePublicKeySig"))
+                throw $util.ProtocolError("missing required 'vdEpochStoragePublicKeySig'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "ocmfRotationToken"))
+                throw $util.ProtocolError("missing required 'ocmfRotationToken'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "deviceEpochHmac"))
+                throw $util.ProtocolError("missing required 'deviceEpochHmac'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedSecretValues"))
+                throw $util.ProtocolError("missing required 'encryptedSecretValues'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a VirtualDeviceOutput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape} VirtualDeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VirtualDeviceOutput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VirtualDeviceOutput message.
+         * @function verify
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VirtualDeviceOutput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.vdId && typeof message.vdId.length === "number" || $util.isString(message.vdId)))
+                return "vdId: buffer expected";
+            if (!(message.vdPublicKey && typeof message.vdPublicKey.length === "number" || $util.isString(message.vdPublicKey)))
+                return "vdPublicKey: buffer expected";
+            if (!(message.vdEpochStoragePublicKey && typeof message.vdEpochStoragePublicKey.length === "number" || $util.isString(message.vdEpochStoragePublicKey)))
+                return "vdEpochStoragePublicKey: buffer expected";
+            if (!(message.vdEpochStoragePublicKeySig && typeof message.vdEpochStoragePublicKeySig.length === "number" || $util.isString(message.vdEpochStoragePublicKeySig)))
+                return "vdEpochStoragePublicKeySig: buffer expected";
+            if (!(message.ocmfRotationToken && typeof message.ocmfRotationToken.length === "number" || $util.isString(message.ocmfRotationToken)))
+                return "ocmfRotationToken: buffer expected";
+            if (!(message.deviceEpochHmac && typeof message.deviceEpochHmac.length === "number" || $util.isString(message.deviceEpochHmac)))
+                return "deviceEpochHmac: buffer expected";
+            {
+                var error = $root.waproto.EncryptedSecretValuesOutput.verify(message.encryptedSecretValues, _depth + 1);
+                if (error)
+                    return "encryptedSecretValues." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates a VirtualDeviceOutput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VirtualDeviceOutput} VirtualDeviceOutput
+         */
+        VirtualDeviceOutput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VirtualDeviceOutput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VirtualDeviceOutput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VirtualDeviceOutput();
+            if (object.vdId != null)
+                if (typeof object.vdId === "string")
+                    $util.base64.decode(object.vdId, message.vdId = $util.newBuffer($util.base64.length(object.vdId)), 0);
+                else if (object.vdId.length >= 0)
+                    message.vdId = object.vdId;
+            if (object.vdPublicKey != null)
+                if (typeof object.vdPublicKey === "string")
+                    $util.base64.decode(object.vdPublicKey, message.vdPublicKey = $util.newBuffer($util.base64.length(object.vdPublicKey)), 0);
+                else if (object.vdPublicKey.length >= 0)
+                    message.vdPublicKey = object.vdPublicKey;
+            if (object.vdEpochStoragePublicKey != null)
+                if (typeof object.vdEpochStoragePublicKey === "string")
+                    $util.base64.decode(object.vdEpochStoragePublicKey, message.vdEpochStoragePublicKey = $util.newBuffer($util.base64.length(object.vdEpochStoragePublicKey)), 0);
+                else if (object.vdEpochStoragePublicKey.length >= 0)
+                    message.vdEpochStoragePublicKey = object.vdEpochStoragePublicKey;
+            if (object.vdEpochStoragePublicKeySig != null)
+                if (typeof object.vdEpochStoragePublicKeySig === "string")
+                    $util.base64.decode(object.vdEpochStoragePublicKeySig, message.vdEpochStoragePublicKeySig = $util.newBuffer($util.base64.length(object.vdEpochStoragePublicKeySig)), 0);
+                else if (object.vdEpochStoragePublicKeySig.length >= 0)
+                    message.vdEpochStoragePublicKeySig = object.vdEpochStoragePublicKeySig;
+            if (object.ocmfRotationToken != null)
+                if (typeof object.ocmfRotationToken === "string")
+                    $util.base64.decode(object.ocmfRotationToken, message.ocmfRotationToken = $util.newBuffer($util.base64.length(object.ocmfRotationToken)), 0);
+                else if (object.ocmfRotationToken.length >= 0)
+                    message.ocmfRotationToken = object.ocmfRotationToken;
+            if (object.deviceEpochHmac != null)
+                if (typeof object.deviceEpochHmac === "string")
+                    $util.base64.decode(object.deviceEpochHmac, message.deviceEpochHmac = $util.newBuffer($util.base64.length(object.deviceEpochHmac)), 0);
+                else if (object.deviceEpochHmac.length >= 0)
+                    message.deviceEpochHmac = object.deviceEpochHmac;
+            if (object.encryptedSecretValues != null) {
+                if (!$util.isObject(object.encryptedSecretValues))
+                    throw $TypeError(".waproto.VirtualDeviceOutput.encryptedSecretValues: object expected");
+                message.encryptedSecretValues = $root.waproto.EncryptedSecretValuesOutput.fromObject(object.encryptedSecretValues, _depth + 1);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VirtualDeviceOutput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {waproto.VirtualDeviceOutput} message VirtualDeviceOutput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VirtualDeviceOutput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.vdId = "";
+                else {
+                    object.vdId = [];
+                    if (options.bytes !== $Array)
+                        object.vdId = $util.newBuffer(object.vdId);
+                }
+                if (options.bytes === $String)
+                    object.vdPublicKey = "";
+                else {
+                    object.vdPublicKey = [];
+                    if (options.bytes !== $Array)
+                        object.vdPublicKey = $util.newBuffer(object.vdPublicKey);
+                }
+                if (options.bytes === $String)
+                    object.vdEpochStoragePublicKey = "";
+                else {
+                    object.vdEpochStoragePublicKey = [];
+                    if (options.bytes !== $Array)
+                        object.vdEpochStoragePublicKey = $util.newBuffer(object.vdEpochStoragePublicKey);
+                }
+                if (options.bytes === $String)
+                    object.vdEpochStoragePublicKeySig = "";
+                else {
+                    object.vdEpochStoragePublicKeySig = [];
+                    if (options.bytes !== $Array)
+                        object.vdEpochStoragePublicKeySig = $util.newBuffer(object.vdEpochStoragePublicKeySig);
+                }
+                if (options.bytes === $String)
+                    object.ocmfRotationToken = "";
+                else {
+                    object.ocmfRotationToken = [];
+                    if (options.bytes !== $Array)
+                        object.ocmfRotationToken = $util.newBuffer(object.ocmfRotationToken);
+                }
+                if (options.bytes === $String)
+                    object.deviceEpochHmac = "";
+                else {
+                    object.deviceEpochHmac = [];
+                    if (options.bytes !== $Array)
+                        object.deviceEpochHmac = $util.newBuffer(object.deviceEpochHmac);
+                }
+                object.encryptedSecretValues = null;
+            }
+            if (message.vdId != null && $Object.hasOwnProperty.call(message, "vdId"))
+                object.vdId = options.bytes === $String ? $util.base64.encode(message.vdId, 0, message.vdId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.vdId) : message.vdId;
+            if (message.vdPublicKey != null && $Object.hasOwnProperty.call(message, "vdPublicKey"))
+                object.vdPublicKey = options.bytes === $String ? $util.base64.encode(message.vdPublicKey, 0, message.vdPublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.vdPublicKey) : message.vdPublicKey;
+            if (message.vdEpochStoragePublicKey != null && $Object.hasOwnProperty.call(message, "vdEpochStoragePublicKey"))
+                object.vdEpochStoragePublicKey = options.bytes === $String ? $util.base64.encode(message.vdEpochStoragePublicKey, 0, message.vdEpochStoragePublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.vdEpochStoragePublicKey) : message.vdEpochStoragePublicKey;
+            if (message.vdEpochStoragePublicKeySig != null && $Object.hasOwnProperty.call(message, "vdEpochStoragePublicKeySig"))
+                object.vdEpochStoragePublicKeySig = options.bytes === $String ? $util.base64.encode(message.vdEpochStoragePublicKeySig, 0, message.vdEpochStoragePublicKeySig.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.vdEpochStoragePublicKeySig) : message.vdEpochStoragePublicKeySig;
+            if (message.ocmfRotationToken != null && $Object.hasOwnProperty.call(message, "ocmfRotationToken"))
+                object.ocmfRotationToken = options.bytes === $String ? $util.base64.encode(message.ocmfRotationToken, 0, message.ocmfRotationToken.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.ocmfRotationToken) : message.ocmfRotationToken;
+            if (message.deviceEpochHmac != null && $Object.hasOwnProperty.call(message, "deviceEpochHmac"))
+                object.deviceEpochHmac = options.bytes === $String ? $util.base64.encode(message.deviceEpochHmac, 0, message.deviceEpochHmac.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.deviceEpochHmac) : message.deviceEpochHmac;
+            if (message.encryptedSecretValues != null && $Object.hasOwnProperty.call(message, "encryptedSecretValues"))
+                object.encryptedSecretValues = $root.waproto.EncryptedSecretValuesOutput.toObject(message.encryptedSecretValues, options, _depth + 1);
+            return object;
+        };
+
+        /**
+         * Converts this VirtualDeviceOutput to JSON.
+         * @function toJSON
+         * @memberof waproto.VirtualDeviceOutput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VirtualDeviceOutput.prototype.toJSON = function() {
+            return VirtualDeviceOutput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VirtualDeviceOutput
+         * @function getTypeUrl
+         * @memberof waproto.VirtualDeviceOutput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VirtualDeviceOutput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VirtualDeviceOutput";
+        };
+
+        return VirtualDeviceOutput;
     })();
 
     waproto.WallpaperSettings = (function() {

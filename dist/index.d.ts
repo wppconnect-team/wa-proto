@@ -5578,6 +5578,135 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a BackwardEdge.
+     * @deprecated Use waproto.BackwardEdge.$Properties instead.
+     */
+    interface IBackwardEdge extends waproto.BackwardEdge.$Properties {
+    }
+
+    /** Represents a BackwardEdge. */
+    class BackwardEdge {
+
+        /**
+         * Constructs a new BackwardEdge.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.BackwardEdge.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** BackwardEdge encryptedPrevEpochAnonId. */
+        encryptedPrevEpochAnonId?: (Uint8Array|null);
+
+        /** BackwardEdge encryptedPrevEpochRootKey. */
+        encryptedPrevEpochRootKey?: (Uint8Array|null);
+
+        /** BackwardEdge prevEpochRootKeyFingerprint. */
+        prevEpochRootKeyFingerprint?: (Uint8Array|null);
+
+        /**
+         * Creates a new BackwardEdge instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BackwardEdge instance
+         */
+        static create(properties: waproto.BackwardEdge.$Shape): waproto.BackwardEdge & waproto.BackwardEdge.$Shape;
+        static create(properties?: waproto.BackwardEdge.$Properties): waproto.BackwardEdge;
+
+        /**
+         * Encodes the specified BackwardEdge message. Does not implicitly {@link waproto.BackwardEdge.verify|verify} messages.
+         * @param message BackwardEdge message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.BackwardEdge.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BackwardEdge message, length delimited. Does not implicitly {@link waproto.BackwardEdge.verify|verify} messages.
+         * @param message BackwardEdge message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.BackwardEdge.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BackwardEdge message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.BackwardEdge & waproto.BackwardEdge.$Shape} BackwardEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BackwardEdge & waproto.BackwardEdge.$Shape;
+
+        /**
+         * Decodes a BackwardEdge message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.BackwardEdge & waproto.BackwardEdge.$Shape} BackwardEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BackwardEdge & waproto.BackwardEdge.$Shape;
+
+        /**
+         * Verifies a BackwardEdge message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BackwardEdge message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BackwardEdge
+         */
+        static fromObject(object: { [k: string]: any }): waproto.BackwardEdge;
+
+        /**
+         * Creates a plain object from a BackwardEdge message. Also converts values to other types if specified.
+         * @param message BackwardEdge
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.BackwardEdge, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BackwardEdge to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for BackwardEdge
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace BackwardEdge {
+
+        /** Properties of a BackwardEdge. */
+        interface $Properties {
+
+            /** BackwardEdge encryptedPrevEpochAnonId */
+            encryptedPrevEpochAnonId?: (Uint8Array|null);
+
+            /** BackwardEdge encryptedPrevEpochRootKey */
+            encryptedPrevEpochRootKey?: (Uint8Array|null);
+
+            /** BackwardEdge prevEpochRootKeyFingerprint */
+            prevEpochRootKeyFingerprint?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a BackwardEdge. */
+        type $Shape = waproto.BackwardEdge.$Properties;
+    }
+
+    /**
      * Properties of a BizAIMetadataSync.
      * @deprecated Use waproto.BizAIMetadataSync.$Properties instead.
      */
@@ -7149,7 +7278,10 @@ export namespace waproto {
             AI_RICH_RESPONSE_REMINDERS_ENABLED = 69,
 
             /** AI_STOP_GENERATION_ENABLED value */
-            AI_STOP_GENERATION_ENABLED = 70
+            AI_STOP_GENERATION_ENABLED = 70,
+
+            /** AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED value */
+            AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71
         }
     }
 
@@ -15157,22 +15289,6 @@ export namespace waproto {
         }
     }
 
-    /** COMMAND_COMMAND_TYPE enum. */
-    enum COMMAND_COMMAND_TYPE {
-
-        /** EVERYONE value */
-        EVERYONE = 1,
-
-        /** SILENT value */
-        SILENT = 2,
-
-        /** AI value */
-        AI = 3,
-
-        /** AI_IMAGINE value */
-        AI_IMAGINE = 4
-    }
-
     /**
      * Properties of a CallLogRecord.
      * @deprecated Use waproto.CallLogRecord.$Properties instead.
@@ -19242,141 +19358,6 @@ export namespace waproto {
 
         /** Shape of a CombinedFingerprint. */
         type $Shape = waproto.CombinedFingerprint.$Properties;
-    }
-
-    /**
-     * Properties of a Command.
-     * @deprecated Use waproto.Command.$Properties instead.
-     */
-    interface ICommand extends waproto.Command.$Properties {
-    }
-
-    /** Represents a Command. */
-    class Command {
-
-        /**
-         * Constructs a new Command.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.Command.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** Command commandType. */
-        commandType?: (waproto.COMMAND_COMMAND_TYPE|null);
-
-        /** Command offset. */
-        offset?: (number|null);
-
-        /** Command length. */
-        length?: (number|null);
-
-        /** Command validationToken. */
-        validationToken?: (string|null);
-
-        /**
-         * Creates a new Command instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns Command instance
-         */
-        static create(properties: waproto.Command.$Shape): waproto.Command & waproto.Command.$Shape;
-        static create(properties?: waproto.Command.$Properties): waproto.Command;
-
-        /**
-         * Encodes the specified Command message. Does not implicitly {@link waproto.Command.verify|verify} messages.
-         * @param message Command message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.Command.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified Command message, length delimited. Does not implicitly {@link waproto.Command.verify|verify} messages.
-         * @param message Command message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.Command.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a Command message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.Command & waproto.Command.$Shape} Command
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Command & waproto.Command.$Shape;
-
-        /**
-         * Decodes a Command message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.Command & waproto.Command.$Shape} Command
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Command & waproto.Command.$Shape;
-
-        /**
-         * Verifies a Command message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a Command message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns Command
-         */
-        static fromObject(object: { [k: string]: any }): waproto.Command;
-
-        /**
-         * Creates a plain object from a Command message. Also converts values to other types if specified.
-         * @param message Command
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.Command, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this Command to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for Command
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace Command {
-
-        /** Properties of a Command. */
-        interface $Properties {
-
-            /** Command commandType */
-            commandType?: (waproto.COMMAND_COMMAND_TYPE|null);
-
-            /** Command offset */
-            offset?: (number|null);
-
-            /** Command length */
-            length?: (number|null);
-
-            /** Command validationToken */
-            validationToken?: (string|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a Command. */
-        type $Shape = waproto.Command.$Properties;
     }
 
     /**
@@ -23544,6 +23525,786 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a CreateBackupInput.
+     * @deprecated Use waproto.CreateBackupInput.$Properties instead.
+     */
+    interface ICreateBackupInput extends waproto.CreateBackupInput.$Properties {
+    }
+
+    /** Represents a CreateBackupInput. */
+    class CreateBackupInput {
+
+        /**
+         * Constructs a new CreateBackupInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.CreateBackupInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** CreateBackupInput recoveryCode. */
+        recoveryCode: string;
+
+        /** CreateBackupInput userId. */
+        userId: (number|Long);
+
+        /**
+         * Creates a new CreateBackupInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns CreateBackupInput instance
+         */
+        static create(properties: waproto.CreateBackupInput.$Shape): waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape;
+        static create(properties?: waproto.CreateBackupInput.$Properties): waproto.CreateBackupInput;
+
+        /**
+         * Encodes the specified CreateBackupInput message. Does not implicitly {@link waproto.CreateBackupInput.verify|verify} messages.
+         * @param message CreateBackupInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.CreateBackupInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified CreateBackupInput message, length delimited. Does not implicitly {@link waproto.CreateBackupInput.verify|verify} messages.
+         * @param message CreateBackupInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.CreateBackupInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a CreateBackupInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape} CreateBackupInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape;
+
+        /**
+         * Decodes a CreateBackupInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape} CreateBackupInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.CreateBackupInput & waproto.CreateBackupInput.$Shape;
+
+        /**
+         * Verifies a CreateBackupInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a CreateBackupInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns CreateBackupInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.CreateBackupInput;
+
+        /**
+         * Creates a plain object from a CreateBackupInput message. Also converts values to other types if specified.
+         * @param message CreateBackupInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.CreateBackupInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this CreateBackupInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for CreateBackupInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace CreateBackupInput {
+
+        /** Properties of a CreateBackupInput. */
+        interface $Properties {
+
+            /** CreateBackupInput recoveryCode */
+            recoveryCode: string;
+
+            /** CreateBackupInput userId */
+            userId: (number|Long);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a CreateBackupInput. */
+        type $Shape = waproto.CreateBackupInput.$Properties;
+    }
+
+    /**
+     * Properties of a CreateBackupOutput.
+     * @deprecated Use waproto.CreateBackupOutput.$Properties instead.
+     */
+    interface ICreateBackupOutput extends waproto.CreateBackupOutput.$Properties {
+    }
+
+    /** Represents a CreateBackupOutput. */
+    class CreateBackupOutput {
+
+        /**
+         * Constructs a new CreateBackupOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.CreateBackupOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** CreateBackupOutput device. */
+        device?: (waproto.DeviceOutput.$Properties|null);
+
+        /** CreateBackupOutput virtualDevice. */
+        virtualDevice?: (waproto.VirtualDeviceOutput.$Properties|null);
+
+        /** CreateBackupOutput epoch0. */
+        epoch0?: (waproto.Epoch0Output.$Properties|null);
+
+        /** CreateBackupOutput mailboxRootKey. */
+        mailboxRootKey?: (Uint8Array|null);
+
+        /** CreateBackupOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new CreateBackupOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns CreateBackupOutput instance
+         */
+        static create(properties: waproto.CreateBackupOutput.$Shape): waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape;
+        static create(properties?: waproto.CreateBackupOutput.$Properties): waproto.CreateBackupOutput;
+
+        /**
+         * Encodes the specified CreateBackupOutput message. Does not implicitly {@link waproto.CreateBackupOutput.verify|verify} messages.
+         * @param message CreateBackupOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.CreateBackupOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified CreateBackupOutput message, length delimited. Does not implicitly {@link waproto.CreateBackupOutput.verify|verify} messages.
+         * @param message CreateBackupOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.CreateBackupOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a CreateBackupOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape} CreateBackupOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape;
+
+        /**
+         * Decodes a CreateBackupOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape} CreateBackupOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.CreateBackupOutput & waproto.CreateBackupOutput.$Shape;
+
+        /**
+         * Verifies a CreateBackupOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a CreateBackupOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns CreateBackupOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.CreateBackupOutput;
+
+        /**
+         * Creates a plain object from a CreateBackupOutput message. Also converts values to other types if specified.
+         * @param message CreateBackupOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.CreateBackupOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this CreateBackupOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for CreateBackupOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace CreateBackupOutput {
+
+        /** Properties of a CreateBackupOutput. */
+        interface $Properties {
+
+            /** CreateBackupOutput device */
+            device?: (waproto.DeviceOutput.$Properties|null);
+
+            /** CreateBackupOutput virtualDevice */
+            virtualDevice?: (waproto.VirtualDeviceOutput.$Properties|null);
+
+            /** CreateBackupOutput epoch0 */
+            epoch0?: (waproto.Epoch0Output.$Properties|null);
+
+            /** CreateBackupOutput mailboxRootKey */
+            mailboxRootKey?: (Uint8Array|null);
+
+            /** CreateBackupOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a CreateBackupOutput. */
+        type $Shape = waproto.CreateBackupOutput.$Properties;
+    }
+
+    /**
+     * Properties of a DecryptMessageInput.
+     * @deprecated Use waproto.DecryptMessageInput.$Properties instead.
+     */
+    interface IDecryptMessageInput extends waproto.DecryptMessageInput.$Properties {
+    }
+
+    /** Represents a DecryptMessageInput. */
+    class DecryptMessageInput {
+
+        /**
+         * Constructs a new DecryptMessageInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DecryptMessageInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DecryptMessageInput epochRootKey. */
+        epochRootKey: Uint8Array;
+
+        /** DecryptMessageInput epochAnonId. */
+        epochAnonId: Uint8Array;
+
+        /** DecryptMessageInput threadId. */
+        threadId: string;
+
+        /** DecryptMessageInput encryptionVersion. */
+        encryptionVersion: number;
+
+        /** DecryptMessageInput ciphertext. */
+        ciphertext: Uint8Array;
+
+        /**
+         * Creates a new DecryptMessageInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DecryptMessageInput instance
+         */
+        static create(properties: waproto.DecryptMessageInput.$Shape): waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape;
+        static create(properties?: waproto.DecryptMessageInput.$Properties): waproto.DecryptMessageInput;
+
+        /**
+         * Encodes the specified DecryptMessageInput message. Does not implicitly {@link waproto.DecryptMessageInput.verify|verify} messages.
+         * @param message DecryptMessageInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DecryptMessageInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DecryptMessageInput message, length delimited. Does not implicitly {@link waproto.DecryptMessageInput.verify|verify} messages.
+         * @param message DecryptMessageInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DecryptMessageInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DecryptMessageInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape} DecryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape;
+
+        /**
+         * Decodes a DecryptMessageInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape} DecryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DecryptMessageInput & waproto.DecryptMessageInput.$Shape;
+
+        /**
+         * Verifies a DecryptMessageInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DecryptMessageInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DecryptMessageInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DecryptMessageInput;
+
+        /**
+         * Creates a plain object from a DecryptMessageInput message. Also converts values to other types if specified.
+         * @param message DecryptMessageInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DecryptMessageInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DecryptMessageInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DecryptMessageInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DecryptMessageInput {
+
+        /** Properties of a DecryptMessageInput. */
+        interface $Properties {
+
+            /** DecryptMessageInput epochRootKey */
+            epochRootKey: Uint8Array;
+
+            /** DecryptMessageInput epochAnonId */
+            epochAnonId: Uint8Array;
+
+            /** DecryptMessageInput threadId */
+            threadId: string;
+
+            /** DecryptMessageInput encryptionVersion */
+            encryptionVersion: number;
+
+            /** DecryptMessageInput ciphertext */
+            ciphertext: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DecryptMessageInput. */
+        type $Shape = waproto.DecryptMessageInput.$Properties;
+    }
+
+    /**
+     * Properties of a DecryptMessageOutput.
+     * @deprecated Use waproto.DecryptMessageOutput.$Properties instead.
+     */
+    interface IDecryptMessageOutput extends waproto.DecryptMessageOutput.$Properties {
+    }
+
+    /** Represents a DecryptMessageOutput. */
+    class DecryptMessageOutput {
+
+        /**
+         * Constructs a new DecryptMessageOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DecryptMessageOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DecryptMessageOutput plaintextPayload. */
+        plaintextPayload?: (Uint8Array|null);
+
+        /** DecryptMessageOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new DecryptMessageOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DecryptMessageOutput instance
+         */
+        static create(properties: waproto.DecryptMessageOutput.$Shape): waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape;
+        static create(properties?: waproto.DecryptMessageOutput.$Properties): waproto.DecryptMessageOutput;
+
+        /**
+         * Encodes the specified DecryptMessageOutput message. Does not implicitly {@link waproto.DecryptMessageOutput.verify|verify} messages.
+         * @param message DecryptMessageOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DecryptMessageOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DecryptMessageOutput message, length delimited. Does not implicitly {@link waproto.DecryptMessageOutput.verify|verify} messages.
+         * @param message DecryptMessageOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DecryptMessageOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DecryptMessageOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape} DecryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape;
+
+        /**
+         * Decodes a DecryptMessageOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape} DecryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DecryptMessageOutput & waproto.DecryptMessageOutput.$Shape;
+
+        /**
+         * Verifies a DecryptMessageOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DecryptMessageOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DecryptMessageOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DecryptMessageOutput;
+
+        /**
+         * Creates a plain object from a DecryptMessageOutput message. Also converts values to other types if specified.
+         * @param message DecryptMessageOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DecryptMessageOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DecryptMessageOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DecryptMessageOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DecryptMessageOutput {
+
+        /** Properties of a DecryptMessageOutput. */
+        interface $Properties {
+
+            /** DecryptMessageOutput plaintextPayload */
+            plaintextPayload?: (Uint8Array|null);
+
+            /** DecryptMessageOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DecryptMessageOutput. */
+        type $Shape = waproto.DecryptMessageOutput.$Properties;
+    }
+
+    /**
+     * Properties of a DeriveMessageKeyInput.
+     * @deprecated Use waproto.DeriveMessageKeyInput.$Properties instead.
+     */
+    interface IDeriveMessageKeyInput extends waproto.DeriveMessageKeyInput.$Properties {
+    }
+
+    /** Represents a DeriveMessageKeyInput. */
+    class DeriveMessageKeyInput {
+
+        /**
+         * Constructs a new DeriveMessageKeyInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DeriveMessageKeyInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DeriveMessageKeyInput epochRootKey. */
+        epochRootKey: Uint8Array;
+
+        /** DeriveMessageKeyInput epochAnonId. */
+        epochAnonId: Uint8Array;
+
+        /** DeriveMessageKeyInput threadId. */
+        threadId: string;
+
+        /**
+         * Creates a new DeriveMessageKeyInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeriveMessageKeyInput instance
+         */
+        static create(properties: waproto.DeriveMessageKeyInput.$Shape): waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape;
+        static create(properties?: waproto.DeriveMessageKeyInput.$Properties): waproto.DeriveMessageKeyInput;
+
+        /**
+         * Encodes the specified DeriveMessageKeyInput message. Does not implicitly {@link waproto.DeriveMessageKeyInput.verify|verify} messages.
+         * @param message DeriveMessageKeyInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DeriveMessageKeyInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeriveMessageKeyInput message, length delimited. Does not implicitly {@link waproto.DeriveMessageKeyInput.verify|verify} messages.
+         * @param message DeriveMessageKeyInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DeriveMessageKeyInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeriveMessageKeyInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape} DeriveMessageKeyInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape;
+
+        /**
+         * Decodes a DeriveMessageKeyInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape} DeriveMessageKeyInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeriveMessageKeyInput & waproto.DeriveMessageKeyInput.$Shape;
+
+        /**
+         * Verifies a DeriveMessageKeyInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeriveMessageKeyInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeriveMessageKeyInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DeriveMessageKeyInput;
+
+        /**
+         * Creates a plain object from a DeriveMessageKeyInput message. Also converts values to other types if specified.
+         * @param message DeriveMessageKeyInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DeriveMessageKeyInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeriveMessageKeyInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DeriveMessageKeyInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DeriveMessageKeyInput {
+
+        /** Properties of a DeriveMessageKeyInput. */
+        interface $Properties {
+
+            /** DeriveMessageKeyInput epochRootKey */
+            epochRootKey: Uint8Array;
+
+            /** DeriveMessageKeyInput epochAnonId */
+            epochAnonId: Uint8Array;
+
+            /** DeriveMessageKeyInput threadId */
+            threadId: string;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DeriveMessageKeyInput. */
+        type $Shape = waproto.DeriveMessageKeyInput.$Properties;
+    }
+
+    /**
+     * Properties of a DeriveMessageKeyOutput.
+     * @deprecated Use waproto.DeriveMessageKeyOutput.$Properties instead.
+     */
+    interface IDeriveMessageKeyOutput extends waproto.DeriveMessageKeyOutput.$Properties {
+    }
+
+    /** Represents a DeriveMessageKeyOutput. */
+    class DeriveMessageKeyOutput {
+
+        /**
+         * Constructs a new DeriveMessageKeyOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DeriveMessageKeyOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DeriveMessageKeyOutput messageKey. */
+        messageKey?: (Uint8Array|null);
+
+        /** DeriveMessageKeyOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new DeriveMessageKeyOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeriveMessageKeyOutput instance
+         */
+        static create(properties: waproto.DeriveMessageKeyOutput.$Shape): waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape;
+        static create(properties?: waproto.DeriveMessageKeyOutput.$Properties): waproto.DeriveMessageKeyOutput;
+
+        /**
+         * Encodes the specified DeriveMessageKeyOutput message. Does not implicitly {@link waproto.DeriveMessageKeyOutput.verify|verify} messages.
+         * @param message DeriveMessageKeyOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DeriveMessageKeyOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeriveMessageKeyOutput message, length delimited. Does not implicitly {@link waproto.DeriveMessageKeyOutput.verify|verify} messages.
+         * @param message DeriveMessageKeyOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DeriveMessageKeyOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeriveMessageKeyOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape} DeriveMessageKeyOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape;
+
+        /**
+         * Decodes a DeriveMessageKeyOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape} DeriveMessageKeyOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeriveMessageKeyOutput & waproto.DeriveMessageKeyOutput.$Shape;
+
+        /**
+         * Verifies a DeriveMessageKeyOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeriveMessageKeyOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeriveMessageKeyOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DeriveMessageKeyOutput;
+
+        /**
+         * Creates a plain object from a DeriveMessageKeyOutput message. Also converts values to other types if specified.
+         * @param message DeriveMessageKeyOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DeriveMessageKeyOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeriveMessageKeyOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DeriveMessageKeyOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DeriveMessageKeyOutput {
+
+        /** Properties of a DeriveMessageKeyOutput. */
+        interface $Properties {
+
+            /** DeriveMessageKeyOutput messageKey */
+            messageKey?: (Uint8Array|null);
+
+            /** DeriveMessageKeyOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DeriveMessageKeyOutput. */
+        type $Shape = waproto.DeriveMessageKeyOutput.$Properties;
+    }
+
+    /**
      * Properties of a DeviceCapabilities.
      * @deprecated Use waproto.DeviceCapabilities.$Properties instead.
      */
@@ -24885,6 +25646,177 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a DeviceOutput.
+     * @deprecated Use waproto.DeviceOutput.$Properties instead.
+     */
+    interface IDeviceOutput extends waproto.DeviceOutput.$Properties {
+    }
+
+    /** Represents a DeviceOutput. */
+    class DeviceOutput {
+
+        /**
+         * Constructs a new DeviceOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DeviceOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DeviceOutput publicKey. */
+        publicKey: Uint8Array;
+
+        /** DeviceOutput epochAuthPublicKey. */
+        epochAuthPublicKey: Uint8Array;
+
+        /** DeviceOutput epochAuthPublicKeySig. */
+        epochAuthPublicKeySig: Uint8Array;
+
+        /** DeviceOutput epochStoragePublicKey. */
+        epochStoragePublicKey: Uint8Array;
+
+        /** DeviceOutput epochStoragePublicKeySig. */
+        epochStoragePublicKeySig: Uint8Array;
+
+        /** DeviceOutput supportedEncryptionVersions. */
+        supportedEncryptionVersions: number[];
+
+        /** DeviceOutput encryptionVersionSignature. */
+        encryptionVersionSignature: Uint8Array;
+
+        /** DeviceOutput clientVersion. */
+        clientVersion: number;
+
+        /** DeviceOutput ocmfClientState. */
+        ocmfClientState: Uint8Array;
+
+        /** DeviceOutput epochStoragePrivateKey. */
+        epochStoragePrivateKey: Uint8Array;
+
+        /**
+         * Creates a new DeviceOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeviceOutput instance
+         */
+        static create(properties: waproto.DeviceOutput.$Shape): waproto.DeviceOutput & waproto.DeviceOutput.$Shape;
+        static create(properties?: waproto.DeviceOutput.$Properties): waproto.DeviceOutput;
+
+        /**
+         * Encodes the specified DeviceOutput message. Does not implicitly {@link waproto.DeviceOutput.verify|verify} messages.
+         * @param message DeviceOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DeviceOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeviceOutput message, length delimited. Does not implicitly {@link waproto.DeviceOutput.verify|verify} messages.
+         * @param message DeviceOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DeviceOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeviceOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DeviceOutput & waproto.DeviceOutput.$Shape} DeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceOutput & waproto.DeviceOutput.$Shape;
+
+        /**
+         * Decodes a DeviceOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DeviceOutput & waproto.DeviceOutput.$Shape} DeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceOutput & waproto.DeviceOutput.$Shape;
+
+        /**
+         * Verifies a DeviceOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeviceOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeviceOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DeviceOutput;
+
+        /**
+         * Creates a plain object from a DeviceOutput message. Also converts values to other types if specified.
+         * @param message DeviceOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DeviceOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeviceOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DeviceOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DeviceOutput {
+
+        /** Properties of a DeviceOutput. */
+        interface $Properties {
+
+            /** DeviceOutput publicKey */
+            publicKey: Uint8Array;
+
+            /** DeviceOutput epochAuthPublicKey */
+            epochAuthPublicKey: Uint8Array;
+
+            /** DeviceOutput epochAuthPublicKeySig */
+            epochAuthPublicKeySig: Uint8Array;
+
+            /** DeviceOutput epochStoragePublicKey */
+            epochStoragePublicKey: Uint8Array;
+
+            /** DeviceOutput epochStoragePublicKeySig */
+            epochStoragePublicKeySig: Uint8Array;
+
+            /** DeviceOutput supportedEncryptionVersions */
+            supportedEncryptionVersions?: (number[]|null);
+
+            /** DeviceOutput encryptionVersionSignature */
+            encryptionVersionSignature: Uint8Array;
+
+            /** DeviceOutput clientVersion */
+            clientVersion: number;
+
+            /** DeviceOutput ocmfClientState */
+            ocmfClientState: Uint8Array;
+
+            /** DeviceOutput epochStoragePrivateKey */
+            epochStoragePrivateKey: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DeviceOutput. */
+        type $Shape = waproto.DeviceOutput.$Properties;
+    }
+
+    /**
      * Properties of a DeviceProps.
      * @deprecated Use waproto.DeviceProps.$Properties instead.
      */
@@ -26140,6 +27072,330 @@ export namespace waproto {
     }
 
     /**
+     * Properties of an EncryptMessageInput.
+     * @deprecated Use waproto.EncryptMessageInput.$Properties instead.
+     */
+    interface IEncryptMessageInput extends waproto.EncryptMessageInput.$Properties {
+    }
+
+    /** Represents an EncryptMessageInput. */
+    class EncryptMessageInput {
+
+        /**
+         * Constructs a new EncryptMessageInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.EncryptMessageInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** EncryptMessageInput epochRootKey. */
+        epochRootKey: Uint8Array;
+
+        /** EncryptMessageInput mailboxRootKey. */
+        mailboxRootKey: Uint8Array;
+
+        /** EncryptMessageInput orfClientState. */
+        orfClientState: Uint8Array;
+
+        /** EncryptMessageInput epochAnonId. */
+        epochAnonId: Uint8Array;
+
+        /** EncryptMessageInput epochId. */
+        epochId: (number|Long);
+
+        /** EncryptMessageInput threadId. */
+        threadId: string;
+
+        /** EncryptMessageInput waCanonicalUserFbid. */
+        waCanonicalUserFbid: (number|Long);
+
+        /** EncryptMessageInput timestampMs. */
+        timestampMs: (number|Long);
+
+        /** EncryptMessageInput backupId. */
+        backupId: (number|Long);
+
+        /** EncryptMessageInput plaintextPayload. */
+        plaintextPayload: Uint8Array;
+
+        /** EncryptMessageInput stanzaId. */
+        stanzaId: string;
+
+        /**
+         * Creates a new EncryptMessageInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns EncryptMessageInput instance
+         */
+        static create(properties: waproto.EncryptMessageInput.$Shape): waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape;
+        static create(properties?: waproto.EncryptMessageInput.$Properties): waproto.EncryptMessageInput;
+
+        /**
+         * Encodes the specified EncryptMessageInput message. Does not implicitly {@link waproto.EncryptMessageInput.verify|verify} messages.
+         * @param message EncryptMessageInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.EncryptMessageInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified EncryptMessageInput message, length delimited. Does not implicitly {@link waproto.EncryptMessageInput.verify|verify} messages.
+         * @param message EncryptMessageInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.EncryptMessageInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an EncryptMessageInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape} EncryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape;
+
+        /**
+         * Decodes an EncryptMessageInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape} EncryptMessageInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.EncryptMessageInput & waproto.EncryptMessageInput.$Shape;
+
+        /**
+         * Verifies an EncryptMessageInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an EncryptMessageInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns EncryptMessageInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.EncryptMessageInput;
+
+        /**
+         * Creates a plain object from an EncryptMessageInput message. Also converts values to other types if specified.
+         * @param message EncryptMessageInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.EncryptMessageInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this EncryptMessageInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for EncryptMessageInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace EncryptMessageInput {
+
+        /** Properties of an EncryptMessageInput. */
+        interface $Properties {
+
+            /** EncryptMessageInput epochRootKey */
+            epochRootKey: Uint8Array;
+
+            /** EncryptMessageInput mailboxRootKey */
+            mailboxRootKey: Uint8Array;
+
+            /** EncryptMessageInput orfClientState */
+            orfClientState: Uint8Array;
+
+            /** EncryptMessageInput epochAnonId */
+            epochAnonId: Uint8Array;
+
+            /** EncryptMessageInput epochId */
+            epochId: (number|Long);
+
+            /** EncryptMessageInput threadId */
+            threadId: string;
+
+            /** EncryptMessageInput waCanonicalUserFbid */
+            waCanonicalUserFbid: (number|Long);
+
+            /** EncryptMessageInput timestampMs */
+            timestampMs: (number|Long);
+
+            /** EncryptMessageInput backupId */
+            backupId: (number|Long);
+
+            /** EncryptMessageInput plaintextPayload */
+            plaintextPayload: Uint8Array;
+
+            /** EncryptMessageInput stanzaId */
+            stanzaId: string;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an EncryptMessageInput. */
+        type $Shape = waproto.EncryptMessageInput.$Properties;
+    }
+
+    /**
+     * Properties of an EncryptMessageOutput.
+     * @deprecated Use waproto.EncryptMessageOutput.$Properties instead.
+     */
+    interface IEncryptMessageOutput extends waproto.EncryptMessageOutput.$Properties {
+    }
+
+    /** Represents an EncryptMessageOutput. */
+    class EncryptMessageOutput {
+
+        /**
+         * Constructs a new EncryptMessageOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.EncryptMessageOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** EncryptMessageOutput encryptedProtobuf. */
+        encryptedProtobuf?: (Uint8Array|null);
+
+        /** EncryptMessageOutput orfThreadId. */
+        orfThreadId?: (Uint8Array|null);
+
+        /** EncryptMessageOutput valueSecretRef. */
+        valueSecretRef?: (string|null);
+
+        /** EncryptMessageOutput offlineThreadingId. */
+        offlineThreadingId?: (number|Long|null);
+
+        /** EncryptMessageOutput timestampMs. */
+        timestampMs?: (number|Long|null);
+
+        /** EncryptMessageOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new EncryptMessageOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns EncryptMessageOutput instance
+         */
+        static create(properties: waproto.EncryptMessageOutput.$Shape): waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape;
+        static create(properties?: waproto.EncryptMessageOutput.$Properties): waproto.EncryptMessageOutput;
+
+        /**
+         * Encodes the specified EncryptMessageOutput message. Does not implicitly {@link waproto.EncryptMessageOutput.verify|verify} messages.
+         * @param message EncryptMessageOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.EncryptMessageOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified EncryptMessageOutput message, length delimited. Does not implicitly {@link waproto.EncryptMessageOutput.verify|verify} messages.
+         * @param message EncryptMessageOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.EncryptMessageOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an EncryptMessageOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape} EncryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape;
+
+        /**
+         * Decodes an EncryptMessageOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape} EncryptMessageOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.EncryptMessageOutput & waproto.EncryptMessageOutput.$Shape;
+
+        /**
+         * Verifies an EncryptMessageOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an EncryptMessageOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns EncryptMessageOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.EncryptMessageOutput;
+
+        /**
+         * Creates a plain object from an EncryptMessageOutput message. Also converts values to other types if specified.
+         * @param message EncryptMessageOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.EncryptMessageOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this EncryptMessageOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for EncryptMessageOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace EncryptMessageOutput {
+
+        /** Properties of an EncryptMessageOutput. */
+        interface $Properties {
+
+            /** EncryptMessageOutput encryptedProtobuf */
+            encryptedProtobuf?: (Uint8Array|null);
+
+            /** EncryptMessageOutput orfThreadId */
+            orfThreadId?: (Uint8Array|null);
+
+            /** EncryptMessageOutput valueSecretRef */
+            valueSecretRef?: (string|null);
+
+            /** EncryptMessageOutput offlineThreadingId */
+            offlineThreadingId?: (number|Long|null);
+
+            /** EncryptMessageOutput timestampMs */
+            timestampMs?: (number|Long|null);
+
+            /** EncryptMessageOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an EncryptMessageOutput. */
+        type $Shape = waproto.EncryptMessageOutput.$Properties;
+    }
+
+    /**
      * Properties of an EncryptedPairingRequest.
      * @deprecated Use waproto.EncryptedPairingRequest.$Properties instead.
      */
@@ -26263,6 +27519,165 @@ export namespace waproto {
     }
 
     /**
+     * Properties of an EncryptedSecretValuesOutput.
+     * @deprecated Use waproto.EncryptedSecretValuesOutput.$Properties instead.
+     */
+    interface IEncryptedSecretValuesOutput extends waproto.EncryptedSecretValuesOutput.$Properties {
+    }
+
+    /** Represents an EncryptedSecretValuesOutput. */
+    class EncryptedSecretValuesOutput {
+
+        /**
+         * Constructs a new EncryptedSecretValuesOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.EncryptedSecretValuesOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** EncryptedSecretValuesOutput encryptedDevicePrivateKey. */
+        encryptedDevicePrivateKey: Uint8Array;
+
+        /** EncryptedSecretValuesOutput encryptedObliviousValidationTokenBlob. */
+        encryptedObliviousValidationTokenBlob: Uint8Array;
+
+        /** EncryptedSecretValuesOutput encryptedEpochStoragePrivateKey. */
+        encryptedEpochStoragePrivateKey: Uint8Array;
+
+        /** EncryptedSecretValuesOutput encryptedOcmfClientState. */
+        encryptedOcmfClientState: Uint8Array;
+
+        /** EncryptedSecretValuesOutput encryptedOrfClientStateV2. */
+        encryptedOrfClientStateV2?: (Uint8Array|null);
+
+        /** EncryptedSecretValuesOutput encryptedMailboxRootKeyBlob. */
+        encryptedMailboxRootKeyBlob: Uint8Array;
+
+        /** EncryptedSecretValuesOutput encryptedEpochAnonId. */
+        encryptedEpochAnonId: Uint8Array;
+
+        /** EncryptedSecretValuesOutput encryptedEpochRootKey. */
+        encryptedEpochRootKey: Uint8Array;
+
+        /**
+         * Creates a new EncryptedSecretValuesOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns EncryptedSecretValuesOutput instance
+         */
+        static create(properties: waproto.EncryptedSecretValuesOutput.$Shape): waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape;
+        static create(properties?: waproto.EncryptedSecretValuesOutput.$Properties): waproto.EncryptedSecretValuesOutput;
+
+        /**
+         * Encodes the specified EncryptedSecretValuesOutput message. Does not implicitly {@link waproto.EncryptedSecretValuesOutput.verify|verify} messages.
+         * @param message EncryptedSecretValuesOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.EncryptedSecretValuesOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified EncryptedSecretValuesOutput message, length delimited. Does not implicitly {@link waproto.EncryptedSecretValuesOutput.verify|verify} messages.
+         * @param message EncryptedSecretValuesOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.EncryptedSecretValuesOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an EncryptedSecretValuesOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape} EncryptedSecretValuesOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape;
+
+        /**
+         * Decodes an EncryptedSecretValuesOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape} EncryptedSecretValuesOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.EncryptedSecretValuesOutput & waproto.EncryptedSecretValuesOutput.$Shape;
+
+        /**
+         * Verifies an EncryptedSecretValuesOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an EncryptedSecretValuesOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns EncryptedSecretValuesOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.EncryptedSecretValuesOutput;
+
+        /**
+         * Creates a plain object from an EncryptedSecretValuesOutput message. Also converts values to other types if specified.
+         * @param message EncryptedSecretValuesOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.EncryptedSecretValuesOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this EncryptedSecretValuesOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for EncryptedSecretValuesOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace EncryptedSecretValuesOutput {
+
+        /** Properties of an EncryptedSecretValuesOutput. */
+        interface $Properties {
+
+            /** EncryptedSecretValuesOutput encryptedDevicePrivateKey */
+            encryptedDevicePrivateKey: Uint8Array;
+
+            /** EncryptedSecretValuesOutput encryptedObliviousValidationTokenBlob */
+            encryptedObliviousValidationTokenBlob: Uint8Array;
+
+            /** EncryptedSecretValuesOutput encryptedEpochStoragePrivateKey */
+            encryptedEpochStoragePrivateKey: Uint8Array;
+
+            /** EncryptedSecretValuesOutput encryptedOcmfClientState */
+            encryptedOcmfClientState: Uint8Array;
+
+            /** EncryptedSecretValuesOutput encryptedOrfClientStateV2 */
+            encryptedOrfClientStateV2?: (Uint8Array|null);
+
+            /** EncryptedSecretValuesOutput encryptedMailboxRootKeyBlob */
+            encryptedMailboxRootKeyBlob: Uint8Array;
+
+            /** EncryptedSecretValuesOutput encryptedEpochAnonId */
+            encryptedEpochAnonId: Uint8Array;
+
+            /** EncryptedSecretValuesOutput encryptedEpochRootKey */
+            encryptedEpochRootKey: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an EncryptedSecretValuesOutput. */
+        type $Shape = waproto.EncryptedSecretValuesOutput.$Properties;
+    }
+
+    /**
      * Properties of an EphemeralSetting.
      * @deprecated Use waproto.EphemeralSetting.$Properties instead.
      */
@@ -26383,6 +27798,159 @@ export namespace waproto {
 
         /** Shape of an EphemeralSetting. */
         type $Shape = waproto.EphemeralSetting.$Properties;
+    }
+
+    /**
+     * Properties of an Epoch0Output.
+     * @deprecated Use waproto.Epoch0Output.$Properties instead.
+     */
+    interface IEpoch0Output extends waproto.Epoch0Output.$Properties {
+    }
+
+    /** Represents an Epoch0Output. */
+    class Epoch0Output {
+
+        /**
+         * Constructs a new Epoch0Output.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.Epoch0Output.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** Epoch0Output epochFbid. */
+        epochFbid: (number|Long);
+
+        /** Epoch0Output epochAnonId. */
+        epochAnonId: Uint8Array;
+
+        /** Epoch0Output epochData. */
+        epochData: Uint8Array;
+
+        /** Epoch0Output wrappedRootKeyForSelf. */
+        wrappedRootKeyForSelf: Uint8Array;
+
+        /** Epoch0Output epochSignature. */
+        epochSignature: Uint8Array;
+
+        /** Epoch0Output epochRootKeyFingerprint. */
+        epochRootKeyFingerprint: Uint8Array;
+
+        /** Epoch0Output epochRootKey. */
+        epochRootKey?: (Uint8Array|null);
+
+        /**
+         * Creates a new Epoch0Output instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Epoch0Output instance
+         */
+        static create(properties: waproto.Epoch0Output.$Shape): waproto.Epoch0Output & waproto.Epoch0Output.$Shape;
+        static create(properties?: waproto.Epoch0Output.$Properties): waproto.Epoch0Output;
+
+        /**
+         * Encodes the specified Epoch0Output message. Does not implicitly {@link waproto.Epoch0Output.verify|verify} messages.
+         * @param message Epoch0Output message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.Epoch0Output.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Epoch0Output message, length delimited. Does not implicitly {@link waproto.Epoch0Output.verify|verify} messages.
+         * @param message Epoch0Output message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.Epoch0Output.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an Epoch0Output message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.Epoch0Output & waproto.Epoch0Output.$Shape} Epoch0Output
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Epoch0Output & waproto.Epoch0Output.$Shape;
+
+        /**
+         * Decodes an Epoch0Output message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.Epoch0Output & waproto.Epoch0Output.$Shape} Epoch0Output
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Epoch0Output & waproto.Epoch0Output.$Shape;
+
+        /**
+         * Verifies an Epoch0Output message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an Epoch0Output message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Epoch0Output
+         */
+        static fromObject(object: { [k: string]: any }): waproto.Epoch0Output;
+
+        /**
+         * Creates a plain object from an Epoch0Output message. Also converts values to other types if specified.
+         * @param message Epoch0Output
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.Epoch0Output, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Epoch0Output to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for Epoch0Output
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace Epoch0Output {
+
+        /** Properties of an Epoch0Output. */
+        interface $Properties {
+
+            /** Epoch0Output epochFbid */
+            epochFbid: (number|Long);
+
+            /** Epoch0Output epochAnonId */
+            epochAnonId: Uint8Array;
+
+            /** Epoch0Output epochData */
+            epochData: Uint8Array;
+
+            /** Epoch0Output wrappedRootKeyForSelf */
+            wrappedRootKeyForSelf: Uint8Array;
+
+            /** Epoch0Output epochSignature */
+            epochSignature: Uint8Array;
+
+            /** Epoch0Output epochRootKeyFingerprint */
+            epochRootKeyFingerprint: Uint8Array;
+
+            /** Epoch0Output epochRootKey */
+            epochRootKey?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an Epoch0Output. */
+        type $Shape = waproto.Epoch0Output.$Properties;
     }
 
     /**
@@ -26905,19 +28473,6 @@ export namespace waproto {
 
         /** Shape of an ExternalBlobReference. */
         type $Shape = waproto.ExternalBlobReference.$Properties;
-    }
-
-    /** FUTURE_PROOF_BEHAVIOR enum. */
-    enum FUTURE_PROOF_BEHAVIOR {
-
-        /** PLACEHOLDER value */
-        PLACEHOLDER = 0,
-
-        /** NO_PLACEHOLDER value */
-        NO_PLACEHOLDER = 1,
-
-        /** IGNORE value */
-        IGNORE = 2
     }
 
     /**
@@ -32204,6 +33759,169 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a LabyrinthWaCommand.
+     * @deprecated Use waproto.LabyrinthWaCommand.$Properties instead.
+     */
+    interface ILabyrinthWaCommand extends waproto.LabyrinthWaCommand.$Properties {
+    }
+
+    /** Represents a LabyrinthWaCommand. */
+    class LabyrinthWaCommand {
+
+        /**
+         * Constructs a new LabyrinthWaCommand.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.LabyrinthWaCommand.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** LabyrinthWaCommand createBackupInput. */
+        createBackupInput?: (waproto.CreateBackupInput.$Properties|null);
+
+        /** LabyrinthWaCommand encryptMessageInput. */
+        encryptMessageInput?: (waproto.EncryptMessageInput.$Properties|null);
+
+        /** LabyrinthWaCommand decryptMessageInput. */
+        decryptMessageInput?: (waproto.DecryptMessageInput.$Properties|null);
+
+        /** LabyrinthWaCommand orfThreadIdInput. */
+        orfThreadIdInput?: (waproto.OrfThreadIdInput.$Properties|null);
+
+        /** LabyrinthWaCommand deriveMessageKeyInput. */
+        deriveMessageKeyInput?: (waproto.DeriveMessageKeyInput.$Properties|null);
+
+        /** LabyrinthWaCommand rotateEpochInput. */
+        rotateEpochInput?: (waproto.RotateEpochInput.$Properties|null);
+
+        /** LabyrinthWaCommand commandInput. */
+        commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput");
+
+        /**
+         * Creates a new LabyrinthWaCommand instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns LabyrinthWaCommand instance
+         */
+        static create(properties: waproto.LabyrinthWaCommand.$Shape): waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape;
+        static create(properties?: waproto.LabyrinthWaCommand.$Properties): waproto.LabyrinthWaCommand;
+
+        /**
+         * Encodes the specified LabyrinthWaCommand message. Does not implicitly {@link waproto.LabyrinthWaCommand.verify|verify} messages.
+         * @param message LabyrinthWaCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.LabyrinthWaCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified LabyrinthWaCommand message, length delimited. Does not implicitly {@link waproto.LabyrinthWaCommand.verify|verify} messages.
+         * @param message LabyrinthWaCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.LabyrinthWaCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a LabyrinthWaCommand message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape} LabyrinthWaCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape;
+
+        /**
+         * Decodes a LabyrinthWaCommand message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape} LabyrinthWaCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.LabyrinthWaCommand & waproto.LabyrinthWaCommand.$Shape;
+
+        /**
+         * Verifies a LabyrinthWaCommand message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a LabyrinthWaCommand message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns LabyrinthWaCommand
+         */
+        static fromObject(object: { [k: string]: any }): waproto.LabyrinthWaCommand;
+
+        /**
+         * Creates a plain object from a LabyrinthWaCommand message. Also converts values to other types if specified.
+         * @param message LabyrinthWaCommand
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.LabyrinthWaCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this LabyrinthWaCommand to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for LabyrinthWaCommand
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace LabyrinthWaCommand {
+
+        /** Properties of a LabyrinthWaCommand. */
+        interface $Properties {
+
+            /** LabyrinthWaCommand createBackupInput */
+            createBackupInput?: (waproto.CreateBackupInput.$Properties|null);
+
+            /** LabyrinthWaCommand encryptMessageInput */
+            encryptMessageInput?: (waproto.EncryptMessageInput.$Properties|null);
+
+            /** LabyrinthWaCommand decryptMessageInput */
+            decryptMessageInput?: (waproto.DecryptMessageInput.$Properties|null);
+
+            /** LabyrinthWaCommand orfThreadIdInput */
+            orfThreadIdInput?: (waproto.OrfThreadIdInput.$Properties|null);
+
+            /** LabyrinthWaCommand deriveMessageKeyInput */
+            deriveMessageKeyInput?: (waproto.DeriveMessageKeyInput.$Properties|null);
+
+            /** LabyrinthWaCommand rotateEpochInput */
+            rotateEpochInput?: (waproto.RotateEpochInput.$Properties|null);
+
+            /** LabyrinthWaCommand commandInput */
+            commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput");
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Narrowed shape of a LabyrinthWaCommand. */
+        type $Shape = {
+          createBackupInput?: waproto.CreateBackupInput.$Shape|null;
+          encryptMessageInput?: waproto.EncryptMessageInput.$Shape|null;
+          decryptMessageInput?: waproto.DecryptMessageInput.$Shape|null;
+          orfThreadIdInput?: waproto.OrfThreadIdInput.$Shape|null;
+          deriveMessageKeyInput?: waproto.DeriveMessageKeyInput.$Shape|null;
+          rotateEpochInput?: waproto.RotateEpochInput.$Shape|null;
+          $unknowns?: Uint8Array[];
+        } & (
+          ({ commandInput?: undefined; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "createBackupInput"; createBackupInput: waproto.CreateBackupInput.$Shape; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "encryptMessageInput"; createBackupInput?: null; encryptMessageInput: waproto.EncryptMessageInput.$Shape; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "decryptMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput: waproto.DecryptMessageInput.$Shape; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "orfThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput: waproto.OrfThreadIdInput.$Shape; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "deriveMessageKeyInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput: waproto.DeriveMessageKeyInput.$Shape; rotateEpochInput?: null }|{ commandInput?: "rotateEpochInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput: waproto.RotateEpochInput.$Shape })
+        );
+    }
+
+    /**
      * Properties of a LegacyMessage.
      * @deprecated Use waproto.LegacyMessage.$Properties instead.
      */
@@ -32733,13 +34451,6 @@ export namespace waproto {
 
         /** Shape of a Location. */
         type $Shape = waproto.Location.$Properties;
-    }
-
-    /** MENTION_MENTION_TYPE enum. */
-    enum MENTION_MENTION_TYPE {
-
-        /** PROFILE value */
-        PROFILE = 0
     }
 
     /**
@@ -33892,141 +35603,6 @@ export namespace waproto {
 
         /** Shape of a MemberLabel. */
         type $Shape = waproto.MemberLabel.$Properties;
-    }
-
-    /**
-     * Properties of a Mention.
-     * @deprecated Use waproto.Mention.$Properties instead.
-     */
-    interface IMention extends waproto.Mention.$Properties {
-    }
-
-    /** Represents a Mention. */
-    class Mention {
-
-        /**
-         * Constructs a new Mention.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.Mention.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** Mention mentionType. */
-        mentionType?: (waproto.MENTION_MENTION_TYPE|null);
-
-        /** Mention mentionedJid. */
-        mentionedJid?: (string|null);
-
-        /** Mention offset. */
-        offset?: (number|null);
-
-        /** Mention length. */
-        length?: (number|null);
-
-        /**
-         * Creates a new Mention instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns Mention instance
-         */
-        static create(properties: waproto.Mention.$Shape): waproto.Mention & waproto.Mention.$Shape;
-        static create(properties?: waproto.Mention.$Properties): waproto.Mention;
-
-        /**
-         * Encodes the specified Mention message. Does not implicitly {@link waproto.Mention.verify|verify} messages.
-         * @param message Mention message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.Mention.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified Mention message, length delimited. Does not implicitly {@link waproto.Mention.verify|verify} messages.
-         * @param message Mention message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.Mention.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a Mention message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.Mention & waproto.Mention.$Shape} Mention
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Mention & waproto.Mention.$Shape;
-
-        /**
-         * Decodes a Mention message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.Mention & waproto.Mention.$Shape} Mention
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Mention & waproto.Mention.$Shape;
-
-        /**
-         * Verifies a Mention message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a Mention message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns Mention
-         */
-        static fromObject(object: { [k: string]: any }): waproto.Mention;
-
-        /**
-         * Creates a plain object from a Mention message. Also converts values to other types if specified.
-         * @param message Mention
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.Mention, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this Mention to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for Mention
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace Mention {
-
-        /** Properties of a Mention. */
-        interface $Properties {
-
-            /** Mention mentionType */
-            mentionType?: (waproto.MENTION_MENTION_TYPE|null);
-
-            /** Mention mentionedJid */
-            mentionedJid?: (string|null);
-
-            /** Mention offset */
-            offset?: (number|null);
-
-            /** Mention length */
-            length?: (number|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a Mention. */
-        type $Shape = waproto.Mention.$Properties;
     }
 
     /**
@@ -62034,141 +63610,6 @@ export namespace waproto {
     }
 
     /**
-     * Properties of a MessageText.
-     * @deprecated Use waproto.MessageText.$Properties instead.
-     */
-    interface IMessageText extends waproto.MessageText.$Properties {
-    }
-
-    /** Represents a MessageText. */
-    class MessageText {
-
-        /**
-         * Constructs a new MessageText.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.MessageText.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** MessageText text. */
-        text?: (string|null);
-
-        /** MessageText mentionedJid. */
-        mentionedJid: string[];
-
-        /** MessageText commands. */
-        commands: waproto.Command.$Properties[];
-
-        /** MessageText mentions. */
-        mentions: waproto.Mention.$Properties[];
-
-        /**
-         * Creates a new MessageText instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns MessageText instance
-         */
-        static create(properties: waproto.MessageText.$Shape): waproto.MessageText & waproto.MessageText.$Shape;
-        static create(properties?: waproto.MessageText.$Properties): waproto.MessageText;
-
-        /**
-         * Encodes the specified MessageText message. Does not implicitly {@link waproto.MessageText.verify|verify} messages.
-         * @param message MessageText message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.MessageText.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified MessageText message, length delimited. Does not implicitly {@link waproto.MessageText.verify|verify} messages.
-         * @param message MessageText message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.MessageText.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a MessageText message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.MessageText & waproto.MessageText.$Shape} MessageText
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MessageText & waproto.MessageText.$Shape;
-
-        /**
-         * Decodes a MessageText message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.MessageText & waproto.MessageText.$Shape} MessageText
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MessageText & waproto.MessageText.$Shape;
-
-        /**
-         * Verifies a MessageText message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a MessageText message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns MessageText
-         */
-        static fromObject(object: { [k: string]: any }): waproto.MessageText;
-
-        /**
-         * Creates a plain object from a MessageText message. Also converts values to other types if specified.
-         * @param message MessageText
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.MessageText, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this MessageText to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for MessageText
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace MessageText {
-
-        /** Properties of a MessageText. */
-        interface $Properties {
-
-            /** MessageText text */
-            text?: (string|null);
-
-            /** MessageText mentionedJid */
-            mentionedJid?: (string[]|null);
-
-            /** MessageText commands */
-            commands?: (waproto.Command.$Properties[]|null);
-
-            /** MessageText mentions */
-            mentions?: (waproto.Mention.$Properties[]|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a MessageText. */
-        type $Shape = waproto.MessageText.$Properties;
-    }
-
-    /**
      * Properties of a Money.
      * @deprecated Use waproto.Money.$Properties instead.
      */
@@ -64357,6 +65798,252 @@ export namespace waproto {
 
         /** Shape of a NotificationSettings. */
         type $Shape = waproto.NotificationSettings.$Properties;
+    }
+
+    /**
+     * Properties of an OrfThreadIdInput.
+     * @deprecated Use waproto.OrfThreadIdInput.$Properties instead.
+     */
+    interface IOrfThreadIdInput extends waproto.OrfThreadIdInput.$Properties {
+    }
+
+    /** Represents an OrfThreadIdInput. */
+    class OrfThreadIdInput {
+
+        /**
+         * Constructs a new OrfThreadIdInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.OrfThreadIdInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** OrfThreadIdInput orfClientState. */
+        orfClientState: Uint8Array;
+
+        /** OrfThreadIdInput threadId. */
+        threadId: string;
+
+        /**
+         * Creates a new OrfThreadIdInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns OrfThreadIdInput instance
+         */
+        static create(properties: waproto.OrfThreadIdInput.$Shape): waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape;
+        static create(properties?: waproto.OrfThreadIdInput.$Properties): waproto.OrfThreadIdInput;
+
+        /**
+         * Encodes the specified OrfThreadIdInput message. Does not implicitly {@link waproto.OrfThreadIdInput.verify|verify} messages.
+         * @param message OrfThreadIdInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.OrfThreadIdInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified OrfThreadIdInput message, length delimited. Does not implicitly {@link waproto.OrfThreadIdInput.verify|verify} messages.
+         * @param message OrfThreadIdInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.OrfThreadIdInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an OrfThreadIdInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape} OrfThreadIdInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape;
+
+        /**
+         * Decodes an OrfThreadIdInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape} OrfThreadIdInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.OrfThreadIdInput & waproto.OrfThreadIdInput.$Shape;
+
+        /**
+         * Verifies an OrfThreadIdInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an OrfThreadIdInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns OrfThreadIdInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.OrfThreadIdInput;
+
+        /**
+         * Creates a plain object from an OrfThreadIdInput message. Also converts values to other types if specified.
+         * @param message OrfThreadIdInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.OrfThreadIdInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this OrfThreadIdInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for OrfThreadIdInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace OrfThreadIdInput {
+
+        /** Properties of an OrfThreadIdInput. */
+        interface $Properties {
+
+            /** OrfThreadIdInput orfClientState */
+            orfClientState: Uint8Array;
+
+            /** OrfThreadIdInput threadId */
+            threadId: string;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an OrfThreadIdInput. */
+        type $Shape = waproto.OrfThreadIdInput.$Properties;
+    }
+
+    /**
+     * Properties of an OrfThreadIdOutput.
+     * @deprecated Use waproto.OrfThreadIdOutput.$Properties instead.
+     */
+    interface IOrfThreadIdOutput extends waproto.OrfThreadIdOutput.$Properties {
+    }
+
+    /** Represents an OrfThreadIdOutput. */
+    class OrfThreadIdOutput {
+
+        /**
+         * Constructs a new OrfThreadIdOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.OrfThreadIdOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** OrfThreadIdOutput orfThreadId. */
+        orfThreadId?: (Uint8Array|null);
+
+        /** OrfThreadIdOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new OrfThreadIdOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns OrfThreadIdOutput instance
+         */
+        static create(properties: waproto.OrfThreadIdOutput.$Shape): waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape;
+        static create(properties?: waproto.OrfThreadIdOutput.$Properties): waproto.OrfThreadIdOutput;
+
+        /**
+         * Encodes the specified OrfThreadIdOutput message. Does not implicitly {@link waproto.OrfThreadIdOutput.verify|verify} messages.
+         * @param message OrfThreadIdOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.OrfThreadIdOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified OrfThreadIdOutput message, length delimited. Does not implicitly {@link waproto.OrfThreadIdOutput.verify|verify} messages.
+         * @param message OrfThreadIdOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.OrfThreadIdOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an OrfThreadIdOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape} OrfThreadIdOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape;
+
+        /**
+         * Decodes an OrfThreadIdOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape} OrfThreadIdOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.OrfThreadIdOutput & waproto.OrfThreadIdOutput.$Shape;
+
+        /**
+         * Verifies an OrfThreadIdOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an OrfThreadIdOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns OrfThreadIdOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.OrfThreadIdOutput;
+
+        /**
+         * Creates a plain object from an OrfThreadIdOutput message. Also converts values to other types if specified.
+         * @param message OrfThreadIdOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.OrfThreadIdOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this OrfThreadIdOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for OrfThreadIdOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace OrfThreadIdOutput {
+
+        /** Properties of an OrfThreadIdOutput. */
+        interface $Properties {
+
+            /** OrfThreadIdOutput orfThreadId */
+            orfThreadId?: (Uint8Array|null);
+
+            /** OrfThreadIdOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an OrfThreadIdOutput. */
+        type $Shape = waproto.OrfThreadIdOutput.$Properties;
     }
 
     /**
@@ -68950,6 +70637,564 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a RotateEpochInput.
+     * @deprecated Use waproto.RotateEpochInput.$Properties instead.
+     */
+    interface IRotateEpochInput extends waproto.RotateEpochInput.$Properties {
+    }
+
+    /** Represents a RotateEpochInput. */
+    class RotateEpochInput {
+
+        /**
+         * Constructs a new RotateEpochInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.RotateEpochInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** RotateEpochInput currentEpochRootKey. */
+        currentEpochRootKey: Uint8Array;
+
+        /** RotateEpochInput currentEpochAnonId. */
+        currentEpochAnonId: Uint8Array;
+
+        /** RotateEpochInput currentEpochFbid. */
+        currentEpochFbid: (number|Long);
+
+        /** RotateEpochInput epochStoragePrivateKey. */
+        epochStoragePrivateKey: Uint8Array;
+
+        /** RotateEpochInput members. */
+        members: waproto.RotateEpochMemberInput.$Properties[];
+
+        /**
+         * Creates a new RotateEpochInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RotateEpochInput instance
+         */
+        static create(properties: waproto.RotateEpochInput.$Shape): waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape;
+        static create(properties?: waproto.RotateEpochInput.$Properties): waproto.RotateEpochInput;
+
+        /**
+         * Encodes the specified RotateEpochInput message. Does not implicitly {@link waproto.RotateEpochInput.verify|verify} messages.
+         * @param message RotateEpochInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.RotateEpochInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RotateEpochInput message, length delimited. Does not implicitly {@link waproto.RotateEpochInput.verify|verify} messages.
+         * @param message RotateEpochInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.RotateEpochInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RotateEpochInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape} RotateEpochInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape;
+
+        /**
+         * Decodes a RotateEpochInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape} RotateEpochInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.RotateEpochInput & waproto.RotateEpochInput.$Shape;
+
+        /**
+         * Verifies a RotateEpochInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RotateEpochInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RotateEpochInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.RotateEpochInput;
+
+        /**
+         * Creates a plain object from a RotateEpochInput message. Also converts values to other types if specified.
+         * @param message RotateEpochInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.RotateEpochInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RotateEpochInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for RotateEpochInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace RotateEpochInput {
+
+        /** Properties of a RotateEpochInput. */
+        interface $Properties {
+
+            /** RotateEpochInput currentEpochRootKey */
+            currentEpochRootKey: Uint8Array;
+
+            /** RotateEpochInput currentEpochAnonId */
+            currentEpochAnonId: Uint8Array;
+
+            /** RotateEpochInput currentEpochFbid */
+            currentEpochFbid: (number|Long);
+
+            /** RotateEpochInput epochStoragePrivateKey */
+            epochStoragePrivateKey: Uint8Array;
+
+            /** RotateEpochInput members */
+            members?: (waproto.RotateEpochMemberInput.$Properties[]|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a RotateEpochInput. */
+        type $Shape = waproto.RotateEpochInput.$Properties;
+    }
+
+    /**
+     * Properties of a RotateEpochMemberEdge.
+     * @deprecated Use waproto.RotateEpochMemberEdge.$Properties instead.
+     */
+    interface IRotateEpochMemberEdge extends waproto.RotateEpochMemberEdge.$Properties {
+    }
+
+    /** Represents a RotateEpochMemberEdge. */
+    class RotateEpochMemberEdge {
+
+        /**
+         * Constructs a new RotateEpochMemberEdge.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.RotateEpochMemberEdge.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** RotateEpochMemberEdge deviceId. */
+        deviceId?: (number|Long|null);
+
+        /** RotateEpochMemberEdge encryptedEpochKey. */
+        encryptedEpochKey?: (Uint8Array|null);
+
+        /** RotateEpochMemberEdge deviceEpochHmac. */
+        deviceEpochHmac?: (Uint8Array|null);
+
+        /**
+         * Creates a new RotateEpochMemberEdge instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RotateEpochMemberEdge instance
+         */
+        static create(properties: waproto.RotateEpochMemberEdge.$Shape): waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape;
+        static create(properties?: waproto.RotateEpochMemberEdge.$Properties): waproto.RotateEpochMemberEdge;
+
+        /**
+         * Encodes the specified RotateEpochMemberEdge message. Does not implicitly {@link waproto.RotateEpochMemberEdge.verify|verify} messages.
+         * @param message RotateEpochMemberEdge message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.RotateEpochMemberEdge.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RotateEpochMemberEdge message, length delimited. Does not implicitly {@link waproto.RotateEpochMemberEdge.verify|verify} messages.
+         * @param message RotateEpochMemberEdge message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.RotateEpochMemberEdge.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RotateEpochMemberEdge message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape} RotateEpochMemberEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape;
+
+        /**
+         * Decodes a RotateEpochMemberEdge message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape} RotateEpochMemberEdge
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.RotateEpochMemberEdge & waproto.RotateEpochMemberEdge.$Shape;
+
+        /**
+         * Verifies a RotateEpochMemberEdge message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RotateEpochMemberEdge message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RotateEpochMemberEdge
+         */
+        static fromObject(object: { [k: string]: any }): waproto.RotateEpochMemberEdge;
+
+        /**
+         * Creates a plain object from a RotateEpochMemberEdge message. Also converts values to other types if specified.
+         * @param message RotateEpochMemberEdge
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.RotateEpochMemberEdge, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RotateEpochMemberEdge to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for RotateEpochMemberEdge
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace RotateEpochMemberEdge {
+
+        /** Properties of a RotateEpochMemberEdge. */
+        interface $Properties {
+
+            /** RotateEpochMemberEdge deviceId */
+            deviceId?: (number|Long|null);
+
+            /** RotateEpochMemberEdge encryptedEpochKey */
+            encryptedEpochKey?: (Uint8Array|null);
+
+            /** RotateEpochMemberEdge deviceEpochHmac */
+            deviceEpochHmac?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a RotateEpochMemberEdge. */
+        type $Shape = waproto.RotateEpochMemberEdge.$Properties;
+    }
+
+    /**
+     * Properties of a RotateEpochMemberInput.
+     * @deprecated Use waproto.RotateEpochMemberInput.$Properties instead.
+     */
+    interface IRotateEpochMemberInput extends waproto.RotateEpochMemberInput.$Properties {
+    }
+
+    /** Represents a RotateEpochMemberInput. */
+    class RotateEpochMemberInput {
+
+        /**
+         * Constructs a new RotateEpochMemberInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.RotateEpochMemberInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** RotateEpochMemberInput deviceId. */
+        deviceId: (number|Long);
+
+        /** RotateEpochMemberInput epochStoragePublicKey. */
+        epochStoragePublicKey: Uint8Array;
+
+        /** RotateEpochMemberInput devicePublicKey. */
+        devicePublicKey: Uint8Array;
+
+        /**
+         * Creates a new RotateEpochMemberInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RotateEpochMemberInput instance
+         */
+        static create(properties: waproto.RotateEpochMemberInput.$Shape): waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape;
+        static create(properties?: waproto.RotateEpochMemberInput.$Properties): waproto.RotateEpochMemberInput;
+
+        /**
+         * Encodes the specified RotateEpochMemberInput message. Does not implicitly {@link waproto.RotateEpochMemberInput.verify|verify} messages.
+         * @param message RotateEpochMemberInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.RotateEpochMemberInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RotateEpochMemberInput message, length delimited. Does not implicitly {@link waproto.RotateEpochMemberInput.verify|verify} messages.
+         * @param message RotateEpochMemberInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.RotateEpochMemberInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RotateEpochMemberInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape} RotateEpochMemberInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape;
+
+        /**
+         * Decodes a RotateEpochMemberInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape} RotateEpochMemberInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.RotateEpochMemberInput & waproto.RotateEpochMemberInput.$Shape;
+
+        /**
+         * Verifies a RotateEpochMemberInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RotateEpochMemberInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RotateEpochMemberInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.RotateEpochMemberInput;
+
+        /**
+         * Creates a plain object from a RotateEpochMemberInput message. Also converts values to other types if specified.
+         * @param message RotateEpochMemberInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.RotateEpochMemberInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RotateEpochMemberInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for RotateEpochMemberInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace RotateEpochMemberInput {
+
+        /** Properties of a RotateEpochMemberInput. */
+        interface $Properties {
+
+            /** RotateEpochMemberInput deviceId */
+            deviceId: (number|Long);
+
+            /** RotateEpochMemberInput epochStoragePublicKey */
+            epochStoragePublicKey: Uint8Array;
+
+            /** RotateEpochMemberInput devicePublicKey */
+            devicePublicKey: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a RotateEpochMemberInput. */
+        type $Shape = waproto.RotateEpochMemberInput.$Properties;
+    }
+
+    /**
+     * Properties of a RotateEpochOutput.
+     * @deprecated Use waproto.RotateEpochOutput.$Properties instead.
+     */
+    interface IRotateEpochOutput extends waproto.RotateEpochOutput.$Properties {
+    }
+
+    /** Represents a RotateEpochOutput. */
+    class RotateEpochOutput {
+
+        /**
+         * Constructs a new RotateEpochOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.RotateEpochOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** RotateEpochOutput newEpochRootKey. */
+        newEpochRootKey?: (Uint8Array|null);
+
+        /** RotateEpochOutput newEpochAnonId. */
+        newEpochAnonId?: (number|Long|null);
+
+        /** RotateEpochOutput newEpochFbid. */
+        newEpochFbid?: (number|Long|null);
+
+        /** RotateEpochOutput epochAnonId. */
+        epochAnonId?: (Uint8Array|null);
+
+        /** RotateEpochOutput backwardEdge. */
+        backwardEdge?: (waproto.BackwardEdge.$Properties|null);
+
+        /** RotateEpochOutput memberEdges. */
+        memberEdges: waproto.RotateEpochMemberEdge.$Properties[];
+
+        /** RotateEpochOutput epochRootKeyFingerprint. */
+        epochRootKeyFingerprint?: (Uint8Array|null);
+
+        /** RotateEpochOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new RotateEpochOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RotateEpochOutput instance
+         */
+        static create(properties: waproto.RotateEpochOutput.$Shape): waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape;
+        static create(properties?: waproto.RotateEpochOutput.$Properties): waproto.RotateEpochOutput;
+
+        /**
+         * Encodes the specified RotateEpochOutput message. Does not implicitly {@link waproto.RotateEpochOutput.verify|verify} messages.
+         * @param message RotateEpochOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.RotateEpochOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RotateEpochOutput message, length delimited. Does not implicitly {@link waproto.RotateEpochOutput.verify|verify} messages.
+         * @param message RotateEpochOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.RotateEpochOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RotateEpochOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape} RotateEpochOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape;
+
+        /**
+         * Decodes a RotateEpochOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape} RotateEpochOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.RotateEpochOutput & waproto.RotateEpochOutput.$Shape;
+
+        /**
+         * Verifies a RotateEpochOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RotateEpochOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RotateEpochOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.RotateEpochOutput;
+
+        /**
+         * Creates a plain object from a RotateEpochOutput message. Also converts values to other types if specified.
+         * @param message RotateEpochOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.RotateEpochOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RotateEpochOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for RotateEpochOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace RotateEpochOutput {
+
+        /** Properties of a RotateEpochOutput. */
+        interface $Properties {
+
+            /** RotateEpochOutput newEpochRootKey */
+            newEpochRootKey?: (Uint8Array|null);
+
+            /** RotateEpochOutput newEpochAnonId */
+            newEpochAnonId?: (number|Long|null);
+
+            /** RotateEpochOutput newEpochFbid */
+            newEpochFbid?: (number|Long|null);
+
+            /** RotateEpochOutput epochAnonId */
+            epochAnonId?: (Uint8Array|null);
+
+            /** RotateEpochOutput backwardEdge */
+            backwardEdge?: (waproto.BackwardEdge.$Properties|null);
+
+            /** RotateEpochOutput memberEdges */
+            memberEdges?: (waproto.RotateEpochMemberEdge.$Properties[]|null);
+
+            /** RotateEpochOutput epochRootKeyFingerprint */
+            epochRootKeyFingerprint?: (Uint8Array|null);
+
+            /** RotateEpochOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a RotateEpochOutput. */
+        type $Shape = waproto.RotateEpochOutput.$Properties;
+    }
+
+    /**
      * Properties of a RoutingInfo.
      * @deprecated Use waproto.RoutingInfo.$Properties instead.
      */
@@ -73156,129 +75401,6 @@ export namespace waproto {
 
         /** Shape of a StickerMetadata. */
         type $Shape = waproto.StickerMetadata.$Properties;
-    }
-
-    /**
-     * Properties of a SubProtocol.
-     * @deprecated Use waproto.SubProtocol.$Properties instead.
-     */
-    interface ISubProtocol extends waproto.SubProtocol.$Properties {
-    }
-
-    /** Represents a SubProtocol. */
-    class SubProtocol {
-
-        /**
-         * Constructs a new SubProtocol.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.SubProtocol.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** SubProtocol payload. */
-        payload?: (Uint8Array|null);
-
-        /** SubProtocol version. */
-        version?: (number|null);
-
-        /**
-         * Creates a new SubProtocol instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns SubProtocol instance
-         */
-        static create(properties: waproto.SubProtocol.$Shape): waproto.SubProtocol & waproto.SubProtocol.$Shape;
-        static create(properties?: waproto.SubProtocol.$Properties): waproto.SubProtocol;
-
-        /**
-         * Encodes the specified SubProtocol message. Does not implicitly {@link waproto.SubProtocol.verify|verify} messages.
-         * @param message SubProtocol message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.SubProtocol.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified SubProtocol message, length delimited. Does not implicitly {@link waproto.SubProtocol.verify|verify} messages.
-         * @param message SubProtocol message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.SubProtocol.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a SubProtocol message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.SubProtocol & waproto.SubProtocol.$Shape} SubProtocol
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SubProtocol & waproto.SubProtocol.$Shape;
-
-        /**
-         * Decodes a SubProtocol message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.SubProtocol & waproto.SubProtocol.$Shape} SubProtocol
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SubProtocol & waproto.SubProtocol.$Shape;
-
-        /**
-         * Verifies a SubProtocol message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a SubProtocol message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns SubProtocol
-         */
-        static fromObject(object: { [k: string]: any }): waproto.SubProtocol;
-
-        /**
-         * Creates a plain object from a SubProtocol message. Also converts values to other types if specified.
-         * @param message SubProtocol
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.SubProtocol, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this SubProtocol to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for SubProtocol
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace SubProtocol {
-
-        /** Properties of a SubProtocol. */
-        interface $Properties {
-
-            /** SubProtocol payload */
-            payload?: (Uint8Array|null);
-
-            /** SubProtocol version */
-            version?: (number|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a SubProtocol. */
-        type $Shape = waproto.SubProtocol.$Properties;
     }
 
     /**
@@ -89942,6 +92064,159 @@ export namespace waproto {
             /** Shape of a Details. */
             type $Shape = waproto.VerifiedNameCertificate.Details.$Properties;
         }
+    }
+
+    /**
+     * Properties of a VirtualDeviceOutput.
+     * @deprecated Use waproto.VirtualDeviceOutput.$Properties instead.
+     */
+    interface IVirtualDeviceOutput extends waproto.VirtualDeviceOutput.$Properties {
+    }
+
+    /** Represents a VirtualDeviceOutput. */
+    class VirtualDeviceOutput {
+
+        /**
+         * Constructs a new VirtualDeviceOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VirtualDeviceOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VirtualDeviceOutput vdId. */
+        vdId: Uint8Array;
+
+        /** VirtualDeviceOutput vdPublicKey. */
+        vdPublicKey: Uint8Array;
+
+        /** VirtualDeviceOutput vdEpochStoragePublicKey. */
+        vdEpochStoragePublicKey: Uint8Array;
+
+        /** VirtualDeviceOutput vdEpochStoragePublicKeySig. */
+        vdEpochStoragePublicKeySig: Uint8Array;
+
+        /** VirtualDeviceOutput ocmfRotationToken. */
+        ocmfRotationToken: Uint8Array;
+
+        /** VirtualDeviceOutput deviceEpochHmac. */
+        deviceEpochHmac: Uint8Array;
+
+        /** VirtualDeviceOutput encryptedSecretValues. */
+        encryptedSecretValues: waproto.EncryptedSecretValuesOutput.$Properties;
+
+        /**
+         * Creates a new VirtualDeviceOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VirtualDeviceOutput instance
+         */
+        static create(properties: waproto.VirtualDeviceOutput.$Shape): waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape;
+        static create(properties?: waproto.VirtualDeviceOutput.$Properties): waproto.VirtualDeviceOutput;
+
+        /**
+         * Encodes the specified VirtualDeviceOutput message. Does not implicitly {@link waproto.VirtualDeviceOutput.verify|verify} messages.
+         * @param message VirtualDeviceOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VirtualDeviceOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VirtualDeviceOutput message, length delimited. Does not implicitly {@link waproto.VirtualDeviceOutput.verify|verify} messages.
+         * @param message VirtualDeviceOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VirtualDeviceOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VirtualDeviceOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape} VirtualDeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape;
+
+        /**
+         * Decodes a VirtualDeviceOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape} VirtualDeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VirtualDeviceOutput & waproto.VirtualDeviceOutput.$Shape;
+
+        /**
+         * Verifies a VirtualDeviceOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VirtualDeviceOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VirtualDeviceOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VirtualDeviceOutput;
+
+        /**
+         * Creates a plain object from a VirtualDeviceOutput message. Also converts values to other types if specified.
+         * @param message VirtualDeviceOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VirtualDeviceOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VirtualDeviceOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VirtualDeviceOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VirtualDeviceOutput {
+
+        /** Properties of a VirtualDeviceOutput. */
+        interface $Properties {
+
+            /** VirtualDeviceOutput vdId */
+            vdId: Uint8Array;
+
+            /** VirtualDeviceOutput vdPublicKey */
+            vdPublicKey: Uint8Array;
+
+            /** VirtualDeviceOutput vdEpochStoragePublicKey */
+            vdEpochStoragePublicKey: Uint8Array;
+
+            /** VirtualDeviceOutput vdEpochStoragePublicKeySig */
+            vdEpochStoragePublicKeySig: Uint8Array;
+
+            /** VirtualDeviceOutput ocmfRotationToken */
+            ocmfRotationToken: Uint8Array;
+
+            /** VirtualDeviceOutput deviceEpochHmac */
+            deviceEpochHmac: Uint8Array;
+
+            /** VirtualDeviceOutput encryptedSecretValues */
+            encryptedSecretValues: waproto.EncryptedSecretValuesOutput.$Properties;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VirtualDeviceOutput. */
+        type $Shape = waproto.VirtualDeviceOutput.$Properties;
     }
 
     /**
