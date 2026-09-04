@@ -63925,6 +63925,9 @@ export namespace waproto {
         /** MsgOpaqueData mediaPngThumbnail. */
         mediaPngThumbnail?: (string|null);
 
+        /** MsgOpaqueData qrUrl. */
+        qrUrl?: (string|null);
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @param [properties] Properties to set
@@ -64176,6 +64179,9 @@ export namespace waproto {
 
             /** MsgOpaqueData mediaPngThumbnail */
             mediaPngThumbnail?: (string|null);
+
+            /** MsgOpaqueData qrUrl */
+            qrUrl?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
