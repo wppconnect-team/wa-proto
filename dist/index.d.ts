@@ -63922,6 +63922,9 @@ export namespace waproto {
         /** MsgOpaqueData sharableEventInviteCallLink. */
         sharableEventInviteCallLink?: (string|null);
 
+        /** MsgOpaqueData mediaPngThumbnail. */
+        mediaPngThumbnail?: (string|null);
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @param [properties] Properties to set
@@ -64170,6 +64173,9 @@ export namespace waproto {
 
             /** MsgOpaqueData sharableEventInviteCallLink */
             sharableEventInviteCallLink?: (string|null);
+
+            /** MsgOpaqueData mediaPngThumbnail */
+            mediaPngThumbnail?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];

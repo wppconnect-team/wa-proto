@@ -191550,6 +191550,7 @@ $root.waproto = (function() {
          * @property {boolean|null} [sharableEventInviteIsCanceled] MsgOpaqueData sharableEventInviteIsCanceled
          * @property {Uint8Array|null} [sharableEventInviteJpegThumbnail] MsgOpaqueData sharableEventInviteJpegThumbnail
          * @property {string|null} [sharableEventInviteCallLink] MsgOpaqueData sharableEventInviteCallLink
+         * @property {string|null} [mediaPngThumbnail] MsgOpaqueData mediaPngThumbnail
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -192022,6 +192023,14 @@ $root.waproto = (function() {
          */
         MsgOpaqueData.prototype.sharableEventInviteCallLink = null;
 
+        /**
+         * MsgOpaqueData mediaPngThumbnail.
+         * @member {string|null|undefined} mediaPngThumbnail
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.mediaPngThumbnail = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -192349,6 +192358,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_mediaPngThumbnail", {
+            get: $util.oneOfGetter($oneOfFields = ["mediaPngThumbnail"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @function create
@@ -192492,6 +192507,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 59, wireType 2 =*/474).bytes(message.sharableEventInviteJpegThumbnail);
             if (message.sharableEventInviteCallLink != null && $Object.hasOwnProperty.call(message, "sharableEventInviteCallLink"))
                 writer.uint32(/* id 60, wireType 2 =*/482).string(message.sharableEventInviteCallLink);
+            if (message.mediaPngThumbnail != null && $Object.hasOwnProperty.call(message, "mediaPngThumbnail"))
+                writer.uint32(/* id 61, wireType 2 =*/490).string(message.mediaPngThumbnail);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -192935,6 +192952,13 @@ $root.waproto = (function() {
                         message._sharableEventInviteCallLink = "sharableEventInviteCallLink";
                         continue;
                     }
+                case 61: {
+                        if (wireType !== 2)
+                            break;
+                        message.mediaPngThumbnail = reader.stringVerify();
+                        message._mediaPngThumbnail = "mediaPngThumbnail";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -193272,6 +193296,11 @@ $root.waproto = (function() {
                 if (!$util.isString(message.sharableEventInviteCallLink))
                     return "sharableEventInviteCallLink: string expected";
             }
+            if (message.mediaPngThumbnail != null && $Object.hasOwnProperty.call(message, "mediaPngThumbnail")) {
+                properties._mediaPngThumbnail = 1;
+                if (!$util.isString(message.mediaPngThumbnail))
+                    return "mediaPngThumbnail: string expected";
+            }
             return null;
         };
 
@@ -193515,6 +193544,8 @@ $root.waproto = (function() {
                     message.sharableEventInviteJpegThumbnail = object.sharableEventInviteJpegThumbnail;
             if (object.sharableEventInviteCallLink != null)
                 message.sharableEventInviteCallLink = $String(object.sharableEventInviteCallLink);
+            if (object.mediaPngThumbnail != null)
+                message.mediaPngThumbnail = $String(object.mediaPngThumbnail);
             return message;
         };
 
@@ -193680,6 +193711,8 @@ $root.waproto = (function() {
                 object.sharableEventInviteJpegThumbnail = options.bytes === $String ? $util.base64.encode(message.sharableEventInviteJpegThumbnail, 0, message.sharableEventInviteJpegThumbnail.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.sharableEventInviteJpegThumbnail) : message.sharableEventInviteJpegThumbnail;
             if (message.sharableEventInviteCallLink != null && $Object.hasOwnProperty.call(message, "sharableEventInviteCallLink"))
                 object.sharableEventInviteCallLink = message.sharableEventInviteCallLink;
+            if (message.mediaPngThumbnail != null && $Object.hasOwnProperty.call(message, "mediaPngThumbnail"))
+                object.mediaPngThumbnail = message.mediaPngThumbnail;
             return object;
         };
 
