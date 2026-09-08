@@ -5320,6 +5320,288 @@ export namespace waproto {
     }
 
     /**
+     * Properties of an AddDeviceEpochOutput.
+     * @deprecated Use waproto.AddDeviceEpochOutput.$Properties instead.
+     */
+    interface IAddDeviceEpochOutput extends waproto.AddDeviceEpochOutput.$Properties {
+    }
+
+    /** Represents an AddDeviceEpochOutput. */
+    class AddDeviceEpochOutput {
+
+        /**
+         * Constructs a new AddDeviceEpochOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.AddDeviceEpochOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** AddDeviceEpochOutput serverEpochId. */
+        serverEpochId: (number|Long);
+
+        /** AddDeviceEpochOutput epochAnonId. */
+        epochAnonId: Uint8Array;
+
+        /** AddDeviceEpochOutput epochRootKey. */
+        epochRootKey: Uint8Array;
+
+        /**
+         * Creates a new AddDeviceEpochOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddDeviceEpochOutput instance
+         */
+        static create(properties: waproto.AddDeviceEpochOutput.$Shape): waproto.AddDeviceEpochOutput & waproto.AddDeviceEpochOutput.$Shape;
+        static create(properties?: waproto.AddDeviceEpochOutput.$Properties): waproto.AddDeviceEpochOutput;
+
+        /**
+         * Encodes the specified AddDeviceEpochOutput message. Does not implicitly {@link waproto.AddDeviceEpochOutput.verify|verify} messages.
+         * @param message AddDeviceEpochOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.AddDeviceEpochOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddDeviceEpochOutput message, length delimited. Does not implicitly {@link waproto.AddDeviceEpochOutput.verify|verify} messages.
+         * @param message AddDeviceEpochOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.AddDeviceEpochOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddDeviceEpochOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.AddDeviceEpochOutput & waproto.AddDeviceEpochOutput.$Shape} AddDeviceEpochOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AddDeviceEpochOutput & waproto.AddDeviceEpochOutput.$Shape;
+
+        /**
+         * Decodes an AddDeviceEpochOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.AddDeviceEpochOutput & waproto.AddDeviceEpochOutput.$Shape} AddDeviceEpochOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AddDeviceEpochOutput & waproto.AddDeviceEpochOutput.$Shape;
+
+        /**
+         * Verifies an AddDeviceEpochOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddDeviceEpochOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddDeviceEpochOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.AddDeviceEpochOutput;
+
+        /**
+         * Creates a plain object from an AddDeviceEpochOutput message. Also converts values to other types if specified.
+         * @param message AddDeviceEpochOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.AddDeviceEpochOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddDeviceEpochOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for AddDeviceEpochOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace AddDeviceEpochOutput {
+
+        /** Properties of an AddDeviceEpochOutput. */
+        interface $Properties {
+
+            /** AddDeviceEpochOutput serverEpochId */
+            serverEpochId: (number|Long);
+
+            /** AddDeviceEpochOutput epochAnonId */
+            epochAnonId: Uint8Array;
+
+            /** AddDeviceEpochOutput epochRootKey */
+            epochRootKey: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an AddDeviceEpochOutput. */
+        type $Shape = waproto.AddDeviceEpochOutput.$Properties;
+    }
+
+    /**
+     * Properties of an AddDeviceKeysOutput.
+     * @deprecated Use waproto.AddDeviceKeysOutput.$Properties instead.
+     */
+    interface IAddDeviceKeysOutput extends waproto.AddDeviceKeysOutput.$Properties {
+    }
+
+    /** Represents an AddDeviceKeysOutput. */
+    class AddDeviceKeysOutput {
+
+        /**
+         * Constructs a new AddDeviceKeysOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.AddDeviceKeysOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** AddDeviceKeysOutput devicePublicKey. */
+        devicePublicKey: Uint8Array;
+
+        /** AddDeviceKeysOutput epochAuthPublicKey. */
+        epochAuthPublicKey: Uint8Array;
+
+        /** AddDeviceKeysOutput epochAuthPublicKeySig. */
+        epochAuthPublicKeySig: Uint8Array;
+
+        /** AddDeviceKeysOutput epochStoragePublicKey. */
+        epochStoragePublicKey: Uint8Array;
+
+        /** AddDeviceKeysOutput epochStoragePublicKeySig. */
+        epochStoragePublicKeySig: Uint8Array;
+
+        /** AddDeviceKeysOutput epochStoragePrivateKey. */
+        epochStoragePrivateKey: Uint8Array;
+
+        /** AddDeviceKeysOutput orfClientState. */
+        orfClientState: Uint8Array;
+
+        /**
+         * Creates a new AddDeviceKeysOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns AddDeviceKeysOutput instance
+         */
+        static create(properties: waproto.AddDeviceKeysOutput.$Shape): waproto.AddDeviceKeysOutput & waproto.AddDeviceKeysOutput.$Shape;
+        static create(properties?: waproto.AddDeviceKeysOutput.$Properties): waproto.AddDeviceKeysOutput;
+
+        /**
+         * Encodes the specified AddDeviceKeysOutput message. Does not implicitly {@link waproto.AddDeviceKeysOutput.verify|verify} messages.
+         * @param message AddDeviceKeysOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.AddDeviceKeysOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified AddDeviceKeysOutput message, length delimited. Does not implicitly {@link waproto.AddDeviceKeysOutput.verify|verify} messages.
+         * @param message AddDeviceKeysOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.AddDeviceKeysOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an AddDeviceKeysOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.AddDeviceKeysOutput & waproto.AddDeviceKeysOutput.$Shape} AddDeviceKeysOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.AddDeviceKeysOutput & waproto.AddDeviceKeysOutput.$Shape;
+
+        /**
+         * Decodes an AddDeviceKeysOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.AddDeviceKeysOutput & waproto.AddDeviceKeysOutput.$Shape} AddDeviceKeysOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.AddDeviceKeysOutput & waproto.AddDeviceKeysOutput.$Shape;
+
+        /**
+         * Verifies an AddDeviceKeysOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an AddDeviceKeysOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns AddDeviceKeysOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.AddDeviceKeysOutput;
+
+        /**
+         * Creates a plain object from an AddDeviceKeysOutput message. Also converts values to other types if specified.
+         * @param message AddDeviceKeysOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.AddDeviceKeysOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this AddDeviceKeysOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for AddDeviceKeysOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace AddDeviceKeysOutput {
+
+        /** Properties of an AddDeviceKeysOutput. */
+        interface $Properties {
+
+            /** AddDeviceKeysOutput devicePublicKey */
+            devicePublicKey: Uint8Array;
+
+            /** AddDeviceKeysOutput epochAuthPublicKey */
+            epochAuthPublicKey: Uint8Array;
+
+            /** AddDeviceKeysOutput epochAuthPublicKeySig */
+            epochAuthPublicKeySig: Uint8Array;
+
+            /** AddDeviceKeysOutput epochStoragePublicKey */
+            epochStoragePublicKey: Uint8Array;
+
+            /** AddDeviceKeysOutput epochStoragePublicKeySig */
+            epochStoragePublicKeySig: Uint8Array;
+
+            /** AddDeviceKeysOutput epochStoragePrivateKey */
+            epochStoragePrivateKey: Uint8Array;
+
+            /** AddDeviceKeysOutput orfClientState */
+            orfClientState: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an AddDeviceKeysOutput. */
+        type $Shape = waproto.AddDeviceKeysOutput.$Properties;
+    }
+
+    /**
      * Properties of an AutoDownloadSettings.
      * @deprecated Use waproto.AutoDownloadSettings.$Properties instead.
      */
@@ -24305,6 +24587,252 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a DeriveVirtualDeviceIdInput.
+     * @deprecated Use waproto.DeriveVirtualDeviceIdInput.$Properties instead.
+     */
+    interface IDeriveVirtualDeviceIdInput extends waproto.DeriveVirtualDeviceIdInput.$Properties {
+    }
+
+    /** Represents a DeriveVirtualDeviceIdInput. */
+    class DeriveVirtualDeviceIdInput {
+
+        /**
+         * Constructs a new DeriveVirtualDeviceIdInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DeriveVirtualDeviceIdInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DeriveVirtualDeviceIdInput recoveryCode. */
+        recoveryCode: string;
+
+        /** DeriveVirtualDeviceIdInput userId. */
+        userId: (number|Long);
+
+        /**
+         * Creates a new DeriveVirtualDeviceIdInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeriveVirtualDeviceIdInput instance
+         */
+        static create(properties: waproto.DeriveVirtualDeviceIdInput.$Shape): waproto.DeriveVirtualDeviceIdInput & waproto.DeriveVirtualDeviceIdInput.$Shape;
+        static create(properties?: waproto.DeriveVirtualDeviceIdInput.$Properties): waproto.DeriveVirtualDeviceIdInput;
+
+        /**
+         * Encodes the specified DeriveVirtualDeviceIdInput message. Does not implicitly {@link waproto.DeriveVirtualDeviceIdInput.verify|verify} messages.
+         * @param message DeriveVirtualDeviceIdInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DeriveVirtualDeviceIdInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeriveVirtualDeviceIdInput message, length delimited. Does not implicitly {@link waproto.DeriveVirtualDeviceIdInput.verify|verify} messages.
+         * @param message DeriveVirtualDeviceIdInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DeriveVirtualDeviceIdInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeriveVirtualDeviceIdInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DeriveVirtualDeviceIdInput & waproto.DeriveVirtualDeviceIdInput.$Shape} DeriveVirtualDeviceIdInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeriveVirtualDeviceIdInput & waproto.DeriveVirtualDeviceIdInput.$Shape;
+
+        /**
+         * Decodes a DeriveVirtualDeviceIdInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DeriveVirtualDeviceIdInput & waproto.DeriveVirtualDeviceIdInput.$Shape} DeriveVirtualDeviceIdInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeriveVirtualDeviceIdInput & waproto.DeriveVirtualDeviceIdInput.$Shape;
+
+        /**
+         * Verifies a DeriveVirtualDeviceIdInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeriveVirtualDeviceIdInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeriveVirtualDeviceIdInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DeriveVirtualDeviceIdInput;
+
+        /**
+         * Creates a plain object from a DeriveVirtualDeviceIdInput message. Also converts values to other types if specified.
+         * @param message DeriveVirtualDeviceIdInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DeriveVirtualDeviceIdInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeriveVirtualDeviceIdInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DeriveVirtualDeviceIdInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DeriveVirtualDeviceIdInput {
+
+        /** Properties of a DeriveVirtualDeviceIdInput. */
+        interface $Properties {
+
+            /** DeriveVirtualDeviceIdInput recoveryCode */
+            recoveryCode: string;
+
+            /** DeriveVirtualDeviceIdInput userId */
+            userId: (number|Long);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DeriveVirtualDeviceIdInput. */
+        type $Shape = waproto.DeriveVirtualDeviceIdInput.$Properties;
+    }
+
+    /**
+     * Properties of a DeriveVirtualDeviceIdOutput.
+     * @deprecated Use waproto.DeriveVirtualDeviceIdOutput.$Properties instead.
+     */
+    interface IDeriveVirtualDeviceIdOutput extends waproto.DeriveVirtualDeviceIdOutput.$Properties {
+    }
+
+    /** Represents a DeriveVirtualDeviceIdOutput. */
+    class DeriveVirtualDeviceIdOutput {
+
+        /**
+         * Constructs a new DeriveVirtualDeviceIdOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DeriveVirtualDeviceIdOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DeriveVirtualDeviceIdOutput virtualDeviceId. */
+        virtualDeviceId?: (Uint8Array|null);
+
+        /** DeriveVirtualDeviceIdOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new DeriveVirtualDeviceIdOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DeriveVirtualDeviceIdOutput instance
+         */
+        static create(properties: waproto.DeriveVirtualDeviceIdOutput.$Shape): waproto.DeriveVirtualDeviceIdOutput & waproto.DeriveVirtualDeviceIdOutput.$Shape;
+        static create(properties?: waproto.DeriveVirtualDeviceIdOutput.$Properties): waproto.DeriveVirtualDeviceIdOutput;
+
+        /**
+         * Encodes the specified DeriveVirtualDeviceIdOutput message. Does not implicitly {@link waproto.DeriveVirtualDeviceIdOutput.verify|verify} messages.
+         * @param message DeriveVirtualDeviceIdOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DeriveVirtualDeviceIdOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DeriveVirtualDeviceIdOutput message, length delimited. Does not implicitly {@link waproto.DeriveVirtualDeviceIdOutput.verify|verify} messages.
+         * @param message DeriveVirtualDeviceIdOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DeriveVirtualDeviceIdOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DeriveVirtualDeviceIdOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DeriveVirtualDeviceIdOutput & waproto.DeriveVirtualDeviceIdOutput.$Shape} DeriveVirtualDeviceIdOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeriveVirtualDeviceIdOutput & waproto.DeriveVirtualDeviceIdOutput.$Shape;
+
+        /**
+         * Decodes a DeriveVirtualDeviceIdOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DeriveVirtualDeviceIdOutput & waproto.DeriveVirtualDeviceIdOutput.$Shape} DeriveVirtualDeviceIdOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeriveVirtualDeviceIdOutput & waproto.DeriveVirtualDeviceIdOutput.$Shape;
+
+        /**
+         * Verifies a DeriveVirtualDeviceIdOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DeriveVirtualDeviceIdOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DeriveVirtualDeviceIdOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DeriveVirtualDeviceIdOutput;
+
+        /**
+         * Creates a plain object from a DeriveVirtualDeviceIdOutput message. Also converts values to other types if specified.
+         * @param message DeriveVirtualDeviceIdOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DeriveVirtualDeviceIdOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DeriveVirtualDeviceIdOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DeriveVirtualDeviceIdOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DeriveVirtualDeviceIdOutput {
+
+        /** Properties of a DeriveVirtualDeviceIdOutput. */
+        interface $Properties {
+
+            /** DeriveVirtualDeviceIdOutput virtualDeviceId */
+            virtualDeviceId?: (Uint8Array|null);
+
+            /** DeriveVirtualDeviceIdOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DeriveVirtualDeviceIdOutput. */
+        type $Shape = waproto.DeriveVirtualDeviceIdOutput.$Properties;
+    }
+
+    /**
      * Properties of a DeviceCapabilities.
      * @deprecated Use waproto.DeviceCapabilities.$Properties instead.
      */
@@ -33795,8 +34323,14 @@ export namespace waproto {
         /** LabyrinthWaCommand rotateEpochInput. */
         rotateEpochInput?: (waproto.RotateEpochInput.$Properties|null);
 
+        /** LabyrinthWaCommand deriveVirtualDeviceIdInput. */
+        deriveVirtualDeviceIdInput?: (waproto.DeriveVirtualDeviceIdInput.$Properties|null);
+
+        /** LabyrinthWaCommand prepareAddDeviceInput. */
+        prepareAddDeviceInput?: (waproto.PrepareAddDeviceInput.$Properties|null);
+
         /** LabyrinthWaCommand commandInput. */
-        commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput");
+        commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|"deriveVirtualDeviceIdInput"|"prepareAddDeviceInput");
 
         /**
          * Creates a new LabyrinthWaCommand instance using the specified properties.
@@ -33900,8 +34434,14 @@ export namespace waproto {
             /** LabyrinthWaCommand rotateEpochInput */
             rotateEpochInput?: (waproto.RotateEpochInput.$Properties|null);
 
+            /** LabyrinthWaCommand deriveVirtualDeviceIdInput */
+            deriveVirtualDeviceIdInput?: (waproto.DeriveVirtualDeviceIdInput.$Properties|null);
+
+            /** LabyrinthWaCommand prepareAddDeviceInput */
+            prepareAddDeviceInput?: (waproto.PrepareAddDeviceInput.$Properties|null);
+
             /** LabyrinthWaCommand commandInput */
-            commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput");
+            commandInput?: ("createBackupInput"|"encryptMessageInput"|"decryptMessageInput"|"orfThreadIdInput"|"deriveMessageKeyInput"|"rotateEpochInput"|"deriveVirtualDeviceIdInput"|"prepareAddDeviceInput");
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -33915,9 +34455,11 @@ export namespace waproto {
           orfThreadIdInput?: waproto.OrfThreadIdInput.$Shape|null;
           deriveMessageKeyInput?: waproto.DeriveMessageKeyInput.$Shape|null;
           rotateEpochInput?: waproto.RotateEpochInput.$Shape|null;
+          deriveVirtualDeviceIdInput?: waproto.DeriveVirtualDeviceIdInput.$Shape|null;
+          prepareAddDeviceInput?: waproto.PrepareAddDeviceInput.$Shape|null;
           $unknowns?: Uint8Array[];
         } & (
-          ({ commandInput?: undefined; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "createBackupInput"; createBackupInput: waproto.CreateBackupInput.$Shape; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "encryptMessageInput"; createBackupInput?: null; encryptMessageInput: waproto.EncryptMessageInput.$Shape; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "decryptMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput: waproto.DecryptMessageInput.$Shape; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "orfThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput: waproto.OrfThreadIdInput.$Shape; deriveMessageKeyInput?: null; rotateEpochInput?: null }|{ commandInput?: "deriveMessageKeyInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput: waproto.DeriveMessageKeyInput.$Shape; rotateEpochInput?: null }|{ commandInput?: "rotateEpochInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput: waproto.RotateEpochInput.$Shape })
+          ({ commandInput?: undefined; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "createBackupInput"; createBackupInput: waproto.CreateBackupInput.$Shape; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "encryptMessageInput"; createBackupInput?: null; encryptMessageInput: waproto.EncryptMessageInput.$Shape; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "decryptMessageInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput: waproto.DecryptMessageInput.$Shape; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "orfThreadIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput: waproto.OrfThreadIdInput.$Shape; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "deriveMessageKeyInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput: waproto.DeriveMessageKeyInput.$Shape; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "rotateEpochInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput: waproto.RotateEpochInput.$Shape; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput?: null }|{ commandInput?: "deriveVirtualDeviceIdInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput: waproto.DeriveVirtualDeviceIdInput.$Shape; prepareAddDeviceInput?: null }|{ commandInput?: "prepareAddDeviceInput"; createBackupInput?: null; encryptMessageInput?: null; decryptMessageInput?: null; orfThreadIdInput?: null; deriveMessageKeyInput?: null; rotateEpochInput?: null; deriveVirtualDeviceIdInput?: null; prepareAddDeviceInput: waproto.PrepareAddDeviceInput.$Shape })
         );
     }
 
@@ -68787,6 +69329,318 @@ export namespace waproto {
 
         /** Shape of a PremiumMessageInfo. */
         type $Shape = waproto.PremiumMessageInfo.$Properties;
+    }
+
+    /**
+     * Properties of a PrepareAddDeviceInput.
+     * @deprecated Use waproto.PrepareAddDeviceInput.$Properties instead.
+     */
+    interface IPrepareAddDeviceInput extends waproto.PrepareAddDeviceInput.$Properties {
+    }
+
+    /** Represents a PrepareAddDeviceInput. */
+    class PrepareAddDeviceInput {
+
+        /**
+         * Constructs a new PrepareAddDeviceInput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.PrepareAddDeviceInput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** PrepareAddDeviceInput recoveryCode. */
+        recoveryCode: string;
+
+        /** PrepareAddDeviceInput userId. */
+        userId: (number|Long);
+
+        /** PrepareAddDeviceInput encryptedSecretValuesJson. */
+        encryptedSecretValuesJson: string;
+
+        /** PrepareAddDeviceInput virtualDeviceBaseEpochId. */
+        virtualDeviceBaseEpochId: (number|Long);
+
+        /** PrepareAddDeviceInput activeEpochId. */
+        activeEpochId: (number|Long);
+
+        /**
+         * Creates a new PrepareAddDeviceInput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns PrepareAddDeviceInput instance
+         */
+        static create(properties: waproto.PrepareAddDeviceInput.$Shape): waproto.PrepareAddDeviceInput & waproto.PrepareAddDeviceInput.$Shape;
+        static create(properties?: waproto.PrepareAddDeviceInput.$Properties): waproto.PrepareAddDeviceInput;
+
+        /**
+         * Encodes the specified PrepareAddDeviceInput message. Does not implicitly {@link waproto.PrepareAddDeviceInput.verify|verify} messages.
+         * @param message PrepareAddDeviceInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.PrepareAddDeviceInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified PrepareAddDeviceInput message, length delimited. Does not implicitly {@link waproto.PrepareAddDeviceInput.verify|verify} messages.
+         * @param message PrepareAddDeviceInput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.PrepareAddDeviceInput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a PrepareAddDeviceInput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.PrepareAddDeviceInput & waproto.PrepareAddDeviceInput.$Shape} PrepareAddDeviceInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.PrepareAddDeviceInput & waproto.PrepareAddDeviceInput.$Shape;
+
+        /**
+         * Decodes a PrepareAddDeviceInput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.PrepareAddDeviceInput & waproto.PrepareAddDeviceInput.$Shape} PrepareAddDeviceInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.PrepareAddDeviceInput & waproto.PrepareAddDeviceInput.$Shape;
+
+        /**
+         * Verifies a PrepareAddDeviceInput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a PrepareAddDeviceInput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns PrepareAddDeviceInput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.PrepareAddDeviceInput;
+
+        /**
+         * Creates a plain object from a PrepareAddDeviceInput message. Also converts values to other types if specified.
+         * @param message PrepareAddDeviceInput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.PrepareAddDeviceInput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this PrepareAddDeviceInput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for PrepareAddDeviceInput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace PrepareAddDeviceInput {
+
+        /** Properties of a PrepareAddDeviceInput. */
+        interface $Properties {
+
+            /** PrepareAddDeviceInput recoveryCode */
+            recoveryCode: string;
+
+            /** PrepareAddDeviceInput userId */
+            userId: (number|Long);
+
+            /** PrepareAddDeviceInput encryptedSecretValuesJson */
+            encryptedSecretValuesJson: string;
+
+            /** PrepareAddDeviceInput virtualDeviceBaseEpochId */
+            virtualDeviceBaseEpochId: (number|Long);
+
+            /** PrepareAddDeviceInput activeEpochId */
+            activeEpochId: (number|Long);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a PrepareAddDeviceInput. */
+        type $Shape = waproto.PrepareAddDeviceInput.$Properties;
+    }
+
+    /**
+     * Properties of a PrepareAddDeviceOutput.
+     * @deprecated Use waproto.PrepareAddDeviceOutput.$Properties instead.
+     */
+    interface IPrepareAddDeviceOutput extends waproto.PrepareAddDeviceOutput.$Properties {
+    }
+
+    /** Represents a PrepareAddDeviceOutput. */
+    class PrepareAddDeviceOutput {
+
+        /**
+         * Constructs a new PrepareAddDeviceOutput.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.PrepareAddDeviceOutput.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** PrepareAddDeviceOutput deviceKeys. */
+        deviceKeys?: (waproto.AddDeviceKeysOutput.$Properties|null);
+
+        /** PrepareAddDeviceOutput currentEpoch. */
+        currentEpoch?: (waproto.AddDeviceEpochOutput.$Properties|null);
+
+        /** PrepareAddDeviceOutput mailboxRootSalt. */
+        mailboxRootSalt?: (Uint8Array|null);
+
+        /** PrepareAddDeviceOutput orfRotationToken. */
+        orfRotationToken?: (Uint8Array|null);
+
+        /** PrepareAddDeviceOutput deviceEpochHmac. */
+        deviceEpochHmac?: (Uint8Array|null);
+
+        /** PrepareAddDeviceOutput epochRootKeyFingerprint. */
+        epochRootKeyFingerprint?: (Uint8Array|null);
+
+        /** PrepareAddDeviceOutput supportedEncryptionVersions. */
+        supportedEncryptionVersions: number[];
+
+        /** PrepareAddDeviceOutput encryptionVersionSignature. */
+        encryptionVersionSignature?: (Uint8Array|null);
+
+        /** PrepareAddDeviceOutput clientVersion. */
+        clientVersion?: (number|null);
+
+        /** PrepareAddDeviceOutput error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new PrepareAddDeviceOutput instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns PrepareAddDeviceOutput instance
+         */
+        static create(properties: waproto.PrepareAddDeviceOutput.$Shape): waproto.PrepareAddDeviceOutput & waproto.PrepareAddDeviceOutput.$Shape;
+        static create(properties?: waproto.PrepareAddDeviceOutput.$Properties): waproto.PrepareAddDeviceOutput;
+
+        /**
+         * Encodes the specified PrepareAddDeviceOutput message. Does not implicitly {@link waproto.PrepareAddDeviceOutput.verify|verify} messages.
+         * @param message PrepareAddDeviceOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.PrepareAddDeviceOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified PrepareAddDeviceOutput message, length delimited. Does not implicitly {@link waproto.PrepareAddDeviceOutput.verify|verify} messages.
+         * @param message PrepareAddDeviceOutput message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.PrepareAddDeviceOutput.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a PrepareAddDeviceOutput message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.PrepareAddDeviceOutput & waproto.PrepareAddDeviceOutput.$Shape} PrepareAddDeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.PrepareAddDeviceOutput & waproto.PrepareAddDeviceOutput.$Shape;
+
+        /**
+         * Decodes a PrepareAddDeviceOutput message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.PrepareAddDeviceOutput & waproto.PrepareAddDeviceOutput.$Shape} PrepareAddDeviceOutput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.PrepareAddDeviceOutput & waproto.PrepareAddDeviceOutput.$Shape;
+
+        /**
+         * Verifies a PrepareAddDeviceOutput message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a PrepareAddDeviceOutput message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns PrepareAddDeviceOutput
+         */
+        static fromObject(object: { [k: string]: any }): waproto.PrepareAddDeviceOutput;
+
+        /**
+         * Creates a plain object from a PrepareAddDeviceOutput message. Also converts values to other types if specified.
+         * @param message PrepareAddDeviceOutput
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.PrepareAddDeviceOutput, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this PrepareAddDeviceOutput to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for PrepareAddDeviceOutput
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace PrepareAddDeviceOutput {
+
+        /** Properties of a PrepareAddDeviceOutput. */
+        interface $Properties {
+
+            /** PrepareAddDeviceOutput deviceKeys */
+            deviceKeys?: (waproto.AddDeviceKeysOutput.$Properties|null);
+
+            /** PrepareAddDeviceOutput currentEpoch */
+            currentEpoch?: (waproto.AddDeviceEpochOutput.$Properties|null);
+
+            /** PrepareAddDeviceOutput mailboxRootSalt */
+            mailboxRootSalt?: (Uint8Array|null);
+
+            /** PrepareAddDeviceOutput orfRotationToken */
+            orfRotationToken?: (Uint8Array|null);
+
+            /** PrepareAddDeviceOutput deviceEpochHmac */
+            deviceEpochHmac?: (Uint8Array|null);
+
+            /** PrepareAddDeviceOutput epochRootKeyFingerprint */
+            epochRootKeyFingerprint?: (Uint8Array|null);
+
+            /** PrepareAddDeviceOutput supportedEncryptionVersions */
+            supportedEncryptionVersions?: (number[]|null);
+
+            /** PrepareAddDeviceOutput encryptionVersionSignature */
+            encryptionVersionSignature?: (Uint8Array|null);
+
+            /** PrepareAddDeviceOutput clientVersion */
+            clientVersion?: (number|null);
+
+            /** PrepareAddDeviceOutput error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a PrepareAddDeviceOutput. */
+        type $Shape = waproto.PrepareAddDeviceOutput.$Properties;
     }
 
     /**

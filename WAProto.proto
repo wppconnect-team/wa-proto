@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1046969912
+/// WhatsApp Version: 2.3000.1046977494
 
 message ADVDeviceIdentity {
     optional uint32 rawId = 1;
@@ -312,6 +312,22 @@ message AccountLinkingOpaqueData {
 message ActionLink {
     optional string url = 1;
     optional string buttonTitle = 2;
+}
+
+message AddDeviceEpochOutput {
+    required uint64 serverEpochId = 1;
+    required bytes epochAnonId = 2;
+    required bytes epochRootKey = 3;
+}
+
+message AddDeviceKeysOutput {
+    required bytes devicePublicKey = 1;
+    required bytes epochAuthPublicKey = 2;
+    required bytes epochAuthPublicKeySig = 3;
+    required bytes epochStoragePublicKey = 4;
+    required bytes epochStoragePublicKeySig = 5;
+    required bytes epochStoragePrivateKey = 6;
+    required bytes orfClientState = 7;
 }
 
 message AutoDownloadSettings {
@@ -1892,6 +1908,16 @@ message DeriveMessageKeyOutput {
     optional string error = 2;
 }
 
+message DeriveVirtualDeviceIdInput {
+    required string recoveryCode = 1;
+    required uint64 userId = 2;
+}
+
+message DeriveVirtualDeviceIdOutput {
+    optional bytes virtualDeviceId = 1;
+    optional string error = 2;
+}
+
 message DeviceCapabilities {
     optional ChatLockSupportLevel chatLockSupportLevel = 1;
     optional LIDMigration lidMigration = 2;
@@ -2534,6 +2560,8 @@ message LabyrinthWaCommand {
         OrfThreadIdInput orfThreadIdInput = 4;
         DeriveMessageKeyInput deriveMessageKeyInput = 5;
         RotateEpochInput rotateEpochInput = 6;
+        DeriveVirtualDeviceIdInput deriveVirtualDeviceIdInput = 7;
+        PrepareAddDeviceInput prepareAddDeviceInput = 8;
     }
 }
 
@@ -5081,6 +5109,27 @@ message PreKeySignalMessage {
 
 message PremiumMessageInfo {
     optional string serverCampaignId = 1;
+}
+
+message PrepareAddDeviceInput {
+    required string recoveryCode = 1;
+    required uint64 userId = 2;
+    required string encryptedSecretValuesJson = 3;
+    required uint64 virtualDeviceBaseEpochId = 4;
+    required uint64 activeEpochId = 5;
+}
+
+message PrepareAddDeviceOutput {
+    optional AddDeviceKeysOutput deviceKeys = 1;
+    optional AddDeviceEpochOutput currentEpoch = 2;
+    optional bytes mailboxRootSalt = 3;
+    optional bytes orfRotationToken = 4;
+    optional bytes deviceEpochHmac = 5;
+    optional bytes epochRootKeyFingerprint = 6;
+    repeated int32 supportedEncryptionVersions = 7;
+    optional bytes encryptionVersionSignature = 8;
+    optional int32 clientVersion = 9;
+    optional string error = 10;
 }
 
 message PrimaryEphemeralIdentity {
