@@ -5,6 +5,141 @@ import Long = require("long");
 export namespace waproto {
 
     /**
+     * Properties of a ACP2Setting.
+     * @deprecated Use waproto.ACP2Setting.$Properties instead.
+     */
+    interface IACP2Setting extends waproto.ACP2Setting.$Properties {
+    }
+
+    /** Represents a ACP2Setting. */
+    class ACP2Setting {
+
+        /**
+         * Constructs a new ACP2Setting.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.ACP2Setting.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** ACP2Setting enabled. */
+        enabled?: (boolean|null);
+
+        /** ACP2Setting trigger. */
+        trigger?: (waproto.LimitSharing.TriggerType|null);
+
+        /** ACP2Setting settingTimestamp. */
+        settingTimestamp?: (number|Long|null);
+
+        /** ACP2Setting initiatedByMe. */
+        initiatedByMe?: (boolean|null);
+
+        /**
+         * Creates a new ACP2Setting instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ACP2Setting instance
+         */
+        static create(properties: waproto.ACP2Setting.$Shape): waproto.ACP2Setting & waproto.ACP2Setting.$Shape;
+        static create(properties?: waproto.ACP2Setting.$Properties): waproto.ACP2Setting;
+
+        /**
+         * Encodes the specified ACP2Setting message. Does not implicitly {@link waproto.ACP2Setting.verify|verify} messages.
+         * @param message ACP2Setting message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.ACP2Setting.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ACP2Setting message, length delimited. Does not implicitly {@link waproto.ACP2Setting.verify|verify} messages.
+         * @param message ACP2Setting message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.ACP2Setting.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ACP2Setting message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.ACP2Setting & waproto.ACP2Setting.$Shape} ACP2Setting
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ACP2Setting & waproto.ACP2Setting.$Shape;
+
+        /**
+         * Decodes a ACP2Setting message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.ACP2Setting & waproto.ACP2Setting.$Shape} ACP2Setting
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ACP2Setting & waproto.ACP2Setting.$Shape;
+
+        /**
+         * Verifies a ACP2Setting message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ACP2Setting message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ACP2Setting
+         */
+        static fromObject(object: { [k: string]: any }): waproto.ACP2Setting;
+
+        /**
+         * Creates a plain object from a ACP2Setting message. Also converts values to other types if specified.
+         * @param message ACP2Setting
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.ACP2Setting, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ACP2Setting to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for ACP2Setting
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace ACP2Setting {
+
+        /** Properties of a ACP2Setting. */
+        interface $Properties {
+
+            /** ACP2Setting enabled */
+            enabled?: (boolean|null);
+
+            /** ACP2Setting trigger */
+            trigger?: (waproto.LimitSharing.TriggerType|null);
+
+            /** ACP2Setting settingTimestamp */
+            settingTimestamp?: (number|Long|null);
+
+            /** ACP2Setting initiatedByMe */
+            initiatedByMe?: (boolean|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a ACP2Setting. */
+        type $Shape = waproto.ACP2Setting.$Properties;
+    }
+
+    /**
      * Properties of a ADVDeviceIdentity.
      * @deprecated Use waproto.ADVDeviceIdentity.$Properties instead.
      */
@@ -34078,6 +34213,9 @@ export namespace waproto {
         /** Message newsletterScheduledMessage. */
         newsletterScheduledMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+        /** Message acp2SettingMessage. */
+        acp2SettingMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -34495,6 +34633,9 @@ export namespace waproto {
             /** Message newsletterScheduledMessage */
             newsletterScheduledMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+            /** Message acp2SettingMessage */
+            acp2SettingMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -34612,6 +34753,7 @@ export namespace waproto {
           statusLinkPreviewMetadata?: waproto.Message.StatusLinkPreviewMetadata.$Shape|null;
           botPlatformRegistrationSuccessMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          acp2SettingMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -55670,6 +55812,9 @@ export namespace waproto {
             /** ProtocolMessage coexStateSync. */
             coexStateSync?: (waproto.CoexStateSync.$Properties|null);
 
+            /** ProtocolMessage acp2Setting. */
+            acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -55844,6 +55989,9 @@ export namespace waproto {
                 /** ProtocolMessage coexStateSync */
                 coexStateSync?: (waproto.CoexStateSync.$Properties|null);
 
+                /** ProtocolMessage acp2Setting */
+                acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -55880,6 +56028,7 @@ export namespace waproto {
               aiMetadataOperation?: waproto.AIMetadataOperation.$Shape|null;
               markAsVerifiedAction?: waproto.Message.MarkAsVerifiedAction.$Shape|null;
               coexStateSync?: waproto.CoexStateSync.$Shape|null;
+              acp2Setting?: waproto.ACP2Setting.$Shape|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -55980,7 +56129,10 @@ export namespace waproto {
                 MARK_AS_VERIFIED_ACTION = 36,
 
                 /** COEX_STATE_SYNC value */
-                COEX_STATE_SYNC = 37
+                COEX_STATE_SYNC = 37,
+
+                /** ACP2_SETTING value */
+                ACP2_SETTING = 39
             }
         }
 
@@ -61304,6 +61456,9 @@ export namespace waproto {
         /** MessageContextInfo teeContextAnchorMessageId. */
         teeContextAnchorMessageId?: (string|null);
 
+        /** MessageContextInfo acp2Setting. */
+        acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -61447,6 +61602,9 @@ export namespace waproto {
 
             /** MessageContextInfo teeContextAnchorMessageId */
             teeContextAnchorMessageId?: (string|null);
+
+            /** MessageContextInfo acp2Setting */
+            acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
