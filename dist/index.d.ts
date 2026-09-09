@@ -21697,6 +21697,9 @@ export namespace waproto {
             /** ExternalAdReplyInfo agmHeaderInteractionStrategy. */
             agmHeaderInteractionStrategy?: (number|null);
 
+            /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel. */
+            containsCtwaFlowsAutoLabel?: (boolean|null);
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @param [properties] Properties to set
@@ -21876,6 +21879,9 @@ export namespace waproto {
 
                 /** ExternalAdReplyInfo agmHeaderInteractionStrategy */
                 agmHeaderInteractionStrategy?: (number|null);
+
+                /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel */
+                containsCtwaFlowsAutoLabel?: (boolean|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -23152,6 +23158,9 @@ export namespace waproto {
         /** Conversation identityVerification. */
         identityVerification?: (waproto.IdentityVerificationState.$Properties|null);
 
+        /** Conversation acp2Setting. */
+        acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -23425,6 +23434,9 @@ export namespace waproto {
             /** Conversation identityVerification */
             identityVerification?: (waproto.IdentityVerificationState.$Properties|null);
 
+            /** Conversation acp2Setting */
+            acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -23494,6 +23506,7 @@ export namespace waproto {
           authAgentParentCompanyName?: string|null;
           authAgentObaPhoneNumber?: string|null;
           identityVerification?: waproto.IdentityVerificationState.$Shape|null;
+          acp2Setting?: waproto.ACP2Setting.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -25492,7 +25505,13 @@ export namespace waproto {
             SMARTGLASSES = 24,
 
             /** WAIL value */
-            WAIL = 25
+            WAIL = 25,
+
+            /** WASS value */
+            WASS = 26,
+
+            /** BUSINESS_BACK_OFFICE value */
+            BUSINESS_BACK_OFFICE = 27
         }
     }
 
@@ -37754,6 +37773,129 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a ChatAnimatedWallpaper.
+         * @deprecated Use waproto.Message.ChatAnimatedWallpaper.$Properties instead.
+         */
+        interface IChatAnimatedWallpaper extends waproto.Message.ChatAnimatedWallpaper.$Properties {
+        }
+
+        /** Represents a ChatAnimatedWallpaper. */
+        class ChatAnimatedWallpaper {
+
+            /**
+             * Constructs a new ChatAnimatedWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatAnimatedWallpaper.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatAnimatedWallpaper animatedWallpaperId. */
+            animatedWallpaperId?: (string|null);
+
+            /** ChatAnimatedWallpaper dimLevel. */
+            dimLevel?: (number|null);
+
+            /**
+             * Creates a new ChatAnimatedWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatAnimatedWallpaper instance
+             */
+            static create(properties: waproto.Message.ChatAnimatedWallpaper.$Shape): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+            static create(properties?: waproto.Message.ChatAnimatedWallpaper.$Properties): waproto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message. Does not implicitly {@link waproto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @param message ChatAnimatedWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatAnimatedWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @param message ChatAnimatedWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatAnimatedWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape} ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape} ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+
+            /**
+             * Verifies a ChatAnimatedWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatAnimatedWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatAnimatedWallpaper
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Creates a plain object from a ChatAnimatedWallpaper message. Also converts values to other types if specified.
+             * @param message ChatAnimatedWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatAnimatedWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatAnimatedWallpaper to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatAnimatedWallpaper
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatAnimatedWallpaper {
+
+            /** Properties of a ChatAnimatedWallpaper. */
+            interface $Properties {
+
+                /** ChatAnimatedWallpaper animatedWallpaperId */
+                animatedWallpaperId?: (string|null);
+
+                /** ChatAnimatedWallpaper dimLevel */
+                dimLevel?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ChatAnimatedWallpaper. */
+            type $Shape = waproto.Message.ChatAnimatedWallpaper.$Properties;
+        }
+
+        /**
          * Properties of a ChatCustomImageWallpaper.
          * @deprecated Use waproto.Message.ChatCustomImageWallpaper.$Properties instead.
          */
@@ -38303,8 +38445,11 @@ export namespace waproto {
             /** ChatThemeSetting customImage. */
             customImage?: (waproto.Message.ChatCustomImageWallpaper.$Properties|null);
 
+            /** ChatThemeSetting animatedWallpaper. */
+            animatedWallpaper?: (waproto.Message.ChatAnimatedWallpaper.$Properties|null);
+
             /** ChatThemeSetting wallpaper. */
-            wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage");
+            wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper");
 
             /**
              * Creates a new ChatThemeSetting instance using the specified properties.
@@ -38411,8 +38556,11 @@ export namespace waproto {
                 /** ChatThemeSetting customImage */
                 customImage?: (waproto.Message.ChatCustomImageWallpaper.$Properties|null);
 
+                /** ChatThemeSetting animatedWallpaper */
+                animatedWallpaper?: (waproto.Message.ChatAnimatedWallpaper.$Properties|null);
+
                 /** ChatThemeSetting wallpaper */
-                wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage");
+                wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper");
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -38427,9 +38575,10 @@ export namespace waproto {
               solidColor?: waproto.Message.ChatSolidColorWallpaper.$Shape|null;
               stockImage?: waproto.Message.ChatStockImageWallpaper.$Shape|null;
               customImage?: waproto.Message.ChatCustomImageWallpaper.$Shape|null;
+              animatedWallpaper?: waproto.Message.ChatAnimatedWallpaper.$Shape|null;
               $unknowns?: Uint8Array[];
             } & (
-              ({ wallpaper?: undefined; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null }|{ wallpaper?: "defaultWallpaper"; defaultWallpaper: waproto.Message.ChatDefaultWallpaper.$Shape; solidColor?: null; stockImage?: null; customImage?: null }|{ wallpaper?: "solidColor"; defaultWallpaper?: null; solidColor: waproto.Message.ChatSolidColorWallpaper.$Shape; stockImage?: null; customImage?: null }|{ wallpaper?: "stockImage"; defaultWallpaper?: null; solidColor?: null; stockImage: waproto.Message.ChatStockImageWallpaper.$Shape; customImage?: null }|{ wallpaper?: "customImage"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage: waproto.Message.ChatCustomImageWallpaper.$Shape })
+              ({ wallpaper?: undefined; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "defaultWallpaper"; defaultWallpaper: waproto.Message.ChatDefaultWallpaper.$Shape; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "solidColor"; defaultWallpaper?: null; solidColor: waproto.Message.ChatSolidColorWallpaper.$Shape; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "stockImage"; defaultWallpaper?: null; solidColor?: null; stockImage: waproto.Message.ChatStockImageWallpaper.$Shape; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "customImage"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage: waproto.Message.ChatCustomImageWallpaper.$Shape; animatedWallpaper?: null }|{ wallpaper?: "animatedWallpaper"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper: waproto.Message.ChatAnimatedWallpaper.$Shape })
             );
         }
 
@@ -55815,6 +55964,12 @@ export namespace waproto {
             /** ProtocolMessage acp2Setting. */
             acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
+            /** ProtocolMessage sharedDeviceContactHashKeyShare. */
+            sharedDeviceContactHashKeyShare?: (waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyRequest. */
+            sharedDeviceContactHashKeyRequest?: (waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null);
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -55992,6 +56147,12 @@ export namespace waproto {
                 /** ProtocolMessage acp2Setting */
                 acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
+                /** ProtocolMessage sharedDeviceContactHashKeyShare */
+                sharedDeviceContactHashKeyShare?: (waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null);
+
+                /** ProtocolMessage sharedDeviceContactHashKeyRequest */
+                sharedDeviceContactHashKeyRequest?: (waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -56029,6 +56190,8 @@ export namespace waproto {
               markAsVerifiedAction?: waproto.Message.MarkAsVerifiedAction.$Shape|null;
               coexStateSync?: waproto.CoexStateSync.$Shape|null;
               acp2Setting?: waproto.ACP2Setting.$Shape|null;
+              sharedDeviceContactHashKeyShare?: waproto.Message.SharedDeviceContactHashKeyShare.$Shape|null;
+              sharedDeviceContactHashKeyRequest?: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -56132,7 +56295,13 @@ export namespace waproto {
                 COEX_STATE_SYNC = 37,
 
                 /** ACP2_SETTING value */
-                ACP2_SETTING = 39
+                ACP2_SETTING = 39,
+
+                /** SHARED_DEVICE_CONTACT_HASH_KEY_SHARE value */
+                SHARED_DEVICE_CONTACT_HASH_KEY_SHARE = 40,
+
+                /** SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST value */
+                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41
             }
         }
 
@@ -57642,6 +57811,382 @@ export namespace waproto {
 
             /** Shape of a SenderKeyDistributionMessage. */
             type $Shape = waproto.Message.SenderKeyDistributionMessage.$Properties;
+        }
+
+        /**
+         * Properties of a SharedDeviceContactHashKey.
+         * @deprecated Use waproto.Message.SharedDeviceContactHashKey.$Properties instead.
+         */
+        interface ISharedDeviceContactHashKey extends waproto.Message.SharedDeviceContactHashKey.$Properties {
+        }
+
+        /** Represents a SharedDeviceContactHashKey. */
+        class SharedDeviceContactHashKey {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SharedDeviceContactHashKey.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceContactHashKey epoch. */
+            epoch?: (number|null);
+
+            /** SharedDeviceContactHashKey kind. */
+            kind?: (waproto.Message.SharedDeviceContactHashKey.Kind|null);
+
+            /** SharedDeviceContactHashKey keyData. */
+            keyData?: (Uint8Array|null);
+
+            /**
+             * Creates a new SharedDeviceContactHashKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKey instance
+             */
+            static create(properties: waproto.Message.SharedDeviceContactHashKey.$Shape): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+            static create(properties?: waproto.Message.SharedDeviceContactHashKey.$Properties): waproto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @param message SharedDeviceContactHashKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SharedDeviceContactHashKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @param message SharedDeviceContactHashKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SharedDeviceContactHashKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape} SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape} SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+
+            /**
+             * Verifies a SharedDeviceContactHashKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKey
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKey message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SharedDeviceContactHashKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKey to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKey
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKey {
+
+            /** Properties of a SharedDeviceContactHashKey. */
+            interface $Properties {
+
+                /** SharedDeviceContactHashKey epoch */
+                epoch?: (number|null);
+
+                /** SharedDeviceContactHashKey kind */
+                kind?: (waproto.Message.SharedDeviceContactHashKey.Kind|null);
+
+                /** SharedDeviceContactHashKey keyData */
+                keyData?: (Uint8Array|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceContactHashKey. */
+            type $Shape = waproto.Message.SharedDeviceContactHashKey.$Properties;
+
+            /** Kind enum. */
+            enum Kind {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** LID value */
+                LID = 1,
+
+                /** PHONE_NUMBER value */
+                PHONE_NUMBER = 2
+            }
+        }
+
+        /**
+         * Properties of a SharedDeviceContactHashKeyRequest.
+         * @deprecated Use waproto.Message.SharedDeviceContactHashKeyRequest.$Properties instead.
+         */
+        interface ISharedDeviceContactHashKeyRequest extends waproto.Message.SharedDeviceContactHashKeyRequest.$Properties {
+        }
+
+        /** Represents a SharedDeviceContactHashKeyRequest. */
+        class SharedDeviceContactHashKeyRequest {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceContactHashKeyRequest knownEpoch. */
+            knownEpoch?: (number|null);
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyRequest instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKeyRequest instance
+             */
+            static create(properties: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+            static create(properties?: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties): waproto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape} SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape} SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKeyRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKeyRequest
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyRequest message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKeyRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SharedDeviceContactHashKeyRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyRequest to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKeyRequest
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKeyRequest {
+
+            /** Properties of a SharedDeviceContactHashKeyRequest. */
+            interface $Properties {
+
+                /** SharedDeviceContactHashKeyRequest knownEpoch */
+                knownEpoch?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceContactHashKeyRequest. */
+            type $Shape = waproto.Message.SharedDeviceContactHashKeyRequest.$Properties;
+        }
+
+        /**
+         * Properties of a SharedDeviceContactHashKeyShare.
+         * @deprecated Use waproto.Message.SharedDeviceContactHashKeyShare.$Properties instead.
+         */
+        interface ISharedDeviceContactHashKeyShare extends waproto.Message.SharedDeviceContactHashKeyShare.$Properties {
+        }
+
+        /** Represents a SharedDeviceContactHashKeyShare. */
+        class SharedDeviceContactHashKeyShare {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyShare.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SharedDeviceContactHashKeyShare.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceContactHashKeyShare keys. */
+            keys: waproto.Message.SharedDeviceContactHashKey.$Properties[];
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyShare instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKeyShare instance
+             */
+            static create(properties: waproto.Message.SharedDeviceContactHashKeyShare.$Shape): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+            static create(properties?: waproto.Message.SharedDeviceContactHashKeyShare.$Properties): waproto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SharedDeviceContactHashKeyShare.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SharedDeviceContactHashKeyShare.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape} SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape} SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyShare message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKeyShare message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKeyShare
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyShare message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKeyShare
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SharedDeviceContactHashKeyShare, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyShare to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKeyShare
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKeyShare {
+
+            /** Properties of a SharedDeviceContactHashKeyShare. */
+            interface $Properties {
+
+                /** SharedDeviceContactHashKeyShare keys */
+                keys?: (waproto.Message.SharedDeviceContactHashKey.$Properties[]|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceContactHashKeyShare. */
+            type $Shape = waproto.Message.SharedDeviceContactHashKeyShare.$Properties;
         }
 
         /**
@@ -75165,6 +75710,12 @@ export namespace waproto {
             /** BusinessBroadcastCampaignAction status. */
             status?: (waproto.SyncActionValue.BusinessBroadcastCampaignStatus|null);
 
+            /** BusinessBroadcastCampaignAction bbProStatus. */
+            bbProStatus?: (waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus|null);
+
+            /** BusinessBroadcastCampaignAction customAudienceFbid. */
+            customAudienceFbid?: (string|null);
+
             /**
              * Creates a new BusinessBroadcastCampaignAction instance using the specified properties.
              * @param [properties] Properties to set
@@ -75276,12 +75827,52 @@ export namespace waproto {
                 /** BusinessBroadcastCampaignAction status */
                 status?: (waproto.SyncActionValue.BusinessBroadcastCampaignStatus|null);
 
+                /** BusinessBroadcastCampaignAction bbProStatus */
+                bbProStatus?: (waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus|null);
+
+                /** BusinessBroadcastCampaignAction customAudienceFbid */
+                customAudienceFbid?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
 
             /** Shape of a BusinessBroadcastCampaignAction. */
             type $Shape = waproto.SyncActionValue.BusinessBroadcastCampaignAction.$Properties;
+        }
+
+        /** BusinessBroadcastCampaignBBProStatus enum. */
+        enum BusinessBroadcastCampaignBBProStatus {
+
+            /** BB_PRO_ACTIVE value */
+            BB_PRO_ACTIVE = 1,
+
+            /** BB_PRO_COMPLETED value */
+            BB_PRO_COMPLETED = 2,
+
+            /** BB_PRO_IN_DRAFT value */
+            BB_PRO_IN_DRAFT = 3,
+
+            /** BB_PRO_IN_REVIEW value */
+            BB_PRO_IN_REVIEW = 4,
+
+            /** BB_PRO_NOT_SENDING value */
+            BB_PRO_NOT_SENDING = 5,
+
+            /** BB_PRO_OFF value */
+            BB_PRO_OFF = 6,
+
+            /** BB_PRO_REJECTED value */
+            BB_PRO_REJECTED = 7,
+
+            /** BB_PRO_SCHEDULED value */
+            BB_PRO_SCHEDULED = 8,
+
+            /** BB_PRO_SENDING_LIMITED value */
+            BB_PRO_SENDING_LIMITED = 9,
+
+            /** BB_PRO_PROCESSING value */
+            BB_PRO_PROCESSING = 10
         }
 
         /** BusinessBroadcastCampaignStatus enum. */
@@ -91434,7 +92025,13 @@ export namespace waproto {
             IDENTITY_TRUST_REVOKED = 228,
 
             /** CTWA_CONSUMER_DISCLOSURE value */
-            CTWA_CONSUMER_DISCLOSURE = 230
+            CTWA_CONSUMER_DISCLOSURE = 230,
+
+            /** CHANGE_ACP2_SETTING value */
+            CHANGE_ACP2_SETTING = 240,
+
+            /** EPHEMERAL_CHANGED_FOR_COEX value */
+            EPHEMERAL_CHANGED_FOR_COEX = 248
         }
     }
 

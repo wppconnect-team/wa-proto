@@ -56347,6 +56347,14 @@ $root.waproto = (function() {
             case 25:
                 message.deviceType = 25;
                 break;
+            case "WASS":
+            case 26:
+                message.deviceType = 26;
+                break;
+            case "BUSINESS_BACK_OFFICE":
+            case 27:
+                message.deviceType = 27;
+                break;
             default:
                 if (typeof object.deviceType === "number" && (object.deviceType | 0) === object.deviceType)
                     message.deviceType = object.deviceType;
@@ -62824,6 +62832,7 @@ $root.waproto = (function() {
              * @property {number|null} [agmTitleStrategy] ExternalAdReplyInfo agmTitleStrategy
              * @property {number|null} [agmSubtitleStrategy] ExternalAdReplyInfo agmSubtitleStrategy
              * @property {number|null} [agmHeaderInteractionStrategy] ExternalAdReplyInfo agmHeaderInteractionStrategy
+             * @property {boolean|null} [containsCtwaFlowsAutoLabel] ExternalAdReplyInfo containsCtwaFlowsAutoLabel
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -63111,6 +63120,14 @@ $root.waproto = (function() {
              */
             ExternalAdReplyInfo.prototype.agmHeaderInteractionStrategy = null;
 
+            /**
+             * ExternalAdReplyInfo containsCtwaFlowsAutoLabel.
+             * @member {boolean|null|undefined} containsCtwaFlowsAutoLabel
+             * @memberof waproto.ContextInfo.ExternalAdReplyInfo
+             * @instance
+             */
+            ExternalAdReplyInfo.prototype.containsCtwaFlowsAutoLabel = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -63306,6 +63323,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ExternalAdReplyInfo.prototype, "_containsCtwaFlowsAutoLabel", {
+                get: $util.oneOfGetter($oneOfFields = ["containsCtwaFlowsAutoLabel"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @function create
@@ -63402,6 +63425,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 31, wireType 0 =*/248).int32(message.agmSubtitleStrategy);
                 if (message.agmHeaderInteractionStrategy != null && $Object.hasOwnProperty.call(message, "agmHeaderInteractionStrategy"))
                     writer.uint32(/* id 32, wireType 0 =*/256).int32(message.agmHeaderInteractionStrategy);
+                if (message.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(message, "containsCtwaFlowsAutoLabel"))
+                    writer.uint32(/* id 33, wireType 0 =*/264).bool(message.containsCtwaFlowsAutoLabel);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -63683,6 +63708,13 @@ $root.waproto = (function() {
                             message._agmHeaderInteractionStrategy = "agmHeaderInteractionStrategy";
                             continue;
                         }
+                    case 33: {
+                            if (wireType !== 0)
+                                break;
+                            message.containsCtwaFlowsAutoLabel = reader.bool();
+                            message._containsCtwaFlowsAutoLabel = "containsCtwaFlowsAutoLabel";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -63892,6 +63924,11 @@ $root.waproto = (function() {
                     if (!$util.isInteger(message.agmHeaderInteractionStrategy))
                         return "agmHeaderInteractionStrategy: integer expected";
                 }
+                if (message.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(message, "containsCtwaFlowsAutoLabel")) {
+                    properties._containsCtwaFlowsAutoLabel = 1;
+                    if (typeof message.containsCtwaFlowsAutoLabel !== "boolean")
+                        return "containsCtwaFlowsAutoLabel: boolean expected";
+                }
                 return null;
             };
 
@@ -64006,6 +64043,8 @@ $root.waproto = (function() {
                     message.agmSubtitleStrategy = object.agmSubtitleStrategy | 0;
                 if (object.agmHeaderInteractionStrategy != null)
                     message.agmHeaderInteractionStrategy = object.agmHeaderInteractionStrategy | 0;
+                if (object.containsCtwaFlowsAutoLabel != null)
+                    message.containsCtwaFlowsAutoLabel = $Boolean(object.containsCtwaFlowsAutoLabel);
                 return message;
             };
 
@@ -64090,6 +64129,8 @@ $root.waproto = (function() {
                     object.agmSubtitleStrategy = message.agmSubtitleStrategy;
                 if (message.agmHeaderInteractionStrategy != null && $Object.hasOwnProperty.call(message, "agmHeaderInteractionStrategy"))
                     object.agmHeaderInteractionStrategy = message.agmHeaderInteractionStrategy;
+                if (message.containsCtwaFlowsAutoLabel != null && $Object.hasOwnProperty.call(message, "containsCtwaFlowsAutoLabel"))
+                    object.containsCtwaFlowsAutoLabel = message.containsCtwaFlowsAutoLabel;
                 return object;
             };
 
@@ -66837,6 +66878,7 @@ $root.waproto = (function() {
          * @property {string|null} [authAgentParentCompanyName] Conversation authAgentParentCompanyName
          * @property {string|null} [authAgentObaPhoneNumber] Conversation authAgentObaPhoneNumber
          * @property {waproto.IdentityVerificationState.$Properties|null} [identityVerification] Conversation identityVerification
+         * @property {waproto.ACP2Setting.$Properties|null} [acp2Setting] Conversation acp2Setting
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -66914,6 +66956,7 @@ $root.waproto = (function() {
          *   authAgentParentCompanyName?: string|null;
          *   authAgentObaPhoneNumber?: string|null;
          *   identityVerification?: waproto.IdentityVerificationState.$Shape|null;
+         *   acp2Setting?: waproto.ACP2Setting.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Conversation.$Shape
          */
@@ -67439,6 +67482,14 @@ $root.waproto = (function() {
          */
         Conversation.prototype.identityVerification = null;
 
+        /**
+         * Conversation acp2Setting.
+         * @member {waproto.ACP2Setting.$Properties|null|undefined} acp2Setting
+         * @memberof waproto.Conversation
+         * @instance
+         */
+        Conversation.prototype.acp2Setting = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -67802,6 +67853,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_acp2Setting", {
+            get: $util.oneOfGetter($oneOfFields = ["acp2Setting"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @function create
@@ -67961,6 +68018,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 62, wireType 2 =*/498).string(message.authAgentObaPhoneNumber);
             if (message.identityVerification != null && $Object.hasOwnProperty.call(message, "identityVerification"))
                 $root.waproto.IdentityVerificationState.encode(message.identityVerification, writer.uint32(/* id 63, wireType 2 =*/506).fork(), _depth + 1).ldelim();
+            if (message.acp2Setting != null && $Object.hasOwnProperty.call(message, "acp2Setting"))
+                $root.waproto.ACP2Setting.encode(message.acp2Setting, writer.uint32(/* id 64, wireType 2 =*/514).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -68460,6 +68519,13 @@ $root.waproto = (function() {
                         message._identityVerification = "identityVerification";
                         continue;
                     }
+                case 64: {
+                        if (wireType !== 2)
+                            break;
+                        message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.acp2Setting);
+                        message._acp2Setting = "acp2Setting";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -68840,6 +68906,14 @@ $root.waproto = (function() {
                         return "identityVerification." + error;
                 }
             }
+            if (message.acp2Setting != null && $Object.hasOwnProperty.call(message, "acp2Setting")) {
+                properties._acp2Setting = 1;
+                {
+                    var error = $root.waproto.ACP2Setting.verify(message.acp2Setting, _depth + 1);
+                    if (error)
+                        return "acp2Setting." + error;
+                }
+            }
             return null;
         };
 
@@ -69168,6 +69242,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.Conversation.identityVerification: object expected");
                 message.identityVerification = $root.waproto.IdentityVerificationState.fromObject(object.identityVerification, _depth + 1);
             }
+            if (object.acp2Setting != null) {
+                if (!$util.isObject(object.acp2Setting))
+                    throw $TypeError(".waproto.Conversation.acp2Setting: object expected");
+                message.acp2Setting = $root.waproto.ACP2Setting.fromObject(object.acp2Setting, _depth + 1);
+            }
             return message;
         };
 
@@ -69371,6 +69450,8 @@ $root.waproto = (function() {
                 object.authAgentObaPhoneNumber = message.authAgentObaPhoneNumber;
             if (message.identityVerification != null && $Object.hasOwnProperty.call(message, "identityVerification"))
                 object.identityVerification = $root.waproto.IdentityVerificationState.toObject(message.identityVerification, options, _depth + 1);
+            if (message.acp2Setting != null && $Object.hasOwnProperty.call(message, "acp2Setting"))
+                object.acp2Setting = $root.waproto.ACP2Setting.toObject(message.acp2Setting, options, _depth + 1);
             return object;
         };
 
@@ -73695,6 +73776,14 @@ $root.waproto = (function() {
             case 25:
                 message.platformType = 25;
                 break;
+            case "WASS":
+            case 26:
+                message.platformType = 26;
+                break;
+            case "BUSINESS_BACK_OFFICE":
+            case 27:
+                message.platformType = 27;
+                break;
             default:
                 if (typeof object.platformType === "number" && (object.platformType | 0) === object.platformType)
                     message.platformType = object.platformType;
@@ -75291,6 +75380,8 @@ $root.waproto = (function() {
          * @property {number} CLOUD_API=23 CLOUD_API value
          * @property {number} SMARTGLASSES=24 SMARTGLASSES value
          * @property {number} WAIL=25 WAIL value
+         * @property {number} WASS=26 WASS value
+         * @property {number} BUSINESS_BACK_OFFICE=27 BUSINESS_BACK_OFFICE value
          */
         DeviceProps.PlatformType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -75320,6 +75411,8 @@ $root.waproto = (function() {
             values[valuesById[23] = "CLOUD_API"] = 23;
             values[valuesById[24] = "SMARTGLASSES"] = 24;
             values[valuesById[25] = "WAIL"] = 25;
+            values[valuesById[26] = "WASS"] = 26;
+            values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
             return values;
         })();
 
@@ -113379,6 +113472,321 @@ $root.waproto = (function() {
             return Chat;
         })();
 
+        Message.ChatAnimatedWallpaper = (function() {
+
+            /**
+             * Properties of a ChatAnimatedWallpaper.
+             * @typedef {Object} waproto.Message.ChatAnimatedWallpaper.$Properties
+             * @property {string|null} [animatedWallpaperId] ChatAnimatedWallpaper animatedWallpaperId
+             * @property {number|null} [dimLevel] ChatAnimatedWallpaper dimLevel
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a ChatAnimatedWallpaper.
+             * @memberof waproto.Message
+             * @interface IChatAnimatedWallpaper
+             * @augments waproto.Message.ChatAnimatedWallpaper.$Properties
+             * @deprecated Use waproto.Message.ChatAnimatedWallpaper.$Properties instead.
+             */
+
+            /**
+             * Shape of a ChatAnimatedWallpaper.
+             * @typedef {waproto.Message.ChatAnimatedWallpaper.$Properties} waproto.Message.ChatAnimatedWallpaper.$Shape
+             */
+
+            /**
+             * Constructs a new ChatAnimatedWallpaper.
+             * @memberof waproto.Message
+             * @classdesc Represents a ChatAnimatedWallpaper.
+             * @constructor
+             * @param {waproto.Message.ChatAnimatedWallpaper.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var ChatAnimatedWallpaper = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * ChatAnimatedWallpaper animatedWallpaperId.
+             * @member {string|null|undefined} animatedWallpaperId
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @instance
+             */
+            ChatAnimatedWallpaper.prototype.animatedWallpaperId = null;
+
+            /**
+             * ChatAnimatedWallpaper dimLevel.
+             * @member {number|null|undefined} dimLevel
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @instance
+             */
+            ChatAnimatedWallpaper.prototype.dimLevel = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ChatAnimatedWallpaper.prototype, "_animatedWallpaperId", {
+                get: $util.oneOfGetter($oneOfFields = ["animatedWallpaperId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ChatAnimatedWallpaper.prototype, "_dimLevel", {
+                get: $util.oneOfGetter($oneOfFields = ["dimLevel"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new ChatAnimatedWallpaper instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {waproto.Message.ChatAnimatedWallpaper.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.ChatAnimatedWallpaper} ChatAnimatedWallpaper instance
+             * @type {{
+             *   (properties: waproto.Message.ChatAnimatedWallpaper.$Shape): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+             *   (properties?: waproto.Message.ChatAnimatedWallpaper.$Properties): waproto.Message.ChatAnimatedWallpaper;
+             * }}
+             */
+            ChatAnimatedWallpaper.create = function(properties) {
+                return new ChatAnimatedWallpaper(properties);
+            };
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message. Does not implicitly {@link waproto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {waproto.Message.ChatAnimatedWallpaper.$Properties} message ChatAnimatedWallpaper message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ChatAnimatedWallpaper.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.animatedWallpaperId != null && $Object.hasOwnProperty.call(message, "animatedWallpaperId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.animatedWallpaperId);
+                if (message.dimLevel != null && $Object.hasOwnProperty.call(message, "dimLevel"))
+                    writer.uint32(/* id 2, wireType 5 =*/21).float(message.dimLevel);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {waproto.Message.ChatAnimatedWallpaper.$Properties} message ChatAnimatedWallpaper message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ChatAnimatedWallpaper.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape} ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ChatAnimatedWallpaper.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.ChatAnimatedWallpaper();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.animatedWallpaperId = reader.stringVerify();
+                            message._animatedWallpaperId = "animatedWallpaperId";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 5)
+                                break;
+                            message.dimLevel = reader.float();
+                            message._dimLevel = "dimLevel";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape} ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ChatAnimatedWallpaper.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ChatAnimatedWallpaper message.
+             * @function verify
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ChatAnimatedWallpaper.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.animatedWallpaperId != null && $Object.hasOwnProperty.call(message, "animatedWallpaperId")) {
+                    properties._animatedWallpaperId = 1;
+                    if (!$util.isString(message.animatedWallpaperId))
+                        return "animatedWallpaperId: string expected";
+                }
+                if (message.dimLevel != null && $Object.hasOwnProperty.call(message, "dimLevel")) {
+                    properties._dimLevel = 1;
+                    if (typeof message.dimLevel !== "number")
+                        return "dimLevel: number expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a ChatAnimatedWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.ChatAnimatedWallpaper} ChatAnimatedWallpaper
+             */
+            ChatAnimatedWallpaper.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.ChatAnimatedWallpaper)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.ChatAnimatedWallpaper: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.ChatAnimatedWallpaper();
+                if (object.animatedWallpaperId != null)
+                    message.animatedWallpaperId = $String(object.animatedWallpaperId);
+                if (object.dimLevel != null)
+                    message.dimLevel = $Number(object.dimLevel);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ChatAnimatedWallpaper message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {waproto.Message.ChatAnimatedWallpaper} message ChatAnimatedWallpaper
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ChatAnimatedWallpaper.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.animatedWallpaperId != null && $Object.hasOwnProperty.call(message, "animatedWallpaperId"))
+                    object.animatedWallpaperId = message.animatedWallpaperId;
+                if (message.dimLevel != null && $Object.hasOwnProperty.call(message, "dimLevel"))
+                    object.dimLevel = options.json && !$isFinite(message.dimLevel) ? $String(message.dimLevel) : message.dimLevel;
+                return object;
+            };
+
+            /**
+             * Converts this ChatAnimatedWallpaper to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ChatAnimatedWallpaper.prototype.toJSON = function() {
+                return ChatAnimatedWallpaper.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for ChatAnimatedWallpaper
+             * @function getTypeUrl
+             * @memberof waproto.Message.ChatAnimatedWallpaper
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            ChatAnimatedWallpaper.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.ChatAnimatedWallpaper";
+            };
+
+            return ChatAnimatedWallpaper;
+        })();
+
         Message.ChatCustomImageWallpaper = (function() {
 
             /**
@@ -114759,7 +115167,8 @@ $root.waproto = (function() {
              * @property {waproto.Message.ChatSolidColorWallpaper.$Properties|null} [solidColor] ChatThemeSetting solidColor
              * @property {waproto.Message.ChatStockImageWallpaper.$Properties|null} [stockImage] ChatThemeSetting stockImage
              * @property {waproto.Message.ChatCustomImageWallpaper.$Properties|null} [customImage] ChatThemeSetting customImage
-             * @property {"defaultWallpaper"|"solidColor"|"stockImage"|"customImage"} [wallpaper] ChatThemeSetting wallpaper
+             * @property {waproto.Message.ChatAnimatedWallpaper.$Properties|null} [animatedWallpaper] ChatThemeSetting animatedWallpaper
+             * @property {"defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper"} [wallpaper] ChatThemeSetting wallpaper
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -114781,9 +115190,10 @@ $root.waproto = (function() {
              *   solidColor?: waproto.Message.ChatSolidColorWallpaper.$Shape|null;
              *   stockImage?: waproto.Message.ChatStockImageWallpaper.$Shape|null;
              *   customImage?: waproto.Message.ChatCustomImageWallpaper.$Shape|null;
+             *   animatedWallpaper?: waproto.Message.ChatAnimatedWallpaper.$Shape|null;
              *   $unknowns?: Array.<Uint8Array>;
              * } & (
-             *   ({ wallpaper?: undefined; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null }|{ wallpaper?: "defaultWallpaper"; defaultWallpaper: waproto.Message.ChatDefaultWallpaper.$Shape; solidColor?: null; stockImage?: null; customImage?: null }|{ wallpaper?: "solidColor"; defaultWallpaper?: null; solidColor: waproto.Message.ChatSolidColorWallpaper.$Shape; stockImage?: null; customImage?: null }|{ wallpaper?: "stockImage"; defaultWallpaper?: null; solidColor?: null; stockImage: waproto.Message.ChatStockImageWallpaper.$Shape; customImage?: null }|{ wallpaper?: "customImage"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage: waproto.Message.ChatCustomImageWallpaper.$Shape })
+             *   ({ wallpaper?: undefined; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "defaultWallpaper"; defaultWallpaper: waproto.Message.ChatDefaultWallpaper.$Shape; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "solidColor"; defaultWallpaper?: null; solidColor: waproto.Message.ChatSolidColorWallpaper.$Shape; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "stockImage"; defaultWallpaper?: null; solidColor?: null; stockImage: waproto.Message.ChatStockImageWallpaper.$Shape; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "customImage"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage: waproto.Message.ChatCustomImageWallpaper.$Shape; animatedWallpaper?: null }|{ wallpaper?: "animatedWallpaper"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper: waproto.Message.ChatAnimatedWallpaper.$Shape })
              * )} waproto.Message.ChatThemeSetting.$Shape
              */
 
@@ -114858,6 +115268,14 @@ $root.waproto = (function() {
              */
             ChatThemeSetting.prototype.customImage = null;
 
+            /**
+             * ChatThemeSetting animatedWallpaper.
+             * @member {waproto.Message.ChatAnimatedWallpaper.$Properties|null|undefined} animatedWallpaper
+             * @memberof waproto.Message.ChatThemeSetting
+             * @instance
+             */
+            ChatThemeSetting.prototype.animatedWallpaper = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -114881,12 +115299,12 @@ $root.waproto = (function() {
 
             /**
              * ChatThemeSetting wallpaper.
-             * @member {"defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|undefined} wallpaper
+             * @member {"defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper"|undefined} wallpaper
              * @memberof waproto.Message.ChatThemeSetting
              * @instance
              */
             $Object.defineProperty(ChatThemeSetting.prototype, "wallpaper", {
-                get: $util.oneOfGetter($oneOfFields = ["defaultWallpaper", "solidColor", "stockImage", "customImage"]),
+                get: $util.oneOfGetter($oneOfFields = ["defaultWallpaper", "solidColor", "stockImage", "customImage", "animatedWallpaper"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -114936,6 +115354,8 @@ $root.waproto = (function() {
                     $root.waproto.Message.ChatStockImageWallpaper.encode(message.stockImage, writer.uint32(/* id 12, wireType 2 =*/98).fork(), _depth + 1).ldelim();
                 if (message.customImage != null && $Object.hasOwnProperty.call(message, "customImage"))
                     $root.waproto.Message.ChatCustomImageWallpaper.encode(message.customImage, writer.uint32(/* id 13, wireType 2 =*/106).fork(), _depth + 1).ldelim();
+                if (message.animatedWallpaper != null && $Object.hasOwnProperty.call(message, "animatedWallpaper"))
+                    $root.waproto.Message.ChatAnimatedWallpaper.encode(message.animatedWallpaper, writer.uint32(/* id 14, wireType 2 =*/114).fork(), _depth + 1).ldelim();
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -115042,6 +115462,13 @@ $root.waproto = (function() {
                             message.wallpaper = "customImage";
                             continue;
                         }
+                    case 14: {
+                            if (wireType !== 2)
+                                break;
+                            message.animatedWallpaper = $root.waproto.Message.ChatAnimatedWallpaper.decode(reader, reader.uint32(), $undefined, _depth + 1, message.animatedWallpaper);
+                            message.wallpaper = "animatedWallpaper";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -115144,6 +115571,16 @@ $root.waproto = (function() {
                             return "customImage." + error;
                     }
                 }
+                if (message.animatedWallpaper != null && $Object.hasOwnProperty.call(message, "animatedWallpaper")) {
+                    if (properties.wallpaper === 1)
+                        return "wallpaper: multiple values";
+                    properties.wallpaper = 1;
+                    {
+                        var error = $root.waproto.Message.ChatAnimatedWallpaper.verify(message.animatedWallpaper, _depth + 1);
+                        if (error)
+                            return "animatedWallpaper." + error;
+                    }
+                }
                 return null;
             };
 
@@ -115198,6 +115635,11 @@ $root.waproto = (function() {
                         throw $TypeError(".waproto.Message.ChatThemeSetting.customImage: object expected");
                     message.customImage = $root.waproto.Message.ChatCustomImageWallpaper.fromObject(object.customImage, _depth + 1);
                 }
+                if (object.animatedWallpaper != null) {
+                    if (!$util.isObject(object.animatedWallpaper))
+                        throw $TypeError(".waproto.Message.ChatThemeSetting.animatedWallpaper: object expected");
+                    message.animatedWallpaper = $root.waproto.Message.ChatAnimatedWallpaper.fromObject(object.animatedWallpaper, _depth + 1);
+                }
                 return message;
             };
 
@@ -115248,6 +115690,11 @@ $root.waproto = (function() {
                     object.customImage = $root.waproto.Message.ChatCustomImageWallpaper.toObject(message.customImage, options, _depth + 1);
                     if (options.oneofs)
                         object.wallpaper = "customImage";
+                }
+                if (message.animatedWallpaper != null && $Object.hasOwnProperty.call(message, "animatedWallpaper")) {
+                    object.animatedWallpaper = $root.waproto.Message.ChatAnimatedWallpaper.toObject(message.animatedWallpaper, options, _depth + 1);
+                    if (options.oneofs)
+                        object.wallpaper = "animatedWallpaper";
                 }
                 return object;
             };
@@ -166597,6 +167044,8 @@ $root.waproto = (function() {
              * @property {waproto.Message.MarkAsVerifiedAction.$Properties|null} [markAsVerifiedAction] ProtocolMessage markAsVerifiedAction
              * @property {waproto.CoexStateSync.$Properties|null} [coexStateSync] ProtocolMessage coexStateSync
              * @property {waproto.ACP2Setting.$Properties|null} [acp2Setting] ProtocolMessage acp2Setting
+             * @property {waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null} [sharedDeviceContactHashKeyShare] ProtocolMessage sharedDeviceContactHashKeyShare
+             * @property {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null} [sharedDeviceContactHashKeyRequest] ProtocolMessage sharedDeviceContactHashKeyRequest
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -166642,6 +167091,8 @@ $root.waproto = (function() {
              *   markAsVerifiedAction?: waproto.Message.MarkAsVerifiedAction.$Shape|null;
              *   coexStateSync?: waproto.CoexStateSync.$Shape|null;
              *   acp2Setting?: waproto.ACP2Setting.$Shape|null;
+             *   sharedDeviceContactHashKeyShare?: waproto.Message.SharedDeviceContactHashKeyShare.$Shape|null;
+             *   sharedDeviceContactHashKeyRequest?: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape|null;
              *   $unknowns?: Array.<Uint8Array>;
              * }} waproto.Message.ProtocolMessage.$Shape
              */
@@ -166909,6 +167360,22 @@ $root.waproto = (function() {
              */
             ProtocolMessage.prototype.acp2Setting = null;
 
+            /**
+             * ProtocolMessage sharedDeviceContactHashKeyShare.
+             * @member {waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null|undefined} sharedDeviceContactHashKeyShare
+             * @memberof waproto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.sharedDeviceContactHashKeyShare = null;
+
+            /**
+             * ProtocolMessage sharedDeviceContactHashKeyRequest.
+             * @member {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null|undefined} sharedDeviceContactHashKeyRequest
+             * @memberof waproto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.sharedDeviceContactHashKeyRequest = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -167098,6 +167565,18 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ProtocolMessage.prototype, "_sharedDeviceContactHashKeyShare", {
+                get: $util.oneOfGetter($oneOfFields = ["sharedDeviceContactHashKeyShare"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ProtocolMessage.prototype, "_sharedDeviceContactHashKeyRequest", {
+                get: $util.oneOfGetter($oneOfFields = ["sharedDeviceContactHashKeyRequest"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @function create
@@ -167192,6 +167671,10 @@ $root.waproto = (function() {
                     $root.waproto.CoexStateSync.encode(message.coexStateSync, writer.uint32(/* id 33, wireType 2 =*/266).fork(), _depth + 1).ldelim();
                 if (message.acp2Setting != null && $Object.hasOwnProperty.call(message, "acp2Setting"))
                     $root.waproto.ACP2Setting.encode(message.acp2Setting, writer.uint32(/* id 35, wireType 2 =*/282).fork(), _depth + 1).ldelim();
+                if (message.sharedDeviceContactHashKeyShare != null && $Object.hasOwnProperty.call(message, "sharedDeviceContactHashKeyShare"))
+                    $root.waproto.Message.SharedDeviceContactHashKeyShare.encode(message.sharedDeviceContactHashKeyShare, writer.uint32(/* id 36, wireType 2 =*/290).fork(), _depth + 1).ldelim();
+                if (message.sharedDeviceContactHashKeyRequest != null && $Object.hasOwnProperty.call(message, "sharedDeviceContactHashKeyRequest"))
+                    $root.waproto.Message.SharedDeviceContactHashKeyRequest.encode(message.sharedDeviceContactHashKeyRequest, writer.uint32(/* id 37, wireType 2 =*/298).fork(), _depth + 1).ldelim();
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -167464,6 +167947,20 @@ $root.waproto = (function() {
                                 break;
                             message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.acp2Setting);
                             message._acp2Setting = "acp2Setting";
+                            continue;
+                        }
+                    case 36: {
+                            if (wireType !== 2)
+                                break;
+                            message.sharedDeviceContactHashKeyShare = $root.waproto.Message.SharedDeviceContactHashKeyShare.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sharedDeviceContactHashKeyShare);
+                            message._sharedDeviceContactHashKeyShare = "sharedDeviceContactHashKeyShare";
+                            continue;
+                        }
+                    case 37: {
+                            if (wireType !== 2)
+                                break;
+                            message.sharedDeviceContactHashKeyRequest = $root.waproto.Message.SharedDeviceContactHashKeyRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sharedDeviceContactHashKeyRequest);
+                            message._sharedDeviceContactHashKeyRequest = "sharedDeviceContactHashKeyRequest";
                             continue;
                         }
                     }
@@ -167742,6 +168239,22 @@ $root.waproto = (function() {
                             return "acp2Setting." + error;
                     }
                 }
+                if (message.sharedDeviceContactHashKeyShare != null && $Object.hasOwnProperty.call(message, "sharedDeviceContactHashKeyShare")) {
+                    properties._sharedDeviceContactHashKeyShare = 1;
+                    {
+                        var error = $root.waproto.Message.SharedDeviceContactHashKeyShare.verify(message.sharedDeviceContactHashKeyShare, _depth + 1);
+                        if (error)
+                            return "sharedDeviceContactHashKeyShare." + error;
+                    }
+                }
+                if (message.sharedDeviceContactHashKeyRequest != null && $Object.hasOwnProperty.call(message, "sharedDeviceContactHashKeyRequest")) {
+                    properties._sharedDeviceContactHashKeyRequest = 1;
+                    {
+                        var error = $root.waproto.Message.SharedDeviceContactHashKeyRequest.verify(message.sharedDeviceContactHashKeyRequest, _depth + 1);
+                        if (error)
+                            return "sharedDeviceContactHashKeyRequest." + error;
+                    }
+                }
                 return null;
             };
 
@@ -167901,6 +168414,14 @@ $root.waproto = (function() {
                 case 39:
                     message.type = 39;
                     break;
+                case "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE":
+                case 40:
+                    message.type = 40;
+                    break;
+                case "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST":
+                case 41:
+                    message.type = 41;
+                    break;
                 default:
                     if (typeof object.type === "number" && (object.type | 0) === object.type)
                         message.type = object.type;
@@ -168049,6 +168570,16 @@ $root.waproto = (function() {
                         throw $TypeError(".waproto.Message.ProtocolMessage.acp2Setting: object expected");
                     message.acp2Setting = $root.waproto.ACP2Setting.fromObject(object.acp2Setting, _depth + 1);
                 }
+                if (object.sharedDeviceContactHashKeyShare != null) {
+                    if (!$util.isObject(object.sharedDeviceContactHashKeyShare))
+                        throw $TypeError(".waproto.Message.ProtocolMessage.sharedDeviceContactHashKeyShare: object expected");
+                    message.sharedDeviceContactHashKeyShare = $root.waproto.Message.SharedDeviceContactHashKeyShare.fromObject(object.sharedDeviceContactHashKeyShare, _depth + 1);
+                }
+                if (object.sharedDeviceContactHashKeyRequest != null) {
+                    if (!$util.isObject(object.sharedDeviceContactHashKeyRequest))
+                        throw $TypeError(".waproto.Message.ProtocolMessage.sharedDeviceContactHashKeyRequest: object expected");
+                    message.sharedDeviceContactHashKeyRequest = $root.waproto.Message.SharedDeviceContactHashKeyRequest.fromObject(object.sharedDeviceContactHashKeyRequest, _depth + 1);
+                }
                 return message;
             };
 
@@ -168141,6 +168672,10 @@ $root.waproto = (function() {
                     object.coexStateSync = $root.waproto.CoexStateSync.toObject(message.coexStateSync, options, _depth + 1);
                 if (message.acp2Setting != null && $Object.hasOwnProperty.call(message, "acp2Setting"))
                     object.acp2Setting = $root.waproto.ACP2Setting.toObject(message.acp2Setting, options, _depth + 1);
+                if (message.sharedDeviceContactHashKeyShare != null && $Object.hasOwnProperty.call(message, "sharedDeviceContactHashKeyShare"))
+                    object.sharedDeviceContactHashKeyShare = $root.waproto.Message.SharedDeviceContactHashKeyShare.toObject(message.sharedDeviceContactHashKeyShare, options, _depth + 1);
+                if (message.sharedDeviceContactHashKeyRequest != null && $Object.hasOwnProperty.call(message, "sharedDeviceContactHashKeyRequest"))
+                    object.sharedDeviceContactHashKeyRequest = $root.waproto.Message.SharedDeviceContactHashKeyRequest.toObject(message.sharedDeviceContactHashKeyRequest, options, _depth + 1);
                 return object;
             };
 
@@ -168206,6 +168741,8 @@ $root.waproto = (function() {
              * @property {number} MARK_AS_VERIFIED_ACTION=36 MARK_AS_VERIFIED_ACTION value
              * @property {number} COEX_STATE_SYNC=37 COEX_STATE_SYNC value
              * @property {number} ACP2_SETTING=39 ACP2_SETTING value
+             * @property {number} SHARED_DEVICE_CONTACT_HASH_KEY_SHARE=40 SHARED_DEVICE_CONTACT_HASH_KEY_SHARE value
+             * @property {number} SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST=41 SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST value
              */
             ProtocolMessage.Type = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -168242,6 +168779,8 @@ $root.waproto = (function() {
                 values[valuesById[36] = "MARK_AS_VERIFIED_ACTION"] = 36;
                 values[valuesById[37] = "COEX_STATE_SYNC"] = 37;
                 values[valuesById[39] = "ACP2_SETTING"] = 39;
+                values[valuesById[40] = "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE"] = 40;
+                values[valuesById[41] = "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST"] = 41;
                 return values;
             })();
 
@@ -172409,6 +172948,962 @@ $root.waproto = (function() {
             };
 
             return SenderKeyDistributionMessage;
+        })();
+
+        Message.SharedDeviceContactHashKey = (function() {
+
+            /**
+             * Properties of a SharedDeviceContactHashKey.
+             * @typedef {Object} waproto.Message.SharedDeviceContactHashKey.$Properties
+             * @property {number|null} [epoch] SharedDeviceContactHashKey epoch
+             * @property {waproto.Message.SharedDeviceContactHashKey.Kind|null} [kind] SharedDeviceContactHashKey kind
+             * @property {Uint8Array|null} [keyData] SharedDeviceContactHashKey keyData
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a SharedDeviceContactHashKey.
+             * @memberof waproto.Message
+             * @interface ISharedDeviceContactHashKey
+             * @augments waproto.Message.SharedDeviceContactHashKey.$Properties
+             * @deprecated Use waproto.Message.SharedDeviceContactHashKey.$Properties instead.
+             */
+
+            /**
+             * Shape of a SharedDeviceContactHashKey.
+             * @typedef {waproto.Message.SharedDeviceContactHashKey.$Properties} waproto.Message.SharedDeviceContactHashKey.$Shape
+             */
+
+            /**
+             * Constructs a new SharedDeviceContactHashKey.
+             * @memberof waproto.Message
+             * @classdesc Represents a SharedDeviceContactHashKey.
+             * @constructor
+             * @param {waproto.Message.SharedDeviceContactHashKey.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var SharedDeviceContactHashKey = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * SharedDeviceContactHashKey epoch.
+             * @member {number|null|undefined} epoch
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @instance
+             */
+            SharedDeviceContactHashKey.prototype.epoch = null;
+
+            /**
+             * SharedDeviceContactHashKey kind.
+             * @member {waproto.Message.SharedDeviceContactHashKey.Kind|null|undefined} kind
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @instance
+             */
+            SharedDeviceContactHashKey.prototype.kind = null;
+
+            /**
+             * SharedDeviceContactHashKey keyData.
+             * @member {Uint8Array|null|undefined} keyData
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @instance
+             */
+            SharedDeviceContactHashKey.prototype.keyData = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SharedDeviceContactHashKey.prototype, "_epoch", {
+                get: $util.oneOfGetter($oneOfFields = ["epoch"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SharedDeviceContactHashKey.prototype, "_kind", {
+                get: $util.oneOfGetter($oneOfFields = ["kind"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SharedDeviceContactHashKey.prototype, "_keyData", {
+                get: $util.oneOfGetter($oneOfFields = ["keyData"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SharedDeviceContactHashKey instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKey.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.SharedDeviceContactHashKey} SharedDeviceContactHashKey instance
+             * @type {{
+             *   (properties: waproto.Message.SharedDeviceContactHashKey.$Shape): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+             *   (properties?: waproto.Message.SharedDeviceContactHashKey.$Properties): waproto.Message.SharedDeviceContactHashKey;
+             * }}
+             */
+            SharedDeviceContactHashKey.create = function(properties) {
+                return new SharedDeviceContactHashKey(properties);
+            };
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKey.$Properties} message SharedDeviceContactHashKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceContactHashKey.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.epoch != null && $Object.hasOwnProperty.call(message, "epoch"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.epoch);
+                if (message.kind != null && $Object.hasOwnProperty.call(message, "kind"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.kind);
+                if (message.keyData != null && $Object.hasOwnProperty.call(message, "keyData"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.keyData);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKey.$Properties} message SharedDeviceContactHashKey message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceContactHashKey.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape} SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceContactHashKey.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.SharedDeviceContactHashKey();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.epoch = reader.uint32();
+                            message._epoch = "epoch";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 0)
+                                break;
+                            message.kind = reader.int32();
+                            message._kind = "kind";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.keyData = reader.bytes();
+                            message._keyData = "keyData";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape} SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceContactHashKey.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SharedDeviceContactHashKey message.
+             * @function verify
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SharedDeviceContactHashKey.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.epoch != null && $Object.hasOwnProperty.call(message, "epoch")) {
+                    properties._epoch = 1;
+                    if (!$util.isInteger(message.epoch))
+                        return "epoch: integer expected";
+                }
+                if (message.kind != null && $Object.hasOwnProperty.call(message, "kind")) {
+                    properties._kind = 1;
+                    if (typeof message.kind !== "number" || (message.kind | 0) !== message.kind)
+                        return "kind: enum value expected";
+                }
+                if (message.keyData != null && $Object.hasOwnProperty.call(message, "keyData")) {
+                    properties._keyData = 1;
+                    if (!(message.keyData && typeof message.keyData.length === "number" || $util.isString(message.keyData)))
+                        return "keyData: buffer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SharedDeviceContactHashKey message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.SharedDeviceContactHashKey} SharedDeviceContactHashKey
+             */
+            SharedDeviceContactHashKey.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.SharedDeviceContactHashKey)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.SharedDeviceContactHashKey: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.SharedDeviceContactHashKey();
+                if (object.epoch != null)
+                    message.epoch = object.epoch >>> 0;
+                switch (object.kind) {
+                case "UNKNOWN":
+                case 0:
+                    message.kind = 0;
+                    break;
+                case "LID":
+                case 1:
+                    message.kind = 1;
+                    break;
+                case "PHONE_NUMBER":
+                case 2:
+                    message.kind = 2;
+                    break;
+                default:
+                    if (typeof object.kind === "number" && (object.kind | 0) === object.kind)
+                        message.kind = object.kind;
+                }
+                if (object.keyData != null)
+                    if (typeof object.keyData === "string")
+                        $util.base64.decode(object.keyData, message.keyData = $util.newBuffer($util.base64.length(object.keyData)), 0);
+                    else if (object.keyData.length >= 0)
+                        message.keyData = object.keyData;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKey message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKey} message SharedDeviceContactHashKey
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SharedDeviceContactHashKey.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.epoch != null && $Object.hasOwnProperty.call(message, "epoch"))
+                    object.epoch = message.epoch;
+                if (message.kind != null && $Object.hasOwnProperty.call(message, "kind"))
+                    object.kind = options.enums === $String ? $root.waproto.Message.SharedDeviceContactHashKey.Kind[message.kind] === $undefined ? message.kind : $root.waproto.Message.SharedDeviceContactHashKey.Kind[message.kind] : message.kind;
+                if (message.keyData != null && $Object.hasOwnProperty.call(message, "keyData"))
+                    object.keyData = options.bytes === $String ? $util.base64.encode(message.keyData, 0, message.keyData.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.keyData) : message.keyData;
+                return object;
+            };
+
+            /**
+             * Converts this SharedDeviceContactHashKey to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SharedDeviceContactHashKey.prototype.toJSON = function() {
+                return SharedDeviceContactHashKey.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKey
+             * @function getTypeUrl
+             * @memberof waproto.Message.SharedDeviceContactHashKey
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            SharedDeviceContactHashKey.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.SharedDeviceContactHashKey";
+            };
+
+            /**
+             * Kind enum.
+             * @name waproto.Message.SharedDeviceContactHashKey.Kind
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} LID=1 LID value
+             * @property {number} PHONE_NUMBER=2 PHONE_NUMBER value
+             */
+            SharedDeviceContactHashKey.Kind = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "LID"] = 1;
+                values[valuesById[2] = "PHONE_NUMBER"] = 2;
+                return values;
+            })();
+
+            return SharedDeviceContactHashKey;
+        })();
+
+        Message.SharedDeviceContactHashKeyRequest = (function() {
+
+            /**
+             * Properties of a SharedDeviceContactHashKeyRequest.
+             * @typedef {Object} waproto.Message.SharedDeviceContactHashKeyRequest.$Properties
+             * @property {number|null} [knownEpoch] SharedDeviceContactHashKeyRequest knownEpoch
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a SharedDeviceContactHashKeyRequest.
+             * @memberof waproto.Message
+             * @interface ISharedDeviceContactHashKeyRequest
+             * @augments waproto.Message.SharedDeviceContactHashKeyRequest.$Properties
+             * @deprecated Use waproto.Message.SharedDeviceContactHashKeyRequest.$Properties instead.
+             */
+
+            /**
+             * Shape of a SharedDeviceContactHashKeyRequest.
+             * @typedef {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties} waproto.Message.SharedDeviceContactHashKeyRequest.$Shape
+             */
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyRequest.
+             * @memberof waproto.Message
+             * @classdesc Represents a SharedDeviceContactHashKeyRequest.
+             * @constructor
+             * @param {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var SharedDeviceContactHashKeyRequest = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * SharedDeviceContactHashKeyRequest knownEpoch.
+             * @member {number|null|undefined} knownEpoch
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @instance
+             */
+            SharedDeviceContactHashKeyRequest.prototype.knownEpoch = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SharedDeviceContactHashKeyRequest.prototype, "_knownEpoch", {
+                get: $util.oneOfGetter($oneOfFields = ["knownEpoch"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyRequest instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest} SharedDeviceContactHashKeyRequest instance
+             * @type {{
+             *   (properties: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+             *   (properties?: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties): waproto.Message.SharedDeviceContactHashKeyRequest;
+             * }}
+             */
+            SharedDeviceContactHashKeyRequest.create = function(properties) {
+                return new SharedDeviceContactHashKeyRequest(properties);
+            };
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties} message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceContactHashKeyRequest.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.knownEpoch != null && $Object.hasOwnProperty.call(message, "knownEpoch"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.knownEpoch);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties} message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceContactHashKeyRequest.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape} SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceContactHashKeyRequest.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.SharedDeviceContactHashKeyRequest();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.knownEpoch = reader.uint32();
+                            message._knownEpoch = "knownEpoch";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape} SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceContactHashKeyRequest.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyRequest message.
+             * @function verify
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SharedDeviceContactHashKeyRequest.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.knownEpoch != null && $Object.hasOwnProperty.call(message, "knownEpoch")) {
+                    properties._knownEpoch = 1;
+                    if (!$util.isInteger(message.knownEpoch))
+                        return "knownEpoch: integer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SharedDeviceContactHashKeyRequest message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest} SharedDeviceContactHashKeyRequest
+             */
+            SharedDeviceContactHashKeyRequest.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.SharedDeviceContactHashKeyRequest)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.SharedDeviceContactHashKeyRequest: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.SharedDeviceContactHashKeyRequest();
+                if (object.knownEpoch != null)
+                    message.knownEpoch = object.knownEpoch >>> 0;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyRequest message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyRequest} message SharedDeviceContactHashKeyRequest
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SharedDeviceContactHashKeyRequest.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.knownEpoch != null && $Object.hasOwnProperty.call(message, "knownEpoch"))
+                    object.knownEpoch = message.knownEpoch;
+                return object;
+            };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyRequest to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SharedDeviceContactHashKeyRequest.prototype.toJSON = function() {
+                return SharedDeviceContactHashKeyRequest.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKeyRequest
+             * @function getTypeUrl
+             * @memberof waproto.Message.SharedDeviceContactHashKeyRequest
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            SharedDeviceContactHashKeyRequest.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.SharedDeviceContactHashKeyRequest";
+            };
+
+            return SharedDeviceContactHashKeyRequest;
+        })();
+
+        Message.SharedDeviceContactHashKeyShare = (function() {
+
+            /**
+             * Properties of a SharedDeviceContactHashKeyShare.
+             * @typedef {Object} waproto.Message.SharedDeviceContactHashKeyShare.$Properties
+             * @property {Array.<waproto.Message.SharedDeviceContactHashKey.$Properties>|null} [keys] SharedDeviceContactHashKeyShare keys
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a SharedDeviceContactHashKeyShare.
+             * @memberof waproto.Message
+             * @interface ISharedDeviceContactHashKeyShare
+             * @augments waproto.Message.SharedDeviceContactHashKeyShare.$Properties
+             * @deprecated Use waproto.Message.SharedDeviceContactHashKeyShare.$Properties instead.
+             */
+
+            /**
+             * Shape of a SharedDeviceContactHashKeyShare.
+             * @typedef {waproto.Message.SharedDeviceContactHashKeyShare.$Properties} waproto.Message.SharedDeviceContactHashKeyShare.$Shape
+             */
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyShare.
+             * @memberof waproto.Message
+             * @classdesc Represents a SharedDeviceContactHashKeyShare.
+             * @constructor
+             * @param {waproto.Message.SharedDeviceContactHashKeyShare.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var SharedDeviceContactHashKeyShare = function (properties) {
+                this.keys = [];
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * SharedDeviceContactHashKeyShare keys.
+             * @member {Array.<waproto.Message.SharedDeviceContactHashKey.$Properties>} keys
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @instance
+             */
+            SharedDeviceContactHashKeyShare.prototype.keys = $util.emptyArray;
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyShare instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyShare.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare} SharedDeviceContactHashKeyShare instance
+             * @type {{
+             *   (properties: waproto.Message.SharedDeviceContactHashKeyShare.$Shape): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+             *   (properties?: waproto.Message.SharedDeviceContactHashKeyShare.$Properties): waproto.Message.SharedDeviceContactHashKeyShare;
+             * }}
+             */
+            SharedDeviceContactHashKeyShare.create = function(properties) {
+                return new SharedDeviceContactHashKeyShare(properties);
+            };
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyShare.$Properties} message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceContactHashKeyShare.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.keys != null && message.keys.length)
+                    for (var i = 0; i < message.keys.length; ++i)
+                        $root.waproto.Message.SharedDeviceContactHashKey.encode(message.keys[i], writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyShare.$Properties} message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            SharedDeviceContactHashKeyShare.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape} SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceContactHashKeyShare.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.SharedDeviceContactHashKeyShare();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            if (!(message.keys && message.keys.length))
+                                message.keys = [];
+                            message.keys.push($root.waproto.Message.SharedDeviceContactHashKey.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape} SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            SharedDeviceContactHashKeyShare.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyShare message.
+             * @function verify
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            SharedDeviceContactHashKeyShare.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                if (message.keys != null && $Object.hasOwnProperty.call(message, "keys")) {
+                    if (!$Array.isArray(message.keys))
+                        return "keys: array expected";
+                    for (var i = 0; i < message.keys.length; ++i) {
+                        var error = $root.waproto.Message.SharedDeviceContactHashKey.verify(message.keys[i], _depth + 1);
+                        if (error)
+                            return "keys." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a SharedDeviceContactHashKeyShare message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare} SharedDeviceContactHashKeyShare
+             */
+            SharedDeviceContactHashKeyShare.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.SharedDeviceContactHashKeyShare)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.SharedDeviceContactHashKeyShare: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.SharedDeviceContactHashKeyShare();
+                if (object.keys) {
+                    if (!$Array.isArray(object.keys))
+                        throw $TypeError(".waproto.Message.SharedDeviceContactHashKeyShare.keys: array expected");
+                    message.keys = $Array(object.keys.length);
+                    for (var i = 0; i < object.keys.length; ++i) {
+                        if (!$util.isObject(object.keys[i]))
+                            throw $TypeError(".waproto.Message.SharedDeviceContactHashKeyShare.keys: object expected");
+                        message.keys[i] = $root.waproto.Message.SharedDeviceContactHashKey.fromObject(object.keys[i], _depth + 1);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyShare message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {waproto.Message.SharedDeviceContactHashKeyShare} message SharedDeviceContactHashKeyShare
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            SharedDeviceContactHashKeyShare.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.keys = [];
+                if (message.keys && message.keys.length) {
+                    object.keys = $Array(message.keys.length);
+                    for (var j = 0; j < message.keys.length; ++j)
+                        object.keys[j] = $root.waproto.Message.SharedDeviceContactHashKey.toObject(message.keys[j], options, _depth + 1);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyShare to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            SharedDeviceContactHashKeyShare.prototype.toJSON = function() {
+                return SharedDeviceContactHashKeyShare.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKeyShare
+             * @function getTypeUrl
+             * @memberof waproto.Message.SharedDeviceContactHashKeyShare
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            SharedDeviceContactHashKeyShare.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.SharedDeviceContactHashKeyShare";
+            };
+
+            return SharedDeviceContactHashKeyShare;
         })();
 
         Message.SplitPaymentMessage = (function() {
@@ -225221,6 +226716,8 @@ $root.waproto = (function() {
              * @property {number|Long|null} [scheduledTimestamp] BusinessBroadcastCampaignAction scheduledTimestamp
              * @property {number|Long|null} [createTimestamp] BusinessBroadcastCampaignAction createTimestamp
              * @property {waproto.SyncActionValue.BusinessBroadcastCampaignStatus|null} [status] BusinessBroadcastCampaignAction status
+             * @property {waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus|null} [bbProStatus] BusinessBroadcastCampaignAction bbProStatus
+             * @property {string|null} [customAudienceFbid] BusinessBroadcastCampaignAction customAudienceFbid
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -225324,6 +226821,22 @@ $root.waproto = (function() {
              */
             BusinessBroadcastCampaignAction.prototype.status = null;
 
+            /**
+             * BusinessBroadcastCampaignAction bbProStatus.
+             * @member {waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus|null|undefined} bbProStatus
+             * @memberof waproto.SyncActionValue.BusinessBroadcastCampaignAction
+             * @instance
+             */
+            BusinessBroadcastCampaignAction.prototype.bbProStatus = null;
+
+            /**
+             * BusinessBroadcastCampaignAction customAudienceFbid.
+             * @member {string|null|undefined} customAudienceFbid
+             * @memberof waproto.SyncActionValue.BusinessBroadcastCampaignAction
+             * @instance
+             */
+            BusinessBroadcastCampaignAction.prototype.customAudienceFbid = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -225381,6 +226894,18 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(BusinessBroadcastCampaignAction.prototype, "_bbProStatus", {
+                get: $util.oneOfGetter($oneOfFields = ["bbProStatus"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(BusinessBroadcastCampaignAction.prototype, "_customAudienceFbid", {
+                get: $util.oneOfGetter($oneOfFields = ["customAudienceFbid"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new BusinessBroadcastCampaignAction instance using the specified properties.
              * @function create
@@ -225431,6 +226956,10 @@ $root.waproto = (function() {
                     writer.uint32(/* id 8, wireType 0 =*/64).int64(message.createTimestamp);
                 if (message.status != null && $Object.hasOwnProperty.call(message, "status"))
                     writer.uint32(/* id 9, wireType 0 =*/72).int32(message.status);
+                if (message.bbProStatus != null && $Object.hasOwnProperty.call(message, "bbProStatus"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).int32(message.bbProStatus);
+                if (message.customAudienceFbid != null && $Object.hasOwnProperty.call(message, "customAudienceFbid"))
+                    writer.uint32(/* id 11, wireType 2 =*/90).string(message.customAudienceFbid);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -225551,6 +227080,20 @@ $root.waproto = (function() {
                             message._status = "status";
                             continue;
                         }
+                    case 10: {
+                            if (wireType !== 0)
+                                break;
+                            message.bbProStatus = reader.int32();
+                            message._bbProStatus = "bbProStatus";
+                            continue;
+                        }
+                    case 11: {
+                            if (wireType !== 2)
+                                break;
+                            message.customAudienceFbid = reader.stringVerify();
+                            message._customAudienceFbid = "customAudienceFbid";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -225645,6 +227188,16 @@ $root.waproto = (function() {
                     if (typeof message.status !== "number" || (message.status | 0) !== message.status)
                         return "status: enum value expected";
                 }
+                if (message.bbProStatus != null && $Object.hasOwnProperty.call(message, "bbProStatus")) {
+                    properties._bbProStatus = 1;
+                    if (typeof message.bbProStatus !== "number" || (message.bbProStatus | 0) !== message.bbProStatus)
+                        return "bbProStatus: enum value expected";
+                }
+                if (message.customAudienceFbid != null && $Object.hasOwnProperty.call(message, "customAudienceFbid")) {
+                    properties._customAudienceFbid = 1;
+                    if (!$util.isString(message.customAudienceFbid))
+                        return "customAudienceFbid: string expected";
+                }
                 return null;
             };
 
@@ -225721,6 +227274,53 @@ $root.waproto = (function() {
                     if (typeof object.status === "number" && (object.status | 0) === object.status)
                         message.status = object.status;
                 }
+                switch (object.bbProStatus) {
+                case "BB_PRO_ACTIVE":
+                case 1:
+                    message.bbProStatus = 1;
+                    break;
+                case "BB_PRO_COMPLETED":
+                case 2:
+                    message.bbProStatus = 2;
+                    break;
+                case "BB_PRO_IN_DRAFT":
+                case 3:
+                    message.bbProStatus = 3;
+                    break;
+                case "BB_PRO_IN_REVIEW":
+                case 4:
+                    message.bbProStatus = 4;
+                    break;
+                case "BB_PRO_NOT_SENDING":
+                case 5:
+                    message.bbProStatus = 5;
+                    break;
+                case "BB_PRO_OFF":
+                case 6:
+                    message.bbProStatus = 6;
+                    break;
+                case "BB_PRO_REJECTED":
+                case 7:
+                    message.bbProStatus = 7;
+                    break;
+                case "BB_PRO_SCHEDULED":
+                case 8:
+                    message.bbProStatus = 8;
+                    break;
+                case "BB_PRO_SENDING_LIMITED":
+                case 9:
+                    message.bbProStatus = 9;
+                    break;
+                case "BB_PRO_PROCESSING":
+                case 10:
+                    message.bbProStatus = 10;
+                    break;
+                default:
+                    if (typeof object.bbProStatus === "number" && (object.bbProStatus | 0) === object.bbProStatus)
+                        message.bbProStatus = object.bbProStatus;
+                }
+                if (object.customAudienceFbid != null)
+                    message.customAudienceFbid = $String(object.customAudienceFbid);
                 return message;
             };
 
@@ -225769,6 +227369,10 @@ $root.waproto = (function() {
                         object.createTimestamp = options.longs === $String ? $util.Long.prototype.toString.call(message.createTimestamp) : options.longs === $Number ? new $util.LongBits(message.createTimestamp.low >>> 0, message.createTimestamp.high >>> 0).toNumber() : message.createTimestamp;
                 if (message.status != null && $Object.hasOwnProperty.call(message, "status"))
                     object.status = options.enums === $String ? $root.waproto.SyncActionValue.BusinessBroadcastCampaignStatus[message.status] === $undefined ? message.status : $root.waproto.SyncActionValue.BusinessBroadcastCampaignStatus[message.status] : message.status;
+                if (message.bbProStatus != null && $Object.hasOwnProperty.call(message, "bbProStatus"))
+                    object.bbProStatus = options.enums === $String ? $root.waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus[message.bbProStatus] === $undefined ? message.bbProStatus : $root.waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus[message.bbProStatus] : message.bbProStatus;
+                if (message.customAudienceFbid != null && $Object.hasOwnProperty.call(message, "customAudienceFbid"))
+                    object.customAudienceFbid = message.customAudienceFbid;
                 return object;
             };
 
@@ -225798,6 +227402,36 @@ $root.waproto = (function() {
             };
 
             return BusinessBroadcastCampaignAction;
+        })();
+
+        /**
+         * BusinessBroadcastCampaignBBProStatus enum.
+         * @name waproto.SyncActionValue.BusinessBroadcastCampaignBBProStatus
+         * @enum {number}
+         * @property {number} BB_PRO_ACTIVE=1 BB_PRO_ACTIVE value
+         * @property {number} BB_PRO_COMPLETED=2 BB_PRO_COMPLETED value
+         * @property {number} BB_PRO_IN_DRAFT=3 BB_PRO_IN_DRAFT value
+         * @property {number} BB_PRO_IN_REVIEW=4 BB_PRO_IN_REVIEW value
+         * @property {number} BB_PRO_NOT_SENDING=5 BB_PRO_NOT_SENDING value
+         * @property {number} BB_PRO_OFF=6 BB_PRO_OFF value
+         * @property {number} BB_PRO_REJECTED=7 BB_PRO_REJECTED value
+         * @property {number} BB_PRO_SCHEDULED=8 BB_PRO_SCHEDULED value
+         * @property {number} BB_PRO_SENDING_LIMITED=9 BB_PRO_SENDING_LIMITED value
+         * @property {number} BB_PRO_PROCESSING=10 BB_PRO_PROCESSING value
+         */
+        SyncActionValue.BusinessBroadcastCampaignBBProStatus = (function() {
+            var valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[1] = "BB_PRO_ACTIVE"] = 1;
+            values[valuesById[2] = "BB_PRO_COMPLETED"] = 2;
+            values[valuesById[3] = "BB_PRO_IN_DRAFT"] = 3;
+            values[valuesById[4] = "BB_PRO_IN_REVIEW"] = 4;
+            values[valuesById[5] = "BB_PRO_NOT_SENDING"] = 5;
+            values[valuesById[6] = "BB_PRO_OFF"] = 6;
+            values[valuesById[7] = "BB_PRO_REJECTED"] = 7;
+            values[valuesById[8] = "BB_PRO_SCHEDULED"] = 8;
+            values[valuesById[9] = "BB_PRO_SENDING_LIMITED"] = 9;
+            values[valuesById[10] = "BB_PRO_PROCESSING"] = 10;
+            return values;
         })();
 
         /**
@@ -270760,6 +272394,14 @@ $root.waproto = (function() {
             case 230:
                 message.messageStubType = 230;
                 break;
+            case "CHANGE_ACP2_SETTING":
+            case 240:
+                message.messageStubType = 240;
+                break;
+            case "EPHEMERAL_CHANGED_FOR_COEX":
+            case 248:
+                message.messageStubType = 248;
+                break;
             default:
                 if (typeof object.messageStubType === "number" && (object.messageStubType | 0) === object.messageStubType)
                     message.messageStubType = object.messageStubType;
@@ -271611,6 +273253,8 @@ $root.waproto = (function() {
          * @property {number} IDENTITY_TRUST_UNMARKED=227 IDENTITY_TRUST_UNMARKED value
          * @property {number} IDENTITY_TRUST_REVOKED=228 IDENTITY_TRUST_REVOKED value
          * @property {number} CTWA_CONSUMER_DISCLOSURE=230 CTWA_CONSUMER_DISCLOSURE value
+         * @property {number} CHANGE_ACP2_SETTING=240 CHANGE_ACP2_SETTING value
+         * @property {number} EPHEMERAL_CHANGED_FOR_COEX=248 EPHEMERAL_CHANGED_FOR_COEX value
          */
         WebMessageInfo.StubType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -271844,6 +273488,8 @@ $root.waproto = (function() {
             values[valuesById[227] = "IDENTITY_TRUST_UNMARKED"] = 227;
             values[valuesById[228] = "IDENTITY_TRUST_REVOKED"] = 228;
             values[valuesById[230] = "CTWA_CONSUMER_DISCLOSURE"] = 230;
+            values[valuesById[240] = "CHANGE_ACP2_SETTING"] = 240;
+            values[valuesById[248] = "EPHEMERAL_CHANGED_FOR_COEX"] = 248;
             return values;
         })();
 
