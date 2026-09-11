@@ -34235,6 +34235,9 @@ export namespace waproto {
         /** Message acp2SettingMessage. */
         acp2SettingMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+        /** Message audioStickerMessage. */
+        audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -34655,6 +34658,9 @@ export namespace waproto {
             /** Message acp2SettingMessage */
             acp2SettingMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+            /** Message audioStickerMessage */
+            audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -34773,6 +34779,7 @@ export namespace waproto {
           botPlatformRegistrationSuccessMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           acp2SettingMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          audioStickerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -59383,6 +59390,12 @@ export namespace waproto {
             /** StickerMessage emojis. */
             emojis?: (string|null);
 
+            /** StickerMessage audioMessage. */
+            audioMessage?: (waproto.Message.AudioMessage.$Properties|null);
+
+            /** StickerMessage audio. */
+            audio?: "audioMessage";
+
             /**
              * Creates a new StickerMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -59533,11 +59546,17 @@ export namespace waproto {
                 /** StickerMessage emojis */
                 emojis?: (string|null);
 
+                /** StickerMessage audioMessage */
+                audioMessage?: (waproto.Message.AudioMessage.$Properties|null);
+
+                /** StickerMessage audio */
+                audio?: "audioMessage";
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
 
-            /** Shape of a StickerMessage. */
+            /** Narrowed shape of a StickerMessage. */
             type $Shape = {
               url?: string|null;
               fileSha256?: Uint8Array|null;
@@ -59561,8 +59580,11 @@ export namespace waproto {
               accessibilityLabel?: string|null;
               premium?: number|null;
               emojis?: string|null;
+              audioMessage?: waproto.Message.AudioMessage.$Shape|null;
               $unknowns?: Uint8Array[];
-            };
+            } & (
+              ({ audio?: undefined; audioMessage?: null }|{ audio?: "audioMessage"; audioMessage: waproto.Message.AudioMessage.$Shape })
+            );
         }
 
         /**
@@ -79354,7 +79376,10 @@ export namespace waproto {
                 LEAD = 16,
 
                 /** MENTIONS_AND_REPLIES value */
-                MENTIONS_AND_REPLIES = 17
+                MENTIONS_AND_REPLIES = 17,
+
+                /** REQUESTS value */
+                REQUESTS = 18
             }
         }
 
