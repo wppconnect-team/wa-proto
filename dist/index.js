@@ -190671,6 +190671,7 @@ $root.waproto = (function() {
              * @typedef {Object} waproto.MsgOpaqueData.PollOption.$Properties
              * @property {string|null} [name] PollOption name
              * @property {string|null} [hash] PollOption hash
+             * @property {string|null} [addOptionMsgKey] PollOption addOptionMsgKey
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -190718,6 +190719,14 @@ $root.waproto = (function() {
              */
             PollOption.prototype.hash = null;
 
+            /**
+             * PollOption addOptionMsgKey.
+             * @member {string|null|undefined} addOptionMsgKey
+             * @memberof waproto.MsgOpaqueData.PollOption
+             * @instance
+             */
+            PollOption.prototype.addOptionMsgKey = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -190730,6 +190739,12 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(PollOption.prototype, "_hash", {
                 get: $util.oneOfGetter($oneOfFields = ["hash"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOption.prototype, "_addOptionMsgKey", {
+                get: $util.oneOfGetter($oneOfFields = ["addOptionMsgKey"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -190769,6 +190784,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
                 if (message.hash != null && $Object.hasOwnProperty.call(message, "hash"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.hash);
+                if (message.addOptionMsgKey != null && $Object.hasOwnProperty.call(message, "addOptionMsgKey"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.addOptionMsgKey);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -190840,6 +190857,13 @@ $root.waproto = (function() {
                             message._hash = "hash";
                             continue;
                         }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.addOptionMsgKey = reader.stringVerify();
+                            message._addOptionMsgKey = "addOptionMsgKey";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -190899,6 +190923,11 @@ $root.waproto = (function() {
                     if (!$util.isString(message.hash))
                         return "hash: string expected";
                 }
+                if (message.addOptionMsgKey != null && $Object.hasOwnProperty.call(message, "addOptionMsgKey")) {
+                    properties._addOptionMsgKey = 1;
+                    if (!$util.isString(message.addOptionMsgKey))
+                        return "addOptionMsgKey: string expected";
+                }
                 return null;
             };
 
@@ -190924,6 +190953,8 @@ $root.waproto = (function() {
                     message.name = $String(object.name);
                 if (object.hash != null)
                     message.hash = $String(object.hash);
+                if (object.addOptionMsgKey != null)
+                    message.addOptionMsgKey = $String(object.addOptionMsgKey);
                 return message;
             };
 
@@ -190948,6 +190979,8 @@ $root.waproto = (function() {
                     object.name = message.name;
                 if (message.hash != null && $Object.hasOwnProperty.call(message, "hash"))
                     object.hash = message.hash;
+                if (message.addOptionMsgKey != null && $Object.hasOwnProperty.call(message, "addOptionMsgKey"))
+                    object.addOptionMsgKey = message.addOptionMsgKey;
                 return object;
             };
 
