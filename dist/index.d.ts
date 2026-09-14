@@ -20072,6 +20072,9 @@ export namespace waproto {
         /** ContextInfo experienceIds. */
         experienceIds: number[];
 
+        /** ContextInfo partnerDeepLinkToken. */
+        partnerDeepLinkToken?: (string|null);
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -20351,6 +20354,9 @@ export namespace waproto {
             /** ContextInfo experienceIds */
             experienceIds?: (number[]|null);
 
+            /** ContextInfo partnerDeepLinkToken */
+            partnerDeepLinkToken?: (string|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -20422,6 +20428,7 @@ export namespace waproto {
           instagramThreadLink?: waproto.ContextInfo.InstagramThreadLink.$Shape|null;
           aiProvenance?: waproto.AIProvenance.$Shape|null;
           experienceIds?: number[]|null;
+          partnerDeepLinkToken?: string|null;
           $unknowns?: Uint8Array[];
         };
 
