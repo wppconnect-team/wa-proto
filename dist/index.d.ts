@@ -79392,7 +79392,10 @@ export namespace waproto {
                 MENTIONS_AND_REPLIES = 17,
 
                 /** REQUESTS value */
-                REQUESTS = 18
+                REQUESTS = 18,
+
+                /** BUSINESS value */
+                BUSINESS = 19
             }
         }
 

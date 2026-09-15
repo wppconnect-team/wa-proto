@@ -236663,6 +236663,10 @@ $root.waproto = (function() {
                 case 18:
                     message.type = 18;
                     break;
+                case "BUSINESS":
+                case 19:
+                    message.type = 19;
+                    break;
                 default:
                     if (typeof object.type === "number" && (object.type | 0) === object.type)
                         message.type = object.type;
@@ -236772,6 +236776,7 @@ $root.waproto = (function() {
              * @property {number} LEAD=16 LEAD value
              * @property {number} MENTIONS_AND_REPLIES=17 MENTIONS_AND_REPLIES value
              * @property {number} REQUESTS=18 REQUESTS value
+             * @property {number} BUSINESS=19 BUSINESS value
              */
             LabelEditAction.ListType = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -236794,6 +236799,7 @@ $root.waproto = (function() {
                 values[valuesById[16] = "LEAD"] = 16;
                 values[valuesById[17] = "MENTIONS_AND_REPLIES"] = 17;
                 values[valuesById[18] = "REQUESTS"] = 18;
+                values[valuesById[19] = "BUSINESS"] = 19;
                 return values;
             })();
 
