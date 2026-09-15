@@ -92071,8 +92071,23 @@ export namespace waproto {
             /** CHANGE_ACP2_SETTING value */
             CHANGE_ACP2_SETTING = 240,
 
+            /** BIZ_CALLBACK_ENABLED value */
+            BIZ_CALLBACK_ENABLED = 247,
+
             /** EPHEMERAL_CHANGED_FOR_COEX value */
-            EPHEMERAL_CHANGED_FOR_COEX = 248
+            EPHEMERAL_CHANGED_FOR_COEX = 248,
+
+            /** UGC_BOT_PROFILE_UPDATED value */
+            UGC_BOT_PROFILE_UPDATED = 249,
+
+            /** ORDER_EPHEMERAL_EXEMPTION value */
+            ORDER_EPHEMERAL_EXEMPTION = 250,
+
+            /** CAMEO_CHAT_CREATED value */
+            CAMEO_CHAT_CREATED = 254,
+
+            /** CAMEO_TRANSITIONED value */
+            CAMEO_TRANSITIONED = 256
         }
     }
 

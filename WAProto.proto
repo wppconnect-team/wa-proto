@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047561935
+/// WhatsApp Version: 2.3000.1047572716
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -6739,7 +6739,12 @@ message WebMessageInfo {
         IDENTITY_TRUST_REVOKED = 228;
         CTWA_CONSUMER_DISCLOSURE = 230;
         CHANGE_ACP2_SETTING = 240;
+        BIZ_CALLBACK_ENABLED = 247;
         EPHEMERAL_CHANGED_FOR_COEX = 248;
+        UGC_BOT_PROFILE_UPDATED = 249;
+        ORDER_EPHEMERAL_EXEMPTION = 250;
+        CAMEO_CHAT_CREATED = 254;
+        CAMEO_TRANSITIONED = 256;
     }
 }
 

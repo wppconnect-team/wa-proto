@@ -272568,9 +272568,29 @@ $root.waproto = (function() {
             case 240:
                 message.messageStubType = 240;
                 break;
+            case "BIZ_CALLBACK_ENABLED":
+            case 247:
+                message.messageStubType = 247;
+                break;
             case "EPHEMERAL_CHANGED_FOR_COEX":
             case 248:
                 message.messageStubType = 248;
+                break;
+            case "UGC_BOT_PROFILE_UPDATED":
+            case 249:
+                message.messageStubType = 249;
+                break;
+            case "ORDER_EPHEMERAL_EXEMPTION":
+            case 250:
+                message.messageStubType = 250;
+                break;
+            case "CAMEO_CHAT_CREATED":
+            case 254:
+                message.messageStubType = 254;
+                break;
+            case "CAMEO_TRANSITIONED":
+            case 256:
+                message.messageStubType = 256;
                 break;
             default:
                 if (typeof object.messageStubType === "number" && (object.messageStubType | 0) === object.messageStubType)
@@ -273424,7 +273444,12 @@ $root.waproto = (function() {
          * @property {number} IDENTITY_TRUST_REVOKED=228 IDENTITY_TRUST_REVOKED value
          * @property {number} CTWA_CONSUMER_DISCLOSURE=230 CTWA_CONSUMER_DISCLOSURE value
          * @property {number} CHANGE_ACP2_SETTING=240 CHANGE_ACP2_SETTING value
+         * @property {number} BIZ_CALLBACK_ENABLED=247 BIZ_CALLBACK_ENABLED value
          * @property {number} EPHEMERAL_CHANGED_FOR_COEX=248 EPHEMERAL_CHANGED_FOR_COEX value
+         * @property {number} UGC_BOT_PROFILE_UPDATED=249 UGC_BOT_PROFILE_UPDATED value
+         * @property {number} ORDER_EPHEMERAL_EXEMPTION=250 ORDER_EPHEMERAL_EXEMPTION value
+         * @property {number} CAMEO_CHAT_CREATED=254 CAMEO_CHAT_CREATED value
+         * @property {number} CAMEO_TRANSITIONED=256 CAMEO_TRANSITIONED value
          */
         WebMessageInfo.StubType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -273659,7 +273684,12 @@ $root.waproto = (function() {
             values[valuesById[228] = "IDENTITY_TRUST_REVOKED"] = 228;
             values[valuesById[230] = "CTWA_CONSUMER_DISCLOSURE"] = 230;
             values[valuesById[240] = "CHANGE_ACP2_SETTING"] = 240;
+            values[valuesById[247] = "BIZ_CALLBACK_ENABLED"] = 247;
             values[valuesById[248] = "EPHEMERAL_CHANGED_FOR_COEX"] = 248;
+            values[valuesById[249] = "UGC_BOT_PROFILE_UPDATED"] = 249;
+            values[valuesById[250] = "ORDER_EPHEMERAL_EXEMPTION"] = 250;
+            values[valuesById[254] = "CAMEO_CHAT_CREATED"] = 254;
+            values[valuesById[256] = "CAMEO_TRANSITIONED"] = 256;
             return values;
         })();
 
