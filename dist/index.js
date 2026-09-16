@@ -81796,6 +81796,7 @@ $root.waproto = (function() {
          * @property {Array.<waproto.UnCountedAssociatedMessageList.$Properties>|null} [uncountedAssociatedMessageLists] GroupHistory uncountedAssociatedMessageLists
          * @property {Array.<waproto.WebMessageInfo.$Properties>|null} [commentMessages] GroupHistory commentMessages
          * @property {Array.<waproto.WebMessageInfo.$Properties>|null} [outOfWindowPinnedMessages] GroupHistory outOfWindowPinnedMessages
+         * @property {waproto.WebMessageInfo.$Properties|null} [themeMessage] GroupHistory themeMessage
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -81814,6 +81815,7 @@ $root.waproto = (function() {
          *   uncountedAssociatedMessageLists?: Array.<waproto.UnCountedAssociatedMessageList.$Shape>|null;
          *   commentMessages?: Array.<waproto.WebMessageInfo.$Shape>|null;
          *   outOfWindowPinnedMessages?: Array.<waproto.WebMessageInfo.$Shape>|null;
+         *   themeMessage?: waproto.WebMessageInfo.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.GroupHistory.$Shape
          */
@@ -81870,6 +81872,23 @@ $root.waproto = (function() {
         GroupHistory.prototype.outOfWindowPinnedMessages = $util.emptyArray;
 
         /**
+         * GroupHistory themeMessage.
+         * @member {waproto.WebMessageInfo.$Properties|null|undefined} themeMessage
+         * @memberof waproto.GroupHistory
+         * @instance
+         */
+        GroupHistory.prototype.themeMessage = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupHistory.prototype, "_themeMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["themeMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
          * Creates a new GroupHistory instance using the specified properties.
          * @function create
          * @memberof waproto.GroupHistory
@@ -81913,6 +81932,8 @@ $root.waproto = (function() {
             if (message.outOfWindowPinnedMessages != null && message.outOfWindowPinnedMessages.length)
                 for (var i = 0; i < message.outOfWindowPinnedMessages.length; ++i)
                     $root.waproto.WebMessageInfo.encode(message.outOfWindowPinnedMessages[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+            if (message.themeMessage != null && $Object.hasOwnProperty.call(message, "themeMessage"))
+                $root.waproto.WebMessageInfo.encode(message.themeMessage, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -82002,6 +82023,13 @@ $root.waproto = (function() {
                         message.outOfWindowPinnedMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
                         continue;
                     }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.themeMessage = $root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.themeMessage);
+                        message._themeMessage = "themeMessage";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -82050,6 +82078,7 @@ $root.waproto = (function() {
                 _depth = 0;
             if (_depth > $util.recursionLimit)
                 return "max depth exceeded";
+            var properties = {};
             if (message.messages != null && $Object.hasOwnProperty.call(message, "messages")) {
                 if (!$Array.isArray(message.messages))
                     return "messages: array expected";
@@ -82084,6 +82113,14 @@ $root.waproto = (function() {
                     var error = $root.waproto.WebMessageInfo.verify(message.outOfWindowPinnedMessages[i], _depth + 1);
                     if (error)
                         return "outOfWindowPinnedMessages." + error;
+                }
+            }
+            if (message.themeMessage != null && $Object.hasOwnProperty.call(message, "themeMessage")) {
+                properties._themeMessage = 1;
+                {
+                    var error = $root.waproto.WebMessageInfo.verify(message.themeMessage, _depth + 1);
+                    if (error)
+                        return "themeMessage." + error;
                 }
             }
             return null;
@@ -82147,6 +82184,11 @@ $root.waproto = (function() {
                     message.outOfWindowPinnedMessages[i] = $root.waproto.WebMessageInfo.fromObject(object.outOfWindowPinnedMessages[i], _depth + 1);
                 }
             }
+            if (object.themeMessage != null) {
+                if (!$util.isObject(object.themeMessage))
+                    throw $TypeError(".waproto.GroupHistory.themeMessage: object expected");
+                message.themeMessage = $root.waproto.WebMessageInfo.fromObject(object.themeMessage, _depth + 1);
+            }
             return message;
         };
 
@@ -82193,6 +82235,8 @@ $root.waproto = (function() {
                 for (var j = 0; j < message.outOfWindowPinnedMessages.length; ++j)
                     object.outOfWindowPinnedMessages[j] = $root.waproto.WebMessageInfo.toObject(message.outOfWindowPinnedMessages[j], options, _depth + 1);
             }
+            if (message.themeMessage != null && $Object.hasOwnProperty.call(message, "themeMessage"))
+                object.themeMessage = $root.waproto.WebMessageInfo.toObject(message.themeMessage, options, _depth + 1);
             return object;
         };
 
@@ -82928,6 +82972,7 @@ $root.waproto = (function() {
          * @property {Array.<waproto.UnCountedAssociatedMessageListWithMessageBytes.$Properties>|null} [uncountedAssociatedMessageLists] GroupHistoryWithMessageBytes uncountedAssociatedMessageLists
          * @property {Array.<waproto.WebMessageInfoWithMessageBytes.$Properties>|null} [commentMessages] GroupHistoryWithMessageBytes commentMessages
          * @property {Array.<waproto.WebMessageInfoWithMessageBytes.$Properties>|null} [outOfWindowPinnedMessages] GroupHistoryWithMessageBytes outOfWindowPinnedMessages
+         * @property {waproto.WebMessageInfoWithMessageBytes.$Properties|null} [themeMessage] GroupHistoryWithMessageBytes themeMessage
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -82996,6 +83041,23 @@ $root.waproto = (function() {
         GroupHistoryWithMessageBytes.prototype.outOfWindowPinnedMessages = $util.emptyArray;
 
         /**
+         * GroupHistoryWithMessageBytes themeMessage.
+         * @member {waproto.WebMessageInfoWithMessageBytes.$Properties|null|undefined} themeMessage
+         * @memberof waproto.GroupHistoryWithMessageBytes
+         * @instance
+         */
+        GroupHistoryWithMessageBytes.prototype.themeMessage = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupHistoryWithMessageBytes.prototype, "_themeMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["themeMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
          * Creates a new GroupHistoryWithMessageBytes instance using the specified properties.
          * @function create
          * @memberof waproto.GroupHistoryWithMessageBytes
@@ -83039,6 +83101,8 @@ $root.waproto = (function() {
             if (message.outOfWindowPinnedMessages != null && message.outOfWindowPinnedMessages.length)
                 for (var i = 0; i < message.outOfWindowPinnedMessages.length; ++i)
                     $root.waproto.WebMessageInfoWithMessageBytes.encode(message.outOfWindowPinnedMessages[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+            if (message.themeMessage != null && $Object.hasOwnProperty.call(message, "themeMessage"))
+                $root.waproto.WebMessageInfoWithMessageBytes.encode(message.themeMessage, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -83128,6 +83192,13 @@ $root.waproto = (function() {
                         message.outOfWindowPinnedMessages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1));
                         continue;
                     }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.themeMessage = $root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1, message.themeMessage);
+                        message._themeMessage = "themeMessage";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -83176,6 +83247,7 @@ $root.waproto = (function() {
                 _depth = 0;
             if (_depth > $util.recursionLimit)
                 return "max depth exceeded";
+            var properties = {};
             if (message.messages != null && $Object.hasOwnProperty.call(message, "messages")) {
                 if (!$Array.isArray(message.messages))
                     return "messages: array expected";
@@ -83210,6 +83282,14 @@ $root.waproto = (function() {
                     var error = $root.waproto.WebMessageInfoWithMessageBytes.verify(message.outOfWindowPinnedMessages[i], _depth + 1);
                     if (error)
                         return "outOfWindowPinnedMessages." + error;
+                }
+            }
+            if (message.themeMessage != null && $Object.hasOwnProperty.call(message, "themeMessage")) {
+                properties._themeMessage = 1;
+                {
+                    var error = $root.waproto.WebMessageInfoWithMessageBytes.verify(message.themeMessage, _depth + 1);
+                    if (error)
+                        return "themeMessage." + error;
                 }
             }
             return null;
@@ -83273,6 +83353,11 @@ $root.waproto = (function() {
                     message.outOfWindowPinnedMessages[i] = $root.waproto.WebMessageInfoWithMessageBytes.fromObject(object.outOfWindowPinnedMessages[i], _depth + 1);
                 }
             }
+            if (object.themeMessage != null) {
+                if (!$util.isObject(object.themeMessage))
+                    throw $TypeError(".waproto.GroupHistoryWithMessageBytes.themeMessage: object expected");
+                message.themeMessage = $root.waproto.WebMessageInfoWithMessageBytes.fromObject(object.themeMessage, _depth + 1);
+            }
             return message;
         };
 
@@ -83319,6 +83404,8 @@ $root.waproto = (function() {
                 for (var j = 0; j < message.outOfWindowPinnedMessages.length; ++j)
                     object.outOfWindowPinnedMessages[j] = $root.waproto.WebMessageInfoWithMessageBytes.toObject(message.outOfWindowPinnedMessages[j], options, _depth + 1);
             }
+            if (message.themeMessage != null && $Object.hasOwnProperty.call(message, "themeMessage"))
+                object.themeMessage = $root.waproto.WebMessageInfoWithMessageBytes.toObject(message.themeMessage, options, _depth + 1);
             return object;
         };
 
@@ -144199,6 +144286,7 @@ $root.waproto = (function() {
              * @property {number|Long|null} [messageCount] MessageHistoryMetadata messageCount
              * @property {Array.<string>|null} [nonHistoryReceivers] MessageHistoryMetadata nonHistoryReceivers
              * @property {number|Long|null} [oldestMessageTimestampInBundle] MessageHistoryMetadata oldestMessageTimestampInBundle
+             * @property {boolean|null} [includesChatTheme] MessageHistoryMetadata includesChatTheme
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -144272,6 +144360,14 @@ $root.waproto = (function() {
              */
             MessageHistoryMetadata.prototype.oldestMessageTimestampInBundle = null;
 
+            /**
+             * MessageHistoryMetadata includesChatTheme.
+             * @member {boolean|null|undefined} includesChatTheme
+             * @memberof waproto.Message.MessageHistoryMetadata
+             * @instance
+             */
+            MessageHistoryMetadata.prototype.includesChatTheme = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -144290,6 +144386,12 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(MessageHistoryMetadata.prototype, "_oldestMessageTimestampInBundle", {
                 get: $util.oneOfGetter($oneOfFields = ["oldestMessageTimestampInBundle"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MessageHistoryMetadata.prototype, "_includesChatTheme", {
+                get: $util.oneOfGetter($oneOfFields = ["includesChatTheme"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -144337,6 +144439,8 @@ $root.waproto = (function() {
                         writer.uint32(/* id 4, wireType 2 =*/34).string(message.nonHistoryReceivers[i]);
                 if (message.oldestMessageTimestampInBundle != null && $Object.hasOwnProperty.call(message, "oldestMessageTimestampInBundle"))
                     writer.uint32(/* id 5, wireType 0 =*/40).int64(message.oldestMessageTimestampInBundle);
+                if (message.includesChatTheme != null && $Object.hasOwnProperty.call(message, "includesChatTheme"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message.includesChatTheme);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -144431,6 +144535,13 @@ $root.waproto = (function() {
                             message._oldestMessageTimestampInBundle = "oldestMessageTimestampInBundle";
                             continue;
                         }
+                    case 6: {
+                            if (wireType !== 0)
+                                break;
+                            message.includesChatTheme = reader.bool();
+                            message._includesChatTheme = "includesChatTheme";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -144509,6 +144620,11 @@ $root.waproto = (function() {
                     if (!$util.isInteger(message.oldestMessageTimestampInBundle) && !(message.oldestMessageTimestampInBundle && $util.isInteger(message.oldestMessageTimestampInBundle.low) && $util.isInteger(message.oldestMessageTimestampInBundle.high)))
                         return "oldestMessageTimestampInBundle: integer|Long expected";
                 }
+                if (message.includesChatTheme != null && $Object.hasOwnProperty.call(message, "includesChatTheme")) {
+                    properties._includesChatTheme = 1;
+                    if (typeof message.includesChatTheme !== "boolean")
+                        return "includesChatTheme: boolean expected";
+                }
                 return null;
             };
 
@@ -144571,6 +144687,8 @@ $root.waproto = (function() {
                         message.oldestMessageTimestampInBundle = object.oldestMessageTimestampInBundle;
                     else if (typeof object.oldestMessageTimestampInBundle === "object")
                         message.oldestMessageTimestampInBundle = new $util.LongBits(object.oldestMessageTimestampInBundle.low >>> 0, object.oldestMessageTimestampInBundle.high >>> 0).toNumber();
+                if (object.includesChatTheme != null)
+                    message.includesChatTheme = $Boolean(object.includesChatTheme);
                 return message;
             };
 
@@ -144626,6 +144744,8 @@ $root.waproto = (function() {
                         object.oldestMessageTimestampInBundle = options.longs === $String ? $String(message.oldestMessageTimestampInBundle) : message.oldestMessageTimestampInBundle;
                     else
                         object.oldestMessageTimestampInBundle = options.longs === $String ? $util.Long.prototype.toString.call(message.oldestMessageTimestampInBundle) : options.longs === $Number ? new $util.LongBits(message.oldestMessageTimestampInBundle.low >>> 0, message.oldestMessageTimestampInBundle.high >>> 0).toNumber() : message.oldestMessageTimestampInBundle;
+                if (message.includesChatTheme != null && $Object.hasOwnProperty.call(message, "includesChatTheme"))
+                    object.includesChatTheme = message.includesChatTheme;
                 return object;
             };
 
@@ -182906,6 +183026,7 @@ $root.waproto = (function() {
              * @property {string|null} [metadataUrl] VideoMessage metadataUrl
              * @property {waproto.Message.VideoMessage.VideoSourceType|null} [videoSourceType] VideoMessage videoSourceType
              * @property {string|null} [dashManifestUrl] VideoMessage dashManifestUrl
+             * @property {number|Long|null} [smartThumbnailTs] VideoMessage smartThumbnailTs
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -182951,6 +183072,7 @@ $root.waproto = (function() {
              *   metadataUrl?: string|null;
              *   videoSourceType?: waproto.Message.VideoMessage.VideoSourceType|null;
              *   dashManifestUrl?: string|null;
+             *   smartThumbnailTs?: number|Long|null;
              *   $unknowns?: Array.<Uint8Array>;
              * }} waproto.Message.VideoMessage.$Shape
              */
@@ -183221,6 +183343,14 @@ $root.waproto = (function() {
              */
             VideoMessage.prototype.dashManifestUrl = null;
 
+            /**
+             * VideoMessage smartThumbnailTs.
+             * @member {number|Long|null|undefined} smartThumbnailTs
+             * @memberof waproto.Message.VideoMessage
+             * @instance
+             */
+            VideoMessage.prototype.smartThumbnailTs = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -183392,6 +183522,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VideoMessage.prototype, "_smartThumbnailTs", {
+                get: $util.oneOfGetter($oneOfFields = ["smartThumbnailTs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @function create
@@ -183489,6 +183625,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 31, wireType 0 =*/248).int32(message.videoSourceType);
                 if (message.dashManifestUrl != null && $Object.hasOwnProperty.call(message, "dashManifestUrl"))
                     writer.uint32(/* id 33, wireType 2 =*/266).string(message.dashManifestUrl);
+                if (message.smartThumbnailTs != null && $Object.hasOwnProperty.call(message, "smartThumbnailTs"))
+                    writer.uint32(/* id 34, wireType 0 =*/272).int64(message.smartThumbnailTs);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -183766,6 +183904,13 @@ $root.waproto = (function() {
                             message._dashManifestUrl = "dashManifestUrl";
                             continue;
                         }
+                    case 34: {
+                            if (wireType !== 0)
+                                break;
+                            message.smartThumbnailTs = reader.int64();
+                            message._smartThumbnailTs = "smartThumbnailTs";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -183985,6 +184130,11 @@ $root.waproto = (function() {
                     if (!$util.isString(message.dashManifestUrl))
                         return "dashManifestUrl: string expected";
                 }
+                if (message.smartThumbnailTs != null && $Object.hasOwnProperty.call(message, "smartThumbnailTs")) {
+                    properties._smartThumbnailTs = 1;
+                    if (!$util.isInteger(message.smartThumbnailTs) && !(message.smartThumbnailTs && $util.isInteger(message.smartThumbnailTs.low) && $util.isInteger(message.smartThumbnailTs.high)))
+                        return "smartThumbnailTs: integer|Long expected";
+                }
                 return null;
             };
 
@@ -184167,6 +184317,15 @@ $root.waproto = (function() {
                 }
                 if (object.dashManifestUrl != null)
                     message.dashManifestUrl = $String(object.dashManifestUrl);
+                if (object.smartThumbnailTs != null)
+                    if ($util.Long)
+                        message.smartThumbnailTs = $util.Long.fromValue(object.smartThumbnailTs, false);
+                    else if (typeof object.smartThumbnailTs === "string")
+                        message.smartThumbnailTs = $parseInt(object.smartThumbnailTs, 10);
+                    else if (typeof object.smartThumbnailTs === "number")
+                        message.smartThumbnailTs = object.smartThumbnailTs;
+                    else if (typeof object.smartThumbnailTs === "object")
+                        message.smartThumbnailTs = new $util.LongBits(object.smartThumbnailTs.low >>> 0, object.smartThumbnailTs.high >>> 0).toNumber();
                 return message;
             };
 
@@ -184278,6 +184437,13 @@ $root.waproto = (function() {
                     object.videoSourceType = options.enums === $String ? $root.waproto.Message.VideoMessage.VideoSourceType[message.videoSourceType] === $undefined ? message.videoSourceType : $root.waproto.Message.VideoMessage.VideoSourceType[message.videoSourceType] : message.videoSourceType;
                 if (message.dashManifestUrl != null && $Object.hasOwnProperty.call(message, "dashManifestUrl"))
                     object.dashManifestUrl = message.dashManifestUrl;
+                if (message.smartThumbnailTs != null && $Object.hasOwnProperty.call(message, "smartThumbnailTs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.smartThumbnailTs = typeof message.smartThumbnailTs === "number" ? $BigInt(message.smartThumbnailTs) : $util.Long.fromBits(message.smartThumbnailTs.low >>> 0, message.smartThumbnailTs.high >>> 0, false).toBigInt();
+                    else if (typeof message.smartThumbnailTs === "number")
+                        object.smartThumbnailTs = options.longs === $String ? $String(message.smartThumbnailTs) : message.smartThumbnailTs;
+                    else
+                        object.smartThumbnailTs = options.longs === $String ? $util.Long.prototype.toString.call(message.smartThumbnailTs) : options.longs === $Number ? new $util.LongBits(message.smartThumbnailTs.low >>> 0, message.smartThumbnailTs.high >>> 0).toNumber() : message.smartThumbnailTs;
                 return object;
             };
 
@@ -272592,6 +272758,10 @@ $root.waproto = (function() {
             case 256:
                 message.messageStubType = 256;
                 break;
+            case "SENDER_SIDE_CONTACT_INFO":
+            case 255:
+                message.messageStubType = 255;
+                break;
             default:
                 if (typeof object.messageStubType === "number" && (object.messageStubType | 0) === object.messageStubType)
                     message.messageStubType = object.messageStubType;
@@ -273450,6 +273620,7 @@ $root.waproto = (function() {
          * @property {number} ORDER_EPHEMERAL_EXEMPTION=250 ORDER_EPHEMERAL_EXEMPTION value
          * @property {number} CAMEO_CHAT_CREATED=254 CAMEO_CHAT_CREATED value
          * @property {number} CAMEO_TRANSITIONED=256 CAMEO_TRANSITIONED value
+         * @property {number} SENDER_SIDE_CONTACT_INFO=255 SENDER_SIDE_CONTACT_INFO value
          */
         WebMessageInfo.StubType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -273690,6 +273861,7 @@ $root.waproto = (function() {
             values[valuesById[250] = "ORDER_EPHEMERAL_EXEMPTION"] = 250;
             values[valuesById[254] = "CAMEO_CHAT_CREATED"] = 254;
             values[valuesById[256] = "CAMEO_TRANSITIONED"] = 256;
+            values[valuesById[255] = "SENDER_SIDE_CONTACT_INFO"] = 255;
             return values;
         })();
 

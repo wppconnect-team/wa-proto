@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047679681
+/// WhatsApp Version: 2.3000.1047700797
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -2146,6 +2146,7 @@ message GroupHistory {
     repeated UnCountedAssociatedMessageList uncountedAssociatedMessageLists = 2;
     repeated WebMessageInfo commentMessages = 3;
     repeated WebMessageInfo outOfWindowPinnedMessages = 4;
+    optional WebMessageInfo themeMessage = 5;
 }
 
 message GroupHistoryBundleInfo {
@@ -2171,6 +2172,7 @@ message GroupHistoryWithMessageBytes {
     repeated UnCountedAssociatedMessageListWithMessageBytes uncountedAssociatedMessageLists = 2;
     repeated WebMessageInfoWithMessageBytes commentMessages = 3;
     repeated WebMessageInfoWithMessageBytes outOfWindowPinnedMessages = 4;
+    optional WebMessageInfoWithMessageBytes themeMessage = 5;
 }
 
 message GroupMention {
@@ -3543,6 +3545,7 @@ message Message {
         optional int64 messageCount = 3;
         repeated string nonHistoryReceivers = 4;
         optional int64 oldestMessageTimestampInBundle = 5;
+        optional bool includesChatTheme = 6;
     }
     
     message MessageHistoryNotice {
@@ -4450,6 +4453,7 @@ message Message {
         optional string metadataUrl = 30;
         optional VideoSourceType videoSourceType = 31;
         optional string dashManifestUrl = 33;
+        optional int64 smartThumbnailTs = 34;
         enum Attribution {
             NONE = 0;
             GIPHY = 1;
@@ -6745,6 +6749,7 @@ message WebMessageInfo {
         ORDER_EPHEMERAL_EXEMPTION = 250;
         CAMEO_CHAT_CREATED = 254;
         CAMEO_TRANSITIONED = 256;
+        SENDER_SIDE_CONTACT_INFO = 255;
     }
 }
 

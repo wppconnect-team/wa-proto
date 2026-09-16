@@ -27621,6 +27621,9 @@ export namespace waproto {
         /** GroupHistory outOfWindowPinnedMessages. */
         outOfWindowPinnedMessages: waproto.WebMessageInfo.$Properties[];
 
+        /** GroupHistory themeMessage. */
+        themeMessage?: (waproto.WebMessageInfo.$Properties|null);
+
         /**
          * Creates a new GroupHistory instance using the specified properties.
          * @param [properties] Properties to set
@@ -27717,6 +27720,9 @@ export namespace waproto {
             /** GroupHistory outOfWindowPinnedMessages */
             outOfWindowPinnedMessages?: (waproto.WebMessageInfo.$Properties[]|null);
 
+            /** GroupHistory themeMessage */
+            themeMessage?: (waproto.WebMessageInfo.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -27727,6 +27733,7 @@ export namespace waproto {
           uncountedAssociatedMessageLists?: waproto.UnCountedAssociatedMessageList.$Shape[]|null;
           commentMessages?: waproto.WebMessageInfo.$Shape[]|null;
           outOfWindowPinnedMessages?: waproto.WebMessageInfo.$Shape[]|null;
+          themeMessage?: waproto.WebMessageInfo.$Shape|null;
           $unknowns?: Uint8Array[];
         };
     }
@@ -28034,6 +28041,9 @@ export namespace waproto {
         /** GroupHistoryWithMessageBytes outOfWindowPinnedMessages. */
         outOfWindowPinnedMessages: waproto.WebMessageInfoWithMessageBytes.$Properties[];
 
+        /** GroupHistoryWithMessageBytes themeMessage. */
+        themeMessage?: (waproto.WebMessageInfoWithMessageBytes.$Properties|null);
+
         /**
          * Creates a new GroupHistoryWithMessageBytes instance using the specified properties.
          * @param [properties] Properties to set
@@ -28129,6 +28139,9 @@ export namespace waproto {
 
             /** GroupHistoryWithMessageBytes outOfWindowPinnedMessages */
             outOfWindowPinnedMessages?: (waproto.WebMessageInfoWithMessageBytes.$Properties[]|null);
+
+            /** GroupHistoryWithMessageBytes themeMessage */
+            themeMessage?: (waproto.WebMessageInfoWithMessageBytes.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -48049,6 +48062,9 @@ export namespace waproto {
             /** MessageHistoryMetadata oldestMessageTimestampInBundle. */
             oldestMessageTimestampInBundle?: (number|Long|null);
 
+            /** MessageHistoryMetadata includesChatTheme. */
+            includesChatTheme?: (boolean|null);
+
             /**
              * Creates a new MessageHistoryMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -48147,6 +48163,9 @@ export namespace waproto {
 
                 /** MessageHistoryMetadata oldestMessageTimestampInBundle */
                 oldestMessageTimestampInBundle?: (number|Long|null);
+
+                /** MessageHistoryMetadata includesChatTheme */
+                includesChatTheme?: (boolean|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -61199,6 +61218,9 @@ export namespace waproto {
             /** VideoMessage dashManifestUrl. */
             dashManifestUrl?: (string|null);
 
+            /** VideoMessage smartThumbnailTs. */
+            smartThumbnailTs?: (number|Long|null);
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -61376,6 +61398,9 @@ export namespace waproto {
                 /** VideoMessage dashManifestUrl */
                 dashManifestUrl?: (string|null);
 
+                /** VideoMessage smartThumbnailTs */
+                smartThumbnailTs?: (number|Long|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -61413,6 +61438,7 @@ export namespace waproto {
               metadataUrl?: string|null;
               videoSourceType?: waproto.Message.VideoMessage.VideoSourceType|null;
               dashManifestUrl?: string|null;
+              smartThumbnailTs?: number|Long|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -92087,7 +92113,10 @@ export namespace waproto {
             CAMEO_CHAT_CREATED = 254,
 
             /** CAMEO_TRANSITIONED value */
-            CAMEO_TRANSITIONED = 256
+            CAMEO_TRANSITIONED = 256,
+
+            /** SENDER_SIDE_CONTACT_INFO value */
+            SENDER_SIDE_CONTACT_INFO = 255
         }
     }
 
