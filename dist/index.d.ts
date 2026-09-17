@@ -7287,7 +7287,10 @@ export namespace waproto {
             AI_STOP_GENERATION_ENABLED = 70,
 
             /** AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED value */
-            AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71
+            AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71,
+
+            /** HATCH_NOTIFICATION_METADATA_EVENT_ENABLED value */
+            HATCH_NOTIFICATION_METADATA_EVENT_ENABLED = 72
         }
     }
 
@@ -17197,6 +17200,9 @@ export namespace waproto {
         /** ClientPayload testIsolationId. */
         testIsolationId?: (Uint8Array|null);
 
+        /** ClientPayload messageSts. */
+        messageSts?: (number|Long|null);
+
         /**
          * Creates a new ClientPayload instance using the specified properties.
          * @param [properties] Properties to set
@@ -17388,6 +17394,9 @@ export namespace waproto {
 
             /** ClientPayload testIsolationId */
             testIsolationId?: (Uint8Array|null);
+
+            /** ClientPayload messageSts */
+            messageSts?: (number|Long|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -92096,6 +92105,9 @@ export namespace waproto {
 
             /** CHANGE_ACP2_SETTING value */
             CHANGE_ACP2_SETTING = 240,
+
+            /** BIZ_CALLBACK_DISABLED value */
+            BIZ_CALLBACK_DISABLED = 244,
 
             /** BIZ_CALLBACK_ENABLED value */
             BIZ_CALLBACK_ENABLED = 247,

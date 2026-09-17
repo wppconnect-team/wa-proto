@@ -19849,6 +19849,10 @@ $root.waproto = (function() {
                     case 71:
                         message.capabilities[message.capabilities.length] = 71;
                         break;
+                    case "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED":
+                    case 72:
+                        message.capabilities[message.capabilities.length] = 72;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -19985,6 +19989,7 @@ $root.waproto = (function() {
          * @property {number} AI_RICH_RESPONSE_REMINDERS_ENABLED=69 AI_RICH_RESPONSE_REMINDERS_ENABLED value
          * @property {number} AI_STOP_GENERATION_ENABLED=70 AI_STOP_GENERATION_ENABLED value
          * @property {number} AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED=71 AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED value
+         * @property {number} HATCH_NOTIFICATION_METADATA_EVENT_ENABLED=72 HATCH_NOTIFICATION_METADATA_EVENT_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -20060,6 +20065,7 @@ $root.waproto = (function() {
             values[valuesById[69] = "AI_RICH_RESPONSE_REMINDERS_ENABLED"] = 69;
             values[valuesById[70] = "AI_STOP_GENERATION_ENABLED"] = 70;
             values[valuesById[71] = "AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED"] = 71;
+            values[valuesById[72] = "HATCH_NOTIFICATION_METADATA_EVENT_ENABLED"] = 72;
             return values;
         })();
 
@@ -48158,6 +48164,7 @@ $root.waproto = (function() {
          * @property {number|null} [processingQueueSize] ClientPayload processingQueueSize
          * @property {Array.<string>|null} [pairedPeripherals] ClientPayload pairedPeripherals
          * @property {Uint8Array|null} [testIsolationId] ClientPayload testIsolationId
+         * @property {number|Long|null} [messageSts] ClientPayload messageSts
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -48479,6 +48486,14 @@ $root.waproto = (function() {
          */
         ClientPayload.prototype.testIsolationId = null;
 
+        /**
+         * ClientPayload messageSts.
+         * @member {number|Long|null|undefined} messageSts
+         * @memberof waproto.ClientPayload
+         * @instance
+         */
+        ClientPayload.prototype.messageSts = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -48686,6 +48701,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ClientPayload.prototype, "_messageSts", {
+            get: $util.oneOfGetter($oneOfFields = ["messageSts"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPayload instance using the specified properties.
          * @function create
@@ -48791,6 +48812,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 47, wireType 2 =*/378).string(message.pairedPeripherals[i]);
             if (message.testIsolationId != null && $Object.hasOwnProperty.call(message, "testIsolationId"))
                 writer.uint32(/* id 48, wireType 2 =*/386).bytes(message.testIsolationId);
+            if (message.messageSts != null && $Object.hasOwnProperty.call(message, "messageSts"))
+                writer.uint32(/* id 49, wireType 0 =*/392).int64(message.messageSts);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -49108,6 +49131,13 @@ $root.waproto = (function() {
                         message._testIsolationId = "testIsolationId";
                         continue;
                     }
+                case 49: {
+                        if (wireType !== 0)
+                            break;
+                        message.messageSts = reader.int64();
+                        message._messageSts = "messageSts";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -49355,6 +49385,11 @@ $root.waproto = (function() {
                 properties._testIsolationId = 1;
                 if (!(message.testIsolationId && typeof message.testIsolationId.length === "number" || $util.isString(message.testIsolationId)))
                     return "testIsolationId: buffer expected";
+            }
+            if (message.messageSts != null && $Object.hasOwnProperty.call(message, "messageSts")) {
+                properties._messageSts = 1;
+                if (!$util.isInteger(message.messageSts) && !(message.messageSts && $util.isInteger(message.messageSts.low) && $util.isInteger(message.messageSts.high)))
+                    return "messageSts: integer|Long expected";
             }
             return null;
         };
@@ -49657,6 +49692,15 @@ $root.waproto = (function() {
                     $util.base64.decode(object.testIsolationId, message.testIsolationId = $util.newBuffer($util.base64.length(object.testIsolationId)), 0);
                 else if (object.testIsolationId.length >= 0)
                     message.testIsolationId = object.testIsolationId;
+            if (object.messageSts != null)
+                if ($util.Long)
+                    message.messageSts = $util.Long.fromValue(object.messageSts, false);
+                else if (typeof object.messageSts === "string")
+                    message.messageSts = $parseInt(object.messageSts, 10);
+                else if (typeof object.messageSts === "number")
+                    message.messageSts = object.messageSts;
+                else if (typeof object.messageSts === "object")
+                    message.messageSts = new $util.LongBits(object.messageSts.low >>> 0, object.messageSts.high >>> 0).toNumber();
             return message;
         };
 
@@ -49769,6 +49813,13 @@ $root.waproto = (function() {
             }
             if (message.testIsolationId != null && $Object.hasOwnProperty.call(message, "testIsolationId"))
                 object.testIsolationId = options.bytes === $String ? $util.base64.encode(message.testIsolationId, 0, message.testIsolationId.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.testIsolationId) : message.testIsolationId;
+            if (message.messageSts != null && $Object.hasOwnProperty.call(message, "messageSts"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.messageSts = typeof message.messageSts === "number" ? $BigInt(message.messageSts) : $util.Long.fromBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0, false).toBigInt();
+                else if (typeof message.messageSts === "number")
+                    object.messageSts = options.longs === $String ? $String(message.messageSts) : message.messageSts;
+                else
+                    object.messageSts = options.longs === $String ? $util.Long.prototype.toString.call(message.messageSts) : options.longs === $Number ? new $util.LongBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0).toNumber() : message.messageSts;
             return object;
         };
 
@@ -272734,6 +272785,10 @@ $root.waproto = (function() {
             case 240:
                 message.messageStubType = 240;
                 break;
+            case "BIZ_CALLBACK_DISABLED":
+            case 244:
+                message.messageStubType = 244;
+                break;
             case "BIZ_CALLBACK_ENABLED":
             case 247:
                 message.messageStubType = 247;
@@ -273614,6 +273669,7 @@ $root.waproto = (function() {
          * @property {number} IDENTITY_TRUST_REVOKED=228 IDENTITY_TRUST_REVOKED value
          * @property {number} CTWA_CONSUMER_DISCLOSURE=230 CTWA_CONSUMER_DISCLOSURE value
          * @property {number} CHANGE_ACP2_SETTING=240 CHANGE_ACP2_SETTING value
+         * @property {number} BIZ_CALLBACK_DISABLED=244 BIZ_CALLBACK_DISABLED value
          * @property {number} BIZ_CALLBACK_ENABLED=247 BIZ_CALLBACK_ENABLED value
          * @property {number} EPHEMERAL_CHANGED_FOR_COEX=248 EPHEMERAL_CHANGED_FOR_COEX value
          * @property {number} UGC_BOT_PROFILE_UPDATED=249 UGC_BOT_PROFILE_UPDATED value
@@ -273855,6 +273911,7 @@ $root.waproto = (function() {
             values[valuesById[228] = "IDENTITY_TRUST_REVOKED"] = 228;
             values[valuesById[230] = "CTWA_CONSUMER_DISCLOSURE"] = 230;
             values[valuesById[240] = "CHANGE_ACP2_SETTING"] = 240;
+            values[valuesById[244] = "BIZ_CALLBACK_DISABLED"] = 244;
             values[valuesById[247] = "BIZ_CALLBACK_ENABLED"] = 247;
             values[valuesById[248] = "EPHEMERAL_CHANGED_FOR_COEX"] = 248;
             values[valuesById[249] = "UGC_BOT_PROFILE_UPDATED"] = 249;

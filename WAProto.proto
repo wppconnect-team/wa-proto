@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047787617
+/// WhatsApp Version: 2.3000.1047806989
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -492,6 +492,7 @@ message BotCapabilityMetadata {
         AI_RICH_RESPONSE_REMINDERS_ENABLED = 69;
         AI_STOP_GENERATION_ENABLED = 70;
         AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71;
+        HATCH_NOTIFICATION_METADATA_EVENT_ENABLED = 72;
     }
 }
 
@@ -1237,6 +1238,7 @@ message ClientPayload {
     optional int32 processingQueueSize = 46;
     repeated string pairedPeripherals = 47;
     optional bytes testIsolationId = 48;
+    optional int64 messageSts = 49;
     enum AccountType {
         DEFAULT = 0;
         GUEST = 1;
@@ -6743,6 +6745,7 @@ message WebMessageInfo {
         IDENTITY_TRUST_REVOKED = 228;
         CTWA_CONSUMER_DISCLOSURE = 230;
         CHANGE_ACP2_SETTING = 240;
+        BIZ_CALLBACK_DISABLED = 244;
         BIZ_CALLBACK_ENABLED = 247;
         EPHEMERAL_CHANGED_FOR_COEX = 248;
         UGC_BOT_PROFILE_UPDATED = 249;
