@@ -21716,6 +21716,9 @@ export namespace waproto {
             /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel. */
             containsCtwaFlowsAutoLabel?: (boolean|null);
 
+            /** ExternalAdReplyInfo productId. */
+            productId?: (string|null);
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @param [properties] Properties to set
@@ -21898,6 +21901,9 @@ export namespace waproto {
 
                 /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel */
                 containsCtwaFlowsAutoLabel?: (boolean|null);
+
+                /** ExternalAdReplyInfo productId */
+                productId?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -64014,6 +64020,9 @@ export namespace waproto {
         /** BUSINESS_FOLDER_ACTIVATION_ACTION value */
         BUSINESS_FOLDER_ACTIVATION_ACTION = 96,
 
+        /** GROUP_HISTORY_TOGGLE_ACTION value */
+        GROUP_HISTORY_TOGGLE_ACTION = 97,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -73926,6 +73935,9 @@ export namespace waproto {
         /** SyncActionValue businessFolderActivationAction. */
         businessFolderActivationAction?: (waproto.SyncActionValue.BusinessFolderActivationAction.$Properties|null);
 
+        /** SyncActionValue groupHistoryToggleAction. */
+        groupHistoryToggleAction?: (waproto.SyncActionValue.GroupHistoryToggleAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -74271,6 +74283,9 @@ export namespace waproto {
             /** SyncActionValue businessFolderActivationAction */
             businessFolderActivationAction?: (waproto.SyncActionValue.BusinessFolderActivationAction.$Properties|null);
 
+            /** SyncActionValue groupHistoryToggleAction */
+            groupHistoryToggleAction?: (waproto.SyncActionValue.GroupHistoryToggleAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -74364,6 +74379,7 @@ export namespace waproto {
           sharedDeviceAllowlistAction?: waproto.SyncActionValue.SharedDeviceAllowlistAction.$Shape|null;
           contactManagerMetadataAction?: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape|null;
           businessFolderActivationAction?: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape|null;
+          groupHistoryToggleAction?: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -78832,6 +78848,136 @@ export namespace waproto {
 
                 /** Shape of a Favorite. */
                 type $Shape = waproto.SyncActionValue.FavoritesAction.Favorite.$Properties;
+            }
+        }
+
+        /**
+         * Properties of a GroupHistoryToggleAction.
+         * @deprecated Use waproto.SyncActionValue.GroupHistoryToggleAction.$Properties instead.
+         */
+        interface IGroupHistoryToggleAction extends waproto.SyncActionValue.GroupHistoryToggleAction.$Properties {
+        }
+
+        /** Represents a GroupHistoryToggleAction. */
+        class GroupHistoryToggleAction {
+
+            /**
+             * Constructs a new GroupHistoryToggleAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.GroupHistoryToggleAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** GroupHistoryToggleAction groupHistoryToggleMode. */
+            groupHistoryToggleMode?: (waproto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode|null);
+
+            /**
+             * Creates a new GroupHistoryToggleAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns GroupHistoryToggleAction instance
+             */
+            static create(properties: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape): waproto.SyncActionValue.GroupHistoryToggleAction & waproto.SyncActionValue.GroupHistoryToggleAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.GroupHistoryToggleAction.$Properties): waproto.SyncActionValue.GroupHistoryToggleAction;
+
+            /**
+             * Encodes the specified GroupHistoryToggleAction message. Does not implicitly {@link waproto.SyncActionValue.GroupHistoryToggleAction.verify|verify} messages.
+             * @param message GroupHistoryToggleAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.GroupHistoryToggleAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GroupHistoryToggleAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.GroupHistoryToggleAction.verify|verify} messages.
+             * @param message GroupHistoryToggleAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.GroupHistoryToggleAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GroupHistoryToggleAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.GroupHistoryToggleAction & waproto.SyncActionValue.GroupHistoryToggleAction.$Shape} GroupHistoryToggleAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.GroupHistoryToggleAction & waproto.SyncActionValue.GroupHistoryToggleAction.$Shape;
+
+            /**
+             * Decodes a GroupHistoryToggleAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.GroupHistoryToggleAction & waproto.SyncActionValue.GroupHistoryToggleAction.$Shape} GroupHistoryToggleAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.GroupHistoryToggleAction & waproto.SyncActionValue.GroupHistoryToggleAction.$Shape;
+
+            /**
+             * Verifies a GroupHistoryToggleAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GroupHistoryToggleAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GroupHistoryToggleAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.GroupHistoryToggleAction;
+
+            /**
+             * Creates a plain object from a GroupHistoryToggleAction message. Also converts values to other types if specified.
+             * @param message GroupHistoryToggleAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.GroupHistoryToggleAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GroupHistoryToggleAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for GroupHistoryToggleAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace GroupHistoryToggleAction {
+
+            /** Properties of a GroupHistoryToggleAction. */
+            interface $Properties {
+
+                /** GroupHistoryToggleAction groupHistoryToggleMode */
+                groupHistoryToggleMode?: (waproto.SyncActionValue.GroupHistoryToggleAction.GroupHistoryToggleMode|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a GroupHistoryToggleAction. */
+            type $Shape = waproto.SyncActionValue.GroupHistoryToggleAction.$Properties;
+
+            /** GroupHistoryToggleMode enum. */
+            enum GroupHistoryToggleMode {
+
+                /** GROUP_HISTORY_TOGGLE_MODE_UNKNOWN value */
+                GROUP_HISTORY_TOGGLE_MODE_UNKNOWN = 0,
+
+                /** GROUP_HISTORY_TOGGLE_MODE_ON value */
+                GROUP_HISTORY_TOGGLE_MODE_ON = 1,
+
+                /** GROUP_HISTORY_TOGGLE_MODE_OFF value */
+                GROUP_HISTORY_TOGGLE_MODE_OFF = 2
             }
         }
 
