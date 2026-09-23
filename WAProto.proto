@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048248591
+/// WhatsApp Version: 2.3000.1048260127
 
 message ACP2Setting {
     optional bool enabled = 1;
