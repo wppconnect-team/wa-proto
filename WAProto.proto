@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048803351
+/// WhatsApp Version: 2.3000.1048819617
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -2664,6 +2664,7 @@ message Message {
     optional FutureProofMessage newsletterScheduledMessage = 132;
     optional FutureProofMessage acp2SettingMessage = 133;
     optional FutureProofMessage audioStickerMessage = 134;
+    optional FutureProofMessage botGroupParticipantMessage = 137;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;

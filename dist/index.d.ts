@@ -34273,6 +34273,9 @@ export namespace waproto {
         /** Message audioStickerMessage. */
         audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+        /** Message botGroupParticipantMessage. */
+        botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -34696,6 +34699,9 @@ export namespace waproto {
             /** Message audioStickerMessage */
             audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+            /** Message botGroupParticipantMessage */
+            botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -34815,6 +34821,7 @@ export namespace waproto {
           newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           acp2SettingMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           audioStickerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 

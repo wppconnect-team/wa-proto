@@ -100510,6 +100510,7 @@ $root.waproto = (function() {
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [newsletterScheduledMessage] Message newsletterScheduledMessage
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [acp2SettingMessage] Message acp2SettingMessage
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [audioStickerMessage] Message audioStickerMessage
+         * @property {waproto.Message.FutureProofMessage.$Properties|null} [botGroupParticipantMessage] Message botGroupParticipantMessage
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -100637,6 +100638,7 @@ $root.waproto = (function() {
          *   newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
          *   acp2SettingMessage?: waproto.Message.FutureProofMessage.$Shape|null;
          *   audioStickerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+         *   botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Message.$Shape
          */
@@ -101560,6 +101562,14 @@ $root.waproto = (function() {
          */
         Message.prototype.audioStickerMessage = null;
 
+        /**
+         * Message botGroupParticipantMessage.
+         * @member {waproto.Message.FutureProofMessage.$Properties|null|undefined} botGroupParticipantMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.botGroupParticipantMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -102241,6 +102251,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_botGroupParticipantMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["botGroupParticipantMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -102499,6 +102515,8 @@ $root.waproto = (function() {
                 $root.waproto.Message.FutureProofMessage.encode(message.acp2SettingMessage, writer.uint32(/* id 133, wireType 2 =*/1066).fork(), _depth + 1).ldelim();
             if (message.audioStickerMessage != null && $Object.hasOwnProperty.call(message, "audioStickerMessage"))
                 $root.waproto.Message.FutureProofMessage.encode(message.audioStickerMessage, writer.uint32(/* id 134, wireType 2 =*/1074).fork(), _depth + 1).ldelim();
+            if (message.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(message, "botGroupParticipantMessage"))
+                $root.waproto.Message.FutureProofMessage.encode(message.botGroupParticipantMessage, writer.uint32(/* id 137, wireType 2 =*/1098).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -103345,6 +103363,13 @@ $root.waproto = (function() {
                             break;
                         message.audioStickerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.audioStickerMessage);
                         message._audioStickerMessage = "audioStickerMessage";
+                        continue;
+                    }
+                case 137: {
+                        if (wireType !== 2)
+                            break;
+                        message.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botGroupParticipantMessage);
+                        message._botGroupParticipantMessage = "botGroupParticipantMessage";
                         continue;
                     }
                 }
@@ -104297,6 +104322,14 @@ $root.waproto = (function() {
                         return "audioStickerMessage." + error;
                 }
             }
+            if (message.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(message, "botGroupParticipantMessage")) {
+                properties._botGroupParticipantMessage = 1;
+                {
+                    var error = $root.waproto.Message.FutureProofMessage.verify(message.botGroupParticipantMessage, _depth + 1);
+                    if (error)
+                        return "botGroupParticipantMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -104880,6 +104913,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.Message.audioStickerMessage: object expected");
                 message.audioStickerMessage = $root.waproto.Message.FutureProofMessage.fromObject(object.audioStickerMessage, _depth + 1);
             }
+            if (object.botGroupParticipantMessage != null) {
+                if (!$util.isObject(object.botGroupParticipantMessage))
+                    throw $TypeError(".waproto.Message.botGroupParticipantMessage: object expected");
+                message.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.fromObject(object.botGroupParticipantMessage, _depth + 1);
+            }
             return message;
         };
 
@@ -105126,6 +105164,8 @@ $root.waproto = (function() {
                 object.acp2SettingMessage = $root.waproto.Message.FutureProofMessage.toObject(message.acp2SettingMessage, options, _depth + 1);
             if (message.audioStickerMessage != null && $Object.hasOwnProperty.call(message, "audioStickerMessage"))
                 object.audioStickerMessage = $root.waproto.Message.FutureProofMessage.toObject(message.audioStickerMessage, options, _depth + 1);
+            if (message.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(message, "botGroupParticipantMessage"))
+                object.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.toObject(message.botGroupParticipantMessage, options, _depth + 1);
             return object;
         };
 
