@@ -15549,6 +15549,123 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a GuestInfo.
+         * @deprecated Use waproto.CallLogRecord.GuestInfo.$Properties instead.
+         */
+        interface IGuestInfo extends waproto.CallLogRecord.GuestInfo.$Properties {
+        }
+
+        /** Represents a GuestInfo. */
+        class GuestInfo {
+
+            /**
+             * Constructs a new GuestInfo.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.CallLogRecord.GuestInfo.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** GuestInfo pushName. */
+            pushName?: (string|null);
+
+            /**
+             * Creates a new GuestInfo instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns GuestInfo instance
+             */
+            static create(properties: waproto.CallLogRecord.GuestInfo.$Shape): waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape;
+            static create(properties?: waproto.CallLogRecord.GuestInfo.$Properties): waproto.CallLogRecord.GuestInfo;
+
+            /**
+             * Encodes the specified GuestInfo message. Does not implicitly {@link waproto.CallLogRecord.GuestInfo.verify|verify} messages.
+             * @param message GuestInfo message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.CallLogRecord.GuestInfo.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GuestInfo message, length delimited. Does not implicitly {@link waproto.CallLogRecord.GuestInfo.verify|verify} messages.
+             * @param message GuestInfo message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.CallLogRecord.GuestInfo.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GuestInfo message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape} GuestInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape;
+
+            /**
+             * Decodes a GuestInfo message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape} GuestInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape;
+
+            /**
+             * Verifies a GuestInfo message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GuestInfo message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GuestInfo
+             */
+            static fromObject(object: { [k: string]: any }): waproto.CallLogRecord.GuestInfo;
+
+            /**
+             * Creates a plain object from a GuestInfo message. Also converts values to other types if specified.
+             * @param message GuestInfo
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.CallLogRecord.GuestInfo, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GuestInfo to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for GuestInfo
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace GuestInfo {
+
+            /** Properties of a GuestInfo. */
+            interface $Properties {
+
+                /** GuestInfo pushName */
+                pushName?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a GuestInfo. */
+            type $Shape = waproto.CallLogRecord.GuestInfo.$Properties;
+        }
+
+        /**
          * Properties of a ParticipantInfo.
          * @deprecated Use waproto.CallLogRecord.ParticipantInfo.$Properties instead.
          */
@@ -15572,6 +15689,9 @@ export namespace waproto {
 
             /** ParticipantInfo callResult. */
             callResult?: (waproto.CallLogRecord.CallResult|null);
+
+            /** ParticipantInfo guestInfo. */
+            guestInfo?: (waproto.CallLogRecord.GuestInfo.$Properties|null);
 
             /**
              * Creates a new ParticipantInfo instance using the specified properties.
@@ -15662,6 +15782,9 @@ export namespace waproto {
 
                 /** ParticipantInfo callResult */
                 callResult?: (waproto.CallLogRecord.CallResult|null);
+
+                /** ParticipantInfo guestInfo */
+                guestInfo?: (waproto.CallLogRecord.GuestInfo.$Properties|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -64030,6 +64153,9 @@ export namespace waproto {
         /** GROUP_HISTORY_TOGGLE_ACTION value */
         GROUP_HISTORY_TOGGLE_ACTION = 97,
 
+        /** BB_PRO_PENDING_CUSTOMER_BASE_ACTION value */
+        BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -73945,6 +74071,9 @@ export namespace waproto {
         /** SyncActionValue groupHistoryToggleAction. */
         groupHistoryToggleAction?: (waproto.SyncActionValue.GroupHistoryToggleAction.$Properties|null);
 
+        /** SyncActionValue bbProPendingCustomerBaseAction. */
+        bbProPendingCustomerBaseAction?: (waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -74293,6 +74422,9 @@ export namespace waproto {
             /** SyncActionValue groupHistoryToggleAction */
             groupHistoryToggleAction?: (waproto.SyncActionValue.GroupHistoryToggleAction.$Properties|null);
 
+            /** SyncActionValue bbProPendingCustomerBaseAction */
+            bbProPendingCustomerBaseAction?: (waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -74387,6 +74519,7 @@ export namespace waproto {
           contactManagerMetadataAction?: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape|null;
           businessFolderActivationAction?: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape|null;
           groupHistoryToggleAction?: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape|null;
+          bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -75127,6 +75260,123 @@ export namespace waproto {
                 /** DELETED value */
                 DELETED = 2
             }
+        }
+
+        /**
+         * Properties of a BBProPendingCustomerBaseAction.
+         * @deprecated Use waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties instead.
+         */
+        interface IBBProPendingCustomerBaseAction extends waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties {
+        }
+
+        /** Represents a BBProPendingCustomerBaseAction. */
+        class BBProPendingCustomerBaseAction {
+
+            /**
+             * Constructs a new BBProPendingCustomerBaseAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** BBProPendingCustomerBaseAction pending. */
+            pending?: (boolean|null);
+
+            /**
+             * Creates a new BBProPendingCustomerBaseAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BBProPendingCustomerBaseAction instance
+             */
+            static create(properties: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape): waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties): waproto.SyncActionValue.BBProPendingCustomerBaseAction;
+
+            /**
+             * Encodes the specified BBProPendingCustomerBaseAction message. Does not implicitly {@link waproto.SyncActionValue.BBProPendingCustomerBaseAction.verify|verify} messages.
+             * @param message BBProPendingCustomerBaseAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BBProPendingCustomerBaseAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.BBProPendingCustomerBaseAction.verify|verify} messages.
+             * @param message BBProPendingCustomerBaseAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BBProPendingCustomerBaseAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape} BBProPendingCustomerBaseAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape;
+
+            /**
+             * Decodes a BBProPendingCustomerBaseAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape} BBProPendingCustomerBaseAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape;
+
+            /**
+             * Verifies a BBProPendingCustomerBaseAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BBProPendingCustomerBaseAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BBProPendingCustomerBaseAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.BBProPendingCustomerBaseAction;
+
+            /**
+             * Creates a plain object from a BBProPendingCustomerBaseAction message. Also converts values to other types if specified.
+             * @param message BBProPendingCustomerBaseAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.BBProPendingCustomerBaseAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BBProPendingCustomerBaseAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for BBProPendingCustomerBaseAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BBProPendingCustomerBaseAction {
+
+            /** Properties of a BBProPendingCustomerBaseAction. */
+            interface $Properties {
+
+                /** BBProPendingCustomerBaseAction pending */
+                pending?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a BBProPendingCustomerBaseAction. */
+            type $Shape = waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties;
         }
 
         /**

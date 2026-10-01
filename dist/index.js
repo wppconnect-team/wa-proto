@@ -43743,6 +43743,288 @@ $root.waproto = (function() {
             return values;
         })();
 
+        CallLogRecord.GuestInfo = (function() {
+
+            /**
+             * Properties of a GuestInfo.
+             * @typedef {Object} waproto.CallLogRecord.GuestInfo.$Properties
+             * @property {string|null} [pushName] GuestInfo pushName
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a GuestInfo.
+             * @memberof waproto.CallLogRecord
+             * @interface IGuestInfo
+             * @augments waproto.CallLogRecord.GuestInfo.$Properties
+             * @deprecated Use waproto.CallLogRecord.GuestInfo.$Properties instead.
+             */
+
+            /**
+             * Shape of a GuestInfo.
+             * @typedef {waproto.CallLogRecord.GuestInfo.$Properties} waproto.CallLogRecord.GuestInfo.$Shape
+             */
+
+            /**
+             * Constructs a new GuestInfo.
+             * @memberof waproto.CallLogRecord
+             * @classdesc Represents a GuestInfo.
+             * @constructor
+             * @param {waproto.CallLogRecord.GuestInfo.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var GuestInfo = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * GuestInfo pushName.
+             * @member {string|null|undefined} pushName
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @instance
+             */
+            GuestInfo.prototype.pushName = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(GuestInfo.prototype, "_pushName", {
+                get: $util.oneOfGetter($oneOfFields = ["pushName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new GuestInfo instance using the specified properties.
+             * @function create
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {waproto.CallLogRecord.GuestInfo.$Properties=} [properties] Properties to set
+             * @returns {waproto.CallLogRecord.GuestInfo} GuestInfo instance
+             * @type {{
+             *   (properties: waproto.CallLogRecord.GuestInfo.$Shape): waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape;
+             *   (properties?: waproto.CallLogRecord.GuestInfo.$Properties): waproto.CallLogRecord.GuestInfo;
+             * }}
+             */
+            GuestInfo.create = function(properties) {
+                return new GuestInfo(properties);
+            };
+
+            /**
+             * Encodes the specified GuestInfo message. Does not implicitly {@link waproto.CallLogRecord.GuestInfo.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {waproto.CallLogRecord.GuestInfo.$Properties} message GuestInfo message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GuestInfo.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.pushName != null && $Object.hasOwnProperty.call(message, "pushName"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.pushName);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified GuestInfo message, length delimited. Does not implicitly {@link waproto.CallLogRecord.GuestInfo.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {waproto.CallLogRecord.GuestInfo.$Properties} message GuestInfo message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GuestInfo.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a GuestInfo message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape} GuestInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GuestInfo.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.CallLogRecord.GuestInfo();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.pushName = reader.stringVerify();
+                            message._pushName = "pushName";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a GuestInfo message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.CallLogRecord.GuestInfo & waproto.CallLogRecord.GuestInfo.$Shape} GuestInfo
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GuestInfo.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a GuestInfo message.
+             * @function verify
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            GuestInfo.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.pushName != null && $Object.hasOwnProperty.call(message, "pushName")) {
+                    properties._pushName = 1;
+                    if (!$util.isString(message.pushName))
+                        return "pushName: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a GuestInfo message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.CallLogRecord.GuestInfo} GuestInfo
+             */
+            GuestInfo.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.CallLogRecord.GuestInfo)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.CallLogRecord.GuestInfo: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.CallLogRecord.GuestInfo();
+                if (object.pushName != null)
+                    message.pushName = $String(object.pushName);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a GuestInfo message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {waproto.CallLogRecord.GuestInfo} message GuestInfo
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            GuestInfo.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.pushName != null && $Object.hasOwnProperty.call(message, "pushName"))
+                    object.pushName = message.pushName;
+                return object;
+            };
+
+            /**
+             * Converts this GuestInfo to JSON.
+             * @function toJSON
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            GuestInfo.prototype.toJSON = function() {
+                return GuestInfo.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for GuestInfo
+             * @function getTypeUrl
+             * @memberof waproto.CallLogRecord.GuestInfo
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            GuestInfo.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.CallLogRecord.GuestInfo";
+            };
+
+            return GuestInfo;
+        })();
+
         CallLogRecord.ParticipantInfo = (function() {
 
             /**
@@ -43750,6 +44032,7 @@ $root.waproto = (function() {
              * @typedef {Object} waproto.CallLogRecord.ParticipantInfo.$Properties
              * @property {string|null} [userJid] ParticipantInfo userJid
              * @property {waproto.CallLogRecord.CallResult|null} [callResult] ParticipantInfo callResult
+             * @property {waproto.CallLogRecord.GuestInfo.$Properties|null} [guestInfo] ParticipantInfo guestInfo
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -43797,6 +44080,14 @@ $root.waproto = (function() {
              */
             ParticipantInfo.prototype.callResult = null;
 
+            /**
+             * ParticipantInfo guestInfo.
+             * @member {waproto.CallLogRecord.GuestInfo.$Properties|null|undefined} guestInfo
+             * @memberof waproto.CallLogRecord.ParticipantInfo
+             * @instance
+             */
+            ParticipantInfo.prototype.guestInfo = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -43809,6 +44100,12 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(ParticipantInfo.prototype, "_callResult", {
                 get: $util.oneOfGetter($oneOfFields = ["callResult"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ParticipantInfo.prototype, "_guestInfo", {
+                get: $util.oneOfGetter($oneOfFields = ["guestInfo"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -43848,6 +44145,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.userJid);
                 if (message.callResult != null && $Object.hasOwnProperty.call(message, "callResult"))
                     writer.uint32(/* id 2, wireType 0 =*/16).int32(message.callResult);
+                if (message.guestInfo != null && $Object.hasOwnProperty.call(message, "guestInfo"))
+                    $root.waproto.CallLogRecord.GuestInfo.encode(message.guestInfo, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -43919,6 +44218,13 @@ $root.waproto = (function() {
                             message._callResult = "callResult";
                             continue;
                         }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.guestInfo = $root.waproto.CallLogRecord.GuestInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.guestInfo);
+                            message._guestInfo = "guestInfo";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -43977,6 +44283,14 @@ $root.waproto = (function() {
                     properties._callResult = 1;
                     if (typeof message.callResult !== "number" || (message.callResult | 0) !== message.callResult)
                         return "callResult: enum value expected";
+                }
+                if (message.guestInfo != null && $Object.hasOwnProperty.call(message, "guestInfo")) {
+                    properties._guestInfo = 1;
+                    {
+                        var error = $root.waproto.CallLogRecord.GuestInfo.verify(message.guestInfo, _depth + 1);
+                        if (error)
+                            return "guestInfo." + error;
+                    }
                 }
                 return null;
             };
@@ -44050,6 +44364,11 @@ $root.waproto = (function() {
                     if (typeof object.callResult === "number" && (object.callResult | 0) === object.callResult)
                         message.callResult = object.callResult;
                 }
+                if (object.guestInfo != null) {
+                    if (!$util.isObject(object.guestInfo))
+                        throw $TypeError(".waproto.CallLogRecord.ParticipantInfo.guestInfo: object expected");
+                    message.guestInfo = $root.waproto.CallLogRecord.GuestInfo.fromObject(object.guestInfo, _depth + 1);
+                }
                 return message;
             };
 
@@ -44074,6 +44393,8 @@ $root.waproto = (function() {
                     object.userJid = message.userJid;
                 if (message.callResult != null && $Object.hasOwnProperty.call(message, "callResult"))
                     object.callResult = options.enums === $String ? $root.waproto.CallLogRecord.CallResult[message.callResult] === $undefined ? message.callResult : $root.waproto.CallLogRecord.CallResult[message.callResult] : message.callResult;
+                if (message.guestInfo != null && $Object.hasOwnProperty.call(message, "guestInfo"))
+                    object.guestInfo = $root.waproto.CallLogRecord.GuestInfo.toObject(message.guestInfo, options, _depth + 1);
                 return object;
             };
 
@@ -192388,6 +192709,7 @@ $root.waproto = (function() {
      * @property {number} CONTACT_MANAGER_METADATA_ACTION=95 CONTACT_MANAGER_METADATA_ACTION value
      * @property {number} BUSINESS_FOLDER_ACTIVATION_ACTION=96 BUSINESS_FOLDER_ACTIVATION_ACTION value
      * @property {number} GROUP_HISTORY_TOGGLE_ACTION=97 GROUP_HISTORY_TOGGLE_ACTION value
+     * @property {number} BB_PRO_PENDING_CUSTOMER_BASE_ACTION=98 BB_PRO_PENDING_CUSTOMER_BASE_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -192485,6 +192807,7 @@ $root.waproto = (function() {
         values[valuesById[95] = "CONTACT_MANAGER_METADATA_ACTION"] = 95;
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
+        values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -220055,6 +220378,7 @@ $root.waproto = (function() {
          * @property {waproto.SyncActionValue.ContactManagerMetadataAction.$Properties|null} [contactManagerMetadataAction] SyncActionValue contactManagerMetadataAction
          * @property {waproto.SyncActionValue.BusinessFolderActivationAction.$Properties|null} [businessFolderActivationAction] SyncActionValue businessFolderActivationAction
          * @property {waproto.SyncActionValue.GroupHistoryToggleAction.$Properties|null} [groupHistoryToggleAction] SyncActionValue groupHistoryToggleAction
+         * @property {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null} [bbProPendingCustomerBaseAction] SyncActionValue bbProPendingCustomerBaseAction
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -220157,6 +220481,7 @@ $root.waproto = (function() {
          *   contactManagerMetadataAction?: waproto.SyncActionValue.ContactManagerMetadataAction.$Shape|null;
          *   businessFolderActivationAction?: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape|null;
          *   groupHistoryToggleAction?: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape|null;
+         *   bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.SyncActionValue.$Shape
          */
@@ -220880,6 +221205,14 @@ $root.waproto = (function() {
          */
         SyncActionValue.prototype.groupHistoryToggleAction = null;
 
+        /**
+         * SyncActionValue bbProPendingCustomerBaseAction.
+         * @member {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null|undefined} bbProPendingCustomerBaseAction
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.bbProPendingCustomerBaseAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -221411,6 +221744,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_bbProPendingCustomerBaseAction", {
+            get: $util.oneOfGetter($oneOfFields = ["bbProPendingCustomerBaseAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -221619,6 +221958,8 @@ $root.waproto = (function() {
                 $root.waproto.SyncActionValue.BusinessFolderActivationAction.encode(message.businessFolderActivationAction, writer.uint32(/* id 96, wireType 2 =*/770).fork(), _depth + 1).ldelim();
             if (message.groupHistoryToggleAction != null && $Object.hasOwnProperty.call(message, "groupHistoryToggleAction"))
                 $root.waproto.SyncActionValue.GroupHistoryToggleAction.encode(message.groupHistoryToggleAction, writer.uint32(/* id 97, wireType 2 =*/778).fork(), _depth + 1).ldelim();
+            if (message.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction"))
+                $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.encode(message.bbProPendingCustomerBaseAction, writer.uint32(/* id 98, wireType 2 =*/786).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -222290,6 +222631,13 @@ $root.waproto = (function() {
                             break;
                         message.groupHistoryToggleAction = $root.waproto.SyncActionValue.GroupHistoryToggleAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupHistoryToggleAction);
                         message._groupHistoryToggleAction = "groupHistoryToggleAction";
+                        continue;
+                    }
+                case 98: {
+                        if (wireType !== 2)
+                            break;
+                        message.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bbProPendingCustomerBaseAction);
+                        message._bbProPendingCustomerBaseAction = "bbProPendingCustomerBaseAction";
                         continue;
                     }
                 }
@@ -223042,6 +223390,14 @@ $root.waproto = (function() {
                         return "groupHistoryToggleAction." + error;
                 }
             }
+            if (message.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction")) {
+                properties._bbProPendingCustomerBaseAction = 1;
+                {
+                    var error = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.verify(message.bbProPendingCustomerBaseAction, _depth + 1);
+                    if (error)
+                        return "bbProPendingCustomerBaseAction." + error;
+                }
+            }
             return null;
         };
 
@@ -223507,6 +223863,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.SyncActionValue.groupHistoryToggleAction: object expected");
                 message.groupHistoryToggleAction = $root.waproto.SyncActionValue.GroupHistoryToggleAction.fromObject(object.groupHistoryToggleAction, _depth + 1);
             }
+            if (object.bbProPendingCustomerBaseAction != null) {
+                if (!$util.isObject(object.bbProPendingCustomerBaseAction))
+                    throw $TypeError(".waproto.SyncActionValue.bbProPendingCustomerBaseAction: object expected");
+                message.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.fromObject(object.bbProPendingCustomerBaseAction, _depth + 1);
+            }
             return message;
         };
 
@@ -223708,6 +224069,8 @@ $root.waproto = (function() {
                 object.businessFolderActivationAction = $root.waproto.SyncActionValue.BusinessFolderActivationAction.toObject(message.businessFolderActivationAction, options, _depth + 1);
             if (message.groupHistoryToggleAction != null && $Object.hasOwnProperty.call(message, "groupHistoryToggleAction"))
                 object.groupHistoryToggleAction = $root.waproto.SyncActionValue.GroupHistoryToggleAction.toObject(message.groupHistoryToggleAction, options, _depth + 1);
+            if (message.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction"))
+                object.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.toObject(message.bbProPendingCustomerBaseAction, options, _depth + 1);
             return object;
         };
 
@@ -225609,6 +225972,288 @@ $root.waproto = (function() {
             })();
 
             return AvatarUpdatedAction;
+        })();
+
+        SyncActionValue.BBProPendingCustomerBaseAction = (function() {
+
+            /**
+             * Properties of a BBProPendingCustomerBaseAction.
+             * @typedef {Object} waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties
+             * @property {boolean|null} [pending] BBProPendingCustomerBaseAction pending
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a BBProPendingCustomerBaseAction.
+             * @memberof waproto.SyncActionValue
+             * @interface IBBProPendingCustomerBaseAction
+             * @augments waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties
+             * @deprecated Use waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties instead.
+             */
+
+            /**
+             * Shape of a BBProPendingCustomerBaseAction.
+             * @typedef {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties} waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape
+             */
+
+            /**
+             * Constructs a new BBProPendingCustomerBaseAction.
+             * @memberof waproto.SyncActionValue
+             * @classdesc Represents a BBProPendingCustomerBaseAction.
+             * @constructor
+             * @param {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var BBProPendingCustomerBaseAction = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * BBProPendingCustomerBaseAction pending.
+             * @member {boolean|null|undefined} pending
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @instance
+             */
+            BBProPendingCustomerBaseAction.prototype.pending = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(BBProPendingCustomerBaseAction.prototype, "_pending", {
+                get: $util.oneOfGetter($oneOfFields = ["pending"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new BBProPendingCustomerBaseAction instance using the specified properties.
+             * @function create
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties=} [properties] Properties to set
+             * @returns {waproto.SyncActionValue.BBProPendingCustomerBaseAction} BBProPendingCustomerBaseAction instance
+             * @type {{
+             *   (properties: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape): waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape;
+             *   (properties?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties): waproto.SyncActionValue.BBProPendingCustomerBaseAction;
+             * }}
+             */
+            BBProPendingCustomerBaseAction.create = function(properties) {
+                return new BBProPendingCustomerBaseAction(properties);
+            };
+
+            /**
+             * Encodes the specified BBProPendingCustomerBaseAction message. Does not implicitly {@link waproto.SyncActionValue.BBProPendingCustomerBaseAction.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties} message BBProPendingCustomerBaseAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BBProPendingCustomerBaseAction.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.pending != null && $Object.hasOwnProperty.call(message, "pending"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.pending);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified BBProPendingCustomerBaseAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.BBProPendingCustomerBaseAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties} message BBProPendingCustomerBaseAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BBProPendingCustomerBaseAction.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a BBProPendingCustomerBaseAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape} BBProPendingCustomerBaseAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BBProPendingCustomerBaseAction.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.pending = reader.bool();
+                            message._pending = "pending";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a BBProPendingCustomerBaseAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.BBProPendingCustomerBaseAction & waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape} BBProPendingCustomerBaseAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BBProPendingCustomerBaseAction.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a BBProPendingCustomerBaseAction message.
+             * @function verify
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            BBProPendingCustomerBaseAction.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.pending != null && $Object.hasOwnProperty.call(message, "pending")) {
+                    properties._pending = 1;
+                    if (typeof message.pending !== "boolean")
+                        return "pending: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a BBProPendingCustomerBaseAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.SyncActionValue.BBProPendingCustomerBaseAction} BBProPendingCustomerBaseAction
+             */
+            BBProPendingCustomerBaseAction.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.SyncActionValue.BBProPendingCustomerBaseAction: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction();
+                if (object.pending != null)
+                    message.pending = $Boolean(object.pending);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a BBProPendingCustomerBaseAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {waproto.SyncActionValue.BBProPendingCustomerBaseAction} message BBProPendingCustomerBaseAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            BBProPendingCustomerBaseAction.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.pending != null && $Object.hasOwnProperty.call(message, "pending"))
+                    object.pending = message.pending;
+                return object;
+            };
+
+            /**
+             * Converts this BBProPendingCustomerBaseAction to JSON.
+             * @function toJSON
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            BBProPendingCustomerBaseAction.prototype.toJSON = function() {
+                return BBProPendingCustomerBaseAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for BBProPendingCustomerBaseAction
+             * @function getTypeUrl
+             * @memberof waproto.SyncActionValue.BBProPendingCustomerBaseAction
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            BBProPendingCustomerBaseAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.SyncActionValue.BBProPendingCustomerBaseAction";
+            };
+
+            return BBProPendingCustomerBaseAction;
         })();
 
         SyncActionValue.BizAISettingsNudgeAction = (function() {
