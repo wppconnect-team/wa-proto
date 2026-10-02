@@ -95541,6 +95541,386 @@ $root.waproto = (function() {
         return KeyId;
     })();
 
+    waproto.KeyTransparencyCommand = (function() {
+
+        /**
+         * Properties of a KeyTransparencyCommand.
+         * @typedef {Object} waproto.KeyTransparencyCommand.$Properties
+         * @property {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties|null} [verifyKtForUserSignal] KeyTransparencyCommand verifyKtForUserSignal
+         * @property {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties|null} [verifyKtForUserMinos] KeyTransparencyCommand verifyKtForUserMinos
+         * @property {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties|null} [verifyKtForUserMandrake] KeyTransparencyCommand verifyKtForUserMandrake
+         * @property {"verifyKtForUserSignal"|"verifyKtForUserMinos"|"verifyKtForUserMandrake"} [commandInput] KeyTransparencyCommand commandInput
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a KeyTransparencyCommand.
+         * @memberof waproto
+         * @interface IKeyTransparencyCommand
+         * @augments waproto.KeyTransparencyCommand.$Properties
+         * @deprecated Use waproto.KeyTransparencyCommand.$Properties instead.
+         */
+
+        /**
+         * Narrowed shape of a KeyTransparencyCommand.
+         * @typedef {{
+         *   verifyKtForUserSignal?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape|null;
+         *   verifyKtForUserMinos?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape|null;
+         *   verifyKtForUserMandrake?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape|null;
+         *   $unknowns?: Array.<Uint8Array>;
+         * } & (
+         *   ({ commandInput?: undefined; verifyKtForUserSignal?: null; verifyKtForUserMinos?: null; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserSignal"; verifyKtForUserSignal: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape; verifyKtForUserMinos?: null; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserMinos"; verifyKtForUserSignal?: null; verifyKtForUserMinos: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserMandrake"; verifyKtForUserSignal?: null; verifyKtForUserMinos?: null; verifyKtForUserMandrake: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape })
+         * )} waproto.KeyTransparencyCommand.$Shape
+         */
+
+        /**
+         * Constructs a new KeyTransparencyCommand.
+         * @memberof waproto
+         * @classdesc Represents a KeyTransparencyCommand.
+         * @constructor
+         * @param {waproto.KeyTransparencyCommand.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var KeyTransparencyCommand = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * KeyTransparencyCommand verifyKtForUserSignal.
+         * @member {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties|null|undefined} verifyKtForUserSignal
+         * @memberof waproto.KeyTransparencyCommand
+         * @instance
+         */
+        KeyTransparencyCommand.prototype.verifyKtForUserSignal = null;
+
+        /**
+         * KeyTransparencyCommand verifyKtForUserMinos.
+         * @member {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties|null|undefined} verifyKtForUserMinos
+         * @memberof waproto.KeyTransparencyCommand
+         * @instance
+         */
+        KeyTransparencyCommand.prototype.verifyKtForUserMinos = null;
+
+        /**
+         * KeyTransparencyCommand verifyKtForUserMandrake.
+         * @member {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties|null|undefined} verifyKtForUserMandrake
+         * @memberof waproto.KeyTransparencyCommand
+         * @instance
+         */
+        KeyTransparencyCommand.prototype.verifyKtForUserMandrake = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        /**
+         * KeyTransparencyCommand commandInput.
+         * @member {"verifyKtForUserSignal"|"verifyKtForUserMinos"|"verifyKtForUserMandrake"|undefined} commandInput
+         * @memberof waproto.KeyTransparencyCommand
+         * @instance
+         */
+        $Object.defineProperty(KeyTransparencyCommand.prototype, "commandInput", {
+            get: $util.oneOfGetter($oneOfFields = ["verifyKtForUserSignal", "verifyKtForUserMinos", "verifyKtForUserMandrake"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new KeyTransparencyCommand instance using the specified properties.
+         * @function create
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {waproto.KeyTransparencyCommand.$Properties=} [properties] Properties to set
+         * @returns {waproto.KeyTransparencyCommand} KeyTransparencyCommand instance
+         * @type {{
+         *   (properties: waproto.KeyTransparencyCommand.$Shape): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
+         *   (properties?: waproto.KeyTransparencyCommand.$Properties): waproto.KeyTransparencyCommand;
+         * }}
+         */
+        KeyTransparencyCommand.create = function(properties) {
+            return new KeyTransparencyCommand(properties);
+        };
+
+        /**
+         * Encodes the specified KeyTransparencyCommand message. Does not implicitly {@link waproto.KeyTransparencyCommand.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {waproto.KeyTransparencyCommand.$Properties} message KeyTransparencyCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        KeyTransparencyCommand.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.verifyKtForUserSignal != null && $Object.hasOwnProperty.call(message, "verifyKtForUserSignal"))
+                $root.waproto.VerifyKeyTransparencyForUserSignalCommand.encode(message.verifyKtForUserSignal, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
+            if (message.verifyKtForUserMinos != null && $Object.hasOwnProperty.call(message, "verifyKtForUserMinos"))
+                $root.waproto.VerifyKeyTransparencyForUserMinosCommand.encode(message.verifyKtForUserMinos, writer.uint32(/* id 6, wireType 2 =*/50).fork(), _depth + 1).ldelim();
+            if (message.verifyKtForUserMandrake != null && $Object.hasOwnProperty.call(message, "verifyKtForUserMandrake"))
+                $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand.encode(message.verifyKtForUserMandrake, writer.uint32(/* id 7, wireType 2 =*/58).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified KeyTransparencyCommand message, length delimited. Does not implicitly {@link waproto.KeyTransparencyCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {waproto.KeyTransparencyCommand.$Properties} message KeyTransparencyCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        KeyTransparencyCommand.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a KeyTransparencyCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape} KeyTransparencyCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        KeyTransparencyCommand.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.KeyTransparencyCommand();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.verifyKtForUserSignal = $root.waproto.VerifyKeyTransparencyForUserSignalCommand.decode(reader, reader.uint32(), $undefined, _depth + 1, message.verifyKtForUserSignal);
+                        message.commandInput = "verifyKtForUserSignal";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.verifyKtForUserMinos = $root.waproto.VerifyKeyTransparencyForUserMinosCommand.decode(reader, reader.uint32(), $undefined, _depth + 1, message.verifyKtForUserMinos);
+                        message.commandInput = "verifyKtForUserMinos";
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.verifyKtForUserMandrake = $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand.decode(reader, reader.uint32(), $undefined, _depth + 1, message.verifyKtForUserMandrake);
+                        message.commandInput = "verifyKtForUserMandrake";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a KeyTransparencyCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape} KeyTransparencyCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        KeyTransparencyCommand.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a KeyTransparencyCommand message.
+         * @function verify
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        KeyTransparencyCommand.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.verifyKtForUserSignal != null && $Object.hasOwnProperty.call(message, "verifyKtForUserSignal")) {
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.VerifyKeyTransparencyForUserSignalCommand.verify(message.verifyKtForUserSignal, _depth + 1);
+                    if (error)
+                        return "verifyKtForUserSignal." + error;
+                }
+            }
+            if (message.verifyKtForUserMinos != null && $Object.hasOwnProperty.call(message, "verifyKtForUserMinos")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.VerifyKeyTransparencyForUserMinosCommand.verify(message.verifyKtForUserMinos, _depth + 1);
+                    if (error)
+                        return "verifyKtForUserMinos." + error;
+                }
+            }
+            if (message.verifyKtForUserMandrake != null && $Object.hasOwnProperty.call(message, "verifyKtForUserMandrake")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify(message.verifyKtForUserMandrake, _depth + 1);
+                    if (error)
+                        return "verifyKtForUserMandrake." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a KeyTransparencyCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.KeyTransparencyCommand} KeyTransparencyCommand
+         */
+        KeyTransparencyCommand.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.KeyTransparencyCommand)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.KeyTransparencyCommand: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.KeyTransparencyCommand();
+            if (object.verifyKtForUserSignal != null) {
+                if (!$util.isObject(object.verifyKtForUserSignal))
+                    throw $TypeError(".waproto.KeyTransparencyCommand.verifyKtForUserSignal: object expected");
+                message.verifyKtForUserSignal = $root.waproto.VerifyKeyTransparencyForUserSignalCommand.fromObject(object.verifyKtForUserSignal, _depth + 1);
+            }
+            if (object.verifyKtForUserMinos != null) {
+                if (!$util.isObject(object.verifyKtForUserMinos))
+                    throw $TypeError(".waproto.KeyTransparencyCommand.verifyKtForUserMinos: object expected");
+                message.verifyKtForUserMinos = $root.waproto.VerifyKeyTransparencyForUserMinosCommand.fromObject(object.verifyKtForUserMinos, _depth + 1);
+            }
+            if (object.verifyKtForUserMandrake != null) {
+                if (!$util.isObject(object.verifyKtForUserMandrake))
+                    throw $TypeError(".waproto.KeyTransparencyCommand.verifyKtForUserMandrake: object expected");
+                message.verifyKtForUserMandrake = $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand.fromObject(object.verifyKtForUserMandrake, _depth + 1);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a KeyTransparencyCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {waproto.KeyTransparencyCommand} message KeyTransparencyCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        KeyTransparencyCommand.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.verifyKtForUserSignal != null && $Object.hasOwnProperty.call(message, "verifyKtForUserSignal")) {
+                object.verifyKtForUserSignal = $root.waproto.VerifyKeyTransparencyForUserSignalCommand.toObject(message.verifyKtForUserSignal, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "verifyKtForUserSignal";
+            }
+            if (message.verifyKtForUserMinos != null && $Object.hasOwnProperty.call(message, "verifyKtForUserMinos")) {
+                object.verifyKtForUserMinos = $root.waproto.VerifyKeyTransparencyForUserMinosCommand.toObject(message.verifyKtForUserMinos, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "verifyKtForUserMinos";
+            }
+            if (message.verifyKtForUserMandrake != null && $Object.hasOwnProperty.call(message, "verifyKtForUserMandrake")) {
+                object.verifyKtForUserMandrake = $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand.toObject(message.verifyKtForUserMandrake, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "verifyKtForUserMandrake";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this KeyTransparencyCommand to JSON.
+         * @function toJSON
+         * @memberof waproto.KeyTransparencyCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        KeyTransparencyCommand.prototype.toJSON = function() {
+            return KeyTransparencyCommand.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for KeyTransparencyCommand
+         * @function getTypeUrl
+         * @memberof waproto.KeyTransparencyCommand
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        KeyTransparencyCommand.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.KeyTransparencyCommand";
+        };
+
+        return KeyTransparencyCommand;
+    })();
+
     waproto.LIDMigrationMappingSyncMessage = (function() {
 
         /**
@@ -267463,6 +267843,2536 @@ $root.waproto = (function() {
         })();
 
         return VerifiedNameCertificate;
+    })();
+
+    waproto.VerifyKeyTransparencyForUserMandrakeCommand = (function() {
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMandrakeCommand.
+         * @typedef {Object} waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties
+         * @property {Uint8Array} lookupResponse VerifyKeyTransparencyForUserMandrakeCommand lookupResponse
+         * @property {number|Long} userFbid VerifyKeyTransparencyForUserMandrakeCommand userFbid
+         * @property {number|Long} auditorSignatureTtlSecs VerifyKeyTransparencyForUserMandrakeCommand auditorSignatureTtlSecs
+         * @property {Array.<string>|null} [requestedAuditorList] VerifyKeyTransparencyForUserMandrakeCommand requestedAuditorList
+         * @property {boolean} isProductionBuild VerifyKeyTransparencyForUserMandrakeCommand isProductionBuild
+         * @property {Uint8Array} localMailboxHead VerifyKeyTransparencyForUserMandrakeCommand localMailboxHead
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMandrakeCommand.
+         * @memberof waproto
+         * @interface IVerifyKeyTransparencyForUserMandrakeCommand
+         * @augments waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties
+         * @deprecated Use waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties instead.
+         */
+
+        /**
+         * Shape of a VerifyKeyTransparencyForUserMandrakeCommand.
+         * @typedef {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties} waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape
+         */
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMandrakeCommand.
+         * @memberof waproto
+         * @classdesc Represents a VerifyKeyTransparencyForUserMandrakeCommand.
+         * @constructor
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VerifyKeyTransparencyForUserMandrakeCommand = function (properties) {
+            this.requestedAuditorList = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeCommand lookupResponse.
+         * @member {Uint8Array} lookupResponse
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.lookupResponse = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeCommand userFbid.
+         * @member {number|Long} userFbid
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.userFbid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeCommand auditorSignatureTtlSecs.
+         * @member {number|Long} auditorSignatureTtlSecs
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.auditorSignatureTtlSecs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeCommand requestedAuditorList.
+         * @member {Array.<string>} requestedAuditorList
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.requestedAuditorList = $util.emptyArray;
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeCommand isProductionBuild.
+         * @member {boolean} isProductionBuild
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.isProductionBuild = false;
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeCommand localMailboxHead.
+         * @member {Uint8Array} localMailboxHead
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.localMailboxHead = $util.newBuffer([]);
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMandrakeCommand instance using the specified properties.
+         * @function create
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties=} [properties] Properties to set
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand} VerifyKeyTransparencyForUserMandrakeCommand instance
+         * @type {{
+         *   (properties: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
+         *   (properties?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties): waproto.VerifyKeyTransparencyForUserMandrakeCommand;
+         * }}
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.create = function(properties) {
+            return new VerifyKeyTransparencyForUserMandrakeCommand(properties);
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties} message VerifyKeyTransparencyForUserMandrakeCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.lookupResponse);
+            writer.uint32(/* id 2, wireType 0 =*/16).int64(message.userFbid);
+            writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.auditorSignatureTtlSecs);
+            if (message.requestedAuditorList != null && message.requestedAuditorList.length)
+                for (var i = 0; i < message.requestedAuditorList.length; ++i)
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.requestedAuditorList[i]);
+            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.isProductionBuild);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.localMailboxHead);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties} message VerifyKeyTransparencyForUserMandrakeCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape} VerifyKeyTransparencyForUserMandrakeCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.lookupResponse = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.userFbid = reader.int64();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.auditorSignatureTtlSecs = reader.uint64();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.requestedAuditorList && message.requestedAuditorList.length))
+                            message.requestedAuditorList = [];
+                        message.requestedAuditorList.push(reader.stringVerify());
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.isProductionBuild = reader.bool();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.localMailboxHead = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "lookupResponse"))
+                throw $util.ProtocolError("missing required 'lookupResponse'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "userFbid"))
+                throw $util.ProtocolError("missing required 'userFbid'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "auditorSignatureTtlSecs"))
+                throw $util.ProtocolError("missing required 'auditorSignatureTtlSecs'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "isProductionBuild"))
+                throw $util.ProtocolError("missing required 'isProductionBuild'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "localMailboxHead"))
+                throw $util.ProtocolError("missing required 'localMailboxHead'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape} VerifyKeyTransparencyForUserMandrakeCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMandrakeCommand message.
+         * @function verify
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.lookupResponse && typeof message.lookupResponse.length === "number" || $util.isString(message.lookupResponse)))
+                return "lookupResponse: buffer expected";
+            if (!$util.isInteger(message.userFbid) && !(message.userFbid && $util.isInteger(message.userFbid.low) && $util.isInteger(message.userFbid.high)))
+                return "userFbid: integer|Long expected";
+            if (!$util.isInteger(message.auditorSignatureTtlSecs) && !(message.auditorSignatureTtlSecs && $util.isInteger(message.auditorSignatureTtlSecs.low) && $util.isInteger(message.auditorSignatureTtlSecs.high)))
+                return "auditorSignatureTtlSecs: integer|Long expected";
+            if (message.requestedAuditorList != null && $Object.hasOwnProperty.call(message, "requestedAuditorList")) {
+                if (!$Array.isArray(message.requestedAuditorList))
+                    return "requestedAuditorList: array expected";
+                for (var i = 0; i < message.requestedAuditorList.length; ++i)
+                    if (!$util.isString(message.requestedAuditorList[i]))
+                        return "requestedAuditorList: string[] expected";
+            }
+            if (typeof message.isProductionBuild !== "boolean")
+                return "isProductionBuild: boolean expected";
+            if (!(message.localMailboxHead && typeof message.localMailboxHead.length === "number" || $util.isString(message.localMailboxHead)))
+                return "localMailboxHead: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMandrakeCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand} VerifyKeyTransparencyForUserMandrakeCommand
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VerifyKeyTransparencyForUserMandrakeCommand: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VerifyKeyTransparencyForUserMandrakeCommand();
+            if (object.lookupResponse != null)
+                if (typeof object.lookupResponse === "string")
+                    $util.base64.decode(object.lookupResponse, message.lookupResponse = $util.newBuffer($util.base64.length(object.lookupResponse)), 0);
+                else if (object.lookupResponse.length >= 0)
+                    message.lookupResponse = object.lookupResponse;
+            if (object.userFbid != null)
+                if ($util.Long)
+                    message.userFbid = $util.Long.fromValue(object.userFbid, false);
+                else if (typeof object.userFbid === "string")
+                    message.userFbid = $parseInt(object.userFbid, 10);
+                else if (typeof object.userFbid === "number")
+                    message.userFbid = object.userFbid;
+                else if (typeof object.userFbid === "object")
+                    message.userFbid = new $util.LongBits(object.userFbid.low >>> 0, object.userFbid.high >>> 0).toNumber();
+            if (object.auditorSignatureTtlSecs != null)
+                if ($util.Long)
+                    message.auditorSignatureTtlSecs = $util.Long.fromValue(object.auditorSignatureTtlSecs, true);
+                else if (typeof object.auditorSignatureTtlSecs === "string")
+                    message.auditorSignatureTtlSecs = $parseInt(object.auditorSignatureTtlSecs, 10);
+                else if (typeof object.auditorSignatureTtlSecs === "number")
+                    message.auditorSignatureTtlSecs = object.auditorSignatureTtlSecs;
+                else if (typeof object.auditorSignatureTtlSecs === "object")
+                    message.auditorSignatureTtlSecs = new $util.LongBits(object.auditorSignatureTtlSecs.low >>> 0, object.auditorSignatureTtlSecs.high >>> 0).toNumber(true);
+            if (object.requestedAuditorList) {
+                if (!$Array.isArray(object.requestedAuditorList))
+                    throw $TypeError(".waproto.VerifyKeyTransparencyForUserMandrakeCommand.requestedAuditorList: array expected");
+                message.requestedAuditorList = $Array(object.requestedAuditorList.length);
+                for (var i = 0; i < object.requestedAuditorList.length; ++i)
+                    message.requestedAuditorList[i] = $String(object.requestedAuditorList[i]);
+            }
+            if (object.isProductionBuild != null)
+                message.isProductionBuild = $Boolean(object.isProductionBuild);
+            if (object.localMailboxHead != null)
+                if (typeof object.localMailboxHead === "string")
+                    $util.base64.decode(object.localMailboxHead, message.localMailboxHead = $util.newBuffer($util.base64.length(object.localMailboxHead)), 0);
+                else if (object.localMailboxHead.length >= 0)
+                    message.localMailboxHead = object.localMailboxHead;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMandrakeCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeCommand} message VerifyKeyTransparencyForUserMandrakeCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.requestedAuditorList = [];
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.lookupResponse = "";
+                else {
+                    object.lookupResponse = [];
+                    if (options.bytes !== $Array)
+                        object.lookupResponse = $util.newBuffer(object.lookupResponse);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.userFbid = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.userFbid = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.auditorSignatureTtlSecs = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.auditorSignatureTtlSecs = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                object.isProductionBuild = false;
+                if (options.bytes === $String)
+                    object.localMailboxHead = "";
+                else {
+                    object.localMailboxHead = [];
+                    if (options.bytes !== $Array)
+                        object.localMailboxHead = $util.newBuffer(object.localMailboxHead);
+                }
+            }
+            if (message.lookupResponse != null && $Object.hasOwnProperty.call(message, "lookupResponse"))
+                object.lookupResponse = options.bytes === $String ? $util.base64.encode(message.lookupResponse, 0, message.lookupResponse.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.lookupResponse) : message.lookupResponse;
+            if (message.userFbid != null && $Object.hasOwnProperty.call(message, "userFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.userFbid = typeof message.userFbid === "number" ? $BigInt(message.userFbid) : $util.Long.fromBits(message.userFbid.low >>> 0, message.userFbid.high >>> 0, false).toBigInt();
+                else if (typeof message.userFbid === "number")
+                    object.userFbid = options.longs === $String ? $String(message.userFbid) : message.userFbid;
+                else
+                    object.userFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.userFbid) : options.longs === $Number ? new $util.LongBits(message.userFbid.low >>> 0, message.userFbid.high >>> 0).toNumber() : message.userFbid;
+            if (message.auditorSignatureTtlSecs != null && $Object.hasOwnProperty.call(message, "auditorSignatureTtlSecs"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.auditorSignatureTtlSecs = typeof message.auditorSignatureTtlSecs === "number" ? $BigInt(message.auditorSignatureTtlSecs) : $util.Long.fromBits(message.auditorSignatureTtlSecs.low >>> 0, message.auditorSignatureTtlSecs.high >>> 0, true).toBigInt();
+                else if (typeof message.auditorSignatureTtlSecs === "number")
+                    object.auditorSignatureTtlSecs = options.longs === $String ? $String(message.auditorSignatureTtlSecs) : message.auditorSignatureTtlSecs;
+                else
+                    object.auditorSignatureTtlSecs = options.longs === $String ? $util.Long.prototype.toString.call(message.auditorSignatureTtlSecs) : options.longs === $Number ? new $util.LongBits(message.auditorSignatureTtlSecs.low >>> 0, message.auditorSignatureTtlSecs.high >>> 0).toNumber(true) : message.auditorSignatureTtlSecs;
+            if (message.requestedAuditorList && message.requestedAuditorList.length) {
+                object.requestedAuditorList = $Array(message.requestedAuditorList.length);
+                for (var j = 0; j < message.requestedAuditorList.length; ++j)
+                    object.requestedAuditorList[j] = message.requestedAuditorList[j];
+            }
+            if (message.isProductionBuild != null && $Object.hasOwnProperty.call(message, "isProductionBuild"))
+                object.isProductionBuild = message.isProductionBuild;
+            if (message.localMailboxHead != null && $Object.hasOwnProperty.call(message, "localMailboxHead"))
+                object.localMailboxHead = options.bytes === $String ? $util.base64.encode(message.localMailboxHead, 0, message.localMailboxHead.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.localMailboxHead) : message.localMailboxHead;
+            return object;
+        };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMandrakeCommand to JSON.
+         * @function toJSON
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.prototype.toJSON = function() {
+            return VerifyKeyTransparencyForUserMandrakeCommand.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMandrakeCommand
+         * @function getTypeUrl
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeCommand
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VerifyKeyTransparencyForUserMandrakeCommand.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VerifyKeyTransparencyForUserMandrakeCommand";
+        };
+
+        return VerifyKeyTransparencyForUserMandrakeCommand;
+    })();
+
+    waproto.VerifyKeyTransparencyForUserMandrakeResult = (function() {
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMandrakeResult.
+         * @typedef {Object} waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties
+         * @property {boolean|null} [success] VerifyKeyTransparencyForUserMandrakeResult success
+         * @property {string|null} [error] VerifyKeyTransparencyForUserMandrakeResult error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMandrakeResult.
+         * @memberof waproto
+         * @interface IVerifyKeyTransparencyForUserMandrakeResult
+         * @augments waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties
+         * @deprecated Use waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties instead.
+         */
+
+        /**
+         * Shape of a VerifyKeyTransparencyForUserMandrakeResult.
+         * @typedef {waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties} waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape
+         */
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMandrakeResult.
+         * @memberof waproto
+         * @classdesc Represents a VerifyKeyTransparencyForUserMandrakeResult.
+         * @constructor
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VerifyKeyTransparencyForUserMandrakeResult = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeResult success.
+         * @member {boolean|null|undefined} success
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.prototype.success = null;
+
+        /**
+         * VerifyKeyTransparencyForUserMandrakeResult error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VerifyKeyTransparencyForUserMandrakeResult.prototype, "_success", {
+            get: $util.oneOfGetter($oneOfFields = ["success"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VerifyKeyTransparencyForUserMandrakeResult.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMandrakeResult instance using the specified properties.
+         * @function create
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties=} [properties] Properties to set
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult} VerifyKeyTransparencyForUserMandrakeResult instance
+         * @type {{
+         *   (properties: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
+         *   (properties?: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties): waproto.VerifyKeyTransparencyForUserMandrakeResult;
+         * }}
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.create = function(properties) {
+            return new VerifyKeyTransparencyForUserMandrakeResult(properties);
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeResult.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties} message VerifyKeyTransparencyForUserMandrakeResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.success);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeResult.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties} message VerifyKeyTransparencyForUserMandrakeResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeResult message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape} VerifyKeyTransparencyForUserMandrakeResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VerifyKeyTransparencyForUserMandrakeResult();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.success = reader.bool();
+                        message._success = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeResult message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape} VerifyKeyTransparencyForUserMandrakeResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMandrakeResult message.
+         * @function verify
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success")) {
+                properties._success = 1;
+                if (typeof message.success !== "boolean")
+                    return "success: boolean expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMandrakeResult message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult} VerifyKeyTransparencyForUserMandrakeResult
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VerifyKeyTransparencyForUserMandrakeResult)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VerifyKeyTransparencyForUserMandrakeResult: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VerifyKeyTransparencyForUserMandrakeResult();
+            if (object.success != null)
+                message.success = $Boolean(object.success);
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMandrakeResult message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMandrakeResult} message VerifyKeyTransparencyForUserMandrakeResult
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                object.success = message.success;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMandrakeResult to JSON.
+         * @function toJSON
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.prototype.toJSON = function() {
+            return VerifyKeyTransparencyForUserMandrakeResult.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMandrakeResult
+         * @function getTypeUrl
+         * @memberof waproto.VerifyKeyTransparencyForUserMandrakeResult
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VerifyKeyTransparencyForUserMandrakeResult.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VerifyKeyTransparencyForUserMandrakeResult";
+        };
+
+        return VerifyKeyTransparencyForUserMandrakeResult;
+    })();
+
+    waproto.VerifyKeyTransparencyForUserMinosCommand = (function() {
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMinosCommand.
+         * @typedef {Object} waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties
+         * @property {Uint8Array} lookupResponse VerifyKeyTransparencyForUserMinosCommand lookupResponse
+         * @property {number|Long} userFbid VerifyKeyTransparencyForUserMinosCommand userFbid
+         * @property {number|Long} auditorSignatureTtlSecs VerifyKeyTransparencyForUserMinosCommand auditorSignatureTtlSecs
+         * @property {Array.<string>|null} [requestedAuditorList] VerifyKeyTransparencyForUserMinosCommand requestedAuditorList
+         * @property {boolean} isProductionBuild VerifyKeyTransparencyForUserMinosCommand isProductionBuild
+         * @property {Uint8Array} localEpochHead VerifyKeyTransparencyForUserMinosCommand localEpochHead
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMinosCommand.
+         * @memberof waproto
+         * @interface IVerifyKeyTransparencyForUserMinosCommand
+         * @augments waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties
+         * @deprecated Use waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties instead.
+         */
+
+        /**
+         * Shape of a VerifyKeyTransparencyForUserMinosCommand.
+         * @typedef {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties} waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape
+         */
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMinosCommand.
+         * @memberof waproto
+         * @classdesc Represents a VerifyKeyTransparencyForUserMinosCommand.
+         * @constructor
+         * @param {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VerifyKeyTransparencyForUserMinosCommand = function (properties) {
+            this.requestedAuditorList = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VerifyKeyTransparencyForUserMinosCommand lookupResponse.
+         * @member {Uint8Array} lookupResponse
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.lookupResponse = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserMinosCommand userFbid.
+         * @member {number|Long} userFbid
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.userFbid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserMinosCommand auditorSignatureTtlSecs.
+         * @member {number|Long} auditorSignatureTtlSecs
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.auditorSignatureTtlSecs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserMinosCommand requestedAuditorList.
+         * @member {Array.<string>} requestedAuditorList
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.requestedAuditorList = $util.emptyArray;
+
+        /**
+         * VerifyKeyTransparencyForUserMinosCommand isProductionBuild.
+         * @member {boolean} isProductionBuild
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.isProductionBuild = false;
+
+        /**
+         * VerifyKeyTransparencyForUserMinosCommand localEpochHead.
+         * @member {Uint8Array} localEpochHead
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.localEpochHead = $util.newBuffer([]);
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMinosCommand instance using the specified properties.
+         * @function create
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties=} [properties] Properties to set
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand} VerifyKeyTransparencyForUserMinosCommand instance
+         * @type {{
+         *   (properties: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
+         *   (properties?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties): waproto.VerifyKeyTransparencyForUserMinosCommand;
+         * }}
+         */
+        VerifyKeyTransparencyForUserMinosCommand.create = function(properties) {
+            return new VerifyKeyTransparencyForUserMinosCommand(properties);
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosCommand.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties} message VerifyKeyTransparencyForUserMinosCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMinosCommand.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.lookupResponse);
+            writer.uint32(/* id 2, wireType 0 =*/16).int64(message.userFbid);
+            writer.uint32(/* id 3, wireType 0 =*/24).uint64(message.auditorSignatureTtlSecs);
+            if (message.requestedAuditorList != null && message.requestedAuditorList.length)
+                for (var i = 0; i < message.requestedAuditorList.length; ++i)
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.requestedAuditorList[i]);
+            writer.uint32(/* id 5, wireType 0 =*/40).bool(message.isProductionBuild);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.localEpochHead);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties} message VerifyKeyTransparencyForUserMinosCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMinosCommand.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape} VerifyKeyTransparencyForUserMinosCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMinosCommand.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VerifyKeyTransparencyForUserMinosCommand();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.lookupResponse = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.userFbid = reader.int64();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.auditorSignatureTtlSecs = reader.uint64();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.requestedAuditorList && message.requestedAuditorList.length))
+                            message.requestedAuditorList = [];
+                        message.requestedAuditorList.push(reader.stringVerify());
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.isProductionBuild = reader.bool();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.localEpochHead = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "lookupResponse"))
+                throw $util.ProtocolError("missing required 'lookupResponse'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "userFbid"))
+                throw $util.ProtocolError("missing required 'userFbid'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "auditorSignatureTtlSecs"))
+                throw $util.ProtocolError("missing required 'auditorSignatureTtlSecs'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "isProductionBuild"))
+                throw $util.ProtocolError("missing required 'isProductionBuild'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "localEpochHead"))
+                throw $util.ProtocolError("missing required 'localEpochHead'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape} VerifyKeyTransparencyForUserMinosCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMinosCommand.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMinosCommand message.
+         * @function verify
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VerifyKeyTransparencyForUserMinosCommand.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.lookupResponse && typeof message.lookupResponse.length === "number" || $util.isString(message.lookupResponse)))
+                return "lookupResponse: buffer expected";
+            if (!$util.isInteger(message.userFbid) && !(message.userFbid && $util.isInteger(message.userFbid.low) && $util.isInteger(message.userFbid.high)))
+                return "userFbid: integer|Long expected";
+            if (!$util.isInteger(message.auditorSignatureTtlSecs) && !(message.auditorSignatureTtlSecs && $util.isInteger(message.auditorSignatureTtlSecs.low) && $util.isInteger(message.auditorSignatureTtlSecs.high)))
+                return "auditorSignatureTtlSecs: integer|Long expected";
+            if (message.requestedAuditorList != null && $Object.hasOwnProperty.call(message, "requestedAuditorList")) {
+                if (!$Array.isArray(message.requestedAuditorList))
+                    return "requestedAuditorList: array expected";
+                for (var i = 0; i < message.requestedAuditorList.length; ++i)
+                    if (!$util.isString(message.requestedAuditorList[i]))
+                        return "requestedAuditorList: string[] expected";
+            }
+            if (typeof message.isProductionBuild !== "boolean")
+                return "isProductionBuild: boolean expected";
+            if (!(message.localEpochHead && typeof message.localEpochHead.length === "number" || $util.isString(message.localEpochHead)))
+                return "localEpochHead: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMinosCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand} VerifyKeyTransparencyForUserMinosCommand
+         */
+        VerifyKeyTransparencyForUserMinosCommand.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VerifyKeyTransparencyForUserMinosCommand)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VerifyKeyTransparencyForUserMinosCommand: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VerifyKeyTransparencyForUserMinosCommand();
+            if (object.lookupResponse != null)
+                if (typeof object.lookupResponse === "string")
+                    $util.base64.decode(object.lookupResponse, message.lookupResponse = $util.newBuffer($util.base64.length(object.lookupResponse)), 0);
+                else if (object.lookupResponse.length >= 0)
+                    message.lookupResponse = object.lookupResponse;
+            if (object.userFbid != null)
+                if ($util.Long)
+                    message.userFbid = $util.Long.fromValue(object.userFbid, false);
+                else if (typeof object.userFbid === "string")
+                    message.userFbid = $parseInt(object.userFbid, 10);
+                else if (typeof object.userFbid === "number")
+                    message.userFbid = object.userFbid;
+                else if (typeof object.userFbid === "object")
+                    message.userFbid = new $util.LongBits(object.userFbid.low >>> 0, object.userFbid.high >>> 0).toNumber();
+            if (object.auditorSignatureTtlSecs != null)
+                if ($util.Long)
+                    message.auditorSignatureTtlSecs = $util.Long.fromValue(object.auditorSignatureTtlSecs, true);
+                else if (typeof object.auditorSignatureTtlSecs === "string")
+                    message.auditorSignatureTtlSecs = $parseInt(object.auditorSignatureTtlSecs, 10);
+                else if (typeof object.auditorSignatureTtlSecs === "number")
+                    message.auditorSignatureTtlSecs = object.auditorSignatureTtlSecs;
+                else if (typeof object.auditorSignatureTtlSecs === "object")
+                    message.auditorSignatureTtlSecs = new $util.LongBits(object.auditorSignatureTtlSecs.low >>> 0, object.auditorSignatureTtlSecs.high >>> 0).toNumber(true);
+            if (object.requestedAuditorList) {
+                if (!$Array.isArray(object.requestedAuditorList))
+                    throw $TypeError(".waproto.VerifyKeyTransparencyForUserMinosCommand.requestedAuditorList: array expected");
+                message.requestedAuditorList = $Array(object.requestedAuditorList.length);
+                for (var i = 0; i < object.requestedAuditorList.length; ++i)
+                    message.requestedAuditorList[i] = $String(object.requestedAuditorList[i]);
+            }
+            if (object.isProductionBuild != null)
+                message.isProductionBuild = $Boolean(object.isProductionBuild);
+            if (object.localEpochHead != null)
+                if (typeof object.localEpochHead === "string")
+                    $util.base64.decode(object.localEpochHead, message.localEpochHead = $util.newBuffer($util.base64.length(object.localEpochHead)), 0);
+                else if (object.localEpochHead.length >= 0)
+                    message.localEpochHead = object.localEpochHead;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMinosCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosCommand} message VerifyKeyTransparencyForUserMinosCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VerifyKeyTransparencyForUserMinosCommand.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.requestedAuditorList = [];
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.lookupResponse = "";
+                else {
+                    object.lookupResponse = [];
+                    if (options.bytes !== $Array)
+                        object.lookupResponse = $util.newBuffer(object.lookupResponse);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.userFbid = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.userFbid = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.auditorSignatureTtlSecs = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.auditorSignatureTtlSecs = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                object.isProductionBuild = false;
+                if (options.bytes === $String)
+                    object.localEpochHead = "";
+                else {
+                    object.localEpochHead = [];
+                    if (options.bytes !== $Array)
+                        object.localEpochHead = $util.newBuffer(object.localEpochHead);
+                }
+            }
+            if (message.lookupResponse != null && $Object.hasOwnProperty.call(message, "lookupResponse"))
+                object.lookupResponse = options.bytes === $String ? $util.base64.encode(message.lookupResponse, 0, message.lookupResponse.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.lookupResponse) : message.lookupResponse;
+            if (message.userFbid != null && $Object.hasOwnProperty.call(message, "userFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.userFbid = typeof message.userFbid === "number" ? $BigInt(message.userFbid) : $util.Long.fromBits(message.userFbid.low >>> 0, message.userFbid.high >>> 0, false).toBigInt();
+                else if (typeof message.userFbid === "number")
+                    object.userFbid = options.longs === $String ? $String(message.userFbid) : message.userFbid;
+                else
+                    object.userFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.userFbid) : options.longs === $Number ? new $util.LongBits(message.userFbid.low >>> 0, message.userFbid.high >>> 0).toNumber() : message.userFbid;
+            if (message.auditorSignatureTtlSecs != null && $Object.hasOwnProperty.call(message, "auditorSignatureTtlSecs"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.auditorSignatureTtlSecs = typeof message.auditorSignatureTtlSecs === "number" ? $BigInt(message.auditorSignatureTtlSecs) : $util.Long.fromBits(message.auditorSignatureTtlSecs.low >>> 0, message.auditorSignatureTtlSecs.high >>> 0, true).toBigInt();
+                else if (typeof message.auditorSignatureTtlSecs === "number")
+                    object.auditorSignatureTtlSecs = options.longs === $String ? $String(message.auditorSignatureTtlSecs) : message.auditorSignatureTtlSecs;
+                else
+                    object.auditorSignatureTtlSecs = options.longs === $String ? $util.Long.prototype.toString.call(message.auditorSignatureTtlSecs) : options.longs === $Number ? new $util.LongBits(message.auditorSignatureTtlSecs.low >>> 0, message.auditorSignatureTtlSecs.high >>> 0).toNumber(true) : message.auditorSignatureTtlSecs;
+            if (message.requestedAuditorList && message.requestedAuditorList.length) {
+                object.requestedAuditorList = $Array(message.requestedAuditorList.length);
+                for (var j = 0; j < message.requestedAuditorList.length; ++j)
+                    object.requestedAuditorList[j] = message.requestedAuditorList[j];
+            }
+            if (message.isProductionBuild != null && $Object.hasOwnProperty.call(message, "isProductionBuild"))
+                object.isProductionBuild = message.isProductionBuild;
+            if (message.localEpochHead != null && $Object.hasOwnProperty.call(message, "localEpochHead"))
+                object.localEpochHead = options.bytes === $String ? $util.base64.encode(message.localEpochHead, 0, message.localEpochHead.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.localEpochHead) : message.localEpochHead;
+            return object;
+        };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMinosCommand to JSON.
+         * @function toJSON
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VerifyKeyTransparencyForUserMinosCommand.prototype.toJSON = function() {
+            return VerifyKeyTransparencyForUserMinosCommand.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMinosCommand
+         * @function getTypeUrl
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosCommand
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VerifyKeyTransparencyForUserMinosCommand.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VerifyKeyTransparencyForUserMinosCommand";
+        };
+
+        return VerifyKeyTransparencyForUserMinosCommand;
+    })();
+
+    waproto.VerifyKeyTransparencyForUserMinosResult = (function() {
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMinosResult.
+         * @typedef {Object} waproto.VerifyKeyTransparencyForUserMinosResult.$Properties
+         * @property {boolean|null} [success] VerifyKeyTransparencyForUserMinosResult success
+         * @property {string|null} [error] VerifyKeyTransparencyForUserMinosResult error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserMinosResult.
+         * @memberof waproto
+         * @interface IVerifyKeyTransparencyForUserMinosResult
+         * @augments waproto.VerifyKeyTransparencyForUserMinosResult.$Properties
+         * @deprecated Use waproto.VerifyKeyTransparencyForUserMinosResult.$Properties instead.
+         */
+
+        /**
+         * Shape of a VerifyKeyTransparencyForUserMinosResult.
+         * @typedef {waproto.VerifyKeyTransparencyForUserMinosResult.$Properties} waproto.VerifyKeyTransparencyForUserMinosResult.$Shape
+         */
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMinosResult.
+         * @memberof waproto
+         * @classdesc Represents a VerifyKeyTransparencyForUserMinosResult.
+         * @constructor
+         * @param {waproto.VerifyKeyTransparencyForUserMinosResult.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VerifyKeyTransparencyForUserMinosResult = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VerifyKeyTransparencyForUserMinosResult success.
+         * @member {boolean|null|undefined} success
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosResult.prototype.success = null;
+
+        /**
+         * VerifyKeyTransparencyForUserMinosResult error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @instance
+         */
+        VerifyKeyTransparencyForUserMinosResult.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VerifyKeyTransparencyForUserMinosResult.prototype, "_success", {
+            get: $util.oneOfGetter($oneOfFields = ["success"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VerifyKeyTransparencyForUserMinosResult.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMinosResult instance using the specified properties.
+         * @function create
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosResult.$Properties=} [properties] Properties to set
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult} VerifyKeyTransparencyForUserMinosResult instance
+         * @type {{
+         *   (properties: waproto.VerifyKeyTransparencyForUserMinosResult.$Shape): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
+         *   (properties?: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties): waproto.VerifyKeyTransparencyForUserMinosResult;
+         * }}
+         */
+        VerifyKeyTransparencyForUserMinosResult.create = function(properties) {
+            return new VerifyKeyTransparencyForUserMinosResult(properties);
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosResult.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosResult.$Properties} message VerifyKeyTransparencyForUserMinosResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMinosResult.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.success);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosResult.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosResult.$Properties} message VerifyKeyTransparencyForUserMinosResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserMinosResult.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosResult message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape} VerifyKeyTransparencyForUserMinosResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMinosResult.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VerifyKeyTransparencyForUserMinosResult();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.success = reader.bool();
+                        message._success = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosResult message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape} VerifyKeyTransparencyForUserMinosResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserMinosResult.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMinosResult message.
+         * @function verify
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VerifyKeyTransparencyForUserMinosResult.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success")) {
+                properties._success = 1;
+                if (typeof message.success !== "boolean")
+                    return "success: boolean expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMinosResult message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult} VerifyKeyTransparencyForUserMinosResult
+         */
+        VerifyKeyTransparencyForUserMinosResult.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VerifyKeyTransparencyForUserMinosResult)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VerifyKeyTransparencyForUserMinosResult: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VerifyKeyTransparencyForUserMinosResult();
+            if (object.success != null)
+                message.success = $Boolean(object.success);
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMinosResult message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserMinosResult} message VerifyKeyTransparencyForUserMinosResult
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VerifyKeyTransparencyForUserMinosResult.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                object.success = message.success;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMinosResult to JSON.
+         * @function toJSON
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VerifyKeyTransparencyForUserMinosResult.prototype.toJSON = function() {
+            return VerifyKeyTransparencyForUserMinosResult.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMinosResult
+         * @function getTypeUrl
+         * @memberof waproto.VerifyKeyTransparencyForUserMinosResult
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VerifyKeyTransparencyForUserMinosResult.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VerifyKeyTransparencyForUserMinosResult";
+        };
+
+        return VerifyKeyTransparencyForUserMinosResult;
+    })();
+
+    waproto.VerifyKeyTransparencyForUserSignalCommand = (function() {
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserSignalCommand.
+         * @typedef {Object} waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties
+         * @property {Uint8Array} rootHash VerifyKeyTransparencyForUserSignalCommand rootHash
+         * @property {number|Long} currentEpoch VerifyKeyTransparencyForUserSignalCommand currentEpoch
+         * @property {number|Long} userFbid VerifyKeyTransparencyForUserSignalCommand userFbid
+         * @property {Uint8Array} historyProof VerifyKeyTransparencyForUserSignalCommand historyProof
+         * @property {Uint8Array} metaSignature VerifyKeyTransparencyForUserSignalCommand metaSignature
+         * @property {Uint8Array} cloudflareSignature VerifyKeyTransparencyForUserSignalCommand cloudflareSignature
+         * @property {Uint8Array} cloudflareMessage VerifyKeyTransparencyForUserSignalCommand cloudflareMessage
+         * @property {Uint8Array} cloudflarePubKey VerifyKeyTransparencyForUserSignalCommand cloudflarePubKey
+         * @property {number|Long} auditorSignatureTtlSecs VerifyKeyTransparencyForUserSignalCommand auditorSignatureTtlSecs
+         * @property {Object.<string,Uint8Array>|null} [localDeviceKeys] VerifyKeyTransparencyForUserSignalCommand localDeviceKeys
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserSignalCommand.
+         * @memberof waproto
+         * @interface IVerifyKeyTransparencyForUserSignalCommand
+         * @augments waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties
+         * @deprecated Use waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties instead.
+         */
+
+        /**
+         * Shape of a VerifyKeyTransparencyForUserSignalCommand.
+         * @typedef {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties} waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape
+         */
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserSignalCommand.
+         * @memberof waproto
+         * @classdesc Represents a VerifyKeyTransparencyForUserSignalCommand.
+         * @constructor
+         * @param {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VerifyKeyTransparencyForUserSignalCommand = function (properties) {
+            this.localDeviceKeys = {};
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand rootHash.
+         * @member {Uint8Array} rootHash
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.rootHash = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand currentEpoch.
+         * @member {number|Long} currentEpoch
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.currentEpoch = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand userFbid.
+         * @member {number|Long} userFbid
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.userFbid = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand historyProof.
+         * @member {Uint8Array} historyProof
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.historyProof = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand metaSignature.
+         * @member {Uint8Array} metaSignature
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.metaSignature = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand cloudflareSignature.
+         * @member {Uint8Array} cloudflareSignature
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.cloudflareSignature = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand cloudflareMessage.
+         * @member {Uint8Array} cloudflareMessage
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.cloudflareMessage = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand cloudflarePubKey.
+         * @member {Uint8Array} cloudflarePubKey
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.cloudflarePubKey = $util.newBuffer([]);
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand auditorSignatureTtlSecs.
+         * @member {number|Long} auditorSignatureTtlSecs
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.auditorSignatureTtlSecs = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * VerifyKeyTransparencyForUserSignalCommand localDeviceKeys.
+         * @member {Object.<string,Uint8Array>} localDeviceKeys
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.localDeviceKeys = $util.emptyObject;
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserSignalCommand instance using the specified properties.
+         * @function create
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties=} [properties] Properties to set
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand} VerifyKeyTransparencyForUserSignalCommand instance
+         * @type {{
+         *   (properties: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
+         *   (properties?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties): waproto.VerifyKeyTransparencyForUserSignalCommand;
+         * }}
+         */
+        VerifyKeyTransparencyForUserSignalCommand.create = function(properties) {
+            return new VerifyKeyTransparencyForUserSignalCommand(properties);
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalCommand.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties} message VerifyKeyTransparencyForUserSignalCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserSignalCommand.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.rootHash);
+            writer.uint32(/* id 2, wireType 0 =*/16).uint64(message.currentEpoch);
+            writer.uint32(/* id 3, wireType 0 =*/24).int64(message.userFbid);
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.historyProof);
+            writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.metaSignature);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.cloudflareSignature);
+            writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.cloudflareMessage);
+            writer.uint32(/* id 8, wireType 2 =*/66).bytes(message.cloudflarePubKey);
+            writer.uint32(/* id 9, wireType 0 =*/72).uint64(message.auditorSignatureTtlSecs);
+            if (message.localDeviceKeys != null && $Object.hasOwnProperty.call(message, "localDeviceKeys"))
+                for (var keys = $Object.keys(message.localDeviceKeys), i = 0; i < keys.length; ++i)
+                    writer.uint32(/* id 10, wireType 2 =*/82).fork().uint32(/* id 1, wireType 0 =*/8).uint64($util.longFromKey(keys[i], true)).uint32(/* id 2, wireType 2 =*/18).bytes(message.localDeviceKeys[keys[i]]).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalCommand.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties} message VerifyKeyTransparencyForUserSignalCommand message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserSignalCommand.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalCommand message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape} VerifyKeyTransparencyForUserSignalCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserSignalCommand.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message, key, value;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VerifyKeyTransparencyForUserSignalCommand();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.rootHash = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.currentEpoch = reader.uint64();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.userFbid = reader.int64();
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.historyProof = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.metaSignature = reader.bytes();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.cloudflareSignature = reader.bytes();
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.cloudflareMessage = reader.bytes();
+                        continue;
+                    }
+                case 8: {
+                        if (wireType !== 2)
+                            break;
+                        message.cloudflarePubKey = reader.bytes();
+                        continue;
+                    }
+                case 9: {
+                        if (wireType !== 0)
+                            break;
+                        message.auditorSignatureTtlSecs = reader.uint64();
+                        continue;
+                    }
+                case 10: {
+                        if (wireType !== 2)
+                            break;
+                        if (message.localDeviceKeys === $util.emptyObject)
+                            message.localDeviceKeys = {};
+                        var end2 = reader.uint32() + reader.pos;
+                        if (end2 > reader.len)
+                            throw $RangeError("index out of range");
+                        reader.len = end2;
+                        key = 0;
+                        value = [];
+                        while (reader.pos < end2) {
+                            var tag2 = reader.tag();
+                            wireType = tag2 & 7;
+                            switch (tag2 >>>= 3) {
+                            case 1:
+                                if (wireType !== 0)
+                                    break;
+                                key = reader.uint64();
+                                continue;
+                            case 2:
+                                if (wireType !== 2)
+                                    break;
+                                value = reader.bytes();
+                                continue;
+                            }
+                            reader.skipType(wireType, _depth, tag2);
+                        }
+                        if (reader.pos !== end2)
+                            throw $RangeError("index out of range");
+                        reader.len = end;
+                        message.localDeviceKeys[typeof key === "object" ? $util.longToHash(key) : key] = value;
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "rootHash"))
+                throw $util.ProtocolError("missing required 'rootHash'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "currentEpoch"))
+                throw $util.ProtocolError("missing required 'currentEpoch'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "userFbid"))
+                throw $util.ProtocolError("missing required 'userFbid'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "historyProof"))
+                throw $util.ProtocolError("missing required 'historyProof'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "metaSignature"))
+                throw $util.ProtocolError("missing required 'metaSignature'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "cloudflareSignature"))
+                throw $util.ProtocolError("missing required 'cloudflareSignature'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "cloudflareMessage"))
+                throw $util.ProtocolError("missing required 'cloudflareMessage'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "cloudflarePubKey"))
+                throw $util.ProtocolError("missing required 'cloudflarePubKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "auditorSignatureTtlSecs"))
+                throw $util.ProtocolError("missing required 'auditorSignatureTtlSecs'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalCommand message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape} VerifyKeyTransparencyForUserSignalCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserSignalCommand.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserSignalCommand message.
+         * @function verify
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VerifyKeyTransparencyForUserSignalCommand.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.rootHash && typeof message.rootHash.length === "number" || $util.isString(message.rootHash)))
+                return "rootHash: buffer expected";
+            if (!$util.isInteger(message.currentEpoch) && !(message.currentEpoch && $util.isInteger(message.currentEpoch.low) && $util.isInteger(message.currentEpoch.high)))
+                return "currentEpoch: integer|Long expected";
+            if (!$util.isInteger(message.userFbid) && !(message.userFbid && $util.isInteger(message.userFbid.low) && $util.isInteger(message.userFbid.high)))
+                return "userFbid: integer|Long expected";
+            if (!(message.historyProof && typeof message.historyProof.length === "number" || $util.isString(message.historyProof)))
+                return "historyProof: buffer expected";
+            if (!(message.metaSignature && typeof message.metaSignature.length === "number" || $util.isString(message.metaSignature)))
+                return "metaSignature: buffer expected";
+            if (!(message.cloudflareSignature && typeof message.cloudflareSignature.length === "number" || $util.isString(message.cloudflareSignature)))
+                return "cloudflareSignature: buffer expected";
+            if (!(message.cloudflareMessage && typeof message.cloudflareMessage.length === "number" || $util.isString(message.cloudflareMessage)))
+                return "cloudflareMessage: buffer expected";
+            if (!(message.cloudflarePubKey && typeof message.cloudflarePubKey.length === "number" || $util.isString(message.cloudflarePubKey)))
+                return "cloudflarePubKey: buffer expected";
+            if (!$util.isInteger(message.auditorSignatureTtlSecs) && !(message.auditorSignatureTtlSecs && $util.isInteger(message.auditorSignatureTtlSecs.low) && $util.isInteger(message.auditorSignatureTtlSecs.high)))
+                return "auditorSignatureTtlSecs: integer|Long expected";
+            if (message.localDeviceKeys != null && $Object.hasOwnProperty.call(message, "localDeviceKeys")) {
+                if (!$util.isObject(message.localDeviceKeys))
+                    return "localDeviceKeys: object expected";
+                var key = $Object.keys(message.localDeviceKeys);
+                for (var i = 0; i < key.length; ++i) {
+                    if (!$util.key64Re.test(key[i]))
+                        return "localDeviceKeys: integer|Long key{k:uint64} expected";
+                    if (!(message.localDeviceKeys[key[i]] && typeof message.localDeviceKeys[key[i]].length === "number" || $util.isString(message.localDeviceKeys[key[i]])))
+                        return "localDeviceKeys: buffer{k:uint64} expected";
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserSignalCommand message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand} VerifyKeyTransparencyForUserSignalCommand
+         */
+        VerifyKeyTransparencyForUserSignalCommand.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VerifyKeyTransparencyForUserSignalCommand)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VerifyKeyTransparencyForUserSignalCommand: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VerifyKeyTransparencyForUserSignalCommand();
+            if (object.rootHash != null)
+                if (typeof object.rootHash === "string")
+                    $util.base64.decode(object.rootHash, message.rootHash = $util.newBuffer($util.base64.length(object.rootHash)), 0);
+                else if (object.rootHash.length >= 0)
+                    message.rootHash = object.rootHash;
+            if (object.currentEpoch != null)
+                if ($util.Long)
+                    message.currentEpoch = $util.Long.fromValue(object.currentEpoch, true);
+                else if (typeof object.currentEpoch === "string")
+                    message.currentEpoch = $parseInt(object.currentEpoch, 10);
+                else if (typeof object.currentEpoch === "number")
+                    message.currentEpoch = object.currentEpoch;
+                else if (typeof object.currentEpoch === "object")
+                    message.currentEpoch = new $util.LongBits(object.currentEpoch.low >>> 0, object.currentEpoch.high >>> 0).toNumber(true);
+            if (object.userFbid != null)
+                if ($util.Long)
+                    message.userFbid = $util.Long.fromValue(object.userFbid, false);
+                else if (typeof object.userFbid === "string")
+                    message.userFbid = $parseInt(object.userFbid, 10);
+                else if (typeof object.userFbid === "number")
+                    message.userFbid = object.userFbid;
+                else if (typeof object.userFbid === "object")
+                    message.userFbid = new $util.LongBits(object.userFbid.low >>> 0, object.userFbid.high >>> 0).toNumber();
+            if (object.historyProof != null)
+                if (typeof object.historyProof === "string")
+                    $util.base64.decode(object.historyProof, message.historyProof = $util.newBuffer($util.base64.length(object.historyProof)), 0);
+                else if (object.historyProof.length >= 0)
+                    message.historyProof = object.historyProof;
+            if (object.metaSignature != null)
+                if (typeof object.metaSignature === "string")
+                    $util.base64.decode(object.metaSignature, message.metaSignature = $util.newBuffer($util.base64.length(object.metaSignature)), 0);
+                else if (object.metaSignature.length >= 0)
+                    message.metaSignature = object.metaSignature;
+            if (object.cloudflareSignature != null)
+                if (typeof object.cloudflareSignature === "string")
+                    $util.base64.decode(object.cloudflareSignature, message.cloudflareSignature = $util.newBuffer($util.base64.length(object.cloudflareSignature)), 0);
+                else if (object.cloudflareSignature.length >= 0)
+                    message.cloudflareSignature = object.cloudflareSignature;
+            if (object.cloudflareMessage != null)
+                if (typeof object.cloudflareMessage === "string")
+                    $util.base64.decode(object.cloudflareMessage, message.cloudflareMessage = $util.newBuffer($util.base64.length(object.cloudflareMessage)), 0);
+                else if (object.cloudflareMessage.length >= 0)
+                    message.cloudflareMessage = object.cloudflareMessage;
+            if (object.cloudflarePubKey != null)
+                if (typeof object.cloudflarePubKey === "string")
+                    $util.base64.decode(object.cloudflarePubKey, message.cloudflarePubKey = $util.newBuffer($util.base64.length(object.cloudflarePubKey)), 0);
+                else if (object.cloudflarePubKey.length >= 0)
+                    message.cloudflarePubKey = object.cloudflarePubKey;
+            if (object.auditorSignatureTtlSecs != null)
+                if ($util.Long)
+                    message.auditorSignatureTtlSecs = $util.Long.fromValue(object.auditorSignatureTtlSecs, true);
+                else if (typeof object.auditorSignatureTtlSecs === "string")
+                    message.auditorSignatureTtlSecs = $parseInt(object.auditorSignatureTtlSecs, 10);
+                else if (typeof object.auditorSignatureTtlSecs === "number")
+                    message.auditorSignatureTtlSecs = object.auditorSignatureTtlSecs;
+                else if (typeof object.auditorSignatureTtlSecs === "object")
+                    message.auditorSignatureTtlSecs = new $util.LongBits(object.auditorSignatureTtlSecs.low >>> 0, object.auditorSignatureTtlSecs.high >>> 0).toNumber(true);
+            if (object.localDeviceKeys) {
+                if (!$util.isObject(object.localDeviceKeys))
+                    throw $TypeError(".waproto.VerifyKeyTransparencyForUserSignalCommand.localDeviceKeys: object expected");
+                message.localDeviceKeys = {};
+                for (var keys = $Object.keys(object.localDeviceKeys), i = 0; i < keys.length; ++i) {
+                    if (keys[i] === "__proto__")
+                        $util.makeProp(message.localDeviceKeys, keys[i]);
+                    if (typeof object.localDeviceKeys[keys[i]] === "string")
+                        $util.base64.decode(object.localDeviceKeys[keys[i]], message.localDeviceKeys[keys[i]] = $util.newBuffer($util.base64.length(object.localDeviceKeys[keys[i]])), 0);
+                    else if (object.localDeviceKeys[keys[i]].length >= 0)
+                        message.localDeviceKeys[keys[i]] = object.localDeviceKeys[keys[i]];
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserSignalCommand message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalCommand} message VerifyKeyTransparencyForUserSignalCommand
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VerifyKeyTransparencyForUserSignalCommand.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.objects || options.defaults)
+                object.localDeviceKeys = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.rootHash = "";
+                else {
+                    object.rootHash = [];
+                    if (options.bytes !== $Array)
+                        object.rootHash = $util.newBuffer(object.rootHash);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.currentEpoch = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.currentEpoch = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, false);
+                    object.userFbid = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.userFbid = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if (options.bytes === $String)
+                    object.historyProof = "";
+                else {
+                    object.historyProof = [];
+                    if (options.bytes !== $Array)
+                        object.historyProof = $util.newBuffer(object.historyProof);
+                }
+                if (options.bytes === $String)
+                    object.metaSignature = "";
+                else {
+                    object.metaSignature = [];
+                    if (options.bytes !== $Array)
+                        object.metaSignature = $util.newBuffer(object.metaSignature);
+                }
+                if (options.bytes === $String)
+                    object.cloudflareSignature = "";
+                else {
+                    object.cloudflareSignature = [];
+                    if (options.bytes !== $Array)
+                        object.cloudflareSignature = $util.newBuffer(object.cloudflareSignature);
+                }
+                if (options.bytes === $String)
+                    object.cloudflareMessage = "";
+                else {
+                    object.cloudflareMessage = [];
+                    if (options.bytes !== $Array)
+                        object.cloudflareMessage = $util.newBuffer(object.cloudflareMessage);
+                }
+                if (options.bytes === $String)
+                    object.cloudflarePubKey = "";
+                else {
+                    object.cloudflarePubKey = [];
+                    if (options.bytes !== $Array)
+                        object.cloudflarePubKey = $util.newBuffer(object.cloudflarePubKey);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.auditorSignatureTtlSecs = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.auditorSignatureTtlSecs = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+            }
+            if (message.rootHash != null && $Object.hasOwnProperty.call(message, "rootHash"))
+                object.rootHash = options.bytes === $String ? $util.base64.encode(message.rootHash, 0, message.rootHash.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.rootHash) : message.rootHash;
+            if (message.currentEpoch != null && $Object.hasOwnProperty.call(message, "currentEpoch"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.currentEpoch = typeof message.currentEpoch === "number" ? $BigInt(message.currentEpoch) : $util.Long.fromBits(message.currentEpoch.low >>> 0, message.currentEpoch.high >>> 0, true).toBigInt();
+                else if (typeof message.currentEpoch === "number")
+                    object.currentEpoch = options.longs === $String ? $String(message.currentEpoch) : message.currentEpoch;
+                else
+                    object.currentEpoch = options.longs === $String ? $util.Long.prototype.toString.call(message.currentEpoch) : options.longs === $Number ? new $util.LongBits(message.currentEpoch.low >>> 0, message.currentEpoch.high >>> 0).toNumber(true) : message.currentEpoch;
+            if (message.userFbid != null && $Object.hasOwnProperty.call(message, "userFbid"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.userFbid = typeof message.userFbid === "number" ? $BigInt(message.userFbid) : $util.Long.fromBits(message.userFbid.low >>> 0, message.userFbid.high >>> 0, false).toBigInt();
+                else if (typeof message.userFbid === "number")
+                    object.userFbid = options.longs === $String ? $String(message.userFbid) : message.userFbid;
+                else
+                    object.userFbid = options.longs === $String ? $util.Long.prototype.toString.call(message.userFbid) : options.longs === $Number ? new $util.LongBits(message.userFbid.low >>> 0, message.userFbid.high >>> 0).toNumber() : message.userFbid;
+            if (message.historyProof != null && $Object.hasOwnProperty.call(message, "historyProof"))
+                object.historyProof = options.bytes === $String ? $util.base64.encode(message.historyProof, 0, message.historyProof.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.historyProof) : message.historyProof;
+            if (message.metaSignature != null && $Object.hasOwnProperty.call(message, "metaSignature"))
+                object.metaSignature = options.bytes === $String ? $util.base64.encode(message.metaSignature, 0, message.metaSignature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.metaSignature) : message.metaSignature;
+            if (message.cloudflareSignature != null && $Object.hasOwnProperty.call(message, "cloudflareSignature"))
+                object.cloudflareSignature = options.bytes === $String ? $util.base64.encode(message.cloudflareSignature, 0, message.cloudflareSignature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.cloudflareSignature) : message.cloudflareSignature;
+            if (message.cloudflareMessage != null && $Object.hasOwnProperty.call(message, "cloudflareMessage"))
+                object.cloudflareMessage = options.bytes === $String ? $util.base64.encode(message.cloudflareMessage, 0, message.cloudflareMessage.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.cloudflareMessage) : message.cloudflareMessage;
+            if (message.cloudflarePubKey != null && $Object.hasOwnProperty.call(message, "cloudflarePubKey"))
+                object.cloudflarePubKey = options.bytes === $String ? $util.base64.encode(message.cloudflarePubKey, 0, message.cloudflarePubKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.cloudflarePubKey) : message.cloudflarePubKey;
+            if (message.auditorSignatureTtlSecs != null && $Object.hasOwnProperty.call(message, "auditorSignatureTtlSecs"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.auditorSignatureTtlSecs = typeof message.auditorSignatureTtlSecs === "number" ? $BigInt(message.auditorSignatureTtlSecs) : $util.Long.fromBits(message.auditorSignatureTtlSecs.low >>> 0, message.auditorSignatureTtlSecs.high >>> 0, true).toBigInt();
+                else if (typeof message.auditorSignatureTtlSecs === "number")
+                    object.auditorSignatureTtlSecs = options.longs === $String ? $String(message.auditorSignatureTtlSecs) : message.auditorSignatureTtlSecs;
+                else
+                    object.auditorSignatureTtlSecs = options.longs === $String ? $util.Long.prototype.toString.call(message.auditorSignatureTtlSecs) : options.longs === $Number ? new $util.LongBits(message.auditorSignatureTtlSecs.low >>> 0, message.auditorSignatureTtlSecs.high >>> 0).toNumber(true) : message.auditorSignatureTtlSecs;
+            var keys2;
+            if (message.localDeviceKeys && (keys2 = $Object.keys(message.localDeviceKeys)).length) {
+                object.localDeviceKeys = {};
+                for (var j = 0; j < keys2.length; ++j) {
+                    var k2 = $util.longFromKey(keys2[j], true).toString();
+                    if (keys2[j] === "__proto__")
+                        $util.makeProp(object.localDeviceKeys, keys2[j]);
+                    object.localDeviceKeys[k2] = options.bytes === $String ? $util.base64.encode(message.localDeviceKeys[keys2[j]], 0, message.localDeviceKeys[keys2[j]].length) : options.bytes === $Array ? $Array.prototype.slice.call(message.localDeviceKeys[keys2[j]]) : message.localDeviceKeys[keys2[j]];
+                }
+            }
+            return object;
+        };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserSignalCommand to JSON.
+         * @function toJSON
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VerifyKeyTransparencyForUserSignalCommand.prototype.toJSON = function() {
+            return VerifyKeyTransparencyForUserSignalCommand.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserSignalCommand
+         * @function getTypeUrl
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalCommand
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VerifyKeyTransparencyForUserSignalCommand.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VerifyKeyTransparencyForUserSignalCommand";
+        };
+
+        return VerifyKeyTransparencyForUserSignalCommand;
+    })();
+
+    waproto.VerifyKeyTransparencyForUserSignalResult = (function() {
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserSignalResult.
+         * @typedef {Object} waproto.VerifyKeyTransparencyForUserSignalResult.$Properties
+         * @property {boolean|null} [success] VerifyKeyTransparencyForUserSignalResult success
+         * @property {string|null} [error] VerifyKeyTransparencyForUserSignalResult error
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a VerifyKeyTransparencyForUserSignalResult.
+         * @memberof waproto
+         * @interface IVerifyKeyTransparencyForUserSignalResult
+         * @augments waproto.VerifyKeyTransparencyForUserSignalResult.$Properties
+         * @deprecated Use waproto.VerifyKeyTransparencyForUserSignalResult.$Properties instead.
+         */
+
+        /**
+         * Shape of a VerifyKeyTransparencyForUserSignalResult.
+         * @typedef {waproto.VerifyKeyTransparencyForUserSignalResult.$Properties} waproto.VerifyKeyTransparencyForUserSignalResult.$Shape
+         */
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserSignalResult.
+         * @memberof waproto
+         * @classdesc Represents a VerifyKeyTransparencyForUserSignalResult.
+         * @constructor
+         * @param {waproto.VerifyKeyTransparencyForUserSignalResult.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var VerifyKeyTransparencyForUserSignalResult = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * VerifyKeyTransparencyForUserSignalResult success.
+         * @member {boolean|null|undefined} success
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalResult.prototype.success = null;
+
+        /**
+         * VerifyKeyTransparencyForUserSignalResult error.
+         * @member {string|null|undefined} error
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @instance
+         */
+        VerifyKeyTransparencyForUserSignalResult.prototype.error = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VerifyKeyTransparencyForUserSignalResult.prototype, "_success", {
+            get: $util.oneOfGetter($oneOfFields = ["success"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(VerifyKeyTransparencyForUserSignalResult.prototype, "_error", {
+            get: $util.oneOfGetter($oneOfFields = ["error"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserSignalResult instance using the specified properties.
+         * @function create
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalResult.$Properties=} [properties] Properties to set
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult} VerifyKeyTransparencyForUserSignalResult instance
+         * @type {{
+         *   (properties: waproto.VerifyKeyTransparencyForUserSignalResult.$Shape): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
+         *   (properties?: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties): waproto.VerifyKeyTransparencyForUserSignalResult;
+         * }}
+         */
+        VerifyKeyTransparencyForUserSignalResult.create = function(properties) {
+            return new VerifyKeyTransparencyForUserSignalResult(properties);
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalResult.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalResult.$Properties} message VerifyKeyTransparencyForUserSignalResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserSignalResult.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                writer.uint32(/* id 1, wireType 0 =*/8).bool(message.success);
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.error);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalResult.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalResult.$Properties} message VerifyKeyTransparencyForUserSignalResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        VerifyKeyTransparencyForUserSignalResult.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalResult message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape} VerifyKeyTransparencyForUserSignalResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserSignalResult.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.VerifyKeyTransparencyForUserSignalResult();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.success = reader.bool();
+                        message._success = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.error = reader.stringVerify();
+                        message._error = "error";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalResult message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape} VerifyKeyTransparencyForUserSignalResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        VerifyKeyTransparencyForUserSignalResult.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserSignalResult message.
+         * @function verify
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        VerifyKeyTransparencyForUserSignalResult.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success")) {
+                properties._success = 1;
+                if (typeof message.success !== "boolean")
+                    return "success: boolean expected";
+            }
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error")) {
+                properties._error = 1;
+                if (!$util.isString(message.error))
+                    return "error: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserSignalResult message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult} VerifyKeyTransparencyForUserSignalResult
+         */
+        VerifyKeyTransparencyForUserSignalResult.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.VerifyKeyTransparencyForUserSignalResult)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.VerifyKeyTransparencyForUserSignalResult: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.VerifyKeyTransparencyForUserSignalResult();
+            if (object.success != null)
+                message.success = $Boolean(object.success);
+            if (object.error != null)
+                message.error = $String(object.error);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserSignalResult message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {waproto.VerifyKeyTransparencyForUserSignalResult} message VerifyKeyTransparencyForUserSignalResult
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        VerifyKeyTransparencyForUserSignalResult.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                object.success = message.success;
+            if (message.error != null && $Object.hasOwnProperty.call(message, "error"))
+                object.error = message.error;
+            return object;
+        };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserSignalResult to JSON.
+         * @function toJSON
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        VerifyKeyTransparencyForUserSignalResult.prototype.toJSON = function() {
+            return VerifyKeyTransparencyForUserSignalResult.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserSignalResult
+         * @function getTypeUrl
+         * @memberof waproto.VerifyKeyTransparencyForUserSignalResult
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        VerifyKeyTransparencyForUserSignalResult.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.VerifyKeyTransparencyForUserSignalResult";
+        };
+
+        return VerifyKeyTransparencyForUserSignalResult;
     })();
 
     waproto.WallpaperSettings = (function() {

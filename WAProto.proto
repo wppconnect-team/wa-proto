@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049069450
+/// WhatsApp Version: 2.3000.1049092666
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -2442,6 +2442,14 @@ message KeyExchangeMessage {
 
 message KeyId {
     optional bytes id = 1;
+}
+
+message KeyTransparencyCommand {
+    oneof commandInput {
+        VerifyKeyTransparencyForUserSignalCommand verifyKtForUserSignal = 5;
+        VerifyKeyTransparencyForUserMinosCommand verifyKtForUserMinos = 6;
+        VerifyKeyTransparencyForUserMandrakeCommand verifyKtForUserMandrake = 7;
+    }
 }
 
 message LIDMigrationMappingSyncMessage {
@@ -6384,6 +6392,52 @@ message VerifiedNameCertificate {
         optional uint64 issueTime = 10;
     }
     
+}
+
+message VerifyKeyTransparencyForUserMandrakeCommand {
+    required bytes lookupResponse = 1;
+    required int64 userFbid = 2;
+    required uint64 auditorSignatureTtlSecs = 3;
+    repeated string requestedAuditorList = 4;
+    required bool isProductionBuild = 5;
+    required bytes localMailboxHead = 6;
+}
+
+message VerifyKeyTransparencyForUserMandrakeResult {
+    optional bool success = 1;
+    optional string error = 2;
+}
+
+message VerifyKeyTransparencyForUserMinosCommand {
+    required bytes lookupResponse = 1;
+    required int64 userFbid = 2;
+    required uint64 auditorSignatureTtlSecs = 3;
+    repeated string requestedAuditorList = 4;
+    required bool isProductionBuild = 5;
+    required bytes localEpochHead = 6;
+}
+
+message VerifyKeyTransparencyForUserMinosResult {
+    optional bool success = 1;
+    optional string error = 2;
+}
+
+message VerifyKeyTransparencyForUserSignalCommand {
+    required bytes rootHash = 1;
+    required uint64 currentEpoch = 2;
+    required int64 userFbid = 3;
+    required bytes historyProof = 4;
+    required bytes metaSignature = 5;
+    required bytes cloudflareSignature = 6;
+    required bytes cloudflareMessage = 7;
+    required bytes cloudflarePubKey = 8;
+    required uint64 auditorSignatureTtlSecs = 9;
+    map<uint64, bytes> local_device_keys = 10;
+}
+
+message VerifyKeyTransparencyForUserSignalResult {
+    optional bool success = 1;
+    optional string error = 2;
 }
 
 message WallpaperSettings {
