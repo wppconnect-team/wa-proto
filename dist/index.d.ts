@@ -287,7 +287,10 @@ export namespace waproto {
         E2EE = 0,
 
         /** HOSTED value */
-        HOSTED = 1
+        HOSTED = 1,
+
+        /** NON_E2EE value */
+        NON_E2EE = 2
     }
 
     /**
@@ -1126,7 +1129,10 @@ export namespace waproto {
                 ANALYZE_FILE = 3,
 
                 /** COLLABORATE value */
-                COLLABORATE = 4
+                COLLABORATE = 4,
+
+                /** OPEN_GREETING_CARD value */
+                OPEN_GREETING_CARD = 5
             }
         }
     }
@@ -2429,8 +2435,8 @@ export namespace waproto {
             /** AIRichResponseContentItemMetadata reelItem. */
             reelItem?: (waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.$Properties|null);
 
-            /** AIRichResponseContentItemMetadata aIRichResponseContentItem. */
-            aIRichResponseContentItem?: "reelItem";
+            /** AIRichResponseContentItemMetadata aiRichResponseContentItem. */
+            aiRichResponseContentItem?: "reelItem";
 
             /**
              * Creates a new AIRichResponseContentItemMetadata instance using the specified properties.
@@ -2519,8 +2525,8 @@ export namespace waproto {
                 /** AIRichResponseContentItemMetadata reelItem */
                 reelItem?: (waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.$Properties|null);
 
-                /** AIRichResponseContentItemMetadata aIRichResponseContentItem */
-                aIRichResponseContentItem?: "reelItem";
+                /** AIRichResponseContentItemMetadata aiRichResponseContentItem */
+                aiRichResponseContentItem?: "reelItem";
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -2531,7 +2537,7 @@ export namespace waproto {
               reelItem?: waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.$Shape|null;
               $unknowns?: Uint8Array[];
             } & (
-              ({ aIRichResponseContentItem?: undefined; reelItem?: null }|{ aIRichResponseContentItem?: "reelItem"; reelItem: waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.$Shape })
+              ({ aiRichResponseContentItem?: undefined; reelItem?: null }|{ aiRichResponseContentItem?: "reelItem"; reelItem: waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.$Shape })
             );
         }
 
@@ -3836,6 +3842,9 @@ export namespace waproto {
         /** AIRichResponseMessage contextInfo. */
         contextInfo?: (waproto.ContextInfo.$Properties|null);
 
+        /** AIRichResponseMessage originalRecipientMetadata. */
+        originalRecipientMetadata?: (waproto.AIRichResponseUnifiedResponse.$Properties|null);
+
         /**
          * Creates a new AIRichResponseMessage instance using the specified properties.
          * @param [properties] Properties to set
@@ -3932,6 +3941,9 @@ export namespace waproto {
             /** AIRichResponseMessage contextInfo */
             contextInfo?: (waproto.ContextInfo.$Properties|null);
 
+            /** AIRichResponseMessage originalRecipientMetadata */
+            originalRecipientMetadata?: (waproto.AIRichResponseUnifiedResponse.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -3942,6 +3954,7 @@ export namespace waproto {
           submessages?: waproto.AIRichResponseSubMessage.$Shape[]|null;
           unifiedResponse?: waproto.AIRichResponseUnifiedResponse.$Shape|null;
           contextInfo?: waproto.ContextInfo.$Shape|null;
+          originalRecipientMetadata?: waproto.AIRichResponseUnifiedResponse.$Shape|null;
           $unknowns?: Uint8Array[];
         };
     }
@@ -6723,6 +6736,9 @@ export namespace waproto {
         /** BotAgentDeepLinkMetadata token. */
         token?: (string|null);
 
+        /** BotAgentDeepLinkMetadata clientPublicKey. */
+        clientPublicKey?: (Uint8Array|null);
+
         /**
          * Creates a new BotAgentDeepLinkMetadata instance using the specified properties.
          * @param [properties] Properties to set
@@ -6809,6 +6825,9 @@ export namespace waproto {
 
             /** BotAgentDeepLinkMetadata token */
             token?: (string|null);
+
+            /** BotAgentDeepLinkMetadata clientPublicKey */
+            clientPublicKey?: (Uint8Array|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -7238,7 +7257,40 @@ export namespace waproto {
             UNIFIED_RESPONSE_EMBEDDED_SCREENS = 60,
 
             /** AI_SUBSCRIPTION_ENABLED value */
-            AI_SUBSCRIPTION_ENABLED = 61
+            AI_SUBSCRIPTION_ENABLED = 61,
+
+            /** UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED value */
+            UNIFIED_RESPONSE_AI_CONTENT_SEARCH_ENABLED = 62,
+
+            /** UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED value */
+            UNIFIED_RESPONSE_MARKDOWN_LINKS_ENABLED = 63,
+
+            /** AI_RICH_RESPONSE_MAPS_V2_ENABLED value */
+            AI_RICH_RESPONSE_MAPS_V2_ENABLED = 64,
+
+            /** AI_SUBSCRIPTION_METERING_ENABLED value */
+            AI_SUBSCRIPTION_METERING_ENABLED = 65,
+
+            /** RICH_RESPONSE_SPORTS_WIDGET_ENABLED value */
+            RICH_RESPONSE_SPORTS_WIDGET_ENABLED = 66,
+
+            /** AI_RICH_RESPONSE_ARTIFACTS_ENABLED value */
+            AI_RICH_RESPONSE_ARTIFACTS_ENABLED = 67,
+
+            /** AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED value */
+            AI_RICH_RESPONSE_EMAIL_CALENDAR_ENABLED = 68,
+
+            /** AI_RICH_RESPONSE_REMINDERS_ENABLED value */
+            AI_RICH_RESPONSE_REMINDERS_ENABLED = 69,
+
+            /** AI_STOP_GENERATION_ENABLED value */
+            AI_STOP_GENERATION_ENABLED = 70,
+
+            /** AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED value */
+            AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71,
+
+            /** HATCH_NOTIFICATION_METADATA_EVENT_ENABLED value */
+            HATCH_NOTIFICATION_METADATA_EVENT_ENABLED = 72
         }
     }
 
@@ -10715,6 +10767,21 @@ export namespace waproto {
         /** BotMetadata commandMetadata. */
         commandMetadata?: (waproto.BotCommandMetadata.$Properties|null);
 
+        /** BotMetadata resolvedToolCallMetadata. */
+        resolvedToolCallMetadata?: (waproto.BotResolvedToolCallMetadata.$Properties|null);
+
+        /** BotMetadata subscriptionUpsellMetadata. */
+        subscriptionUpsellMetadata?: (waproto.AISubscriptionUpsellMetadata.$Properties|null);
+
+        /** BotMetadata pttPromptMetadata. */
+        pttPromptMetadata?: (waproto.BotPttPromptMetadata.$Properties|null);
+
+        /** BotMetadata botHistoryShareMetadata. */
+        botHistoryShareMetadata?: (waproto.BotHistoryShareMetadata.$Properties|null);
+
+        /** BotMetadata responseStoppedByUser. */
+        responseStoppedByUser?: (boolean|null);
+
         /** BotMetadata internalMetadata. */
         internalMetadata?: (Uint8Array|null);
 
@@ -10916,6 +10983,21 @@ export namespace waproto {
             /** BotMetadata commandMetadata */
             commandMetadata?: (waproto.BotCommandMetadata.$Properties|null);
 
+            /** BotMetadata resolvedToolCallMetadata */
+            resolvedToolCallMetadata?: (waproto.BotResolvedToolCallMetadata.$Properties|null);
+
+            /** BotMetadata subscriptionUpsellMetadata */
+            subscriptionUpsellMetadata?: (waproto.AISubscriptionUpsellMetadata.$Properties|null);
+
+            /** BotMetadata pttPromptMetadata */
+            pttPromptMetadata?: (waproto.BotPttPromptMetadata.$Properties|null);
+
+            /** BotMetadata botHistoryShareMetadata */
+            botHistoryShareMetadata?: (waproto.BotHistoryShareMetadata.$Properties|null);
+
+            /** BotMetadata responseStoppedByUser */
+            responseStoppedByUser?: (boolean|null);
+
             /** BotMetadata internalMetadata */
             internalMetadata?: (Uint8Array|null);
 
@@ -11072,7 +11154,13 @@ export namespace waproto {
         CHATLIST_SEARCH = 55,
 
         /** NEW_CHAT_LIST value */
-        NEW_CHAT_LIST = 56
+        NEW_CHAT_LIST = 56,
+
+        /** CONTACTS_TAB value */
+        CONTACTS_TAB = 57,
+
+        /** NEW_3P_AGENT_CREATION value */
+        NEW_3P_AGENT_CREATION = 58
     }
 
     /**
@@ -14156,6 +14244,9 @@ export namespace waproto {
         /** BotSignatureVerificationUseCaseProof certificateChain. */
         certificateChain: Uint8Array[];
 
+        /** BotSignatureVerificationUseCaseProof certificateChainSki. */
+        certificateChainSki: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties[];
+
         /**
          * Creates a new BotSignatureVerificationUseCaseProof instance using the specified properties.
          * @param [properties] Properties to set
@@ -14252,6 +14343,9 @@ export namespace waproto {
             /** BotSignatureVerificationUseCaseProof certificateChain */
             certificateChain?: (Uint8Array[]|null);
 
+            /** BotSignatureVerificationUseCaseProof certificateChainSki */
+            certificateChainSki?: (waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties[]|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -14269,7 +14363,139 @@ export namespace waproto {
             WA_BOT_MSG = 1,
 
             /** WA_TEE_BOT_MSG value */
-            WA_TEE_BOT_MSG = 2
+            WA_TEE_BOT_MSG = 2,
+
+            /** P2P_PILLS value */
+            P2P_PILLS = 3,
+
+            /** WA_WAFFLE value */
+            WA_WAFFLE = 4,
+
+            /** WA_FEATURE_PKI value */
+            WA_FEATURE_PKI = 5
+        }
+
+        /**
+         * Properties of a CertificateSKI.
+         * @deprecated Use waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties instead.
+         */
+        interface ICertificateSKI extends waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties {
+        }
+
+        /** Represents a CertificateSKI. */
+        class CertificateSKI {
+
+            /**
+             * Constructs a new CertificateSKI.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** CertificateSKI useCase. */
+            useCase?: (waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+            /** CertificateSKI ski. */
+            ski?: (Uint8Array|null);
+
+            /**
+             * Creates a new CertificateSKI instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CertificateSKI instance
+             */
+            static create(properties: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Shape): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI & waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Shape;
+            static create(properties?: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Encodes the specified CertificateSKI message. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @param message CertificateSKI message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CertificateSKI message, length delimited. Does not implicitly {@link waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.verify|verify} messages.
+             * @param message CertificateSKI message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI & waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Shape} CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI & waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Shape;
+
+            /**
+             * Decodes a CertificateSKI message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.BotSignatureVerificationUseCaseProof.CertificateSKI & waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Shape} CertificateSKI
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI & waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Shape;
+
+            /**
+             * Verifies a CertificateSKI message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CertificateSKI message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CertificateSKI
+             */
+            static fromObject(object: { [k: string]: any }): waproto.BotSignatureVerificationUseCaseProof.CertificateSKI;
+
+            /**
+             * Creates a plain object from a CertificateSKI message. Also converts values to other types if specified.
+             * @param message CertificateSKI
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.BotSignatureVerificationUseCaseProof.CertificateSKI, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CertificateSKI to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for CertificateSKI
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace CertificateSKI {
+
+            /** Properties of a CertificateSKI. */
+            interface $Properties {
+
+                /** CertificateSKI useCase */
+                useCase?: (waproto.BotSignatureVerificationUseCaseProof.BotSignatureUseCase|null);
+
+                /** CertificateSKI ski */
+                ski?: (Uint8Array|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a CertificateSKI. */
+            type $Shape = waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.$Properties;
         }
     }
 
@@ -16857,6 +17083,9 @@ export namespace waproto {
         /** ClientPairingProps subscriptionSyncPayload. */
         subscriptionSyncPayload?: (Uint8Array|null);
 
+        /** ClientPairingProps isBotJidDbMigrated. */
+        isBotJidDbMigrated?: (boolean|null);
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @param [properties] Properties to set
@@ -16955,6 +17184,9 @@ export namespace waproto {
 
             /** ClientPairingProps subscriptionSyncPayload */
             subscriptionSyncPayload?: (Uint8Array|null);
+
+            /** ClientPairingProps isBotJidDbMigrated */
+            isBotJidDbMigrated?: (boolean|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -17060,6 +17292,39 @@ export namespace waproto {
 
         /** ClientPayload memClass. */
         memClass?: (number|null);
+
+        /** ClientPayload interopData. */
+        interopData?: (waproto.ClientPayload.InteropData.$Properties|null);
+
+        /** ClientPayload trafficAnonymization. */
+        trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
+
+        /** ClientPayload lidDbMigrated. */
+        lidDbMigrated?: (boolean|null);
+
+        /** ClientPayload accountType. */
+        accountType?: (waproto.ClientPayload.AccountType|null);
+
+        /** ClientPayload connectionSequenceInfo. */
+        connectionSequenceInfo?: (number|null);
+
+        /** ClientPayload paaLink. */
+        paaLink?: (boolean|null);
+
+        /** ClientPayload preacksCount. */
+        preacksCount?: (number|null);
+
+        /** ClientPayload processingQueueSize. */
+        processingQueueSize?: (number|null);
+
+        /** ClientPayload pairedPeripherals. */
+        pairedPeripherals: string[];
+
+        /** ClientPayload testIsolationId. */
+        testIsolationId?: (Uint8Array|null);
+
+        /** ClientPayload messageSts. */
+        messageSts?: (number|Long|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -17223,12 +17488,55 @@ export namespace waproto {
             /** ClientPayload memClass */
             memClass?: (number|null);
 
+            /** ClientPayload interopData */
+            interopData?: (waproto.ClientPayload.InteropData.$Properties|null);
+
+            /** ClientPayload trafficAnonymization */
+            trafficAnonymization?: (waproto.ClientPayload.TrafficAnonymization|null);
+
+            /** ClientPayload lidDbMigrated */
+            lidDbMigrated?: (boolean|null);
+
+            /** ClientPayload accountType */
+            accountType?: (waproto.ClientPayload.AccountType|null);
+
+            /** ClientPayload connectionSequenceInfo */
+            connectionSequenceInfo?: (number|null);
+
+            /** ClientPayload paaLink */
+            paaLink?: (boolean|null);
+
+            /** ClientPayload preacksCount */
+            preacksCount?: (number|null);
+
+            /** ClientPayload processingQueueSize */
+            processingQueueSize?: (number|null);
+
+            /** ClientPayload pairedPeripherals */
+            pairedPeripherals?: (string[]|null);
+
+            /** ClientPayload testIsolationId */
+            testIsolationId?: (Uint8Array|null);
+
+            /** ClientPayload messageSts */
+            messageSts?: (number|Long|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
 
         /** Shape of a ClientPayload. */
         type $Shape = waproto.ClientPayload.$Properties;
+
+        /** AccountType enum. */
+        enum AccountType {
+
+            /** DEFAULT value */
+            DEFAULT = 0,
+
+            /** GUEST value */
+            GUEST = 1
+        }
 
         /** ConnectReason enum. */
         enum ConnectReason {
@@ -17442,7 +17750,16 @@ export namespace waproto {
                 OVERRIDE = 3,
 
                 /** FALLBACK value */
-                FALLBACK = 4
+                FALLBACK = 4,
+
+                /** MNS value */
+                MNS = 5,
+
+                /** MNS_SECONDARY value */
+                MNS_SECONDARY = 6,
+
+                /** SOCKS_PROXY value */
+                SOCKS_PROXY = 7
             }
         }
 
@@ -17618,6 +17935,135 @@ export namespace waproto {
             INTENTS_EXTENSION = 2
         }
 
+        /**
+         * Properties of an InteropData.
+         * @deprecated Use waproto.ClientPayload.InteropData.$Properties instead.
+         */
+        interface IInteropData extends waproto.ClientPayload.InteropData.$Properties {
+        }
+
+        /** Represents an InteropData. */
+        class InteropData {
+
+            /**
+             * Constructs a new InteropData.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.ClientPayload.InteropData.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** InteropData accountId. */
+            accountId?: (number|Long|null);
+
+            /** InteropData token. */
+            token?: (Uint8Array|null);
+
+            /** InteropData enableReadReceipts. */
+            enableReadReceipts?: (boolean|null);
+
+            /**
+             * Creates a new InteropData instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns InteropData instance
+             */
+            static create(properties: waproto.ClientPayload.InteropData.$Shape): waproto.ClientPayload.InteropData & waproto.ClientPayload.InteropData.$Shape;
+            static create(properties?: waproto.ClientPayload.InteropData.$Properties): waproto.ClientPayload.InteropData;
+
+            /**
+             * Encodes the specified InteropData message. Does not implicitly {@link waproto.ClientPayload.InteropData.verify|verify} messages.
+             * @param message InteropData message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.ClientPayload.InteropData.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified InteropData message, length delimited. Does not implicitly {@link waproto.ClientPayload.InteropData.verify|verify} messages.
+             * @param message InteropData message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.ClientPayload.InteropData.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an InteropData message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.ClientPayload.InteropData & waproto.ClientPayload.InteropData.$Shape} InteropData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ClientPayload.InteropData & waproto.ClientPayload.InteropData.$Shape;
+
+            /**
+             * Decodes an InteropData message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.ClientPayload.InteropData & waproto.ClientPayload.InteropData.$Shape} InteropData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ClientPayload.InteropData & waproto.ClientPayload.InteropData.$Shape;
+
+            /**
+             * Verifies an InteropData message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an InteropData message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns InteropData
+             */
+            static fromObject(object: { [k: string]: any }): waproto.ClientPayload.InteropData;
+
+            /**
+             * Creates a plain object from an InteropData message. Also converts values to other types if specified.
+             * @param message InteropData
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.ClientPayload.InteropData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this InteropData to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for InteropData
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace InteropData {
+
+            /** Properties of an InteropData. */
+            interface $Properties {
+
+                /** InteropData accountId */
+                accountId?: (number|Long|null);
+
+                /** InteropData token */
+                token?: (Uint8Array|null);
+
+                /** InteropData enableReadReceipts */
+                enableReadReceipts?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of an InteropData. */
+            type $Shape = waproto.ClientPayload.InteropData.$Properties;
+        }
+
         /** Product enum. */
         enum Product {
 
@@ -17625,7 +18071,26 @@ export namespace waproto {
             WHATSAPP = 0,
 
             /** MESSENGER value */
-            MESSENGER = 1
+            MESSENGER = 1,
+
+            /** INTEROP value */
+            INTEROP = 2,
+
+            /** INTEROP_MSGR value */
+            INTEROP_MSGR = 3,
+
+            /** WHATSAPP_LID value */
+            WHATSAPP_LID = 4
+        }
+
+        /** TrafficAnonymization enum. */
+        enum TrafficAnonymization {
+
+            /** OFF value */
+            OFF = 0,
+
+            /** STANDARD value */
+            STANDARD = 1
         }
 
         /**
@@ -17691,6 +18156,12 @@ export namespace waproto {
 
             /** UserAgent deviceType. */
             deviceType?: (waproto.ClientPayload.UserAgent.DeviceType|null);
+
+            /** UserAgent deviceModelType. */
+            deviceModelType?: (string|null);
+
+            /** UserAgent distributionChannel. */
+            distributionChannel?: (waproto.ClientPayload.UserAgent.DistributionChannel|null);
 
             /**
              * Creates a new UserAgent instance using the specified properties.
@@ -17820,6 +18291,12 @@ export namespace waproto {
 
                 /** UserAgent deviceType */
                 deviceType?: (waproto.ClientPayload.UserAgent.DeviceType|null);
+
+                /** UserAgent deviceModelType */
+                deviceModelType?: (string|null);
+
+                /** UserAgent distributionChannel */
+                distributionChannel?: (waproto.ClientPayload.UserAgent.DistributionChannel|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -17988,6 +18465,22 @@ export namespace waproto {
                 VR = 4
             }
 
+            /** DistributionChannel enum. */
+            enum DistributionChannel {
+
+                /** APPSTORE value */
+                APPSTORE = 0,
+
+                /** WEBSITE value */
+                WEBSITE = 1,
+
+                /** TESTFLIGHT value */
+                TESTFLIGHT = 2,
+
+                /** INTERNAL value */
+                INTERNAL = 3
+            }
+
             /** Platform enum. */
             enum Platform {
 
@@ -18097,7 +18590,22 @@ export namespace waproto {
                 TEST = 34,
 
                 /** SMART_GLASSES value */
-                SMART_GLASSES = 35
+                SMART_GLASSES = 35,
+
+                /** BLUE_VR value */
+                BLUE_VR = 36,
+
+                /** AR_WRIST value */
+                AR_WRIST = 37,
+
+                /** WAIL value */
+                WAIL = 38,
+
+                /** WORK_ANDROID value */
+                WORK_ANDROID = 39,
+
+                /** WORK_IOS value */
+                WORK_IOS = 40
             }
 
             /** ReleaseChannel enum. */
@@ -18147,6 +18655,12 @@ export namespace waproto {
 
             /** WebInfo webSubPlatform. */
             webSubPlatform?: (waproto.ClientPayload.WebInfo.WebSubPlatform|null);
+
+            /** WebInfo browser. */
+            browser?: (string|null);
+
+            /** WebInfo browserVersion. */
+            browserVersion?: (string|null);
 
             /**
              * Creates a new WebInfo instance using the specified properties.
@@ -18244,6 +18758,12 @@ export namespace waproto {
                 /** WebInfo webSubPlatform */
                 webSubPlatform?: (waproto.ClientPayload.WebInfo.WebSubPlatform|null);
 
+                /** WebInfo browser */
+                browser?: (string|null);
+
+                /** WebInfo browserVersion */
+                browserVersion?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -18267,7 +18787,10 @@ export namespace waproto {
                 DARWIN = 3,
 
                 /** WIN32 value */
-                WIN32 = 4
+                WIN32 = 4,
+
+                /** WIN_HYBRID value */
+                WIN_HYBRID = 5
             }
 
             /**
@@ -19663,6 +20186,27 @@ export namespace waproto {
         /** ContextInfo afterReadDuration. */
         afterReadDuration?: (number|null);
 
+        /** ContextInfo crossAppSource. */
+        crossAppSource?: (waproto.ContextInfo.CrossAppSource|null);
+
+        /** ContextInfo businessInteractionPills. */
+        businessInteractionPills?: (waproto.ContextInfo.BusinessInteractionPills.$Properties|null);
+
+        /** ContextInfo posterStatusId. */
+        posterStatusId?: (string|null);
+
+        /** ContextInfo instagramThreadLink. */
+        instagramThreadLink?: (waproto.ContextInfo.InstagramThreadLink.$Properties|null);
+
+        /** ContextInfo aiProvenance. */
+        aiProvenance?: (waproto.AIProvenance.$Properties|null);
+
+        /** ContextInfo experienceIds. */
+        experienceIds: number[];
+
+        /** ContextInfo partnerDeepLinkToken. */
+        partnerDeepLinkToken?: (string|null);
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -19924,6 +20468,27 @@ export namespace waproto {
             /** ContextInfo afterReadDuration */
             afterReadDuration?: (number|null);
 
+            /** ContextInfo crossAppSource */
+            crossAppSource?: (waproto.ContextInfo.CrossAppSource|null);
+
+            /** ContextInfo businessInteractionPills */
+            businessInteractionPills?: (waproto.ContextInfo.BusinessInteractionPills.$Properties|null);
+
+            /** ContextInfo posterStatusId */
+            posterStatusId?: (string|null);
+
+            /** ContextInfo instagramThreadLink */
+            instagramThreadLink?: (waproto.ContextInfo.InstagramThreadLink.$Properties|null);
+
+            /** ContextInfo aiProvenance */
+            aiProvenance?: (waproto.AIProvenance.$Properties|null);
+
+            /** ContextInfo experienceIds */
+            experienceIds?: (number[]|null);
+
+            /** ContextInfo partnerDeepLinkToken */
+            partnerDeepLinkToken?: (string|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -19989,6 +20554,13 @@ export namespace waproto {
           mediaDomainInfo?: waproto.MediaDomainInfo.$Shape|null;
           partiallySelectedContent?: waproto.ContextInfo.PartiallySelectedContent.$Shape|null;
           afterReadDuration?: number|null;
+          crossAppSource?: waproto.ContextInfo.CrossAppSource|null;
+          businessInteractionPills?: waproto.ContextInfo.BusinessInteractionPills.$Shape|null;
+          posterStatusId?: string|null;
+          instagramThreadLink?: waproto.ContextInfo.InstagramThreadLink.$Shape|null;
+          aiProvenance?: waproto.AIProvenance.$Shape|null;
+          experienceIds?: number[]|null;
+          partnerDeepLinkToken?: string|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -20141,6 +20713,599 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a BusinessInteractionPills.
+         * @deprecated Use waproto.ContextInfo.BusinessInteractionPills.$Properties instead.
+         */
+        interface IBusinessInteractionPills extends waproto.ContextInfo.BusinessInteractionPills.$Properties {
+        }
+
+        /** Represents a BusinessInteractionPills. */
+        class BusinessInteractionPills {
+
+            /**
+             * Constructs a new BusinessInteractionPills.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.ContextInfo.BusinessInteractionPills.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** BusinessInteractionPills businessJid. */
+            businessJid?: (string|null);
+
+            /** BusinessInteractionPills pills. */
+            pills: waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties[];
+
+            /** BusinessInteractionPills entryPoint. */
+            entryPoint?: (waproto.ContextInfo.BusinessInteractionPills.EntryPoint|null);
+
+            /** BusinessInteractionPills signedPayload. */
+            signedPayload?: (Uint8Array|null);
+
+            /** BusinessInteractionPills signatureEnvelope. */
+            signatureEnvelope?: (waproto.BotSignatureVerificationMetadata.$Properties|null);
+
+            /** BusinessInteractionPills unauthenticatedBusinessMetadata. */
+            unauthenticatedBusinessMetadata?: (waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties|null);
+
+            /**
+             * Creates a new BusinessInteractionPills instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BusinessInteractionPills instance
+             */
+            static create(properties: waproto.ContextInfo.BusinessInteractionPills.$Shape): waproto.ContextInfo.BusinessInteractionPills & waproto.ContextInfo.BusinessInteractionPills.$Shape;
+            static create(properties?: waproto.ContextInfo.BusinessInteractionPills.$Properties): waproto.ContextInfo.BusinessInteractionPills;
+
+            /**
+             * Encodes the specified BusinessInteractionPills message. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.verify|verify} messages.
+             * @param message BusinessInteractionPills message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.ContextInfo.BusinessInteractionPills.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BusinessInteractionPills message, length delimited. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.verify|verify} messages.
+             * @param message BusinessInteractionPills message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.ContextInfo.BusinessInteractionPills.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BusinessInteractionPills message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.ContextInfo.BusinessInteractionPills & waproto.ContextInfo.BusinessInteractionPills.$Shape} BusinessInteractionPills
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ContextInfo.BusinessInteractionPills & waproto.ContextInfo.BusinessInteractionPills.$Shape;
+
+            /**
+             * Decodes a BusinessInteractionPills message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.ContextInfo.BusinessInteractionPills & waproto.ContextInfo.BusinessInteractionPills.$Shape} BusinessInteractionPills
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ContextInfo.BusinessInteractionPills & waproto.ContextInfo.BusinessInteractionPills.$Shape;
+
+            /**
+             * Verifies a BusinessInteractionPills message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BusinessInteractionPills message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BusinessInteractionPills
+             */
+            static fromObject(object: { [k: string]: any }): waproto.ContextInfo.BusinessInteractionPills;
+
+            /**
+             * Creates a plain object from a BusinessInteractionPills message. Also converts values to other types if specified.
+             * @param message BusinessInteractionPills
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.ContextInfo.BusinessInteractionPills, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BusinessInteractionPills to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for BusinessInteractionPills
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BusinessInteractionPills {
+
+            /** Properties of a BusinessInteractionPills. */
+            interface $Properties {
+
+                /** BusinessInteractionPills businessJid */
+                businessJid?: (string|null);
+
+                /** BusinessInteractionPills pills */
+                pills?: (waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties[]|null);
+
+                /** BusinessInteractionPills entryPoint */
+                entryPoint?: (waproto.ContextInfo.BusinessInteractionPills.EntryPoint|null);
+
+                /** BusinessInteractionPills signedPayload */
+                signedPayload?: (Uint8Array|null);
+
+                /** BusinessInteractionPills signatureEnvelope */
+                signatureEnvelope?: (waproto.BotSignatureVerificationMetadata.$Properties|null);
+
+                /** BusinessInteractionPills unauthenticatedBusinessMetadata */
+                unauthenticatedBusinessMetadata?: (waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a BusinessInteractionPills. */
+            type $Shape = waproto.ContextInfo.BusinessInteractionPills.$Properties;
+
+            /** EntryPoint enum. */
+            enum EntryPoint {
+
+                /** ENTRY_POINT_UNKNOWN value */
+                ENTRY_POINT_UNKNOWN = 0,
+
+                /** P2P_LINK_SHARE value */
+                P2P_LINK_SHARE = 1,
+
+                /** CONTACT_CARD_SHARING value */
+                CONTACT_CARD_SHARING = 2,
+
+                /** PHONE_NUMBER value */
+                PHONE_NUMBER = 3,
+
+                /** STATUS value */
+                STATUS = 4,
+
+                /** IN_THREAD_CONTEXT_CARD value */
+                IN_THREAD_CONTEXT_CARD = 5
+            }
+
+            /**
+             * Properties of a Pill.
+             * @deprecated Use waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties instead.
+             */
+            interface IPill extends waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties {
+            }
+
+            /** Represents a Pill. */
+            class Pill {
+
+                /**
+                 * Constructs a new Pill.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** Pill pillType. */
+                pillType?: (waproto.ContextInfo.BusinessInteractionPills.PillType|null);
+
+                /** Pill actionUrl. */
+                actionUrl?: (string|null);
+
+                /**
+                 * Creates a new Pill instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Pill instance
+                 */
+                static create(properties: waproto.ContextInfo.BusinessInteractionPills.Pill.$Shape): waproto.ContextInfo.BusinessInteractionPills.Pill & waproto.ContextInfo.BusinessInteractionPills.Pill.$Shape;
+                static create(properties?: waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties): waproto.ContextInfo.BusinessInteractionPills.Pill;
+
+                /**
+                 * Encodes the specified Pill message. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.Pill.verify|verify} messages.
+                 * @param message Pill message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Pill message, length delimited. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.Pill.verify|verify} messages.
+                 * @param message Pill message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Pill message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.ContextInfo.BusinessInteractionPills.Pill & waproto.ContextInfo.BusinessInteractionPills.Pill.$Shape} Pill
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ContextInfo.BusinessInteractionPills.Pill & waproto.ContextInfo.BusinessInteractionPills.Pill.$Shape;
+
+                /**
+                 * Decodes a Pill message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.ContextInfo.BusinessInteractionPills.Pill & waproto.ContextInfo.BusinessInteractionPills.Pill.$Shape} Pill
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ContextInfo.BusinessInteractionPills.Pill & waproto.ContextInfo.BusinessInteractionPills.Pill.$Shape;
+
+                /**
+                 * Verifies a Pill message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Pill message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Pill
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.ContextInfo.BusinessInteractionPills.Pill;
+
+                /**
+                 * Creates a plain object from a Pill message. Also converts values to other types if specified.
+                 * @param message Pill
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.ContextInfo.BusinessInteractionPills.Pill, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Pill to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for Pill
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace Pill {
+
+                /** Properties of a Pill. */
+                interface $Properties {
+
+                    /** Pill pillType */
+                    pillType?: (waproto.ContextInfo.BusinessInteractionPills.PillType|null);
+
+                    /** Pill actionUrl */
+                    actionUrl?: (string|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of a Pill. */
+                type $Shape = waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties;
+            }
+
+            /** PillType enum. */
+            enum PillType {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** VIEW_BUSINESS value */
+                VIEW_BUSINESS = 1,
+
+                /** CHAT value */
+                CHAT = 2,
+
+                /** CALL value */
+                CALL = 3,
+
+                /** CATALOG value */
+                CATALOG = 4,
+
+                /** CHANNEL value */
+                CHANNEL = 5,
+
+                /** BOOK_APPOINTMENT value */
+                BOOK_APPOINTMENT = 6,
+
+                /** OFFERS value */
+                OFFERS = 7,
+
+                /** BESTSELLERS value */
+                BESTSELLERS = 8,
+
+                /** MENU value */
+                MENU = 9,
+
+                /** ABOUT value */
+                ABOUT = 10,
+
+                /** SHOP value */
+                SHOP = 11,
+
+                /** ORDER value */
+                ORDER = 12
+            }
+
+            /**
+             * Properties of a SignedPayload.
+             * @deprecated Use waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties instead.
+             */
+            interface ISignedPayload extends waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties {
+            }
+
+            /** Represents a SignedPayload. */
+            class SignedPayload {
+
+                /**
+                 * Constructs a new SignedPayload.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** SignedPayload verifiedName. */
+                verifiedName?: (string|null);
+
+                /** SignedPayload pills. */
+                pills: waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties[];
+
+                /**
+                 * Creates a new SignedPayload instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns SignedPayload instance
+                 */
+                static create(properties: waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Shape): waproto.ContextInfo.BusinessInteractionPills.SignedPayload & waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Shape;
+                static create(properties?: waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties): waproto.ContextInfo.BusinessInteractionPills.SignedPayload;
+
+                /**
+                 * Encodes the specified SignedPayload message. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.SignedPayload.verify|verify} messages.
+                 * @param message SignedPayload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified SignedPayload message, length delimited. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.SignedPayload.verify|verify} messages.
+                 * @param message SignedPayload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a SignedPayload message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.ContextInfo.BusinessInteractionPills.SignedPayload & waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Shape} SignedPayload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ContextInfo.BusinessInteractionPills.SignedPayload & waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Shape;
+
+                /**
+                 * Decodes a SignedPayload message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.ContextInfo.BusinessInteractionPills.SignedPayload & waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Shape} SignedPayload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ContextInfo.BusinessInteractionPills.SignedPayload & waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Shape;
+
+                /**
+                 * Verifies a SignedPayload message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a SignedPayload message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns SignedPayload
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.ContextInfo.BusinessInteractionPills.SignedPayload;
+
+                /**
+                 * Creates a plain object from a SignedPayload message. Also converts values to other types if specified.
+                 * @param message SignedPayload
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.ContextInfo.BusinessInteractionPills.SignedPayload, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this SignedPayload to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for SignedPayload
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace SignedPayload {
+
+                /** Properties of a SignedPayload. */
+                interface $Properties {
+
+                    /** SignedPayload verifiedName */
+                    verifiedName?: (string|null);
+
+                    /** SignedPayload pills */
+                    pills?: (waproto.ContextInfo.BusinessInteractionPills.Pill.$Properties[]|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of a SignedPayload. */
+                type $Shape = waproto.ContextInfo.BusinessInteractionPills.SignedPayload.$Properties;
+            }
+
+            /**
+             * Properties of an UnauthenticatedBusinessMetadata.
+             * @deprecated Use waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties instead.
+             */
+            interface IUnauthenticatedBusinessMetadata extends waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties {
+            }
+
+            /** Represents an UnauthenticatedBusinessMetadata. */
+            class UnauthenticatedBusinessMetadata {
+
+                /**
+                 * Constructs a new UnauthenticatedBusinessMetadata.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** UnauthenticatedBusinessMetadata businessName. */
+                businessName?: (string|null);
+
+                /** UnauthenticatedBusinessMetadata businessCategory. */
+                businessCategory?: (string|null);
+
+                /** UnauthenticatedBusinessMetadata businessIsOpen. */
+                businessIsOpen?: (boolean|null);
+
+                /** UnauthenticatedBusinessMetadata businessIsOpenSnapshotMs. */
+                businessIsOpenSnapshotMs?: (number|Long|null);
+
+                /**
+                 * Creates a new UnauthenticatedBusinessMetadata instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns UnauthenticatedBusinessMetadata instance
+                 */
+                static create(properties: waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Shape): waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata & waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Shape;
+                static create(properties?: waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties): waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata;
+
+                /**
+                 * Encodes the specified UnauthenticatedBusinessMetadata message. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.verify|verify} messages.
+                 * @param message UnauthenticatedBusinessMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified UnauthenticatedBusinessMetadata message, length delimited. Does not implicitly {@link waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.verify|verify} messages.
+                 * @param message UnauthenticatedBusinessMetadata message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an UnauthenticatedBusinessMetadata message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata & waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Shape} UnauthenticatedBusinessMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata & waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Shape;
+
+                /**
+                 * Decodes an UnauthenticatedBusinessMetadata message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata & waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Shape} UnauthenticatedBusinessMetadata
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata & waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Shape;
+
+                /**
+                 * Verifies an UnauthenticatedBusinessMetadata message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an UnauthenticatedBusinessMetadata message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns UnauthenticatedBusinessMetadata
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata;
+
+                /**
+                 * Creates a plain object from an UnauthenticatedBusinessMetadata message. Also converts values to other types if specified.
+                 * @param message UnauthenticatedBusinessMetadata
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this UnauthenticatedBusinessMetadata to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for UnauthenticatedBusinessMetadata
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace UnauthenticatedBusinessMetadata {
+
+                /** Properties of an UnauthenticatedBusinessMetadata. */
+                interface $Properties {
+
+                    /** UnauthenticatedBusinessMetadata businessName */
+                    businessName?: (string|null);
+
+                    /** UnauthenticatedBusinessMetadata businessCategory */
+                    businessCategory?: (string|null);
+
+                    /** UnauthenticatedBusinessMetadata businessIsOpen */
+                    businessIsOpen?: (boolean|null);
+
+                    /** UnauthenticatedBusinessMetadata businessIsOpenSnapshotMs */
+                    businessIsOpenSnapshotMs?: (number|Long|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of an UnauthenticatedBusinessMetadata. */
+                type $Shape = waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.$Properties;
+            }
+        }
+
+        /**
          * Properties of a BusinessMessageForwardInfo.
          * @deprecated Use waproto.ContextInfo.BusinessMessageForwardInfo.$Properties instead.
          */
@@ -20255,6 +21420,19 @@ export namespace waproto {
 
             /** Shape of a BusinessMessageForwardInfo. */
             type $Shape = waproto.ContextInfo.BusinessMessageForwardInfo.$Properties;
+        }
+
+        /** CrossAppSource enum. */
+        enum CrossAppSource {
+
+            /** CROSS_APP_SOURCE_UNKNOWN value */
+            CROSS_APP_SOURCE_UNKNOWN = 0,
+
+            /** CROSS_APP_SOURCE_INSTAGRAM value */
+            CROSS_APP_SOURCE_INSTAGRAM = 1,
+
+            /** CROSS_APP_SOURCE_FACEBOOK value */
+            CROSS_APP_SOURCE_FACEBOOK = 2
         }
 
         /**
@@ -20658,6 +21836,12 @@ export namespace waproto {
             /** ExternalAdReplyInfo agmHeaderInteractionStrategy. */
             agmHeaderInteractionStrategy?: (number|null);
 
+            /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel. */
+            containsCtwaFlowsAutoLabel?: (boolean|null);
+
+            /** ExternalAdReplyInfo productId. */
+            productId?: (string|null);
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @param [properties] Properties to set
@@ -20837,6 +22021,12 @@ export namespace waproto {
 
                 /** ExternalAdReplyInfo agmHeaderInteractionStrategy */
                 agmHeaderInteractionStrategy?: (number|null);
+
+                /** ExternalAdReplyInfo containsCtwaFlowsAutoLabel */
+                containsCtwaFlowsAutoLabel?: (boolean|null);
+
+                /** ExternalAdReplyInfo productId */
+                productId?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -21190,6 +22380,123 @@ export namespace waproto {
                 /** LINK_CARD value */
                 LINK_CARD = 3
             }
+        }
+
+        /**
+         * Properties of an InstagramThreadLink.
+         * @deprecated Use waproto.ContextInfo.InstagramThreadLink.$Properties instead.
+         */
+        interface IInstagramThreadLink extends waproto.ContextInfo.InstagramThreadLink.$Properties {
+        }
+
+        /** Represents an InstagramThreadLink. */
+        class InstagramThreadLink {
+
+            /**
+             * Constructs a new InstagramThreadLink.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.ContextInfo.InstagramThreadLink.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** InstagramThreadLink url. */
+            url?: (string|null);
+
+            /**
+             * Creates a new InstagramThreadLink instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns InstagramThreadLink instance
+             */
+            static create(properties: waproto.ContextInfo.InstagramThreadLink.$Shape): waproto.ContextInfo.InstagramThreadLink & waproto.ContextInfo.InstagramThreadLink.$Shape;
+            static create(properties?: waproto.ContextInfo.InstagramThreadLink.$Properties): waproto.ContextInfo.InstagramThreadLink;
+
+            /**
+             * Encodes the specified InstagramThreadLink message. Does not implicitly {@link waproto.ContextInfo.InstagramThreadLink.verify|verify} messages.
+             * @param message InstagramThreadLink message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.ContextInfo.InstagramThreadLink.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified InstagramThreadLink message, length delimited. Does not implicitly {@link waproto.ContextInfo.InstagramThreadLink.verify|verify} messages.
+             * @param message InstagramThreadLink message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.ContextInfo.InstagramThreadLink.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an InstagramThreadLink message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.ContextInfo.InstagramThreadLink & waproto.ContextInfo.InstagramThreadLink.$Shape} InstagramThreadLink
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ContextInfo.InstagramThreadLink & waproto.ContextInfo.InstagramThreadLink.$Shape;
+
+            /**
+             * Decodes an InstagramThreadLink message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.ContextInfo.InstagramThreadLink & waproto.ContextInfo.InstagramThreadLink.$Shape} InstagramThreadLink
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ContextInfo.InstagramThreadLink & waproto.ContextInfo.InstagramThreadLink.$Shape;
+
+            /**
+             * Verifies an InstagramThreadLink message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an InstagramThreadLink message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns InstagramThreadLink
+             */
+            static fromObject(object: { [k: string]: any }): waproto.ContextInfo.InstagramThreadLink;
+
+            /**
+             * Creates a plain object from an InstagramThreadLink message. Also converts values to other types if specified.
+             * @param message InstagramThreadLink
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.ContextInfo.InstagramThreadLink, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this InstagramThreadLink to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for InstagramThreadLink
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace InstagramThreadLink {
+
+            /** Properties of an InstagramThreadLink. */
+            interface $Properties {
+
+                /** InstagramThreadLink url */
+                url?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of an InstagramThreadLink. */
+            type $Shape = waproto.ContextInfo.InstagramThreadLink.$Properties;
         }
 
         /** PairedMediaType enum. */
@@ -24094,6 +25401,9 @@ export namespace waproto {
             /** HistorySyncConfig supportInlineContacts. */
             supportInlineContacts?: (boolean|null);
 
+            /** HistorySyncConfig supportNewsletter. */
+            supportNewsletter?: (boolean|null);
+
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
              * @param [properties] Properties to set
@@ -24250,6 +25560,9 @@ export namespace waproto {
                 /** HistorySyncConfig supportInlineContacts */
                 supportInlineContacts?: (boolean|null);
 
+                /** HistorySyncConfig supportNewsletter */
+                supportNewsletter?: (boolean|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -24334,7 +25647,16 @@ export namespace waproto {
             CLOUD_API = 23,
 
             /** SMARTGLASSES value */
-            SMARTGLASSES = 24
+            SMARTGLASSES = 24,
+
+            /** WAIL value */
+            WAIL = 25,
+
+            /** WASS value */
+            WASS = 26,
+
+            /** BUSINESS_BACK_OFFICE value */
+            BUSINESS_BACK_OFFICE = 27
         }
     }
 
@@ -27377,6 +28699,9 @@ export namespace waproto {
         /** GroupRootKeyShareEntry expiryTimestampMs. */
         expiryTimestampMs?: (number|Long|null);
 
+        /** GroupRootKeyShareEntry createdTimestampMs. */
+        createdTimestampMs?: (number|Long|null);
+
         /**
          * Creates a new GroupRootKeyShareEntry instance using the specified properties.
          * @param [properties] Properties to set
@@ -27469,6 +28794,9 @@ export namespace waproto {
 
             /** GroupRootKeyShareEntry expiryTimestampMs */
             expiryTimestampMs?: (number|Long|null);
+
+            /** GroupRootKeyShareEntry createdTimestampMs */
+            createdTimestampMs?: (number|Long|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -27631,6 +28959,15 @@ export namespace waproto {
             /** ClientFinish payload. */
             payload?: (Uint8Array|null);
 
+            /** ClientFinish extendedCiphertext. */
+            extendedCiphertext?: (Uint8Array|null);
+
+            /** ClientFinish paddedBytes. */
+            paddedBytes?: (Uint8Array|null);
+
+            /** ClientFinish simulateXxkemFs. */
+            simulateXxkemFs?: (boolean|null);
+
             /**
              * Creates a new ClientFinish instance using the specified properties.
              * @param [properties] Properties to set
@@ -27721,6 +29058,15 @@ export namespace waproto {
                 /** ClientFinish payload */
                 payload?: (Uint8Array|null);
 
+                /** ClientFinish extendedCiphertext */
+                extendedCiphertext?: (Uint8Array|null);
+
+                /** ClientFinish paddedBytes */
+                paddedBytes?: (Uint8Array|null);
+
+                /** ClientFinish simulateXxkemFs */
+                simulateXxkemFs?: (boolean|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -27756,6 +29102,27 @@ export namespace waproto {
 
             /** ClientHello payload. */
             payload?: (Uint8Array|null);
+
+            /** ClientHello useExtended. */
+            useExtended?: (boolean|null);
+
+            /** ClientHello extendedCiphertext. */
+            extendedCiphertext?: (Uint8Array|null);
+
+            /** ClientHello paddedBytes. */
+            paddedBytes?: (Uint8Array|null);
+
+            /** ClientHello sendServerHelloPaddedBytes. */
+            sendServerHelloPaddedBytes?: (boolean|null);
+
+            /** ClientHello simulateXxkemFs. */
+            simulateXxkemFs?: (boolean|null);
+
+            /** ClientHello pqMode. */
+            pqMode?: (waproto.HandshakeMessage.HandshakePqMode|null);
+
+            /** ClientHello extendedEphemeral. */
+            extendedEphemeral?: (Uint8Array|null);
 
             /**
              * Creates a new ClientHello instance using the specified properties.
@@ -27850,12 +29217,67 @@ export namespace waproto {
                 /** ClientHello payload */
                 payload?: (Uint8Array|null);
 
+                /** ClientHello useExtended */
+                useExtended?: (boolean|null);
+
+                /** ClientHello extendedCiphertext */
+                extendedCiphertext?: (Uint8Array|null);
+
+                /** ClientHello paddedBytes */
+                paddedBytes?: (Uint8Array|null);
+
+                /** ClientHello sendServerHelloPaddedBytes */
+                sendServerHelloPaddedBytes?: (boolean|null);
+
+                /** ClientHello simulateXxkemFs */
+                simulateXxkemFs?: (boolean|null);
+
+                /** ClientHello pqMode */
+                pqMode?: (waproto.HandshakeMessage.HandshakePqMode|null);
+
+                /** ClientHello extendedEphemeral */
+                extendedEphemeral?: (Uint8Array|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
 
             /** Shape of a ClientHello. */
             type $Shape = waproto.HandshakeMessage.ClientHello.$Properties;
+        }
+
+        /** HandshakePqMode enum. */
+        enum HandshakePqMode {
+
+            /** HANDSHAKE_PQ_MODE_UNKNOWN value */
+            HANDSHAKE_PQ_MODE_UNKNOWN = 0,
+
+            /** XXKEM value */
+            XXKEM = 1,
+
+            /** XXKEM_FS value */
+            XXKEM_FS = 2,
+
+            /** XXKEM_EPH value */
+            XXKEM_EPH = 9,
+
+            /** WA_CLASSICAL value */
+            WA_CLASSICAL = 3,
+
+            /** WA_PQ value */
+            WA_PQ = 4,
+
+            /** IKKEM value */
+            IKKEM = 5,
+
+            /** IKKEM_FS value */
+            IKKEM_FS = 6,
+
+            /** XXKEM_2 value */
+            XXKEM_2 = 7,
+
+            /** IKKEM_2 value */
+            IKKEM_2 = 8
         }
 
         /**
@@ -27885,6 +29307,15 @@ export namespace waproto {
 
             /** ServerHello payload. */
             payload?: (Uint8Array|null);
+
+            /** ServerHello extendedStatic. */
+            extendedStatic?: (Uint8Array|null);
+
+            /** ServerHello paddingBytes. */
+            paddingBytes?: (Uint8Array|null);
+
+            /** ServerHello extendedCiphertext. */
+            extendedCiphertext?: (Uint8Array|null);
 
             /**
              * Creates a new ServerHello instance using the specified properties.
@@ -27978,6 +29409,15 @@ export namespace waproto {
 
                 /** ServerHello payload */
                 payload?: (Uint8Array|null);
+
+                /** ServerHello extendedStatic */
+                extendedStatic?: (Uint8Array|null);
+
+                /** ServerHello paddingBytes */
+                paddingBytes?: (Uint8Array|null);
+
+                /** ServerHello extendedCiphertext */
+                extendedCiphertext?: (Uint8Array|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -30798,148 +32238,6 @@ export namespace waproto {
     }
 
     /**
-     * Properties of a KeyTransparencyCommand.
-     * @deprecated Use waproto.KeyTransparencyCommand.$Properties instead.
-     */
-    interface IKeyTransparencyCommand extends waproto.KeyTransparencyCommand.$Properties {
-    }
-
-    /** Represents a KeyTransparencyCommand. */
-    class KeyTransparencyCommand {
-
-        /**
-         * Constructs a new KeyTransparencyCommand.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.KeyTransparencyCommand.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** KeyTransparencyCommand verifyKtForUserSignal. */
-        verifyKtForUserSignal?: (waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties|null);
-
-        /** KeyTransparencyCommand verifyKtForUserMinos. */
-        verifyKtForUserMinos?: (waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties|null);
-
-        /** KeyTransparencyCommand verifyKtForUserMandrake. */
-        verifyKtForUserMandrake?: (waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties|null);
-
-        /** KeyTransparencyCommand commandInput. */
-        commandInput?: ("verifyKtForUserSignal"|"verifyKtForUserMinos"|"verifyKtForUserMandrake");
-
-        /**
-         * Creates a new KeyTransparencyCommand instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns KeyTransparencyCommand instance
-         */
-        static create(properties: waproto.KeyTransparencyCommand.$Shape): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
-        static create(properties?: waproto.KeyTransparencyCommand.$Properties): waproto.KeyTransparencyCommand;
-
-        /**
-         * Encodes the specified KeyTransparencyCommand message. Does not implicitly {@link waproto.KeyTransparencyCommand.verify|verify} messages.
-         * @param message KeyTransparencyCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.KeyTransparencyCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified KeyTransparencyCommand message, length delimited. Does not implicitly {@link waproto.KeyTransparencyCommand.verify|verify} messages.
-         * @param message KeyTransparencyCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.KeyTransparencyCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a KeyTransparencyCommand message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape} KeyTransparencyCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
-
-        /**
-         * Decodes a KeyTransparencyCommand message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape} KeyTransparencyCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
-
-        /**
-         * Verifies a KeyTransparencyCommand message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a KeyTransparencyCommand message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns KeyTransparencyCommand
-         */
-        static fromObject(object: { [k: string]: any }): waproto.KeyTransparencyCommand;
-
-        /**
-         * Creates a plain object from a KeyTransparencyCommand message. Also converts values to other types if specified.
-         * @param message KeyTransparencyCommand
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.KeyTransparencyCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this KeyTransparencyCommand to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for KeyTransparencyCommand
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace KeyTransparencyCommand {
-
-        /** Properties of a KeyTransparencyCommand. */
-        interface $Properties {
-
-            /** KeyTransparencyCommand verifyKtForUserSignal */
-            verifyKtForUserSignal?: (waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties|null);
-
-            /** KeyTransparencyCommand verifyKtForUserMinos */
-            verifyKtForUserMinos?: (waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties|null);
-
-            /** KeyTransparencyCommand verifyKtForUserMandrake */
-            verifyKtForUserMandrake?: (waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties|null);
-
-            /** KeyTransparencyCommand commandInput */
-            commandInput?: ("verifyKtForUserSignal"|"verifyKtForUserMinos"|"verifyKtForUserMandrake");
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Narrowed shape of a KeyTransparencyCommand. */
-        type $Shape = {
-          verifyKtForUserSignal?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape|null;
-          verifyKtForUserMinos?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape|null;
-          verifyKtForUserMandrake?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape|null;
-          $unknowns?: Uint8Array[];
-        } & (
-          ({ commandInput?: undefined; verifyKtForUserSignal?: null; verifyKtForUserMinos?: null; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserSignal"; verifyKtForUserSignal: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape; verifyKtForUserMinos?: null; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserMinos"; verifyKtForUserSignal?: null; verifyKtForUserMinos: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserMandrake"; verifyKtForUserSignal?: null; verifyKtForUserMinos?: null; verifyKtForUserMandrake: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape })
-        );
-    }
-
-    /**
      * Properties of a LIDMigrationMappingSyncMessage.
      * @deprecated Use waproto.LIDMigrationMappingSyncMessage.$Properties instead.
      */
@@ -33065,6 +34363,42 @@ export namespace waproto {
         /** Message groupRootKeyShare. */
         groupRootKeyShare?: (waproto.GroupRootKeyShare.$Properties|null);
 
+        /** Message paymentReminderMessage. */
+        paymentReminderMessage?: (waproto.Message.PaymentReminderMessage.$Properties|null);
+
+        /** Message splitPaymentMessage. */
+        splitPaymentMessage?: (waproto.Message.SplitPaymentMessage.$Properties|null);
+
+        /** Message newsletterAdminProfileStatusMessage. */
+        newsletterAdminProfileStatusMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+        /** Message rootSecretDistributeMessage. */
+        rootSecretDistributeMessage?: (waproto.Message.RootSecretDistributeMessage.$Properties|null);
+
+        /** Message splitPaymentUpdateMessage. */
+        splitPaymentUpdateMessage?: (waproto.Message.SplitPaymentUpdateMessage.$Properties|null);
+
+        /** Message musicMessage. */
+        musicMessage?: (waproto.Message.MusicMessage.$Properties|null);
+
+        /** Message statusLinkPreviewMetadata. */
+        statusLinkPreviewMetadata?: (waproto.Message.StatusLinkPreviewMetadata.$Properties|null);
+
+        /** Message botPlatformRegistrationSuccessMessage. */
+        botPlatformRegistrationSuccessMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+        /** Message newsletterScheduledMessage. */
+        newsletterScheduledMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+        /** Message acp2SettingMessage. */
+        acp2SettingMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+        /** Message audioStickerMessage. */
+        audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+        /** Message botGroupParticipantMessage. */
+        botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -33455,6 +34789,42 @@ export namespace waproto {
             /** Message groupRootKeyShare */
             groupRootKeyShare?: (waproto.GroupRootKeyShare.$Properties|null);
 
+            /** Message paymentReminderMessage */
+            paymentReminderMessage?: (waproto.Message.PaymentReminderMessage.$Properties|null);
+
+            /** Message splitPaymentMessage */
+            splitPaymentMessage?: (waproto.Message.SplitPaymentMessage.$Properties|null);
+
+            /** Message newsletterAdminProfileStatusMessage */
+            newsletterAdminProfileStatusMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+            /** Message rootSecretDistributeMessage */
+            rootSecretDistributeMessage?: (waproto.Message.RootSecretDistributeMessage.$Properties|null);
+
+            /** Message splitPaymentUpdateMessage */
+            splitPaymentUpdateMessage?: (waproto.Message.SplitPaymentUpdateMessage.$Properties|null);
+
+            /** Message musicMessage */
+            musicMessage?: (waproto.Message.MusicMessage.$Properties|null);
+
+            /** Message statusLinkPreviewMetadata */
+            statusLinkPreviewMetadata?: (waproto.Message.StatusLinkPreviewMetadata.$Properties|null);
+
+            /** Message botPlatformRegistrationSuccessMessage */
+            botPlatformRegistrationSuccessMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+            /** Message newsletterScheduledMessage */
+            newsletterScheduledMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+            /** Message acp2SettingMessage */
+            acp2SettingMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+            /** Message audioStickerMessage */
+            audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
+            /** Message botGroupParticipantMessage */
+            botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -33563,6 +34933,18 @@ export namespace waproto {
           pollAddOptionMessage?: waproto.Message.PollAddOptionMessage.$Shape|null;
           eventInviteMessage?: waproto.Message.EventInviteMessage.$Shape|null;
           groupRootKeyShare?: waproto.GroupRootKeyShare.$Shape|null;
+          paymentReminderMessage?: waproto.Message.PaymentReminderMessage.$Shape|null;
+          splitPaymentMessage?: waproto.Message.SplitPaymentMessage.$Shape|null;
+          newsletterAdminProfileStatusMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          rootSecretDistributeMessage?: waproto.Message.RootSecretDistributeMessage.$Shape|null;
+          splitPaymentUpdateMessage?: waproto.Message.SplitPaymentUpdateMessage.$Shape|null;
+          musicMessage?: waproto.Message.MusicMessage.$Shape|null;
+          statusLinkPreviewMetadata?: waproto.Message.StatusLinkPreviewMetadata.$Shape|null;
+          botPlatformRegistrationSuccessMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          acp2SettingMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          audioStickerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -34929,6 +36311,135 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a BotHistoryShareSyncMetadata.
+         * @deprecated Use waproto.Message.BotHistoryShareSyncMetadata.$Properties instead.
+         */
+        interface IBotHistoryShareSyncMetadata extends waproto.Message.BotHistoryShareSyncMetadata.$Properties {
+        }
+
+        /** Represents a BotHistoryShareSyncMetadata. */
+        class BotHistoryShareSyncMetadata {
+
+            /**
+             * Constructs a new BotHistoryShareSyncMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.BotHistoryShareSyncMetadata.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** BotHistoryShareSyncMetadata botJid. */
+            botJid?: (string|null);
+
+            /** BotHistoryShareSyncMetadata historyShareCutoffTimestamp. */
+            historyShareCutoffTimestamp?: (number|Long|null);
+
+            /** BotHistoryShareSyncMetadata historyShareMessages. */
+            historyShareMessages: waproto.Message.HistoryShareMessageEntry.$Properties[];
+
+            /**
+             * Creates a new BotHistoryShareSyncMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BotHistoryShareSyncMetadata instance
+             */
+            static create(properties: waproto.Message.BotHistoryShareSyncMetadata.$Shape): waproto.Message.BotHistoryShareSyncMetadata & waproto.Message.BotHistoryShareSyncMetadata.$Shape;
+            static create(properties?: waproto.Message.BotHistoryShareSyncMetadata.$Properties): waproto.Message.BotHistoryShareSyncMetadata;
+
+            /**
+             * Encodes the specified BotHistoryShareSyncMetadata message. Does not implicitly {@link waproto.Message.BotHistoryShareSyncMetadata.verify|verify} messages.
+             * @param message BotHistoryShareSyncMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.BotHistoryShareSyncMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BotHistoryShareSyncMetadata message, length delimited. Does not implicitly {@link waproto.Message.BotHistoryShareSyncMetadata.verify|verify} messages.
+             * @param message BotHistoryShareSyncMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.BotHistoryShareSyncMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BotHistoryShareSyncMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.BotHistoryShareSyncMetadata & waproto.Message.BotHistoryShareSyncMetadata.$Shape} BotHistoryShareSyncMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.BotHistoryShareSyncMetadata & waproto.Message.BotHistoryShareSyncMetadata.$Shape;
+
+            /**
+             * Decodes a BotHistoryShareSyncMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.BotHistoryShareSyncMetadata & waproto.Message.BotHistoryShareSyncMetadata.$Shape} BotHistoryShareSyncMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.BotHistoryShareSyncMetadata & waproto.Message.BotHistoryShareSyncMetadata.$Shape;
+
+            /**
+             * Verifies a BotHistoryShareSyncMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BotHistoryShareSyncMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BotHistoryShareSyncMetadata
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.BotHistoryShareSyncMetadata;
+
+            /**
+             * Creates a plain object from a BotHistoryShareSyncMetadata message. Also converts values to other types if specified.
+             * @param message BotHistoryShareSyncMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.BotHistoryShareSyncMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BotHistoryShareSyncMetadata to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for BotHistoryShareSyncMetadata
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BotHistoryShareSyncMetadata {
+
+            /** Properties of a BotHistoryShareSyncMetadata. */
+            interface $Properties {
+
+                /** BotHistoryShareSyncMetadata botJid */
+                botJid?: (string|null);
+
+                /** BotHistoryShareSyncMetadata historyShareCutoffTimestamp */
+                historyShareCutoffTimestamp?: (number|Long|null);
+
+                /** BotHistoryShareSyncMetadata historyShareMessages */
+                historyShareMessages?: (waproto.Message.HistoryShareMessageEntry.$Properties[]|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a BotHistoryShareSyncMetadata. */
+            type $Shape = waproto.Message.BotHistoryShareSyncMetadata.$Properties;
+        }
+
+        /**
          * Properties of a ButtonsMessage.
          * @deprecated Use waproto.Message.ButtonsMessage.$Properties instead.
          */
@@ -35743,6 +37254,9 @@ export namespace waproto {
             /** Call callEntryPoint. */
             callEntryPoint?: (number|null);
 
+            /** Call callReason. */
+            callReason?: (string|null);
+
             /**
              * Creates a new Call instance using the specified properties.
              * @param [properties] Properties to set
@@ -35860,6 +37374,9 @@ export namespace waproto {
                 /** Call callEntryPoint */
                 callEntryPoint?: (number|null);
 
+                /** Call callReason */
+                callReason?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -35877,6 +37394,7 @@ export namespace waproto {
               deeplinkPayload?: string|null;
               messageContextInfo?: waproto.MessageContextInfo.$Shape|null;
               callEntryPoint?: number|null;
+              callReason?: string|null;
               $unknowns?: Uint8Array[];
             };
         }
@@ -36424,6 +37942,816 @@ export namespace waproto {
 
             /** Shape of a Chat. */
             type $Shape = waproto.Message.Chat.$Properties;
+        }
+
+        /**
+         * Properties of a ChatAnimatedWallpaper.
+         * @deprecated Use waproto.Message.ChatAnimatedWallpaper.$Properties instead.
+         */
+        interface IChatAnimatedWallpaper extends waproto.Message.ChatAnimatedWallpaper.$Properties {
+        }
+
+        /** Represents a ChatAnimatedWallpaper. */
+        class ChatAnimatedWallpaper {
+
+            /**
+             * Constructs a new ChatAnimatedWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatAnimatedWallpaper.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatAnimatedWallpaper animatedWallpaperId. */
+            animatedWallpaperId?: (string|null);
+
+            /** ChatAnimatedWallpaper dimLevel. */
+            dimLevel?: (number|null);
+
+            /**
+             * Creates a new ChatAnimatedWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatAnimatedWallpaper instance
+             */
+            static create(properties: waproto.Message.ChatAnimatedWallpaper.$Shape): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+            static create(properties?: waproto.Message.ChatAnimatedWallpaper.$Properties): waproto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message. Does not implicitly {@link waproto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @param message ChatAnimatedWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatAnimatedWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatAnimatedWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatAnimatedWallpaper.verify|verify} messages.
+             * @param message ChatAnimatedWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatAnimatedWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape} ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+
+            /**
+             * Decodes a ChatAnimatedWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape} ChatAnimatedWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatAnimatedWallpaper & waproto.Message.ChatAnimatedWallpaper.$Shape;
+
+            /**
+             * Verifies a ChatAnimatedWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatAnimatedWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatAnimatedWallpaper
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatAnimatedWallpaper;
+
+            /**
+             * Creates a plain object from a ChatAnimatedWallpaper message. Also converts values to other types if specified.
+             * @param message ChatAnimatedWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatAnimatedWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatAnimatedWallpaper to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatAnimatedWallpaper
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatAnimatedWallpaper {
+
+            /** Properties of a ChatAnimatedWallpaper. */
+            interface $Properties {
+
+                /** ChatAnimatedWallpaper animatedWallpaperId */
+                animatedWallpaperId?: (string|null);
+
+                /** ChatAnimatedWallpaper dimLevel */
+                dimLevel?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ChatAnimatedWallpaper. */
+            type $Shape = waproto.Message.ChatAnimatedWallpaper.$Properties;
+        }
+
+        /**
+         * Properties of a ChatCustomImageWallpaper.
+         * @deprecated Use waproto.Message.ChatCustomImageWallpaper.$Properties instead.
+         */
+        interface IChatCustomImageWallpaper extends waproto.Message.ChatCustomImageWallpaper.$Properties {
+        }
+
+        /** Represents a ChatCustomImageWallpaper. */
+        class ChatCustomImageWallpaper {
+
+            /**
+             * Constructs a new ChatCustomImageWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatCustomImageWallpaper.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatCustomImageWallpaper directPath. */
+            directPath?: (string|null);
+
+            /** ChatCustomImageWallpaper mediaKey. */
+            mediaKey?: (Uint8Array|null);
+
+            /** ChatCustomImageWallpaper fileEncSha256. */
+            fileEncSha256?: (Uint8Array|null);
+
+            /** ChatCustomImageWallpaper fileSha256. */
+            fileSha256?: (Uint8Array|null);
+
+            /** ChatCustomImageWallpaper dimLevel. */
+            dimLevel?: (number|null);
+
+            /**
+             * Creates a new ChatCustomImageWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatCustomImageWallpaper instance
+             */
+            static create(properties: waproto.Message.ChatCustomImageWallpaper.$Shape): waproto.Message.ChatCustomImageWallpaper & waproto.Message.ChatCustomImageWallpaper.$Shape;
+            static create(properties?: waproto.Message.ChatCustomImageWallpaper.$Properties): waproto.Message.ChatCustomImageWallpaper;
+
+            /**
+             * Encodes the specified ChatCustomImageWallpaper message. Does not implicitly {@link waproto.Message.ChatCustomImageWallpaper.verify|verify} messages.
+             * @param message ChatCustomImageWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatCustomImageWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatCustomImageWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatCustomImageWallpaper.verify|verify} messages.
+             * @param message ChatCustomImageWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatCustomImageWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatCustomImageWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatCustomImageWallpaper & waproto.Message.ChatCustomImageWallpaper.$Shape} ChatCustomImageWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatCustomImageWallpaper & waproto.Message.ChatCustomImageWallpaper.$Shape;
+
+            /**
+             * Decodes a ChatCustomImageWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatCustomImageWallpaper & waproto.Message.ChatCustomImageWallpaper.$Shape} ChatCustomImageWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatCustomImageWallpaper & waproto.Message.ChatCustomImageWallpaper.$Shape;
+
+            /**
+             * Verifies a ChatCustomImageWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatCustomImageWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatCustomImageWallpaper
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatCustomImageWallpaper;
+
+            /**
+             * Creates a plain object from a ChatCustomImageWallpaper message. Also converts values to other types if specified.
+             * @param message ChatCustomImageWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatCustomImageWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatCustomImageWallpaper to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatCustomImageWallpaper
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatCustomImageWallpaper {
+
+            /** Properties of a ChatCustomImageWallpaper. */
+            interface $Properties {
+
+                /** ChatCustomImageWallpaper directPath */
+                directPath?: (string|null);
+
+                /** ChatCustomImageWallpaper mediaKey */
+                mediaKey?: (Uint8Array|null);
+
+                /** ChatCustomImageWallpaper fileEncSha256 */
+                fileEncSha256?: (Uint8Array|null);
+
+                /** ChatCustomImageWallpaper fileSha256 */
+                fileSha256?: (Uint8Array|null);
+
+                /** ChatCustomImageWallpaper dimLevel */
+                dimLevel?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ChatCustomImageWallpaper. */
+            type $Shape = waproto.Message.ChatCustomImageWallpaper.$Properties;
+        }
+
+        /**
+         * Properties of a ChatDefaultWallpaper.
+         * @deprecated Use waproto.Message.ChatDefaultWallpaper.$Properties instead.
+         */
+        interface IChatDefaultWallpaper extends waproto.Message.ChatDefaultWallpaper.$Properties {
+        }
+
+        /** Represents a ChatDefaultWallpaper. */
+        class ChatDefaultWallpaper {
+
+            /**
+             * Constructs a new ChatDefaultWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatDefaultWallpaper.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatDefaultWallpaper isDoodleEnabled. */
+            isDoodleEnabled?: (boolean|null);
+
+            /**
+             * Creates a new ChatDefaultWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatDefaultWallpaper instance
+             */
+            static create(properties: waproto.Message.ChatDefaultWallpaper.$Shape): waproto.Message.ChatDefaultWallpaper & waproto.Message.ChatDefaultWallpaper.$Shape;
+            static create(properties?: waproto.Message.ChatDefaultWallpaper.$Properties): waproto.Message.ChatDefaultWallpaper;
+
+            /**
+             * Encodes the specified ChatDefaultWallpaper message. Does not implicitly {@link waproto.Message.ChatDefaultWallpaper.verify|verify} messages.
+             * @param message ChatDefaultWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatDefaultWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatDefaultWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatDefaultWallpaper.verify|verify} messages.
+             * @param message ChatDefaultWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatDefaultWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatDefaultWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatDefaultWallpaper & waproto.Message.ChatDefaultWallpaper.$Shape} ChatDefaultWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatDefaultWallpaper & waproto.Message.ChatDefaultWallpaper.$Shape;
+
+            /**
+             * Decodes a ChatDefaultWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatDefaultWallpaper & waproto.Message.ChatDefaultWallpaper.$Shape} ChatDefaultWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatDefaultWallpaper & waproto.Message.ChatDefaultWallpaper.$Shape;
+
+            /**
+             * Verifies a ChatDefaultWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatDefaultWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatDefaultWallpaper
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatDefaultWallpaper;
+
+            /**
+             * Creates a plain object from a ChatDefaultWallpaper message. Also converts values to other types if specified.
+             * @param message ChatDefaultWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatDefaultWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatDefaultWallpaper to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatDefaultWallpaper
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatDefaultWallpaper {
+
+            /** Properties of a ChatDefaultWallpaper. */
+            interface $Properties {
+
+                /** ChatDefaultWallpaper isDoodleEnabled */
+                isDoodleEnabled?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ChatDefaultWallpaper. */
+            type $Shape = waproto.Message.ChatDefaultWallpaper.$Properties;
+        }
+
+        /**
+         * Properties of a ChatSolidColorWallpaper.
+         * @deprecated Use waproto.Message.ChatSolidColorWallpaper.$Properties instead.
+         */
+        interface IChatSolidColorWallpaper extends waproto.Message.ChatSolidColorWallpaper.$Properties {
+        }
+
+        /** Represents a ChatSolidColorWallpaper. */
+        class ChatSolidColorWallpaper {
+
+            /**
+             * Constructs a new ChatSolidColorWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatSolidColorWallpaper.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatSolidColorWallpaper colorLight. */
+            colorLight?: (string|null);
+
+            /** ChatSolidColorWallpaper colorDark. */
+            colorDark?: (string|null);
+
+            /** ChatSolidColorWallpaper isDoodleEnabled. */
+            isDoodleEnabled?: (boolean|null);
+
+            /**
+             * Creates a new ChatSolidColorWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatSolidColorWallpaper instance
+             */
+            static create(properties: waproto.Message.ChatSolidColorWallpaper.$Shape): waproto.Message.ChatSolidColorWallpaper & waproto.Message.ChatSolidColorWallpaper.$Shape;
+            static create(properties?: waproto.Message.ChatSolidColorWallpaper.$Properties): waproto.Message.ChatSolidColorWallpaper;
+
+            /**
+             * Encodes the specified ChatSolidColorWallpaper message. Does not implicitly {@link waproto.Message.ChatSolidColorWallpaper.verify|verify} messages.
+             * @param message ChatSolidColorWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatSolidColorWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatSolidColorWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatSolidColorWallpaper.verify|verify} messages.
+             * @param message ChatSolidColorWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatSolidColorWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatSolidColorWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatSolidColorWallpaper & waproto.Message.ChatSolidColorWallpaper.$Shape} ChatSolidColorWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatSolidColorWallpaper & waproto.Message.ChatSolidColorWallpaper.$Shape;
+
+            /**
+             * Decodes a ChatSolidColorWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatSolidColorWallpaper & waproto.Message.ChatSolidColorWallpaper.$Shape} ChatSolidColorWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatSolidColorWallpaper & waproto.Message.ChatSolidColorWallpaper.$Shape;
+
+            /**
+             * Verifies a ChatSolidColorWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatSolidColorWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatSolidColorWallpaper
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatSolidColorWallpaper;
+
+            /**
+             * Creates a plain object from a ChatSolidColorWallpaper message. Also converts values to other types if specified.
+             * @param message ChatSolidColorWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatSolidColorWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatSolidColorWallpaper to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatSolidColorWallpaper
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatSolidColorWallpaper {
+
+            /** Properties of a ChatSolidColorWallpaper. */
+            interface $Properties {
+
+                /** ChatSolidColorWallpaper colorLight */
+                colorLight?: (string|null);
+
+                /** ChatSolidColorWallpaper colorDark */
+                colorDark?: (string|null);
+
+                /** ChatSolidColorWallpaper isDoodleEnabled */
+                isDoodleEnabled?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ChatSolidColorWallpaper. */
+            type $Shape = waproto.Message.ChatSolidColorWallpaper.$Properties;
+        }
+
+        /**
+         * Properties of a ChatStockImageWallpaper.
+         * @deprecated Use waproto.Message.ChatStockImageWallpaper.$Properties instead.
+         */
+        interface IChatStockImageWallpaper extends waproto.Message.ChatStockImageWallpaper.$Properties {
+        }
+
+        /** Represents a ChatStockImageWallpaper. */
+        class ChatStockImageWallpaper {
+
+            /**
+             * Constructs a new ChatStockImageWallpaper.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatStockImageWallpaper.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatStockImageWallpaper stockImageId. */
+            stockImageId?: (string|null);
+
+            /** ChatStockImageWallpaper dimLevel. */
+            dimLevel?: (number|null);
+
+            /**
+             * Creates a new ChatStockImageWallpaper instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatStockImageWallpaper instance
+             */
+            static create(properties: waproto.Message.ChatStockImageWallpaper.$Shape): waproto.Message.ChatStockImageWallpaper & waproto.Message.ChatStockImageWallpaper.$Shape;
+            static create(properties?: waproto.Message.ChatStockImageWallpaper.$Properties): waproto.Message.ChatStockImageWallpaper;
+
+            /**
+             * Encodes the specified ChatStockImageWallpaper message. Does not implicitly {@link waproto.Message.ChatStockImageWallpaper.verify|verify} messages.
+             * @param message ChatStockImageWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatStockImageWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatStockImageWallpaper message, length delimited. Does not implicitly {@link waproto.Message.ChatStockImageWallpaper.verify|verify} messages.
+             * @param message ChatStockImageWallpaper message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatStockImageWallpaper.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatStockImageWallpaper message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatStockImageWallpaper & waproto.Message.ChatStockImageWallpaper.$Shape} ChatStockImageWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatStockImageWallpaper & waproto.Message.ChatStockImageWallpaper.$Shape;
+
+            /**
+             * Decodes a ChatStockImageWallpaper message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatStockImageWallpaper & waproto.Message.ChatStockImageWallpaper.$Shape} ChatStockImageWallpaper
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatStockImageWallpaper & waproto.Message.ChatStockImageWallpaper.$Shape;
+
+            /**
+             * Verifies a ChatStockImageWallpaper message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatStockImageWallpaper message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatStockImageWallpaper
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatStockImageWallpaper;
+
+            /**
+             * Creates a plain object from a ChatStockImageWallpaper message. Also converts values to other types if specified.
+             * @param message ChatStockImageWallpaper
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatStockImageWallpaper, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatStockImageWallpaper to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatStockImageWallpaper
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatStockImageWallpaper {
+
+            /** Properties of a ChatStockImageWallpaper. */
+            interface $Properties {
+
+                /** ChatStockImageWallpaper stockImageId */
+                stockImageId?: (string|null);
+
+                /** ChatStockImageWallpaper dimLevel */
+                dimLevel?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ChatStockImageWallpaper. */
+            type $Shape = waproto.Message.ChatStockImageWallpaper.$Properties;
+        }
+
+        /**
+         * Properties of a ChatThemeSetting.
+         * @deprecated Use waproto.Message.ChatThemeSetting.$Properties instead.
+         */
+        interface IChatThemeSetting extends waproto.Message.ChatThemeSetting.$Properties {
+        }
+
+        /** Represents a ChatThemeSetting. */
+        class ChatThemeSetting {
+
+            /**
+             * Constructs a new ChatThemeSetting.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.ChatThemeSetting.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ChatThemeSetting settingTimestampMs. */
+            settingTimestampMs?: (number|Long|null);
+
+            /** ChatThemeSetting clearTheme. */
+            clearTheme?: (boolean|null);
+
+            /** ChatThemeSetting colorSchemeId. */
+            colorSchemeId?: (string|null);
+
+            /** ChatThemeSetting defaultWallpaper. */
+            defaultWallpaper?: (waproto.Message.ChatDefaultWallpaper.$Properties|null);
+
+            /** ChatThemeSetting solidColor. */
+            solidColor?: (waproto.Message.ChatSolidColorWallpaper.$Properties|null);
+
+            /** ChatThemeSetting stockImage. */
+            stockImage?: (waproto.Message.ChatStockImageWallpaper.$Properties|null);
+
+            /** ChatThemeSetting customImage. */
+            customImage?: (waproto.Message.ChatCustomImageWallpaper.$Properties|null);
+
+            /** ChatThemeSetting animatedWallpaper. */
+            animatedWallpaper?: (waproto.Message.ChatAnimatedWallpaper.$Properties|null);
+
+            /** ChatThemeSetting wallpaper. */
+            wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper");
+
+            /**
+             * Creates a new ChatThemeSetting instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ChatThemeSetting instance
+             */
+            static create(properties: waproto.Message.ChatThemeSetting.$Shape): waproto.Message.ChatThemeSetting & waproto.Message.ChatThemeSetting.$Shape;
+            static create(properties?: waproto.Message.ChatThemeSetting.$Properties): waproto.Message.ChatThemeSetting;
+
+            /**
+             * Encodes the specified ChatThemeSetting message. Does not implicitly {@link waproto.Message.ChatThemeSetting.verify|verify} messages.
+             * @param message ChatThemeSetting message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.ChatThemeSetting.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ChatThemeSetting message, length delimited. Does not implicitly {@link waproto.Message.ChatThemeSetting.verify|verify} messages.
+             * @param message ChatThemeSetting message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.ChatThemeSetting.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ChatThemeSetting message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.ChatThemeSetting & waproto.Message.ChatThemeSetting.$Shape} ChatThemeSetting
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.ChatThemeSetting & waproto.Message.ChatThemeSetting.$Shape;
+
+            /**
+             * Decodes a ChatThemeSetting message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.ChatThemeSetting & waproto.Message.ChatThemeSetting.$Shape} ChatThemeSetting
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.ChatThemeSetting & waproto.Message.ChatThemeSetting.$Shape;
+
+            /**
+             * Verifies a ChatThemeSetting message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ChatThemeSetting message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ChatThemeSetting
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.ChatThemeSetting;
+
+            /**
+             * Creates a plain object from a ChatThemeSetting message. Also converts values to other types if specified.
+             * @param message ChatThemeSetting
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.ChatThemeSetting, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ChatThemeSetting to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ChatThemeSetting
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ChatThemeSetting {
+
+            /** Properties of a ChatThemeSetting. */
+            interface $Properties {
+
+                /** ChatThemeSetting settingTimestampMs */
+                settingTimestampMs?: (number|Long|null);
+
+                /** ChatThemeSetting clearTheme */
+                clearTheme?: (boolean|null);
+
+                /** ChatThemeSetting colorSchemeId */
+                colorSchemeId?: (string|null);
+
+                /** ChatThemeSetting defaultWallpaper */
+                defaultWallpaper?: (waproto.Message.ChatDefaultWallpaper.$Properties|null);
+
+                /** ChatThemeSetting solidColor */
+                solidColor?: (waproto.Message.ChatSolidColorWallpaper.$Properties|null);
+
+                /** ChatThemeSetting stockImage */
+                stockImage?: (waproto.Message.ChatStockImageWallpaper.$Properties|null);
+
+                /** ChatThemeSetting customImage */
+                customImage?: (waproto.Message.ChatCustomImageWallpaper.$Properties|null);
+
+                /** ChatThemeSetting animatedWallpaper */
+                animatedWallpaper?: (waproto.Message.ChatAnimatedWallpaper.$Properties|null);
+
+                /** ChatThemeSetting wallpaper */
+                wallpaper?: ("defaultWallpaper"|"solidColor"|"stockImage"|"customImage"|"animatedWallpaper");
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Narrowed shape of a ChatThemeSetting. */
+            type $Shape = {
+              settingTimestampMs?: number|Long|null;
+              clearTheme?: boolean|null;
+              colorSchemeId?: string|null;
+              defaultWallpaper?: waproto.Message.ChatDefaultWallpaper.$Shape|null;
+              solidColor?: waproto.Message.ChatSolidColorWallpaper.$Shape|null;
+              stockImage?: waproto.Message.ChatStockImageWallpaper.$Shape|null;
+              customImage?: waproto.Message.ChatCustomImageWallpaper.$Shape|null;
+              animatedWallpaper?: waproto.Message.ChatAnimatedWallpaper.$Shape|null;
+              $unknowns?: Uint8Array[];
+            } & (
+              ({ wallpaper?: undefined; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "defaultWallpaper"; defaultWallpaper: waproto.Message.ChatDefaultWallpaper.$Shape; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "solidColor"; defaultWallpaper?: null; solidColor: waproto.Message.ChatSolidColorWallpaper.$Shape; stockImage?: null; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "stockImage"; defaultWallpaper?: null; solidColor?: null; stockImage: waproto.Message.ChatStockImageWallpaper.$Shape; customImage?: null; animatedWallpaper?: null }|{ wallpaper?: "customImage"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage: waproto.Message.ChatCustomImageWallpaper.$Shape; animatedWallpaper?: null }|{ wallpaper?: "animatedWallpaper"; defaultWallpaper?: null; solidColor?: null; stockImage?: null; customImage?: null; animatedWallpaper: waproto.Message.ChatAnimatedWallpaper.$Shape })
+            );
         }
 
         /**
@@ -38197,6 +40525,12 @@ export namespace waproto {
             /** EventInviteMessage isCanceled. */
             isCanceled?: (boolean|null);
 
+            /** EventInviteMessage endTime. */
+            endTime?: (number|Long|null);
+
+            /** EventInviteMessage callLink. */
+            callLink?: (string|null);
+
             /**
              * Creates a new EventInviteMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -38302,6 +40636,12 @@ export namespace waproto {
                 /** EventInviteMessage isCanceled */
                 isCanceled?: (boolean|null);
 
+                /** EventInviteMessage endTime */
+                endTime?: (number|Long|null);
+
+                /** EventInviteMessage callLink */
+                callLink?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -38315,6 +40655,8 @@ export namespace waproto {
               startTime?: number|Long|null;
               caption?: string|null;
               isCanceled?: boolean|null;
+              endTime?: number|Long|null;
+              callLink?: string|null;
               $unknowns?: Uint8Array[];
             };
         }
@@ -38755,8 +41097,8 @@ export namespace waproto {
             /** ExtendedTextMessage videoWidth. */
             videoWidth?: (number|null);
 
-            /** ExtendedTextMessage faviconMMSMetadata. */
-            faviconMMSMetadata?: (waproto.Message.MMSThumbnailMetadata.$Properties|null);
+            /** ExtendedTextMessage faviconMmsMetadata. */
+            faviconMmsMetadata?: (waproto.Message.MMSThumbnailMetadata.$Properties|null);
 
             /** ExtendedTextMessage linkPreviewMetadata. */
             linkPreviewMetadata?: (waproto.Message.LinkPreviewMetadata.$Properties|null);
@@ -38935,8 +41277,8 @@ export namespace waproto {
                 /** ExtendedTextMessage videoWidth */
                 videoWidth?: (number|null);
 
-                /** ExtendedTextMessage faviconMMSMetadata */
-                faviconMMSMetadata?: (waproto.Message.MMSThumbnailMetadata.$Properties|null);
+                /** ExtendedTextMessage faviconMmsMetadata */
+                faviconMmsMetadata?: (waproto.Message.MMSThumbnailMetadata.$Properties|null);
 
                 /** ExtendedTextMessage linkPreviewMetadata */
                 linkPreviewMetadata?: (waproto.Message.LinkPreviewMetadata.$Properties|null);
@@ -38987,7 +41329,7 @@ export namespace waproto {
               viewOnce?: boolean|null;
               videoHeight?: number|null;
               videoWidth?: number|null;
-              faviconMMSMetadata?: waproto.Message.MMSThumbnailMetadata.$Shape|null;
+              faviconMmsMetadata?: waproto.Message.MMSThumbnailMetadata.$Shape|null;
               linkPreviewMetadata?: waproto.Message.LinkPreviewMetadata.$Shape|null;
               paymentLinkMetadata?: waproto.Message.PaymentLinkMetadata.$Shape|null;
               endCardTiles?: waproto.Message.VideoEndCard.$Shape[]|null;
@@ -40497,6 +42839,129 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a HistoryShareMessageEntry.
+         * @deprecated Use waproto.Message.HistoryShareMessageEntry.$Properties instead.
+         */
+        interface IHistoryShareMessageEntry extends waproto.Message.HistoryShareMessageEntry.$Properties {
+        }
+
+        /** Represents a HistoryShareMessageEntry. */
+        class HistoryShareMessageEntry {
+
+            /**
+             * Constructs a new HistoryShareMessageEntry.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.HistoryShareMessageEntry.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** HistoryShareMessageEntry stanzaId. */
+            stanzaId?: (string|null);
+
+            /** HistoryShareMessageEntry messageSecretProof. */
+            messageSecretProof?: (Uint8Array|null);
+
+            /**
+             * Creates a new HistoryShareMessageEntry instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns HistoryShareMessageEntry instance
+             */
+            static create(properties: waproto.Message.HistoryShareMessageEntry.$Shape): waproto.Message.HistoryShareMessageEntry & waproto.Message.HistoryShareMessageEntry.$Shape;
+            static create(properties?: waproto.Message.HistoryShareMessageEntry.$Properties): waproto.Message.HistoryShareMessageEntry;
+
+            /**
+             * Encodes the specified HistoryShareMessageEntry message. Does not implicitly {@link waproto.Message.HistoryShareMessageEntry.verify|verify} messages.
+             * @param message HistoryShareMessageEntry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.HistoryShareMessageEntry.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified HistoryShareMessageEntry message, length delimited. Does not implicitly {@link waproto.Message.HistoryShareMessageEntry.verify|verify} messages.
+             * @param message HistoryShareMessageEntry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.HistoryShareMessageEntry.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a HistoryShareMessageEntry message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.HistoryShareMessageEntry & waproto.Message.HistoryShareMessageEntry.$Shape} HistoryShareMessageEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.HistoryShareMessageEntry & waproto.Message.HistoryShareMessageEntry.$Shape;
+
+            /**
+             * Decodes a HistoryShareMessageEntry message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.HistoryShareMessageEntry & waproto.Message.HistoryShareMessageEntry.$Shape} HistoryShareMessageEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.HistoryShareMessageEntry & waproto.Message.HistoryShareMessageEntry.$Shape;
+
+            /**
+             * Verifies a HistoryShareMessageEntry message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a HistoryShareMessageEntry message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns HistoryShareMessageEntry
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.HistoryShareMessageEntry;
+
+            /**
+             * Creates a plain object from a HistoryShareMessageEntry message. Also converts values to other types if specified.
+             * @param message HistoryShareMessageEntry
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.HistoryShareMessageEntry, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this HistoryShareMessageEntry to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for HistoryShareMessageEntry
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace HistoryShareMessageEntry {
+
+            /** Properties of a HistoryShareMessageEntry. */
+            interface $Properties {
+
+                /** HistoryShareMessageEntry stanzaId */
+                stanzaId?: (string|null);
+
+                /** HistoryShareMessageEntry messageSecretProof */
+                messageSecretProof?: (Uint8Array|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a HistoryShareMessageEntry. */
+            type $Shape = waproto.Message.HistoryShareMessageEntry.$Properties;
+        }
+
+        /**
          * Properties of a HistorySyncMessageAccessStatus.
          * @deprecated Use waproto.Message.HistorySyncMessageAccessStatus.$Properties instead.
          */
@@ -41538,6 +44003,9 @@ export namespace waproto {
                 /** BloksWidget type. */
                 type?: (string|null);
 
+                /** BloksWidget fallback. */
+                fallback?: (string|null);
+
                 /**
                  * Creates a new BloksWidget instance using the specified properties.
                  * @param [properties] Properties to set
@@ -41630,6 +44098,9 @@ export namespace waproto {
 
                     /** BloksWidget type */
                     type?: (string|null);
+
+                    /** BloksWidget fallback */
+                    fallback?: (string|null);
 
                     /** Unknown fields preserved while decoding when enabled */
                     $unknowns?: Uint8Array[];
@@ -45399,6 +47870,141 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a MarkAsVerifiedAction.
+         * @deprecated Use waproto.Message.MarkAsVerifiedAction.$Properties instead.
+         */
+        interface IMarkAsVerifiedAction extends waproto.Message.MarkAsVerifiedAction.$Properties {
+        }
+
+        /** Represents a MarkAsVerifiedAction. */
+        class MarkAsVerifiedAction {
+
+            /**
+             * Constructs a new MarkAsVerifiedAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.MarkAsVerifiedAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** MarkAsVerifiedAction userJidString. */
+            userJidString?: (string|null);
+
+            /** MarkAsVerifiedAction verified. */
+            verified?: (boolean|null);
+
+            /** MarkAsVerifiedAction verifiedIdentityKey. */
+            verifiedIdentityKey?: (Uint8Array|null);
+
+            /** MarkAsVerifiedAction actionSeq. */
+            actionSeq?: (number|Long|null);
+
+            /**
+             * Creates a new MarkAsVerifiedAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MarkAsVerifiedAction instance
+             */
+            static create(properties: waproto.Message.MarkAsVerifiedAction.$Shape): waproto.Message.MarkAsVerifiedAction & waproto.Message.MarkAsVerifiedAction.$Shape;
+            static create(properties?: waproto.Message.MarkAsVerifiedAction.$Properties): waproto.Message.MarkAsVerifiedAction;
+
+            /**
+             * Encodes the specified MarkAsVerifiedAction message. Does not implicitly {@link waproto.Message.MarkAsVerifiedAction.verify|verify} messages.
+             * @param message MarkAsVerifiedAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.MarkAsVerifiedAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MarkAsVerifiedAction message, length delimited. Does not implicitly {@link waproto.Message.MarkAsVerifiedAction.verify|verify} messages.
+             * @param message MarkAsVerifiedAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.MarkAsVerifiedAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MarkAsVerifiedAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.MarkAsVerifiedAction & waproto.Message.MarkAsVerifiedAction.$Shape} MarkAsVerifiedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.MarkAsVerifiedAction & waproto.Message.MarkAsVerifiedAction.$Shape;
+
+            /**
+             * Decodes a MarkAsVerifiedAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.MarkAsVerifiedAction & waproto.Message.MarkAsVerifiedAction.$Shape} MarkAsVerifiedAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.MarkAsVerifiedAction & waproto.Message.MarkAsVerifiedAction.$Shape;
+
+            /**
+             * Verifies a MarkAsVerifiedAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MarkAsVerifiedAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MarkAsVerifiedAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.MarkAsVerifiedAction;
+
+            /**
+             * Creates a plain object from a MarkAsVerifiedAction message. Also converts values to other types if specified.
+             * @param message MarkAsVerifiedAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.MarkAsVerifiedAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MarkAsVerifiedAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for MarkAsVerifiedAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace MarkAsVerifiedAction {
+
+            /** Properties of a MarkAsVerifiedAction. */
+            interface $Properties {
+
+                /** MarkAsVerifiedAction userJidString */
+                userJidString?: (string|null);
+
+                /** MarkAsVerifiedAction verified */
+                verified?: (boolean|null);
+
+                /** MarkAsVerifiedAction verifiedIdentityKey */
+                verifiedIdentityKey?: (Uint8Array|null);
+
+                /** MarkAsVerifiedAction actionSeq */
+                actionSeq?: (number|Long|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a MarkAsVerifiedAction. */
+            type $Shape = waproto.Message.MarkAsVerifiedAction.$Properties;
+        }
+
+        /**
          * Properties of a MessageHistoryBundle.
          * @deprecated Use waproto.Message.MessageHistoryBundle.$Properties instead.
          */
@@ -45601,6 +48207,9 @@ export namespace waproto {
             /** MessageHistoryMetadata oldestMessageTimestampInBundle. */
             oldestMessageTimestampInBundle?: (number|Long|null);
 
+            /** MessageHistoryMetadata includesChatTheme. */
+            includesChatTheme?: (boolean|null);
+
             /**
              * Creates a new MessageHistoryMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -45700,6 +48309,9 @@ export namespace waproto {
                 /** MessageHistoryMetadata oldestMessageTimestampInBundle */
                 oldestMessageTimestampInBundle?: (number|Long|null);
 
+                /** MessageHistoryMetadata includesChatTheme */
+                includesChatTheme?: (boolean|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -45732,6 +48344,9 @@ export namespace waproto {
 
             /** MessageHistoryNotice messageHistoryMetadata. */
             messageHistoryMetadata?: (waproto.Message.MessageHistoryMetadata.$Properties|null);
+
+            /** MessageHistoryNotice botHistoryShareSyncMetadata. */
+            botHistoryShareSyncMetadata?: (waproto.Message.BotHistoryShareSyncMetadata.$Properties|null);
 
             /**
              * Creates a new MessageHistoryNotice instance using the specified properties.
@@ -45823,6 +48438,9 @@ export namespace waproto {
                 /** MessageHistoryNotice messageHistoryMetadata */
                 messageHistoryMetadata?: (waproto.Message.MessageHistoryMetadata.$Properties|null);
 
+                /** MessageHistoryNotice botHistoryShareSyncMetadata */
+                botHistoryShareSyncMetadata?: (waproto.Message.BotHistoryShareSyncMetadata.$Properties|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -45831,8 +48449,167 @@ export namespace waproto {
             type $Shape = {
               contextInfo?: waproto.ContextInfo.$Shape|null;
               messageHistoryMetadata?: waproto.Message.MessageHistoryMetadata.$Shape|null;
+              botHistoryShareSyncMetadata?: waproto.Message.BotHistoryShareSyncMetadata.$Shape|null;
               $unknowns?: Uint8Array[];
             };
+        }
+
+        /**
+         * Properties of a MusicMessage.
+         * @deprecated Use waproto.Message.MusicMessage.$Properties instead.
+         */
+        interface IMusicMessage extends waproto.Message.MusicMessage.$Properties {
+        }
+
+        /** Represents a MusicMessage. */
+        class MusicMessage {
+
+            /**
+             * Constructs a new MusicMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.MusicMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** MusicMessage embeddedMusic. */
+            embeddedMusic?: (waproto.EmbeddedMusic.$Properties|null);
+
+            /** MusicMessage songUri. */
+            songUri?: (string|null);
+
+            /** MusicMessage artworkUri. */
+            artworkUri?: (string|null);
+
+            /** MusicMessage style. */
+            style?: (number|null);
+
+            /** MusicMessage contextInfo. */
+            contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+            /**
+             * Creates a new MusicMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MusicMessage instance
+             */
+            static create(properties: waproto.Message.MusicMessage.$Shape): waproto.Message.MusicMessage & waproto.Message.MusicMessage.$Shape;
+            static create(properties?: waproto.Message.MusicMessage.$Properties): waproto.Message.MusicMessage;
+
+            /**
+             * Encodes the specified MusicMessage message. Does not implicitly {@link waproto.Message.MusicMessage.verify|verify} messages.
+             * @param message MusicMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.MusicMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MusicMessage message, length delimited. Does not implicitly {@link waproto.Message.MusicMessage.verify|verify} messages.
+             * @param message MusicMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.MusicMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MusicMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.MusicMessage & waproto.Message.MusicMessage.$Shape} MusicMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.MusicMessage & waproto.Message.MusicMessage.$Shape;
+
+            /**
+             * Decodes a MusicMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.MusicMessage & waproto.Message.MusicMessage.$Shape} MusicMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.MusicMessage & waproto.Message.MusicMessage.$Shape;
+
+            /**
+             * Verifies a MusicMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MusicMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MusicMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.MusicMessage;
+
+            /**
+             * Creates a plain object from a MusicMessage message. Also converts values to other types if specified.
+             * @param message MusicMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.MusicMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MusicMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for MusicMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace MusicMessage {
+
+            /** Properties of a MusicMessage. */
+            interface $Properties {
+
+                /** MusicMessage embeddedMusic */
+                embeddedMusic?: (waproto.EmbeddedMusic.$Properties|null);
+
+                /** MusicMessage songUri */
+                songUri?: (string|null);
+
+                /** MusicMessage artworkUri */
+                artworkUri?: (string|null);
+
+                /** MusicMessage style */
+                style?: (number|null);
+
+                /** MusicMessage contextInfo */
+                contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a MusicMessage. */
+            type $Shape = {
+              embeddedMusic?: waproto.EmbeddedMusic.$Shape|null;
+              songUri?: string|null;
+              artworkUri?: string|null;
+              style?: number|null;
+              contextInfo?: waproto.ContextInfo.$Shape|null;
+              $unknowns?: Uint8Array[];
+            };
+
+            /** MusicMessageStyle enum. */
+            enum MusicMessageStyle {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** VINYL value */
+                VINYL = 1
+            }
         }
 
         /**
@@ -46401,6 +49178,9 @@ export namespace waproto {
             /** PaymentExtendedMetadata platform. */
             platform?: (string|null);
 
+            /** PaymentExtendedMetadata messageParamsJson. */
+            messageParamsJson?: (string|null);
+
             /**
              * Creates a new PaymentExtendedMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -46490,6 +49270,9 @@ export namespace waproto {
 
                 /** PaymentExtendedMetadata platform */
                 platform?: (string|null);
+
+                /** PaymentExtendedMetadata messageParamsJson */
+                messageParamsJson?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -46662,7 +49445,10 @@ export namespace waproto {
                 NOVI = 2,
 
                 /** UPI value */
-                UPI = 3
+                UPI = 3,
+
+                /** PIX value */
+                PIX = 4
             }
         }
 
@@ -47153,6 +49939,212 @@ export namespace waproto {
 
                 /** Shape of a PaymentLinkProvider. */
                 type $Shape = waproto.Message.PaymentLinkMetadata.PaymentLinkProvider.$Properties;
+            }
+        }
+
+        /**
+         * Properties of a PaymentReminderMessage.
+         * @deprecated Use waproto.Message.PaymentReminderMessage.$Properties instead.
+         */
+        interface IPaymentReminderMessage extends waproto.Message.PaymentReminderMessage.$Properties {
+        }
+
+        /** Represents a PaymentReminderMessage. */
+        class PaymentReminderMessage {
+
+            /**
+             * Constructs a new PaymentReminderMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.PaymentReminderMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** PaymentReminderMessage reminderId. */
+            reminderId?: (string|null);
+
+            /** PaymentReminderMessage instanceId. */
+            instanceId?: (string|null);
+
+            /** PaymentReminderMessage description. */
+            description?: (string|null);
+
+            /** PaymentReminderMessage frequency. */
+            frequency?: (waproto.Message.PaymentReminderMessage.ReminderFrequency|null);
+
+            /** PaymentReminderMessage status. */
+            status?: (waproto.Message.PaymentReminderMessage.ReminderStatus|null);
+
+            /** PaymentReminderMessage payeeVpa. */
+            payeeVpa?: (string|null);
+
+            /** PaymentReminderMessage payeeJid. */
+            payeeJid?: (string|null);
+
+            /** PaymentReminderMessage payerJid. */
+            payerJid?: (string|null);
+
+            /** PaymentReminderMessage amount. */
+            amount?: (waproto.Money.$Properties|null);
+
+            /**
+             * Creates a new PaymentReminderMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PaymentReminderMessage instance
+             */
+            static create(properties: waproto.Message.PaymentReminderMessage.$Shape): waproto.Message.PaymentReminderMessage & waproto.Message.PaymentReminderMessage.$Shape;
+            static create(properties?: waproto.Message.PaymentReminderMessage.$Properties): waproto.Message.PaymentReminderMessage;
+
+            /**
+             * Encodes the specified PaymentReminderMessage message. Does not implicitly {@link waproto.Message.PaymentReminderMessage.verify|verify} messages.
+             * @param message PaymentReminderMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.PaymentReminderMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PaymentReminderMessage message, length delimited. Does not implicitly {@link waproto.Message.PaymentReminderMessage.verify|verify} messages.
+             * @param message PaymentReminderMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.PaymentReminderMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PaymentReminderMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.PaymentReminderMessage & waproto.Message.PaymentReminderMessage.$Shape} PaymentReminderMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PaymentReminderMessage & waproto.Message.PaymentReminderMessage.$Shape;
+
+            /**
+             * Decodes a PaymentReminderMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.PaymentReminderMessage & waproto.Message.PaymentReminderMessage.$Shape} PaymentReminderMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PaymentReminderMessage & waproto.Message.PaymentReminderMessage.$Shape;
+
+            /**
+             * Verifies a PaymentReminderMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PaymentReminderMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PaymentReminderMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.PaymentReminderMessage;
+
+            /**
+             * Creates a plain object from a PaymentReminderMessage message. Also converts values to other types if specified.
+             * @param message PaymentReminderMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.PaymentReminderMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PaymentReminderMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for PaymentReminderMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace PaymentReminderMessage {
+
+            /** Properties of a PaymentReminderMessage. */
+            interface $Properties {
+
+                /** PaymentReminderMessage reminderId */
+                reminderId?: (string|null);
+
+                /** PaymentReminderMessage instanceId */
+                instanceId?: (string|null);
+
+                /** PaymentReminderMessage description */
+                description?: (string|null);
+
+                /** PaymentReminderMessage frequency */
+                frequency?: (waproto.Message.PaymentReminderMessage.ReminderFrequency|null);
+
+                /** PaymentReminderMessage status */
+                status?: (waproto.Message.PaymentReminderMessage.ReminderStatus|null);
+
+                /** PaymentReminderMessage payeeVpa */
+                payeeVpa?: (string|null);
+
+                /** PaymentReminderMessage payeeJid */
+                payeeJid?: (string|null);
+
+                /** PaymentReminderMessage payerJid */
+                payerJid?: (string|null);
+
+                /** PaymentReminderMessage amount */
+                amount?: (waproto.Money.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a PaymentReminderMessage. */
+            type $Shape = waproto.Message.PaymentReminderMessage.$Properties;
+
+            /** ReminderFrequency enum. */
+            enum ReminderFrequency {
+
+                /** REMINDER_FREQUENCY_UNKNOWN value */
+                REMINDER_FREQUENCY_UNKNOWN = 0,
+
+                /** WEEKLY value */
+                WEEKLY = 1,
+
+                /** BI_WEEKLY value */
+                BI_WEEKLY = 2,
+
+                /** MONTHLY value */
+                MONTHLY = 3,
+
+                /** QUARTERLY value */
+                QUARTERLY = 4
+            }
+
+            /** ReminderStatus enum. */
+            enum ReminderStatus {
+
+                /** REMINDER_STATUS_UNKNOWN value */
+                REMINDER_STATUS_UNKNOWN = 0,
+
+                /** ACTIVE value */
+                ACTIVE = 1,
+
+                /** CANCELLED_BY_CREATOR value */
+                CANCELLED_BY_CREATOR = 2,
+
+                /** STOPPED_BY_RECEIVER value */
+                STOPPED_BY_RECEIVER = 3,
+
+                /** EXPIRED value */
+                EXPIRED = 4,
+
+                /** PAID value */
+                PAID = 5
             }
         }
 
@@ -48141,6 +51133,9 @@ export namespace waproto {
                 /** HistorySyncOnDemandRequest accountLid. */
                 accountLid?: (string|null);
 
+                /** HistorySyncOnDemandRequest supportInlineResponse. */
+                supportInlineResponse?: (boolean|null);
+
                 /**
                  * Creates a new HistorySyncOnDemandRequest instance using the specified properties.
                  * @param [properties] Properties to set
@@ -48242,6 +51237,9 @@ export namespace waproto {
 
                     /** HistorySyncOnDemandRequest accountLid */
                     accountLid?: (string|null);
+
+                    /** HistorySyncOnDemandRequest supportInlineResponse */
+                    supportInlineResponse?: (boolean|null);
 
                     /** Unknown fields preserved while decoding when enabled */
                     $unknowns?: Uint8Array[];
@@ -48920,6 +51918,9 @@ export namespace waproto {
                 /** PeerDataOperationResult bizBroadcastInsightsContactListResponse. */
                 bizBroadcastInsightsContactListResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.$Properties|null);
 
+                /** PeerDataOperationResult contactRefreshResponse. */
+                contactRefreshResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties|null);
+
                 /**
                  * Creates a new PeerDataOperationResult instance using the specified properties.
                  * @param [properties] Properties to set
@@ -49040,6 +52041,9 @@ export namespace waproto {
                     /** PeerDataOperationResult bizBroadcastInsightsContactListResponse */
                     bizBroadcastInsightsContactListResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.$Properties|null);
 
+                    /** PeerDataOperationResult contactRefreshResponse */
+                    contactRefreshResponse?: (waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties|null);
+
                     /** Unknown fields preserved while decoding when enabled */
                     $unknowns?: Uint8Array[];
                 }
@@ -49058,6 +52062,7 @@ export namespace waproto {
                   historySyncChunkRetryResponse?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse.$Shape|null;
                   flowResponsesCsvBundle?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.$Shape|null;
                   bizBroadcastInsightsContactListResponse?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.$Shape|null;
+                  contactRefreshResponse?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape|null;
                   $unknowns?: Uint8Array[];
                 };
 
@@ -49557,6 +52562,141 @@ export namespace waproto {
 
                     /** Shape of a CompanionMetaNonceFetchResponse. */
                     type $Shape = waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.$Properties;
+                }
+
+                /**
+                 * Properties of a ContactRefreshResponse.
+                 * @deprecated Use waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties instead.
+                 */
+                interface IContactRefreshResponse extends waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties {
+                }
+
+                /** Represents a ContactRefreshResponse. */
+                class ContactRefreshResponse {
+
+                    /**
+                     * Constructs a new ContactRefreshResponse.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+
+                    /** ContactRefreshResponse coveredRequestIds. */
+                    coveredRequestIds: string[];
+
+                    /** ContactRefreshResponse collectionVersion. */
+                    collectionVersion?: (number|Long|null);
+
+                    /** ContactRefreshResponse primaryDurationMs. */
+                    primaryDurationMs?: (number|Long|null);
+
+                    /** ContactRefreshResponse uniqueContactCount. */
+                    uniqueContactCount?: (number|null);
+
+                    /**
+                     * Creates a new ContactRefreshResponse instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns ContactRefreshResponse instance
+                     */
+                    static create(properties: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse & waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape;
+                    static create(properties?: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse;
+
+                    /**
+                     * Encodes the specified ContactRefreshResponse message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify|verify} messages.
+                     * @param message ContactRefreshResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    static encode(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified ContactRefreshResponse message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.verify|verify} messages.
+                     * @param message ContactRefreshResponse message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    static encodeDelimited(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a ContactRefreshResponse message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse & waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape} ContactRefreshResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse & waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape;
+
+                    /**
+                     * Decodes a ContactRefreshResponse message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns {waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse & waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape} ContactRefreshResponse
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse & waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Shape;
+
+                    /**
+                     * Verifies a ContactRefreshResponse message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a ContactRefreshResponse message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns ContactRefreshResponse
+                     */
+                    static fromObject(object: { [k: string]: any }): waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse;
+
+                    /**
+                     * Creates a plain object from a ContactRefreshResponse message. Also converts values to other types if specified.
+                     * @param message ContactRefreshResponse
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    static toObject(message: waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this ContactRefreshResponse to JSON.
+                     * @returns JSON object
+                     */
+                    toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the type url for ContactRefreshResponse
+                     * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                     * @returns The type url
+                     */
+                    static getTypeUrl(prefix?: string): string;
+                }
+
+                namespace ContactRefreshResponse {
+
+                    /** Properties of a ContactRefreshResponse. */
+                    interface $Properties {
+
+                        /** ContactRefreshResponse coveredRequestIds */
+                        coveredRequestIds?: (string[]|null);
+
+                        /** ContactRefreshResponse collectionVersion */
+                        collectionVersion?: (number|Long|null);
+
+                        /** ContactRefreshResponse primaryDurationMs */
+                        primaryDurationMs?: (number|Long|null);
+
+                        /** ContactRefreshResponse uniqueContactCount */
+                        uniqueContactCount?: (number|null);
+
+                        /** Unknown fields preserved while decoding when enabled */
+                        $unknowns?: Uint8Array[];
+                    }
+
+                    /** Shape of a ContactRefreshResponse. */
+                    type $Shape = waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.$Properties;
                 }
 
                 /**
@@ -50905,7 +54045,10 @@ export namespace waproto {
             BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO = 12,
 
             /** BUSINESS_BROADCAST_INSIGHTS_REFRESH value */
-            BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13
+            BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13,
+
+            /** CONTACT_REFRESH_REQUEST value */
+            CONTACT_REFRESH_REQUEST = 14
         }
 
         /**
@@ -51199,6 +54342,9 @@ export namespace waproto {
             /** PollAddOptionMessage addOption. */
             addOption?: (waproto.Message.PollCreationMessage.Option.$Properties|null);
 
+            /** PollAddOptionMessage metadata. */
+            metadata?: (waproto.Message.PollUpdateMessageMetadata.$Properties|null);
+
             /**
              * Creates a new PollAddOptionMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -51288,6 +54434,9 @@ export namespace waproto {
 
                 /** PollAddOptionMessage addOption */
                 addOption?: (waproto.Message.PollCreationMessage.Option.$Properties|null);
+
+                /** PollAddOptionMessage metadata */
+                metadata?: (waproto.Message.PollUpdateMessageMetadata.$Properties|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -52174,6 +55323,12 @@ export namespace waproto {
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
 
+            /** PollUpdateMessageMetadata pollNameHash. */
+            pollNameHash?: (Uint8Array|null);
+
+            /** PollUpdateMessageMetadata lastEditStanzaId. */
+            lastEditStanzaId?: (string|null);
+
             /**
              * Creates a new PollUpdateMessageMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -52257,6 +55412,12 @@ export namespace waproto {
 
             /** Properties of a PollUpdateMessageMetadata. */
             interface $Properties {
+
+                /** PollUpdateMessageMetadata pollNameHash */
+                pollNameHash?: (Uint8Array|null);
+
+                /** PollUpdateMessageMetadata lastEditStanzaId */
+                lastEditStanzaId?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -52966,6 +56127,27 @@ export namespace waproto {
             /** ProtocolMessage afterReadDuration. */
             afterReadDuration?: (number|null);
 
+            /** ProtocolMessage chatThemeSetting. */
+            chatThemeSetting?: (waproto.Message.ChatThemeSetting.$Properties|null);
+
+            /** ProtocolMessage aiMetadataOperation. */
+            aiMetadataOperation?: (waproto.AIMetadataOperation.$Properties|null);
+
+            /** ProtocolMessage markAsVerifiedAction. */
+            markAsVerifiedAction?: (waproto.Message.MarkAsVerifiedAction.$Properties|null);
+
+            /** ProtocolMessage coexStateSync. */
+            coexStateSync?: (waproto.CoexStateSync.$Properties|null);
+
+            /** ProtocolMessage acp2Setting. */
+            acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyShare. */
+            sharedDeviceContactHashKeyShare?: (waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null);
+
+            /** ProtocolMessage sharedDeviceContactHashKeyRequest. */
+            sharedDeviceContactHashKeyRequest?: (waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null);
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -53128,6 +56310,27 @@ export namespace waproto {
                 /** ProtocolMessage afterReadDuration */
                 afterReadDuration?: (number|null);
 
+                /** ProtocolMessage chatThemeSetting */
+                chatThemeSetting?: (waproto.Message.ChatThemeSetting.$Properties|null);
+
+                /** ProtocolMessage aiMetadataOperation */
+                aiMetadataOperation?: (waproto.AIMetadataOperation.$Properties|null);
+
+                /** ProtocolMessage markAsVerifiedAction */
+                markAsVerifiedAction?: (waproto.Message.MarkAsVerifiedAction.$Properties|null);
+
+                /** ProtocolMessage coexStateSync */
+                coexStateSync?: (waproto.CoexStateSync.$Properties|null);
+
+                /** ProtocolMessage acp2Setting */
+                acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
+                /** ProtocolMessage sharedDeviceContactHashKeyShare */
+                sharedDeviceContactHashKeyShare?: (waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null);
+
+                /** ProtocolMessage sharedDeviceContactHashKeyRequest */
+                sharedDeviceContactHashKeyRequest?: (waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -53160,6 +56363,13 @@ export namespace waproto {
               memberLabel?: waproto.MemberLabel.$Shape|null;
               aiMediaCollectionMessage?: waproto.AIMediaCollectionMessage.$Shape|null;
               afterReadDuration?: number|null;
+              chatThemeSetting?: waproto.Message.ChatThemeSetting.$Shape|null;
+              aiMetadataOperation?: waproto.AIMetadataOperation.$Shape|null;
+              markAsVerifiedAction?: waproto.Message.MarkAsVerifiedAction.$Shape|null;
+              coexStateSync?: waproto.CoexStateSync.$Shape|null;
+              acp2Setting?: waproto.ACP2Setting.$Shape|null;
+              sharedDeviceContactHashKeyShare?: waproto.Message.SharedDeviceContactHashKeyShare.$Shape|null;
+              sharedDeviceContactHashKeyRequest?: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -53248,7 +56458,28 @@ export namespace waproto {
                 AI_MEDIA_COLLECTION_MESSAGE = 31,
 
                 /** MESSAGE_UNSCHEDULE value */
-                MESSAGE_UNSCHEDULE = 32
+                MESSAGE_UNSCHEDULE = 32,
+
+                /** CHAT_THEME_SETTING value */
+                CHAT_THEME_SETTING = 34,
+
+                /** AI_METADATA_OPERATION value */
+                AI_METADATA_OPERATION = 35,
+
+                /** MARK_AS_VERIFIED_ACTION value */
+                MARK_AS_VERIFIED_ACTION = 36,
+
+                /** COEX_STATE_SYNC value */
+                COEX_STATE_SYNC = 37,
+
+                /** ACP2_SETTING value */
+                ACP2_SETTING = 39,
+
+                /** SHARED_DEVICE_CONTACT_HASH_KEY_SHARE value */
+                SHARED_DEVICE_CONTACT_HASH_KEY_SHARE = 40,
+
+                /** SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST value */
+                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41
             }
         }
 
@@ -53939,6 +57170,123 @@ export namespace waproto {
                 /** COMPANION_PAIRING value */
                 COMPANION_PAIRING = 1
             }
+        }
+
+        /**
+         * Properties of a RootSecretDistributeMessage.
+         * @deprecated Use waproto.Message.RootSecretDistributeMessage.$Properties instead.
+         */
+        interface IRootSecretDistributeMessage extends waproto.Message.RootSecretDistributeMessage.$Properties {
+        }
+
+        /** Represents a RootSecretDistributeMessage. */
+        class RootSecretDistributeMessage {
+
+            /**
+             * Constructs a new RootSecretDistributeMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.RootSecretDistributeMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** RootSecretDistributeMessage chatJid. */
+            chatJid?: (string|null);
+
+            /**
+             * Creates a new RootSecretDistributeMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RootSecretDistributeMessage instance
+             */
+            static create(properties: waproto.Message.RootSecretDistributeMessage.$Shape): waproto.Message.RootSecretDistributeMessage & waproto.Message.RootSecretDistributeMessage.$Shape;
+            static create(properties?: waproto.Message.RootSecretDistributeMessage.$Properties): waproto.Message.RootSecretDistributeMessage;
+
+            /**
+             * Encodes the specified RootSecretDistributeMessage message. Does not implicitly {@link waproto.Message.RootSecretDistributeMessage.verify|verify} messages.
+             * @param message RootSecretDistributeMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.RootSecretDistributeMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RootSecretDistributeMessage message, length delimited. Does not implicitly {@link waproto.Message.RootSecretDistributeMessage.verify|verify} messages.
+             * @param message RootSecretDistributeMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.RootSecretDistributeMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RootSecretDistributeMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.RootSecretDistributeMessage & waproto.Message.RootSecretDistributeMessage.$Shape} RootSecretDistributeMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.RootSecretDistributeMessage & waproto.Message.RootSecretDistributeMessage.$Shape;
+
+            /**
+             * Decodes a RootSecretDistributeMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.RootSecretDistributeMessage & waproto.Message.RootSecretDistributeMessage.$Shape} RootSecretDistributeMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.RootSecretDistributeMessage & waproto.Message.RootSecretDistributeMessage.$Shape;
+
+            /**
+             * Verifies a RootSecretDistributeMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RootSecretDistributeMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RootSecretDistributeMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.RootSecretDistributeMessage;
+
+            /**
+             * Creates a plain object from a RootSecretDistributeMessage message. Also converts values to other types if specified.
+             * @param message RootSecretDistributeMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.RootSecretDistributeMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RootSecretDistributeMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for RootSecretDistributeMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace RootSecretDistributeMessage {
+
+            /** Properties of a RootSecretDistributeMessage. */
+            interface $Properties {
+
+                /** RootSecretDistributeMessage chatJid */
+                chatJid?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a RootSecretDistributeMessage. */
+            type $Shape = waproto.Message.RootSecretDistributeMessage.$Properties;
         }
 
         /**
@@ -54644,6 +57992,939 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a SharedDeviceContactHashKey.
+         * @deprecated Use waproto.Message.SharedDeviceContactHashKey.$Properties instead.
+         */
+        interface ISharedDeviceContactHashKey extends waproto.Message.SharedDeviceContactHashKey.$Properties {
+        }
+
+        /** Represents a SharedDeviceContactHashKey. */
+        class SharedDeviceContactHashKey {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKey.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SharedDeviceContactHashKey.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceContactHashKey epoch. */
+            epoch?: (number|null);
+
+            /** SharedDeviceContactHashKey kind. */
+            kind?: (waproto.Message.SharedDeviceContactHashKey.Kind|null);
+
+            /** SharedDeviceContactHashKey keyData. */
+            keyData?: (Uint8Array|null);
+
+            /**
+             * Creates a new SharedDeviceContactHashKey instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKey instance
+             */
+            static create(properties: waproto.Message.SharedDeviceContactHashKey.$Shape): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+            static create(properties?: waproto.Message.SharedDeviceContactHashKey.$Properties): waproto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @param message SharedDeviceContactHashKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SharedDeviceContactHashKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKey message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKey.verify|verify} messages.
+             * @param message SharedDeviceContactHashKey message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SharedDeviceContactHashKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape} SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+
+            /**
+             * Decodes a SharedDeviceContactHashKey message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape} SharedDeviceContactHashKey
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SharedDeviceContactHashKey & waproto.Message.SharedDeviceContactHashKey.$Shape;
+
+            /**
+             * Verifies a SharedDeviceContactHashKey message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKey message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKey
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SharedDeviceContactHashKey;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKey message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKey
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SharedDeviceContactHashKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKey to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKey
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKey {
+
+            /** Properties of a SharedDeviceContactHashKey. */
+            interface $Properties {
+
+                /** SharedDeviceContactHashKey epoch */
+                epoch?: (number|null);
+
+                /** SharedDeviceContactHashKey kind */
+                kind?: (waproto.Message.SharedDeviceContactHashKey.Kind|null);
+
+                /** SharedDeviceContactHashKey keyData */
+                keyData?: (Uint8Array|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceContactHashKey. */
+            type $Shape = waproto.Message.SharedDeviceContactHashKey.$Properties;
+
+            /** Kind enum. */
+            enum Kind {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** LID value */
+                LID = 1,
+
+                /** PHONE_NUMBER value */
+                PHONE_NUMBER = 2
+            }
+        }
+
+        /**
+         * Properties of a SharedDeviceContactHashKeyRequest.
+         * @deprecated Use waproto.Message.SharedDeviceContactHashKeyRequest.$Properties instead.
+         */
+        interface ISharedDeviceContactHashKeyRequest extends waproto.Message.SharedDeviceContactHashKeyRequest.$Properties {
+        }
+
+        /** Represents a SharedDeviceContactHashKeyRequest. */
+        class SharedDeviceContactHashKeyRequest {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceContactHashKeyRequest knownEpoch. */
+            knownEpoch?: (number|null);
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyRequest instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKeyRequest instance
+             */
+            static create(properties: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+            static create(properties?: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties): waproto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyRequest message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyRequest.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SharedDeviceContactHashKeyRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape} SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape} SharedDeviceContactHashKeyRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SharedDeviceContactHashKeyRequest & waproto.Message.SharedDeviceContactHashKeyRequest.$Shape;
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKeyRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKeyRequest
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SharedDeviceContactHashKeyRequest;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyRequest message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKeyRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SharedDeviceContactHashKeyRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyRequest to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKeyRequest
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKeyRequest {
+
+            /** Properties of a SharedDeviceContactHashKeyRequest. */
+            interface $Properties {
+
+                /** SharedDeviceContactHashKeyRequest knownEpoch */
+                knownEpoch?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceContactHashKeyRequest. */
+            type $Shape = waproto.Message.SharedDeviceContactHashKeyRequest.$Properties;
+        }
+
+        /**
+         * Properties of a SharedDeviceContactHashKeyShare.
+         * @deprecated Use waproto.Message.SharedDeviceContactHashKeyShare.$Properties instead.
+         */
+        interface ISharedDeviceContactHashKeyShare extends waproto.Message.SharedDeviceContactHashKeyShare.$Properties {
+        }
+
+        /** Represents a SharedDeviceContactHashKeyShare. */
+        class SharedDeviceContactHashKeyShare {
+
+            /**
+             * Constructs a new SharedDeviceContactHashKeyShare.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SharedDeviceContactHashKeyShare.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceContactHashKeyShare keys. */
+            keys: waproto.Message.SharedDeviceContactHashKey.$Properties[];
+
+            /**
+             * Creates a new SharedDeviceContactHashKeyShare instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceContactHashKeyShare instance
+             */
+            static create(properties: waproto.Message.SharedDeviceContactHashKeyShare.$Shape): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+            static create(properties?: waproto.Message.SharedDeviceContactHashKeyShare.$Properties): waproto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SharedDeviceContactHashKeyShare.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceContactHashKeyShare message, length delimited. Does not implicitly {@link waproto.Message.SharedDeviceContactHashKeyShare.verify|verify} messages.
+             * @param message SharedDeviceContactHashKeyShare message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SharedDeviceContactHashKeyShare.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape} SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+
+            /**
+             * Decodes a SharedDeviceContactHashKeyShare message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape} SharedDeviceContactHashKeyShare
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SharedDeviceContactHashKeyShare & waproto.Message.SharedDeviceContactHashKeyShare.$Shape;
+
+            /**
+             * Verifies a SharedDeviceContactHashKeyShare message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceContactHashKeyShare message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceContactHashKeyShare
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SharedDeviceContactHashKeyShare;
+
+            /**
+             * Creates a plain object from a SharedDeviceContactHashKeyShare message. Also converts values to other types if specified.
+             * @param message SharedDeviceContactHashKeyShare
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SharedDeviceContactHashKeyShare, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceContactHashKeyShare to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceContactHashKeyShare
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceContactHashKeyShare {
+
+            /** Properties of a SharedDeviceContactHashKeyShare. */
+            interface $Properties {
+
+                /** SharedDeviceContactHashKeyShare keys */
+                keys?: (waproto.Message.SharedDeviceContactHashKey.$Properties[]|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceContactHashKeyShare. */
+            type $Shape = waproto.Message.SharedDeviceContactHashKeyShare.$Properties;
+        }
+
+        /**
+         * Properties of a SplitPaymentMessage.
+         * @deprecated Use waproto.Message.SplitPaymentMessage.$Properties instead.
+         */
+        interface ISplitPaymentMessage extends waproto.Message.SplitPaymentMessage.$Properties {
+        }
+
+        /** Represents a SplitPaymentMessage. */
+        class SplitPaymentMessage {
+
+            /**
+             * Constructs a new SplitPaymentMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SplitPaymentMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SplitPaymentMessage splitId. */
+            splitId?: (string|null);
+
+            /** SplitPaymentMessage totalAmount. */
+            totalAmount?: (waproto.Money.$Properties|null);
+
+            /** SplitPaymentMessage description. */
+            description?: (string|null);
+
+            /** SplitPaymentMessage requesterJid. */
+            requesterJid?: (string|null);
+
+            /** SplitPaymentMessage participants. */
+            participants: waproto.Message.SplitPaymentParticipant.$Properties[];
+
+            /** SplitPaymentMessage createdAtMs. */
+            createdAtMs?: (number|Long|null);
+
+            /** SplitPaymentMessage contextInfo. */
+            contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+            /**
+             * Creates a new SplitPaymentMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SplitPaymentMessage instance
+             */
+            static create(properties: waproto.Message.SplitPaymentMessage.$Shape): waproto.Message.SplitPaymentMessage & waproto.Message.SplitPaymentMessage.$Shape;
+            static create(properties?: waproto.Message.SplitPaymentMessage.$Properties): waproto.Message.SplitPaymentMessage;
+
+            /**
+             * Encodes the specified SplitPaymentMessage message. Does not implicitly {@link waproto.Message.SplitPaymentMessage.verify|verify} messages.
+             * @param message SplitPaymentMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SplitPaymentMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SplitPaymentMessage message, length delimited. Does not implicitly {@link waproto.Message.SplitPaymentMessage.verify|verify} messages.
+             * @param message SplitPaymentMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SplitPaymentMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SplitPaymentMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SplitPaymentMessage & waproto.Message.SplitPaymentMessage.$Shape} SplitPaymentMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SplitPaymentMessage & waproto.Message.SplitPaymentMessage.$Shape;
+
+            /**
+             * Decodes a SplitPaymentMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SplitPaymentMessage & waproto.Message.SplitPaymentMessage.$Shape} SplitPaymentMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SplitPaymentMessage & waproto.Message.SplitPaymentMessage.$Shape;
+
+            /**
+             * Verifies a SplitPaymentMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SplitPaymentMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SplitPaymentMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SplitPaymentMessage;
+
+            /**
+             * Creates a plain object from a SplitPaymentMessage message. Also converts values to other types if specified.
+             * @param message SplitPaymentMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SplitPaymentMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SplitPaymentMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SplitPaymentMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SplitPaymentMessage {
+
+            /** Properties of a SplitPaymentMessage. */
+            interface $Properties {
+
+                /** SplitPaymentMessage splitId */
+                splitId?: (string|null);
+
+                /** SplitPaymentMessage totalAmount */
+                totalAmount?: (waproto.Money.$Properties|null);
+
+                /** SplitPaymentMessage description */
+                description?: (string|null);
+
+                /** SplitPaymentMessage requesterJid */
+                requesterJid?: (string|null);
+
+                /** SplitPaymentMessage participants */
+                participants?: (waproto.Message.SplitPaymentParticipant.$Properties[]|null);
+
+                /** SplitPaymentMessage createdAtMs */
+                createdAtMs?: (number|Long|null);
+
+                /** SplitPaymentMessage contextInfo */
+                contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SplitPaymentMessage. */
+            type $Shape = {
+              splitId?: string|null;
+              totalAmount?: waproto.Money.$Shape|null;
+              description?: string|null;
+              requesterJid?: string|null;
+              participants?: waproto.Message.SplitPaymentParticipant.$Shape[]|null;
+              createdAtMs?: number|Long|null;
+              contextInfo?: waproto.ContextInfo.$Shape|null;
+              $unknowns?: Uint8Array[];
+            };
+        }
+
+        /**
+         * Properties of a SplitPaymentParticipant.
+         * @deprecated Use waproto.Message.SplitPaymentParticipant.$Properties instead.
+         */
+        interface ISplitPaymentParticipant extends waproto.Message.SplitPaymentParticipant.$Properties {
+        }
+
+        /** Represents a SplitPaymentParticipant. */
+        class SplitPaymentParticipant {
+
+            /**
+             * Constructs a new SplitPaymentParticipant.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SplitPaymentParticipant.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SplitPaymentParticipant jid. */
+            jid?: (string|null);
+
+            /** SplitPaymentParticipant amount. */
+            amount?: (waproto.Money.$Properties|null);
+
+            /** SplitPaymentParticipant status. */
+            status?: (waproto.Message.SplitPaymentParticipant.SplitPaymentStatus|null);
+
+            /**
+             * Creates a new SplitPaymentParticipant instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SplitPaymentParticipant instance
+             */
+            static create(properties: waproto.Message.SplitPaymentParticipant.$Shape): waproto.Message.SplitPaymentParticipant & waproto.Message.SplitPaymentParticipant.$Shape;
+            static create(properties?: waproto.Message.SplitPaymentParticipant.$Properties): waproto.Message.SplitPaymentParticipant;
+
+            /**
+             * Encodes the specified SplitPaymentParticipant message. Does not implicitly {@link waproto.Message.SplitPaymentParticipant.verify|verify} messages.
+             * @param message SplitPaymentParticipant message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SplitPaymentParticipant.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SplitPaymentParticipant message, length delimited. Does not implicitly {@link waproto.Message.SplitPaymentParticipant.verify|verify} messages.
+             * @param message SplitPaymentParticipant message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SplitPaymentParticipant.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SplitPaymentParticipant message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SplitPaymentParticipant & waproto.Message.SplitPaymentParticipant.$Shape} SplitPaymentParticipant
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SplitPaymentParticipant & waproto.Message.SplitPaymentParticipant.$Shape;
+
+            /**
+             * Decodes a SplitPaymentParticipant message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SplitPaymentParticipant & waproto.Message.SplitPaymentParticipant.$Shape} SplitPaymentParticipant
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SplitPaymentParticipant & waproto.Message.SplitPaymentParticipant.$Shape;
+
+            /**
+             * Verifies a SplitPaymentParticipant message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SplitPaymentParticipant message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SplitPaymentParticipant
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SplitPaymentParticipant;
+
+            /**
+             * Creates a plain object from a SplitPaymentParticipant message. Also converts values to other types if specified.
+             * @param message SplitPaymentParticipant
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SplitPaymentParticipant, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SplitPaymentParticipant to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SplitPaymentParticipant
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SplitPaymentParticipant {
+
+            /** Properties of a SplitPaymentParticipant. */
+            interface $Properties {
+
+                /** SplitPaymentParticipant jid */
+                jid?: (string|null);
+
+                /** SplitPaymentParticipant amount */
+                amount?: (waproto.Money.$Properties|null);
+
+                /** SplitPaymentParticipant status */
+                status?: (waproto.Message.SplitPaymentParticipant.SplitPaymentStatus|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SplitPaymentParticipant. */
+            type $Shape = waproto.Message.SplitPaymentParticipant.$Properties;
+
+            /** SplitPaymentStatus enum. */
+            enum SplitPaymentStatus {
+
+                /** PENDING value */
+                PENDING = 0,
+
+                /** PAID value */
+                PAID = 1
+            }
+        }
+
+        /**
+         * Properties of a SplitPaymentUpdateMessage.
+         * @deprecated Use waproto.Message.SplitPaymentUpdateMessage.$Properties instead.
+         */
+        interface ISplitPaymentUpdateMessage extends waproto.Message.SplitPaymentUpdateMessage.$Properties {
+        }
+
+        /** Represents a SplitPaymentUpdateMessage. */
+        class SplitPaymentUpdateMessage {
+
+            /**
+             * Constructs a new SplitPaymentUpdateMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.SplitPaymentUpdateMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SplitPaymentUpdateMessage splitId. */
+            splitId?: (string|null);
+
+            /** SplitPaymentUpdateMessage participantJid. */
+            participantJid?: (string|null);
+
+            /**
+             * Creates a new SplitPaymentUpdateMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SplitPaymentUpdateMessage instance
+             */
+            static create(properties: waproto.Message.SplitPaymentUpdateMessage.$Shape): waproto.Message.SplitPaymentUpdateMessage & waproto.Message.SplitPaymentUpdateMessage.$Shape;
+            static create(properties?: waproto.Message.SplitPaymentUpdateMessage.$Properties): waproto.Message.SplitPaymentUpdateMessage;
+
+            /**
+             * Encodes the specified SplitPaymentUpdateMessage message. Does not implicitly {@link waproto.Message.SplitPaymentUpdateMessage.verify|verify} messages.
+             * @param message SplitPaymentUpdateMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.SplitPaymentUpdateMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SplitPaymentUpdateMessage message, length delimited. Does not implicitly {@link waproto.Message.SplitPaymentUpdateMessage.verify|verify} messages.
+             * @param message SplitPaymentUpdateMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.SplitPaymentUpdateMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SplitPaymentUpdateMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.SplitPaymentUpdateMessage & waproto.Message.SplitPaymentUpdateMessage.$Shape} SplitPaymentUpdateMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.SplitPaymentUpdateMessage & waproto.Message.SplitPaymentUpdateMessage.$Shape;
+
+            /**
+             * Decodes a SplitPaymentUpdateMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.SplitPaymentUpdateMessage & waproto.Message.SplitPaymentUpdateMessage.$Shape} SplitPaymentUpdateMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.SplitPaymentUpdateMessage & waproto.Message.SplitPaymentUpdateMessage.$Shape;
+
+            /**
+             * Verifies a SplitPaymentUpdateMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SplitPaymentUpdateMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SplitPaymentUpdateMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.SplitPaymentUpdateMessage;
+
+            /**
+             * Creates a plain object from a SplitPaymentUpdateMessage message. Also converts values to other types if specified.
+             * @param message SplitPaymentUpdateMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.SplitPaymentUpdateMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SplitPaymentUpdateMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SplitPaymentUpdateMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SplitPaymentUpdateMessage {
+
+            /** Properties of a SplitPaymentUpdateMessage. */
+            interface $Properties {
+
+                /** SplitPaymentUpdateMessage splitId */
+                splitId?: (string|null);
+
+                /** SplitPaymentUpdateMessage participantJid */
+                participantJid?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SplitPaymentUpdateMessage. */
+            type $Shape = waproto.Message.SplitPaymentUpdateMessage.$Properties;
+        }
+
+        /**
+         * Properties of a StatusLinkPreviewMetadata.
+         * @deprecated Use waproto.Message.StatusLinkPreviewMetadata.$Properties instead.
+         */
+        interface IStatusLinkPreviewMetadata extends waproto.Message.StatusLinkPreviewMetadata.$Properties {
+        }
+
+        /** Represents a StatusLinkPreviewMetadata. */
+        class StatusLinkPreviewMetadata {
+
+            /**
+             * Constructs a new StatusLinkPreviewMetadata.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.StatusLinkPreviewMetadata.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** StatusLinkPreviewMetadata style. */
+            style?: (waproto.Message.StatusLinkPreviewMetadata.Style|null);
+
+            /**
+             * Creates a new StatusLinkPreviewMetadata instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusLinkPreviewMetadata instance
+             */
+            static create(properties: waproto.Message.StatusLinkPreviewMetadata.$Shape): waproto.Message.StatusLinkPreviewMetadata & waproto.Message.StatusLinkPreviewMetadata.$Shape;
+            static create(properties?: waproto.Message.StatusLinkPreviewMetadata.$Properties): waproto.Message.StatusLinkPreviewMetadata;
+
+            /**
+             * Encodes the specified StatusLinkPreviewMetadata message. Does not implicitly {@link waproto.Message.StatusLinkPreviewMetadata.verify|verify} messages.
+             * @param message StatusLinkPreviewMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.StatusLinkPreviewMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusLinkPreviewMetadata message, length delimited. Does not implicitly {@link waproto.Message.StatusLinkPreviewMetadata.verify|verify} messages.
+             * @param message StatusLinkPreviewMetadata message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.StatusLinkPreviewMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusLinkPreviewMetadata message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.StatusLinkPreviewMetadata & waproto.Message.StatusLinkPreviewMetadata.$Shape} StatusLinkPreviewMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.StatusLinkPreviewMetadata & waproto.Message.StatusLinkPreviewMetadata.$Shape;
+
+            /**
+             * Decodes a StatusLinkPreviewMetadata message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.StatusLinkPreviewMetadata & waproto.Message.StatusLinkPreviewMetadata.$Shape} StatusLinkPreviewMetadata
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.StatusLinkPreviewMetadata & waproto.Message.StatusLinkPreviewMetadata.$Shape;
+
+            /**
+             * Verifies a StatusLinkPreviewMetadata message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusLinkPreviewMetadata message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusLinkPreviewMetadata
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.StatusLinkPreviewMetadata;
+
+            /**
+             * Creates a plain object from a StatusLinkPreviewMetadata message. Also converts values to other types if specified.
+             * @param message StatusLinkPreviewMetadata
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.StatusLinkPreviewMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusLinkPreviewMetadata to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for StatusLinkPreviewMetadata
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace StatusLinkPreviewMetadata {
+
+            /** Properties of a StatusLinkPreviewMetadata. */
+            interface $Properties {
+
+                /** StatusLinkPreviewMetadata style */
+                style?: (waproto.Message.StatusLinkPreviewMetadata.Style|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a StatusLinkPreviewMetadata. */
+            type $Shape = waproto.Message.StatusLinkPreviewMetadata.$Properties;
+
+            /** Style enum. */
+            enum Style {
+
+                /** AUTO value */
+                AUTO = 0,
+
+                /** COMPACT value */
+                COMPACT = 1,
+
+                /** FULL value */
+                FULL = 2,
+
+                /** IMMERSIVE value */
+                IMMERSIVE = 3
+            }
+        }
+
+        /**
          * Properties of a StatusNotificationMessage.
          * @deprecated Use waproto.Message.StatusNotificationMessage.$Properties instead.
          */
@@ -54784,7 +59065,10 @@ export namespace waproto {
                 STATUS_RESHARE = 2,
 
                 /** STATUS_QUESTION_ANSWER_RESHARE value */
-                STATUS_QUESTION_ANSWER_RESHARE = 3
+                STATUS_QUESTION_ANSWER_RESHARE = 3,
+
+                /** STATUS_GROUP_STATUS_REPLY value */
+                STATUS_GROUP_STATUS_REPLY = 4
             }
         }
 
@@ -55277,6 +59561,12 @@ export namespace waproto {
             /** StickerMessage emojis. */
             emojis?: (string|null);
 
+            /** StickerMessage audioMessage. */
+            audioMessage?: (waproto.Message.AudioMessage.$Properties|null);
+
+            /** StickerMessage audio. */
+            audio?: "audioMessage";
+
             /**
              * Creates a new StickerMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -55427,11 +59717,17 @@ export namespace waproto {
                 /** StickerMessage emojis */
                 emojis?: (string|null);
 
+                /** StickerMessage audioMessage */
+                audioMessage?: (waproto.Message.AudioMessage.$Properties|null);
+
+                /** StickerMessage audio */
+                audio?: "audioMessage";
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
 
-            /** Shape of a StickerMessage. */
+            /** Narrowed shape of a StickerMessage. */
             type $Shape = {
               url?: string|null;
               fileSha256?: Uint8Array|null;
@@ -55455,8 +59751,11 @@ export namespace waproto {
               accessibilityLabel?: string|null;
               premium?: number|null;
               emojis?: string|null;
+              audioMessage?: waproto.Message.AudioMessage.$Shape|null;
               $unknowns?: Uint8Array[];
-            };
+            } & (
+              ({ audio?: undefined; audioMessage?: null }|{ audio?: "audioMessage"; audioMessage: waproto.Message.AudioMessage.$Shape })
+            );
         }
 
         /**
@@ -57061,6 +61360,12 @@ export namespace waproto {
             /** VideoMessage videoSourceType. */
             videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
 
+            /** VideoMessage dashManifestUrl. */
+            dashManifestUrl?: (string|null);
+
+            /** VideoMessage smartThumbnailTs. */
+            smartThumbnailTs?: (number|Long|null);
+
             /**
              * Creates a new VideoMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -57235,6 +61540,12 @@ export namespace waproto {
                 /** VideoMessage videoSourceType */
                 videoSourceType?: (waproto.Message.VideoMessage.VideoSourceType|null);
 
+                /** VideoMessage dashManifestUrl */
+                dashManifestUrl?: (string|null);
+
+                /** VideoMessage smartThumbnailTs */
+                smartThumbnailTs?: (number|Long|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -57271,6 +61582,8 @@ export namespace waproto {
               motionPhotoPresentationOffsetMs?: number|Long|null;
               metadataUrl?: string|null;
               videoSourceType?: waproto.Message.VideoMessage.VideoSourceType|null;
+              dashManifestUrl?: string|null;
+              smartThumbnailTs?: number|Long|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -57879,6 +62192,18 @@ export namespace waproto {
         /** MessageContextInfo teeBotMetadata. */
         teeBotMetadata?: (Uint8Array|null);
 
+        /** MessageContextInfo accountEncryptionAttestation. */
+        accountEncryptionAttestation?: (waproto.NonE2EEAttestation.$Properties|null);
+
+        /** MessageContextInfo associatedPrimaryIdentityKey. */
+        associatedPrimaryIdentityKey?: (Uint8Array|null);
+
+        /** MessageContextInfo teeContextAnchorMessageId. */
+        teeContextAnchorMessageId?: (string|null);
+
+        /** MessageContextInfo acp2Setting. */
+        acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -58013,6 +62338,18 @@ export namespace waproto {
 
             /** MessageContextInfo teeBotMetadata */
             teeBotMetadata?: (Uint8Array|null);
+
+            /** MessageContextInfo accountEncryptionAttestation */
+            accountEncryptionAttestation?: (waproto.NonE2EEAttestation.$Properties|null);
+
+            /** MessageContextInfo associatedPrimaryIdentityKey */
+            associatedPrimaryIdentityKey?: (Uint8Array|null);
+
+            /** MessageContextInfo teeContextAnchorMessageId */
+            teeContextAnchorMessageId?: (string|null);
+
+            /** MessageContextInfo acp2Setting */
+            acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -68144,7 +72481,13 @@ export namespace waproto {
                 GOOGLE_PHOTOS = 10,
 
                 /** SOUNDCLOUD value */
-                SOUNDCLOUD = 11
+                SOUNDCLOUD = 11,
+
+                /** SHAZAM value */
+                SHAZAM = 12,
+
+                /** PICSART value */
+                PICSART = 13
             }
         }
 
@@ -68856,7 +73199,13 @@ export namespace waproto {
             NEWSLETTER_STATUS = 9,
 
             /** STATUS_CLOSE_SHARING value */
-            STATUS_CLOSE_SHARING = 10
+            STATUS_CLOSE_SHARING = 10,
+
+            /** PAID_PARTNERSHIP value */
+            PAID_PARTNERSHIP = 11,
+
+            /** USERNAME_STATUS value */
+            USERNAME_STATUS = 12
         }
     }
 
@@ -86272,840 +90621,6 @@ export namespace waproto {
             /** Shape of a Details. */
             type $Shape = waproto.VerifiedNameCertificate.Details.$Properties;
         }
-    }
-
-    /**
-     * Properties of a VerifyKeyTransparencyForUserMandrakeCommand.
-     * @deprecated Use waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties instead.
-     */
-    interface IVerifyKeyTransparencyForUserMandrakeCommand extends waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties {
-    }
-
-    /** Represents a VerifyKeyTransparencyForUserMandrakeCommand. */
-    class VerifyKeyTransparencyForUserMandrakeCommand {
-
-        /**
-         * Constructs a new VerifyKeyTransparencyForUserMandrakeCommand.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** VerifyKeyTransparencyForUserMandrakeCommand lookupResponse. */
-        lookupResponse: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserMandrakeCommand userFbid. */
-        userFbid: (number|Long);
-
-        /** VerifyKeyTransparencyForUserMandrakeCommand auditorSignatureTtlSecs. */
-        auditorSignatureTtlSecs: (number|Long);
-
-        /** VerifyKeyTransparencyForUserMandrakeCommand requestedAuditorList. */
-        requestedAuditorList: string[];
-
-        /** VerifyKeyTransparencyForUserMandrakeCommand isProductionBuild. */
-        isProductionBuild: boolean;
-
-        /** VerifyKeyTransparencyForUserMandrakeCommand localMailboxHead. */
-        localMailboxHead: Uint8Array;
-
-        /**
-         * Creates a new VerifyKeyTransparencyForUserMandrakeCommand instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns VerifyKeyTransparencyForUserMandrakeCommand instance
-         */
-        static create(properties: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
-        static create(properties?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties): waproto.VerifyKeyTransparencyForUserMandrakeCommand;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMandrakeCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMandrakeCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMandrakeCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMandrakeCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMandrakeCommand message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape} VerifyKeyTransparencyForUserMandrakeCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMandrakeCommand message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape} VerifyKeyTransparencyForUserMandrakeCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
-
-        /**
-         * Verifies a VerifyKeyTransparencyForUserMandrakeCommand message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a VerifyKeyTransparencyForUserMandrakeCommand message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns VerifyKeyTransparencyForUserMandrakeCommand
-         */
-        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMandrakeCommand;
-
-        /**
-         * Creates a plain object from a VerifyKeyTransparencyForUserMandrakeCommand message. Also converts values to other types if specified.
-         * @param message VerifyKeyTransparencyForUserMandrakeCommand
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.VerifyKeyTransparencyForUserMandrakeCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this VerifyKeyTransparencyForUserMandrakeCommand to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for VerifyKeyTransparencyForUserMandrakeCommand
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace VerifyKeyTransparencyForUserMandrakeCommand {
-
-        /** Properties of a VerifyKeyTransparencyForUserMandrakeCommand. */
-        interface $Properties {
-
-            /** VerifyKeyTransparencyForUserMandrakeCommand lookupResponse */
-            lookupResponse: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserMandrakeCommand userFbid */
-            userFbid: (number|Long);
-
-            /** VerifyKeyTransparencyForUserMandrakeCommand auditorSignatureTtlSecs */
-            auditorSignatureTtlSecs: (number|Long);
-
-            /** VerifyKeyTransparencyForUserMandrakeCommand requestedAuditorList */
-            requestedAuditorList?: (string[]|null);
-
-            /** VerifyKeyTransparencyForUserMandrakeCommand isProductionBuild */
-            isProductionBuild: boolean;
-
-            /** VerifyKeyTransparencyForUserMandrakeCommand localMailboxHead */
-            localMailboxHead: Uint8Array;
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a VerifyKeyTransparencyForUserMandrakeCommand. */
-        type $Shape = waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties;
-    }
-
-    /**
-     * Properties of a VerifyKeyTransparencyForUserMandrakeResult.
-     * @deprecated Use waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties instead.
-     */
-    interface IVerifyKeyTransparencyForUserMandrakeResult extends waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties {
-    }
-
-    /** Represents a VerifyKeyTransparencyForUserMandrakeResult. */
-    class VerifyKeyTransparencyForUserMandrakeResult {
-
-        /**
-         * Constructs a new VerifyKeyTransparencyForUserMandrakeResult.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** VerifyKeyTransparencyForUserMandrakeResult success. */
-        success?: (boolean|null);
-
-        /** VerifyKeyTransparencyForUserMandrakeResult error. */
-        error?: (string|null);
-
-        /**
-         * Creates a new VerifyKeyTransparencyForUserMandrakeResult instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns VerifyKeyTransparencyForUserMandrakeResult instance
-         */
-        static create(properties: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
-        static create(properties?: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties): waproto.VerifyKeyTransparencyForUserMandrakeResult;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMandrakeResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeResult.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMandrakeResult message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMandrakeResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeResult.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMandrakeResult message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMandrakeResult message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape} VerifyKeyTransparencyForUserMandrakeResult
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMandrakeResult message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape} VerifyKeyTransparencyForUserMandrakeResult
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
-
-        /**
-         * Verifies a VerifyKeyTransparencyForUserMandrakeResult message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a VerifyKeyTransparencyForUserMandrakeResult message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns VerifyKeyTransparencyForUserMandrakeResult
-         */
-        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMandrakeResult;
-
-        /**
-         * Creates a plain object from a VerifyKeyTransparencyForUserMandrakeResult message. Also converts values to other types if specified.
-         * @param message VerifyKeyTransparencyForUserMandrakeResult
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.VerifyKeyTransparencyForUserMandrakeResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this VerifyKeyTransparencyForUserMandrakeResult to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for VerifyKeyTransparencyForUserMandrakeResult
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace VerifyKeyTransparencyForUserMandrakeResult {
-
-        /** Properties of a VerifyKeyTransparencyForUserMandrakeResult. */
-        interface $Properties {
-
-            /** VerifyKeyTransparencyForUserMandrakeResult success */
-            success?: (boolean|null);
-
-            /** VerifyKeyTransparencyForUserMandrakeResult error */
-            error?: (string|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a VerifyKeyTransparencyForUserMandrakeResult. */
-        type $Shape = waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties;
-    }
-
-    /**
-     * Properties of a VerifyKeyTransparencyForUserMinosCommand.
-     * @deprecated Use waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties instead.
-     */
-    interface IVerifyKeyTransparencyForUserMinosCommand extends waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties {
-    }
-
-    /** Represents a VerifyKeyTransparencyForUserMinosCommand. */
-    class VerifyKeyTransparencyForUserMinosCommand {
-
-        /**
-         * Constructs a new VerifyKeyTransparencyForUserMinosCommand.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** VerifyKeyTransparencyForUserMinosCommand lookupResponse. */
-        lookupResponse: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserMinosCommand userFbid. */
-        userFbid: (number|Long);
-
-        /** VerifyKeyTransparencyForUserMinosCommand auditorSignatureTtlSecs. */
-        auditorSignatureTtlSecs: (number|Long);
-
-        /** VerifyKeyTransparencyForUserMinosCommand requestedAuditorList. */
-        requestedAuditorList: string[];
-
-        /** VerifyKeyTransparencyForUserMinosCommand isProductionBuild. */
-        isProductionBuild: boolean;
-
-        /** VerifyKeyTransparencyForUserMinosCommand localEpochHead. */
-        localEpochHead: Uint8Array;
-
-        /**
-         * Creates a new VerifyKeyTransparencyForUserMinosCommand instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns VerifyKeyTransparencyForUserMinosCommand instance
-         */
-        static create(properties: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
-        static create(properties?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties): waproto.VerifyKeyTransparencyForUserMinosCommand;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMinosCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosCommand.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMinosCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMinosCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosCommand.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMinosCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMinosCommand message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape} VerifyKeyTransparencyForUserMinosCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMinosCommand message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape} VerifyKeyTransparencyForUserMinosCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
-
-        /**
-         * Verifies a VerifyKeyTransparencyForUserMinosCommand message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a VerifyKeyTransparencyForUserMinosCommand message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns VerifyKeyTransparencyForUserMinosCommand
-         */
-        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMinosCommand;
-
-        /**
-         * Creates a plain object from a VerifyKeyTransparencyForUserMinosCommand message. Also converts values to other types if specified.
-         * @param message VerifyKeyTransparencyForUserMinosCommand
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.VerifyKeyTransparencyForUserMinosCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this VerifyKeyTransparencyForUserMinosCommand to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for VerifyKeyTransparencyForUserMinosCommand
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace VerifyKeyTransparencyForUserMinosCommand {
-
-        /** Properties of a VerifyKeyTransparencyForUserMinosCommand. */
-        interface $Properties {
-
-            /** VerifyKeyTransparencyForUserMinosCommand lookupResponse */
-            lookupResponse: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserMinosCommand userFbid */
-            userFbid: (number|Long);
-
-            /** VerifyKeyTransparencyForUserMinosCommand auditorSignatureTtlSecs */
-            auditorSignatureTtlSecs: (number|Long);
-
-            /** VerifyKeyTransparencyForUserMinosCommand requestedAuditorList */
-            requestedAuditorList?: (string[]|null);
-
-            /** VerifyKeyTransparencyForUserMinosCommand isProductionBuild */
-            isProductionBuild: boolean;
-
-            /** VerifyKeyTransparencyForUserMinosCommand localEpochHead */
-            localEpochHead: Uint8Array;
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a VerifyKeyTransparencyForUserMinosCommand. */
-        type $Shape = waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties;
-    }
-
-    /**
-     * Properties of a VerifyKeyTransparencyForUserMinosResult.
-     * @deprecated Use waproto.VerifyKeyTransparencyForUserMinosResult.$Properties instead.
-     */
-    interface IVerifyKeyTransparencyForUserMinosResult extends waproto.VerifyKeyTransparencyForUserMinosResult.$Properties {
-    }
-
-    /** Represents a VerifyKeyTransparencyForUserMinosResult. */
-    class VerifyKeyTransparencyForUserMinosResult {
-
-        /**
-         * Constructs a new VerifyKeyTransparencyForUserMinosResult.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** VerifyKeyTransparencyForUserMinosResult success. */
-        success?: (boolean|null);
-
-        /** VerifyKeyTransparencyForUserMinosResult error. */
-        error?: (string|null);
-
-        /**
-         * Creates a new VerifyKeyTransparencyForUserMinosResult instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns VerifyKeyTransparencyForUserMinosResult instance
-         */
-        static create(properties: waproto.VerifyKeyTransparencyForUserMinosResult.$Shape): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
-        static create(properties?: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties): waproto.VerifyKeyTransparencyForUserMinosResult;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMinosResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosResult.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMinosResult message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserMinosResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosResult.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserMinosResult message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMinosResult message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape} VerifyKeyTransparencyForUserMinosResult
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserMinosResult message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape} VerifyKeyTransparencyForUserMinosResult
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
-
-        /**
-         * Verifies a VerifyKeyTransparencyForUserMinosResult message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a VerifyKeyTransparencyForUserMinosResult message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns VerifyKeyTransparencyForUserMinosResult
-         */
-        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMinosResult;
-
-        /**
-         * Creates a plain object from a VerifyKeyTransparencyForUserMinosResult message. Also converts values to other types if specified.
-         * @param message VerifyKeyTransparencyForUserMinosResult
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.VerifyKeyTransparencyForUserMinosResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this VerifyKeyTransparencyForUserMinosResult to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for VerifyKeyTransparencyForUserMinosResult
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace VerifyKeyTransparencyForUserMinosResult {
-
-        /** Properties of a VerifyKeyTransparencyForUserMinosResult. */
-        interface $Properties {
-
-            /** VerifyKeyTransparencyForUserMinosResult success */
-            success?: (boolean|null);
-
-            /** VerifyKeyTransparencyForUserMinosResult error */
-            error?: (string|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a VerifyKeyTransparencyForUserMinosResult. */
-        type $Shape = waproto.VerifyKeyTransparencyForUserMinosResult.$Properties;
-    }
-
-    /**
-     * Properties of a VerifyKeyTransparencyForUserSignalCommand.
-     * @deprecated Use waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties instead.
-     */
-    interface IVerifyKeyTransparencyForUserSignalCommand extends waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties {
-    }
-
-    /** Represents a VerifyKeyTransparencyForUserSignalCommand. */
-    class VerifyKeyTransparencyForUserSignalCommand {
-
-        /**
-         * Constructs a new VerifyKeyTransparencyForUserSignalCommand.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** VerifyKeyTransparencyForUserSignalCommand rootHash. */
-        rootHash: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserSignalCommand currentEpoch. */
-        currentEpoch: (number|Long);
-
-        /** VerifyKeyTransparencyForUserSignalCommand userFbid. */
-        userFbid: (number|Long);
-
-        /** VerifyKeyTransparencyForUserSignalCommand historyProof. */
-        historyProof: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserSignalCommand metaSignature. */
-        metaSignature: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserSignalCommand cloudflareSignature. */
-        cloudflareSignature: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserSignalCommand cloudflareMessage. */
-        cloudflareMessage: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserSignalCommand cloudflarePubKey. */
-        cloudflarePubKey: Uint8Array;
-
-        /** VerifyKeyTransparencyForUserSignalCommand auditorSignatureTtlSecs. */
-        auditorSignatureTtlSecs: (number|Long);
-
-        /** VerifyKeyTransparencyForUserSignalCommand localDeviceKeys. */
-        localDeviceKeys: { [k: string]: Uint8Array };
-
-        /**
-         * Creates a new VerifyKeyTransparencyForUserSignalCommand instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns VerifyKeyTransparencyForUserSignalCommand instance
-         */
-        static create(properties: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
-        static create(properties?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties): waproto.VerifyKeyTransparencyForUserSignalCommand;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserSignalCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalCommand.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserSignalCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserSignalCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalCommand.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserSignalCommand message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserSignalCommand message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape} VerifyKeyTransparencyForUserSignalCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserSignalCommand message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape} VerifyKeyTransparencyForUserSignalCommand
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
-
-        /**
-         * Verifies a VerifyKeyTransparencyForUserSignalCommand message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a VerifyKeyTransparencyForUserSignalCommand message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns VerifyKeyTransparencyForUserSignalCommand
-         */
-        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserSignalCommand;
-
-        /**
-         * Creates a plain object from a VerifyKeyTransparencyForUserSignalCommand message. Also converts values to other types if specified.
-         * @param message VerifyKeyTransparencyForUserSignalCommand
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.VerifyKeyTransparencyForUserSignalCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this VerifyKeyTransparencyForUserSignalCommand to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for VerifyKeyTransparencyForUserSignalCommand
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace VerifyKeyTransparencyForUserSignalCommand {
-
-        /** Properties of a VerifyKeyTransparencyForUserSignalCommand. */
-        interface $Properties {
-
-            /** VerifyKeyTransparencyForUserSignalCommand rootHash */
-            rootHash: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserSignalCommand currentEpoch */
-            currentEpoch: (number|Long);
-
-            /** VerifyKeyTransparencyForUserSignalCommand userFbid */
-            userFbid: (number|Long);
-
-            /** VerifyKeyTransparencyForUserSignalCommand historyProof */
-            historyProof: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserSignalCommand metaSignature */
-            metaSignature: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserSignalCommand cloudflareSignature */
-            cloudflareSignature: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserSignalCommand cloudflareMessage */
-            cloudflareMessage: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserSignalCommand cloudflarePubKey */
-            cloudflarePubKey: Uint8Array;
-
-            /** VerifyKeyTransparencyForUserSignalCommand auditorSignatureTtlSecs */
-            auditorSignatureTtlSecs: (number|Long);
-
-            /** VerifyKeyTransparencyForUserSignalCommand localDeviceKeys */
-            localDeviceKeys?: ({ [k: string]: Uint8Array }|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a VerifyKeyTransparencyForUserSignalCommand. */
-        type $Shape = waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties;
-    }
-
-    /**
-     * Properties of a VerifyKeyTransparencyForUserSignalResult.
-     * @deprecated Use waproto.VerifyKeyTransparencyForUserSignalResult.$Properties instead.
-     */
-    interface IVerifyKeyTransparencyForUserSignalResult extends waproto.VerifyKeyTransparencyForUserSignalResult.$Properties {
-    }
-
-    /** Represents a VerifyKeyTransparencyForUserSignalResult. */
-    class VerifyKeyTransparencyForUserSignalResult {
-
-        /**
-         * Constructs a new VerifyKeyTransparencyForUserSignalResult.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** VerifyKeyTransparencyForUserSignalResult success. */
-        success?: (boolean|null);
-
-        /** VerifyKeyTransparencyForUserSignalResult error. */
-        error?: (string|null);
-
-        /**
-         * Creates a new VerifyKeyTransparencyForUserSignalResult instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns VerifyKeyTransparencyForUserSignalResult instance
-         */
-        static create(properties: waproto.VerifyKeyTransparencyForUserSignalResult.$Shape): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
-        static create(properties?: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties): waproto.VerifyKeyTransparencyForUserSignalResult;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserSignalResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalResult.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserSignalResult message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified VerifyKeyTransparencyForUserSignalResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalResult.verify|verify} messages.
-         * @param message VerifyKeyTransparencyForUserSignalResult message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserSignalResult message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape} VerifyKeyTransparencyForUserSignalResult
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
-
-        /**
-         * Decodes a VerifyKeyTransparencyForUserSignalResult message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape} VerifyKeyTransparencyForUserSignalResult
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
-
-        /**
-         * Verifies a VerifyKeyTransparencyForUserSignalResult message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a VerifyKeyTransparencyForUserSignalResult message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns VerifyKeyTransparencyForUserSignalResult
-         */
-        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserSignalResult;
-
-        /**
-         * Creates a plain object from a VerifyKeyTransparencyForUserSignalResult message. Also converts values to other types if specified.
-         * @param message VerifyKeyTransparencyForUserSignalResult
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.VerifyKeyTransparencyForUserSignalResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this VerifyKeyTransparencyForUserSignalResult to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for VerifyKeyTransparencyForUserSignalResult
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace VerifyKeyTransparencyForUserSignalResult {
-
-        /** Properties of a VerifyKeyTransparencyForUserSignalResult. */
-        interface $Properties {
-
-            /** VerifyKeyTransparencyForUserSignalResult success */
-            success?: (boolean|null);
-
-            /** VerifyKeyTransparencyForUserSignalResult error */
-            error?: (string|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a VerifyKeyTransparencyForUserSignalResult. */
-        type $Shape = waproto.VerifyKeyTransparencyForUserSignalResult.$Properties;
     }
 
     /**
