@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049282529
+/// WhatsApp Version: 2.3000.1049311260
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1935,7 +1935,7 @@ message DecryptMekForDistributionSuccess {
 message DecryptSelfMmkDistributionInput {
     required bytes encryptedMmk = 1;
     required bytes exportRootKey = 2;
-    required bytes mailboxHeadHash = 3;
+    required MessagingMailboxPublicData mmkPublicData = 3;
 }
 
 message DecryptSelfMmkDistributionResult {
@@ -3001,6 +3001,30 @@ message MandrakeOpenInitialEpochResult {
         MandrakeOpenEpochSuccess success = 1;
         string errorMessage = 2;
     }
+}
+
+message MandrakeValidateAndDecryptSelfMmkInput {
+    required MessagingMailboxPublicData newMmk = 1;
+    required bytes signature = 2;
+    optional MessagingMailboxPublicData existingMmk = 3;
+    required bytes exportRootKey = 4;
+    required uint64 epochNumber = 5;
+    required bytes expectedEpochHead = 6;
+    required bytes encryptedMmk = 7;
+    required uint64 version = 8;
+    optional MessagingMailboxPublicData latestStoredMmk = 9;
+}
+
+message MandrakeValidateAndDecryptSelfMmkResult {
+    oneof result {
+        MandrakeValidateAndDecryptSelfMmkSuccess success = 1;
+        string errorMessage = 2;
+    }
+}
+
+message MandrakeValidateAndDecryptSelfMmkSuccess {
+    required bytes mmkSeed = 1;
+    required bytes mailboxHeadHash = 2;
 }
 
 message MandrakeValidateNewMmkFromDetachedDeviceInput {
@@ -5187,6 +5211,7 @@ message MinosCommand {
         MandrakeValidateNewMmkFromDetachedDeviceInput mandrakeValidateNewMmkFromDetachedDevice = 28;
         DeriveMessagingMailboxKeypairsInput deriveMessagingMailboxKeypairs = 29;
         DecryptSelfMmkDistributionInput decryptSelfMmkDistribution = 30;
+        MandrakeValidateAndDecryptSelfMmkInput mandrakeValidateAndDecryptSelfMmk = 31;
     }
 }
 

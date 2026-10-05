@@ -73069,7 +73069,7 @@ $root.waproto = (function() {
          * @typedef {Object} waproto.DecryptSelfMmkDistributionInput.$Properties
          * @property {Uint8Array} encryptedMmk DecryptSelfMmkDistributionInput encryptedMmk
          * @property {Uint8Array} exportRootKey DecryptSelfMmkDistributionInput exportRootKey
-         * @property {Uint8Array} mailboxHeadHash DecryptSelfMmkDistributionInput mailboxHeadHash
+         * @property {waproto.MessagingMailboxPublicData.$Properties} mmkPublicData DecryptSelfMmkDistributionInput mmkPublicData
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -73118,12 +73118,12 @@ $root.waproto = (function() {
         DecryptSelfMmkDistributionInput.prototype.exportRootKey = $util.newBuffer([]);
 
         /**
-         * DecryptSelfMmkDistributionInput mailboxHeadHash.
-         * @member {Uint8Array} mailboxHeadHash
+         * DecryptSelfMmkDistributionInput mmkPublicData.
+         * @member {waproto.MessagingMailboxPublicData.$Properties} mmkPublicData
          * @memberof waproto.DecryptSelfMmkDistributionInput
          * @instance
          */
-        DecryptSelfMmkDistributionInput.prototype.mailboxHeadHash = $util.newBuffer([]);
+        DecryptSelfMmkDistributionInput.prototype.mmkPublicData = null;
 
         /**
          * Creates a new DecryptSelfMmkDistributionInput instance using the specified properties.
@@ -73159,7 +73159,7 @@ $root.waproto = (function() {
                 throw $Error("max depth exceeded");
             writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.encryptedMmk);
             writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.exportRootKey);
-            writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.mailboxHeadHash);
+            $root.waproto.MessagingMailboxPublicData.encode(message.mmkPublicData, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -73232,7 +73232,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.mailboxHeadHash = reader.bytes();
+                        message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkPublicData);
                         continue;
                     }
                 }
@@ -73253,8 +73253,8 @@ $root.waproto = (function() {
                 throw $util.ProtocolError("missing required 'encryptedMmk'", { instance: message });
             if (!$Object.hasOwnProperty.call(message, "exportRootKey"))
                 throw $util.ProtocolError("missing required 'exportRootKey'", { instance: message });
-            if (!$Object.hasOwnProperty.call(message, "mailboxHeadHash"))
-                throw $util.ProtocolError("missing required 'mailboxHeadHash'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "mmkPublicData"))
+                throw $util.ProtocolError("missing required 'mmkPublicData'", { instance: message });
             return message;
         };
 
@@ -73293,8 +73293,11 @@ $root.waproto = (function() {
                 return "encryptedMmk: buffer expected";
             if (!(message.exportRootKey && typeof message.exportRootKey.length === "number" || $util.isString(message.exportRootKey)))
                 return "exportRootKey: buffer expected";
-            if (!(message.mailboxHeadHash && typeof message.mailboxHeadHash.length === "number" || $util.isString(message.mailboxHeadHash)))
-                return "mailboxHeadHash: buffer expected";
+            {
+                var error = $root.waproto.MessagingMailboxPublicData.verify(message.mmkPublicData, _depth + 1);
+                if (error)
+                    return "mmkPublicData." + error;
+            }
             return null;
         };
 
@@ -73326,11 +73329,11 @@ $root.waproto = (function() {
                     $util.base64.decode(object.exportRootKey, message.exportRootKey = $util.newBuffer($util.base64.length(object.exportRootKey)), 0);
                 else if (object.exportRootKey.length >= 0)
                     message.exportRootKey = object.exportRootKey;
-            if (object.mailboxHeadHash != null)
-                if (typeof object.mailboxHeadHash === "string")
-                    $util.base64.decode(object.mailboxHeadHash, message.mailboxHeadHash = $util.newBuffer($util.base64.length(object.mailboxHeadHash)), 0);
-                else if (object.mailboxHeadHash.length >= 0)
-                    message.mailboxHeadHash = object.mailboxHeadHash;
+            if (object.mmkPublicData != null) {
+                if (!$util.isObject(object.mmkPublicData))
+                    throw $TypeError(".waproto.DecryptSelfMmkDistributionInput.mmkPublicData: object expected");
+                message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.fromObject(object.mmkPublicData, _depth + 1);
+            }
             return message;
         };
 
@@ -73366,20 +73369,14 @@ $root.waproto = (function() {
                     if (options.bytes !== $Array)
                         object.exportRootKey = $util.newBuffer(object.exportRootKey);
                 }
-                if (options.bytes === $String)
-                    object.mailboxHeadHash = "";
-                else {
-                    object.mailboxHeadHash = [];
-                    if (options.bytes !== $Array)
-                        object.mailboxHeadHash = $util.newBuffer(object.mailboxHeadHash);
-                }
+                object.mmkPublicData = null;
             }
             if (message.encryptedMmk != null && $Object.hasOwnProperty.call(message, "encryptedMmk"))
                 object.encryptedMmk = options.bytes === $String ? $util.base64.encode(message.encryptedMmk, 0, message.encryptedMmk.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedMmk) : message.encryptedMmk;
             if (message.exportRootKey != null && $Object.hasOwnProperty.call(message, "exportRootKey"))
                 object.exportRootKey = options.bytes === $String ? $util.base64.encode(message.exportRootKey, 0, message.exportRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.exportRootKey) : message.exportRootKey;
-            if (message.mailboxHeadHash != null && $Object.hasOwnProperty.call(message, "mailboxHeadHash"))
-                object.mailboxHeadHash = options.bytes === $String ? $util.base64.encode(message.mailboxHeadHash, 0, message.mailboxHeadHash.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.mailboxHeadHash) : message.mailboxHeadHash;
+            if (message.mmkPublicData != null && $Object.hasOwnProperty.call(message, "mmkPublicData"))
+                object.mmkPublicData = $root.waproto.MessagingMailboxPublicData.toObject(message.mmkPublicData, options, _depth + 1);
             return object;
         };
 
@@ -119860,6 +119857,1234 @@ $root.waproto = (function() {
         };
 
         return MandrakeOpenInitialEpochResult;
+    })();
+
+    waproto.MandrakeValidateAndDecryptSelfMmkInput = (function() {
+
+        /**
+         * Properties of a MandrakeValidateAndDecryptSelfMmkInput.
+         * @typedef {Object} waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties
+         * @property {waproto.MessagingMailboxPublicData.$Properties} newMmk MandrakeValidateAndDecryptSelfMmkInput newMmk
+         * @property {Uint8Array} signature MandrakeValidateAndDecryptSelfMmkInput signature
+         * @property {waproto.MessagingMailboxPublicData.$Properties|null} [existingMmk] MandrakeValidateAndDecryptSelfMmkInput existingMmk
+         * @property {Uint8Array} exportRootKey MandrakeValidateAndDecryptSelfMmkInput exportRootKey
+         * @property {number|Long} epochNumber MandrakeValidateAndDecryptSelfMmkInput epochNumber
+         * @property {Uint8Array} expectedEpochHead MandrakeValidateAndDecryptSelfMmkInput expectedEpochHead
+         * @property {Uint8Array} encryptedMmk MandrakeValidateAndDecryptSelfMmkInput encryptedMmk
+         * @property {number|Long} version MandrakeValidateAndDecryptSelfMmkInput version
+         * @property {waproto.MessagingMailboxPublicData.$Properties|null} [latestStoredMmk] MandrakeValidateAndDecryptSelfMmkInput latestStoredMmk
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a MandrakeValidateAndDecryptSelfMmkInput.
+         * @memberof waproto
+         * @interface IMandrakeValidateAndDecryptSelfMmkInput
+         * @augments waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties
+         * @deprecated Use waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties instead.
+         */
+
+        /**
+         * Shape of a MandrakeValidateAndDecryptSelfMmkInput.
+         * @typedef {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties} waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape
+         */
+
+        /**
+         * Constructs a new MandrakeValidateAndDecryptSelfMmkInput.
+         * @memberof waproto
+         * @classdesc Represents a MandrakeValidateAndDecryptSelfMmkInput.
+         * @constructor
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var MandrakeValidateAndDecryptSelfMmkInput = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput newMmk.
+         * @member {waproto.MessagingMailboxPublicData.$Properties} newMmk
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.newMmk = null;
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput signature.
+         * @member {Uint8Array} signature
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.signature = $util.newBuffer([]);
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput existingMmk.
+         * @member {waproto.MessagingMailboxPublicData.$Properties|null|undefined} existingMmk
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.existingMmk = null;
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput exportRootKey.
+         * @member {Uint8Array} exportRootKey
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.exportRootKey = $util.newBuffer([]);
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput epochNumber.
+         * @member {number|Long} epochNumber
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.epochNumber = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput expectedEpochHead.
+         * @member {Uint8Array} expectedEpochHead
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.expectedEpochHead = $util.newBuffer([]);
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput encryptedMmk.
+         * @member {Uint8Array} encryptedMmk
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.encryptedMmk = $util.newBuffer([]);
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput version.
+         * @member {number|Long} version
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.version = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkInput latestStoredMmk.
+         * @member {waproto.MessagingMailboxPublicData.$Properties|null|undefined} latestStoredMmk
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.latestStoredMmk = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MandrakeValidateAndDecryptSelfMmkInput.prototype, "_existingMmk", {
+            get: $util.oneOfGetter($oneOfFields = ["existingMmk"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MandrakeValidateAndDecryptSelfMmkInput.prototype, "_latestStoredMmk", {
+            get: $util.oneOfGetter($oneOfFields = ["latestStoredMmk"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new MandrakeValidateAndDecryptSelfMmkInput instance using the specified properties.
+         * @function create
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties=} [properties] Properties to set
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkInput} MandrakeValidateAndDecryptSelfMmkInput instance
+         * @type {{
+         *   (properties: waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape): waproto.MandrakeValidateAndDecryptSelfMmkInput & waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape;
+         *   (properties?: waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties): waproto.MandrakeValidateAndDecryptSelfMmkInput;
+         * }}
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.create = function(properties) {
+            return new MandrakeValidateAndDecryptSelfMmkInput(properties);
+        };
+
+        /**
+         * Encodes the specified MandrakeValidateAndDecryptSelfMmkInput message. Does not implicitly {@link waproto.MandrakeValidateAndDecryptSelfMmkInput.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties} message MandrakeValidateAndDecryptSelfMmkInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            $root.waproto.MessagingMailboxPublicData.encode(message.newMmk, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.signature);
+            if (message.existingMmk != null && $Object.hasOwnProperty.call(message, "existingMmk"))
+                $root.waproto.MessagingMailboxPublicData.encode(message.existingMmk, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+            writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.exportRootKey);
+            writer.uint32(/* id 5, wireType 0 =*/40).uint64(message.epochNumber);
+            writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.expectedEpochHead);
+            writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.encryptedMmk);
+            writer.uint32(/* id 8, wireType 0 =*/64).uint64(message.version);
+            if (message.latestStoredMmk != null && $Object.hasOwnProperty.call(message, "latestStoredMmk"))
+                $root.waproto.MessagingMailboxPublicData.encode(message.latestStoredMmk, writer.uint32(/* id 9, wireType 2 =*/74).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MandrakeValidateAndDecryptSelfMmkInput message, length delimited. Does not implicitly {@link waproto.MandrakeValidateAndDecryptSelfMmkInput.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties} message MandrakeValidateAndDecryptSelfMmkInput message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a MandrakeValidateAndDecryptSelfMmkInput message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkInput & waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape} MandrakeValidateAndDecryptSelfMmkInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.MandrakeValidateAndDecryptSelfMmkInput();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.newMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newMmk);
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.signature = reader.bytes();
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.existingMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.existingMmk);
+                        message._existingMmk = "existingMmk";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.exportRootKey = reader.bytes();
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.epochNumber = reader.uint64();
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.expectedEpochHead = reader.bytes();
+                        continue;
+                    }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedMmk = reader.bytes();
+                        continue;
+                    }
+                case 8: {
+                        if (wireType !== 0)
+                            break;
+                        message.version = reader.uint64();
+                        continue;
+                    }
+                case 9: {
+                        if (wireType !== 2)
+                            break;
+                        message.latestStoredMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.latestStoredMmk);
+                        message._latestStoredMmk = "latestStoredMmk";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "newMmk"))
+                throw $util.ProtocolError("missing required 'newMmk'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "signature"))
+                throw $util.ProtocolError("missing required 'signature'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "exportRootKey"))
+                throw $util.ProtocolError("missing required 'exportRootKey'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "epochNumber"))
+                throw $util.ProtocolError("missing required 'epochNumber'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "expectedEpochHead"))
+                throw $util.ProtocolError("missing required 'expectedEpochHead'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "encryptedMmk"))
+                throw $util.ProtocolError("missing required 'encryptedMmk'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "version"))
+                throw $util.ProtocolError("missing required 'version'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a MandrakeValidateAndDecryptSelfMmkInput message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkInput & waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape} MandrakeValidateAndDecryptSelfMmkInput
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MandrakeValidateAndDecryptSelfMmkInput message.
+         * @function verify
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            {
+                var error = $root.waproto.MessagingMailboxPublicData.verify(message.newMmk, _depth + 1);
+                if (error)
+                    return "newMmk." + error;
+            }
+            if (!(message.signature && typeof message.signature.length === "number" || $util.isString(message.signature)))
+                return "signature: buffer expected";
+            if (message.existingMmk != null && $Object.hasOwnProperty.call(message, "existingMmk")) {
+                properties._existingMmk = 1;
+                {
+                    var error = $root.waproto.MessagingMailboxPublicData.verify(message.existingMmk, _depth + 1);
+                    if (error)
+                        return "existingMmk." + error;
+                }
+            }
+            if (!(message.exportRootKey && typeof message.exportRootKey.length === "number" || $util.isString(message.exportRootKey)))
+                return "exportRootKey: buffer expected";
+            if (!$util.isInteger(message.epochNumber) && !(message.epochNumber && $util.isInteger(message.epochNumber.low) && $util.isInteger(message.epochNumber.high)))
+                return "epochNumber: integer|Long expected";
+            if (!(message.expectedEpochHead && typeof message.expectedEpochHead.length === "number" || $util.isString(message.expectedEpochHead)))
+                return "expectedEpochHead: buffer expected";
+            if (!(message.encryptedMmk && typeof message.encryptedMmk.length === "number" || $util.isString(message.encryptedMmk)))
+                return "encryptedMmk: buffer expected";
+            if (!$util.isInteger(message.version) && !(message.version && $util.isInteger(message.version.low) && $util.isInteger(message.version.high)))
+                return "version: integer|Long expected";
+            if (message.latestStoredMmk != null && $Object.hasOwnProperty.call(message, "latestStoredMmk")) {
+                properties._latestStoredMmk = 1;
+                {
+                    var error = $root.waproto.MessagingMailboxPublicData.verify(message.latestStoredMmk, _depth + 1);
+                    if (error)
+                        return "latestStoredMmk." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a MandrakeValidateAndDecryptSelfMmkInput message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkInput} MandrakeValidateAndDecryptSelfMmkInput
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.MandrakeValidateAndDecryptSelfMmkInput)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkInput: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.MandrakeValidateAndDecryptSelfMmkInput();
+            if (object.newMmk != null) {
+                if (!$util.isObject(object.newMmk))
+                    throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkInput.newMmk: object expected");
+                message.newMmk = $root.waproto.MessagingMailboxPublicData.fromObject(object.newMmk, _depth + 1);
+            }
+            if (object.signature != null)
+                if (typeof object.signature === "string")
+                    $util.base64.decode(object.signature, message.signature = $util.newBuffer($util.base64.length(object.signature)), 0);
+                else if (object.signature.length >= 0)
+                    message.signature = object.signature;
+            if (object.existingMmk != null) {
+                if (!$util.isObject(object.existingMmk))
+                    throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkInput.existingMmk: object expected");
+                message.existingMmk = $root.waproto.MessagingMailboxPublicData.fromObject(object.existingMmk, _depth + 1);
+            }
+            if (object.exportRootKey != null)
+                if (typeof object.exportRootKey === "string")
+                    $util.base64.decode(object.exportRootKey, message.exportRootKey = $util.newBuffer($util.base64.length(object.exportRootKey)), 0);
+                else if (object.exportRootKey.length >= 0)
+                    message.exportRootKey = object.exportRootKey;
+            if (object.epochNumber != null)
+                if ($util.Long)
+                    message.epochNumber = $util.Long.fromValue(object.epochNumber, true);
+                else if (typeof object.epochNumber === "string")
+                    message.epochNumber = $parseInt(object.epochNumber, 10);
+                else if (typeof object.epochNumber === "number")
+                    message.epochNumber = object.epochNumber;
+                else if (typeof object.epochNumber === "object")
+                    message.epochNumber = new $util.LongBits(object.epochNumber.low >>> 0, object.epochNumber.high >>> 0).toNumber(true);
+            if (object.expectedEpochHead != null)
+                if (typeof object.expectedEpochHead === "string")
+                    $util.base64.decode(object.expectedEpochHead, message.expectedEpochHead = $util.newBuffer($util.base64.length(object.expectedEpochHead)), 0);
+                else if (object.expectedEpochHead.length >= 0)
+                    message.expectedEpochHead = object.expectedEpochHead;
+            if (object.encryptedMmk != null)
+                if (typeof object.encryptedMmk === "string")
+                    $util.base64.decode(object.encryptedMmk, message.encryptedMmk = $util.newBuffer($util.base64.length(object.encryptedMmk)), 0);
+                else if (object.encryptedMmk.length >= 0)
+                    message.encryptedMmk = object.encryptedMmk;
+            if (object.version != null)
+                if ($util.Long)
+                    message.version = $util.Long.fromValue(object.version, true);
+                else if (typeof object.version === "string")
+                    message.version = $parseInt(object.version, 10);
+                else if (typeof object.version === "number")
+                    message.version = object.version;
+                else if (typeof object.version === "object")
+                    message.version = new $util.LongBits(object.version.low >>> 0, object.version.high >>> 0).toNumber(true);
+            if (object.latestStoredMmk != null) {
+                if (!$util.isObject(object.latestStoredMmk))
+                    throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkInput.latestStoredMmk: object expected");
+                message.latestStoredMmk = $root.waproto.MessagingMailboxPublicData.fromObject(object.latestStoredMmk, _depth + 1);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MandrakeValidateAndDecryptSelfMmkInput message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkInput} message MandrakeValidateAndDecryptSelfMmkInput
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                object.newMmk = null;
+                if (options.bytes === $String)
+                    object.signature = "";
+                else {
+                    object.signature = [];
+                    if (options.bytes !== $Array)
+                        object.signature = $util.newBuffer(object.signature);
+                }
+                if (options.bytes === $String)
+                    object.exportRootKey = "";
+                else {
+                    object.exportRootKey = [];
+                    if (options.bytes !== $Array)
+                        object.exportRootKey = $util.newBuffer(object.exportRootKey);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.epochNumber = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.epochNumber = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+                if (options.bytes === $String)
+                    object.expectedEpochHead = "";
+                else {
+                    object.expectedEpochHead = [];
+                    if (options.bytes !== $Array)
+                        object.expectedEpochHead = $util.newBuffer(object.expectedEpochHead);
+                }
+                if (options.bytes === $String)
+                    object.encryptedMmk = "";
+                else {
+                    object.encryptedMmk = [];
+                    if (options.bytes !== $Array)
+                        object.encryptedMmk = $util.newBuffer(object.encryptedMmk);
+                }
+                if ($util.Long) {
+                    var long = new $util.Long(0, 0, true);
+                    object.version = options.longs === $String ? long.toString() : options.longs === $Number ? long.toNumber() : typeof $BigInt !== "undefined" && options.longs === $BigInt ? long.toBigInt() : long;
+                } else
+                    object.version = options.longs === $String ? "0" : typeof $BigInt !== "undefined" && options.longs === $BigInt ? $BigInt("0") : 0;
+            }
+            if (message.newMmk != null && $Object.hasOwnProperty.call(message, "newMmk"))
+                object.newMmk = $root.waproto.MessagingMailboxPublicData.toObject(message.newMmk, options, _depth + 1);
+            if (message.signature != null && $Object.hasOwnProperty.call(message, "signature"))
+                object.signature = options.bytes === $String ? $util.base64.encode(message.signature, 0, message.signature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.signature) : message.signature;
+            if (message.existingMmk != null && $Object.hasOwnProperty.call(message, "existingMmk"))
+                object.existingMmk = $root.waproto.MessagingMailboxPublicData.toObject(message.existingMmk, options, _depth + 1);
+            if (message.exportRootKey != null && $Object.hasOwnProperty.call(message, "exportRootKey"))
+                object.exportRootKey = options.bytes === $String ? $util.base64.encode(message.exportRootKey, 0, message.exportRootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.exportRootKey) : message.exportRootKey;
+            if (message.epochNumber != null && $Object.hasOwnProperty.call(message, "epochNumber"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.epochNumber = typeof message.epochNumber === "number" ? $BigInt(message.epochNumber) : $util.Long.fromBits(message.epochNumber.low >>> 0, message.epochNumber.high >>> 0, true).toBigInt();
+                else if (typeof message.epochNumber === "number")
+                    object.epochNumber = options.longs === $String ? $String(message.epochNumber) : message.epochNumber;
+                else
+                    object.epochNumber = options.longs === $String ? $util.Long.prototype.toString.call(message.epochNumber) : options.longs === $Number ? new $util.LongBits(message.epochNumber.low >>> 0, message.epochNumber.high >>> 0).toNumber(true) : message.epochNumber;
+            if (message.expectedEpochHead != null && $Object.hasOwnProperty.call(message, "expectedEpochHead"))
+                object.expectedEpochHead = options.bytes === $String ? $util.base64.encode(message.expectedEpochHead, 0, message.expectedEpochHead.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.expectedEpochHead) : message.expectedEpochHead;
+            if (message.encryptedMmk != null && $Object.hasOwnProperty.call(message, "encryptedMmk"))
+                object.encryptedMmk = options.bytes === $String ? $util.base64.encode(message.encryptedMmk, 0, message.encryptedMmk.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedMmk) : message.encryptedMmk;
+            if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.version = typeof message.version === "number" ? $BigInt(message.version) : $util.Long.fromBits(message.version.low >>> 0, message.version.high >>> 0, true).toBigInt();
+                else if (typeof message.version === "number")
+                    object.version = options.longs === $String ? $String(message.version) : message.version;
+                else
+                    object.version = options.longs === $String ? $util.Long.prototype.toString.call(message.version) : options.longs === $Number ? new $util.LongBits(message.version.low >>> 0, message.version.high >>> 0).toNumber(true) : message.version;
+            if (message.latestStoredMmk != null && $Object.hasOwnProperty.call(message, "latestStoredMmk"))
+                object.latestStoredMmk = $root.waproto.MessagingMailboxPublicData.toObject(message.latestStoredMmk, options, _depth + 1);
+            return object;
+        };
+
+        /**
+         * Converts this MandrakeValidateAndDecryptSelfMmkInput to JSON.
+         * @function toJSON
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.prototype.toJSON = function() {
+            return MandrakeValidateAndDecryptSelfMmkInput.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for MandrakeValidateAndDecryptSelfMmkInput
+         * @function getTypeUrl
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkInput
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        MandrakeValidateAndDecryptSelfMmkInput.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.MandrakeValidateAndDecryptSelfMmkInput";
+        };
+
+        return MandrakeValidateAndDecryptSelfMmkInput;
+    })();
+
+    waproto.MandrakeValidateAndDecryptSelfMmkResult = (function() {
+
+        /**
+         * Properties of a MandrakeValidateAndDecryptSelfMmkResult.
+         * @typedef {Object} waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties
+         * @property {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties|null} [success] MandrakeValidateAndDecryptSelfMmkResult success
+         * @property {string|null} [errorMessage] MandrakeValidateAndDecryptSelfMmkResult errorMessage
+         * @property {"success"|"errorMessage"} [result] MandrakeValidateAndDecryptSelfMmkResult result
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a MandrakeValidateAndDecryptSelfMmkResult.
+         * @memberof waproto
+         * @interface IMandrakeValidateAndDecryptSelfMmkResult
+         * @augments waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties
+         * @deprecated Use waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties instead.
+         */
+
+        /**
+         * Narrowed shape of a MandrakeValidateAndDecryptSelfMmkResult.
+         * @typedef {{
+         *   success?: waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape|null;
+         *   errorMessage?: string|null;
+         *   $unknowns?: Array.<Uint8Array>;
+         * } & (
+         *   ({ result?: undefined; success?: null; errorMessage?: null }|{ result?: "success"; success: waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape; errorMessage?: null }|{ result?: "errorMessage"; success?: null; errorMessage: string })
+         * )} waproto.MandrakeValidateAndDecryptSelfMmkResult.$Shape
+         */
+
+        /**
+         * Constructs a new MandrakeValidateAndDecryptSelfMmkResult.
+         * @memberof waproto
+         * @classdesc Represents a MandrakeValidateAndDecryptSelfMmkResult.
+         * @constructor
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var MandrakeValidateAndDecryptSelfMmkResult = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkResult success.
+         * @member {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties|null|undefined} success
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.prototype.success = null;
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkResult errorMessage.
+         * @member {string|null|undefined} errorMessage
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.prototype.errorMessage = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkResult result.
+         * @member {"success"|"errorMessage"|undefined} result
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @instance
+         */
+        $Object.defineProperty(MandrakeValidateAndDecryptSelfMmkResult.prototype, "result", {
+            get: $util.oneOfGetter($oneOfFields = ["success", "errorMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new MandrakeValidateAndDecryptSelfMmkResult instance using the specified properties.
+         * @function create
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties=} [properties] Properties to set
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkResult} MandrakeValidateAndDecryptSelfMmkResult instance
+         * @type {{
+         *   (properties: waproto.MandrakeValidateAndDecryptSelfMmkResult.$Shape): waproto.MandrakeValidateAndDecryptSelfMmkResult & waproto.MandrakeValidateAndDecryptSelfMmkResult.$Shape;
+         *   (properties?: waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties): waproto.MandrakeValidateAndDecryptSelfMmkResult;
+         * }}
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.create = function(properties) {
+            return new MandrakeValidateAndDecryptSelfMmkResult(properties);
+        };
+
+        /**
+         * Encodes the specified MandrakeValidateAndDecryptSelfMmkResult message. Does not implicitly {@link waproto.MandrakeValidateAndDecryptSelfMmkResult.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties} message MandrakeValidateAndDecryptSelfMmkResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success"))
+                $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.encode(message.success, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.errorMessage != null && $Object.hasOwnProperty.call(message, "errorMessage"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.errorMessage);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MandrakeValidateAndDecryptSelfMmkResult message, length delimited. Does not implicitly {@link waproto.MandrakeValidateAndDecryptSelfMmkResult.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkResult.$Properties} message MandrakeValidateAndDecryptSelfMmkResult message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a MandrakeValidateAndDecryptSelfMmkResult message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkResult & waproto.MandrakeValidateAndDecryptSelfMmkResult.$Shape} MandrakeValidateAndDecryptSelfMmkResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.MandrakeValidateAndDecryptSelfMmkResult();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.success = $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.result = "success";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.errorMessage = reader.stringVerify();
+                        message.result = "errorMessage";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a MandrakeValidateAndDecryptSelfMmkResult message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkResult & waproto.MandrakeValidateAndDecryptSelfMmkResult.$Shape} MandrakeValidateAndDecryptSelfMmkResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MandrakeValidateAndDecryptSelfMmkResult message.
+         * @function verify
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success")) {
+                properties.result = 1;
+                {
+                    var error = $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.verify(message.success, _depth + 1);
+                    if (error)
+                        return "success." + error;
+                }
+            }
+            if (message.errorMessage != null && $Object.hasOwnProperty.call(message, "errorMessage")) {
+                if (properties.result === 1)
+                    return "result: multiple values";
+                properties.result = 1;
+                if (!$util.isString(message.errorMessage))
+                    return "errorMessage: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a MandrakeValidateAndDecryptSelfMmkResult message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkResult} MandrakeValidateAndDecryptSelfMmkResult
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.MandrakeValidateAndDecryptSelfMmkResult)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkResult: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.MandrakeValidateAndDecryptSelfMmkResult();
+            if (object.success != null) {
+                if (!$util.isObject(object.success))
+                    throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkResult.success: object expected");
+                message.success = $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.fromObject(object.success, _depth + 1);
+            }
+            if (object.errorMessage != null)
+                message.errorMessage = $String(object.errorMessage);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MandrakeValidateAndDecryptSelfMmkResult message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkResult} message MandrakeValidateAndDecryptSelfMmkResult
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.success != null && $Object.hasOwnProperty.call(message, "success")) {
+                object.success = $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.toObject(message.success, options, _depth + 1);
+                if (options.oneofs)
+                    object.result = "success";
+            }
+            if (message.errorMessage != null && $Object.hasOwnProperty.call(message, "errorMessage")) {
+                object.errorMessage = message.errorMessage;
+                if (options.oneofs)
+                    object.result = "errorMessage";
+            }
+            return object;
+        };
+
+        /**
+         * Converts this MandrakeValidateAndDecryptSelfMmkResult to JSON.
+         * @function toJSON
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.prototype.toJSON = function() {
+            return MandrakeValidateAndDecryptSelfMmkResult.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for MandrakeValidateAndDecryptSelfMmkResult
+         * @function getTypeUrl
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkResult
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        MandrakeValidateAndDecryptSelfMmkResult.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.MandrakeValidateAndDecryptSelfMmkResult";
+        };
+
+        return MandrakeValidateAndDecryptSelfMmkResult;
+    })();
+
+    waproto.MandrakeValidateAndDecryptSelfMmkSuccess = (function() {
+
+        /**
+         * Properties of a MandrakeValidateAndDecryptSelfMmkSuccess.
+         * @typedef {Object} waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties
+         * @property {Uint8Array} mmkSeed MandrakeValidateAndDecryptSelfMmkSuccess mmkSeed
+         * @property {Uint8Array} mailboxHeadHash MandrakeValidateAndDecryptSelfMmkSuccess mailboxHeadHash
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a MandrakeValidateAndDecryptSelfMmkSuccess.
+         * @memberof waproto
+         * @interface IMandrakeValidateAndDecryptSelfMmkSuccess
+         * @augments waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties
+         * @deprecated Use waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties instead.
+         */
+
+        /**
+         * Shape of a MandrakeValidateAndDecryptSelfMmkSuccess.
+         * @typedef {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties} waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape
+         */
+
+        /**
+         * Constructs a new MandrakeValidateAndDecryptSelfMmkSuccess.
+         * @memberof waproto
+         * @classdesc Represents a MandrakeValidateAndDecryptSelfMmkSuccess.
+         * @constructor
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var MandrakeValidateAndDecryptSelfMmkSuccess = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkSuccess mmkSeed.
+         * @member {Uint8Array} mmkSeed
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.prototype.mmkSeed = $util.newBuffer([]);
+
+        /**
+         * MandrakeValidateAndDecryptSelfMmkSuccess mailboxHeadHash.
+         * @member {Uint8Array} mailboxHeadHash
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @instance
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.prototype.mailboxHeadHash = $util.newBuffer([]);
+
+        /**
+         * Creates a new MandrakeValidateAndDecryptSelfMmkSuccess instance using the specified properties.
+         * @function create
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties=} [properties] Properties to set
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkSuccess} MandrakeValidateAndDecryptSelfMmkSuccess instance
+         * @type {{
+         *   (properties: waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape): waproto.MandrakeValidateAndDecryptSelfMmkSuccess & waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape;
+         *   (properties?: waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties): waproto.MandrakeValidateAndDecryptSelfMmkSuccess;
+         * }}
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.create = function(properties) {
+            return new MandrakeValidateAndDecryptSelfMmkSuccess(properties);
+        };
+
+        /**
+         * Encodes the specified MandrakeValidateAndDecryptSelfMmkSuccess message. Does not implicitly {@link waproto.MandrakeValidateAndDecryptSelfMmkSuccess.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties} message MandrakeValidateAndDecryptSelfMmkSuccess message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.mmkSeed);
+            writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.mailboxHeadHash);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MandrakeValidateAndDecryptSelfMmkSuccess message, length delimited. Does not implicitly {@link waproto.MandrakeValidateAndDecryptSelfMmkSuccess.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Properties} message MandrakeValidateAndDecryptSelfMmkSuccess message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a MandrakeValidateAndDecryptSelfMmkSuccess message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkSuccess & waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape} MandrakeValidateAndDecryptSelfMmkSuccess
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.mmkSeed = reader.bytes();
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.mailboxHeadHash = reader.bytes();
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            if (!$Object.hasOwnProperty.call(message, "mmkSeed"))
+                throw $util.ProtocolError("missing required 'mmkSeed'", { instance: message });
+            if (!$Object.hasOwnProperty.call(message, "mailboxHeadHash"))
+                throw $util.ProtocolError("missing required 'mailboxHeadHash'", { instance: message });
+            return message;
+        };
+
+        /**
+         * Decodes a MandrakeValidateAndDecryptSelfMmkSuccess message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkSuccess & waproto.MandrakeValidateAndDecryptSelfMmkSuccess.$Shape} MandrakeValidateAndDecryptSelfMmkSuccess
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a MandrakeValidateAndDecryptSelfMmkSuccess message.
+         * @function verify
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            if (!(message.mmkSeed && typeof message.mmkSeed.length === "number" || $util.isString(message.mmkSeed)))
+                return "mmkSeed: buffer expected";
+            if (!(message.mailboxHeadHash && typeof message.mailboxHeadHash.length === "number" || $util.isString(message.mailboxHeadHash)))
+                return "mailboxHeadHash: buffer expected";
+            return null;
+        };
+
+        /**
+         * Creates a MandrakeValidateAndDecryptSelfMmkSuccess message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.MandrakeValidateAndDecryptSelfMmkSuccess} MandrakeValidateAndDecryptSelfMmkSuccess
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.MandrakeValidateAndDecryptSelfMmkSuccess: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess();
+            if (object.mmkSeed != null)
+                if (typeof object.mmkSeed === "string")
+                    $util.base64.decode(object.mmkSeed, message.mmkSeed = $util.newBuffer($util.base64.length(object.mmkSeed)), 0);
+                else if (object.mmkSeed.length >= 0)
+                    message.mmkSeed = object.mmkSeed;
+            if (object.mailboxHeadHash != null)
+                if (typeof object.mailboxHeadHash === "string")
+                    $util.base64.decode(object.mailboxHeadHash, message.mailboxHeadHash = $util.newBuffer($util.base64.length(object.mailboxHeadHash)), 0);
+                else if (object.mailboxHeadHash.length >= 0)
+                    message.mailboxHeadHash = object.mailboxHeadHash;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MandrakeValidateAndDecryptSelfMmkSuccess message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {waproto.MandrakeValidateAndDecryptSelfMmkSuccess} message MandrakeValidateAndDecryptSelfMmkSuccess
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.defaults) {
+                if (options.bytes === $String)
+                    object.mmkSeed = "";
+                else {
+                    object.mmkSeed = [];
+                    if (options.bytes !== $Array)
+                        object.mmkSeed = $util.newBuffer(object.mmkSeed);
+                }
+                if (options.bytes === $String)
+                    object.mailboxHeadHash = "";
+                else {
+                    object.mailboxHeadHash = [];
+                    if (options.bytes !== $Array)
+                        object.mailboxHeadHash = $util.newBuffer(object.mailboxHeadHash);
+                }
+            }
+            if (message.mmkSeed != null && $Object.hasOwnProperty.call(message, "mmkSeed"))
+                object.mmkSeed = options.bytes === $String ? $util.base64.encode(message.mmkSeed, 0, message.mmkSeed.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.mmkSeed) : message.mmkSeed;
+            if (message.mailboxHeadHash != null && $Object.hasOwnProperty.call(message, "mailboxHeadHash"))
+                object.mailboxHeadHash = options.bytes === $String ? $util.base64.encode(message.mailboxHeadHash, 0, message.mailboxHeadHash.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.mailboxHeadHash) : message.mailboxHeadHash;
+            return object;
+        };
+
+        /**
+         * Converts this MandrakeValidateAndDecryptSelfMmkSuccess to JSON.
+         * @function toJSON
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.prototype.toJSON = function() {
+            return MandrakeValidateAndDecryptSelfMmkSuccess.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for MandrakeValidateAndDecryptSelfMmkSuccess
+         * @function getTypeUrl
+         * @memberof waproto.MandrakeValidateAndDecryptSelfMmkSuccess
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        MandrakeValidateAndDecryptSelfMmkSuccess.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.MandrakeValidateAndDecryptSelfMmkSuccess";
+        };
+
+        return MandrakeValidateAndDecryptSelfMmkSuccess;
     })();
 
     waproto.MandrakeValidateNewMmkFromDetachedDeviceInput = (function() {
@@ -214180,7 +215405,8 @@ $root.waproto = (function() {
          * @property {waproto.MandrakeValidateNewMmkFromDetachedDeviceInput.$Properties|null} [mandrakeValidateNewMmkFromDetachedDevice] MinosCommand mandrakeValidateNewMmkFromDetachedDevice
          * @property {waproto.DeriveMessagingMailboxKeypairsInput.$Properties|null} [deriveMessagingMailboxKeypairs] MinosCommand deriveMessagingMailboxKeypairs
          * @property {waproto.DecryptSelfMmkDistributionInput.$Properties|null} [decryptSelfMmkDistribution] MinosCommand decryptSelfMmkDistribution
-         * @property {"encryptAndSignMessage"|"decryptAndVerifyMessage"|"generateMek"|"generateMekRosterHash"|"encryptMekForDistribution"|"decryptMekForDistribution"|"encryptMeksForDistributionFromTransportSender"|"decryptMekForDistributionFromTransportSender"|"wrapTransportSigningPublicKey"|"wrapTransportSigningSecretKey"|"deriveMailboxSigningKeypair"|"deriveMailboxEncryptionKeypair"|"deriveMailboxAuthKeypair"|"deriveAttachmentAccessTokenSecret"|"deriveAttachmentPrimaryKeySecret"|"minosOpenInitialEpoch"|"minosOpenEpoch"|"minosValidateEpoch"|"minosVerifySingleEpoch"|"minosThreadIdFromOneToOneThread"|"minosThreadIdFromActThreadId"|"mandrakeOpenEpoch"|"mandrakeEncryptMek"|"mandrakeDecryptMek"|"mandrakeOpenInitialEpoch"|"mandrakeValidateNewMmkFromMailbox"|"mandrakeValidateNewMmkFromDetachedDevice"|"deriveMessagingMailboxKeypairs"|"decryptSelfMmkDistribution"} [commandInput] MinosCommand commandInput
+         * @property {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties|null} [mandrakeValidateAndDecryptSelfMmk] MinosCommand mandrakeValidateAndDecryptSelfMmk
+         * @property {"encryptAndSignMessage"|"decryptAndVerifyMessage"|"generateMek"|"generateMekRosterHash"|"encryptMekForDistribution"|"decryptMekForDistribution"|"encryptMeksForDistributionFromTransportSender"|"decryptMekForDistributionFromTransportSender"|"wrapTransportSigningPublicKey"|"wrapTransportSigningSecretKey"|"deriveMailboxSigningKeypair"|"deriveMailboxEncryptionKeypair"|"deriveMailboxAuthKeypair"|"deriveAttachmentAccessTokenSecret"|"deriveAttachmentPrimaryKeySecret"|"minosOpenInitialEpoch"|"minosOpenEpoch"|"minosValidateEpoch"|"minosVerifySingleEpoch"|"minosThreadIdFromOneToOneThread"|"minosThreadIdFromActThreadId"|"mandrakeOpenEpoch"|"mandrakeEncryptMek"|"mandrakeDecryptMek"|"mandrakeOpenInitialEpoch"|"mandrakeValidateNewMmkFromMailbox"|"mandrakeValidateNewMmkFromDetachedDevice"|"deriveMessagingMailboxKeypairs"|"decryptSelfMmkDistribution"|"mandrakeValidateAndDecryptSelfMmk"} [commandInput] MinosCommand commandInput
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -214224,9 +215450,10 @@ $root.waproto = (function() {
          *   mandrakeValidateNewMmkFromDetachedDevice?: waproto.MandrakeValidateNewMmkFromDetachedDeviceInput.$Shape|null;
          *   deriveMessagingMailboxKeypairs?: waproto.DeriveMessagingMailboxKeypairsInput.$Shape|null;
          *   decryptSelfMmkDistribution?: waproto.DecryptSelfMmkDistributionInput.$Shape|null;
+         *   mandrakeValidateAndDecryptSelfMmk?: waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * } & (
-         *   ({ commandInput?: undefined; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "encryptAndSignMessage"; encryptAndSignMessage: waproto.MinosEncryptAndSignMessageInput.$Shape; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "decryptAndVerifyMessage"; encryptAndSignMessage?: null; decryptAndVerifyMessage: waproto.MinosDecryptAndVerifyMessageInput.$Shape; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "generateMek"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek: waproto.GenerateMekInput.$Shape; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "generateMekRosterHash"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash: waproto.GenerateMekRosterHashInput.$Shape; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "encryptMekForDistribution"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution: waproto.EncryptMekForDistributionInput.$Shape; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "decryptMekForDistribution"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution: waproto.DecryptMekForDistributionInput.$Shape; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "encryptMeksForDistributionFromTransportSender"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender: waproto.EncryptMeksForDistributionFromTransportSenderInput.$Shape; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "decryptMekForDistributionFromTransportSender"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender: waproto.DecryptMekForDistributionFromTransportSenderInput.$Shape; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "wrapTransportSigningPublicKey"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey: waproto.WrapTransportSigningPublicKeyInput.$Shape; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "wrapTransportSigningSecretKey"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey: waproto.WrapTransportSigningSecretKeyInput.$Shape; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "deriveMailboxSigningKeypair"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair: waproto.DeriveMailboxSigningKeypairInput.$Shape; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "deriveMailboxEncryptionKeypair"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair: waproto.DeriveMailboxEncryptionKeypairInput.$Shape; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "deriveMailboxAuthKeypair"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair: waproto.DeriveMailboxAuthKeypairInput.$Shape; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "deriveAttachmentAccessTokenSecret"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret: waproto.DeriveAttachmentAccessTokenSecretInput.$Shape; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "deriveAttachmentPrimaryKeySecret"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret: waproto.DeriveAttachmentPrimaryKeySecretInput.$Shape; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "minosOpenInitialEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch: waproto.MinosOpenInitialEpochInput.$Shape; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "minosOpenEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch: waproto.MinosOpenEpochInput.$Shape; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "minosValidateEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch: waproto.MinosValidateEpochInput.$Shape; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "minosVerifySingleEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch: waproto.MinosVerifySingleEpochInput.$Shape; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "minosThreadIdFromOneToOneThread"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread: waproto.MinosThreadIdFromOneToOneThreadInput.$Shape; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "minosThreadIdFromActThreadId"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId: waproto.MinosThreadIdFromActThreadIdInput.$Shape; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "mandrakeOpenEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch: waproto.MandrakeOpenEpochInput.$Shape; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "mandrakeEncryptMek"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek: waproto.MandrakeEncryptMekInput.$Shape; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "mandrakeDecryptMek"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek: waproto.MandrakeDecryptMekInput.$Shape; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "mandrakeOpenInitialEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch: waproto.MandrakeOpenInitialEpochInput.$Shape; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "mandrakeValidateNewMmkFromMailbox"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox: waproto.MandrakeValidateNewMmkFromMailboxInput.$Shape; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "mandrakeValidateNewMmkFromDetachedDevice"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice: waproto.MandrakeValidateNewMmkFromDetachedDeviceInput.$Shape; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null }|{ commandInput?: "deriveMessagingMailboxKeypairs"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs: waproto.DeriveMessagingMailboxKeypairsInput.$Shape; decryptSelfMmkDistribution?: null }|{ commandInput?: "decryptSelfMmkDistribution"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution: waproto.DecryptSelfMmkDistributionInput.$Shape })
+         *   ({ commandInput?: undefined; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "encryptAndSignMessage"; encryptAndSignMessage: waproto.MinosEncryptAndSignMessageInput.$Shape; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "decryptAndVerifyMessage"; encryptAndSignMessage?: null; decryptAndVerifyMessage: waproto.MinosDecryptAndVerifyMessageInput.$Shape; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "generateMek"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek: waproto.GenerateMekInput.$Shape; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "generateMekRosterHash"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash: waproto.GenerateMekRosterHashInput.$Shape; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "encryptMekForDistribution"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution: waproto.EncryptMekForDistributionInput.$Shape; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "decryptMekForDistribution"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution: waproto.DecryptMekForDistributionInput.$Shape; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "encryptMeksForDistributionFromTransportSender"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender: waproto.EncryptMeksForDistributionFromTransportSenderInput.$Shape; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "decryptMekForDistributionFromTransportSender"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender: waproto.DecryptMekForDistributionFromTransportSenderInput.$Shape; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "wrapTransportSigningPublicKey"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey: waproto.WrapTransportSigningPublicKeyInput.$Shape; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "wrapTransportSigningSecretKey"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey: waproto.WrapTransportSigningSecretKeyInput.$Shape; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "deriveMailboxSigningKeypair"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair: waproto.DeriveMailboxSigningKeypairInput.$Shape; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "deriveMailboxEncryptionKeypair"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair: waproto.DeriveMailboxEncryptionKeypairInput.$Shape; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "deriveMailboxAuthKeypair"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair: waproto.DeriveMailboxAuthKeypairInput.$Shape; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "deriveAttachmentAccessTokenSecret"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret: waproto.DeriveAttachmentAccessTokenSecretInput.$Shape; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "deriveAttachmentPrimaryKeySecret"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret: waproto.DeriveAttachmentPrimaryKeySecretInput.$Shape; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "minosOpenInitialEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch: waproto.MinosOpenInitialEpochInput.$Shape; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "minosOpenEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch: waproto.MinosOpenEpochInput.$Shape; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "minosValidateEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch: waproto.MinosValidateEpochInput.$Shape; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "minosVerifySingleEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch: waproto.MinosVerifySingleEpochInput.$Shape; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "minosThreadIdFromOneToOneThread"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread: waproto.MinosThreadIdFromOneToOneThreadInput.$Shape; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "minosThreadIdFromActThreadId"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId: waproto.MinosThreadIdFromActThreadIdInput.$Shape; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeOpenEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch: waproto.MandrakeOpenEpochInput.$Shape; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeEncryptMek"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek: waproto.MandrakeEncryptMekInput.$Shape; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeDecryptMek"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek: waproto.MandrakeDecryptMekInput.$Shape; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeOpenInitialEpoch"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch: waproto.MandrakeOpenInitialEpochInput.$Shape; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeValidateNewMmkFromMailbox"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox: waproto.MandrakeValidateNewMmkFromMailboxInput.$Shape; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeValidateNewMmkFromDetachedDevice"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice: waproto.MandrakeValidateNewMmkFromDetachedDeviceInput.$Shape; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "deriveMessagingMailboxKeypairs"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs: waproto.DeriveMessagingMailboxKeypairsInput.$Shape; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "decryptSelfMmkDistribution"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution: waproto.DecryptSelfMmkDistributionInput.$Shape; mandrakeValidateAndDecryptSelfMmk?: null }|{ commandInput?: "mandrakeValidateAndDecryptSelfMmk"; encryptAndSignMessage?: null; decryptAndVerifyMessage?: null; generateMek?: null; generateMekRosterHash?: null; encryptMekForDistribution?: null; decryptMekForDistribution?: null; encryptMeksForDistributionFromTransportSender?: null; decryptMekForDistributionFromTransportSender?: null; wrapTransportSigningPublicKey?: null; wrapTransportSigningSecretKey?: null; deriveMailboxSigningKeypair?: null; deriveMailboxEncryptionKeypair?: null; deriveMailboxAuthKeypair?: null; deriveAttachmentAccessTokenSecret?: null; deriveAttachmentPrimaryKeySecret?: null; minosOpenInitialEpoch?: null; minosOpenEpoch?: null; minosValidateEpoch?: null; minosVerifySingleEpoch?: null; minosThreadIdFromOneToOneThread?: null; minosThreadIdFromActThreadId?: null; mandrakeOpenEpoch?: null; mandrakeEncryptMek?: null; mandrakeDecryptMek?: null; mandrakeOpenInitialEpoch?: null; mandrakeValidateNewMmkFromMailbox?: null; mandrakeValidateNewMmkFromDetachedDevice?: null; deriveMessagingMailboxKeypairs?: null; decryptSelfMmkDistribution?: null; mandrakeValidateAndDecryptSelfMmk: waproto.MandrakeValidateAndDecryptSelfMmkInput.$Shape })
          * )} waproto.MinosCommand.$Shape
          */
 
@@ -214477,17 +215704,25 @@ $root.waproto = (function() {
          */
         MinosCommand.prototype.decryptSelfMmkDistribution = null;
 
+        /**
+         * MinosCommand mandrakeValidateAndDecryptSelfMmk.
+         * @member {waproto.MandrakeValidateAndDecryptSelfMmkInput.$Properties|null|undefined} mandrakeValidateAndDecryptSelfMmk
+         * @memberof waproto.MinosCommand
+         * @instance
+         */
+        MinosCommand.prototype.mandrakeValidateAndDecryptSelfMmk = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         /**
          * MinosCommand commandInput.
-         * @member {"encryptAndSignMessage"|"decryptAndVerifyMessage"|"generateMek"|"generateMekRosterHash"|"encryptMekForDistribution"|"decryptMekForDistribution"|"encryptMeksForDistributionFromTransportSender"|"decryptMekForDistributionFromTransportSender"|"wrapTransportSigningPublicKey"|"wrapTransportSigningSecretKey"|"deriveMailboxSigningKeypair"|"deriveMailboxEncryptionKeypair"|"deriveMailboxAuthKeypair"|"deriveAttachmentAccessTokenSecret"|"deriveAttachmentPrimaryKeySecret"|"minosOpenInitialEpoch"|"minosOpenEpoch"|"minosValidateEpoch"|"minosVerifySingleEpoch"|"minosThreadIdFromOneToOneThread"|"minosThreadIdFromActThreadId"|"mandrakeOpenEpoch"|"mandrakeEncryptMek"|"mandrakeDecryptMek"|"mandrakeOpenInitialEpoch"|"mandrakeValidateNewMmkFromMailbox"|"mandrakeValidateNewMmkFromDetachedDevice"|"deriveMessagingMailboxKeypairs"|"decryptSelfMmkDistribution"|undefined} commandInput
+         * @member {"encryptAndSignMessage"|"decryptAndVerifyMessage"|"generateMek"|"generateMekRosterHash"|"encryptMekForDistribution"|"decryptMekForDistribution"|"encryptMeksForDistributionFromTransportSender"|"decryptMekForDistributionFromTransportSender"|"wrapTransportSigningPublicKey"|"wrapTransportSigningSecretKey"|"deriveMailboxSigningKeypair"|"deriveMailboxEncryptionKeypair"|"deriveMailboxAuthKeypair"|"deriveAttachmentAccessTokenSecret"|"deriveAttachmentPrimaryKeySecret"|"minosOpenInitialEpoch"|"minosOpenEpoch"|"minosValidateEpoch"|"minosVerifySingleEpoch"|"minosThreadIdFromOneToOneThread"|"minosThreadIdFromActThreadId"|"mandrakeOpenEpoch"|"mandrakeEncryptMek"|"mandrakeDecryptMek"|"mandrakeOpenInitialEpoch"|"mandrakeValidateNewMmkFromMailbox"|"mandrakeValidateNewMmkFromDetachedDevice"|"deriveMessagingMailboxKeypairs"|"decryptSelfMmkDistribution"|"mandrakeValidateAndDecryptSelfMmk"|undefined} commandInput
          * @memberof waproto.MinosCommand
          * @instance
          */
         $Object.defineProperty(MinosCommand.prototype, "commandInput", {
-            get: $util.oneOfGetter($oneOfFields = ["encryptAndSignMessage", "decryptAndVerifyMessage", "generateMek", "generateMekRosterHash", "encryptMekForDistribution", "decryptMekForDistribution", "encryptMeksForDistributionFromTransportSender", "decryptMekForDistributionFromTransportSender", "wrapTransportSigningPublicKey", "wrapTransportSigningSecretKey", "deriveMailboxSigningKeypair", "deriveMailboxEncryptionKeypair", "deriveMailboxAuthKeypair", "deriveAttachmentAccessTokenSecret", "deriveAttachmentPrimaryKeySecret", "minosOpenInitialEpoch", "minosOpenEpoch", "minosValidateEpoch", "minosVerifySingleEpoch", "minosThreadIdFromOneToOneThread", "minosThreadIdFromActThreadId", "mandrakeOpenEpoch", "mandrakeEncryptMek", "mandrakeDecryptMek", "mandrakeOpenInitialEpoch", "mandrakeValidateNewMmkFromMailbox", "mandrakeValidateNewMmkFromDetachedDevice", "deriveMessagingMailboxKeypairs", "decryptSelfMmkDistribution"]),
+            get: $util.oneOfGetter($oneOfFields = ["encryptAndSignMessage", "decryptAndVerifyMessage", "generateMek", "generateMekRosterHash", "encryptMekForDistribution", "decryptMekForDistribution", "encryptMeksForDistributionFromTransportSender", "decryptMekForDistributionFromTransportSender", "wrapTransportSigningPublicKey", "wrapTransportSigningSecretKey", "deriveMailboxSigningKeypair", "deriveMailboxEncryptionKeypair", "deriveMailboxAuthKeypair", "deriveAttachmentAccessTokenSecret", "deriveAttachmentPrimaryKeySecret", "minosOpenInitialEpoch", "minosOpenEpoch", "minosValidateEpoch", "minosVerifySingleEpoch", "minosThreadIdFromOneToOneThread", "minosThreadIdFromActThreadId", "mandrakeOpenEpoch", "mandrakeEncryptMek", "mandrakeDecryptMek", "mandrakeOpenInitialEpoch", "mandrakeValidateNewMmkFromMailbox", "mandrakeValidateNewMmkFromDetachedDevice", "deriveMessagingMailboxKeypairs", "decryptSelfMmkDistribution", "mandrakeValidateAndDecryptSelfMmk"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -214581,6 +215816,8 @@ $root.waproto = (function() {
                 $root.waproto.DeriveMessagingMailboxKeypairsInput.encode(message.deriveMessagingMailboxKeypairs, writer.uint32(/* id 29, wireType 2 =*/234).fork(), _depth + 1).ldelim();
             if (message.decryptSelfMmkDistribution != null && $Object.hasOwnProperty.call(message, "decryptSelfMmkDistribution"))
                 $root.waproto.DecryptSelfMmkDistributionInput.encode(message.decryptSelfMmkDistribution, writer.uint32(/* id 30, wireType 2 =*/242).fork(), _depth + 1).ldelim();
+            if (message.mandrakeValidateAndDecryptSelfMmk != null && $Object.hasOwnProperty.call(message, "mandrakeValidateAndDecryptSelfMmk"))
+                $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.encode(message.mandrakeValidateAndDecryptSelfMmk, writer.uint32(/* id 31, wireType 2 =*/250).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -214839,6 +216076,13 @@ $root.waproto = (function() {
                             break;
                         message.decryptSelfMmkDistribution = $root.waproto.DecryptSelfMmkDistributionInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.decryptSelfMmkDistribution);
                         message.commandInput = "decryptSelfMmkDistribution";
+                        continue;
+                    }
+                case 31: {
+                        if (wireType !== 2)
+                            break;
+                        message.mandrakeValidateAndDecryptSelfMmk = $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeValidateAndDecryptSelfMmk);
+                        message.commandInput = "mandrakeValidateAndDecryptSelfMmk";
                         continue;
                     }
                 }
@@ -215178,6 +216422,16 @@ $root.waproto = (function() {
                         return "decryptSelfMmkDistribution." + error;
                 }
             }
+            if (message.mandrakeValidateAndDecryptSelfMmk != null && $Object.hasOwnProperty.call(message, "mandrakeValidateAndDecryptSelfMmk")) {
+                if (properties.commandInput === 1)
+                    return "commandInput: multiple values";
+                properties.commandInput = 1;
+                {
+                    var error = $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.verify(message.mandrakeValidateAndDecryptSelfMmk, _depth + 1);
+                    if (error)
+                        return "mandrakeValidateAndDecryptSelfMmk." + error;
+                }
+            }
             return null;
         };
 
@@ -215344,6 +216598,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.MinosCommand.decryptSelfMmkDistribution: object expected");
                 message.decryptSelfMmkDistribution = $root.waproto.DecryptSelfMmkDistributionInput.fromObject(object.decryptSelfMmkDistribution, _depth + 1);
             }
+            if (object.mandrakeValidateAndDecryptSelfMmk != null) {
+                if (!$util.isObject(object.mandrakeValidateAndDecryptSelfMmk))
+                    throw $TypeError(".waproto.MinosCommand.mandrakeValidateAndDecryptSelfMmk: object expected");
+                message.mandrakeValidateAndDecryptSelfMmk = $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.fromObject(object.mandrakeValidateAndDecryptSelfMmk, _depth + 1);
+            }
             return message;
         };
 
@@ -215508,6 +216767,11 @@ $root.waproto = (function() {
                 object.decryptSelfMmkDistribution = $root.waproto.DecryptSelfMmkDistributionInput.toObject(message.decryptSelfMmkDistribution, options, _depth + 1);
                 if (options.oneofs)
                     object.commandInput = "decryptSelfMmkDistribution";
+            }
+            if (message.mandrakeValidateAndDecryptSelfMmk != null && $Object.hasOwnProperty.call(message, "mandrakeValidateAndDecryptSelfMmk")) {
+                object.mandrakeValidateAndDecryptSelfMmk = $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.toObject(message.mandrakeValidateAndDecryptSelfMmk, options, _depth + 1);
+                if (options.oneofs)
+                    object.commandInput = "mandrakeValidateAndDecryptSelfMmk";
             }
             return object;
         };
