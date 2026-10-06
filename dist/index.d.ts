@@ -4939,7 +4939,10 @@ export namespace waproto {
                 INCOGNITO = 2,
 
                 /** SIDE_CHAT value */
-                SIDE_CHAT = 3
+                SIDE_CHAT = 3,
+
+                /** PRIVATE_SEARCH_CHAT value */
+                PRIVATE_SEARCH_CHAT = 4
             }
         }
 
@@ -7292,8 +7295,29 @@ export namespace waproto {
             /** HATCH_NOTIFICATION_METADATA_EVENT_ENABLED value */
             HATCH_NOTIFICATION_METADATA_EVENT_ENABLED = 72,
 
+            /** AI_SUGGESTED_REPLIES_ENABLED value */
+            AI_SUGGESTED_REPLIES_ENABLED = 73,
+
+            /** RICH_RESPONSE_IN_APP_SURVEY_BLOKS value */
+            RICH_RESPONSE_IN_APP_SURVEY_BLOKS = 74,
+
+            /** RICH_RESPONSE_IMAGE_SOURCE_ATTRIBUTION value */
+            RICH_RESPONSE_IMAGE_SOURCE_ATTRIBUTION = 75,
+
             /** HATCH_CONNECTOR_ACTION_CARD_ENABLED value */
-            HATCH_CONNECTOR_ACTION_CARD_ENABLED = 76
+            HATCH_CONNECTOR_ACTION_CARD_ENABLED = 76,
+
+            /** HATCH_SECURE_CREDENTIAL_CARD_ENABLED value */
+            HATCH_SECURE_CREDENTIAL_CARD_ENABLED = 77,
+
+            /** HATCH_BROWSER_TASK_CARD_ENABLED value */
+            HATCH_BROWSER_TASK_CARD_ENABLED = 78,
+
+            /** HATCH_ARTIFACT_CARD_ENABLED value */
+            HATCH_ARTIFACT_CARD_ENABLED = 79,
+
+            /** AI_STUDY_CENTER_ENABLED value */
+            AI_STUDY_CENTER_ENABLED = 80
         }
     }
 
@@ -21996,6 +22020,27 @@ export namespace waproto {
             /** ExternalAdReplyInfo productId. */
             productId?: (string|null);
 
+            /** ExternalAdReplyInfo containsCtwaPromo. */
+            containsCtwaPromo?: (boolean|null);
+
+            /** ExternalAdReplyInfo ctwaPromoResponseId. */
+            ctwaPromoResponseId?: (string|null);
+
+            /** ExternalAdReplyInfo ctwaPromoOfferId. */
+            ctwaPromoOfferId?: (string|null);
+
+            /** ExternalAdReplyInfo ctwaPromoAdEntryId. */
+            ctwaPromoAdEntryId?: (string|null);
+
+            /** ExternalAdReplyInfo ctwaPromoResponseExpiresAtSeconds. */
+            ctwaPromoResponseExpiresAtSeconds?: (number|Long|null);
+
+            /** ExternalAdReplyInfo ctwaPromoSchemaVersion. */
+            ctwaPromoSchemaVersion?: (number|null);
+
+            /** ExternalAdReplyInfo ctwaPromoAdgroupId. */
+            ctwaPromoAdgroupId?: (string|null);
+
             /**
              * Creates a new ExternalAdReplyInfo instance using the specified properties.
              * @param [properties] Properties to set
@@ -22181,6 +22226,27 @@ export namespace waproto {
 
                 /** ExternalAdReplyInfo productId */
                 productId?: (string|null);
+
+                /** ExternalAdReplyInfo containsCtwaPromo */
+                containsCtwaPromo?: (boolean|null);
+
+                /** ExternalAdReplyInfo ctwaPromoResponseId */
+                ctwaPromoResponseId?: (string|null);
+
+                /** ExternalAdReplyInfo ctwaPromoOfferId */
+                ctwaPromoOfferId?: (string|null);
+
+                /** ExternalAdReplyInfo ctwaPromoAdEntryId */
+                ctwaPromoAdEntryId?: (string|null);
+
+                /** ExternalAdReplyInfo ctwaPromoResponseExpiresAtSeconds */
+                ctwaPromoResponseExpiresAtSeconds?: (number|Long|null);
+
+                /** ExternalAdReplyInfo ctwaPromoSchemaVersion */
+                ctwaPromoSchemaVersion?: (number|null);
+
+                /** ExternalAdReplyInfo ctwaPromoAdgroupId */
+                ctwaPromoAdgroupId?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -22681,7 +22747,13 @@ export namespace waproto {
             HEVC_VIDEO_PARENT = 7,
 
             /** HEVC_VIDEO_CHILD value */
-            HEVC_VIDEO_CHILD = 8
+            HEVC_VIDEO_CHILD = 8,
+
+            /** AV1_VIDEO_PARENT value */
+            AV1_VIDEO_PARENT = 9,
+
+            /** AV1_VIDEO_CHILD value */
+            AV1_VIDEO_CHILD = 10
         }
 
         /**
@@ -23460,6 +23532,9 @@ export namespace waproto {
         /** Conversation acp2Setting. */
         acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
+        /** Conversation acp2HistoryWithheld. */
+        acp2HistoryWithheld?: (boolean|null);
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -23736,6 +23811,9 @@ export namespace waproto {
             /** Conversation acp2Setting */
             acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
+            /** Conversation acp2HistoryWithheld */
+            acp2HistoryWithheld?: (boolean|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -23806,6 +23884,7 @@ export namespace waproto {
           authAgentObaPhoneNumber?: string|null;
           identityVerification?: waproto.IdentityVerificationState.$Shape|null;
           acp2Setting?: waproto.ACP2Setting.$Shape|null;
+          acp2HistoryWithheld?: boolean|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -29039,6 +29118,12 @@ export namespace waproto {
             /** HistorySyncConfig supportNewsletter. */
             supportNewsletter?: (boolean|null);
 
+            /** HistorySyncConfig supportUniversalReachChat. */
+            supportUniversalReachChat?: (boolean|null);
+
+            /** HistorySyncConfig supportOmittedConversationIndex. */
+            supportOmittedConversationIndex?: (boolean|null);
+
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
              * @param [properties] Properties to set
@@ -29198,6 +29283,12 @@ export namespace waproto {
                 /** HistorySyncConfig supportNewsletter */
                 supportNewsletter?: (boolean|null);
 
+                /** HistorySyncConfig supportUniversalReachChat */
+                supportUniversalReachChat?: (boolean|null);
+
+                /** HistorySyncConfig supportOmittedConversationIndex */
+                supportOmittedConversationIndex?: (boolean|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -29291,7 +29382,13 @@ export namespace waproto {
             WASS = 26,
 
             /** BUSINESS_BACK_OFFICE value */
-            BUSINESS_BACK_OFFICE = 27
+            BUSINESS_BACK_OFFICE = 27,
+
+            /** WAIL_WAI value */
+            WAIL_WAI = 28,
+
+            /** WAIL_ALEXA value */
+            WAIL_ALEXA = 29
         }
     }
 
@@ -31683,6 +31780,123 @@ export namespace waproto {
 
         /** Shape of an EventAdditionalMetadata. */
         type $Shape = waproto.EventAdditionalMetadata.$Properties;
+    }
+
+    /**
+     * Properties of an EventInviteAdditionalMetadata.
+     * @deprecated Use waproto.EventInviteAdditionalMetadata.$Properties instead.
+     */
+    interface IEventInviteAdditionalMetadata extends waproto.EventInviteAdditionalMetadata.$Properties {
+    }
+
+    /** Represents an EventInviteAdditionalMetadata. */
+    class EventInviteAdditionalMetadata {
+
+        /**
+         * Constructs a new EventInviteAdditionalMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.EventInviteAdditionalMetadata.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** EventInviteAdditionalMetadata isUpdated. */
+        isUpdated?: (boolean|null);
+
+        /**
+         * Creates a new EventInviteAdditionalMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns EventInviteAdditionalMetadata instance
+         */
+        static create(properties: waproto.EventInviteAdditionalMetadata.$Shape): waproto.EventInviteAdditionalMetadata & waproto.EventInviteAdditionalMetadata.$Shape;
+        static create(properties?: waproto.EventInviteAdditionalMetadata.$Properties): waproto.EventInviteAdditionalMetadata;
+
+        /**
+         * Encodes the specified EventInviteAdditionalMetadata message. Does not implicitly {@link waproto.EventInviteAdditionalMetadata.verify|verify} messages.
+         * @param message EventInviteAdditionalMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.EventInviteAdditionalMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified EventInviteAdditionalMetadata message, length delimited. Does not implicitly {@link waproto.EventInviteAdditionalMetadata.verify|verify} messages.
+         * @param message EventInviteAdditionalMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.EventInviteAdditionalMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an EventInviteAdditionalMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.EventInviteAdditionalMetadata & waproto.EventInviteAdditionalMetadata.$Shape} EventInviteAdditionalMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.EventInviteAdditionalMetadata & waproto.EventInviteAdditionalMetadata.$Shape;
+
+        /**
+         * Decodes an EventInviteAdditionalMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.EventInviteAdditionalMetadata & waproto.EventInviteAdditionalMetadata.$Shape} EventInviteAdditionalMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.EventInviteAdditionalMetadata & waproto.EventInviteAdditionalMetadata.$Shape;
+
+        /**
+         * Verifies an EventInviteAdditionalMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an EventInviteAdditionalMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns EventInviteAdditionalMetadata
+         */
+        static fromObject(object: { [k: string]: any }): waproto.EventInviteAdditionalMetadata;
+
+        /**
+         * Creates a plain object from an EventInviteAdditionalMetadata message. Also converts values to other types if specified.
+         * @param message EventInviteAdditionalMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.EventInviteAdditionalMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this EventInviteAdditionalMetadata to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for EventInviteAdditionalMetadata
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace EventInviteAdditionalMetadata {
+
+        /** Properties of an EventInviteAdditionalMetadata. */
+        interface $Properties {
+
+            /** EventInviteAdditionalMetadata isUpdated */
+            isUpdated?: (boolean|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an EventInviteAdditionalMetadata. */
+        type $Shape = waproto.EventInviteAdditionalMetadata.$Properties;
     }
 
     /**
@@ -35581,6 +35795,15 @@ export namespace waproto {
         /** HistorySync inlineContactsProvided. */
         inlineContactsProvided?: (boolean|null);
 
+        /** HistorySync favoriteStickers. */
+        favoriteStickers: waproto.StickerMetadata.$Properties[];
+
+        /** HistorySync omittedConversations. */
+        omittedConversations: waproto.RecoverableHistoryConversation.$Properties[];
+
+        /** HistorySync omittedConversationsProvided. */
+        omittedConversationsProvided?: (boolean|null);
+
         /**
          * Creates a new HistorySync instance using the specified properties.
          * @param [properties] Properties to set
@@ -35725,6 +35948,15 @@ export namespace waproto {
             /** HistorySync inlineContactsProvided */
             inlineContactsProvided?: (boolean|null);
 
+            /** HistorySync favoriteStickers */
+            favoriteStickers?: (waproto.StickerMetadata.$Properties[]|null);
+
+            /** HistorySync omittedConversations */
+            omittedConversations?: (waproto.RecoverableHistoryConversation.$Properties[]|null);
+
+            /** HistorySync omittedConversationsProvided */
+            omittedConversationsProvided?: (boolean|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -35751,6 +35983,9 @@ export namespace waproto {
           nctSalt?: Uint8Array|null;
           inlineContacts?: waproto.InlineContact.$Shape[]|null;
           inlineContactsProvided?: boolean|null;
+          favoriteStickers?: waproto.StickerMetadata.$Shape[]|null;
+          omittedConversations?: waproto.RecoverableHistoryConversation.$Shape[]|null;
+          omittedConversationsProvided?: boolean|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -44135,6 +44370,12 @@ export namespace waproto {
         /** Message audioStickerMessage. */
         audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+        /** Message instantImageMessage. */
+        instantImageMessage?: (waproto.Message.ImageMessage.$Properties|null);
+
+        /** Message requestLocationMessage. */
+        requestLocationMessage?: (waproto.Message.RequestLocationMessage.$Properties|null);
+
         /** Message botGroupParticipantMessage. */
         botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
@@ -44561,6 +44802,12 @@ export namespace waproto {
             /** Message audioStickerMessage */
             audioStickerMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+            /** Message instantImageMessage */
+            instantImageMessage?: (waproto.Message.ImageMessage.$Properties|null);
+
+            /** Message requestLocationMessage */
+            requestLocationMessage?: (waproto.Message.RequestLocationMessage.$Properties|null);
+
             /** Message botGroupParticipantMessage */
             botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
@@ -44683,6 +44930,8 @@ export namespace waproto {
           newsletterScheduledMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           acp2SettingMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           audioStickerMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          instantImageMessage?: waproto.Message.ImageMessage.$Shape|null;
+          requestLocationMessage?: waproto.Message.RequestLocationMessage.$Shape|null;
           botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
@@ -48083,14 +48332,20 @@ export namespace waproto {
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
 
-            /** ChatSolidColorWallpaper colorLight. */
-            colorLight?: (string|null);
+            /** ChatSolidColorWallpaper backgroundLightArgb. */
+            backgroundLightArgb?: (number|null);
 
-            /** ChatSolidColorWallpaper colorDark. */
-            colorDark?: (string|null);
+            /** ChatSolidColorWallpaper backgroundDarkArgb. */
+            backgroundDarkArgb?: (number|null);
 
             /** ChatSolidColorWallpaper isDoodleEnabled. */
             isDoodleEnabled?: (boolean|null);
+
+            /** ChatSolidColorWallpaper doodleLightArgb. */
+            doodleLightArgb?: (number|null);
+
+            /** ChatSolidColorWallpaper doodleDarkArgb. */
+            doodleDarkArgb?: (number|null);
 
             /**
              * Creates a new ChatSolidColorWallpaper instance using the specified properties.
@@ -48176,14 +48431,20 @@ export namespace waproto {
             /** Properties of a ChatSolidColorWallpaper. */
             interface $Properties {
 
-                /** ChatSolidColorWallpaper colorLight */
-                colorLight?: (string|null);
+                /** ChatSolidColorWallpaper backgroundLightArgb */
+                backgroundLightArgb?: (number|null);
 
-                /** ChatSolidColorWallpaper colorDark */
-                colorDark?: (string|null);
+                /** ChatSolidColorWallpaper backgroundDarkArgb */
+                backgroundDarkArgb?: (number|null);
 
                 /** ChatSolidColorWallpaper isDoodleEnabled */
                 isDoodleEnabled?: (boolean|null);
+
+                /** ChatSolidColorWallpaper doodleLightArgb */
+                doodleLightArgb?: (number|null);
+
+                /** ChatSolidColorWallpaper doodleDarkArgb */
+                doodleDarkArgb?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -48777,6 +49038,129 @@ export namespace waproto {
                 /** Shape of a CloudAPIThreadControlNotificationContent. */
                 type $Shape = waproto.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent.$Properties;
             }
+        }
+
+        /**
+         * Properties of a CoexConnectionDescriptor.
+         * @deprecated Use waproto.Message.CoexConnectionDescriptor.$Properties instead.
+         */
+        interface ICoexConnectionDescriptor extends waproto.Message.CoexConnectionDescriptor.$Properties {
+        }
+
+        /** Represents a CoexConnectionDescriptor. */
+        class CoexConnectionDescriptor {
+
+            /**
+             * Constructs a new CoexConnectionDescriptor.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.CoexConnectionDescriptor.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** CoexConnectionDescriptor providerId. */
+            providerId?: (number|Long|null);
+
+            /** CoexConnectionDescriptor product. */
+            product?: (string|null);
+
+            /**
+             * Creates a new CoexConnectionDescriptor instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CoexConnectionDescriptor instance
+             */
+            static create(properties: waproto.Message.CoexConnectionDescriptor.$Shape): waproto.Message.CoexConnectionDescriptor & waproto.Message.CoexConnectionDescriptor.$Shape;
+            static create(properties?: waproto.Message.CoexConnectionDescriptor.$Properties): waproto.Message.CoexConnectionDescriptor;
+
+            /**
+             * Encodes the specified CoexConnectionDescriptor message. Does not implicitly {@link waproto.Message.CoexConnectionDescriptor.verify|verify} messages.
+             * @param message CoexConnectionDescriptor message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.CoexConnectionDescriptor.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CoexConnectionDescriptor message, length delimited. Does not implicitly {@link waproto.Message.CoexConnectionDescriptor.verify|verify} messages.
+             * @param message CoexConnectionDescriptor message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.CoexConnectionDescriptor.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CoexConnectionDescriptor message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.CoexConnectionDescriptor & waproto.Message.CoexConnectionDescriptor.$Shape} CoexConnectionDescriptor
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.CoexConnectionDescriptor & waproto.Message.CoexConnectionDescriptor.$Shape;
+
+            /**
+             * Decodes a CoexConnectionDescriptor message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.CoexConnectionDescriptor & waproto.Message.CoexConnectionDescriptor.$Shape} CoexConnectionDescriptor
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.CoexConnectionDescriptor & waproto.Message.CoexConnectionDescriptor.$Shape;
+
+            /**
+             * Verifies a CoexConnectionDescriptor message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CoexConnectionDescriptor message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CoexConnectionDescriptor
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.CoexConnectionDescriptor;
+
+            /**
+             * Creates a plain object from a CoexConnectionDescriptor message. Also converts values to other types if specified.
+             * @param message CoexConnectionDescriptor
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.CoexConnectionDescriptor, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CoexConnectionDescriptor to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for CoexConnectionDescriptor
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace CoexConnectionDescriptor {
+
+            /** Properties of a CoexConnectionDescriptor. */
+            interface $Properties {
+
+                /** CoexConnectionDescriptor providerId */
+                providerId?: (number|Long|null);
+
+                /** CoexConnectionDescriptor product */
+                product?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a CoexConnectionDescriptor. */
+            type $Shape = waproto.Message.CoexConnectionDescriptor.$Properties;
         }
 
         /**
@@ -50270,6 +50654,18 @@ export namespace waproto {
             /** EventInviteMessage callLink. */
             callLink?: (string|null);
 
+            /** EventInviteMessage coverImageHandle. */
+            coverImageHandle?: (string|null);
+
+            /** EventInviteMessage locationName. */
+            locationName?: (string|null);
+
+            /** EventInviteMessage lastUpdatedTsUsec. */
+            lastUpdatedTsUsec?: (number|Long|null);
+
+            /** EventInviteMessage status. */
+            status?: (waproto.Message.EventInviteMessage.EventStatus|null);
+
             /**
              * Creates a new EventInviteMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -50381,6 +50777,18 @@ export namespace waproto {
                 /** EventInviteMessage callLink */
                 callLink?: (string|null);
 
+                /** EventInviteMessage coverImageHandle */
+                coverImageHandle?: (string|null);
+
+                /** EventInviteMessage locationName */
+                locationName?: (string|null);
+
+                /** EventInviteMessage lastUpdatedTsUsec */
+                lastUpdatedTsUsec?: (number|Long|null);
+
+                /** EventInviteMessage status */
+                status?: (waproto.Message.EventInviteMessage.EventStatus|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -50396,8 +50804,37 @@ export namespace waproto {
               isCanceled?: boolean|null;
               endTime?: number|Long|null;
               callLink?: string|null;
+              coverImageHandle?: string|null;
+              locationName?: string|null;
+              lastUpdatedTsUsec?: number|Long|null;
+              status?: waproto.Message.EventInviteMessage.EventStatus|null;
               $unknowns?: Uint8Array[];
             };
+
+            /** EventStatus enum. */
+            enum EventStatus {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** ACTIVE value */
+                ACTIVE = 1,
+
+                /** CANCELED value */
+                CANCELED = 2,
+
+                /** SUSPENDED value */
+                SUSPENDED = 3,
+
+                /** DELETED value */
+                DELETED = 4,
+
+                /** LEFT_EVENT value */
+                LEFT_EVENT = 5,
+
+                /** REMOVED_FROM_INVITE_LIST value */
+                REMOVED_FROM_INVITE_LIST = 6
+            }
         }
 
         /**
@@ -51296,6 +51733,9 @@ export namespace waproto {
             /** FullHistorySyncOnDemandRequestMetadata opaqueClientData. */
             opaqueClientData?: (Uint8Array|null);
 
+            /** FullHistorySyncOnDemandRequestMetadata connection. */
+            connection?: (waproto.Message.CoexConnectionDescriptor.$Properties|null);
+
             /**
              * Creates a new FullHistorySyncOnDemandRequestMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -51388,6 +51828,9 @@ export namespace waproto {
 
                 /** FullHistorySyncOnDemandRequestMetadata opaqueClientData */
                 opaqueClientData?: (Uint8Array|null);
+
+                /** FullHistorySyncOnDemandRequestMetadata connection */
+                connection?: (waproto.Message.CoexConnectionDescriptor.$Properties|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -65887,6 +66330,9 @@ export namespace waproto {
             /** ProtocolMessage sharedDeviceContactHashKeyRequest. */
             sharedDeviceContactHashKeyRequest?: (waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null);
 
+            /** ProtocolMessage additionalPromptIds. */
+            additionalPromptIds: string[];
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -66070,6 +66516,9 @@ export namespace waproto {
                 /** ProtocolMessage sharedDeviceContactHashKeyRequest */
                 sharedDeviceContactHashKeyRequest?: (waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null);
 
+                /** ProtocolMessage additionalPromptIds */
+                additionalPromptIds?: (string[]|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -66109,6 +66558,7 @@ export namespace waproto {
               acp2Setting?: waproto.ACP2Setting.$Shape|null;
               sharedDeviceContactHashKeyShare?: waproto.Message.SharedDeviceContactHashKeyShare.$Shape|null;
               sharedDeviceContactHashKeyRequest?: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape|null;
+              additionalPromptIds?: string[]|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -66478,6 +66928,126 @@ export namespace waproto {
 
             /** Shape of a ReactionMessage. */
             type $Shape = waproto.Message.ReactionMessage.$Properties;
+        }
+
+        /**
+         * Properties of a RequestLocationMessage.
+         * @deprecated Use waproto.Message.RequestLocationMessage.$Properties instead.
+         */
+        interface IRequestLocationMessage extends waproto.Message.RequestLocationMessage.$Properties {
+        }
+
+        /** Represents a RequestLocationMessage. */
+        class RequestLocationMessage {
+
+            /**
+             * Constructs a new RequestLocationMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.RequestLocationMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** RequestLocationMessage contextInfo. */
+            contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+            /**
+             * Creates a new RequestLocationMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RequestLocationMessage instance
+             */
+            static create(properties: waproto.Message.RequestLocationMessage.$Shape): waproto.Message.RequestLocationMessage & waproto.Message.RequestLocationMessage.$Shape;
+            static create(properties?: waproto.Message.RequestLocationMessage.$Properties): waproto.Message.RequestLocationMessage;
+
+            /**
+             * Encodes the specified RequestLocationMessage message. Does not implicitly {@link waproto.Message.RequestLocationMessage.verify|verify} messages.
+             * @param message RequestLocationMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.RequestLocationMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RequestLocationMessage message, length delimited. Does not implicitly {@link waproto.Message.RequestLocationMessage.verify|verify} messages.
+             * @param message RequestLocationMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.RequestLocationMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RequestLocationMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.RequestLocationMessage & waproto.Message.RequestLocationMessage.$Shape} RequestLocationMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.RequestLocationMessage & waproto.Message.RequestLocationMessage.$Shape;
+
+            /**
+             * Decodes a RequestLocationMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.RequestLocationMessage & waproto.Message.RequestLocationMessage.$Shape} RequestLocationMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.RequestLocationMessage & waproto.Message.RequestLocationMessage.$Shape;
+
+            /**
+             * Verifies a RequestLocationMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RequestLocationMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RequestLocationMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.RequestLocationMessage;
+
+            /**
+             * Creates a plain object from a RequestLocationMessage message. Also converts values to other types if specified.
+             * @param message RequestLocationMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.RequestLocationMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RequestLocationMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for RequestLocationMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace RequestLocationMessage {
+
+            /** Properties of a RequestLocationMessage. */
+            interface $Properties {
+
+                /** RequestLocationMessage contextInfo */
+                contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a RequestLocationMessage. */
+            type $Shape = {
+              contextInfo?: waproto.ContextInfo.$Shape|null;
+              $unknowns?: Uint8Array[];
+            };
         }
 
         /**
@@ -71857,7 +72427,10 @@ export namespace waproto {
             HEVC_VIDEO_DUAL_UPLOAD = 19,
 
             /** POLL_ADD_OPTION value */
-            POLL_ADD_OPTION = 20
+            POLL_ADD_OPTION = 20,
+
+            /** AV1_VIDEO_DUAL_UPLOAD value */
+            AV1_VIDEO_DUAL_UPLOAD = 21
         }
     }
 
@@ -80095,6 +80668,9 @@ export namespace waproto {
         /** PollAdditionalMetadata pollNameHashHistory. */
         pollNameHashHistory: waproto.PollAdditionalMetadata.PollNameHashHistoryEntry.$Properties[];
 
+        /** PollAdditionalMetadata originalOptions. */
+        originalOptions: waproto.Message.PollCreationMessage.Option.$Properties[];
+
         /**
          * Creates a new PollAdditionalMetadata instance using the specified properties.
          * @param [properties] Properties to set
@@ -80184,6 +80760,9 @@ export namespace waproto {
 
             /** PollAdditionalMetadata pollNameHashHistory */
             pollNameHashHistory?: (waproto.PollAdditionalMetadata.PollNameHashHistoryEntry.$Properties[]|null);
+
+            /** PollAdditionalMetadata originalOptions */
+            originalOptions?: (waproto.Message.PollCreationMessage.Option.$Properties[]|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -82590,6 +83169,129 @@ export namespace waproto {
 
         /** Shape of a RecordStructure. */
         type $Shape = waproto.RecordStructure.$Properties;
+    }
+
+    /**
+     * Properties of a RecoverableHistoryConversation.
+     * @deprecated Use waproto.RecoverableHistoryConversation.$Properties instead.
+     */
+    interface IRecoverableHistoryConversation extends waproto.RecoverableHistoryConversation.$Properties {
+    }
+
+    /** Represents a RecoverableHistoryConversation. */
+    class RecoverableHistoryConversation {
+
+        /**
+         * Constructs a new RecoverableHistoryConversation.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.RecoverableHistoryConversation.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** RecoverableHistoryConversation historyChatId. */
+        historyChatId?: (string|null);
+
+        /** RecoverableHistoryConversation accountLid. */
+        accountLid?: (string|null);
+
+        /**
+         * Creates a new RecoverableHistoryConversation instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns RecoverableHistoryConversation instance
+         */
+        static create(properties: waproto.RecoverableHistoryConversation.$Shape): waproto.RecoverableHistoryConversation & waproto.RecoverableHistoryConversation.$Shape;
+        static create(properties?: waproto.RecoverableHistoryConversation.$Properties): waproto.RecoverableHistoryConversation;
+
+        /**
+         * Encodes the specified RecoverableHistoryConversation message. Does not implicitly {@link waproto.RecoverableHistoryConversation.verify|verify} messages.
+         * @param message RecoverableHistoryConversation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.RecoverableHistoryConversation.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified RecoverableHistoryConversation message, length delimited. Does not implicitly {@link waproto.RecoverableHistoryConversation.verify|verify} messages.
+         * @param message RecoverableHistoryConversation message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.RecoverableHistoryConversation.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a RecoverableHistoryConversation message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.RecoverableHistoryConversation & waproto.RecoverableHistoryConversation.$Shape} RecoverableHistoryConversation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.RecoverableHistoryConversation & waproto.RecoverableHistoryConversation.$Shape;
+
+        /**
+         * Decodes a RecoverableHistoryConversation message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.RecoverableHistoryConversation & waproto.RecoverableHistoryConversation.$Shape} RecoverableHistoryConversation
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.RecoverableHistoryConversation & waproto.RecoverableHistoryConversation.$Shape;
+
+        /**
+         * Verifies a RecoverableHistoryConversation message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a RecoverableHistoryConversation message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns RecoverableHistoryConversation
+         */
+        static fromObject(object: { [k: string]: any }): waproto.RecoverableHistoryConversation;
+
+        /**
+         * Creates a plain object from a RecoverableHistoryConversation message. Also converts values to other types if specified.
+         * @param message RecoverableHistoryConversation
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.RecoverableHistoryConversation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this RecoverableHistoryConversation to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for RecoverableHistoryConversation
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace RecoverableHistoryConversation {
+
+        /** Properties of a RecoverableHistoryConversation. */
+        interface $Properties {
+
+            /** RecoverableHistoryConversation historyChatId */
+            historyChatId?: (string|null);
+
+            /** RecoverableHistoryConversation accountLid */
+            accountLid?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a RecoverableHistoryConversation. */
+        type $Shape = waproto.RecoverableHistoryConversation.$Properties;
     }
 
     /**
@@ -90928,6 +91630,9 @@ export namespace waproto {
             /** ContactAction username. */
             username?: (string|null);
 
+            /** ContactAction birthday. */
+            birthday?: (string|null);
+
             /**
              * Creates a new ContactAction instance using the specified properties.
              * @param [properties] Properties to set
@@ -91029,6 +91734,9 @@ export namespace waproto {
 
                 /** ContactAction username */
                 username?: (string|null);
+
+                /** ContactAction birthday */
+                birthday?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -93763,6 +94471,9 @@ export namespace waproto {
             /** LidContactAction username. */
             username?: (string|null);
 
+            /** LidContactAction birthday. */
+            birthday?: (string|null);
+
             /**
              * Creates a new LidContactAction instance using the specified properties.
              * @param [properties] Properties to set
@@ -93855,6 +94566,9 @@ export namespace waproto {
 
                 /** LidContactAction username */
                 username?: (string|null);
+
+                /** LidContactAction birthday */
+                birthday?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -105058,6 +105772,9 @@ export namespace waproto {
         /** WebMessageInfo decisionSources. */
         decisionSources: string[];
 
+        /** WebMessageInfo eventInviteAdditionalMetadata. */
+        eventInviteAdditionalMetadata?: (waproto.EventInviteAdditionalMetadata.$Properties|null);
+
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -105358,6 +106075,9 @@ export namespace waproto {
             /** WebMessageInfo decisionSources */
             decisionSources?: (string[]|null);
 
+            /** WebMessageInfo eventInviteAdditionalMetadata */
+            eventInviteAdditionalMetadata?: (waproto.EventInviteAdditionalMetadata.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -105436,6 +106156,7 @@ export namespace waproto {
           scheduledMessageMetadata?: waproto.ScheduledMessageMetadata.$Shape|null;
           decisionId?: string|null;
           decisionSources?: string[]|null;
+          eventInviteAdditionalMetadata?: waproto.EventInviteAdditionalMetadata.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -106188,14 +106909,62 @@ export namespace waproto {
             /** ORDER_EPHEMERAL_EXEMPTION value */
             ORDER_EPHEMERAL_EXEMPTION = 250,
 
+            /** GROUP_DEFAULT_SUB_GROUP_DEMOTE value */
+            GROUP_DEFAULT_SUB_GROUP_DEMOTE = 251,
+
+            /** BIZ_BUSINESS_BROADCAST_ENTRY_POINT value */
+            BIZ_BUSINESS_BROADCAST_ENTRY_POINT = 252,
+
+            /** BOT_INLINE_TOS_CHAT value */
+            BOT_INLINE_TOS_CHAT = 253,
+
             /** CAMEO_CHAT_CREATED value */
             CAMEO_CHAT_CREATED = 254,
+
+            /** SENDER_SIDE_CONTACT_INFO value */
+            SENDER_SIDE_CONTACT_INFO = 255,
 
             /** CAMEO_TRANSITIONED value */
             CAMEO_TRANSITIONED = 256,
 
-            /** SENDER_SIDE_CONTACT_INFO value */
-            SENDER_SIDE_CONTACT_INFO = 255
+            /** CAMEO_REGISTERED_WITH_NEW_CHAT value */
+            CAMEO_REGISTERED_WITH_NEW_CHAT = 257,
+
+            /** PRIVACY_SYSTEM_MESSAGE value */
+            PRIVACY_SYSTEM_MESSAGE = 258,
+
+            /** BIZ_AI_LEARNING_ENABLED_DISCLOSURE value */
+            BIZ_AI_LEARNING_ENABLED_DISCLOSURE = 259,
+
+            /** BIZ_AI_LEARNING_DISABLED_DISCLOSURE value */
+            BIZ_AI_LEARNING_DISABLED_DISCLOSURE = 260,
+
+            /** BIZ_AI_REPLIES_MUTED_HISTORICAL_CHAT value */
+            BIZ_AI_REPLIES_MUTED_HISTORICAL_CHAT = 261,
+
+            /** INVITE_FROM_IG value */
+            INVITE_FROM_IG = 262,
+
+            /** GROUP_ADMIN_FIRST_JOIN_VIA_LINK value */
+            GROUP_ADMIN_FIRST_JOIN_VIA_LINK = 263,
+
+            /** GROUP_ADMIN_FLOOD_JOIN_VIA_LINK value */
+            GROUP_ADMIN_FLOOD_JOIN_VIA_LINK = 264,
+
+            /** BIZ_AI_REPLIES_MUTED_IRRELEVANT_HISTORICAL_CHAT value */
+            BIZ_AI_REPLIES_MUTED_IRRELEVANT_HISTORICAL_CHAT = 265,
+
+            /** PENDING_INVITE_CREATED value */
+            PENDING_INVITE_CREATED = 266,
+
+            /** CAMEO_CHAT_EXPIRED value */
+            CAMEO_CHAT_EXPIRED = 267,
+
+            /** GROUP_PUSHNAME_SHARED value */
+            GROUP_PUSHNAME_SHARED = 270,
+
+            /** BIZ_POST_SEND_OPT_OUT value */
+            BIZ_POST_SEND_OPT_OUT = 271
         }
     }
 
