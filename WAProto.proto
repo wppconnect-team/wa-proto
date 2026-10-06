@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049311260
+/// WhatsApp Version: 2.3000.1049405779
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -2039,6 +2039,8 @@ message DeviceCapabilities {
     optional AiFbidMigration aiFbidMigration = 7;
     optional BizAiSettingsSync bizAiSettingsSync = 8;
     optional ContactRefresh contactRefresh = 9;
+    optional ReverseHistorySync reverseHistorySync = 10;
+    optional NewsletterChatsMigration newsletterChatsMigration = 11;
     message AiFbidMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
         optional uint32 supportVersion = 2;
@@ -2084,6 +2086,20 @@ message DeviceCapabilities {
         RECEIVER_ENABLED = 1;
         SENDER_ENABLED = 2;
     }
+    message NewsletterChatsMigration {
+        optional bool effectiveMigrated = 1;
+        optional int64 countdownEndsAt = 2;
+        optional bool rolledBack = 3;
+    }
+    
+    message ReverseHistorySync {
+        repeated Product enabledProducts = 1;
+        enum Product {
+            PRODUCT_UNSPECIFIED = 0;
+            HATCH = 1;
+        }
+    }
+    
     message UserHasAvatar {
         optional bool userHasAvatar = 1;
     }

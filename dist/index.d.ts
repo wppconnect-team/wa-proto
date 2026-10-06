@@ -27101,6 +27101,12 @@ export namespace waproto {
         /** DeviceCapabilities contactRefresh. */
         contactRefresh?: (waproto.DeviceCapabilities.ContactRefresh.$Properties|null);
 
+        /** DeviceCapabilities reverseHistorySync. */
+        reverseHistorySync?: (waproto.DeviceCapabilities.ReverseHistorySync.$Properties|null);
+
+        /** DeviceCapabilities newsletterChatsMigration. */
+        newsletterChatsMigration?: (waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties|null);
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @param [properties] Properties to set
@@ -27211,6 +27217,12 @@ export namespace waproto {
 
             /** DeviceCapabilities contactRefresh */
             contactRefresh?: (waproto.DeviceCapabilities.ContactRefresh.$Properties|null);
+
+            /** DeviceCapabilities reverseHistorySync */
+            reverseHistorySync?: (waproto.DeviceCapabilities.ReverseHistorySync.$Properties|null);
+
+            /** DeviceCapabilities newsletterChatsMigration */
+            newsletterChatsMigration?: (waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -27994,6 +28006,262 @@ export namespace waproto {
 
             /** SENDER_ENABLED value */
             SENDER_ENABLED = 2
+        }
+
+        /**
+         * Properties of a NewsletterChatsMigration.
+         * @deprecated Use waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties instead.
+         */
+        interface INewsletterChatsMigration extends waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties {
+        }
+
+        /** Represents a NewsletterChatsMigration. */
+        class NewsletterChatsMigration {
+
+            /**
+             * Constructs a new NewsletterChatsMigration.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** NewsletterChatsMigration effectiveMigrated. */
+            effectiveMigrated?: (boolean|null);
+
+            /** NewsletterChatsMigration countdownEndsAt. */
+            countdownEndsAt?: (number|Long|null);
+
+            /** NewsletterChatsMigration rolledBack. */
+            rolledBack?: (boolean|null);
+
+            /**
+             * Creates a new NewsletterChatsMigration instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns NewsletterChatsMigration instance
+             */
+            static create(properties: waproto.DeviceCapabilities.NewsletterChatsMigration.$Shape): waproto.DeviceCapabilities.NewsletterChatsMigration & waproto.DeviceCapabilities.NewsletterChatsMigration.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties): waproto.DeviceCapabilities.NewsletterChatsMigration;
+
+            /**
+             * Encodes the specified NewsletterChatsMigration message. Does not implicitly {@link waproto.DeviceCapabilities.NewsletterChatsMigration.verify|verify} messages.
+             * @param message NewsletterChatsMigration message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified NewsletterChatsMigration message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.NewsletterChatsMigration.verify|verify} messages.
+             * @param message NewsletterChatsMigration message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a NewsletterChatsMigration message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.NewsletterChatsMigration & waproto.DeviceCapabilities.NewsletterChatsMigration.$Shape} NewsletterChatsMigration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.NewsletterChatsMigration & waproto.DeviceCapabilities.NewsletterChatsMigration.$Shape;
+
+            /**
+             * Decodes a NewsletterChatsMigration message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.NewsletterChatsMigration & waproto.DeviceCapabilities.NewsletterChatsMigration.$Shape} NewsletterChatsMigration
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.NewsletterChatsMigration & waproto.DeviceCapabilities.NewsletterChatsMigration.$Shape;
+
+            /**
+             * Verifies a NewsletterChatsMigration message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a NewsletterChatsMigration message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns NewsletterChatsMigration
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.NewsletterChatsMigration;
+
+            /**
+             * Creates a plain object from a NewsletterChatsMigration message. Also converts values to other types if specified.
+             * @param message NewsletterChatsMigration
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.NewsletterChatsMigration, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this NewsletterChatsMigration to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for NewsletterChatsMigration
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace NewsletterChatsMigration {
+
+            /** Properties of a NewsletterChatsMigration. */
+            interface $Properties {
+
+                /** NewsletterChatsMigration effectiveMigrated */
+                effectiveMigrated?: (boolean|null);
+
+                /** NewsletterChatsMigration countdownEndsAt */
+                countdownEndsAt?: (number|Long|null);
+
+                /** NewsletterChatsMigration rolledBack */
+                rolledBack?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a NewsletterChatsMigration. */
+            type $Shape = waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties;
+        }
+
+        /**
+         * Properties of a ReverseHistorySync.
+         * @deprecated Use waproto.DeviceCapabilities.ReverseHistorySync.$Properties instead.
+         */
+        interface IReverseHistorySync extends waproto.DeviceCapabilities.ReverseHistorySync.$Properties {
+        }
+
+        /** Represents a ReverseHistorySync. */
+        class ReverseHistorySync {
+
+            /**
+             * Constructs a new ReverseHistorySync.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.ReverseHistorySync.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** ReverseHistorySync enabledProducts. */
+            enabledProducts: waproto.DeviceCapabilities.ReverseHistorySync.Product[];
+
+            /**
+             * Creates a new ReverseHistorySync instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ReverseHistorySync instance
+             */
+            static create(properties: waproto.DeviceCapabilities.ReverseHistorySync.$Shape): waproto.DeviceCapabilities.ReverseHistorySync & waproto.DeviceCapabilities.ReverseHistorySync.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.ReverseHistorySync.$Properties): waproto.DeviceCapabilities.ReverseHistorySync;
+
+            /**
+             * Encodes the specified ReverseHistorySync message. Does not implicitly {@link waproto.DeviceCapabilities.ReverseHistorySync.verify|verify} messages.
+             * @param message ReverseHistorySync message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.ReverseHistorySync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ReverseHistorySync message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.ReverseHistorySync.verify|verify} messages.
+             * @param message ReverseHistorySync message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.ReverseHistorySync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ReverseHistorySync message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.ReverseHistorySync & waproto.DeviceCapabilities.ReverseHistorySync.$Shape} ReverseHistorySync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.ReverseHistorySync & waproto.DeviceCapabilities.ReverseHistorySync.$Shape;
+
+            /**
+             * Decodes a ReverseHistorySync message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.ReverseHistorySync & waproto.DeviceCapabilities.ReverseHistorySync.$Shape} ReverseHistorySync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.ReverseHistorySync & waproto.DeviceCapabilities.ReverseHistorySync.$Shape;
+
+            /**
+             * Verifies a ReverseHistorySync message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ReverseHistorySync message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ReverseHistorySync
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.ReverseHistorySync;
+
+            /**
+             * Creates a plain object from a ReverseHistorySync message. Also converts values to other types if specified.
+             * @param message ReverseHistorySync
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.ReverseHistorySync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ReverseHistorySync to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for ReverseHistorySync
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace ReverseHistorySync {
+
+            /** Properties of a ReverseHistorySync. */
+            interface $Properties {
+
+                /** ReverseHistorySync enabledProducts */
+                enabledProducts?: (waproto.DeviceCapabilities.ReverseHistorySync.Product[]|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a ReverseHistorySync. */
+            type $Shape = waproto.DeviceCapabilities.ReverseHistorySync.$Properties;
+
+            /** Product enum. */
+            enum Product {
+
+                /** PRODUCT_UNSPECIFIED value */
+                PRODUCT_UNSPECIFIED = 0,
+
+                /** HATCH value */
+                HATCH = 1
+            }
         }
 
         /**
