@@ -94205,7 +94205,10 @@ export namespace waproto {
                 REQUESTS = 18,
 
                 /** BUSINESS value */
-                BUSINESS = 19
+                BUSINESS = 19,
+
+                /** ONE_ON_ONE value */
+                ONE_ON_ONE = 20
             }
         }
 
