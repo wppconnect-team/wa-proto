@@ -60109,6 +60109,14 @@ $root.waproto = (function() {
             case 10:
                 message.pairedMediaType = 10;
                 break;
+            case "STREAMED_VIDEO_PARENT":
+            case 11:
+                message.pairedMediaType = 11;
+                break;
+            case "STREAMED_VIDEO_CHILD":
+            case 12:
+                message.pairedMediaType = 12;
+                break;
             default:
                 if (typeof object.pairedMediaType === "number" && (object.pairedMediaType | 0) === object.pairedMediaType)
                     message.pairedMediaType = object.pairedMediaType;
@@ -66573,6 +66581,8 @@ $root.waproto = (function() {
          * @property {number} HEVC_VIDEO_CHILD=8 HEVC_VIDEO_CHILD value
          * @property {number} AV1_VIDEO_PARENT=9 AV1_VIDEO_PARENT value
          * @property {number} AV1_VIDEO_CHILD=10 AV1_VIDEO_CHILD value
+         * @property {number} STREAMED_VIDEO_PARENT=11 STREAMED_VIDEO_PARENT value
+         * @property {number} STREAMED_VIDEO_CHILD=12 STREAMED_VIDEO_CHILD value
          */
         ContextInfo.PairedMediaType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -66587,6 +66597,8 @@ $root.waproto = (function() {
             values[valuesById[8] = "HEVC_VIDEO_CHILD"] = 8;
             values[valuesById[9] = "AV1_VIDEO_PARENT"] = 9;
             values[valuesById[10] = "AV1_VIDEO_CHILD"] = 10;
+            values[valuesById[11] = "STREAMED_VIDEO_PARENT"] = 11;
+            values[valuesById[12] = "STREAMED_VIDEO_CHILD"] = 12;
             return values;
         })();
 
@@ -128423,6 +128435,7 @@ $root.waproto = (function() {
          * @property {waproto.Message.ImageMessage.$Properties|null} [instantImageMessage] Message instantImageMessage
          * @property {waproto.Message.RequestLocationMessage.$Properties|null} [requestLocationMessage] Message requestLocationMessage
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [botGroupParticipantMessage] Message botGroupParticipantMessage
+         * @property {waproto.Message.RequestLocationUpdateMessage.$Properties|null} [requestLocationUpdateMessage] Message requestLocationUpdateMessage
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -128553,6 +128566,7 @@ $root.waproto = (function() {
          *   instantImageMessage?: waproto.Message.ImageMessage.$Shape|null;
          *   requestLocationMessage?: waproto.Message.RequestLocationMessage.$Shape|null;
          *   botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+         *   requestLocationUpdateMessage?: waproto.Message.RequestLocationUpdateMessage.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Message.$Shape
          */
@@ -129500,6 +129514,14 @@ $root.waproto = (function() {
          */
         Message.prototype.botGroupParticipantMessage = null;
 
+        /**
+         * Message requestLocationUpdateMessage.
+         * @member {waproto.Message.RequestLocationUpdateMessage.$Properties|null|undefined} requestLocationUpdateMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.requestLocationUpdateMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -130199,6 +130221,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_requestLocationUpdateMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["requestLocationUpdateMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -130463,6 +130491,8 @@ $root.waproto = (function() {
                 $root.waproto.Message.RequestLocationMessage.encode(message.requestLocationMessage, writer.uint32(/* id 136, wireType 2 =*/1090).fork(), _depth + 1).ldelim();
             if (message.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(message, "botGroupParticipantMessage"))
                 $root.waproto.Message.FutureProofMessage.encode(message.botGroupParticipantMessage, writer.uint32(/* id 137, wireType 2 =*/1098).fork(), _depth + 1).ldelim();
+            if (message.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(message, "requestLocationUpdateMessage"))
+                $root.waproto.Message.RequestLocationUpdateMessage.encode(message.requestLocationUpdateMessage, writer.uint32(/* id 138, wireType 2 =*/1106).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -131330,6 +131360,13 @@ $root.waproto = (function() {
                             break;
                         message.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botGroupParticipantMessage);
                         message._botGroupParticipantMessage = "botGroupParticipantMessage";
+                        continue;
+                    }
+                case 138: {
+                        if (wireType !== 2)
+                            break;
+                        message.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestLocationUpdateMessage);
+                        message._requestLocationUpdateMessage = "requestLocationUpdateMessage";
                         continue;
                     }
                 }
@@ -132306,6 +132343,14 @@ $root.waproto = (function() {
                         return "botGroupParticipantMessage." + error;
                 }
             }
+            if (message.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(message, "requestLocationUpdateMessage")) {
+                properties._requestLocationUpdateMessage = 1;
+                {
+                    var error = $root.waproto.Message.RequestLocationUpdateMessage.verify(message.requestLocationUpdateMessage, _depth + 1);
+                    if (error)
+                        return "requestLocationUpdateMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -132904,6 +132949,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.Message.botGroupParticipantMessage: object expected");
                 message.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.fromObject(object.botGroupParticipantMessage, _depth + 1);
             }
+            if (object.requestLocationUpdateMessage != null) {
+                if (!$util.isObject(object.requestLocationUpdateMessage))
+                    throw $TypeError(".waproto.Message.requestLocationUpdateMessage: object expected");
+                message.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.fromObject(object.requestLocationUpdateMessage, _depth + 1);
+            }
             return message;
         };
 
@@ -133156,6 +133206,8 @@ $root.waproto = (function() {
                 object.requestLocationMessage = $root.waproto.Message.RequestLocationMessage.toObject(message.requestLocationMessage, options, _depth + 1);
             if (message.botGroupParticipantMessage != null && $Object.hasOwnProperty.call(message, "botGroupParticipantMessage"))
                 object.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.toObject(message.botGroupParticipantMessage, options, _depth + 1);
+            if (message.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(message, "requestLocationUpdateMessage"))
+                object.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.toObject(message.requestLocationUpdateMessage, options, _depth + 1);
             return object;
         };
 
@@ -198784,6 +198836,397 @@ $root.waproto = (function() {
             return RequestLocationMessage;
         })();
 
+        Message.RequestLocationUpdateMessage = (function() {
+
+            /**
+             * Properties of a RequestLocationUpdateMessage.
+             * @typedef {Object} waproto.Message.RequestLocationUpdateMessage.$Properties
+             * @property {waproto.MessageKey.$Properties|null} [key] RequestLocationUpdateMessage key
+             * @property {waproto.Message.RequestLocationUpdateMessage.UpdateType|null} [updateType] RequestLocationUpdateMessage updateType
+             * @property {number|Long|null} [senderTimestampMs] RequestLocationUpdateMessage senderTimestampMs
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a RequestLocationUpdateMessage.
+             * @memberof waproto.Message
+             * @interface IRequestLocationUpdateMessage
+             * @augments waproto.Message.RequestLocationUpdateMessage.$Properties
+             * @deprecated Use waproto.Message.RequestLocationUpdateMessage.$Properties instead.
+             */
+
+            /**
+             * Shape of a RequestLocationUpdateMessage.
+             * @typedef {waproto.Message.RequestLocationUpdateMessage.$Properties} waproto.Message.RequestLocationUpdateMessage.$Shape
+             */
+
+            /**
+             * Constructs a new RequestLocationUpdateMessage.
+             * @memberof waproto.Message
+             * @classdesc Represents a RequestLocationUpdateMessage.
+             * @constructor
+             * @param {waproto.Message.RequestLocationUpdateMessage.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var RequestLocationUpdateMessage = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * RequestLocationUpdateMessage key.
+             * @member {waproto.MessageKey.$Properties|null|undefined} key
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @instance
+             */
+            RequestLocationUpdateMessage.prototype.key = null;
+
+            /**
+             * RequestLocationUpdateMessage updateType.
+             * @member {waproto.Message.RequestLocationUpdateMessage.UpdateType|null|undefined} updateType
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @instance
+             */
+            RequestLocationUpdateMessage.prototype.updateType = null;
+
+            /**
+             * RequestLocationUpdateMessage senderTimestampMs.
+             * @member {number|Long|null|undefined} senderTimestampMs
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @instance
+             */
+            RequestLocationUpdateMessage.prototype.senderTimestampMs = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(RequestLocationUpdateMessage.prototype, "_key", {
+                get: $util.oneOfGetter($oneOfFields = ["key"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(RequestLocationUpdateMessage.prototype, "_updateType", {
+                get: $util.oneOfGetter($oneOfFields = ["updateType"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(RequestLocationUpdateMessage.prototype, "_senderTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["senderTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new RequestLocationUpdateMessage instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {waproto.Message.RequestLocationUpdateMessage.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.RequestLocationUpdateMessage} RequestLocationUpdateMessage instance
+             * @type {{
+             *   (properties: waproto.Message.RequestLocationUpdateMessage.$Shape): waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape;
+             *   (properties?: waproto.Message.RequestLocationUpdateMessage.$Properties): waproto.Message.RequestLocationUpdateMessage;
+             * }}
+             */
+            RequestLocationUpdateMessage.create = function(properties) {
+                return new RequestLocationUpdateMessage(properties);
+            };
+
+            /**
+             * Encodes the specified RequestLocationUpdateMessage message. Does not implicitly {@link waproto.Message.RequestLocationUpdateMessage.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {waproto.Message.RequestLocationUpdateMessage.$Properties} message RequestLocationUpdateMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RequestLocationUpdateMessage.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.key != null && $Object.hasOwnProperty.call(message, "key"))
+                    $root.waproto.MessageKey.encode(message.key, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+                if (message.updateType != null && $Object.hasOwnProperty.call(message, "updateType"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int32(message.updateType);
+                if (message.senderTimestampMs != null && $Object.hasOwnProperty.call(message, "senderTimestampMs"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int64(message.senderTimestampMs);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified RequestLocationUpdateMessage message, length delimited. Does not implicitly {@link waproto.Message.RequestLocationUpdateMessage.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {waproto.Message.RequestLocationUpdateMessage.$Properties} message RequestLocationUpdateMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RequestLocationUpdateMessage.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a RequestLocationUpdateMessage message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape} RequestLocationUpdateMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RequestLocationUpdateMessage.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.RequestLocationUpdateMessage();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message._key = "key";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 0)
+                                break;
+                            message.updateType = reader.int32();
+                            message._updateType = "updateType";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 0)
+                                break;
+                            message.senderTimestampMs = reader.int64();
+                            message._senderTimestampMs = "senderTimestampMs";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a RequestLocationUpdateMessage message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape} RequestLocationUpdateMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RequestLocationUpdateMessage.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a RequestLocationUpdateMessage message.
+             * @function verify
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            RequestLocationUpdateMessage.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.key != null && $Object.hasOwnProperty.call(message, "key")) {
+                    properties._key = 1;
+                    {
+                        var error = $root.waproto.MessageKey.verify(message.key, _depth + 1);
+                        if (error)
+                            return "key." + error;
+                    }
+                }
+                if (message.updateType != null && $Object.hasOwnProperty.call(message, "updateType")) {
+                    properties._updateType = 1;
+                    if (typeof message.updateType !== "number" || (message.updateType | 0) !== message.updateType)
+                        return "updateType: enum value expected";
+                }
+                if (message.senderTimestampMs != null && $Object.hasOwnProperty.call(message, "senderTimestampMs")) {
+                    properties._senderTimestampMs = 1;
+                    if (!$util.isInteger(message.senderTimestampMs) && !(message.senderTimestampMs && $util.isInteger(message.senderTimestampMs.low) && $util.isInteger(message.senderTimestampMs.high)))
+                        return "senderTimestampMs: integer|Long expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a RequestLocationUpdateMessage message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.RequestLocationUpdateMessage} RequestLocationUpdateMessage
+             */
+            RequestLocationUpdateMessage.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.RequestLocationUpdateMessage)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.RequestLocationUpdateMessage: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.RequestLocationUpdateMessage();
+                if (object.key != null) {
+                    if (!$util.isObject(object.key))
+                        throw $TypeError(".waproto.Message.RequestLocationUpdateMessage.key: object expected");
+                    message.key = $root.waproto.MessageKey.fromObject(object.key, _depth + 1);
+                }
+                switch (object.updateType) {
+                case "UNKNOWN":
+                case 0:
+                    message.updateType = 0;
+                    break;
+                case "CANCEL":
+                case 1:
+                    message.updateType = 1;
+                    break;
+                default:
+                    if (typeof object.updateType === "number" && (object.updateType | 0) === object.updateType)
+                        message.updateType = object.updateType;
+                }
+                if (object.senderTimestampMs != null)
+                    if ($util.Long)
+                        message.senderTimestampMs = $util.Long.fromValue(object.senderTimestampMs, false);
+                    else if (typeof object.senderTimestampMs === "string")
+                        message.senderTimestampMs = $parseInt(object.senderTimestampMs, 10);
+                    else if (typeof object.senderTimestampMs === "number")
+                        message.senderTimestampMs = object.senderTimestampMs;
+                    else if (typeof object.senderTimestampMs === "object")
+                        message.senderTimestampMs = new $util.LongBits(object.senderTimestampMs.low >>> 0, object.senderTimestampMs.high >>> 0).toNumber();
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a RequestLocationUpdateMessage message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {waproto.Message.RequestLocationUpdateMessage} message RequestLocationUpdateMessage
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            RequestLocationUpdateMessage.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.key != null && $Object.hasOwnProperty.call(message, "key"))
+                    object.key = $root.waproto.MessageKey.toObject(message.key, options, _depth + 1);
+                if (message.updateType != null && $Object.hasOwnProperty.call(message, "updateType"))
+                    object.updateType = options.enums === $String ? $root.waproto.Message.RequestLocationUpdateMessage.UpdateType[message.updateType] === $undefined ? message.updateType : $root.waproto.Message.RequestLocationUpdateMessage.UpdateType[message.updateType] : message.updateType;
+                if (message.senderTimestampMs != null && $Object.hasOwnProperty.call(message, "senderTimestampMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.senderTimestampMs = typeof message.senderTimestampMs === "number" ? $BigInt(message.senderTimestampMs) : $util.Long.fromBits(message.senderTimestampMs.low >>> 0, message.senderTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.senderTimestampMs === "number")
+                        object.senderTimestampMs = options.longs === $String ? $String(message.senderTimestampMs) : message.senderTimestampMs;
+                    else
+                        object.senderTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.senderTimestampMs) : options.longs === $Number ? new $util.LongBits(message.senderTimestampMs.low >>> 0, message.senderTimestampMs.high >>> 0).toNumber() : message.senderTimestampMs;
+                return object;
+            };
+
+            /**
+             * Converts this RequestLocationUpdateMessage to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            RequestLocationUpdateMessage.prototype.toJSON = function() {
+                return RequestLocationUpdateMessage.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for RequestLocationUpdateMessage
+             * @function getTypeUrl
+             * @memberof waproto.Message.RequestLocationUpdateMessage
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            RequestLocationUpdateMessage.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.RequestLocationUpdateMessage";
+            };
+
+            /**
+             * UpdateType enum.
+             * @name waproto.Message.RequestLocationUpdateMessage.UpdateType
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} CANCEL=1 CANCEL value
+             */
+            RequestLocationUpdateMessage.UpdateType = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "CANCEL"] = 1;
+                return values;
+            })();
+
+            return RequestLocationUpdateMessage;
+        })();
+
         Message.RequestPaymentMessage = (function() {
 
             /**
@@ -214066,6 +214509,10 @@ $root.waproto = (function() {
             case 4:
                 message.messageAddOnType = 4;
                 break;
+            case "REQUEST_LOCATION_UPDATE":
+            case 5:
+                message.messageAddOnType = 5;
+                break;
             default:
                 if (typeof object.messageAddOnType === "number" && (object.messageAddOnType | 0) === object.messageAddOnType)
                     message.messageAddOnType = object.messageAddOnType;
@@ -214220,6 +214667,7 @@ $root.waproto = (function() {
          * @property {number} EVENT_RESPONSE=2 EVENT_RESPONSE value
          * @property {number} POLL_UPDATE=3 POLL_UPDATE value
          * @property {number} PIN_IN_CHAT=4 PIN_IN_CHAT value
+         * @property {number} REQUEST_LOCATION_UPDATE=5 REQUEST_LOCATION_UPDATE value
          */
         MessageAddOn.MessageAddOnType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -214228,6 +214676,7 @@ $root.waproto = (function() {
             values[valuesById[2] = "EVENT_RESPONSE"] = 2;
             values[valuesById[3] = "POLL_UPDATE"] = 3;
             values[valuesById[4] = "PIN_IN_CHAT"] = 4;
+            values[valuesById[5] = "REQUEST_LOCATION_UPDATE"] = 5;
             return values;
         })();
 
@@ -214937,6 +215386,10 @@ $root.waproto = (function() {
             case 21:
                 message.associationType = 21;
                 break;
+            case "STREAMED_HD_VIDEO_DUAL_UPLOAD":
+            case 22:
+                message.associationType = 22;
+                break;
             default:
                 if (typeof object.associationType === "number" && (object.associationType | 0) === object.associationType)
                     message.associationType = object.associationType;
@@ -215028,6 +215481,7 @@ $root.waproto = (function() {
          * @property {number} HEVC_VIDEO_DUAL_UPLOAD=19 HEVC_VIDEO_DUAL_UPLOAD value
          * @property {number} POLL_ADD_OPTION=20 POLL_ADD_OPTION value
          * @property {number} AV1_VIDEO_DUAL_UPLOAD=21 AV1_VIDEO_DUAL_UPLOAD value
+         * @property {number} STREAMED_HD_VIDEO_DUAL_UPLOAD=22 STREAMED_HD_VIDEO_DUAL_UPLOAD value
          */
         MessageAssociation.AssociationType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -215053,6 +215507,7 @@ $root.waproto = (function() {
             values[valuesById[19] = "HEVC_VIDEO_DUAL_UPLOAD"] = 19;
             values[valuesById[20] = "POLL_ADD_OPTION"] = 20;
             values[valuesById[21] = "AV1_VIDEO_DUAL_UPLOAD"] = 21;
+            values[valuesById[22] = "STREAMED_HD_VIDEO_DUAL_UPLOAD"] = 22;
             return values;
         })();
 
@@ -231660,6 +232115,7 @@ $root.waproto = (function() {
      * @property {number} BUSINESS_FOLDER_ACTIVATION_ACTION=96 BUSINESS_FOLDER_ACTIVATION_ACTION value
      * @property {number} GROUP_HISTORY_TOGGLE_ACTION=97 GROUP_HISTORY_TOGGLE_ACTION value
      * @property {number} BB_PRO_PENDING_CUSTOMER_BASE_ACTION=98 BB_PRO_PENDING_CUSTOMER_BASE_ACTION value
+     * @property {number} COMMUNITY_NESTING_STATE_ACTION=99 COMMUNITY_NESTING_STATE_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -231758,6 +232214,7 @@ $root.waproto = (function() {
         values[valuesById[96] = "BUSINESS_FOLDER_ACTIVATION_ACTION"] = 96;
         values[valuesById[97] = "GROUP_HISTORY_TOGGLE_ACTION"] = 97;
         values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
+        values[valuesById[99] = "COMMUNITY_NESTING_STATE_ACTION"] = 99;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -260352,6 +260809,7 @@ $root.waproto = (function() {
          * @property {waproto.SyncActionValue.BusinessFolderActivationAction.$Properties|null} [businessFolderActivationAction] SyncActionValue businessFolderActivationAction
          * @property {waproto.SyncActionValue.GroupHistoryToggleAction.$Properties|null} [groupHistoryToggleAction] SyncActionValue groupHistoryToggleAction
          * @property {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null} [bbProPendingCustomerBaseAction] SyncActionValue bbProPendingCustomerBaseAction
+         * @property {waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null} [communityNestingStateAction] SyncActionValue communityNestingStateAction
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -260455,6 +260913,7 @@ $root.waproto = (function() {
          *   businessFolderActivationAction?: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape|null;
          *   groupHistoryToggleAction?: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape|null;
          *   bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
+         *   communityNestingStateAction?: waproto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.SyncActionValue.$Shape
          */
@@ -261186,6 +261645,14 @@ $root.waproto = (function() {
          */
         SyncActionValue.prototype.bbProPendingCustomerBaseAction = null;
 
+        /**
+         * SyncActionValue communityNestingStateAction.
+         * @member {waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null|undefined} communityNestingStateAction
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.communityNestingStateAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -261723,6 +262190,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_communityNestingStateAction", {
+            get: $util.oneOfGetter($oneOfFields = ["communityNestingStateAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -261933,6 +262406,8 @@ $root.waproto = (function() {
                 $root.waproto.SyncActionValue.GroupHistoryToggleAction.encode(message.groupHistoryToggleAction, writer.uint32(/* id 97, wireType 2 =*/778).fork(), _depth + 1).ldelim();
             if (message.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction"))
                 $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.encode(message.bbProPendingCustomerBaseAction, writer.uint32(/* id 98, wireType 2 =*/786).fork(), _depth + 1).ldelim();
+            if (message.communityNestingStateAction != null && $Object.hasOwnProperty.call(message, "communityNestingStateAction"))
+                $root.waproto.SyncActionValue.CommunityNestingStateAction.encode(message.communityNestingStateAction, writer.uint32(/* id 99, wireType 2 =*/794).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -262611,6 +263086,13 @@ $root.waproto = (function() {
                             break;
                         message.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bbProPendingCustomerBaseAction);
                         message._bbProPendingCustomerBaseAction = "bbProPendingCustomerBaseAction";
+                        continue;
+                    }
+                case 99: {
+                        if (wireType !== 2)
+                            break;
+                        message.communityNestingStateAction = $root.waproto.SyncActionValue.CommunityNestingStateAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.communityNestingStateAction);
+                        message._communityNestingStateAction = "communityNestingStateAction";
                         continue;
                     }
                 }
@@ -263371,6 +263853,14 @@ $root.waproto = (function() {
                         return "bbProPendingCustomerBaseAction." + error;
                 }
             }
+            if (message.communityNestingStateAction != null && $Object.hasOwnProperty.call(message, "communityNestingStateAction")) {
+                properties._communityNestingStateAction = 1;
+                {
+                    var error = $root.waproto.SyncActionValue.CommunityNestingStateAction.verify(message.communityNestingStateAction, _depth + 1);
+                    if (error)
+                        return "communityNestingStateAction." + error;
+                }
+            }
             return null;
         };
 
@@ -263841,6 +264331,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.SyncActionValue.bbProPendingCustomerBaseAction: object expected");
                 message.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.fromObject(object.bbProPendingCustomerBaseAction, _depth + 1);
             }
+            if (object.communityNestingStateAction != null) {
+                if (!$util.isObject(object.communityNestingStateAction))
+                    throw $TypeError(".waproto.SyncActionValue.communityNestingStateAction: object expected");
+                message.communityNestingStateAction = $root.waproto.SyncActionValue.CommunityNestingStateAction.fromObject(object.communityNestingStateAction, _depth + 1);
+            }
             return message;
         };
 
@@ -264044,6 +264539,8 @@ $root.waproto = (function() {
                 object.groupHistoryToggleAction = $root.waproto.SyncActionValue.GroupHistoryToggleAction.toObject(message.groupHistoryToggleAction, options, _depth + 1);
             if (message.bbProPendingCustomerBaseAction != null && $Object.hasOwnProperty.call(message, "bbProPendingCustomerBaseAction"))
                 object.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.toObject(message.bbProPendingCustomerBaseAction, options, _depth + 1);
+            if (message.communityNestingStateAction != null && $Object.hasOwnProperty.call(message, "communityNestingStateAction"))
+                object.communityNestingStateAction = $root.waproto.SyncActionValue.CommunityNestingStateAction.toObject(message.communityNestingStateAction, options, _depth + 1);
             return object;
         };
 
@@ -271160,6 +271657,319 @@ $root.waproto = (function() {
             };
 
             return CoexV2VersionAction;
+        })();
+
+        SyncActionValue.CommunityNestingStateAction = (function() {
+
+            /**
+             * Properties of a CommunityNestingStateAction.
+             * @typedef {Object} waproto.SyncActionValue.CommunityNestingStateAction.$Properties
+             * @property {waproto.SyncActionValue.CommunityNestingStateAction.NestingState|null} [nestingState] CommunityNestingStateAction nestingState
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a CommunityNestingStateAction.
+             * @memberof waproto.SyncActionValue
+             * @interface ICommunityNestingStateAction
+             * @augments waproto.SyncActionValue.CommunityNestingStateAction.$Properties
+             * @deprecated Use waproto.SyncActionValue.CommunityNestingStateAction.$Properties instead.
+             */
+
+            /**
+             * Shape of a CommunityNestingStateAction.
+             * @typedef {waproto.SyncActionValue.CommunityNestingStateAction.$Properties} waproto.SyncActionValue.CommunityNestingStateAction.$Shape
+             */
+
+            /**
+             * Constructs a new CommunityNestingStateAction.
+             * @memberof waproto.SyncActionValue
+             * @classdesc Represents a CommunityNestingStateAction.
+             * @constructor
+             * @param {waproto.SyncActionValue.CommunityNestingStateAction.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var CommunityNestingStateAction = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * CommunityNestingStateAction nestingState.
+             * @member {waproto.SyncActionValue.CommunityNestingStateAction.NestingState|null|undefined} nestingState
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @instance
+             */
+            CommunityNestingStateAction.prototype.nestingState = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(CommunityNestingStateAction.prototype, "_nestingState", {
+                get: $util.oneOfGetter($oneOfFields = ["nestingState"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new CommunityNestingStateAction instance using the specified properties.
+             * @function create
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {waproto.SyncActionValue.CommunityNestingStateAction.$Properties=} [properties] Properties to set
+             * @returns {waproto.SyncActionValue.CommunityNestingStateAction} CommunityNestingStateAction instance
+             * @type {{
+             *   (properties: waproto.SyncActionValue.CommunityNestingStateAction.$Shape): waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape;
+             *   (properties?: waproto.SyncActionValue.CommunityNestingStateAction.$Properties): waproto.SyncActionValue.CommunityNestingStateAction;
+             * }}
+             */
+            CommunityNestingStateAction.create = function(properties) {
+                return new CommunityNestingStateAction(properties);
+            };
+
+            /**
+             * Encodes the specified CommunityNestingStateAction message. Does not implicitly {@link waproto.SyncActionValue.CommunityNestingStateAction.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {waproto.SyncActionValue.CommunityNestingStateAction.$Properties} message CommunityNestingStateAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CommunityNestingStateAction.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.nestingState != null && $Object.hasOwnProperty.call(message, "nestingState"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.nestingState);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified CommunityNestingStateAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.CommunityNestingStateAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {waproto.SyncActionValue.CommunityNestingStateAction.$Properties} message CommunityNestingStateAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            CommunityNestingStateAction.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a CommunityNestingStateAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape} CommunityNestingStateAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CommunityNestingStateAction.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.SyncActionValue.CommunityNestingStateAction();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.nestingState = reader.int32();
+                            message._nestingState = "nestingState";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a CommunityNestingStateAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape} CommunityNestingStateAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            CommunityNestingStateAction.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a CommunityNestingStateAction message.
+             * @function verify
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            CommunityNestingStateAction.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.nestingState != null && $Object.hasOwnProperty.call(message, "nestingState")) {
+                    properties._nestingState = 1;
+                    if (typeof message.nestingState !== "number" || (message.nestingState | 0) !== message.nestingState)
+                        return "nestingState: enum value expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a CommunityNestingStateAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.SyncActionValue.CommunityNestingStateAction} CommunityNestingStateAction
+             */
+            CommunityNestingStateAction.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.SyncActionValue.CommunityNestingStateAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.SyncActionValue.CommunityNestingStateAction: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.SyncActionValue.CommunityNestingStateAction();
+                switch (object.nestingState) {
+                case "NESTING_STATE_UNKNOWN":
+                case 0:
+                    message.nestingState = 0;
+                    break;
+                case "NESTING_STATE_NESTED":
+                case 1:
+                    message.nestingState = 1;
+                    break;
+                case "NESTING_STATE_UNNESTED":
+                case 2:
+                    message.nestingState = 2;
+                    break;
+                default:
+                    if (typeof object.nestingState === "number" && (object.nestingState | 0) === object.nestingState)
+                        message.nestingState = object.nestingState;
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a CommunityNestingStateAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {waproto.SyncActionValue.CommunityNestingStateAction} message CommunityNestingStateAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            CommunityNestingStateAction.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.nestingState != null && $Object.hasOwnProperty.call(message, "nestingState"))
+                    object.nestingState = options.enums === $String ? $root.waproto.SyncActionValue.CommunityNestingStateAction.NestingState[message.nestingState] === $undefined ? message.nestingState : $root.waproto.SyncActionValue.CommunityNestingStateAction.NestingState[message.nestingState] : message.nestingState;
+                return object;
+            };
+
+            /**
+             * Converts this CommunityNestingStateAction to JSON.
+             * @function toJSON
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            CommunityNestingStateAction.prototype.toJSON = function() {
+                return CommunityNestingStateAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for CommunityNestingStateAction
+             * @function getTypeUrl
+             * @memberof waproto.SyncActionValue.CommunityNestingStateAction
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            CommunityNestingStateAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.SyncActionValue.CommunityNestingStateAction";
+            };
+
+            /**
+             * NestingState enum.
+             * @name waproto.SyncActionValue.CommunityNestingStateAction.NestingState
+             * @enum {number}
+             * @property {number} NESTING_STATE_UNKNOWN=0 NESTING_STATE_UNKNOWN value
+             * @property {number} NESTING_STATE_NESTED=1 NESTING_STATE_NESTED value
+             * @property {number} NESTING_STATE_UNNESTED=2 NESTING_STATE_UNNESTED value
+             */
+            CommunityNestingStateAction.NestingState = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "NESTING_STATE_UNKNOWN"] = 0;
+                values[valuesById[1] = "NESTING_STATE_NESTED"] = 1;
+                values[valuesById[2] = "NESTING_STATE_UNNESTED"] = 2;
+                return values;
+            })();
+
+            return CommunityNestingStateAction;
         })();
 
         SyncActionValue.ContactAction = (function() {
@@ -304019,6 +304829,10 @@ $root.waproto = (function() {
             case "AV1_VIDEO_DUAL_UPLOAD":
             case 21:
                 message.associationType = 21;
+                break;
+            case "STREAMED_HD_VIDEO_DUAL_UPLOAD":
+            case 22:
+                message.associationType = 22;
                 break;
             default:
                 if (typeof object.associationType === "number" && (object.associationType | 0) === object.associationType)

@@ -22753,7 +22753,13 @@ export namespace waproto {
             AV1_VIDEO_PARENT = 9,
 
             /** AV1_VIDEO_CHILD value */
-            AV1_VIDEO_CHILD = 10
+            AV1_VIDEO_CHILD = 10,
+
+            /** STREAMED_VIDEO_PARENT value */
+            STREAMED_VIDEO_PARENT = 11,
+
+            /** STREAMED_VIDEO_CHILD value */
+            STREAMED_VIDEO_CHILD = 12
         }
 
         /**
@@ -44379,6 +44385,9 @@ export namespace waproto {
         /** Message botGroupParticipantMessage. */
         botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+        /** Message requestLocationUpdateMessage. */
+        requestLocationUpdateMessage?: (waproto.Message.RequestLocationUpdateMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -44811,6 +44820,9 @@ export namespace waproto {
             /** Message botGroupParticipantMessage */
             botGroupParticipantMessage?: (waproto.Message.FutureProofMessage.$Properties|null);
 
+            /** Message requestLocationUpdateMessage */
+            requestLocationUpdateMessage?: (waproto.Message.RequestLocationUpdateMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -44933,6 +44945,7 @@ export namespace waproto {
           instantImageMessage?: waproto.Message.ImageMessage.$Shape|null;
           requestLocationMessage?: waproto.Message.RequestLocationMessage.$Shape|null;
           botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
+          requestLocationUpdateMessage?: waproto.Message.RequestLocationUpdateMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -67051,6 +67064,145 @@ export namespace waproto {
         }
 
         /**
+         * Properties of a RequestLocationUpdateMessage.
+         * @deprecated Use waproto.Message.RequestLocationUpdateMessage.$Properties instead.
+         */
+        interface IRequestLocationUpdateMessage extends waproto.Message.RequestLocationUpdateMessage.$Properties {
+        }
+
+        /** Represents a RequestLocationUpdateMessage. */
+        class RequestLocationUpdateMessage {
+
+            /**
+             * Constructs a new RequestLocationUpdateMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.RequestLocationUpdateMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** RequestLocationUpdateMessage key. */
+            key?: (waproto.MessageKey.$Properties|null);
+
+            /** RequestLocationUpdateMessage updateType. */
+            updateType?: (waproto.Message.RequestLocationUpdateMessage.UpdateType|null);
+
+            /** RequestLocationUpdateMessage senderTimestampMs. */
+            senderTimestampMs?: (number|Long|null);
+
+            /**
+             * Creates a new RequestLocationUpdateMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RequestLocationUpdateMessage instance
+             */
+            static create(properties: waproto.Message.RequestLocationUpdateMessage.$Shape): waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape;
+            static create(properties?: waproto.Message.RequestLocationUpdateMessage.$Properties): waproto.Message.RequestLocationUpdateMessage;
+
+            /**
+             * Encodes the specified RequestLocationUpdateMessage message. Does not implicitly {@link waproto.Message.RequestLocationUpdateMessage.verify|verify} messages.
+             * @param message RequestLocationUpdateMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.RequestLocationUpdateMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RequestLocationUpdateMessage message, length delimited. Does not implicitly {@link waproto.Message.RequestLocationUpdateMessage.verify|verify} messages.
+             * @param message RequestLocationUpdateMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.RequestLocationUpdateMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RequestLocationUpdateMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape} RequestLocationUpdateMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape;
+
+            /**
+             * Decodes a RequestLocationUpdateMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape} RequestLocationUpdateMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.RequestLocationUpdateMessage & waproto.Message.RequestLocationUpdateMessage.$Shape;
+
+            /**
+             * Verifies a RequestLocationUpdateMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RequestLocationUpdateMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RequestLocationUpdateMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.RequestLocationUpdateMessage;
+
+            /**
+             * Creates a plain object from a RequestLocationUpdateMessage message. Also converts values to other types if specified.
+             * @param message RequestLocationUpdateMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.RequestLocationUpdateMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RequestLocationUpdateMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for RequestLocationUpdateMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace RequestLocationUpdateMessage {
+
+            /** Properties of a RequestLocationUpdateMessage. */
+            interface $Properties {
+
+                /** RequestLocationUpdateMessage key */
+                key?: (waproto.MessageKey.$Properties|null);
+
+                /** RequestLocationUpdateMessage updateType */
+                updateType?: (waproto.Message.RequestLocationUpdateMessage.UpdateType|null);
+
+                /** RequestLocationUpdateMessage senderTimestampMs */
+                senderTimestampMs?: (number|Long|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a RequestLocationUpdateMessage. */
+            type $Shape = waproto.Message.RequestLocationUpdateMessage.$Properties;
+
+            /** UpdateType enum. */
+            enum UpdateType {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** CANCEL value */
+                CANCEL = 1
+            }
+        }
+
+        /**
          * Properties of a RequestPaymentMessage.
          * @deprecated Use waproto.Message.RequestPaymentMessage.$Properties instead.
          */
@@ -72108,7 +72260,10 @@ export namespace waproto {
             POLL_UPDATE = 3,
 
             /** PIN_IN_CHAT value */
-            PIN_IN_CHAT = 4
+            PIN_IN_CHAT = 4,
+
+            /** REQUEST_LOCATION_UPDATE value */
+            REQUEST_LOCATION_UPDATE = 5
         }
     }
 
@@ -72430,7 +72585,10 @@ export namespace waproto {
             POLL_ADD_OPTION = 20,
 
             /** AV1_VIDEO_DUAL_UPLOAD value */
-            AV1_VIDEO_DUAL_UPLOAD = 21
+            AV1_VIDEO_DUAL_UPLOAD = 21,
+
+            /** STREAMED_HD_VIDEO_DUAL_UPLOAD value */
+            STREAMED_HD_VIDEO_DUAL_UPLOAD = 22
         }
     }
 
@@ -78140,6 +78298,9 @@ export namespace waproto {
 
         /** BB_PRO_PENDING_CUSTOMER_BASE_ACTION value */
         BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98,
+
+        /** COMMUNITY_NESTING_STATE_ACTION value */
+        COMMUNITY_NESTING_STATE_ACTION = 99,
 
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
@@ -88440,6 +88601,9 @@ export namespace waproto {
         /** SyncActionValue bbProPendingCustomerBaseAction. */
         bbProPendingCustomerBaseAction?: (waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null);
 
+        /** SyncActionValue communityNestingStateAction. */
+        communityNestingStateAction?: (waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -88791,6 +88955,9 @@ export namespace waproto {
             /** SyncActionValue bbProPendingCustomerBaseAction */
             bbProPendingCustomerBaseAction?: (waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null);
 
+            /** SyncActionValue communityNestingStateAction */
+            communityNestingStateAction?: (waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -88886,6 +89053,7 @@ export namespace waproto {
           businessFolderActivationAction?: waproto.SyncActionValue.BusinessFolderActivationAction.$Shape|null;
           groupHistoryToggleAction?: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape|null;
           bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
+          communityNestingStateAction?: waproto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -91591,6 +91759,136 @@ export namespace waproto {
 
             /** Shape of a CoexV2VersionAction. */
             type $Shape = waproto.SyncActionValue.CoexV2VersionAction.$Properties;
+        }
+
+        /**
+         * Properties of a CommunityNestingStateAction.
+         * @deprecated Use waproto.SyncActionValue.CommunityNestingStateAction.$Properties instead.
+         */
+        interface ICommunityNestingStateAction extends waproto.SyncActionValue.CommunityNestingStateAction.$Properties {
+        }
+
+        /** Represents a CommunityNestingStateAction. */
+        class CommunityNestingStateAction {
+
+            /**
+             * Constructs a new CommunityNestingStateAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.CommunityNestingStateAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** CommunityNestingStateAction nestingState. */
+            nestingState?: (waproto.SyncActionValue.CommunityNestingStateAction.NestingState|null);
+
+            /**
+             * Creates a new CommunityNestingStateAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns CommunityNestingStateAction instance
+             */
+            static create(properties: waproto.SyncActionValue.CommunityNestingStateAction.$Shape): waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.CommunityNestingStateAction.$Properties): waproto.SyncActionValue.CommunityNestingStateAction;
+
+            /**
+             * Encodes the specified CommunityNestingStateAction message. Does not implicitly {@link waproto.SyncActionValue.CommunityNestingStateAction.verify|verify} messages.
+             * @param message CommunityNestingStateAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.CommunityNestingStateAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified CommunityNestingStateAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.CommunityNestingStateAction.verify|verify} messages.
+             * @param message CommunityNestingStateAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.CommunityNestingStateAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a CommunityNestingStateAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape} CommunityNestingStateAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape;
+
+            /**
+             * Decodes a CommunityNestingStateAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape} CommunityNestingStateAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.CommunityNestingStateAction & waproto.SyncActionValue.CommunityNestingStateAction.$Shape;
+
+            /**
+             * Verifies a CommunityNestingStateAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a CommunityNestingStateAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns CommunityNestingStateAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.CommunityNestingStateAction;
+
+            /**
+             * Creates a plain object from a CommunityNestingStateAction message. Also converts values to other types if specified.
+             * @param message CommunityNestingStateAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.CommunityNestingStateAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this CommunityNestingStateAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for CommunityNestingStateAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace CommunityNestingStateAction {
+
+            /** Properties of a CommunityNestingStateAction. */
+            interface $Properties {
+
+                /** CommunityNestingStateAction nestingState */
+                nestingState?: (waproto.SyncActionValue.CommunityNestingStateAction.NestingState|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a CommunityNestingStateAction. */
+            type $Shape = waproto.SyncActionValue.CommunityNestingStateAction.$Properties;
+
+            /** NestingState enum. */
+            enum NestingState {
+
+                /** NESTING_STATE_UNKNOWN value */
+                NESTING_STATE_UNKNOWN = 0,
+
+                /** NESTING_STATE_NESTED value */
+                NESTING_STATE_NESTED = 1,
+
+                /** NESTING_STATE_UNNESTED value */
+                NESTING_STATE_UNNESTED = 2
+            }
         }
 
         /**

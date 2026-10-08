@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049711438
+/// WhatsApp Version: 2.3000.1049748952
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1772,6 +1772,8 @@ message ContextInfo {
         HEVC_VIDEO_CHILD = 8;
         AV1_VIDEO_PARENT = 9;
         AV1_VIDEO_CHILD = 10;
+        STREAMED_VIDEO_PARENT = 11;
+        STREAMED_VIDEO_CHILD = 12;
     }
     message PartiallySelectedContent {
         optional string text = 1;
@@ -3306,6 +3308,7 @@ message Message {
     optional ImageMessage instantImageMessage = 135;
     optional RequestLocationMessage requestLocationMessage = 136;
     optional FutureProofMessage botGroupParticipantMessage = 137;
+    optional RequestLocationUpdateMessage requestLocationUpdateMessage = 138;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -4788,6 +4791,16 @@ message Message {
         optional ContextInfo contextInfo = 1;
     }
     
+    message RequestLocationUpdateMessage {
+        optional MessageKey key = 1;
+        optional UpdateType updateType = 2;
+        optional int64 senderTimestampMs = 3;
+        enum UpdateType {
+            UNKNOWN = 0;
+            CANCEL = 1;
+        }
+    }
+    
     message RequestPaymentMessage {
         optional Message noteMessage = 4;
         optional string currencyCodeIso4217 = 1;
@@ -5154,6 +5167,7 @@ message MessageAddOn {
         EVENT_RESPONSE = 2;
         POLL_UPDATE = 3;
         PIN_IN_CHAT = 4;
+        REQUEST_LOCATION_UPDATE = 5;
     }
 }
 
@@ -5189,6 +5203,7 @@ message MessageAssociation {
         HEVC_VIDEO_DUAL_UPLOAD = 19;
         POLL_ADD_OPTION = 20;
         AV1_VIDEO_DUAL_UPLOAD = 21;
+        STREAMED_HD_VIDEO_DUAL_UPLOAD = 22;
     }
 }
 
@@ -5619,6 +5634,7 @@ enum MutationProps {
     BUSINESS_FOLDER_ACTIVATION_ACTION = 96;
     GROUP_HISTORY_TOGGLE_ACTION = 97;
     BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98;
+    COMMUNITY_NESTING_STATE_ACTION = 99;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -6363,6 +6379,7 @@ message SyncActionValue {
     optional BusinessFolderActivationAction businessFolderActivationAction = 96;
     optional GroupHistoryToggleAction groupHistoryToggleAction = 97;
     optional BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
+    optional CommunityNestingStateAction communityNestingStateAction = 99;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceId = 2;
@@ -6504,6 +6521,15 @@ message SyncActionValue {
     
     message CoexV2VersionAction {
         optional uint64 version = 1;
+    }
+    
+    message CommunityNestingStateAction {
+        optional NestingState nestingState = 1;
+        enum NestingState {
+            NESTING_STATE_UNKNOWN = 0;
+            NESTING_STATE_NESTED = 1;
+            NESTING_STATE_UNNESTED = 2;
+        }
     }
     
     message ContactAction {
