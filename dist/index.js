@@ -19891,6 +19891,10 @@ $root.waproto = (function() {
                     case 80:
                         message.capabilities[message.capabilities.length] = 80;
                         break;
+                    case "AI_MUSE_JARVIS_SCHEMA_ENABLED":
+                    case 81:
+                        message.capabilities[message.capabilities.length] = 81;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -20036,6 +20040,7 @@ $root.waproto = (function() {
          * @property {number} HATCH_BROWSER_TASK_CARD_ENABLED=78 HATCH_BROWSER_TASK_CARD_ENABLED value
          * @property {number} HATCH_ARTIFACT_CARD_ENABLED=79 HATCH_ARTIFACT_CARD_ENABLED value
          * @property {number} AI_STUDY_CENTER_ENABLED=80 AI_STUDY_CENTER_ENABLED value
+         * @property {number} AI_MUSE_JARVIS_SCHEMA_ENABLED=81 AI_MUSE_JARVIS_SCHEMA_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -20120,6 +20125,7 @@ $root.waproto = (function() {
             values[valuesById[78] = "HATCH_BROWSER_TASK_CARD_ENABLED"] = 78;
             values[valuesById[79] = "HATCH_ARTIFACT_CARD_ENABLED"] = 79;
             values[valuesById[80] = "AI_STUDY_CENTER_ENABLED"] = 80;
+            values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             return values;
         })();
 

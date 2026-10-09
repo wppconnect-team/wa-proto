@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049850526
+/// WhatsApp Version: 2.3000.1049861608
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -502,6 +502,7 @@ message BotCapabilityMetadata {
         HATCH_BROWSER_TASK_CARD_ENABLED = 78;
         HATCH_ARTIFACT_CARD_ENABLED = 79;
         AI_STUDY_CENTER_ENABLED = 80;
+        AI_MUSE_JARVIS_SCHEMA_ENABLED = 81;
     }
 }
 

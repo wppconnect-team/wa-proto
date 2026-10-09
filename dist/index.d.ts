@@ -7317,7 +7317,10 @@ export namespace waproto {
             HATCH_ARTIFACT_CARD_ENABLED = 79,
 
             /** AI_STUDY_CENTER_ENABLED value */
-            AI_STUDY_CENTER_ENABLED = 80
+            AI_STUDY_CENTER_ENABLED = 80,
+
+            /** AI_MUSE_JARVIS_SCHEMA_ENABLED value */
+            AI_MUSE_JARVIS_SCHEMA_ENABLED = 81
         }
     }
 
