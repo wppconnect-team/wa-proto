@@ -273,7 +273,7 @@ $root.waproto = (function() {
         ACP2Setting.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -709,7 +709,7 @@ $root.waproto = (function() {
         ADVDeviceIdentity.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -1183,7 +1183,7 @@ $root.waproto = (function() {
         ADVKeyIndexList.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -1612,7 +1612,7 @@ $root.waproto = (function() {
         ADVSignedDeviceIdentity.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -1981,7 +1981,7 @@ $root.waproto = (function() {
         ADVSignedDeviceIdentityHMAC.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -2350,7 +2350,7 @@ $root.waproto = (function() {
         ADVSignedKeyIndexList.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -2660,7 +2660,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.capabilityOptions && message.capabilityOptions.length))
                             message.capabilityOptions = [];
-                        message.capabilityOptions.push($root.waproto.AIHomeState.AIHomeOption.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.capabilityOptions.push($root.waproto.AIHomeState.AIHomeOption.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -2668,7 +2668,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.conversationOptions && message.conversationOptions.length))
                             message.conversationOptions = [];
-                        message.conversationOptions.push($root.waproto.AIHomeState.AIHomeOption.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.conversationOptions.push($root.waproto.AIHomeState.AIHomeOption.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -2701,7 +2701,7 @@ $root.waproto = (function() {
         AIHomeState.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -3212,7 +3212,7 @@ $root.waproto = (function() {
             AIHomeOption.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -3657,7 +3657,7 @@ $root.waproto = (function() {
         AIMediaCollectionMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -3981,7 +3981,7 @@ $root.waproto = (function() {
         AIMediaCollectionMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -4259,14 +4259,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.hatchMetadataSync = $root.waproto.HatchMetadataSync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.hatchMetadataSync);
+                        message.hatchMetadataSync = $root.waproto.HatchMetadataSync.decode(reader, reader.size(), $undefined, _depth + 1, message.hatchMetadataSync);
                         message._hatchMetadataSync = "hatchMetadataSync";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.bizAiMetadataSync = $root.waproto.BizAIMetadataSync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizAiMetadataSync);
+                        message.bizAiMetadataSync = $root.waproto.BizAIMetadataSync.decode(reader, reader.size(), $undefined, _depth + 1, message.bizAiMetadataSync);
                         message._bizAiMetadataSync = "bizAiMetadataSync";
                         continue;
                     }
@@ -4300,7 +4300,7 @@ $root.waproto = (function() {
         AIMetadataOperation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -4586,14 +4586,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.c2PaMetadata = $root.waproto.AIProvenance.Metadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.c2PaMetadata);
+                        message.c2PaMetadata = $root.waproto.AIProvenance.Metadata.decode(reader, reader.size(), $undefined, _depth + 1, message.c2PaMetadata);
                         message._c2PaMetadata = "c2PaMetadata";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.iptcMetadata = $root.waproto.AIProvenance.Metadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.iptcMetadata);
+                        message.iptcMetadata = $root.waproto.AIProvenance.Metadata.decode(reader, reader.size(), $undefined, _depth + 1, message.iptcMetadata);
                         message._iptcMetadata = "iptcMetadata";
                         continue;
                     }
@@ -4627,7 +4627,7 @@ $root.waproto = (function() {
         AIProvenance.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -4951,7 +4951,7 @@ $root.waproto = (function() {
             Metadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -5250,14 +5250,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.messageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageKey);
+                        message.messageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.messageKey);
                         message._messageKey = "messageKey";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                        message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                         message._message = "message";
                         continue;
                     }
@@ -5298,7 +5298,7 @@ $root.waproto = (function() {
         AIQueryFanout.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -5605,7 +5605,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.messageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageKey);
+                        message.messageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.messageKey);
                         message._messageKey = "messageKey";
                         continue;
                     }
@@ -5646,7 +5646,7 @@ $root.waproto = (function() {
         AIRegenerateMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -5943,7 +5943,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.codeBlocks && message.codeBlocks.length))
                             message.codeBlocks = [];
-                        message.codeBlocks.push($root.waproto.AIRichResponseCodeMetadata.AIRichResponseCodeBlock.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.codeBlocks.push($root.waproto.AIRichResponseCodeMetadata.AIRichResponseCodeBlock.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -5976,7 +5976,7 @@ $root.waproto = (function() {
         AIRichResponseCodeMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -6305,7 +6305,7 @@ $root.waproto = (function() {
             AIRichResponseCodeBlock.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -6633,7 +6633,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.itemsMetadata && message.itemsMetadata.length))
                             message.itemsMetadata = [];
-                        message.itemsMetadata.push($root.waproto.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.itemsMetadata.push($root.waproto.AIRichResponseContentItemsMetadata.AIRichResponseContentItemMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -6673,7 +6673,7 @@ $root.waproto = (function() {
         AIRichResponseContentItemsMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -6966,7 +6966,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.reelItem = $root.waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.decode(reader, reader.uint32(), $undefined, _depth + 1, message.reelItem);
+                            message.reelItem = $root.waproto.AIRichResponseContentItemsMetadata.AIRichResponseReelItem.decode(reader, reader.size(), $undefined, _depth + 1, message.reelItem);
                             message.aiRichResponseContentItem = "reelItem";
                             continue;
                         }
@@ -7000,7 +7000,7 @@ $root.waproto = (function() {
             AIRichResponseContentItemMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -7363,7 +7363,7 @@ $root.waproto = (function() {
             AIRichResponseReelItem.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -7761,7 +7761,7 @@ $root.waproto = (function() {
         AIRichResponseDynamicMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -8092,7 +8092,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.gridImageUrl = $root.waproto.AIRichResponseImageURL.decode(reader, reader.uint32(), $undefined, _depth + 1, message.gridImageUrl);
+                        message.gridImageUrl = $root.waproto.AIRichResponseImageURL.decode(reader, reader.size(), $undefined, _depth + 1, message.gridImageUrl);
                         message._gridImageUrl = "gridImageUrl";
                         continue;
                     }
@@ -8101,7 +8101,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.imageUrls && message.imageUrls.length))
                             message.imageUrls = [];
-                        message.imageUrls.push($root.waproto.AIRichResponseImageURL.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.imageUrls.push($root.waproto.AIRichResponseImageURL.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -8134,7 +8134,7 @@ $root.waproto = (function() {
         AIRichResponseGridImageMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -8496,7 +8496,7 @@ $root.waproto = (function() {
         AIRichResponseImageURL.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -8813,7 +8813,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.imageUrl = $root.waproto.AIRichResponseImageURL.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageUrl);
+                        message.imageUrl = $root.waproto.AIRichResponseImageURL.decode(reader, reader.size(), $undefined, _depth + 1, message.imageUrl);
                         message._imageUrl = "imageUrl";
                         continue;
                     }
@@ -8868,7 +8868,7 @@ $root.waproto = (function() {
         AIRichResponseInlineImageMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -9202,7 +9202,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.expressions && message.expressions.length))
                             message.expressions = [];
-                        message.expressions.push($root.waproto.AIRichResponseLatexMetadata.AIRichResponseLatexExpression.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.expressions.push($root.waproto.AIRichResponseLatexMetadata.AIRichResponseLatexExpression.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -9235,7 +9235,7 @@ $root.waproto = (function() {
         AIRichResponseLatexMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -9732,7 +9732,7 @@ $root.waproto = (function() {
             AIRichResponseLatexExpression.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -10166,7 +10166,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.annotations && message.annotations.length))
                             message.annotations = [];
-                        message.annotations.push($root.waproto.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.annotations.push($root.waproto.AIRichResponseMapMetadata.AIRichResponseMapAnnotation.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 6: {
@@ -10206,7 +10206,7 @@ $root.waproto = (function() {
         AIRichResponseMapMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -10643,7 +10643,7 @@ $root.waproto = (function() {
             AIRichResponseMapAnnotation.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -11010,27 +11010,27 @@ $root.waproto = (function() {
                             break;
                         if (!(message.submessages && message.submessages.length))
                             message.submessages = [];
-                        message.submessages.push($root.waproto.AIRichResponseSubMessage.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.submessages.push($root.waproto.AIRichResponseSubMessage.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.unifiedResponse = $root.waproto.AIRichResponseUnifiedResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.unifiedResponse);
+                        message.unifiedResponse = $root.waproto.AIRichResponseUnifiedResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.unifiedResponse);
                         message._unifiedResponse = "unifiedResponse";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                        message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                         message._contextInfo = "contextInfo";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.originalRecipientMetadata = $root.waproto.AIRichResponseUnifiedResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.originalRecipientMetadata);
+                        message.originalRecipientMetadata = $root.waproto.AIRichResponseUnifiedResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.originalRecipientMetadata);
                         message._originalRecipientMetadata = "originalRecipientMetadata";
                         continue;
                     }
@@ -11064,7 +11064,7 @@ $root.waproto = (function() {
         AIRichResponseMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -11580,7 +11580,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.gridImageMetadata = $root.waproto.AIRichResponseGridImageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.gridImageMetadata);
+                        message.gridImageMetadata = $root.waproto.AIRichResponseGridImageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.gridImageMetadata);
                         message._gridImageMetadata = "gridImageMetadata";
                         continue;
                     }
@@ -11594,49 +11594,49 @@ $root.waproto = (function() {
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.imageMetadata = $root.waproto.AIRichResponseInlineImageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageMetadata);
+                        message.imageMetadata = $root.waproto.AIRichResponseInlineImageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.imageMetadata);
                         message._imageMetadata = "imageMetadata";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.codeMetadata = $root.waproto.AIRichResponseCodeMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.codeMetadata);
+                        message.codeMetadata = $root.waproto.AIRichResponseCodeMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.codeMetadata);
                         message._codeMetadata = "codeMetadata";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.tableMetadata = $root.waproto.AIRichResponseTableMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.tableMetadata);
+                        message.tableMetadata = $root.waproto.AIRichResponseTableMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.tableMetadata);
                         message._tableMetadata = "tableMetadata";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.dynamicMetadata = $root.waproto.AIRichResponseDynamicMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.dynamicMetadata);
+                        message.dynamicMetadata = $root.waproto.AIRichResponseDynamicMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.dynamicMetadata);
                         message._dynamicMetadata = "dynamicMetadata";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.latexMetadata = $root.waproto.AIRichResponseLatexMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.latexMetadata);
+                        message.latexMetadata = $root.waproto.AIRichResponseLatexMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.latexMetadata);
                         message._latexMetadata = "latexMetadata";
                         continue;
                     }
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.mapMetadata = $root.waproto.AIRichResponseMapMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mapMetadata);
+                        message.mapMetadata = $root.waproto.AIRichResponseMapMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.mapMetadata);
                         message._mapMetadata = "mapMetadata";
                         continue;
                     }
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.contentItemsMetadata = $root.waproto.AIRichResponseContentItemsMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contentItemsMetadata);
+                        message.contentItemsMetadata = $root.waproto.AIRichResponseContentItemsMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.contentItemsMetadata);
                         message._contentItemsMetadata = "contentItemsMetadata";
                         continue;
                     }
@@ -11670,7 +11670,7 @@ $root.waproto = (function() {
         AIRichResponseSubMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -12135,7 +12135,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.rows && message.rows.length))
                             message.rows = [];
-                        message.rows.push($root.waproto.AIRichResponseTableMetadata.AIRichResponseTableRow.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.rows.push($root.waproto.AIRichResponseTableMetadata.AIRichResponseTableRow.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -12175,7 +12175,7 @@ $root.waproto = (function() {
         AIRichResponseTableMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -12501,7 +12501,7 @@ $root.waproto = (function() {
             AIRichResponseTableRow.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -12807,7 +12807,7 @@ $root.waproto = (function() {
         AIRichResponseUnifiedResponse.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -13110,7 +13110,7 @@ $root.waproto = (function() {
         AISubscriptionUpsellMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -13394,14 +13394,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.serverInfo = $root.waproto.AIThreadInfo.AIThreadServerInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.serverInfo);
+                        message.serverInfo = $root.waproto.AIThreadInfo.AIThreadServerInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.serverInfo);
                         message._serverInfo = "serverInfo";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.clientInfo = $root.waproto.AIThreadInfo.AIThreadClientInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.clientInfo);
+                        message.clientInfo = $root.waproto.AIThreadInfo.AIThreadClientInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.clientInfo);
                         message._clientInfo = "clientInfo";
                         continue;
                     }
@@ -13435,7 +13435,7 @@ $root.waproto = (function() {
         AIThreadInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -13759,7 +13759,7 @@ $root.waproto = (function() {
             AIThreadClientInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -14093,7 +14093,7 @@ $root.waproto = (function() {
             AIThreadServerInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -14450,7 +14450,7 @@ $root.waproto = (function() {
         Account.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -14831,7 +14831,7 @@ $root.waproto = (function() {
         AccountLinkingOpaqueData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -15164,7 +15164,7 @@ $root.waproto = (function() {
         ActionLink.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -15527,7 +15527,7 @@ $root.waproto = (function() {
         AutoDownloadSettings.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -15860,7 +15860,7 @@ $root.waproto = (function() {
         AvatarUserSettings.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -16128,7 +16128,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.serverEvent = $root.waproto.BizAIMetadataSync.ServerEvent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.serverEvent);
+                        message.serverEvent = $root.waproto.BizAIMetadataSync.ServerEvent.decode(reader, reader.size(), $undefined, _depth + 1, message.serverEvent);
                         message.operation = "serverEvent";
                         continue;
                     }
@@ -16162,7 +16162,7 @@ $root.waproto = (function() {
         BizAIMetadataSync.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -16446,7 +16446,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.agentOnboardingStarted = $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(reader, reader.uint32(), $undefined, _depth + 1, message.agentOnboardingStarted);
+                            message.agentOnboardingStarted = $root.waproto.BizAIMetadataSync.ServerEvent.AgentOnboardingStarted.decode(reader, reader.size(), $undefined, _depth + 1, message.agentOnboardingStarted);
                             message.event = "agentOnboardingStarted";
                             continue;
                         }
@@ -16480,7 +16480,7 @@ $root.waproto = (function() {
             ServerEvent.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -16793,7 +16793,7 @@ $root.waproto = (function() {
                 AgentOnboardingStarted.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -17203,7 +17203,7 @@ $root.waproto = (function() {
         BizAccountLinkInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -17572,7 +17572,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.vnameCert = $root.waproto.VerifiedNameCertificate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.vnameCert);
+                        message.vnameCert = $root.waproto.VerifiedNameCertificate.decode(reader, reader.size(), $undefined, _depth + 1, message.vnameCert);
                         message._vnameCert = "vnameCert";
                         continue;
                     }
@@ -17613,7 +17613,7 @@ $root.waproto = (function() {
         BizAccountPayload.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -18005,7 +18005,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.vnameCert = $root.waproto.VerifiedNameCertificate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.vnameCert);
+                        message.vnameCert = $root.waproto.VerifiedNameCertificate.decode(reader, reader.size(), $undefined, _depth + 1, message.vnameCert);
                         message._vnameCert = "vnameCert";
                         continue;
                     }
@@ -18081,7 +18081,7 @@ $root.waproto = (function() {
         BizIdentityInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -18585,7 +18585,7 @@ $root.waproto = (function() {
         BotAgeCollectionMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -18934,7 +18934,7 @@ $root.waproto = (function() {
         BotAgentDeepLinkMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -19194,7 +19194,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.deepLinkMetadata = $root.waproto.BotAgentDeepLinkMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deepLinkMetadata);
+                        message.deepLinkMetadata = $root.waproto.BotAgentDeepLinkMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.deepLinkMetadata);
                         message._deepLinkMetadata = "deepLinkMetadata";
                         continue;
                     }
@@ -19228,7 +19228,7 @@ $root.waproto = (function() {
         BotAgentMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -19515,7 +19515,7 @@ $root.waproto = (function() {
         BotCapabilityMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -20362,7 +20362,7 @@ $root.waproto = (function() {
         BotCommandMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -20662,7 +20662,7 @@ $root.waproto = (function() {
         BotDocumentMessageMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -21037,7 +21037,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.messageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageKey);
+                        message.messageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.messageKey);
                         message._messageKey = "messageKey";
                         continue;
                     }
@@ -21079,7 +21079,7 @@ $root.waproto = (function() {
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.sideBySideSurveyMetadata = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sideBySideSurveyMetadata);
+                        message.sideBySideSurveyMetadata = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.sideBySideSurveyMetadata);
                         message._sideBySideSurveyMetadata = "sideBySideSurveyMetadata";
                         continue;
                     }
@@ -21113,7 +21113,7 @@ $root.waproto = (function() {
         BotFeedbackMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -21801,14 +21801,14 @@ $root.waproto = (function() {
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.analyticsData = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.analyticsData);
+                            message.analyticsData = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SideBySideSurveyAnalyticsData.decode(reader, reader.size(), $undefined, _depth + 1, message.analyticsData);
                             message._analyticsData = "analyticsData";
                             continue;
                         }
                     case 9: {
                             if (wireType !== 2)
                                 break;
-                            message.metaAiAnalyticsData = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metaAiAnalyticsData);
+                            message.metaAiAnalyticsData = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.decode(reader, reader.size(), $undefined, _depth + 1, message.metaAiAnalyticsData);
                             message._metaAiAnalyticsData = "metaAiAnalyticsData";
                             continue;
                         }
@@ -21842,7 +21842,7 @@ $root.waproto = (function() {
             SideBySideSurveyMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -22253,7 +22253,7 @@ $root.waproto = (function() {
                 SideBySideSurveyAnalyticsData.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -22683,35 +22683,35 @@ $root.waproto = (function() {
                         case 5: {
                                 if (wireType !== 2)
                                     break;
-                                message.ctaImpressionEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctaImpressionEvent);
+                                message.ctaImpressionEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAImpressionEventData.decode(reader, reader.size(), $undefined, _depth + 1, message.ctaImpressionEvent);
                                 message._ctaImpressionEvent = "ctaImpressionEvent";
                                 continue;
                             }
                         case 6: {
                                 if (wireType !== 2)
                                     break;
-                                message.ctaClickEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctaClickEvent);
+                                message.ctaClickEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCTAClickEventData.decode(reader, reader.size(), $undefined, _depth + 1, message.ctaClickEvent);
                                 message._ctaClickEvent = "ctaClickEvent";
                                 continue;
                             }
                         case 7: {
                                 if (wireType !== 2)
                                     break;
-                                message.cardImpressionEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCardImpressionEventData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.cardImpressionEvent);
+                                message.cardImpressionEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyCardImpressionEventData.decode(reader, reader.size(), $undefined, _depth + 1, message.cardImpressionEvent);
                                 message._cardImpressionEvent = "cardImpressionEvent";
                                 continue;
                             }
                         case 8: {
                                 if (wireType !== 2)
                                     break;
-                                message.responseEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.responseEvent);
+                                message.responseEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyResponseEventData.decode(reader, reader.size(), $undefined, _depth + 1, message.responseEvent);
                                 message._responseEvent = "responseEvent";
                                 continue;
                             }
                         case 9: {
                                 if (wireType !== 2)
                                     break;
-                                message.abandonEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.abandonEvent);
+                                message.abandonEvent = $root.waproto.BotFeedbackMessage.SideBySideSurveyMetadata.SidebySideSurveyMetaAiAnalyticsData.SideBySideSurveyAbandonEventData.decode(reader, reader.size(), $undefined, _depth + 1, message.abandonEvent);
                                 message._abandonEvent = "abandonEvent";
                                 continue;
                             }
@@ -22745,7 +22745,7 @@ $root.waproto = (function() {
                 SidebySideSurveyMetaAiAnalyticsData.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -23126,7 +23126,7 @@ $root.waproto = (function() {
                     SideBySideSurveyAbandonEventData.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -23432,7 +23432,7 @@ $root.waproto = (function() {
                     SideBySideSurveyCTAClickEventData.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -23723,7 +23723,7 @@ $root.waproto = (function() {
                     SideBySideSurveyCTAImpressionEventData.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -23975,7 +23975,7 @@ $root.waproto = (function() {
                     SideBySideSurveyCardImpressionEventData.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -24263,7 +24263,7 @@ $root.waproto = (function() {
                     SideBySideSurveyResponseEventData.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -24524,7 +24524,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.participantsMetadata && message.participantsMetadata.length))
                             message.participantsMetadata = [];
-                        message.participantsMetadata.push($root.waproto.BotGroupParticipantMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.participantsMetadata.push($root.waproto.BotGroupParticipantMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -24557,7 +24557,7 @@ $root.waproto = (function() {
         BotGroupMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -24855,7 +24855,7 @@ $root.waproto = (function() {
         BotGroupParticipantMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -25098,7 +25098,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.participantsMetadata && message.participantsMetadata.length))
                             message.participantsMetadata = [];
-                        message.participantsMetadata.push($root.waproto.BotGroupParticipantMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.participantsMetadata.push($root.waproto.BotGroupParticipantMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -25131,7 +25131,7 @@ $root.waproto = (function() {
         BotHistoryShareMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -25453,7 +25453,7 @@ $root.waproto = (function() {
         BotImagineMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -25832,7 +25832,7 @@ $root.waproto = (function() {
         BotInfrastructureDiagnostics.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -26169,7 +26169,7 @@ $root.waproto = (function() {
         BotLinkedAccount.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -26468,7 +26468,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.accounts && message.accounts.length))
                             message.accounts = [];
-                        message.accounts.push($root.waproto.BotLinkedAccount.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.accounts.push($root.waproto.BotLinkedAccount.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -26515,7 +26515,7 @@ $root.waproto = (function() {
         BotLinkedAccountsMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -26979,7 +26979,7 @@ $root.waproto = (function() {
         BotMediaMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -27382,7 +27382,7 @@ $root.waproto = (function() {
         BotMemoryFact.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -27667,7 +27667,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.addedFacts && message.addedFacts.length))
                             message.addedFacts = [];
-                        message.addedFacts.push($root.waproto.BotMemoryFact.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.addedFacts.push($root.waproto.BotMemoryFact.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -27675,7 +27675,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.removedFacts && message.removedFacts.length))
                             message.removedFacts = [];
-                        message.removedFacts.push($root.waproto.BotMemoryFact.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.removedFacts.push($root.waproto.BotMemoryFact.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -27715,7 +27715,7 @@ $root.waproto = (function() {
         BotMemoryMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -28010,7 +28010,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.faceImages && message.faceImages.length))
                             message.faceImages = [];
-                        message.faceImages.push($root.waproto.BotMediaMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.faceImages.push($root.waproto.BotMediaMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -28043,7 +28043,7 @@ $root.waproto = (function() {
         BotMemuMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -28341,7 +28341,7 @@ $root.waproto = (function() {
         BotMessageOrigin.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -28603,7 +28603,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.origins && message.origins.length))
                             message.origins = [];
-                        message.origins.push($root.waproto.BotMessageOrigin.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.origins.push($root.waproto.BotMessageOrigin.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -28636,7 +28636,7 @@ $root.waproto = (function() {
         BotMessageOriginMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -28958,7 +28958,7 @@ $root.waproto = (function() {
         BotMessageSharingInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -30156,14 +30156,14 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.pluginMetadata = $root.waproto.BotPluginMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pluginMetadata);
+                        message.pluginMetadata = $root.waproto.BotPluginMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.pluginMetadata);
                         message._pluginMetadata = "pluginMetadata";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.suggestedPromptMetadata = $root.waproto.BotSuggestedPromptMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.suggestedPromptMetadata);
+                        message.suggestedPromptMetadata = $root.waproto.BotSuggestedPromptMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.suggestedPromptMetadata);
                         message._suggestedPromptMetadata = "suggestedPromptMetadata";
                         continue;
                     }
@@ -30177,14 +30177,14 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.sessionMetadata = $root.waproto.BotSessionMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sessionMetadata);
+                        message.sessionMetadata = $root.waproto.BotSessionMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.sessionMetadata);
                         message._sessionMetadata = "sessionMetadata";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.memuMetadata = $root.waproto.BotMemuMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.memuMetadata);
+                        message.memuMetadata = $root.waproto.BotMemuMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.memuMetadata);
                         message._memuMetadata = "memuMetadata";
                         continue;
                     }
@@ -30198,14 +30198,14 @@ $root.waproto = (function() {
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.reminderMetadata = $root.waproto.BotReminderMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.reminderMetadata);
+                        message.reminderMetadata = $root.waproto.BotReminderMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.reminderMetadata);
                         message._reminderMetadata = "reminderMetadata";
                         continue;
                     }
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.modelMetadata = $root.waproto.BotModelMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.modelMetadata);
+                        message.modelMetadata = $root.waproto.BotModelMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.modelMetadata);
                         message._modelMetadata = "modelMetadata";
                         continue;
                     }
@@ -30219,56 +30219,56 @@ $root.waproto = (function() {
                 case 12: {
                         if (wireType !== 2)
                             break;
-                        message.progressIndicatorMetadata = $root.waproto.BotProgressIndicatorMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.progressIndicatorMetadata);
+                        message.progressIndicatorMetadata = $root.waproto.BotProgressIndicatorMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.progressIndicatorMetadata);
                         message._progressIndicatorMetadata = "progressIndicatorMetadata";
                         continue;
                     }
                 case 13: {
                         if (wireType !== 2)
                             break;
-                        message.capabilityMetadata = $root.waproto.BotCapabilityMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.capabilityMetadata);
+                        message.capabilityMetadata = $root.waproto.BotCapabilityMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.capabilityMetadata);
                         message._capabilityMetadata = "capabilityMetadata";
                         continue;
                     }
                 case 14: {
                         if (wireType !== 2)
                             break;
-                        message.imagineMetadata = $root.waproto.BotImagineMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imagineMetadata);
+                        message.imagineMetadata = $root.waproto.BotImagineMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.imagineMetadata);
                         message._imagineMetadata = "imagineMetadata";
                         continue;
                     }
                 case 15: {
                         if (wireType !== 2)
                             break;
-                        message.memoryMetadata = $root.waproto.BotMemoryMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.memoryMetadata);
+                        message.memoryMetadata = $root.waproto.BotMemoryMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.memoryMetadata);
                         message._memoryMetadata = "memoryMetadata";
                         continue;
                     }
                 case 16: {
                         if (wireType !== 2)
                             break;
-                        message.renderingMetadata = $root.waproto.BotRenderingMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.renderingMetadata);
+                        message.renderingMetadata = $root.waproto.BotRenderingMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.renderingMetadata);
                         message._renderingMetadata = "renderingMetadata";
                         continue;
                     }
                 case 17: {
                         if (wireType !== 2)
                             break;
-                        message.botMetricsMetadata = $root.waproto.BotMetricsMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botMetricsMetadata);
+                        message.botMetricsMetadata = $root.waproto.BotMetricsMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botMetricsMetadata);
                         message._botMetricsMetadata = "botMetricsMetadata";
                         continue;
                     }
                 case 18: {
                         if (wireType !== 2)
                             break;
-                        message.botLinkedAccountsMetadata = $root.waproto.BotLinkedAccountsMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botLinkedAccountsMetadata);
+                        message.botLinkedAccountsMetadata = $root.waproto.BotLinkedAccountsMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botLinkedAccountsMetadata);
                         message._botLinkedAccountsMetadata = "botLinkedAccountsMetadata";
                         continue;
                     }
                 case 19: {
                         if (wireType !== 2)
                             break;
-                        message.richResponseSourcesMetadata = $root.waproto.BotSourcesMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.richResponseSourcesMetadata);
+                        message.richResponseSourcesMetadata = $root.waproto.BotSourcesMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.richResponseSourcesMetadata);
                         message._richResponseSourcesMetadata = "richResponseSourcesMetadata";
                         continue;
                     }
@@ -30282,28 +30282,28 @@ $root.waproto = (function() {
                 case 21: {
                         if (wireType !== 2)
                             break;
-                        message.botPromotionMessageMetadata = $root.waproto.BotPromotionMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botPromotionMessageMetadata);
+                        message.botPromotionMessageMetadata = $root.waproto.BotPromotionMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botPromotionMessageMetadata);
                         message._botPromotionMessageMetadata = "botPromotionMessageMetadata";
                         continue;
                     }
                 case 22: {
                         if (wireType !== 2)
                             break;
-                        message.botModeSelectionMetadata = $root.waproto.BotModeSelectionMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botModeSelectionMetadata);
+                        message.botModeSelectionMetadata = $root.waproto.BotModeSelectionMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botModeSelectionMetadata);
                         message._botModeSelectionMetadata = "botModeSelectionMetadata";
                         continue;
                     }
                 case 23: {
                         if (wireType !== 2)
                             break;
-                        message.botQuotaMetadata = $root.waproto.BotQuotaMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botQuotaMetadata);
+                        message.botQuotaMetadata = $root.waproto.BotQuotaMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botQuotaMetadata);
                         message._botQuotaMetadata = "botQuotaMetadata";
                         continue;
                     }
                 case 24: {
                         if (wireType !== 2)
                             break;
-                        message.botAgeCollectionMetadata = $root.waproto.BotAgeCollectionMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botAgeCollectionMetadata);
+                        message.botAgeCollectionMetadata = $root.waproto.BotAgeCollectionMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botAgeCollectionMetadata);
                         message._botAgeCollectionMetadata = "botAgeCollectionMetadata";
                         continue;
                     }
@@ -30324,119 +30324,119 @@ $root.waproto = (function() {
                 case 27: {
                         if (wireType !== 2)
                             break;
-                        message.verificationMetadata = $root.waproto.BotSignatureVerificationMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.verificationMetadata);
+                        message.verificationMetadata = $root.waproto.BotSignatureVerificationMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.verificationMetadata);
                         message._verificationMetadata = "verificationMetadata";
                         continue;
                     }
                 case 28: {
                         if (wireType !== 2)
                             break;
-                        message.unifiedResponseMutation = $root.waproto.BotUnifiedResponseMutation.decode(reader, reader.uint32(), $undefined, _depth + 1, message.unifiedResponseMutation);
+                        message.unifiedResponseMutation = $root.waproto.BotUnifiedResponseMutation.decode(reader, reader.size(), $undefined, _depth + 1, message.unifiedResponseMutation);
                         message._unifiedResponseMutation = "unifiedResponseMutation";
                         continue;
                     }
                 case 29: {
                         if (wireType !== 2)
                             break;
-                        message.botMessageOriginMetadata = $root.waproto.BotMessageOriginMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botMessageOriginMetadata);
+                        message.botMessageOriginMetadata = $root.waproto.BotMessageOriginMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botMessageOriginMetadata);
                         message._botMessageOriginMetadata = "botMessageOriginMetadata";
                         continue;
                     }
                 case 30: {
                         if (wireType !== 2)
                             break;
-                        message.inThreadSurveyMetadata = $root.waproto.InThreadSurveyMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.inThreadSurveyMetadata);
+                        message.inThreadSurveyMetadata = $root.waproto.InThreadSurveyMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.inThreadSurveyMetadata);
                         message._inThreadSurveyMetadata = "inThreadSurveyMetadata";
                         continue;
                     }
                 case 31: {
                         if (wireType !== 2)
                             break;
-                        message.botThreadInfo = $root.waproto.AIThreadInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botThreadInfo);
+                        message.botThreadInfo = $root.waproto.AIThreadInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.botThreadInfo);
                         message._botThreadInfo = "botThreadInfo";
                         continue;
                     }
                 case 32: {
                         if (wireType !== 2)
                             break;
-                        message.regenerateMetadata = $root.waproto.AIRegenerateMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.regenerateMetadata);
+                        message.regenerateMetadata = $root.waproto.AIRegenerateMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.regenerateMetadata);
                         message._regenerateMetadata = "regenerateMetadata";
                         continue;
                     }
                 case 33: {
                         if (wireType !== 2)
                             break;
-                        message.sessionTransparencyMetadata = $root.waproto.SessionTransparencyMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sessionTransparencyMetadata);
+                        message.sessionTransparencyMetadata = $root.waproto.SessionTransparencyMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.sessionTransparencyMetadata);
                         message._sessionTransparencyMetadata = "sessionTransparencyMetadata";
                         continue;
                     }
                 case 34: {
                         if (wireType !== 2)
                             break;
-                        message.botDocumentMessageMetadata = $root.waproto.BotDocumentMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botDocumentMessageMetadata);
+                        message.botDocumentMessageMetadata = $root.waproto.BotDocumentMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botDocumentMessageMetadata);
                         message._botDocumentMessageMetadata = "botDocumentMessageMetadata";
                         continue;
                     }
                 case 35: {
                         if (wireType !== 2)
                             break;
-                        message.botGroupMetadata = $root.waproto.BotGroupMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botGroupMetadata);
+                        message.botGroupMetadata = $root.waproto.BotGroupMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botGroupMetadata);
                         message._botGroupMetadata = "botGroupMetadata";
                         continue;
                     }
                 case 36: {
                         if (wireType !== 2)
                             break;
-                        message.botRenderingConfigMetadata = $root.waproto.BotRenderingConfigMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botRenderingConfigMetadata);
+                        message.botRenderingConfigMetadata = $root.waproto.BotRenderingConfigMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botRenderingConfigMetadata);
                         message._botRenderingConfigMetadata = "botRenderingConfigMetadata";
                         continue;
                     }
                 case 37: {
                         if (wireType !== 2)
                             break;
-                        message.botInfrastructureDiagnostics = $root.waproto.BotInfrastructureDiagnostics.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botInfrastructureDiagnostics);
+                        message.botInfrastructureDiagnostics = $root.waproto.BotInfrastructureDiagnostics.decode(reader, reader.size(), $undefined, _depth + 1, message.botInfrastructureDiagnostics);
                         message._botInfrastructureDiagnostics = "botInfrastructureDiagnostics";
                         continue;
                     }
                 case 38: {
                         if (wireType !== 2)
                             break;
-                        message.aiMediaCollectionMetadata = $root.waproto.AIMediaCollectionMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiMediaCollectionMetadata);
+                        message.aiMediaCollectionMetadata = $root.waproto.AIMediaCollectionMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.aiMediaCollectionMetadata);
                         message._aiMediaCollectionMetadata = "aiMediaCollectionMetadata";
                         continue;
                     }
                 case 39: {
                         if (wireType !== 2)
                             break;
-                        message.commandMetadata = $root.waproto.BotCommandMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.commandMetadata);
+                        message.commandMetadata = $root.waproto.BotCommandMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.commandMetadata);
                         message._commandMetadata = "commandMetadata";
                         continue;
                     }
                 case 40: {
                         if (wireType !== 2)
                             break;
-                        message.resolvedToolCallMetadata = $root.waproto.BotResolvedToolCallMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.resolvedToolCallMetadata);
+                        message.resolvedToolCallMetadata = $root.waproto.BotResolvedToolCallMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.resolvedToolCallMetadata);
                         message._resolvedToolCallMetadata = "resolvedToolCallMetadata";
                         continue;
                     }
                 case 41: {
                         if (wireType !== 2)
                             break;
-                        message.subscriptionUpsellMetadata = $root.waproto.AISubscriptionUpsellMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.subscriptionUpsellMetadata);
+                        message.subscriptionUpsellMetadata = $root.waproto.AISubscriptionUpsellMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.subscriptionUpsellMetadata);
                         message._subscriptionUpsellMetadata = "subscriptionUpsellMetadata";
                         continue;
                     }
                 case 42: {
                         if (wireType !== 2)
                             break;
-                        message.pttPromptMetadata = $root.waproto.BotPttPromptMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pttPromptMetadata);
+                        message.pttPromptMetadata = $root.waproto.BotPttPromptMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.pttPromptMetadata);
                         message._pttPromptMetadata = "pttPromptMetadata";
                         continue;
                     }
                 case 43: {
                         if (wireType !== 2)
                             break;
-                        message.botHistoryShareMetadata = $root.waproto.BotHistoryShareMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botHistoryShareMetadata);
+                        message.botHistoryShareMetadata = $root.waproto.BotHistoryShareMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botHistoryShareMetadata);
                         message._botHistoryShareMetadata = "botHistoryShareMetadata";
                         continue;
                     }
@@ -30484,7 +30484,7 @@ $root.waproto = (function() {
         BotMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -31527,7 +31527,7 @@ $root.waproto = (function() {
         BotMetricsMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -32098,7 +32098,7 @@ $root.waproto = (function() {
         BotModeSelectionMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -32486,7 +32486,7 @@ $root.waproto = (function() {
         BotModelMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -33057,7 +33057,7 @@ $root.waproto = (function() {
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.parentPluginMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.parentPluginMessageKey);
+                        message.parentPluginMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.parentPluginMessageKey);
                         message._parentPluginMessageKey = "parentPluginMessageKey";
                         continue;
                     }
@@ -33112,7 +33112,7 @@ $root.waproto = (function() {
         BotPluginMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -33602,7 +33602,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.stepsMetadata && message.stepsMetadata.length))
                             message.stepsMetadata = [];
-                        message.stepsMetadata.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.stepsMetadata.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -33642,7 +33642,7 @@ $root.waproto = (function() {
         BotProgressIndicatorMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -34044,7 +34044,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.sourcesMetadata && message.sourcesMetadata.length))
                                 message.sourcesMetadata = [];
-                            message.sourcesMetadata.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.sourcesMetadata.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourcesMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 4: {
@@ -34073,7 +34073,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.sections && message.sections.length))
                                 message.sections = [];
-                            message.sections.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.sections.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningStepSectionMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -34106,7 +34106,7 @@ $root.waproto = (function() {
             BotPlanningStepMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -34564,7 +34564,7 @@ $root.waproto = (function() {
                 BotPlanningSearchSourceMetadata.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -34940,7 +34940,7 @@ $root.waproto = (function() {
                 BotPlanningSearchSourcesMetadata.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -35289,7 +35289,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.sourcesMetadata && message.sourcesMetadata.length))
                                     message.sourcesMetadata = [];
-                                message.sourcesMetadata.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.sourcesMetadata.push($root.waproto.BotProgressIndicatorMetadata.BotPlanningStepMetadata.BotPlanningSearchSourceMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         }
@@ -35322,7 +35322,7 @@ $root.waproto = (function() {
                 BotPlanningStepSectionMetadata.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -35705,7 +35705,7 @@ $root.waproto = (function() {
         BotPromotionMessageMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -36051,7 +36051,7 @@ $root.waproto = (function() {
         BotPromptSuggestion.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -36303,7 +36303,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.suggestions && message.suggestions.length))
                             message.suggestions = [];
-                        message.suggestions.push($root.waproto.BotPromptSuggestion.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.suggestions.push($root.waproto.BotPromptSuggestion.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -36336,7 +36336,7 @@ $root.waproto = (function() {
         BotPromptSuggestions.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -36634,7 +36634,7 @@ $root.waproto = (function() {
         BotPttPromptMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -36877,7 +36877,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.botFeatureQuotaMetadata && message.botFeatureQuotaMetadata.length))
                             message.botFeatureQuotaMetadata = [];
-                        message.botFeatureQuotaMetadata.push($root.waproto.BotQuotaMetadata.BotFeatureQuotaMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.botFeatureQuotaMetadata.push($root.waproto.BotQuotaMetadata.BotFeatureQuotaMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -36910,7 +36910,7 @@ $root.waproto = (function() {
         BotQuotaMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -37253,7 +37253,7 @@ $root.waproto = (function() {
             BotFeatureQuotaMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -37627,7 +37627,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.requestMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestMessageKey);
+                        message.requestMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.requestMessageKey);
                         message._requestMessageKey = "requestMessageKey";
                         continue;
                     }
@@ -37689,7 +37689,7 @@ $root.waproto = (function() {
         BotReminderMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -38129,7 +38129,7 @@ $root.waproto = (function() {
         BotRenderingConfigMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -38381,7 +38381,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.keywords && message.keywords.length))
                             message.keywords = [];
-                        message.keywords.push($root.waproto.BotRenderingMetadata.Keyword.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.keywords.push($root.waproto.BotRenderingMetadata.Keyword.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -38414,7 +38414,7 @@ $root.waproto = (function() {
         BotRenderingMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -38730,7 +38730,7 @@ $root.waproto = (function() {
             Keyword.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -39060,7 +39060,7 @@ $root.waproto = (function() {
         BotResolvedToolCallMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -39375,7 +39375,7 @@ $root.waproto = (function() {
         BotSessionMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -39688,7 +39688,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.proofs && message.proofs.length))
                             message.proofs = [];
-                        message.proofs.push($root.waproto.BotSignatureVerificationUseCaseProof.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.proofs.push($root.waproto.BotSignatureVerificationUseCaseProof.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -39721,7 +39721,7 @@ $root.waproto = (function() {
         BotSignatureVerificationMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -40076,7 +40076,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.certificateChainSki && message.certificateChainSki.length))
                             message.certificateChainSki = [];
-                        message.certificateChainSki.push($root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.certificateChainSki.push($root.waproto.BotSignatureVerificationUseCaseProof.CertificateSKI.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -40109,7 +40109,7 @@ $root.waproto = (function() {
         BotSignatureVerificationUseCaseProof.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -40532,7 +40532,7 @@ $root.waproto = (function() {
             CertificateSKI.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -40817,7 +40817,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.sources && message.sources.length))
                             message.sources = [];
-                        message.sources.push($root.waproto.BotSourcesMetadata.BotSourceItem.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.sources.push($root.waproto.BotSourcesMetadata.BotSourceItem.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -40850,7 +40850,7 @@ $root.waproto = (function() {
         BotSourcesMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -41289,7 +41289,7 @@ $root.waproto = (function() {
             BotSourceItem.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -41699,7 +41699,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.promptSuggestions = $root.waproto.BotPromptSuggestions.decode(reader, reader.uint32(), $undefined, _depth + 1, message.promptSuggestions);
+                        message.promptSuggestions = $root.waproto.BotPromptSuggestions.decode(reader, reader.size(), $undefined, _depth + 1, message.promptSuggestions);
                         message._promptSuggestions = "promptSuggestions";
                         continue;
                     }
@@ -41740,7 +41740,7 @@ $root.waproto = (function() {
         BotSuggestedPromptMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -42046,7 +42046,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.sbsMetadata = $root.waproto.BotUnifiedResponseMutation.SideBySideMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sbsMetadata);
+                        message.sbsMetadata = $root.waproto.BotUnifiedResponseMutation.SideBySideMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.sbsMetadata);
                         message._sbsMetadata = "sbsMetadata";
                         continue;
                     }
@@ -42055,7 +42055,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.mediaDetailsMetadataList && message.mediaDetailsMetadataList.length))
                             message.mediaDetailsMetadataList = [];
-                        message.mediaDetailsMetadataList.push($root.waproto.BotUnifiedResponseMutation.MediaDetailsMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.mediaDetailsMetadataList.push($root.waproto.BotUnifiedResponseMutation.MediaDetailsMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -42088,7 +42088,7 @@ $root.waproto = (function() {
         BotUnifiedResponseMutation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -42406,14 +42406,14 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.highResMedia = $root.waproto.BotMediaMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.highResMedia);
+                            message.highResMedia = $root.waproto.BotMediaMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.highResMedia);
                             message._highResMedia = "highResMedia";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.previewMedia = $root.waproto.BotMediaMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.previewMedia);
+                            message.previewMedia = $root.waproto.BotMediaMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.previewMedia);
                             message._previewMedia = "previewMedia";
                             continue;
                         }
@@ -42447,7 +42447,7 @@ $root.waproto = (function() {
             MediaDetailsMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -42783,7 +42783,7 @@ $root.waproto = (function() {
             SideBySideMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -43388,7 +43388,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.participants && message.participants.length))
                             message.participants = [];
-                        message.participants.push($root.waproto.CallLogRecord.ParticipantInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.participants.push($root.waproto.CallLogRecord.ParticipantInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 15: {
@@ -43428,7 +43428,7 @@ $root.waproto = (function() {
         CallLogRecord.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -44003,7 +44003,7 @@ $root.waproto = (function() {
             GuestInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -44299,7 +44299,7 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.guestInfo = $root.waproto.CallLogRecord.GuestInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.guestInfo);
+                            message.guestInfo = $root.waproto.CallLogRecord.GuestInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.guestInfo);
                             message._guestInfo = "guestInfo";
                             continue;
                         }
@@ -44333,7 +44333,7 @@ $root.waproto = (function() {
             ParticipantInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -44690,14 +44690,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.leaf = $root.waproto.CertChain.NoiseCertificate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.leaf);
+                        message.leaf = $root.waproto.CertChain.NoiseCertificate.decode(reader, reader.size(), $undefined, _depth + 1, message.leaf);
                         message._leaf = "leaf";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.intermediate = $root.waproto.CertChain.NoiseCertificate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.intermediate);
+                        message.intermediate = $root.waproto.CertChain.NoiseCertificate.decode(reader, reader.size(), $undefined, _depth + 1, message.intermediate);
                         message._intermediate = "intermediate";
                         continue;
                     }
@@ -44731,7 +44731,7 @@ $root.waproto = (function() {
         CertChain.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -45055,7 +45055,7 @@ $root.waproto = (function() {
             NoiseCertificate.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -45445,7 +45445,7 @@ $root.waproto = (function() {
                 Details.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -45790,7 +45790,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.secretCode = $root.waproto.UserPassword.decode(reader, reader.uint32(), $undefined, _depth + 1, message.secretCode);
+                        message.secretCode = $root.waproto.UserPassword.decode(reader, reader.size(), $undefined, _depth + 1, message.secretCode);
                         message._secretCode = "secretCode";
                         continue;
                     }
@@ -45824,7 +45824,7 @@ $root.waproto = (function() {
         ChatLockSettings.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -46087,7 +46087,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.draftMessage = $root.waproto.ChatRowOpaqueData.DraftMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.draftMessage);
+                        message.draftMessage = $root.waproto.ChatRowOpaqueData.DraftMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.draftMessage);
                         message._draftMessage = "draftMessage";
                         continue;
                     }
@@ -46121,7 +46121,7 @@ $root.waproto = (function() {
         ChatRowOpaqueData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -46454,14 +46454,14 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.ctwaContextLinkData = $root.waproto.ChatRowOpaqueData.DraftMessage.CtwaContextLinkData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctwaContextLinkData);
+                            message.ctwaContextLinkData = $root.waproto.ChatRowOpaqueData.DraftMessage.CtwaContextLinkData.decode(reader, reader.size(), $undefined, _depth + 1, message.ctwaContextLinkData);
                             message._ctwaContextLinkData = "ctwaContextLinkData";
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.ctwaContext = $root.waproto.ChatRowOpaqueData.DraftMessage.CtwaContextData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctwaContext);
+                            message.ctwaContext = $root.waproto.ChatRowOpaqueData.DraftMessage.CtwaContextData.decode(reader, reader.size(), $undefined, _depth + 1, message.ctwaContext);
                             message._ctwaContext = "ctwaContext";
                             continue;
                         }
@@ -46502,7 +46502,7 @@ $root.waproto = (function() {
             DraftMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -47105,7 +47105,7 @@ $root.waproto = (function() {
                 CtwaContextData.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -47592,7 +47592,7 @@ $root.waproto = (function() {
                 CtwaContextLinkData.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -47952,7 +47952,7 @@ $root.waproto = (function() {
         Citation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -48374,7 +48374,7 @@ $root.waproto = (function() {
         ClientPairingProps.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -49287,14 +49287,14 @@ $root.waproto = (function() {
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.userAgent = $root.waproto.ClientPayload.UserAgent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.userAgent);
+                        message.userAgent = $root.waproto.ClientPayload.UserAgent.decode(reader, reader.size(), $undefined, _depth + 1, message.userAgent);
                         message._userAgent = "userAgent";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.webInfo = $root.waproto.ClientPayload.WebInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.webInfo);
+                        message.webInfo = $root.waproto.ClientPayload.WebInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.webInfo);
                         message._webInfo = "webInfo";
                         continue;
                     }
@@ -49350,7 +49350,7 @@ $root.waproto = (function() {
                 case 15: {
                         if (wireType !== 2)
                             break;
-                        message.dnsSource = $root.waproto.ClientPayload.DNSSource.decode(reader, reader.uint32(), $undefined, _depth + 1, message.dnsSource);
+                        message.dnsSource = $root.waproto.ClientPayload.DNSSource.decode(reader, reader.size(), $undefined, _depth + 1, message.dnsSource);
                         message._dnsSource = "dnsSource";
                         continue;
                     }
@@ -49371,7 +49371,7 @@ $root.waproto = (function() {
                 case 19: {
                         if (wireType !== 2)
                             break;
-                        message.devicePairingData = $root.waproto.ClientPayload.DevicePairingRegistrationData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.devicePairingData);
+                        message.devicePairingData = $root.waproto.ClientPayload.DevicePairingRegistrationData.decode(reader, reader.size(), $undefined, _depth + 1, message.devicePairingData);
                         message._devicePairingData = "devicePairingData";
                         continue;
                     }
@@ -49462,7 +49462,7 @@ $root.waproto = (function() {
                 case 38: {
                         if (wireType !== 2)
                             break;
-                        message.interopData = $root.waproto.ClientPayload.InteropData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.interopData);
+                        message.interopData = $root.waproto.ClientPayload.InteropData.decode(reader, reader.size(), $undefined, _depth + 1, message.interopData);
                         message._interopData = "interopData";
                         continue;
                     }
@@ -49567,7 +49567,7 @@ $root.waproto = (function() {
         ClientPayload.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -50531,7 +50531,7 @@ $root.waproto = (function() {
             DNSSource.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -51051,7 +51051,7 @@ $root.waproto = (function() {
             DevicePairingRegistrationData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -51484,7 +51484,7 @@ $root.waproto = (function() {
             InteropData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -52078,7 +52078,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.appVersion = $root.waproto.ClientPayload.UserAgent.AppVersion.decode(reader, reader.uint32(), $undefined, _depth + 1, message.appVersion);
+                            message.appVersion = $root.waproto.ClientPayload.UserAgent.AppVersion.decode(reader, reader.size(), $undefined, _depth + 1, message.appVersion);
                             message._appVersion = "appVersion";
                             continue;
                         }
@@ -52217,7 +52217,7 @@ $root.waproto = (function() {
             UserAgent.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -52970,7 +52970,7 @@ $root.waproto = (function() {
                 AppVersion.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -53504,7 +53504,7 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.webdPayload = $root.waproto.ClientPayload.WebInfo.WebdPayload.decode(reader, reader.uint32(), $undefined, _depth + 1, message.webdPayload);
+                            message.webdPayload = $root.waproto.ClientPayload.WebInfo.WebdPayload.decode(reader, reader.size(), $undefined, _depth + 1, message.webdPayload);
                             message._webdPayload = "webdPayload";
                             continue;
                         }
@@ -53559,7 +53559,7 @@ $root.waproto = (function() {
             WebInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -54178,7 +54178,7 @@ $root.waproto = (function() {
                 WebdPayload.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -54520,7 +54520,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.collectionMutations && message.collectionMutations.length))
                             message.collectionMutations = [];
-                        message.collectionMutations.push($root.waproto.CoexStateSync.CollectionMutations.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.collectionMutations.push($root.waproto.CoexStateSync.CollectionMutations.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -54553,7 +54553,7 @@ $root.waproto = (function() {
         CoexStateSync.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -54836,7 +54836,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.mutations && message.mutations.length))
                                 message.mutations = [];
-                            message.mutations.push($root.waproto.CoexStateSync.Mutation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.mutations.push($root.waproto.CoexStateSync.Mutation.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -54869,7 +54869,7 @@ $root.waproto = (function() {
             CollectionMutations.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -55194,14 +55194,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.index = $root.waproto.SyncdIndex.decode(reader, reader.uint32(), $undefined, _depth + 1, message.index);
+                            message.index = $root.waproto.SyncdIndex.decode(reader, reader.size(), $undefined, _depth + 1, message.index);
                             message._index = "index";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.value = $root.waproto.SyncdValue.decode(reader, reader.uint32(), $undefined, _depth + 1, message.value);
+                            message.value = $root.waproto.SyncdValue.decode(reader, reader.size(), $undefined, _depth + 1, message.value);
                             message._value = "value";
                             continue;
                         }
@@ -55249,7 +55249,7 @@ $root.waproto = (function() {
             Mutation.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -55625,14 +55625,14 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.localFingerprint = $root.waproto.FingerprintData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.localFingerprint);
+                        message.localFingerprint = $root.waproto.FingerprintData.decode(reader, reader.size(), $undefined, _depth + 1, message.localFingerprint);
                         message._localFingerprint = "localFingerprint";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.remoteFingerprint = $root.waproto.FingerprintData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.remoteFingerprint);
+                        message.remoteFingerprint = $root.waproto.FingerprintData.decode(reader, reader.size(), $undefined, _depth + 1, message.remoteFingerprint);
                         message._remoteFingerprint = "remoteFingerprint";
                         continue;
                     }
@@ -55666,7 +55666,7 @@ $root.waproto = (function() {
         CombinedFingerprint.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -56050,7 +56050,7 @@ $root.waproto = (function() {
         Command.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -56361,7 +56361,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.commentParentKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.commentParentKey);
+                        message.commentParentKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.commentParentKey);
                         message._commentParentKey = "commentParentKey";
                         continue;
                     }
@@ -56402,7 +56402,7 @@ $root.waproto = (function() {
         CommentMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -56699,7 +56699,7 @@ $root.waproto = (function() {
         CompanionCommitment.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -57032,7 +57032,7 @@ $root.waproto = (function() {
         CompanionEphemeralIdentity.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -57441,7 +57441,7 @@ $root.waproto = (function() {
                             break;
                         if (message.field === $util.emptyObject)
                             message.field = {};
-                        var end2 = reader.uint32() + reader.pos;
+                        var end2 = reader.size() + reader.pos;
                         if (end2 > reader.len)
                             throw $RangeError("index out of range");
                         reader.len = end2;
@@ -57459,7 +57459,7 @@ $root.waproto = (function() {
                             case 2:
                                 if (wireType !== 2)
                                     break;
-                                value = $root.waproto.Field.decode(reader, reader.uint32(), $undefined, _depth + 1, value);
+                                value = $root.waproto.Field.decode(reader, reader.size(), $undefined, _depth + 1, value);
                                 continue;
                             }
                             reader.skipType(wireType, _depth, tag2);
@@ -57507,7 +57507,7 @@ $root.waproto = (function() {
         Config.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -58962,7 +58962,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.quotedMessage = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedMessage);
+                        message.quotedMessage = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedMessage);
                         message._quotedMessage = "quotedMessage";
                         continue;
                     }
@@ -59019,14 +59019,14 @@ $root.waproto = (function() {
                 case 23: {
                         if (wireType !== 2)
                             break;
-                        message.quotedAd = $root.waproto.ContextInfo.AdReplyInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedAd);
+                        message.quotedAd = $root.waproto.ContextInfo.AdReplyInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedAd);
                         message._quotedAd = "quotedAd";
                         continue;
                     }
                 case 24: {
                         if (wireType !== 2)
                             break;
-                        message.placeholderKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.placeholderKey);
+                        message.placeholderKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.placeholderKey);
                         message._placeholderKey = "placeholderKey";
                         continue;
                     }
@@ -59054,7 +59054,7 @@ $root.waproto = (function() {
                 case 28: {
                         if (wireType !== 2)
                             break;
-                        message.externalAdReply = $root.waproto.ContextInfo.ExternalAdReplyInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.externalAdReply);
+                        message.externalAdReply = $root.waproto.ContextInfo.ExternalAdReplyInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.externalAdReply);
                         message._externalAdReply = "externalAdReply";
                         continue;
                     }
@@ -59082,14 +59082,14 @@ $root.waproto = (function() {
                 case 32: {
                         if (wireType !== 2)
                             break;
-                        message.disappearingMode = $root.waproto.DisappearingMode.decode(reader, reader.uint32(), $undefined, _depth + 1, message.disappearingMode);
+                        message.disappearingMode = $root.waproto.DisappearingMode.decode(reader, reader.size(), $undefined, _depth + 1, message.disappearingMode);
                         message._disappearingMode = "disappearingMode";
                         continue;
                     }
                 case 33: {
                         if (wireType !== 2)
                             break;
-                        message.actionLink = $root.waproto.ActionLink.decode(reader, reader.uint32(), $undefined, _depth + 1, message.actionLink);
+                        message.actionLink = $root.waproto.ActionLink.decode(reader, reader.size(), $undefined, _depth + 1, message.actionLink);
                         message._actionLink = "actionLink";
                         continue;
                     }
@@ -59133,27 +59133,27 @@ $root.waproto = (function() {
                             break;
                         if (!(message.groupMentions && message.groupMentions.length))
                             message.groupMentions = [];
-                        message.groupMentions.push($root.waproto.GroupMention.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.groupMentions.push($root.waproto.GroupMention.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 41: {
                         if (wireType !== 2)
                             break;
-                        message.utm = $root.waproto.ContextInfo.UTMInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.utm);
+                        message.utm = $root.waproto.ContextInfo.UTMInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.utm);
                         message._utm = "utm";
                         continue;
                     }
                 case 43: {
                         if (wireType !== 2)
                             break;
-                        message.forwardedNewsletterMessageInfo = $root.waproto.ContextInfo.ForwardedNewsletterMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.forwardedNewsletterMessageInfo);
+                        message.forwardedNewsletterMessageInfo = $root.waproto.ContextInfo.ForwardedNewsletterMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.forwardedNewsletterMessageInfo);
                         message._forwardedNewsletterMessageInfo = "forwardedNewsletterMessageInfo";
                         continue;
                     }
                 case 44: {
                         if (wireType !== 2)
                             break;
-                        message.businessMessageForwardInfo = $root.waproto.ContextInfo.BusinessMessageForwardInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessMessageForwardInfo);
+                        message.businessMessageForwardInfo = $root.waproto.ContextInfo.BusinessMessageForwardInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.businessMessageForwardInfo);
                         message._businessMessageForwardInfo = "businessMessageForwardInfo";
                         continue;
                     }
@@ -59174,7 +59174,7 @@ $root.waproto = (function() {
                 case 47: {
                         if (wireType !== 2)
                             break;
-                        message.dataSharingContext = $root.waproto.ContextInfo.DataSharingContext.decode(reader, reader.uint32(), $undefined, _depth + 1, message.dataSharingContext);
+                        message.dataSharingContext = $root.waproto.ContextInfo.DataSharingContext.decode(reader, reader.size(), $undefined, _depth + 1, message.dataSharingContext);
                         message._dataSharingContext = "dataSharingContext";
                         continue;
                     }
@@ -59188,7 +59188,7 @@ $root.waproto = (function() {
                 case 49: {
                         if (wireType !== 2)
                             break;
-                        message.featureEligibilities = $root.waproto.ContextInfo.FeatureEligibilities.decode(reader, reader.uint32(), $undefined, _depth + 1, message.featureEligibilities);
+                        message.featureEligibilities = $root.waproto.ContextInfo.FeatureEligibilities.decode(reader, reader.size(), $undefined, _depth + 1, message.featureEligibilities);
                         message._featureEligibilities = "featureEligibilities";
                         continue;
                     }
@@ -59223,7 +59223,7 @@ $root.waproto = (function() {
                 case 56: {
                         if (wireType !== 2)
                             break;
-                        message.forwardedAiBotMessageInfo = $root.waproto.ForwardedAIBotMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.forwardedAiBotMessageInfo);
+                        message.forwardedAiBotMessageInfo = $root.waproto.ForwardedAIBotMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.forwardedAiBotMessageInfo);
                         message._forwardedAiBotMessageInfo = "forwardedAiBotMessageInfo";
                         continue;
                     }
@@ -59237,7 +59237,7 @@ $root.waproto = (function() {
                 case 58: {
                         if (wireType !== 2)
                             break;
-                        message.urlTrackingMap = $root.waproto.UrlTrackingMap.decode(reader, reader.uint32(), $undefined, _depth + 1, message.urlTrackingMap);
+                        message.urlTrackingMap = $root.waproto.UrlTrackingMap.decode(reader, reader.size(), $undefined, _depth + 1, message.urlTrackingMap);
                         message._urlTrackingMap = "urlTrackingMap";
                         continue;
                     }
@@ -59258,7 +59258,7 @@ $root.waproto = (function() {
                 case 62: {
                         if (wireType !== 2)
                             break;
-                        message.memberLabel = $root.waproto.MemberLabel.decode(reader, reader.uint32(), $undefined, _depth + 1, message.memberLabel);
+                        message.memberLabel = $root.waproto.MemberLabel.decode(reader, reader.size(), $undefined, _depth + 1, message.memberLabel);
                         message._memberLabel = "memberLabel";
                         continue;
                     }
@@ -59281,7 +59281,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.statusAttributions && message.statusAttributions.length))
                             message.statusAttributions = [];
-                        message.statusAttributions.push($root.waproto.StatusAttribution.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.statusAttributions.push($root.waproto.StatusAttribution.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 66: {
@@ -59301,14 +59301,14 @@ $root.waproto = (function() {
                 case 68: {
                         if (wireType !== 2)
                             break;
-                        message.questionReplyQuotedMessage = $root.waproto.ContextInfo.QuestionReplyQuotedMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.questionReplyQuotedMessage);
+                        message.questionReplyQuotedMessage = $root.waproto.ContextInfo.QuestionReplyQuotedMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.questionReplyQuotedMessage);
                         message._questionReplyQuotedMessage = "questionReplyQuotedMessage";
                         continue;
                     }
                 case 69: {
                         if (wireType !== 2)
                             break;
-                        message.statusAudienceMetadata = $root.waproto.ContextInfo.StatusAudienceMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusAudienceMetadata);
+                        message.statusAudienceMetadata = $root.waproto.ContextInfo.StatusAudienceMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.statusAudienceMetadata);
                         message._statusAudienceMetadata = "statusAudienceMetadata";
                         continue;
                     }
@@ -59329,7 +59329,7 @@ $root.waproto = (function() {
                 case 72: {
                         if (wireType !== 2)
                             break;
-                        message.botMessageSharingInfo = $root.waproto.BotMessageSharingInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botMessageSharingInfo);
+                        message.botMessageSharingInfo = $root.waproto.BotMessageSharingInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.botMessageSharingInfo);
                         message._botMessageSharingInfo = "botMessageSharingInfo";
                         continue;
                     }
@@ -59343,14 +59343,14 @@ $root.waproto = (function() {
                 case 74: {
                         if (wireType !== 2)
                             break;
-                        message.mediaDomainInfo = $root.waproto.MediaDomainInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mediaDomainInfo);
+                        message.mediaDomainInfo = $root.waproto.MediaDomainInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.mediaDomainInfo);
                         message._mediaDomainInfo = "mediaDomainInfo";
                         continue;
                     }
                 case 75: {
                         if (wireType !== 2)
                             break;
-                        message.partiallySelectedContent = $root.waproto.ContextInfo.PartiallySelectedContent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.partiallySelectedContent);
+                        message.partiallySelectedContent = $root.waproto.ContextInfo.PartiallySelectedContent.decode(reader, reader.size(), $undefined, _depth + 1, message.partiallySelectedContent);
                         message._partiallySelectedContent = "partiallySelectedContent";
                         continue;
                     }
@@ -59371,7 +59371,7 @@ $root.waproto = (function() {
                 case 78: {
                         if (wireType !== 2)
                             break;
-                        message.businessInteractionPills = $root.waproto.ContextInfo.BusinessInteractionPills.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessInteractionPills);
+                        message.businessInteractionPills = $root.waproto.ContextInfo.BusinessInteractionPills.decode(reader, reader.size(), $undefined, _depth + 1, message.businessInteractionPills);
                         message._businessInteractionPills = "businessInteractionPills";
                         continue;
                     }
@@ -59385,14 +59385,14 @@ $root.waproto = (function() {
                 case 80: {
                         if (wireType !== 2)
                             break;
-                        message.instagramThreadLink = $root.waproto.ContextInfo.InstagramThreadLink.decode(reader, reader.uint32(), $undefined, _depth + 1, message.instagramThreadLink);
+                        message.instagramThreadLink = $root.waproto.ContextInfo.InstagramThreadLink.decode(reader, reader.size(), $undefined, _depth + 1, message.instagramThreadLink);
                         message._instagramThreadLink = "instagramThreadLink";
                         continue;
                     }
                 case 81: {
                         if (wireType !== 2)
                             break;
-                        message.aiProvenance = $root.waproto.AIProvenance.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiProvenance);
+                        message.aiProvenance = $root.waproto.AIProvenance.decode(reader, reader.size(), $undefined, _depth + 1, message.aiProvenance);
                         message._aiProvenance = "aiProvenance";
                         continue;
                     }
@@ -59447,7 +59447,7 @@ $root.waproto = (function() {
         ContextInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -60750,7 +60750,7 @@ $root.waproto = (function() {
             AdReplyInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -61149,7 +61149,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.pills && message.pills.length))
                                 message.pills = [];
-                            message.pills.push($root.waproto.ContextInfo.BusinessInteractionPills.Pill.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.pills.push($root.waproto.ContextInfo.BusinessInteractionPills.Pill.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 3: {
@@ -61169,14 +61169,14 @@ $root.waproto = (function() {
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.signatureEnvelope = $root.waproto.BotSignatureVerificationMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.signatureEnvelope);
+                            message.signatureEnvelope = $root.waproto.BotSignatureVerificationMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.signatureEnvelope);
                             message._signatureEnvelope = "signatureEnvelope";
                             continue;
                         }
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.unauthenticatedBusinessMetadata = $root.waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.unauthenticatedBusinessMetadata);
+                            message.unauthenticatedBusinessMetadata = $root.waproto.ContextInfo.BusinessInteractionPills.UnauthenticatedBusinessMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.unauthenticatedBusinessMetadata);
                             message._unauthenticatedBusinessMetadata = "unauthenticatedBusinessMetadata";
                             continue;
                         }
@@ -61210,7 +61210,7 @@ $root.waproto = (function() {
             BusinessInteractionPills.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -61639,7 +61639,7 @@ $root.waproto = (function() {
                 Pill.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -62009,7 +62009,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.pills && message.pills.length))
                                     message.pills = [];
-                                message.pills.push($root.waproto.ContextInfo.BusinessInteractionPills.Pill.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.pills.push($root.waproto.ContextInfo.BusinessInteractionPills.Pill.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         }
@@ -62042,7 +62042,7 @@ $root.waproto = (function() {
                 SignedPayload.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -62422,7 +62422,7 @@ $root.waproto = (function() {
                 UnauthenticatedBusinessMetadata.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -62746,7 +62746,7 @@ $root.waproto = (function() {
             BusinessMessageForwardInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -63073,7 +63073,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.parameters && message.parameters.length))
                                 message.parameters = [];
-                            message.parameters.push($root.waproto.ContextInfo.DataSharingContext.Parameters.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.parameters.push($root.waproto.ContextInfo.DataSharingContext.Parameters.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 4: {
@@ -63113,7 +63113,7 @@ $root.waproto = (function() {
             DataSharingContext.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -63512,7 +63512,7 @@ $root.waproto = (function() {
                         case 5: {
                                 if (wireType !== 2)
                                     break;
-                                message.contents = $root.waproto.ContextInfo.DataSharingContext.Parameters.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contents);
+                                message.contents = $root.waproto.ContextInfo.DataSharingContext.Parameters.decode(reader, reader.size(), $undefined, _depth + 1, message.contents);
                                 message._contents = "contents";
                                 continue;
                             }
@@ -63546,7 +63546,7 @@ $root.waproto = (function() {
                 Parameters.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -64845,7 +64845,7 @@ $root.waproto = (function() {
             ExternalAdReplyInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -65654,7 +65654,7 @@ $root.waproto = (function() {
             FeatureEligibilities.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -66114,7 +66114,7 @@ $root.waproto = (function() {
             ForwardedNewsletterMessageInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -66472,7 +66472,7 @@ $root.waproto = (function() {
             InstagramThreadLink.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -66790,7 +66790,7 @@ $root.waproto = (function() {
             PartiallySelectedContent.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -67084,14 +67084,14 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.quotedQuestion = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedQuestion);
+                            message.quotedQuestion = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedQuestion);
                             message._quotedQuestion = "quotedQuestion";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.quotedResponse = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedResponse);
+                            message.quotedResponse = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedResponse);
                             message._quotedResponse = "quotedResponse";
                             continue;
                         }
@@ -67125,7 +67125,7 @@ $root.waproto = (function() {
             QuestionReplyQuotedMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -67519,7 +67519,7 @@ $root.waproto = (function() {
             StatusAudienceMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -67890,7 +67890,7 @@ $root.waproto = (function() {
             UTMInfo.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -69298,7 +69298,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.messages && message.messages.length))
                             message.messages = [];
-                        message.messages.push($root.waproto.HistorySyncMsg.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.messages.push($root.waproto.HistorySyncMsg.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -69402,7 +69402,7 @@ $root.waproto = (function() {
                 case 17: {
                         if (wireType !== 2)
                             break;
-                        message.disappearingMode = $root.waproto.DisappearingMode.decode(reader, reader.uint32(), $undefined, _depth + 1, message.disappearingMode);
+                        message.disappearingMode = $root.waproto.DisappearingMode.decode(reader, reader.size(), $undefined, _depth + 1, message.disappearingMode);
                         message._disappearingMode = "disappearingMode";
                         continue;
                     }
@@ -69425,7 +69425,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.participant && message.participant.length))
                             message.participant = [];
-                        message.participant.push($root.waproto.GroupParticipant.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.participant.push($root.waproto.GroupParticipant.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 21: {
@@ -69466,7 +69466,7 @@ $root.waproto = (function() {
                 case 26: {
                         if (wireType !== 2)
                             break;
-                        message.wallpaper = $root.waproto.WallpaperSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.wallpaper);
+                        message.wallpaper = $root.waproto.WallpaperSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.wallpaper);
                         message._wallpaper = "wallpaper";
                         continue;
                     }
@@ -69725,14 +69725,14 @@ $root.waproto = (function() {
                 case 63: {
                         if (wireType !== 2)
                             break;
-                        message.identityVerification = $root.waproto.IdentityVerificationState.decode(reader, reader.uint32(), $undefined, _depth + 1, message.identityVerification);
+                        message.identityVerification = $root.waproto.IdentityVerificationState.decode(reader, reader.size(), $undefined, _depth + 1, message.identityVerification);
                         message._identityVerification = "identityVerification";
                         continue;
                     }
                 case 64: {
                         if (wireType !== 2)
                             break;
-                        message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.acp2Setting);
+                        message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.size(), $undefined, _depth + 1, message.acp2Setting);
                         message._acp2Setting = "acp2Setting";
                         continue;
                     }
@@ -69775,7 +69775,7 @@ $root.waproto = (function() {
         Conversation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -70943,7 +70943,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mekDistribution = $root.waproto.DecryptMekForDistributionFromTransportSenderInput.TransportSenderMEKDistributionSingleRecipient.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mekDistribution);
+                        message.mekDistribution = $root.waproto.DecryptMekForDistributionFromTransportSenderInput.TransportSenderMEKDistributionSingleRecipient.decode(reader, reader.size(), $undefined, _depth + 1, message.mekDistribution);
                         continue;
                     }
                 case 2: {
@@ -70973,7 +70973,7 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
@@ -71017,7 +71017,7 @@ $root.waproto = (function() {
         DecryptMekForDistributionFromTransportSenderInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -71460,7 +71460,7 @@ $root.waproto = (function() {
             TransportSenderMEKDistributionSingleRecipient.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -71803,7 +71803,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.DecryptMekForDistributionFromTransportSenderSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.DecryptMekForDistributionFromTransportSenderSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -71844,7 +71844,7 @@ $root.waproto = (function() {
         DecryptMekForDistributionFromTransportSenderResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -72140,7 +72140,7 @@ $root.waproto = (function() {
         DecryptMekForDistributionFromTransportSenderSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -72539,7 +72539,7 @@ $root.waproto = (function() {
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
@@ -72585,7 +72585,7 @@ $root.waproto = (function() {
         DecryptMekForDistributionInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -72981,7 +72981,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.DecryptMekForDistributionSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.DecryptMekForDistributionSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -73022,7 +73022,7 @@ $root.waproto = (function() {
         DecryptMekForDistributionResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -73318,7 +73318,7 @@ $root.waproto = (function() {
         DecryptMekForDistributionSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -73595,7 +73595,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkPublicData);
+                        message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkPublicData);
                         continue;
                     }
                 }
@@ -73634,7 +73634,7 @@ $root.waproto = (function() {
         DecryptSelfMmkDistributionInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -73942,7 +73942,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.DecryptSelfMmkDistributionSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.DecryptSelfMmkDistributionSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -73983,7 +73983,7 @@ $root.waproto = (function() {
         DecryptSelfMmkDistributionResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -74279,7 +74279,7 @@ $root.waproto = (function() {
         DecryptSelfMmkDistributionSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -74559,7 +74559,7 @@ $root.waproto = (function() {
         DeriveAttachmentAccessTokenSecretInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -74839,7 +74839,7 @@ $root.waproto = (function() {
         DeriveAttachmentAccessTokenSecretResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -75119,7 +75119,7 @@ $root.waproto = (function() {
         DeriveAttachmentPrimaryKeySecretInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -75399,7 +75399,7 @@ $root.waproto = (function() {
         DeriveAttachmentPrimaryKeySecretResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -75697,7 +75697,7 @@ $root.waproto = (function() {
         DeriveMailboxAuthKeypairInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -76019,7 +76019,7 @@ $root.waproto = (function() {
         DeriveMailboxAuthKeypairResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -76334,7 +76334,7 @@ $root.waproto = (function() {
         DeriveMailboxEncryptionKeypairInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -76656,7 +76656,7 @@ $root.waproto = (function() {
         DeriveMailboxEncryptionKeypairResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -76971,7 +76971,7 @@ $root.waproto = (function() {
         DeriveMailboxSigningKeypairInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -77273,7 +77273,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.DeriveMailboxSigningKeypairSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.DeriveMailboxSigningKeypairSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -77314,7 +77314,7 @@ $root.waproto = (function() {
         DeriveMailboxSigningKeypairResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -77628,7 +77628,7 @@ $root.waproto = (function() {
         DeriveMailboxSigningKeypairSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -77925,7 +77925,7 @@ $root.waproto = (function() {
         DeriveMessagingMailboxKeypairsInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -78203,7 +78203,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.DeriveMessagingMailboxKeypairsSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.DeriveMessagingMailboxKeypairsSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -78244,7 +78244,7 @@ $root.waproto = (function() {
         DeriveMessagingMailboxKeypairsResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -78609,7 +78609,7 @@ $root.waproto = (function() {
         DeriveMessagingMailboxKeypairsSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -79021,7 +79021,7 @@ $root.waproto = (function() {
         DetachedDevicePublicData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -79541,21 +79541,21 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.lidMigration = $root.waproto.DeviceCapabilities.LIDMigration.decode(reader, reader.uint32(), $undefined, _depth + 1, message.lidMigration);
+                        message.lidMigration = $root.waproto.DeviceCapabilities.LIDMigration.decode(reader, reader.size(), $undefined, _depth + 1, message.lidMigration);
                         message._lidMigration = "lidMigration";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.businessBroadcast = $root.waproto.DeviceCapabilities.BusinessBroadcast.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessBroadcast);
+                        message.businessBroadcast = $root.waproto.DeviceCapabilities.BusinessBroadcast.decode(reader, reader.size(), $undefined, _depth + 1, message.businessBroadcast);
                         message._businessBroadcast = "businessBroadcast";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.userHasAvatar = $root.waproto.DeviceCapabilities.UserHasAvatar.decode(reader, reader.uint32(), $undefined, _depth + 1, message.userHasAvatar);
+                        message.userHasAvatar = $root.waproto.DeviceCapabilities.UserHasAvatar.decode(reader, reader.size(), $undefined, _depth + 1, message.userHasAvatar);
                         message._userHasAvatar = "userHasAvatar";
                         continue;
                     }
@@ -79569,42 +79569,42 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.aiThread = $root.waproto.DeviceCapabilities.AiThread.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiThread);
+                        message.aiThread = $root.waproto.DeviceCapabilities.AiThread.decode(reader, reader.size(), $undefined, _depth + 1, message.aiThread);
                         message._aiThread = "aiThread";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.aiFbidMigration = $root.waproto.DeviceCapabilities.AiFbidMigration.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiFbidMigration);
+                        message.aiFbidMigration = $root.waproto.DeviceCapabilities.AiFbidMigration.decode(reader, reader.size(), $undefined, _depth + 1, message.aiFbidMigration);
                         message._aiFbidMigration = "aiFbidMigration";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.bizAiSettingsSync = $root.waproto.DeviceCapabilities.BizAiSettingsSync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizAiSettingsSync);
+                        message.bizAiSettingsSync = $root.waproto.DeviceCapabilities.BizAiSettingsSync.decode(reader, reader.size(), $undefined, _depth + 1, message.bizAiSettingsSync);
                         message._bizAiSettingsSync = "bizAiSettingsSync";
                         continue;
                     }
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.contactRefresh = $root.waproto.DeviceCapabilities.ContactRefresh.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactRefresh);
+                        message.contactRefresh = $root.waproto.DeviceCapabilities.ContactRefresh.decode(reader, reader.size(), $undefined, _depth + 1, message.contactRefresh);
                         message._contactRefresh = "contactRefresh";
                         continue;
                     }
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.reverseHistorySync = $root.waproto.DeviceCapabilities.ReverseHistorySync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.reverseHistorySync);
+                        message.reverseHistorySync = $root.waproto.DeviceCapabilities.ReverseHistorySync.decode(reader, reader.size(), $undefined, _depth + 1, message.reverseHistorySync);
                         message._reverseHistorySync = "reverseHistorySync";
                         continue;
                     }
                 case 11: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterChatsMigration = $root.waproto.DeviceCapabilities.NewsletterChatsMigration.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterChatsMigration);
+                        message.newsletterChatsMigration = $root.waproto.DeviceCapabilities.NewsletterChatsMigration.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterChatsMigration);
                         message._newsletterChatsMigration = "newsletterChatsMigration";
                         continue;
                     }
@@ -79638,7 +79638,7 @@ $root.waproto = (function() {
         DeviceCapabilities.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -80115,7 +80115,7 @@ $root.waproto = (function() {
             AiFbidMigration.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -80418,7 +80418,7 @@ $root.waproto = (function() {
             AiThread.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -80731,7 +80731,7 @@ $root.waproto = (function() {
             BizAiSettingsSync.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -81133,7 +81133,7 @@ $root.waproto = (function() {
             BusinessBroadcast.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -81476,7 +81476,7 @@ $root.waproto = (function() {
             ContactRefresh.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -81758,7 +81758,7 @@ $root.waproto = (function() {
             LIDMigration.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -82116,7 +82116,7 @@ $root.waproto = (function() {
             NewsletterChatsMigration.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -82427,7 +82427,7 @@ $root.waproto = (function() {
             ReverseHistorySync.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -82746,7 +82746,7 @@ $root.waproto = (function() {
             UserHasAvatar.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -83055,7 +83055,7 @@ $root.waproto = (function() {
         DeviceConsistencyCodeMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -83521,7 +83521,7 @@ $root.waproto = (function() {
         DeviceListMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -83991,7 +83991,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.version = $root.waproto.DeviceProps.AppVersion.decode(reader, reader.uint32(), $undefined, _depth + 1, message.version);
+                        message.version = $root.waproto.DeviceProps.AppVersion.decode(reader, reader.size(), $undefined, _depth + 1, message.version);
                         message._version = "version";
                         continue;
                     }
@@ -84012,7 +84012,7 @@ $root.waproto = (function() {
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.historySyncConfig = $root.waproto.DeviceProps.HistorySyncConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.historySyncConfig);
+                        message.historySyncConfig = $root.waproto.DeviceProps.HistorySyncConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.historySyncConfig);
                         message._historySyncConfig = "historySyncConfig";
                         continue;
                     }
@@ -84046,7 +84046,7 @@ $root.waproto = (function() {
         DeviceProps.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -84592,7 +84592,7 @@ $root.waproto = (function() {
             AppVersion.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -85531,7 +85531,7 @@ $root.waproto = (function() {
             HistorySyncConfig.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -86204,7 +86204,7 @@ $root.waproto = (function() {
         DisappearingMode.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -86844,14 +86844,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.embeddedMessage = $root.waproto.EmbeddedMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.embeddedMessage);
+                        message.embeddedMessage = $root.waproto.EmbeddedMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.embeddedMessage);
                         message.content = "embeddedMessage";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.embeddedMusic = $root.waproto.EmbeddedMusic.decode(reader, reader.uint32(), $undefined, _depth + 1, message.embeddedMusic);
+                        message.embeddedMusic = $root.waproto.EmbeddedMusic.decode(reader, reader.size(), $undefined, _depth + 1, message.embeddedMusic);
                         message.content = "embeddedMusic";
                         continue;
                     }
@@ -86885,7 +86885,7 @@ $root.waproto = (function() {
         EmbeddedContent.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -87190,7 +87190,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                        message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                         message._message = "message";
                         continue;
                     }
@@ -87224,7 +87224,7 @@ $root.waproto = (function() {
         EmbeddedMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -87833,7 +87833,7 @@ $root.waproto = (function() {
         EmbeddedMusic.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -88315,13 +88315,13 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.fromKeypair = $root.waproto.EncryptMekForDistributionInput.MailboxAuthKP.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fromKeypair);
+                        message.fromKeypair = $root.waproto.EncryptMekForDistributionInput.MailboxAuthKP.decode(reader, reader.size(), $undefined, _depth + 1, message.fromKeypair);
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.mek = $root.waproto.MekBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mek);
+                        message.mek = $root.waproto.MekBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.mek);
                         continue;
                     }
                 case 5: {
@@ -88334,7 +88334,7 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
@@ -88376,7 +88376,7 @@ $root.waproto = (function() {
         EncryptMekForDistributionInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -88742,7 +88742,7 @@ $root.waproto = (function() {
             MailboxAuthKP.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -89060,7 +89060,7 @@ $root.waproto = (function() {
         EncryptMekForDistributionResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -89385,13 +89385,13 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mek = $root.waproto.MekBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mek);
+                        message.mek = $root.waproto.MekBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.mek);
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.transportSigningKp = $root.waproto.EncryptMeksForDistributionFromTransportSenderInput.TransportSigningKP.decode(reader, reader.uint32(), $undefined, _depth + 1, message.transportSigningKp);
+                        message.transportSigningKp = $root.waproto.EncryptMeksForDistributionFromTransportSenderInput.TransportSigningKP.decode(reader, reader.size(), $undefined, _depth + 1, message.transportSigningKp);
                         continue;
                     }
                 case 3: {
@@ -89413,7 +89413,7 @@ $root.waproto = (function() {
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
@@ -89451,7 +89451,7 @@ $root.waproto = (function() {
         EncryptMeksForDistributionFromTransportSenderInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -89821,7 +89821,7 @@ $root.waproto = (function() {
             TransportSigningKP.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -90196,7 +90196,7 @@ $root.waproto = (function() {
         EncryptMeksForDistributionFromTransportSenderResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -90589,7 +90589,7 @@ $root.waproto = (function() {
         EncryptedPairingRequest.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -90910,7 +90910,7 @@ $root.waproto = (function() {
         EphemeralSetting.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -91303,7 +91303,7 @@ $root.waproto = (function() {
         EpochPublicData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -91686,7 +91686,7 @@ $root.waproto = (function() {
         EpochSignatures.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -91988,7 +91988,7 @@ $root.waproto = (function() {
         EventAdditionalMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -92270,7 +92270,7 @@ $root.waproto = (function() {
         EventInviteAdditionalMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -92569,7 +92569,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.eventResponseMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventResponseMessageKey);
+                        message.eventResponseMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.eventResponseMessageKey);
                         message._eventResponseMessageKey = "eventResponseMessageKey";
                         continue;
                     }
@@ -92583,7 +92583,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.eventResponseMessage = $root.waproto.Message.EventResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventResponseMessage);
+                        message.eventResponseMessage = $root.waproto.Message.EventResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.eventResponseMessage);
                         message._eventResponseMessage = "eventResponseMessage";
                         continue;
                     }
@@ -92624,7 +92624,7 @@ $root.waproto = (function() {
         EventResponse.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -92981,7 +92981,7 @@ $root.waproto = (function() {
         ExitCode.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -93706,7 +93706,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.associatedMessage = $root.waproto.SubProtocol.decode(reader, reader.uint32(), $undefined, _depth + 1, message.associatedMessage);
+                        message.associatedMessage = $root.waproto.SubProtocol.decode(reader, reader.size(), $undefined, _depth + 1, message.associatedMessage);
                         message._associatedMessage = "associatedMessage";
                         continue;
                     }
@@ -93750,7 +93750,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.ctas && message.ctas.length))
                             message.ctas = [];
-                        message.ctas.push($root.waproto.ExtendedContentMessage.CTA.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.ctas.push($root.waproto.ExtendedContentMessage.CTA.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 8: {
@@ -93758,7 +93758,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.previews && message.previews.length))
                             message.previews = [];
-                        message.previews.push($root.waproto.SubProtocol.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.previews.push($root.waproto.SubProtocol.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 9: {
@@ -93792,14 +93792,14 @@ $root.waproto = (function() {
                 case 13: {
                         if (wireType !== 2)
                             break;
-                        message.favicon = $root.waproto.SubProtocol.decode(reader, reader.uint32(), $undefined, _depth + 1, message.favicon);
+                        message.favicon = $root.waproto.SubProtocol.decode(reader, reader.size(), $undefined, _depth + 1, message.favicon);
                         message._favicon = "favicon";
                         continue;
                     }
                 case 14: {
                         if (wireType !== 2)
                             break;
-                        message.headerImage = $root.waproto.SubProtocol.decode(reader, reader.uint32(), $undefined, _depth + 1, message.headerImage);
+                        message.headerImage = $root.waproto.SubProtocol.decode(reader, reader.size(), $undefined, _depth + 1, message.headerImage);
                         message._headerImage = "headerImage";
                         continue;
                     }
@@ -93879,7 +93879,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.commands && message.commands.length))
                             message.commands = [];
-                        message.commands.push($root.waproto.Command.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.commands.push($root.waproto.Command.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 26: {
@@ -93887,7 +93887,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.mentions && message.mentions.length))
                             message.mentions = [];
-                        message.mentions.push($root.waproto.Mention.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.mentions.push($root.waproto.Mention.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 27: {
@@ -93941,7 +93941,7 @@ $root.waproto = (function() {
         ExtendedContentMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -95119,7 +95119,7 @@ $root.waproto = (function() {
             CTA.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -95576,7 +95576,7 @@ $root.waproto = (function() {
         ExternalBlobReference.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -96002,7 +96002,7 @@ $root.waproto = (function() {
                             break;
                         if (message.subfield === $util.emptyObject)
                             message.subfield = {};
-                        var end2 = reader.uint32() + reader.pos;
+                        var end2 = reader.size() + reader.pos;
                         if (end2 > reader.len)
                             throw $RangeError("index out of range");
                         reader.len = end2;
@@ -96020,7 +96020,7 @@ $root.waproto = (function() {
                             case 2:
                                 if (wireType !== 2)
                                     break;
-                                value = $root.waproto.Field.decode(reader, reader.uint32(), $undefined, _depth + 1, value);
+                                value = $root.waproto.Field.decode(reader, reader.size(), $undefined, _depth + 1, value);
                                 continue;
                             }
                             reader.skipType(wireType, _depth, tag2);
@@ -96061,7 +96061,7 @@ $root.waproto = (function() {
         Field.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -96527,7 +96527,7 @@ $root.waproto = (function() {
         FingerprintData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -96928,7 +96928,7 @@ $root.waproto = (function() {
         ForwardedAIBotMessageInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -97222,7 +97222,7 @@ $root.waproto = (function() {
         GenerateMekInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -97474,7 +97474,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mek = $root.waproto.MekBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mek);
+                        message.mek = $root.waproto.MekBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.mek);
                         continue;
                     }
                 }
@@ -97509,7 +97509,7 @@ $root.waproto = (function() {
         GenerateMekResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -97789,7 +97789,7 @@ $root.waproto = (function() {
         GenerateMekRosterHashInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -98076,7 +98076,7 @@ $root.waproto = (function() {
         GenerateMekRosterHashResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -98676,7 +98676,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.lightThemeWallpaper = $root.waproto.WallpaperSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.lightThemeWallpaper);
+                        message.lightThemeWallpaper = $root.waproto.WallpaperSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.lightThemeWallpaper);
                         message._lightThemeWallpaper = "lightThemeWallpaper";
                         continue;
                     }
@@ -98690,28 +98690,28 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.darkThemeWallpaper = $root.waproto.WallpaperSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.darkThemeWallpaper);
+                        message.darkThemeWallpaper = $root.waproto.WallpaperSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.darkThemeWallpaper);
                         message._darkThemeWallpaper = "darkThemeWallpaper";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.autoDownloadWiFi = $root.waproto.AutoDownloadSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.autoDownloadWiFi);
+                        message.autoDownloadWiFi = $root.waproto.AutoDownloadSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.autoDownloadWiFi);
                         message._autoDownloadWiFi = "autoDownloadWiFi";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.autoDownloadCellular = $root.waproto.AutoDownloadSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.autoDownloadCellular);
+                        message.autoDownloadCellular = $root.waproto.AutoDownloadSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.autoDownloadCellular);
                         message._autoDownloadCellular = "autoDownloadCellular";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.autoDownloadRoaming = $root.waproto.AutoDownloadSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.autoDownloadRoaming);
+                        message.autoDownloadRoaming = $root.waproto.AutoDownloadSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.autoDownloadRoaming);
                         message._autoDownloadRoaming = "autoDownloadRoaming";
                         continue;
                     }
@@ -98746,7 +98746,7 @@ $root.waproto = (function() {
                 case 11: {
                         if (wireType !== 2)
                             break;
-                        message.avatarUserSettings = $root.waproto.AvatarUserSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.avatarUserSettings);
+                        message.avatarUserSettings = $root.waproto.AvatarUserSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.avatarUserSettings);
                         message._avatarUserSettings = "avatarUserSettings";
                         continue;
                     }
@@ -98788,21 +98788,21 @@ $root.waproto = (function() {
                 case 17: {
                         if (wireType !== 2)
                             break;
-                        message.individualNotificationSettings = $root.waproto.NotificationSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.individualNotificationSettings);
+                        message.individualNotificationSettings = $root.waproto.NotificationSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.individualNotificationSettings);
                         message._individualNotificationSettings = "individualNotificationSettings";
                         continue;
                     }
                 case 18: {
                         if (wireType !== 2)
                             break;
-                        message.groupNotificationSettings = $root.waproto.NotificationSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupNotificationSettings);
+                        message.groupNotificationSettings = $root.waproto.NotificationSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.groupNotificationSettings);
                         message._groupNotificationSettings = "groupNotificationSettings";
                         continue;
                     }
                 case 19: {
                         if (wireType !== 2)
                             break;
-                        message.chatLockSettings = $root.waproto.ChatLockSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chatLockSettings);
+                        message.chatLockSettings = $root.waproto.ChatLockSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.chatLockSettings);
                         message._chatLockSettings = "chatLockSettings";
                         continue;
                     }
@@ -98843,7 +98843,7 @@ $root.waproto = (function() {
         GlobalSettings.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -99416,7 +99416,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.messages && message.messages.length))
                             message.messages = [];
-                        message.messages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.messages.push($root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -99424,7 +99424,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.uncountedAssociatedMessageLists && message.uncountedAssociatedMessageLists.length))
                             message.uncountedAssociatedMessageLists = [];
-                        message.uncountedAssociatedMessageLists.push($root.waproto.UnCountedAssociatedMessageList.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.uncountedAssociatedMessageLists.push($root.waproto.UnCountedAssociatedMessageList.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -99432,7 +99432,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.commentMessages && message.commentMessages.length))
                             message.commentMessages = [];
-                        message.commentMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.commentMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 4: {
@@ -99440,13 +99440,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.outOfWindowPinnedMessages && message.outOfWindowPinnedMessages.length))
                             message.outOfWindowPinnedMessages = [];
-                        message.outOfWindowPinnedMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.outOfWindowPinnedMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.themeMessage = $root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.themeMessage);
+                        message.themeMessage = $root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.themeMessage);
                         message._themeMessage = "themeMessage";
                         continue;
                     }
@@ -99480,7 +99480,7 @@ $root.waproto = (function() {
         GroupHistory.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -99857,7 +99857,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.deprecatedMessageHistoryBundle = $root.waproto.Message.MessageHistoryBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deprecatedMessageHistoryBundle);
+                        message.deprecatedMessageHistoryBundle = $root.waproto.Message.MessageHistoryBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.deprecatedMessageHistoryBundle);
                         message._deprecatedMessageHistoryBundle = "deprecatedMessageHistoryBundle";
                         continue;
                     }
@@ -99898,7 +99898,7 @@ $root.waproto = (function() {
         GroupHistoryBundleInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -100227,7 +100227,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.bundleMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bundleMessageKey);
+                        message.bundleMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.bundleMessageKey);
                         message._bundleMessageKey = "bundleMessageKey";
                         continue;
                     }
@@ -100268,7 +100268,7 @@ $root.waproto = (function() {
         GroupHistoryIndividualMessageInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -100585,7 +100585,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.messages && message.messages.length))
                             message.messages = [];
-                        message.messages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.messages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -100593,7 +100593,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.uncountedAssociatedMessageLists && message.uncountedAssociatedMessageLists.length))
                             message.uncountedAssociatedMessageLists = [];
-                        message.uncountedAssociatedMessageLists.push($root.waproto.UnCountedAssociatedMessageListWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.uncountedAssociatedMessageLists.push($root.waproto.UnCountedAssociatedMessageListWithMessageBytes.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -100601,7 +100601,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.commentMessages && message.commentMessages.length))
                             message.commentMessages = [];
-                        message.commentMessages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.commentMessages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 4: {
@@ -100609,13 +100609,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.outOfWindowPinnedMessages && message.outOfWindowPinnedMessages.length))
                             message.outOfWindowPinnedMessages = [];
-                        message.outOfWindowPinnedMessages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.outOfWindowPinnedMessages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.themeMessage = $root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1, message.themeMessage);
+                        message.themeMessage = $root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.size(), $undefined, _depth + 1, message.themeMessage);
                         message._themeMessage = "themeMessage";
                         continue;
                     }
@@ -100649,7 +100649,7 @@ $root.waproto = (function() {
         GroupHistoryWithMessageBytes.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -101063,7 +101063,7 @@ $root.waproto = (function() {
         GroupMention.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -101360,7 +101360,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.memberLabel = $root.waproto.MemberLabel.decode(reader, reader.uint32(), $undefined, _depth + 1, message.memberLabel);
+                        message.memberLabel = $root.waproto.MemberLabel.decode(reader, reader.size(), $undefined, _depth + 1, message.memberLabel);
                         message._memberLabel = "memberLabel";
                         continue;
                     }
@@ -101396,7 +101396,7 @@ $root.waproto = (function() {
         GroupParticipant.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -101693,7 +101693,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.keys && message.keys.length))
                             message.keys = [];
-                        message.keys.push($root.waproto.GroupRootKeyShareEntry.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.keys.push($root.waproto.GroupRootKeyShareEntry.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -101726,7 +101726,7 @@ $root.waproto = (function() {
         GroupRootKeyShare.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -102096,7 +102096,7 @@ $root.waproto = (function() {
         GroupRootKeyShareEntry.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -102432,21 +102432,21 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.clientHello = $root.waproto.HandshakeMessage.ClientHello.decode(reader, reader.uint32(), $undefined, _depth + 1, message.clientHello);
+                        message.clientHello = $root.waproto.HandshakeMessage.ClientHello.decode(reader, reader.size(), $undefined, _depth + 1, message.clientHello);
                         message._clientHello = "clientHello";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.serverHello = $root.waproto.HandshakeMessage.ServerHello.decode(reader, reader.uint32(), $undefined, _depth + 1, message.serverHello);
+                        message.serverHello = $root.waproto.HandshakeMessage.ServerHello.decode(reader, reader.size(), $undefined, _depth + 1, message.serverHello);
                         message._serverHello = "serverHello";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.clientFinish = $root.waproto.HandshakeMessage.ClientFinish.decode(reader, reader.uint32(), $undefined, _depth + 1, message.clientFinish);
+                        message.clientFinish = $root.waproto.HandshakeMessage.ClientFinish.decode(reader, reader.size(), $undefined, _depth + 1, message.clientFinish);
                         message._clientFinish = "clientFinish";
                         continue;
                     }
@@ -102480,7 +102480,7 @@ $root.waproto = (function() {
         HandshakeMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -102891,7 +102891,7 @@ $root.waproto = (function() {
             ClientFinish.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -103437,7 +103437,7 @@ $root.waproto = (function() {
             ClientHello.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -104011,7 +104011,7 @@ $root.waproto = (function() {
             ServerHello.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -104407,7 +104407,7 @@ $root.waproto = (function() {
         HatchMetadataSync.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -105044,7 +105044,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.conversations && message.conversations.length))
                             message.conversations = [];
-                        message.conversations.push($root.waproto.Conversation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.conversations.push($root.waproto.Conversation.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -105052,7 +105052,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.statusV3Messages && message.statusV3Messages.length))
                             message.statusV3Messages = [];
-                        message.statusV3Messages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.statusV3Messages.push($root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 5: {
@@ -105074,13 +105074,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.pushnames && message.pushnames.length))
                             message.pushnames = [];
-                        message.pushnames.push($root.waproto.Pushname.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.pushnames.push($root.waproto.Pushname.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.globalSettings = $root.waproto.GlobalSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.globalSettings);
+                        message.globalSettings = $root.waproto.GlobalSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.globalSettings);
                         message._globalSettings = "globalSettings";
                         continue;
                     }
@@ -105103,7 +105103,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.recentStickers && message.recentStickers.length))
                             message.recentStickers = [];
-                        message.recentStickers.push($root.waproto.StickerMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.recentStickers.push($root.waproto.StickerMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 12: {
@@ -105111,7 +105111,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.pastParticipants && message.pastParticipants.length))
                             message.pastParticipants = [];
-                        message.pastParticipants.push($root.waproto.PastParticipants.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.pastParticipants.push($root.waproto.PastParticipants.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 13: {
@@ -105119,7 +105119,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.callLogRecords && message.callLogRecords.length))
                             message.callLogRecords = [];
-                        message.callLogRecords.push($root.waproto.CallLogRecord.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.callLogRecords.push($root.waproto.CallLogRecord.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 14: {
@@ -105134,7 +105134,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.phoneNumberToLidMappings && message.phoneNumberToLidMappings.length))
                             message.phoneNumberToLidMappings = [];
-                        message.phoneNumberToLidMappings.push($root.waproto.PhoneNumberToLIDMapping.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.phoneNumberToLidMappings.push($root.waproto.PhoneNumberToLIDMapping.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 16: {
@@ -105156,7 +105156,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.accounts && message.accounts.length))
                             message.accounts = [];
-                        message.accounts.push($root.waproto.Account.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.accounts.push($root.waproto.Account.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 19: {
@@ -105171,7 +105171,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.inlineContacts && message.inlineContacts.length))
                             message.inlineContacts = [];
-                        message.inlineContacts.push($root.waproto.InlineContact.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.inlineContacts.push($root.waproto.InlineContact.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 21: {
@@ -105186,7 +105186,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.favoriteStickers && message.favoriteStickers.length))
                             message.favoriteStickers = [];
-                        message.favoriteStickers.push($root.waproto.StickerMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.favoriteStickers.push($root.waproto.StickerMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 23: {
@@ -105194,7 +105194,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.omittedConversations && message.omittedConversations.length))
                             message.omittedConversations = [];
-                        message.omittedConversations.push($root.waproto.RecoverableHistoryConversation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.omittedConversations.push($root.waproto.RecoverableHistoryConversation.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 24: {
@@ -105236,7 +105236,7 @@ $root.waproto = (function() {
         HistorySync.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -105975,7 +105975,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.message = $root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                        message.message = $root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                         message._message = "message";
                         continue;
                     }
@@ -106016,7 +106016,7 @@ $root.waproto = (function() {
         HistorySyncMsg.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -106365,21 +106365,21 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.quickReplyButton = $root.waproto.HydratedTemplateButton.HydratedQuickReplyButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quickReplyButton);
+                        message.quickReplyButton = $root.waproto.HydratedTemplateButton.HydratedQuickReplyButton.decode(reader, reader.size(), $undefined, _depth + 1, message.quickReplyButton);
                         message.hydratedButton = "quickReplyButton";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.urlButton = $root.waproto.HydratedTemplateButton.HydratedURLButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.urlButton);
+                        message.urlButton = $root.waproto.HydratedTemplateButton.HydratedURLButton.decode(reader, reader.size(), $undefined, _depth + 1, message.urlButton);
                         message.hydratedButton = "urlButton";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.callButton = $root.waproto.HydratedTemplateButton.HydratedCallButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.callButton);
+                        message.callButton = $root.waproto.HydratedTemplateButton.HydratedCallButton.decode(reader, reader.size(), $undefined, _depth + 1, message.callButton);
                         message.hydratedButton = "callButton";
                         continue;
                     }
@@ -106413,7 +106413,7 @@ $root.waproto = (function() {
         HydratedTemplateButton.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -106774,7 +106774,7 @@ $root.waproto = (function() {
             HydratedCallButton.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -107089,7 +107089,7 @@ $root.waproto = (function() {
             HydratedQuickReplyButton.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -107452,7 +107452,7 @@ $root.waproto = (function() {
             HydratedURLButton.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -107819,7 +107819,7 @@ $root.waproto = (function() {
         IdentityKeyPairStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -108140,7 +108140,7 @@ $root.waproto = (function() {
         IdentityVerificationState.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -108769,7 +108769,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.questions && message.questions.length))
                             message.questions = [];
-                        message.questions.push($root.waproto.InThreadSurveyMetadata.InThreadSurveyQuestion.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.questions.push($root.waproto.InThreadSurveyMetadata.InThreadSurveyQuestion.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 13: {
@@ -108798,7 +108798,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.privacyStatementParts && message.privacyStatementParts.length))
                             message.privacyStatementParts = [];
-                        message.privacyStatementParts.push($root.waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.privacyStatementParts.push($root.waproto.InThreadSurveyMetadata.InThreadSurveyPrivacyStatementPart.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 17: {
@@ -108845,7 +108845,7 @@ $root.waproto = (function() {
         InThreadSurveyMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -109359,7 +109359,7 @@ $root.waproto = (function() {
             InThreadSurveyOption.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -109683,7 +109683,7 @@ $root.waproto = (function() {
             InThreadSurveyPrivacyStatementPart.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -109986,7 +109986,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.questionOptions && message.questionOptions.length))
                                 message.questionOptions = [];
-                            message.questionOptions.push($root.waproto.InThreadSurveyMetadata.InThreadSurveyOption.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.questionOptions.push($root.waproto.InThreadSurveyMetadata.InThreadSurveyOption.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -110019,7 +110019,7 @@ $root.waproto = (function() {
             InThreadSurveyQuestion.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -110435,7 +110435,7 @@ $root.waproto = (function() {
         InlineContact.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -110836,7 +110836,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.polygonVertices && message.polygonVertices.length))
                             message.polygonVertices = [];
-                        message.polygonVertices.push($root.waproto.Point.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.polygonVertices.push($root.waproto.Point.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 4: {
@@ -110849,7 +110849,7 @@ $root.waproto = (function() {
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.embeddedContent = $root.waproto.EmbeddedContent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.embeddedContent);
+                        message.embeddedContent = $root.waproto.EmbeddedContent.decode(reader, reader.size(), $undefined, _depth + 1, message.embeddedContent);
                         message._embeddedContent = "embeddedContent";
                         continue;
                     }
@@ -110863,14 +110863,14 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.location = $root.waproto.Location.decode(reader, reader.uint32(), $undefined, _depth + 1, message.location);
+                        message.location = $root.waproto.Location.decode(reader, reader.size(), $undefined, _depth + 1, message.location);
                         message.action = "location";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.newsletter = $root.waproto.ContextInfo.ForwardedNewsletterMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletter);
+                        message.newsletter = $root.waproto.ContextInfo.ForwardedNewsletterMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletter);
                         message.action = "newsletter";
                         continue;
                     }
@@ -110884,7 +110884,7 @@ $root.waproto = (function() {
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.tapAction = $root.waproto.TapLinkAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.tapAction);
+                        message.tapAction = $root.waproto.TapLinkAction.decode(reader, reader.size(), $undefined, _depth + 1, message.tapAction);
                         message.action = "tapAction";
                         continue;
                     }
@@ -110918,7 +110918,7 @@ $root.waproto = (function() {
         InteractiveAnnotation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -111353,7 +111353,7 @@ $root.waproto = (function() {
         InteractiveMessageAdditionalMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -111700,7 +111700,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                        message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                         message._key = "key";
                         continue;
                     }
@@ -111755,7 +111755,7 @@ $root.waproto = (function() {
         KeepInChat.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -112251,7 +112251,7 @@ $root.waproto = (function() {
         KeyExchangeMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -112581,7 +112581,7 @@ $root.waproto = (function() {
         KeyId.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -112866,7 +112866,7 @@ $root.waproto = (function() {
         LIDMigrationMappingSyncMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -113134,14 +113134,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.eventResponseMessage = $root.waproto.Message.EventResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventResponseMessage);
+                        message.eventResponseMessage = $root.waproto.Message.EventResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.eventResponseMessage);
                         message._eventResponseMessage = "eventResponseMessage";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.pollVote = $root.waproto.Message.PollVoteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollVote);
+                        message.pollVote = $root.waproto.Message.PollVoteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollVote);
                         message._pollVote = "pollVote";
                         continue;
                     }
@@ -113175,7 +113175,7 @@ $root.waproto = (function() {
         LegacyMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -113550,7 +113550,7 @@ $root.waproto = (function() {
         LimitSharing.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -113956,7 +113956,7 @@ $root.waproto = (function() {
         LocalizedName.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -114304,7 +114304,7 @@ $root.waproto = (function() {
         Location.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -114758,14 +114758,14 @@ $root.waproto = (function() {
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.recipientMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.recipientMmk);
+                        message.recipientMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.recipientMmk);
                         continue;
                     }
                 case 9: {
@@ -114778,28 +114778,28 @@ $root.waproto = (function() {
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.recipientMembershipProof = $root.waproto.MerkleMembershipProof.decode(reader, reader.uint32(), $undefined, _depth + 1, message.recipientMembershipProof);
+                        message.recipientMembershipProof = $root.waproto.MerkleMembershipProof.decode(reader, reader.size(), $undefined, _depth + 1, message.recipientMembershipProof);
                         message._recipientMembershipProof = "recipientMembershipProof";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.mmkSender = $root.waproto.MandrakeDecryptMekInput.MmkSenderPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkSender);
+                        message.mmkSender = $root.waproto.MandrakeDecryptMekInput.MmkSenderPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkSender);
                         message.senderPublicData = "mmkSender";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.epochSender = $root.waproto.MandrakeDecryptMekInput.EpochSenderPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochSender);
+                        message.epochSender = $root.waproto.MandrakeDecryptMekInput.EpochSenderPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochSender);
                         message.senderPublicData = "epochSender";
                         continue;
                     }
                 case 11: {
                         if (wireType !== 2)
                             break;
-                        message.precomputedEpochSender = $root.waproto.MandrakeDecryptMekInput.PrecomputedEpochSenderPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.precomputedEpochSender);
+                        message.precomputedEpochSender = $root.waproto.MandrakeDecryptMekInput.PrecomputedEpochSenderPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.precomputedEpochSender);
                         message.senderPublicData = "precomputedEpochSender";
                         continue;
                     }
@@ -114841,7 +114841,7 @@ $root.waproto = (function() {
         MandrakeDecryptMekInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -115251,7 +115251,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochPublicData);
+                            message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochPublicData);
                             continue;
                         }
                     }
@@ -115286,7 +115286,7 @@ $root.waproto = (function() {
             EpochSenderPublicData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -115528,7 +115528,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkPublicData);
+                            message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkPublicData);
                             continue;
                         }
                     }
@@ -115563,7 +115563,7 @@ $root.waproto = (function() {
             MmkSenderPublicData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -115858,7 +115858,7 @@ $root.waproto = (function() {
             PrecomputedEpochSenderPublicData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -116156,7 +116156,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.MandrakeDecryptMekSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.MandrakeDecryptMekSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -116197,7 +116197,7 @@ $root.waproto = (function() {
         MandrakeDecryptMekResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -116493,7 +116493,7 @@ $root.waproto = (function() {
         MandrakeDecryptMekSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -116826,7 +116826,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mek = $root.waproto.MandrakeMekBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mek);
+                        message.mek = $root.waproto.MandrakeMekBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.mek);
                         continue;
                     }
                 case 2: {
@@ -116834,34 +116834,34 @@ $root.waproto = (function() {
                             break;
                         if (!(message.recipients && message.recipients.length))
                             message.recipients = [];
-                        message.recipients.push($root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.recipients.push($root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.mmkSender = $root.waproto.MandrakeEncryptMekInput.MmkSender.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkSender);
+                        message.mmkSender = $root.waproto.MandrakeEncryptMekInput.MmkSender.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkSender);
                         message.sender = "mmkSender";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.epochSender = $root.waproto.MandrakeEncryptMekInput.EpochSender.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochSender);
+                        message.epochSender = $root.waproto.MandrakeEncryptMekInput.EpochSender.decode(reader, reader.size(), $undefined, _depth + 1, message.epochSender);
                         message.sender = "epochSender";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.detachedDeviceSender = $root.waproto.MandrakeEncryptMekInput.DetachedDeviceSender.decode(reader, reader.uint32(), $undefined, _depth + 1, message.detachedDeviceSender);
+                        message.detachedDeviceSender = $root.waproto.MandrakeEncryptMekInput.DetachedDeviceSender.decode(reader, reader.size(), $undefined, _depth + 1, message.detachedDeviceSender);
                         message.sender = "detachedDeviceSender";
                         continue;
                     }
@@ -116897,7 +116897,7 @@ $root.waproto = (function() {
         MandrakeEncryptMekInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -117256,7 +117256,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.detachedDevicePublicData = $root.waproto.DetachedDevicePublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.detachedDevicePublicData);
+                            message.detachedDevicePublicData = $root.waproto.DetachedDevicePublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.detachedDevicePublicData);
                             continue;
                         }
                     case 2: {
@@ -117307,7 +117307,7 @@ $root.waproto = (function() {
             DetachedDeviceSender.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -117602,7 +117602,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochPublicData);
+                            message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochPublicData);
                             continue;
                         }
                     case 2: {
@@ -117653,7 +117653,7 @@ $root.waproto = (function() {
             EpochSender.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -117948,7 +117948,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkPublicData);
+                            message.mmkPublicData = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkPublicData);
                             continue;
                         }
                     case 2: {
@@ -117999,7 +117999,7 @@ $root.waproto = (function() {
             MmkSender.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -118310,7 +118310,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.MandrakeEncryptMekSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.MandrakeEncryptMekSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -118351,7 +118351,7 @@ $root.waproto = (function() {
         MandrakeEncryptMekResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -118637,7 +118637,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.distributions && message.distributions.length))
                             message.distributions = [];
-                        message.distributions.push($root.waproto.MandrakeEncryptMekSuccess.MekDistributionSingleRecipient.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.distributions.push($root.waproto.MandrakeEncryptMekSuccess.MekDistributionSingleRecipient.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
@@ -118686,7 +118686,7 @@ $root.waproto = (function() {
         MandrakeEncryptMekSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -119014,13 +119014,13 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.toMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.toMmk);
+                            message.toMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.toMmk);
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.recipientMembershipProof = $root.waproto.MerkleMembershipProof.decode(reader, reader.uint32(), $undefined, _depth + 1, message.recipientMembershipProof);
+                            message.recipientMembershipProof = $root.waproto.MerkleMembershipProof.decode(reader, reader.size(), $undefined, _depth + 1, message.recipientMembershipProof);
                             message._recipientMembershipProof = "recipientMembershipProof";
                             continue;
                         }
@@ -119058,7 +119058,7 @@ $root.waproto = (function() {
             MekDistributionSingleRecipient.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -119407,7 +119407,7 @@ $root.waproto = (function() {
         MandrakeMekBundle.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -119804,7 +119804,7 @@ $root.waproto = (function() {
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.previousMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.previousMmk);
+                        message.previousMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.previousMmk);
                         message._previousMmk = "previousMmk";
                         continue;
                     }
@@ -119813,7 +119813,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.detachedDevices && message.detachedDevices.length))
                             message.detachedDevices = [];
-                        message.detachedDevices.push($root.waproto.DetachedDevicePublicData.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.detachedDevices.push($root.waproto.DetachedDevicePublicData.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -119858,7 +119858,7 @@ $root.waproto = (function() {
         MandrakeOpenEpochInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -120264,7 +120264,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.MandrakeOpenEpochSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.MandrakeOpenEpochSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -120305,7 +120305,7 @@ $root.waproto = (function() {
         MandrakeOpenEpochResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -120576,13 +120576,13 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.minosSignedEpoch = $root.waproto.MinosSignedEpoch.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosSignedEpoch);
+                        message.minosSignedEpoch = $root.waproto.MinosSignedEpoch.decode(reader, reader.size(), $undefined, _depth + 1, message.minosSignedEpoch);
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.signedMmkDistribution = $root.waproto.SignedMmkDistributionFromMailbox.decode(reader, reader.uint32(), $undefined, _depth + 1, message.signedMmkDistribution);
+                        message.signedMmkDistribution = $root.waproto.SignedMmkDistributionFromMailbox.decode(reader, reader.size(), $undefined, _depth + 1, message.signedMmkDistribution);
                         continue;
                     }
                 }
@@ -120619,7 +120619,7 @@ $root.waproto = (function() {
         MandrakeOpenEpochSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -120928,7 +120928,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.detachedDevices && message.detachedDevices.length))
                             message.detachedDevices = [];
-                        message.detachedDevices.push($root.waproto.DetachedDevicePublicData.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.detachedDevices.push($root.waproto.DetachedDevicePublicData.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -120967,7 +120967,7 @@ $root.waproto = (function() {
         MandrakeOpenInitialEpochInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -121302,7 +121302,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.MandrakeOpenEpochSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.MandrakeOpenEpochSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -121343,7 +121343,7 @@ $root.waproto = (function() {
         MandrakeOpenInitialEpochResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -121701,7 +121701,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.newMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newMmk);
+                        message.newMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.newMmk);
                         continue;
                     }
                 case 2: {
@@ -121713,7 +121713,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.existingMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.existingMmk);
+                        message.existingMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.existingMmk);
                         message._existingMmk = "existingMmk";
                         continue;
                     }
@@ -121750,7 +121750,7 @@ $root.waproto = (function() {
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.latestStoredMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.latestStoredMmk);
+                        message.latestStoredMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.latestStoredMmk);
                         message._latestStoredMmk = "latestStoredMmk";
                         continue;
                     }
@@ -121798,7 +121798,7 @@ $root.waproto = (function() {
         MandrakeValidateAndDecryptSelfMmkInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -122215,7 +122215,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.MandrakeValidateAndDecryptSelfMmkSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -122256,7 +122256,7 @@ $root.waproto = (function() {
         MandrakeValidateAndDecryptSelfMmkResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -122570,7 +122570,7 @@ $root.waproto = (function() {
         MandrakeValidateAndDecryptSelfMmkSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -122852,7 +122852,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mmkFromDevice = $root.waproto.MmkFromDetachedDevice.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkFromDevice);
+                        message.mmkFromDevice = $root.waproto.MmkFromDetachedDevice.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkFromDevice);
                         continue;
                     }
                 case 2: {
@@ -122864,7 +122864,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.prevMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.prevMmk);
+                        message.prevMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.prevMmk);
                         continue;
                     }
                 }
@@ -122903,7 +122903,7 @@ $root.waproto = (function() {
         MandrakeValidateNewMmkFromDetachedDeviceInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -123215,7 +123215,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.newMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newMmk);
+                        message.newMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.newMmk);
                         continue;
                     }
                 case 2: {
@@ -123227,14 +123227,14 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.prevMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.prevMmk);
+                        message.prevMmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.prevMmk);
                         message._prevMmk = "prevMmk";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochPublicData);
+                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochPublicData);
                         continue;
                     }
                 }
@@ -123273,7 +123273,7 @@ $root.waproto = (function() {
         MandrakeValidateNewMmkFromMailboxInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -123635,7 +123635,7 @@ $root.waproto = (function() {
         MandrakeValidateNewMmkResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -123934,7 +123934,7 @@ $root.waproto = (function() {
         MediaData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -124240,7 +124240,7 @@ $root.waproto = (function() {
         MediaDomainInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -124864,7 +124864,7 @@ $root.waproto = (function() {
                 case 12: {
                         if (wireType !== 2)
                             break;
-                        message.downloadableThumbnail = $root.waproto.MediaEntry.DownloadableThumbnail.decode(reader, reader.uint32(), $undefined, _depth + 1, message.downloadableThumbnail);
+                        message.downloadableThumbnail = $root.waproto.MediaEntry.DownloadableThumbnail.decode(reader, reader.size(), $undefined, _depth + 1, message.downloadableThumbnail);
                         message._downloadableThumbnail = "downloadableThumbnail";
                         continue;
                     }
@@ -124885,7 +124885,7 @@ $root.waproto = (function() {
                 case 15: {
                         if (wireType !== 2)
                             break;
-                        message.progressiveJpegDetails = $root.waproto.MediaEntry.ProgressiveJpegDetails.decode(reader, reader.uint32(), $undefined, _depth + 1, message.progressiveJpegDetails);
+                        message.progressiveJpegDetails = $root.waproto.MediaEntry.ProgressiveJpegDetails.decode(reader, reader.size(), $undefined, _depth + 1, message.progressiveJpegDetails);
                         message._progressiveJpegDetails = "progressiveJpegDetails";
                         continue;
                     }
@@ -124933,7 +124933,7 @@ $root.waproto = (function() {
         MediaEntry.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -125542,7 +125542,7 @@ $root.waproto = (function() {
             DownloadableThumbnail.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -125916,7 +125916,7 @@ $root.waproto = (function() {
             ProgressiveJpegDetails.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -126289,7 +126289,7 @@ $root.waproto = (function() {
         MediaNotifyMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -126676,7 +126676,7 @@ $root.waproto = (function() {
         MediaRetryNotification.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -127068,7 +127068,7 @@ $root.waproto = (function() {
         MekBundle.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -127414,7 +127414,7 @@ $root.waproto = (function() {
         MemberLabel.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -127789,7 +127789,7 @@ $root.waproto = (function() {
         Mention.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -128150,7 +128150,7 @@ $root.waproto = (function() {
         MerkleMembershipProof.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -130566,812 +130566,812 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.senderKeyDistributionMessage = $root.waproto.Message.SenderKeyDistributionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.senderKeyDistributionMessage);
+                        message.senderKeyDistributionMessage = $root.waproto.Message.SenderKeyDistributionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.senderKeyDistributionMessage);
                         message._senderKeyDistributionMessage = "senderKeyDistributionMessage";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageMessage);
+                        message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.imageMessage);
                         message._imageMessage = "imageMessage";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.contactMessage = $root.waproto.Message.ContactMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactMessage);
+                        message.contactMessage = $root.waproto.Message.ContactMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.contactMessage);
                         message._contactMessage = "contactMessage";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.locationMessage);
+                        message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.locationMessage);
                         message._locationMessage = "locationMessage";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.extendedTextMessage = $root.waproto.Message.ExtendedTextMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.extendedTextMessage);
+                        message.extendedTextMessage = $root.waproto.Message.ExtendedTextMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.extendedTextMessage);
                         message._extendedTextMessage = "extendedTextMessage";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.documentMessage);
+                        message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.documentMessage);
                         message._documentMessage = "documentMessage";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.audioMessage = $root.waproto.Message.AudioMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.audioMessage);
+                        message.audioMessage = $root.waproto.Message.AudioMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.audioMessage);
                         message._audioMessage = "audioMessage";
                         continue;
                     }
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.videoMessage);
+                        message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.videoMessage);
                         message._videoMessage = "videoMessage";
                         continue;
                     }
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.call = $root.waproto.Message.Call.decode(reader, reader.uint32(), $undefined, _depth + 1, message.call);
+                        message.call = $root.waproto.Message.Call.decode(reader, reader.size(), $undefined, _depth + 1, message.call);
                         message._call = "call";
                         continue;
                     }
                 case 11: {
                         if (wireType !== 2)
                             break;
-                        message.chat = $root.waproto.Message.Chat.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chat);
+                        message.chat = $root.waproto.Message.Chat.decode(reader, reader.size(), $undefined, _depth + 1, message.chat);
                         message._chat = "chat";
                         continue;
                     }
                 case 12: {
                         if (wireType !== 2)
                             break;
-                        message.protocolMessage = $root.waproto.Message.ProtocolMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.protocolMessage);
+                        message.protocolMessage = $root.waproto.Message.ProtocolMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.protocolMessage);
                         message._protocolMessage = "protocolMessage";
                         continue;
                     }
                 case 13: {
                         if (wireType !== 2)
                             break;
-                        message.contactsArrayMessage = $root.waproto.Message.ContactsArrayMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactsArrayMessage);
+                        message.contactsArrayMessage = $root.waproto.Message.ContactsArrayMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.contactsArrayMessage);
                         message._contactsArrayMessage = "contactsArrayMessage";
                         continue;
                     }
                 case 14: {
                         if (wireType !== 2)
                             break;
-                        message.highlyStructuredMessage = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.highlyStructuredMessage);
+                        message.highlyStructuredMessage = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.highlyStructuredMessage);
                         message._highlyStructuredMessage = "highlyStructuredMessage";
                         continue;
                     }
                 case 15: {
                         if (wireType !== 2)
                             break;
-                        message.fastRatchetKeySenderKeyDistributionMessage = $root.waproto.Message.SenderKeyDistributionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fastRatchetKeySenderKeyDistributionMessage);
+                        message.fastRatchetKeySenderKeyDistributionMessage = $root.waproto.Message.SenderKeyDistributionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.fastRatchetKeySenderKeyDistributionMessage);
                         message._fastRatchetKeySenderKeyDistributionMessage = "fastRatchetKeySenderKeyDistributionMessage";
                         continue;
                     }
                 case 16: {
                         if (wireType !== 2)
                             break;
-                        message.sendPaymentMessage = $root.waproto.Message.SendPaymentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sendPaymentMessage);
+                        message.sendPaymentMessage = $root.waproto.Message.SendPaymentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.sendPaymentMessage);
                         message._sendPaymentMessage = "sendPaymentMessage";
                         continue;
                     }
                 case 18: {
                         if (wireType !== 2)
                             break;
-                        message.liveLocationMessage = $root.waproto.Message.LiveLocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.liveLocationMessage);
+                        message.liveLocationMessage = $root.waproto.Message.LiveLocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.liveLocationMessage);
                         message._liveLocationMessage = "liveLocationMessage";
                         continue;
                     }
                 case 22: {
                         if (wireType !== 2)
                             break;
-                        message.requestPaymentMessage = $root.waproto.Message.RequestPaymentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestPaymentMessage);
+                        message.requestPaymentMessage = $root.waproto.Message.RequestPaymentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.requestPaymentMessage);
                         message._requestPaymentMessage = "requestPaymentMessage";
                         continue;
                     }
                 case 23: {
                         if (wireType !== 2)
                             break;
-                        message.declinePaymentRequestMessage = $root.waproto.Message.DeclinePaymentRequestMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.declinePaymentRequestMessage);
+                        message.declinePaymentRequestMessage = $root.waproto.Message.DeclinePaymentRequestMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.declinePaymentRequestMessage);
                         message._declinePaymentRequestMessage = "declinePaymentRequestMessage";
                         continue;
                     }
                 case 24: {
                         if (wireType !== 2)
                             break;
-                        message.cancelPaymentRequestMessage = $root.waproto.Message.CancelPaymentRequestMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.cancelPaymentRequestMessage);
+                        message.cancelPaymentRequestMessage = $root.waproto.Message.CancelPaymentRequestMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.cancelPaymentRequestMessage);
                         message._cancelPaymentRequestMessage = "cancelPaymentRequestMessage";
                         continue;
                     }
                 case 25: {
                         if (wireType !== 2)
                             break;
-                        message.templateMessage = $root.waproto.Message.TemplateMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.templateMessage);
+                        message.templateMessage = $root.waproto.Message.TemplateMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.templateMessage);
                         message._templateMessage = "templateMessage";
                         continue;
                     }
                 case 26: {
                         if (wireType !== 2)
                             break;
-                        message.stickerMessage = $root.waproto.Message.StickerMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.stickerMessage);
+                        message.stickerMessage = $root.waproto.Message.StickerMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.stickerMessage);
                         message._stickerMessage = "stickerMessage";
                         continue;
                     }
                 case 28: {
                         if (wireType !== 2)
                             break;
-                        message.groupInviteMessage = $root.waproto.Message.GroupInviteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupInviteMessage);
+                        message.groupInviteMessage = $root.waproto.Message.GroupInviteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.groupInviteMessage);
                         message._groupInviteMessage = "groupInviteMessage";
                         continue;
                     }
                 case 29: {
                         if (wireType !== 2)
                             break;
-                        message.templateButtonReplyMessage = $root.waproto.Message.TemplateButtonReplyMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.templateButtonReplyMessage);
+                        message.templateButtonReplyMessage = $root.waproto.Message.TemplateButtonReplyMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.templateButtonReplyMessage);
                         message._templateButtonReplyMessage = "templateButtonReplyMessage";
                         continue;
                     }
                 case 30: {
                         if (wireType !== 2)
                             break;
-                        message.productMessage = $root.waproto.Message.ProductMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.productMessage);
+                        message.productMessage = $root.waproto.Message.ProductMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.productMessage);
                         message._productMessage = "productMessage";
                         continue;
                     }
                 case 31: {
                         if (wireType !== 2)
                             break;
-                        message.deviceSentMessage = $root.waproto.Message.DeviceSentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deviceSentMessage);
+                        message.deviceSentMessage = $root.waproto.Message.DeviceSentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.deviceSentMessage);
                         message._deviceSentMessage = "deviceSentMessage";
                         continue;
                     }
                 case 35: {
                         if (wireType !== 2)
                             break;
-                        message.messageContextInfo = $root.waproto.MessageContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageContextInfo);
+                        message.messageContextInfo = $root.waproto.MessageContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.messageContextInfo);
                         message._messageContextInfo = "messageContextInfo";
                         continue;
                     }
                 case 36: {
                         if (wireType !== 2)
                             break;
-                        message.listMessage = $root.waproto.Message.ListMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.listMessage);
+                        message.listMessage = $root.waproto.Message.ListMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.listMessage);
                         message._listMessage = "listMessage";
                         continue;
                     }
                 case 37: {
                         if (wireType !== 2)
                             break;
-                        message.viewOnceMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.viewOnceMessage);
+                        message.viewOnceMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.viewOnceMessage);
                         message._viewOnceMessage = "viewOnceMessage";
                         continue;
                     }
                 case 38: {
                         if (wireType !== 2)
                             break;
-                        message.orderMessage = $root.waproto.Message.OrderMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.orderMessage);
+                        message.orderMessage = $root.waproto.Message.OrderMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.orderMessage);
                         message._orderMessage = "orderMessage";
                         continue;
                     }
                 case 39: {
                         if (wireType !== 2)
                             break;
-                        message.listResponseMessage = $root.waproto.Message.ListResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.listResponseMessage);
+                        message.listResponseMessage = $root.waproto.Message.ListResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.listResponseMessage);
                         message._listResponseMessage = "listResponseMessage";
                         continue;
                     }
                 case 40: {
                         if (wireType !== 2)
                             break;
-                        message.ephemeralMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ephemeralMessage);
+                        message.ephemeralMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.ephemeralMessage);
                         message._ephemeralMessage = "ephemeralMessage";
                         continue;
                     }
                 case 41: {
                         if (wireType !== 2)
                             break;
-                        message.invoiceMessage = $root.waproto.Message.InvoiceMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.invoiceMessage);
+                        message.invoiceMessage = $root.waproto.Message.InvoiceMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.invoiceMessage);
                         message._invoiceMessage = "invoiceMessage";
                         continue;
                     }
                 case 42: {
                         if (wireType !== 2)
                             break;
-                        message.buttonsMessage = $root.waproto.Message.ButtonsMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.buttonsMessage);
+                        message.buttonsMessage = $root.waproto.Message.ButtonsMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.buttonsMessage);
                         message._buttonsMessage = "buttonsMessage";
                         continue;
                     }
                 case 43: {
                         if (wireType !== 2)
                             break;
-                        message.buttonsResponseMessage = $root.waproto.Message.ButtonsResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.buttonsResponseMessage);
+                        message.buttonsResponseMessage = $root.waproto.Message.ButtonsResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.buttonsResponseMessage);
                         message._buttonsResponseMessage = "buttonsResponseMessage";
                         continue;
                     }
                 case 44: {
                         if (wireType !== 2)
                             break;
-                        message.paymentInviteMessage = $root.waproto.Message.PaymentInviteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentInviteMessage);
+                        message.paymentInviteMessage = $root.waproto.Message.PaymentInviteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentInviteMessage);
                         message._paymentInviteMessage = "paymentInviteMessage";
                         continue;
                     }
                 case 45: {
                         if (wireType !== 2)
                             break;
-                        message.interactiveMessage = $root.waproto.Message.InteractiveMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.interactiveMessage);
+                        message.interactiveMessage = $root.waproto.Message.InteractiveMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.interactiveMessage);
                         message._interactiveMessage = "interactiveMessage";
                         continue;
                     }
                 case 46: {
                         if (wireType !== 2)
                             break;
-                        message.reactionMessage = $root.waproto.Message.ReactionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.reactionMessage);
+                        message.reactionMessage = $root.waproto.Message.ReactionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.reactionMessage);
                         message._reactionMessage = "reactionMessage";
                         continue;
                     }
                 case 47: {
                         if (wireType !== 2)
                             break;
-                        message.stickerSyncRmrMessage = $root.waproto.Message.StickerSyncRMRMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.stickerSyncRmrMessage);
+                        message.stickerSyncRmrMessage = $root.waproto.Message.StickerSyncRMRMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.stickerSyncRmrMessage);
                         message._stickerSyncRmrMessage = "stickerSyncRmrMessage";
                         continue;
                     }
                 case 48: {
                         if (wireType !== 2)
                             break;
-                        message.interactiveResponseMessage = $root.waproto.Message.InteractiveResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.interactiveResponseMessage);
+                        message.interactiveResponseMessage = $root.waproto.Message.InteractiveResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.interactiveResponseMessage);
                         message._interactiveResponseMessage = "interactiveResponseMessage";
                         continue;
                     }
                 case 49: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationMessage = $root.waproto.Message.PollCreationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessage);
+                        message.pollCreationMessage = $root.waproto.Message.PollCreationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessage);
                         message._pollCreationMessage = "pollCreationMessage";
                         continue;
                     }
                 case 50: {
                         if (wireType !== 2)
                             break;
-                        message.pollUpdateMessage = $root.waproto.Message.PollUpdateMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollUpdateMessage);
+                        message.pollUpdateMessage = $root.waproto.Message.PollUpdateMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollUpdateMessage);
                         message._pollUpdateMessage = "pollUpdateMessage";
                         continue;
                     }
                 case 51: {
                         if (wireType !== 2)
                             break;
-                        message.keepInChatMessage = $root.waproto.Message.KeepInChatMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keepInChatMessage);
+                        message.keepInChatMessage = $root.waproto.Message.KeepInChatMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.keepInChatMessage);
                         message._keepInChatMessage = "keepInChatMessage";
                         continue;
                     }
                 case 53: {
                         if (wireType !== 2)
                             break;
-                        message.documentWithCaptionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.documentWithCaptionMessage);
+                        message.documentWithCaptionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.documentWithCaptionMessage);
                         message._documentWithCaptionMessage = "documentWithCaptionMessage";
                         continue;
                     }
                 case 54: {
                         if (wireType !== 2)
                             break;
-                        message.requestPhoneNumberMessage = $root.waproto.Message.RequestPhoneNumberMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestPhoneNumberMessage);
+                        message.requestPhoneNumberMessage = $root.waproto.Message.RequestPhoneNumberMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.requestPhoneNumberMessage);
                         message._requestPhoneNumberMessage = "requestPhoneNumberMessage";
                         continue;
                     }
                 case 55: {
                         if (wireType !== 2)
                             break;
-                        message.viewOnceMessageV2 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.viewOnceMessageV2);
+                        message.viewOnceMessageV2 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.viewOnceMessageV2);
                         message._viewOnceMessageV2 = "viewOnceMessageV2";
                         continue;
                     }
                 case 56: {
                         if (wireType !== 2)
                             break;
-                        message.encReactionMessage = $root.waproto.Message.EncReactionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encReactionMessage);
+                        message.encReactionMessage = $root.waproto.Message.EncReactionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.encReactionMessage);
                         message._encReactionMessage = "encReactionMessage";
                         continue;
                     }
                 case 58: {
                         if (wireType !== 2)
                             break;
-                        message.editedMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.editedMessage);
+                        message.editedMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.editedMessage);
                         message._editedMessage = "editedMessage";
                         continue;
                     }
                 case 59: {
                         if (wireType !== 2)
                             break;
-                        message.viewOnceMessageV2Extension = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.viewOnceMessageV2Extension);
+                        message.viewOnceMessageV2Extension = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.viewOnceMessageV2Extension);
                         message._viewOnceMessageV2Extension = "viewOnceMessageV2Extension";
                         continue;
                     }
                 case 60: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationMessageV2 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageV2);
+                        message.pollCreationMessageV2 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageV2);
                         message._pollCreationMessageV2 = "pollCreationMessageV2";
                         continue;
                     }
                 case 61: {
                         if (wireType !== 2)
                             break;
-                        message.scheduledCallCreationMessage = $root.waproto.Message.ScheduledCallCreationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.scheduledCallCreationMessage);
+                        message.scheduledCallCreationMessage = $root.waproto.Message.ScheduledCallCreationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.scheduledCallCreationMessage);
                         message._scheduledCallCreationMessage = "scheduledCallCreationMessage";
                         continue;
                     }
                 case 62: {
                         if (wireType !== 2)
                             break;
-                        message.groupMentionedMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupMentionedMessage);
+                        message.groupMentionedMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.groupMentionedMessage);
                         message._groupMentionedMessage = "groupMentionedMessage";
                         continue;
                     }
                 case 63: {
                         if (wireType !== 2)
                             break;
-                        message.pinInChatMessage = $root.waproto.Message.PinInChatMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pinInChatMessage);
+                        message.pinInChatMessage = $root.waproto.Message.PinInChatMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pinInChatMessage);
                         message._pinInChatMessage = "pinInChatMessage";
                         continue;
                     }
                 case 64: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationMessageV3 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageV3);
+                        message.pollCreationMessageV3 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageV3);
                         message._pollCreationMessageV3 = "pollCreationMessageV3";
                         continue;
                     }
                 case 65: {
                         if (wireType !== 2)
                             break;
-                        message.scheduledCallEditMessage = $root.waproto.Message.ScheduledCallEditMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.scheduledCallEditMessage);
+                        message.scheduledCallEditMessage = $root.waproto.Message.ScheduledCallEditMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.scheduledCallEditMessage);
                         message._scheduledCallEditMessage = "scheduledCallEditMessage";
                         continue;
                     }
                 case 66: {
                         if (wireType !== 2)
                             break;
-                        message.ptvMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ptvMessage);
+                        message.ptvMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.ptvMessage);
                         message._ptvMessage = "ptvMessage";
                         continue;
                     }
                 case 67: {
                         if (wireType !== 2)
                             break;
-                        message.botInvokeMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botInvokeMessage);
+                        message.botInvokeMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.botInvokeMessage);
                         message._botInvokeMessage = "botInvokeMessage";
                         continue;
                     }
                 case 69: {
                         if (wireType !== 2)
                             break;
-                        message.callLogMesssage = $root.waproto.Message.CallLogMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.callLogMesssage);
+                        message.callLogMesssage = $root.waproto.Message.CallLogMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.callLogMesssage);
                         message._callLogMesssage = "callLogMesssage";
                         continue;
                     }
                 case 70: {
                         if (wireType !== 2)
                             break;
-                        message.messageHistoryBundle = $root.waproto.Message.MessageHistoryBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageHistoryBundle);
+                        message.messageHistoryBundle = $root.waproto.Message.MessageHistoryBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.messageHistoryBundle);
                         message._messageHistoryBundle = "messageHistoryBundle";
                         continue;
                     }
                 case 71: {
                         if (wireType !== 2)
                             break;
-                        message.encCommentMessage = $root.waproto.Message.EncCommentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encCommentMessage);
+                        message.encCommentMessage = $root.waproto.Message.EncCommentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.encCommentMessage);
                         message._encCommentMessage = "encCommentMessage";
                         continue;
                     }
                 case 72: {
                         if (wireType !== 2)
                             break;
-                        message.bcallMessage = $root.waproto.Message.BCallMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bcallMessage);
+                        message.bcallMessage = $root.waproto.Message.BCallMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.bcallMessage);
                         message._bcallMessage = "bcallMessage";
                         continue;
                     }
                 case 74: {
                         if (wireType !== 2)
                             break;
-                        message.lottieStickerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.lottieStickerMessage);
+                        message.lottieStickerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.lottieStickerMessage);
                         message._lottieStickerMessage = "lottieStickerMessage";
                         continue;
                     }
                 case 75: {
                         if (wireType !== 2)
                             break;
-                        message.eventMessage = $root.waproto.Message.EventMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventMessage);
+                        message.eventMessage = $root.waproto.Message.EventMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.eventMessage);
                         message._eventMessage = "eventMessage";
                         continue;
                     }
                 case 76: {
                         if (wireType !== 2)
                             break;
-                        message.encEventResponseMessage = $root.waproto.Message.EncEventResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encEventResponseMessage);
+                        message.encEventResponseMessage = $root.waproto.Message.EncEventResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.encEventResponseMessage);
                         message._encEventResponseMessage = "encEventResponseMessage";
                         continue;
                     }
                 case 77: {
                         if (wireType !== 2)
                             break;
-                        message.commentMessage = $root.waproto.Message.CommentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.commentMessage);
+                        message.commentMessage = $root.waproto.Message.CommentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.commentMessage);
                         message._commentMessage = "commentMessage";
                         continue;
                     }
                 case 78: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterAdminInviteMessage = $root.waproto.Message.NewsletterAdminInviteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterAdminInviteMessage);
+                        message.newsletterAdminInviteMessage = $root.waproto.Message.NewsletterAdminInviteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterAdminInviteMessage);
                         message._newsletterAdminInviteMessage = "newsletterAdminInviteMessage";
                         continue;
                     }
                 case 80: {
                         if (wireType !== 2)
                             break;
-                        message.placeholderMessage = $root.waproto.Message.PlaceholderMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.placeholderMessage);
+                        message.placeholderMessage = $root.waproto.Message.PlaceholderMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.placeholderMessage);
                         message._placeholderMessage = "placeholderMessage";
                         continue;
                     }
                 case 82: {
                         if (wireType !== 2)
                             break;
-                        message.secretEncryptedMessage = $root.waproto.Message.SecretEncryptedMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.secretEncryptedMessage);
+                        message.secretEncryptedMessage = $root.waproto.Message.SecretEncryptedMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.secretEncryptedMessage);
                         message._secretEncryptedMessage = "secretEncryptedMessage";
                         continue;
                     }
                 case 83: {
                         if (wireType !== 2)
                             break;
-                        message.albumMessage = $root.waproto.Message.AlbumMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.albumMessage);
+                        message.albumMessage = $root.waproto.Message.AlbumMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.albumMessage);
                         message._albumMessage = "albumMessage";
                         continue;
                     }
                 case 85: {
                         if (wireType !== 2)
                             break;
-                        message.eventCoverImage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventCoverImage);
+                        message.eventCoverImage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.eventCoverImage);
                         message._eventCoverImage = "eventCoverImage";
                         continue;
                     }
                 case 86: {
                         if (wireType !== 2)
                             break;
-                        message.stickerPackMessage = $root.waproto.Message.StickerPackMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.stickerPackMessage);
+                        message.stickerPackMessage = $root.waproto.Message.StickerPackMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.stickerPackMessage);
                         message._stickerPackMessage = "stickerPackMessage";
                         continue;
                     }
                 case 87: {
                         if (wireType !== 2)
                             break;
-                        message.statusMentionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusMentionMessage);
+                        message.statusMentionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusMentionMessage);
                         message._statusMentionMessage = "statusMentionMessage";
                         continue;
                     }
                 case 88: {
                         if (wireType !== 2)
                             break;
-                        message.pollResultSnapshotMessage = $root.waproto.Message.PollResultSnapshotMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollResultSnapshotMessage);
+                        message.pollResultSnapshotMessage = $root.waproto.Message.PollResultSnapshotMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollResultSnapshotMessage);
                         message._pollResultSnapshotMessage = "pollResultSnapshotMessage";
                         continue;
                     }
                 case 90: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationOptionImageMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationOptionImageMessage);
+                        message.pollCreationOptionImageMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationOptionImageMessage);
                         message._pollCreationOptionImageMessage = "pollCreationOptionImageMessage";
                         continue;
                     }
                 case 91: {
                         if (wireType !== 2)
                             break;
-                        message.associatedChildMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.associatedChildMessage);
+                        message.associatedChildMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.associatedChildMessage);
                         message._associatedChildMessage = "associatedChildMessage";
                         continue;
                     }
                 case 92: {
                         if (wireType !== 2)
                             break;
-                        message.groupStatusMentionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupStatusMentionMessage);
+                        message.groupStatusMentionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.groupStatusMentionMessage);
                         message._groupStatusMentionMessage = "groupStatusMentionMessage";
                         continue;
                     }
                 case 93: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationMessageV4 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageV4);
+                        message.pollCreationMessageV4 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageV4);
                         message._pollCreationMessageV4 = "pollCreationMessageV4";
                         continue;
                     }
                 case 95: {
                         if (wireType !== 2)
                             break;
-                        message.statusAddYours = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusAddYours);
+                        message.statusAddYours = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusAddYours);
                         message._statusAddYours = "statusAddYours";
                         continue;
                     }
                 case 96: {
                         if (wireType !== 2)
                             break;
-                        message.groupStatusMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupStatusMessage);
+                        message.groupStatusMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.groupStatusMessage);
                         message._groupStatusMessage = "groupStatusMessage";
                         continue;
                     }
                 case 97: {
                         if (wireType !== 2)
                             break;
-                        message.richResponseMessage = $root.waproto.AIRichResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.richResponseMessage);
+                        message.richResponseMessage = $root.waproto.AIRichResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.richResponseMessage);
                         message._richResponseMessage = "richResponseMessage";
                         continue;
                     }
                 case 98: {
                         if (wireType !== 2)
                             break;
-                        message.statusNotificationMessage = $root.waproto.Message.StatusNotificationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusNotificationMessage);
+                        message.statusNotificationMessage = $root.waproto.Message.StatusNotificationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusNotificationMessage);
                         message._statusNotificationMessage = "statusNotificationMessage";
                         continue;
                     }
                 case 99: {
                         if (wireType !== 2)
                             break;
-                        message.limitSharingMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.limitSharingMessage);
+                        message.limitSharingMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.limitSharingMessage);
                         message._limitSharingMessage = "limitSharingMessage";
                         continue;
                     }
                 case 100: {
                         if (wireType !== 2)
                             break;
-                        message.botTaskMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botTaskMessage);
+                        message.botTaskMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.botTaskMessage);
                         message._botTaskMessage = "botTaskMessage";
                         continue;
                     }
                 case 101: {
                         if (wireType !== 2)
                             break;
-                        message.questionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.questionMessage);
+                        message.questionMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.questionMessage);
                         message._questionMessage = "questionMessage";
                         continue;
                     }
                 case 102: {
                         if (wireType !== 2)
                             break;
-                        message.messageHistoryNotice = $root.waproto.Message.MessageHistoryNotice.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageHistoryNotice);
+                        message.messageHistoryNotice = $root.waproto.Message.MessageHistoryNotice.decode(reader, reader.size(), $undefined, _depth + 1, message.messageHistoryNotice);
                         message._messageHistoryNotice = "messageHistoryNotice";
                         continue;
                     }
                 case 103: {
                         if (wireType !== 2)
                             break;
-                        message.groupStatusMessageV2 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupStatusMessageV2);
+                        message.groupStatusMessageV2 = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.groupStatusMessageV2);
                         message._groupStatusMessageV2 = "groupStatusMessageV2";
                         continue;
                     }
                 case 104: {
                         if (wireType !== 2)
                             break;
-                        message.botForwardedMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botForwardedMessage);
+                        message.botForwardedMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.botForwardedMessage);
                         message._botForwardedMessage = "botForwardedMessage";
                         continue;
                     }
                 case 105: {
                         if (wireType !== 2)
                             break;
-                        message.statusQuestionAnswerMessage = $root.waproto.Message.StatusQuestionAnswerMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusQuestionAnswerMessage);
+                        message.statusQuestionAnswerMessage = $root.waproto.Message.StatusQuestionAnswerMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusQuestionAnswerMessage);
                         message._statusQuestionAnswerMessage = "statusQuestionAnswerMessage";
                         continue;
                     }
                 case 106: {
                         if (wireType !== 2)
                             break;
-                        message.questionReplyMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.questionReplyMessage);
+                        message.questionReplyMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.questionReplyMessage);
                         message._questionReplyMessage = "questionReplyMessage";
                         continue;
                     }
                 case 107: {
                         if (wireType !== 2)
                             break;
-                        message.questionResponseMessage = $root.waproto.Message.QuestionResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.questionResponseMessage);
+                        message.questionResponseMessage = $root.waproto.Message.QuestionResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.questionResponseMessage);
                         message._questionResponseMessage = "questionResponseMessage";
                         continue;
                     }
                 case 109: {
                         if (wireType !== 2)
                             break;
-                        message.statusQuotedMessage = $root.waproto.Message.StatusQuotedMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusQuotedMessage);
+                        message.statusQuotedMessage = $root.waproto.Message.StatusQuotedMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusQuotedMessage);
                         message._statusQuotedMessage = "statusQuotedMessage";
                         continue;
                     }
                 case 110: {
                         if (wireType !== 2)
                             break;
-                        message.statusStickerInteractionMessage = $root.waproto.Message.StatusStickerInteractionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusStickerInteractionMessage);
+                        message.statusStickerInteractionMessage = $root.waproto.Message.StatusStickerInteractionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusStickerInteractionMessage);
                         message._statusStickerInteractionMessage = "statusStickerInteractionMessage";
                         continue;
                     }
                 case 111: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationMessageV5 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageV5);
+                        message.pollCreationMessageV5 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageV5);
                         message._pollCreationMessageV5 = "pollCreationMessageV5";
                         continue;
                     }
                 case 113: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterFollowerInviteMessageV2 = $root.waproto.Message.NewsletterFollowerInviteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterFollowerInviteMessageV2);
+                        message.newsletterFollowerInviteMessageV2 = $root.waproto.Message.NewsletterFollowerInviteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterFollowerInviteMessageV2);
                         message._newsletterFollowerInviteMessageV2 = "newsletterFollowerInviteMessageV2";
                         continue;
                     }
                 case 115: {
                         if (wireType !== 2)
                             break;
-                        message.pollResultSnapshotMessageV3 = $root.waproto.Message.PollResultSnapshotMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollResultSnapshotMessageV3);
+                        message.pollResultSnapshotMessageV3 = $root.waproto.Message.PollResultSnapshotMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollResultSnapshotMessageV3);
                         message._pollResultSnapshotMessageV3 = "pollResultSnapshotMessageV3";
                         continue;
                     }
                 case 116: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterAdminProfileMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterAdminProfileMessage);
+                        message.newsletterAdminProfileMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterAdminProfileMessage);
                         message._newsletterAdminProfileMessage = "newsletterAdminProfileMessage";
                         continue;
                     }
                 case 118: {
                         if (wireType !== 2)
                             break;
-                        message.spoilerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.spoilerMessage);
+                        message.spoilerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.spoilerMessage);
                         message._spoilerMessage = "spoilerMessage";
                         continue;
                     }
                 case 119: {
                         if (wireType !== 2)
                             break;
-                        message.pollCreationMessageV6 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageV6);
+                        message.pollCreationMessageV6 = $root.waproto.Message.PollCreationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageV6);
                         message._pollCreationMessageV6 = "pollCreationMessageV6";
                         continue;
                     }
                 case 120: {
                         if (wireType !== 2)
                             break;
-                        message.conditionalRevealMessage = $root.waproto.Message.ConditionalRevealMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conditionalRevealMessage);
+                        message.conditionalRevealMessage = $root.waproto.Message.ConditionalRevealMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.conditionalRevealMessage);
                         message._conditionalRevealMessage = "conditionalRevealMessage";
                         continue;
                     }
                 case 121: {
                         if (wireType !== 2)
                             break;
-                        message.pollAddOptionMessage = $root.waproto.Message.PollAddOptionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollAddOptionMessage);
+                        message.pollAddOptionMessage = $root.waproto.Message.PollAddOptionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.pollAddOptionMessage);
                         message._pollAddOptionMessage = "pollAddOptionMessage";
                         continue;
                     }
                 case 122: {
                         if (wireType !== 2)
                             break;
-                        message.eventInviteMessage = $root.waproto.Message.EventInviteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventInviteMessage);
+                        message.eventInviteMessage = $root.waproto.Message.EventInviteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.eventInviteMessage);
                         message._eventInviteMessage = "eventInviteMessage";
                         continue;
                     }
                 case 123: {
                         if (wireType !== 2)
                             break;
-                        message.groupRootKeyShare = $root.waproto.GroupRootKeyShare.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupRootKeyShare);
+                        message.groupRootKeyShare = $root.waproto.GroupRootKeyShare.decode(reader, reader.size(), $undefined, _depth + 1, message.groupRootKeyShare);
                         message._groupRootKeyShare = "groupRootKeyShare";
                         continue;
                     }
                 case 124: {
                         if (wireType !== 2)
                             break;
-                        message.paymentReminderMessage = $root.waproto.Message.PaymentReminderMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentReminderMessage);
+                        message.paymentReminderMessage = $root.waproto.Message.PaymentReminderMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentReminderMessage);
                         message._paymentReminderMessage = "paymentReminderMessage";
                         continue;
                     }
                 case 125: {
                         if (wireType !== 2)
                             break;
-                        message.splitPaymentMessage = $root.waproto.Message.SplitPaymentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.splitPaymentMessage);
+                        message.splitPaymentMessage = $root.waproto.Message.SplitPaymentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.splitPaymentMessage);
                         message._splitPaymentMessage = "splitPaymentMessage";
                         continue;
                     }
                 case 126: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterAdminProfileStatusMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterAdminProfileStatusMessage);
+                        message.newsletterAdminProfileStatusMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterAdminProfileStatusMessage);
                         message._newsletterAdminProfileStatusMessage = "newsletterAdminProfileStatusMessage";
                         continue;
                     }
                 case 127: {
                         if (wireType !== 2)
                             break;
-                        message.rootSecretDistributeMessage = $root.waproto.Message.RootSecretDistributeMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.rootSecretDistributeMessage);
+                        message.rootSecretDistributeMessage = $root.waproto.Message.RootSecretDistributeMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.rootSecretDistributeMessage);
                         message._rootSecretDistributeMessage = "rootSecretDistributeMessage";
                         continue;
                     }
                 case 128: {
                         if (wireType !== 2)
                             break;
-                        message.splitPaymentUpdateMessage = $root.waproto.Message.SplitPaymentUpdateMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.splitPaymentUpdateMessage);
+                        message.splitPaymentUpdateMessage = $root.waproto.Message.SplitPaymentUpdateMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.splitPaymentUpdateMessage);
                         message._splitPaymentUpdateMessage = "splitPaymentUpdateMessage";
                         continue;
                     }
                 case 129: {
                         if (wireType !== 2)
                             break;
-                        message.musicMessage = $root.waproto.Message.MusicMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.musicMessage);
+                        message.musicMessage = $root.waproto.Message.MusicMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.musicMessage);
                         message._musicMessage = "musicMessage";
                         continue;
                     }
                 case 130: {
                         if (wireType !== 2)
                             break;
-                        message.statusLinkPreviewMetadata = $root.waproto.Message.StatusLinkPreviewMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusLinkPreviewMetadata);
+                        message.statusLinkPreviewMetadata = $root.waproto.Message.StatusLinkPreviewMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.statusLinkPreviewMetadata);
                         message._statusLinkPreviewMetadata = "statusLinkPreviewMetadata";
                         continue;
                     }
                 case 131: {
                         if (wireType !== 2)
                             break;
-                        message.botPlatformRegistrationSuccessMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botPlatformRegistrationSuccessMessage);
+                        message.botPlatformRegistrationSuccessMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.botPlatformRegistrationSuccessMessage);
                         message._botPlatformRegistrationSuccessMessage = "botPlatformRegistrationSuccessMessage";
                         continue;
                     }
                 case 132: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterScheduledMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterScheduledMessage);
+                        message.newsletterScheduledMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterScheduledMessage);
                         message._newsletterScheduledMessage = "newsletterScheduledMessage";
                         continue;
                     }
                 case 133: {
                         if (wireType !== 2)
                             break;
-                        message.acp2SettingMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.acp2SettingMessage);
+                        message.acp2SettingMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.acp2SettingMessage);
                         message._acp2SettingMessage = "acp2SettingMessage";
                         continue;
                     }
                 case 134: {
                         if (wireType !== 2)
                             break;
-                        message.audioStickerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.audioStickerMessage);
+                        message.audioStickerMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.audioStickerMessage);
                         message._audioStickerMessage = "audioStickerMessage";
                         continue;
                     }
                 case 135: {
                         if (wireType !== 2)
                             break;
-                        message.instantImageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.instantImageMessage);
+                        message.instantImageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.instantImageMessage);
                         message._instantImageMessage = "instantImageMessage";
                         continue;
                     }
                 case 136: {
                         if (wireType !== 2)
                             break;
-                        message.requestLocationMessage = $root.waproto.Message.RequestLocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestLocationMessage);
+                        message.requestLocationMessage = $root.waproto.Message.RequestLocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.requestLocationMessage);
                         message._requestLocationMessage = "requestLocationMessage";
                         continue;
                     }
                 case 137: {
                         if (wireType !== 2)
                             break;
-                        message.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botGroupParticipantMessage);
+                        message.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.botGroupParticipantMessage);
                         message._botGroupParticipantMessage = "botGroupParticipantMessage";
                         continue;
                     }
                 case 138: {
                         if (wireType !== 2)
                             break;
-                        message.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestLocationUpdateMessage);
+                        message.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.requestLocationUpdateMessage);
                         message._requestLocationUpdateMessage = "requestLocationUpdateMessage";
                         continue;
                     }
@@ -131405,7 +131405,7 @@ $root.waproto = (function() {
         Message.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -133443,7 +133443,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -133477,7 +133477,7 @@ $root.waproto = (function() {
             AlbumMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -133804,7 +133804,7 @@ $root.waproto = (function() {
             AppStateFatalExceptionNotification.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -134102,14 +134102,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.keyId = $root.waproto.Message.AppStateSyncKeyId.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keyId);
+                            message.keyId = $root.waproto.Message.AppStateSyncKeyId.decode(reader, reader.size(), $undefined, _depth + 1, message.keyId);
                             message._keyId = "keyId";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.keyData = $root.waproto.Message.AppStateSyncKeyData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keyData);
+                            message.keyData = $root.waproto.Message.AppStateSyncKeyData.decode(reader, reader.size(), $undefined, _depth + 1, message.keyData);
                             message._keyData = "keyData";
                             continue;
                         }
@@ -134143,7 +134143,7 @@ $root.waproto = (function() {
             AppStateSyncKey.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -134453,7 +134453,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.fingerprint = $root.waproto.Message.AppStateSyncKeyFingerprint.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fingerprint);
+                            message.fingerprint = $root.waproto.Message.AppStateSyncKeyFingerprint.decode(reader, reader.size(), $undefined, _depth + 1, message.fingerprint);
                             message._fingerprint = "fingerprint";
                             continue;
                         }
@@ -134494,7 +134494,7 @@ $root.waproto = (function() {
             AppStateSyncKeyData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -134865,7 +134865,7 @@ $root.waproto = (function() {
             AppStateSyncKeyFingerprint.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -135177,7 +135177,7 @@ $root.waproto = (function() {
             AppStateSyncKeyId.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -135423,7 +135423,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.keyIds && message.keyIds.length))
                                 message.keyIds = [];
-                            message.keyIds.push($root.waproto.Message.AppStateSyncKeyId.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.keyIds.push($root.waproto.Message.AppStateSyncKeyId.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -135456,7 +135456,7 @@ $root.waproto = (function() {
             AppStateSyncKeyRequest.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -135715,7 +135715,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.keys && message.keys.length))
                                 message.keys = [];
-                            message.keys.push($root.waproto.Message.AppStateSyncKey.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.keys.push($root.waproto.Message.AppStateSyncKey.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -135748,7 +135748,7 @@ $root.waproto = (function() {
             AppStateSyncKeyShare.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -136355,7 +136355,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -136424,7 +136424,7 @@ $root.waproto = (function() {
             AudioMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -136958,7 +136958,7 @@ $root.waproto = (function() {
             BCallMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -137313,7 +137313,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.historyShareMessages && message.historyShareMessages.length))
                                 message.historyShareMessages = [];
-                            message.historyShareMessages.push($root.waproto.Message.HistoryShareMessageEntry.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.historyShareMessages.push($root.waproto.Message.HistoryShareMessageEntry.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -137346,7 +137346,7 @@ $root.waproto = (function() {
             BotHistoryShareSyncMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -137800,7 +137800,7 @@ $root.waproto = (function() {
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -137809,7 +137809,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.buttons && message.buttons.length))
                                 message.buttons = [];
-                            message.buttons.push($root.waproto.Message.ButtonsMessage.Button.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.buttons.push($root.waproto.Message.ButtonsMessage.Button.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 10: {
@@ -137829,28 +137829,28 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.documentMessage);
+                            message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.documentMessage);
                             message.header = "documentMessage";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageMessage);
+                            message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.imageMessage);
                             message.header = "imageMessage";
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.videoMessage);
+                            message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.videoMessage);
                             message.header = "videoMessage";
                             continue;
                         }
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.locationMessage);
+                            message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.locationMessage);
                             message.header = "locationMessage";
                             continue;
                         }
@@ -137884,7 +137884,7 @@ $root.waproto = (function() {
             ButtonsMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -138369,7 +138369,7 @@ $root.waproto = (function() {
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.buttonText = $root.waproto.Message.ButtonsMessage.Button.ButtonText.decode(reader, reader.uint32(), $undefined, _depth + 1, message.buttonText);
+                                message.buttonText = $root.waproto.Message.ButtonsMessage.Button.ButtonText.decode(reader, reader.size(), $undefined, _depth + 1, message.buttonText);
                                 message._buttonText = "buttonText";
                                 continue;
                             }
@@ -138383,7 +138383,7 @@ $root.waproto = (function() {
                         case 4: {
                                 if (wireType !== 2)
                                     break;
-                                message.nativeFlowInfo = $root.waproto.Message.ButtonsMessage.Button.NativeFlowInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.nativeFlowInfo);
+                                message.nativeFlowInfo = $root.waproto.Message.ButtonsMessage.Button.NativeFlowInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.nativeFlowInfo);
                                 message._nativeFlowInfo = "nativeFlowInfo";
                                 continue;
                             }
@@ -138417,7 +138417,7 @@ $root.waproto = (function() {
                 Button.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -138750,7 +138750,7 @@ $root.waproto = (function() {
                     ButtonText.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -139056,7 +139056,7 @@ $root.waproto = (function() {
                     NativeFlowInfo.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -139431,7 +139431,7 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -139479,7 +139479,7 @@ $root.waproto = (function() {
             ButtonsResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -140031,7 +140031,7 @@ $root.waproto = (function() {
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -140052,7 +140052,7 @@ $root.waproto = (function() {
                     case 10: {
                             if (wireType !== 2)
                                 break;
-                            message.messageContextInfo = $root.waproto.MessageContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageContextInfo);
+                            message.messageContextInfo = $root.waproto.MessageContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.messageContextInfo);
                             message._messageContextInfo = "messageContextInfo";
                             continue;
                         }
@@ -140100,7 +140100,7 @@ $root.waproto = (function() {
             Call.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -140562,7 +140562,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.participants && message.participants.length))
                                 message.participants = [];
-                            message.participants.push($root.waproto.Message.CallLogMessage.CallParticipant.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.participants.push($root.waproto.Message.CallLogMessage.CallParticipant.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -140595,7 +140595,7 @@ $root.waproto = (function() {
             CallLogMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -141039,7 +141039,7 @@ $root.waproto = (function() {
                 CallParticipant.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -141350,7 +141350,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -141384,7 +141384,7 @@ $root.waproto = (function() {
             CancelPaymentRequestMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -141696,7 +141696,7 @@ $root.waproto = (function() {
             Chat.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -142011,7 +142011,7 @@ $root.waproto = (function() {
             ChatAnimatedWallpaper.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -142398,7 +142398,7 @@ $root.waproto = (function() {
             ChatCustomImageWallpaper.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -142725,7 +142725,7 @@ $root.waproto = (function() {
             ChatDefaultWallpaper.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -143103,7 +143103,7 @@ $root.waproto = (function() {
             ChatSolidColorWallpaper.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -143445,7 +143445,7 @@ $root.waproto = (function() {
             ChatStockImageWallpaper.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -143836,35 +143836,35 @@ $root.waproto = (function() {
                     case 10: {
                             if (wireType !== 2)
                                 break;
-                            message.defaultWallpaper = $root.waproto.Message.ChatDefaultWallpaper.decode(reader, reader.uint32(), $undefined, _depth + 1, message.defaultWallpaper);
+                            message.defaultWallpaper = $root.waproto.Message.ChatDefaultWallpaper.decode(reader, reader.size(), $undefined, _depth + 1, message.defaultWallpaper);
                             message.wallpaper = "defaultWallpaper";
                             continue;
                         }
                     case 11: {
                             if (wireType !== 2)
                                 break;
-                            message.solidColor = $root.waproto.Message.ChatSolidColorWallpaper.decode(reader, reader.uint32(), $undefined, _depth + 1, message.solidColor);
+                            message.solidColor = $root.waproto.Message.ChatSolidColorWallpaper.decode(reader, reader.size(), $undefined, _depth + 1, message.solidColor);
                             message.wallpaper = "solidColor";
                             continue;
                         }
                     case 12: {
                             if (wireType !== 2)
                                 break;
-                            message.stockImage = $root.waproto.Message.ChatStockImageWallpaper.decode(reader, reader.uint32(), $undefined, _depth + 1, message.stockImage);
+                            message.stockImage = $root.waproto.Message.ChatStockImageWallpaper.decode(reader, reader.size(), $undefined, _depth + 1, message.stockImage);
                             message.wallpaper = "stockImage";
                             continue;
                         }
                     case 13: {
                             if (wireType !== 2)
                                 break;
-                            message.customImage = $root.waproto.Message.ChatCustomImageWallpaper.decode(reader, reader.uint32(), $undefined, _depth + 1, message.customImage);
+                            message.customImage = $root.waproto.Message.ChatCustomImageWallpaper.decode(reader, reader.size(), $undefined, _depth + 1, message.customImage);
                             message.wallpaper = "customImage";
                             continue;
                         }
                     case 14: {
                             if (wireType !== 2)
                                 break;
-                            message.animatedWallpaper = $root.waproto.Message.ChatAnimatedWallpaper.decode(reader, reader.uint32(), $undefined, _depth + 1, message.animatedWallpaper);
+                            message.animatedWallpaper = $root.waproto.Message.ChatAnimatedWallpaper.decode(reader, reader.size(), $undefined, _depth + 1, message.animatedWallpaper);
                             message.wallpaper = "animatedWallpaper";
                             continue;
                         }
@@ -143898,7 +143898,7 @@ $root.waproto = (function() {
             ChatThemeSetting.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -144387,7 +144387,7 @@ $root.waproto = (function() {
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.notificationContent = $root.waproto.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.notificationContent);
+                            message.notificationContent = $root.waproto.Message.CloudAPIThreadControlNotification.CloudAPIThreadControlNotificationContent.decode(reader, reader.size(), $undefined, _depth + 1, message.notificationContent);
                             message._notificationContent = "notificationContent";
                             continue;
                         }
@@ -144428,7 +144428,7 @@ $root.waproto = (function() {
             CloudAPIThreadControlNotification.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -144831,7 +144831,7 @@ $root.waproto = (function() {
                 CloudAPIThreadControlNotificationContent.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -145149,7 +145149,7 @@ $root.waproto = (function() {
             CoexConnectionDescriptor.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -145439,14 +145439,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                            message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                             message._message = "message";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.targetMessageKey);
+                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.targetMessageKey);
                             message._targetMessageKey = "targetMessageKey";
                             continue;
                         }
@@ -145480,7 +145480,7 @@ $root.waproto = (function() {
             CommentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -145855,7 +145855,7 @@ $root.waproto = (function() {
             ConditionalRevealMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -146232,7 +146232,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -146273,7 +146273,7 @@ $root.waproto = (function() {
             ContactMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -146598,13 +146598,13 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.contacts && message.contacts.length))
                                 message.contacts = [];
-                            message.contacts.push($root.waproto.Message.ContactMessage.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.contacts.push($root.waproto.Message.ContactMessage.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -146638,7 +146638,7 @@ $root.waproto = (function() {
             ContactsArrayMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -146927,7 +146927,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -146961,7 +146961,7 @@ $root.waproto = (function() {
             DeclinePaymentRequestMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -147261,7 +147261,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                            message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                             message._message = "message";
                             continue;
                         }
@@ -147302,7 +147302,7 @@ $root.waproto = (function() {
             DeviceSentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -148049,7 +148049,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -148111,7 +148111,7 @@ $root.waproto = (function() {
             DocumentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -148621,7 +148621,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.targetMessageKey);
+                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.targetMessageKey);
                             message._targetMessageKey = "targetMessageKey";
                             continue;
                         }
@@ -148669,7 +148669,7 @@ $root.waproto = (function() {
             EncCommentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -148981,7 +148981,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.eventCreationMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventCreationMessageKey);
+                            message.eventCreationMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.eventCreationMessageKey);
                             message._eventCreationMessageKey = "eventCreationMessageKey";
                             continue;
                         }
@@ -149029,7 +149029,7 @@ $root.waproto = (function() {
             EncEventResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -149341,7 +149341,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.targetMessageKey);
+                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.targetMessageKey);
                             message._targetMessageKey = "targetMessageKey";
                             continue;
                         }
@@ -149389,7 +149389,7 @@ $root.waproto = (function() {
             EncReactionMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -149886,7 +149886,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -150004,7 +150004,7 @@ $root.waproto = (function() {
             EventInviteMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -150661,7 +150661,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -150689,7 +150689,7 @@ $root.waproto = (function() {
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.location = $root.waproto.Message.LocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.location);
+                            message.location = $root.waproto.Message.LocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.location);
                             message._location = "location";
                             continue;
                         }
@@ -150772,7 +150772,7 @@ $root.waproto = (function() {
             EventMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -151249,7 +151249,7 @@ $root.waproto = (function() {
             EventResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -152184,7 +152184,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -152296,21 +152296,21 @@ $root.waproto = (function() {
                     case 33: {
                             if (wireType !== 2)
                                 break;
-                            message.faviconMmsMetadata = $root.waproto.Message.MMSThumbnailMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.faviconMmsMetadata);
+                            message.faviconMmsMetadata = $root.waproto.Message.MMSThumbnailMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.faviconMmsMetadata);
                             message._faviconMmsMetadata = "faviconMmsMetadata";
                             continue;
                         }
                     case 34: {
                             if (wireType !== 2)
                                 break;
-                            message.linkPreviewMetadata = $root.waproto.Message.LinkPreviewMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.linkPreviewMetadata);
+                            message.linkPreviewMetadata = $root.waproto.Message.LinkPreviewMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.linkPreviewMetadata);
                             message._linkPreviewMetadata = "linkPreviewMetadata";
                             continue;
                         }
                     case 35: {
                             if (wireType !== 2)
                                 break;
-                            message.paymentLinkMetadata = $root.waproto.Message.PaymentLinkMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentLinkMetadata);
+                            message.paymentLinkMetadata = $root.waproto.Message.PaymentLinkMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentLinkMetadata);
                             message._paymentLinkMetadata = "paymentLinkMetadata";
                             continue;
                         }
@@ -152319,7 +152319,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.endCardTiles && message.endCardTiles.length))
                                 message.endCardTiles = [];
-                            message.endCardTiles.push($root.waproto.Message.VideoEndCard.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.endCardTiles.push($root.waproto.Message.VideoEndCard.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 37: {
@@ -152332,14 +152332,14 @@ $root.waproto = (function() {
                     case 38: {
                             if (wireType !== 2)
                                 break;
-                            message.musicMetadata = $root.waproto.EmbeddedMusic.decode(reader, reader.uint32(), $undefined, _depth + 1, message.musicMetadata);
+                            message.musicMetadata = $root.waproto.EmbeddedMusic.decode(reader, reader.size(), $undefined, _depth + 1, message.musicMetadata);
                             message._musicMetadata = "musicMetadata";
                             continue;
                         }
                     case 39: {
                             if (wireType !== 2)
                                 break;
-                            message.paymentExtendedMetadata = $root.waproto.Message.PaymentExtendedMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentExtendedMetadata);
+                            message.paymentExtendedMetadata = $root.waproto.Message.PaymentExtendedMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentExtendedMetadata);
                             message._paymentExtendedMetadata = "paymentExtendedMetadata";
                             continue;
                         }
@@ -152373,7 +152373,7 @@ $root.waproto = (function() {
             ExtendedTextMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -153204,7 +153204,7 @@ $root.waproto = (function() {
             FullHistorySyncOnDemandConfig.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -153545,7 +153545,7 @@ $root.waproto = (function() {
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.connection = $root.waproto.Message.CoexConnectionDescriptor.decode(reader, reader.uint32(), $undefined, _depth + 1, message.connection);
+                            message.connection = $root.waproto.Message.CoexConnectionDescriptor.decode(reader, reader.size(), $undefined, _depth + 1, message.connection);
                             message._connection = "connection";
                             continue;
                         }
@@ -153579,7 +153579,7 @@ $root.waproto = (function() {
             FullHistorySyncOnDemandRequestMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -153866,7 +153866,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                            message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                             message._message = "message";
                             continue;
                         }
@@ -153900,7 +153900,7 @@ $root.waproto = (function() {
             FutureProofMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -154325,7 +154325,7 @@ $root.waproto = (function() {
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -154366,7 +154366,7 @@ $root.waproto = (function() {
             GroupInviteMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -154900,7 +154900,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.localizableParams && message.localizableParams.length))
                                 message.localizableParams = [];
-                            message.localizableParams.push($root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.localizableParams.push($root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 7: {
@@ -154920,7 +154920,7 @@ $root.waproto = (function() {
                     case 9: {
                             if (wireType !== 2)
                                 break;
-                            message.hydratedHsm = $root.waproto.Message.TemplateMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.hydratedHsm);
+                            message.hydratedHsm = $root.waproto.Message.TemplateMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.hydratedHsm);
                             message._hydratedHsm = "hydratedHsm";
                             continue;
                         }
@@ -154954,7 +154954,7 @@ $root.waproto = (function() {
             HighlyStructuredMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -155354,14 +155354,14 @@ $root.waproto = (function() {
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.currency = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMCurrency.decode(reader, reader.uint32(), $undefined, _depth + 1, message.currency);
+                                message.currency = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMCurrency.decode(reader, reader.size(), $undefined, _depth + 1, message.currency);
                                 message.paramOneof = "currency";
                                 continue;
                             }
                         case 3: {
                                 if (wireType !== 2)
                                     break;
-                                message.dateTime = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.decode(reader, reader.uint32(), $undefined, _depth + 1, message.dateTime);
+                                message.dateTime = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.decode(reader, reader.size(), $undefined, _depth + 1, message.dateTime);
                                 message.paramOneof = "dateTime";
                                 continue;
                             }
@@ -155395,7 +155395,7 @@ $root.waproto = (function() {
                 HSMLocalizableParameter.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -155736,7 +155736,7 @@ $root.waproto = (function() {
                     HSMCurrency.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -156028,14 +156028,14 @@ $root.waproto = (function() {
                             case 1: {
                                     if (wireType !== 2)
                                         break;
-                                    message.component = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeComponent.decode(reader, reader.uint32(), $undefined, _depth + 1, message.component);
+                                    message.component = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeComponent.decode(reader, reader.size(), $undefined, _depth + 1, message.component);
                                     message.datetimeOneof = "component";
                                     continue;
                                 }
                             case 2: {
                                     if (wireType !== 2)
                                         break;
-                                    message.unixEpoch = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeUnixEpoch.decode(reader, reader.uint32(), $undefined, _depth + 1, message.unixEpoch);
+                                    message.unixEpoch = $root.waproto.Message.HighlyStructuredMessage.HSMLocalizableParameter.HSMDateTime.HSMDateTimeUnixEpoch.decode(reader, reader.size(), $undefined, _depth + 1, message.unixEpoch);
                                     message.datetimeOneof = "unixEpoch";
                                     continue;
                                 }
@@ -156069,7 +156069,7 @@ $root.waproto = (function() {
                     HSMDateTime.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -156521,7 +156521,7 @@ $root.waproto = (function() {
                         HSMDateTimeComponent.decodeDelimited = function(reader) {
                             if (!(reader instanceof $Reader))
                                 reader = new $Reader(reader);
-                            return this.decode(reader, reader.uint32());
+                            return this.decode(reader, reader.size());
                         };
 
                         /**
@@ -156937,7 +156937,7 @@ $root.waproto = (function() {
                         HSMDateTimeUnixEpoch.decodeDelimited = function(reader) {
                             if (!(reader instanceof $Reader))
                                 reader = new $Reader(reader);
-                            return this.decode(reader, reader.uint32());
+                            return this.decode(reader, reader.size());
                         };
 
                         /**
@@ -157264,7 +157264,7 @@ $root.waproto = (function() {
             HistoryShareMessageEntry.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -157558,7 +157558,7 @@ $root.waproto = (function() {
             HistorySyncMessageAccessStatus.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -158128,7 +158128,7 @@ $root.waproto = (function() {
                     case 13: {
                             if (wireType !== 2)
                                 break;
-                            message.fullHistorySyncOnDemandRequestMetadata = $root.waproto.Message.FullHistorySyncOnDemandRequestMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fullHistorySyncOnDemandRequestMetadata);
+                            message.fullHistorySyncOnDemandRequestMetadata = $root.waproto.Message.FullHistorySyncOnDemandRequestMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.fullHistorySyncOnDemandRequestMetadata);
                             message._fullHistorySyncOnDemandRequestMetadata = "fullHistorySyncOnDemandRequestMetadata";
                             continue;
                         }
@@ -158142,7 +158142,7 @@ $root.waproto = (function() {
                     case 15: {
                             if (wireType !== 2)
                                 break;
-                            message.messageAccessStatus = $root.waproto.Message.HistorySyncMessageAccessStatus.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageAccessStatus);
+                            message.messageAccessStatus = $root.waproto.Message.HistorySyncMessageAccessStatus.decode(reader, reader.size(), $undefined, _depth + 1, message.messageAccessStatus);
                             message._messageAccessStatus = "messageAccessStatus";
                             continue;
                         }
@@ -158176,7 +158176,7 @@ $root.waproto = (function() {
             HistorySyncNotification.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -159242,7 +159242,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.interactiveAnnotations && message.interactiveAnnotations.length))
                                 message.interactiveAnnotations = [];
-                            message.interactiveAnnotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.interactiveAnnotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 11: {
@@ -159269,7 +159269,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -159369,7 +159369,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.annotations && message.annotations.length))
                                 message.annotations = [];
-                            message.annotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.annotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 31: {
@@ -159423,7 +159423,7 @@ $root.waproto = (function() {
             ImageMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -160108,7 +160108,7 @@ $root.waproto = (function() {
             InitialSecurityNotificationSettingSync.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -160531,70 +160531,70 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.header = $root.waproto.Message.InteractiveMessage.Header.decode(reader, reader.uint32(), $undefined, _depth + 1, message.header);
+                            message.header = $root.waproto.Message.InteractiveMessage.Header.decode(reader, reader.size(), $undefined, _depth + 1, message.header);
                             message._header = "header";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.body = $root.waproto.Message.InteractiveMessage.Body.decode(reader, reader.uint32(), $undefined, _depth + 1, message.body);
+                            message.body = $root.waproto.Message.InteractiveMessage.Body.decode(reader, reader.size(), $undefined, _depth + 1, message.body);
                             message._body = "body";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.footer = $root.waproto.Message.InteractiveMessage.Footer.decode(reader, reader.uint32(), $undefined, _depth + 1, message.footer);
+                            message.footer = $root.waproto.Message.InteractiveMessage.Footer.decode(reader, reader.size(), $undefined, _depth + 1, message.footer);
                             message._footer = "footer";
                             continue;
                         }
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.bloksWidget = $root.waproto.Message.InteractiveMessage.BloksWidget.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bloksWidget);
+                            message.bloksWidget = $root.waproto.Message.InteractiveMessage.BloksWidget.decode(reader, reader.size(), $undefined, _depth + 1, message.bloksWidget);
                             message._bloksWidget = "bloksWidget";
                             continue;
                         }
                     case 15: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
                     case 16: {
                             if (wireType !== 2)
                                 break;
-                            message.urlTrackingMap = $root.waproto.UrlTrackingMap.decode(reader, reader.uint32(), $undefined, _depth + 1, message.urlTrackingMap);
+                            message.urlTrackingMap = $root.waproto.UrlTrackingMap.decode(reader, reader.size(), $undefined, _depth + 1, message.urlTrackingMap);
                             message._urlTrackingMap = "urlTrackingMap";
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.shopStorefrontMessage = $root.waproto.Message.InteractiveMessage.ShopMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.shopStorefrontMessage);
+                            message.shopStorefrontMessage = $root.waproto.Message.InteractiveMessage.ShopMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.shopStorefrontMessage);
                             message.interactiveMessage = "shopStorefrontMessage";
                             continue;
                         }
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.collectionMessage = $root.waproto.Message.InteractiveMessage.CollectionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.collectionMessage);
+                            message.collectionMessage = $root.waproto.Message.InteractiveMessage.CollectionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.collectionMessage);
                             message.interactiveMessage = "collectionMessage";
                             continue;
                         }
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.nativeFlowMessage = $root.waproto.Message.InteractiveMessage.NativeFlowMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.nativeFlowMessage);
+                            message.nativeFlowMessage = $root.waproto.Message.InteractiveMessage.NativeFlowMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.nativeFlowMessage);
                             message.interactiveMessage = "nativeFlowMessage";
                             continue;
                         }
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.carouselMessage = $root.waproto.Message.InteractiveMessage.CarouselMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.carouselMessage);
+                            message.carouselMessage = $root.waproto.Message.InteractiveMessage.CarouselMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.carouselMessage);
                             message.interactiveMessage = "carouselMessage";
                             continue;
                         }
@@ -160628,7 +160628,7 @@ $root.waproto = (function() {
             InteractiveMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -161138,7 +161138,7 @@ $root.waproto = (function() {
                 BloksWidget.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -161447,7 +161447,7 @@ $root.waproto = (function() {
                 Body.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -161732,7 +161732,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.cards && message.cards.length))
                                     message.cards = [];
-                                message.cards.push($root.waproto.Message.InteractiveMessage.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.cards.push($root.waproto.Message.InteractiveMessage.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         case 2: {
@@ -161779,7 +161779,7 @@ $root.waproto = (function() {
                 CarouselMessage.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -162175,7 +162175,7 @@ $root.waproto = (function() {
                 CollectionMessage.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -162502,7 +162502,7 @@ $root.waproto = (function() {
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.audioMessage = $root.waproto.Message.AudioMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.audioMessage);
+                                message.audioMessage = $root.waproto.Message.AudioMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.audioMessage);
                                 message.media = "audioMessage";
                                 continue;
                             }
@@ -162536,7 +162536,7 @@ $root.waproto = (function() {
                 Footer.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -162975,21 +162975,21 @@ $root.waproto = (function() {
                         case 10: {
                                 if (wireType !== 2)
                                     break;
-                                message.bloksWidget = $root.waproto.Message.InteractiveMessage.BloksWidget.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bloksWidget);
+                                message.bloksWidget = $root.waproto.Message.InteractiveMessage.BloksWidget.decode(reader, reader.size(), $undefined, _depth + 1, message.bloksWidget);
                                 message._bloksWidget = "bloksWidget";
                                 continue;
                             }
                         case 3: {
                                 if (wireType !== 2)
                                     break;
-                                message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.documentMessage);
+                                message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.documentMessage);
                                 message.media = "documentMessage";
                                 continue;
                             }
                         case 4: {
                                 if (wireType !== 2)
                                     break;
-                                message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageMessage);
+                                message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.imageMessage);
                                 message.media = "imageMessage";
                                 continue;
                             }
@@ -163003,21 +163003,21 @@ $root.waproto = (function() {
                         case 7: {
                                 if (wireType !== 2)
                                     break;
-                                message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.videoMessage);
+                                message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.videoMessage);
                                 message.media = "videoMessage";
                                 continue;
                             }
                         case 8: {
                                 if (wireType !== 2)
                                     break;
-                                message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.locationMessage);
+                                message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.locationMessage);
                                 message.media = "locationMessage";
                                 continue;
                             }
                         case 9: {
                                 if (wireType !== 2)
                                     break;
-                                message.productMessage = $root.waproto.Message.ProductMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.productMessage);
+                                message.productMessage = $root.waproto.Message.ProductMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.productMessage);
                                 message.media = "productMessage";
                                 continue;
                             }
@@ -163051,7 +163051,7 @@ $root.waproto = (function() {
                 Header.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -163479,7 +163479,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.buttons && message.buttons.length))
                                     message.buttons = [];
-                                message.buttons.push($root.waproto.Message.InteractiveMessage.NativeFlowMessage.NativeFlowButton.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.buttons.push($root.waproto.Message.InteractiveMessage.NativeFlowMessage.NativeFlowButton.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         case 2: {
@@ -163526,7 +163526,7 @@ $root.waproto = (function() {
                 NativeFlowMessage.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -163864,7 +163864,7 @@ $root.waproto = (function() {
                     NativeFlowButton.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -164206,7 +164206,7 @@ $root.waproto = (function() {
                 ShopMessage.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -164559,21 +164559,21 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.body = $root.waproto.Message.InteractiveResponseMessage.Body.decode(reader, reader.uint32(), $undefined, _depth + 1, message.body);
+                            message.body = $root.waproto.Message.InteractiveResponseMessage.Body.decode(reader, reader.size(), $undefined, _depth + 1, message.body);
                             message._body = "body";
                             continue;
                         }
                     case 15: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.nativeFlowResponseMessage = $root.waproto.Message.InteractiveResponseMessage.NativeFlowResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.nativeFlowResponseMessage);
+                            message.nativeFlowResponseMessage = $root.waproto.Message.InteractiveResponseMessage.NativeFlowResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.nativeFlowResponseMessage);
                             message.interactiveResponseMessage = "nativeFlowResponseMessage";
                             continue;
                         }
@@ -164607,7 +164607,7 @@ $root.waproto = (function() {
             InteractiveResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -164949,7 +164949,7 @@ $root.waproto = (function() {
                 Body.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -165313,7 +165313,7 @@ $root.waproto = (function() {
                 NativeFlowResponseMessage.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -165832,7 +165832,7 @@ $root.waproto = (function() {
             InvoiceMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -166244,7 +166244,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -166292,7 +166292,7 @@ $root.waproto = (function() {
             KeepInChatMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -166727,14 +166727,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.paymentLinkMetadata = $root.waproto.Message.PaymentLinkMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentLinkMetadata);
+                            message.paymentLinkMetadata = $root.waproto.Message.PaymentLinkMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentLinkMetadata);
                             message._paymentLinkMetadata = "paymentLinkMetadata";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.urlMetadata = $root.waproto.Message.URLMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.urlMetadata);
+                            message.urlMetadata = $root.waproto.Message.URLMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.urlMetadata);
                             message._urlMetadata = "urlMetadata";
                             continue;
                         }
@@ -166776,7 +166776,7 @@ $root.waproto = (function() {
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.musicMetadata = $root.waproto.EmbeddedMusic.decode(reader, reader.uint32(), $undefined, _depth + 1, message.musicMetadata);
+                            message.musicMetadata = $root.waproto.EmbeddedMusic.decode(reader, reader.size(), $undefined, _depth + 1, message.musicMetadata);
                             message._musicMetadata = "musicMetadata";
                             continue;
                         }
@@ -166817,7 +166817,7 @@ $root.waproto = (function() {
             LinkPreviewMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -167359,13 +167359,13 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.sections && message.sections.length))
                                 message.sections = [];
-                            message.sections.push($root.waproto.Message.ListMessage.Section.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.sections.push($root.waproto.Message.ListMessage.Section.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.productListInfo = $root.waproto.Message.ListMessage.ProductListInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.productListInfo);
+                            message.productListInfo = $root.waproto.Message.ListMessage.ProductListInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.productListInfo);
                             message._productListInfo = "productListInfo";
                             continue;
                         }
@@ -167379,7 +167379,7 @@ $root.waproto = (function() {
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -167413,7 +167413,7 @@ $root.waproto = (function() {
             ListMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -167815,7 +167815,7 @@ $root.waproto = (function() {
                 Product.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -168121,7 +168121,7 @@ $root.waproto = (function() {
                 ProductListHeaderImage.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -168413,13 +168413,13 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.productSections && message.productSections.length))
                                     message.productSections = [];
-                                message.productSections.push($root.waproto.Message.ListMessage.ProductSection.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.productSections.push($root.waproto.Message.ListMessage.ProductSection.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.headerImage = $root.waproto.Message.ListMessage.ProductListHeaderImage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.headerImage);
+                                message.headerImage = $root.waproto.Message.ListMessage.ProductListHeaderImage.decode(reader, reader.size(), $undefined, _depth + 1, message.headerImage);
                                 message._headerImage = "headerImage";
                                 continue;
                             }
@@ -168460,7 +168460,7 @@ $root.waproto = (function() {
                 ProductListInfo.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -168771,7 +168771,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.products && message.products.length))
                                     message.products = [];
-                                message.products.push($root.waproto.Message.ListMessage.Product.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.products.push($root.waproto.Message.ListMessage.Product.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         }
@@ -168804,7 +168804,7 @@ $root.waproto = (function() {
                 ProductSection.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -169160,7 +169160,7 @@ $root.waproto = (function() {
                 Row.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -169448,7 +169448,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.rows && message.rows.length))
                                     message.rows = [];
-                                message.rows.push($root.waproto.Message.ListMessage.Row.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.rows.push($root.waproto.Message.ListMessage.Row.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         }
@@ -169481,7 +169481,7 @@ $root.waproto = (function() {
                 Section.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -169847,14 +169847,14 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.singleSelectReply = $root.waproto.Message.ListResponseMessage.SingleSelectReply.decode(reader, reader.uint32(), $undefined, _depth + 1, message.singleSelectReply);
+                            message.singleSelectReply = $root.waproto.Message.ListResponseMessage.SingleSelectReply.decode(reader, reader.size(), $undefined, _depth + 1, message.singleSelectReply);
                             message._singleSelectReply = "singleSelectReply";
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -169895,7 +169895,7 @@ $root.waproto = (function() {
             ListResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -170247,7 +170247,7 @@ $root.waproto = (function() {
                 SingleSelectReply.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -170726,7 +170726,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -170760,7 +170760,7 @@ $root.waproto = (function() {
             LiveLocationMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -171388,7 +171388,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -171422,7 +171422,7 @@ $root.waproto = (function() {
             LocationMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -171956,7 +171956,7 @@ $root.waproto = (function() {
             MMSThumbnailMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -172385,7 +172385,7 @@ $root.waproto = (function() {
             MarkAsVerifiedAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -172846,14 +172846,14 @@ $root.waproto = (function() {
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.messageHistoryMetadata = $root.waproto.Message.MessageHistoryMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageHistoryMetadata);
+                            message.messageHistoryMetadata = $root.waproto.Message.MessageHistoryMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.messageHistoryMetadata);
                             message._messageHistoryMetadata = "messageHistoryMetadata";
                             continue;
                         }
@@ -172887,7 +172887,7 @@ $root.waproto = (function() {
             MessageHistoryBundle.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -173379,7 +173379,7 @@ $root.waproto = (function() {
             MessageHistoryMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -173771,21 +173771,21 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.messageHistoryMetadata = $root.waproto.Message.MessageHistoryMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageHistoryMetadata);
+                            message.messageHistoryMetadata = $root.waproto.Message.MessageHistoryMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.messageHistoryMetadata);
                             message._messageHistoryMetadata = "messageHistoryMetadata";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.botHistoryShareSyncMetadata = $root.waproto.Message.BotHistoryShareSyncMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botHistoryShareSyncMetadata);
+                            message.botHistoryShareSyncMetadata = $root.waproto.Message.BotHistoryShareSyncMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botHistoryShareSyncMetadata);
                             message._botHistoryShareSyncMetadata = "botHistoryShareSyncMetadata";
                             continue;
                         }
@@ -173819,7 +173819,7 @@ $root.waproto = (function() {
             MessageHistoryNotice.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -174178,7 +174178,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.embeddedMusic = $root.waproto.EmbeddedMusic.decode(reader, reader.uint32(), $undefined, _depth + 1, message.embeddedMusic);
+                            message.embeddedMusic = $root.waproto.EmbeddedMusic.decode(reader, reader.size(), $undefined, _depth + 1, message.embeddedMusic);
                             message._embeddedMusic = "embeddedMusic";
                             continue;
                         }
@@ -174206,7 +174206,7 @@ $root.waproto = (function() {
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -174240,7 +174240,7 @@ $root.waproto = (function() {
             MusicMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -174678,7 +174678,7 @@ $root.waproto = (function() {
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -174712,7 +174712,7 @@ $root.waproto = (function() {
             NewsletterAdminInviteMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -175129,7 +175129,7 @@ $root.waproto = (function() {
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -175163,7 +175163,7 @@ $root.waproto = (function() {
             NewsletterFollowerInviteMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -175788,7 +175788,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -175802,7 +175802,7 @@ $root.waproto = (function() {
                     case 13: {
                             if (wireType !== 2)
                                 break;
-                            message.orderRequestMessageId = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.orderRequestMessageId);
+                            message.orderRequestMessageId = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.orderRequestMessageId);
                             message._orderRequestMessageId = "orderRequestMessageId";
                             continue;
                         }
@@ -175843,7 +175843,7 @@ $root.waproto = (function() {
             OrderMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -176376,7 +176376,7 @@ $root.waproto = (function() {
             PaymentExtendedMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -176772,7 +176772,7 @@ $root.waproto = (function() {
             PaymentInviteMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -177170,21 +177170,21 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.button = $root.waproto.Message.PaymentLinkMetadata.PaymentLinkButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.button);
+                            message.button = $root.waproto.Message.PaymentLinkMetadata.PaymentLinkButton.decode(reader, reader.size(), $undefined, _depth + 1, message.button);
                             message._button = "button";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.header = $root.waproto.Message.PaymentLinkMetadata.PaymentLinkHeader.decode(reader, reader.uint32(), $undefined, _depth + 1, message.header);
+                            message.header = $root.waproto.Message.PaymentLinkMetadata.PaymentLinkHeader.decode(reader, reader.size(), $undefined, _depth + 1, message.header);
                             message._header = "header";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.provider = $root.waproto.Message.PaymentLinkMetadata.PaymentLinkProvider.decode(reader, reader.uint32(), $undefined, _depth + 1, message.provider);
+                            message.provider = $root.waproto.Message.PaymentLinkMetadata.PaymentLinkProvider.decode(reader, reader.size(), $undefined, _depth + 1, message.provider);
                             message._provider = "provider";
                             continue;
                         }
@@ -177218,7 +177218,7 @@ $root.waproto = (function() {
             PaymentLinkMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -177533,7 +177533,7 @@ $root.waproto = (function() {
                 PaymentLinkButton.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -177815,7 +177815,7 @@ $root.waproto = (function() {
                 PaymentLinkHeader.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -178122,7 +178122,7 @@ $root.waproto = (function() {
                 PaymentLinkProvider.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -178565,7 +178565,7 @@ $root.waproto = (function() {
                     case 9: {
                             if (wireType !== 2)
                                 break;
-                            message.amount = $root.waproto.Money.decode(reader, reader.uint32(), $undefined, _depth + 1, message.amount);
+                            message.amount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.amount);
                             message._amount = "amount";
                             continue;
                         }
@@ -178599,7 +178599,7 @@ $root.waproto = (function() {
             PaymentReminderMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -179201,7 +179201,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.requestStickerReupload && message.requestStickerReupload.length))
                                 message.requestStickerReupload = [];
-                            message.requestStickerReupload.push($root.waproto.Message.PeerDataOperationRequestMessage.RequestStickerReupload.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.requestStickerReupload.push($root.waproto.Message.PeerDataOperationRequestMessage.RequestStickerReupload.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 3: {
@@ -179209,13 +179209,13 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.requestUrlPreview && message.requestUrlPreview.length))
                                 message.requestUrlPreview = [];
-                            message.requestUrlPreview.push($root.waproto.Message.PeerDataOperationRequestMessage.RequestUrlPreview.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.requestUrlPreview.push($root.waproto.Message.PeerDataOperationRequestMessage.RequestUrlPreview.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.historySyncOnDemandRequest = $root.waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.historySyncOnDemandRequest);
+                            message.historySyncOnDemandRequest = $root.waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.historySyncOnDemandRequest);
                             message._historySyncOnDemandRequest = "historySyncOnDemandRequest";
                             continue;
                         }
@@ -179224,55 +179224,55 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.placeholderMessageResendRequest && message.placeholderMessageResendRequest.length))
                                 message.placeholderMessageResendRequest = [];
-                            message.placeholderMessageResendRequest.push($root.waproto.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.placeholderMessageResendRequest.push($root.waproto.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.fullHistorySyncOnDemandRequest = $root.waproto.Message.PeerDataOperationRequestMessage.FullHistorySyncOnDemandRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fullHistorySyncOnDemandRequest);
+                            message.fullHistorySyncOnDemandRequest = $root.waproto.Message.PeerDataOperationRequestMessage.FullHistorySyncOnDemandRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.fullHistorySyncOnDemandRequest);
                             message._fullHistorySyncOnDemandRequest = "fullHistorySyncOnDemandRequest";
                             continue;
                         }
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.syncdCollectionFatalRecoveryRequest = $root.waproto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.syncdCollectionFatalRecoveryRequest);
+                            message.syncdCollectionFatalRecoveryRequest = $root.waproto.Message.PeerDataOperationRequestMessage.SyncDCollectionFatalRecoveryRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.syncdCollectionFatalRecoveryRequest);
                             message._syncdCollectionFatalRecoveryRequest = "syncdCollectionFatalRecoveryRequest";
                             continue;
                         }
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.historySyncChunkRetryRequest = $root.waproto.Message.PeerDataOperationRequestMessage.HistorySyncChunkRetryRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.historySyncChunkRetryRequest);
+                            message.historySyncChunkRetryRequest = $root.waproto.Message.PeerDataOperationRequestMessage.HistorySyncChunkRetryRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.historySyncChunkRetryRequest);
                             message._historySyncChunkRetryRequest = "historySyncChunkRetryRequest";
                             continue;
                         }
                     case 9: {
                             if (wireType !== 2)
                                 break;
-                            message.galaxyFlowAction = $root.waproto.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.galaxyFlowAction);
+                            message.galaxyFlowAction = $root.waproto.Message.PeerDataOperationRequestMessage.GalaxyFlowAction.decode(reader, reader.size(), $undefined, _depth + 1, message.galaxyFlowAction);
                             message._galaxyFlowAction = "galaxyFlowAction";
                             continue;
                         }
                     case 10: {
                             if (wireType !== 2)
                                 break;
-                            message.companionCanonicalUserNonceFetchRequest = $root.waproto.Message.PeerDataOperationRequestMessage.CompanionCanonicalUserNonceFetchRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.companionCanonicalUserNonceFetchRequest);
+                            message.companionCanonicalUserNonceFetchRequest = $root.waproto.Message.PeerDataOperationRequestMessage.CompanionCanonicalUserNonceFetchRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.companionCanonicalUserNonceFetchRequest);
                             message._companionCanonicalUserNonceFetchRequest = "companionCanonicalUserNonceFetchRequest";
                             continue;
                         }
                     case 11: {
                             if (wireType !== 2)
                                 break;
-                            message.bizBroadcastInsightsContactListRequest = $root.waproto.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizBroadcastInsightsContactListRequest);
+                            message.bizBroadcastInsightsContactListRequest = $root.waproto.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsContactListRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.bizBroadcastInsightsContactListRequest);
                             message._bizBroadcastInsightsContactListRequest = "bizBroadcastInsightsContactListRequest";
                             continue;
                         }
                     case 12: {
                             if (wireType !== 2)
                                 break;
-                            message.bizBroadcastInsightsRefreshRequest = $root.waproto.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizBroadcastInsightsRefreshRequest);
+                            message.bizBroadcastInsightsRefreshRequest = $root.waproto.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.bizBroadcastInsightsRefreshRequest);
                             message._bizBroadcastInsightsRefreshRequest = "bizBroadcastInsightsRefreshRequest";
                             continue;
                         }
@@ -179306,7 +179306,7 @@ $root.waproto = (function() {
             PeerDataOperationRequestMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -179845,7 +179845,7 @@ $root.waproto = (function() {
                 BizBroadcastInsightsContactListRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -180127,7 +180127,7 @@ $root.waproto = (function() {
                 BizBroadcastInsightsRefreshRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -180409,7 +180409,7 @@ $root.waproto = (function() {
                 CompanionCanonicalUserNonceFetchRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -180691,21 +180691,21 @@ $root.waproto = (function() {
                         case 1: {
                                 if (wireType !== 2)
                                     break;
-                                message.requestMetadata = $root.waproto.Message.FullHistorySyncOnDemandRequestMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestMetadata);
+                                message.requestMetadata = $root.waproto.Message.FullHistorySyncOnDemandRequestMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.requestMetadata);
                                 message._requestMetadata = "requestMetadata";
                                 continue;
                             }
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.historySyncConfig = $root.waproto.DeviceProps.HistorySyncConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.historySyncConfig);
+                                message.historySyncConfig = $root.waproto.DeviceProps.HistorySyncConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.historySyncConfig);
                                 message._historySyncConfig = "historySyncConfig";
                                 continue;
                             }
                         case 3: {
                                 if (wireType !== 2)
                                     break;
-                                message.fullHistorySyncOnDemandConfig = $root.waproto.Message.FullHistorySyncOnDemandConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fullHistorySyncOnDemandConfig);
+                                message.fullHistorySyncOnDemandConfig = $root.waproto.Message.FullHistorySyncOnDemandConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.fullHistorySyncOnDemandConfig);
                                 message._fullHistorySyncOnDemandConfig = "fullHistorySyncOnDemandConfig";
                                 continue;
                             }
@@ -180739,7 +180739,7 @@ $root.waproto = (function() {
                 FullHistorySyncOnDemandRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -181153,7 +181153,7 @@ $root.waproto = (function() {
                 GalaxyFlowAction.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -181568,7 +181568,7 @@ $root.waproto = (function() {
                 HistorySyncChunkRetryRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -182060,7 +182060,7 @@ $root.waproto = (function() {
                 HistorySyncOnDemandRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -182374,7 +182374,7 @@ $root.waproto = (function() {
                         case 1: {
                                 if (wireType !== 2)
                                     break;
-                                message.messageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageKey);
+                                message.messageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.messageKey);
                                 message._messageKey = "messageKey";
                                 continue;
                             }
@@ -182408,7 +182408,7 @@ $root.waproto = (function() {
                 PlaceholderMessageResendRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -182696,7 +182696,7 @@ $root.waproto = (function() {
                 RequestStickerReupload.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -183002,7 +183002,7 @@ $root.waproto = (function() {
                 RequestUrlPreview.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -183317,7 +183317,7 @@ $root.waproto = (function() {
                 SyncDCollectionFatalRecoveryRequest.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -183640,7 +183640,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.peerDataOperationResult && message.peerDataOperationResult.length))
                                 message.peerDataOperationResult = [];
-                            message.peerDataOperationResult.push($root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.peerDataOperationResult.push($root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -183673,7 +183673,7 @@ $root.waproto = (function() {
             PeerDataOperationRequestResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -184242,84 +184242,84 @@ $root.waproto = (function() {
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.stickerMessage = $root.waproto.Message.StickerMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.stickerMessage);
+                                message.stickerMessage = $root.waproto.Message.StickerMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.stickerMessage);
                                 message._stickerMessage = "stickerMessage";
                                 continue;
                             }
                         case 3: {
                                 if (wireType !== 2)
                                     break;
-                                message.linkPreviewResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.linkPreviewResponse);
+                                message.linkPreviewResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.linkPreviewResponse);
                                 message._linkPreviewResponse = "linkPreviewResponse";
                                 continue;
                             }
                         case 4: {
                                 if (wireType !== 2)
                                     break;
-                                message.placeholderMessageResendResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.PlaceholderMessageResendResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.placeholderMessageResendResponse);
+                                message.placeholderMessageResendResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.PlaceholderMessageResendResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.placeholderMessageResendResponse);
                                 message._placeholderMessageResendResponse = "placeholderMessageResendResponse";
                                 continue;
                             }
                         case 5: {
                                 if (wireType !== 2)
                                     break;
-                                message.waffleNonceFetchRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.WaffleNonceFetchResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.waffleNonceFetchRequestResponse);
+                                message.waffleNonceFetchRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.WaffleNonceFetchResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.waffleNonceFetchRequestResponse);
                                 message._waffleNonceFetchRequestResponse = "waffleNonceFetchRequestResponse";
                                 continue;
                             }
                         case 6: {
                                 if (wireType !== 2)
                                     break;
-                                message.fullHistorySyncOnDemandRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandRequestResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fullHistorySyncOnDemandRequestResponse);
+                                message.fullHistorySyncOnDemandRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FullHistorySyncOnDemandRequestResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.fullHistorySyncOnDemandRequestResponse);
                                 message._fullHistorySyncOnDemandRequestResponse = "fullHistorySyncOnDemandRequestResponse";
                                 continue;
                             }
                         case 7: {
                                 if (wireType !== 2)
                                     break;
-                                message.companionMetaNonceFetchRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.companionMetaNonceFetchRequestResponse);
+                                message.companionMetaNonceFetchRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionMetaNonceFetchResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.companionMetaNonceFetchRequestResponse);
                                 message._companionMetaNonceFetchRequestResponse = "companionMetaNonceFetchRequestResponse";
                                 continue;
                             }
                         case 8: {
                                 if (wireType !== 2)
                                     break;
-                                message.syncdSnapshotFatalRecoveryResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.syncdSnapshotFatalRecoveryResponse);
+                                message.syncdSnapshotFatalRecoveryResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.SyncDSnapshotFatalRecoveryResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.syncdSnapshotFatalRecoveryResponse);
                                 message._syncdSnapshotFatalRecoveryResponse = "syncdSnapshotFatalRecoveryResponse";
                                 continue;
                             }
                         case 9: {
                                 if (wireType !== 2)
                                     break;
-                                message.companionCanonicalUserNonceFetchRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.companionCanonicalUserNonceFetchRequestResponse);
+                                message.companionCanonicalUserNonceFetchRequestResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.CompanionCanonicalUserNonceFetchResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.companionCanonicalUserNonceFetchRequestResponse);
                                 message._companionCanonicalUserNonceFetchRequestResponse = "companionCanonicalUserNonceFetchRequestResponse";
                                 continue;
                             }
                         case 10: {
                                 if (wireType !== 2)
                                     break;
-                                message.historySyncChunkRetryResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.historySyncChunkRetryResponse);
+                                message.historySyncChunkRetryResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.HistorySyncChunkRetryResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.historySyncChunkRetryResponse);
                                 message._historySyncChunkRetryResponse = "historySyncChunkRetryResponse";
                                 continue;
                             }
                         case 11: {
                                 if (wireType !== 2)
                                     break;
-                                message.flowResponsesCsvBundle = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.decode(reader, reader.uint32(), $undefined, _depth + 1, message.flowResponsesCsvBundle);
+                                message.flowResponsesCsvBundle = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.FlowResponsesCsvBundle.decode(reader, reader.size(), $undefined, _depth + 1, message.flowResponsesCsvBundle);
                                 message._flowResponsesCsvBundle = "flowResponsesCsvBundle";
                                 continue;
                             }
                         case 12: {
                                 if (wireType !== 2)
                                     break;
-                                message.bizBroadcastInsightsContactListResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizBroadcastInsightsContactListResponse);
+                                message.bizBroadcastInsightsContactListResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactListResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.bizBroadcastInsightsContactListResponse);
                                 message._bizBroadcastInsightsContactListResponse = "bizBroadcastInsightsContactListResponse";
                                 continue;
                             }
                         case 13: {
                                 if (wireType !== 2)
                                     break;
-                                message.contactRefreshResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactRefreshResponse);
+                                message.contactRefreshResponse = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.ContactRefreshResponse.decode(reader, reader.size(), $undefined, _depth + 1, message.contactRefreshResponse);
                                 message._contactRefreshResponse = "contactRefreshResponse";
                                 continue;
                             }
@@ -184353,7 +184353,7 @@ $root.waproto = (function() {
                 PeerDataOperationResult.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -184843,7 +184843,7 @@ $root.waproto = (function() {
                                         break;
                                     if (!(message.contacts && message.contacts.length))
                                         message.contacts = [];
-                                    message.contacts.push($root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactState.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                    message.contacts.push($root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.BizBroadcastInsightsContactState.decode(reader, reader.size(), $undefined, _depth + 1));
                                     continue;
                                 }
                             }
@@ -184876,7 +184876,7 @@ $root.waproto = (function() {
                     BizBroadcastInsightsContactListResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -185229,7 +185229,7 @@ $root.waproto = (function() {
                     BizBroadcastInsightsContactState.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -185591,7 +185591,7 @@ $root.waproto = (function() {
                     CompanionCanonicalUserNonceFetchResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -185891,7 +185891,7 @@ $root.waproto = (function() {
                     CompanionMetaNonceFetchResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -186242,7 +186242,7 @@ $root.waproto = (function() {
                     ContactRefreshResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -186803,7 +186803,7 @@ $root.waproto = (function() {
                     FlowResponsesCsvBundle.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -187182,7 +187182,7 @@ $root.waproto = (function() {
                             case 1: {
                                     if (wireType !== 2)
                                         break;
-                                    message.requestMetadata = $root.waproto.Message.FullHistorySyncOnDemandRequestMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestMetadata);
+                                    message.requestMetadata = $root.waproto.Message.FullHistorySyncOnDemandRequestMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.requestMetadata);
                                     message._requestMetadata = "requestMetadata";
                                     continue;
                                 }
@@ -187223,7 +187223,7 @@ $root.waproto = (function() {
                     FullHistorySyncOnDemandRequestResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -187677,7 +187677,7 @@ $root.waproto = (function() {
                     HistorySyncChunkRetryResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -188210,14 +188210,14 @@ $root.waproto = (function() {
                             case 8: {
                                     if (wireType !== 2)
                                         break;
-                                    message.hqThumbnail = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.LinkPreviewHighQualityThumbnail.decode(reader, reader.uint32(), $undefined, _depth + 1, message.hqThumbnail);
+                                    message.hqThumbnail = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.LinkPreviewHighQualityThumbnail.decode(reader, reader.size(), $undefined, _depth + 1, message.hqThumbnail);
                                     message._hqThumbnail = "hqThumbnail";
                                     continue;
                                 }
                             case 9: {
                                     if (wireType !== 2)
                                         break;
-                                    message.previewMetadata = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.previewMetadata);
+                                    message.previewMetadata = $root.waproto.Message.PeerDataOperationRequestResponseMessage.PeerDataOperationResult.LinkPreviewResponse.PaymentLinkPreviewMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.previewMetadata);
                                     message._previewMetadata = "previewMetadata";
                                     continue;
                                 }
@@ -188251,7 +188251,7 @@ $root.waproto = (function() {
                     LinkPreviewResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -188752,7 +188752,7 @@ $root.waproto = (function() {
                         LinkPreviewHighQualityThumbnail.decodeDelimited = function(reader) {
                             if (!(reader instanceof $Reader))
                                 reader = new $Reader(reader);
-                            return this.decode(reader, reader.uint32());
+                            return this.decode(reader, reader.size());
                         };
 
                         /**
@@ -189199,7 +189199,7 @@ $root.waproto = (function() {
                         PaymentLinkPreviewMetadata.decodeDelimited = function(reader) {
                             if (!(reader instanceof $Reader))
                                 reader = new $Reader(reader);
-                            return this.decode(reader, reader.uint32());
+                            return this.decode(reader, reader.size());
                         };
 
                         /**
@@ -189520,7 +189520,7 @@ $root.waproto = (function() {
                     PlaceholderMessageResendResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -189829,7 +189829,7 @@ $root.waproto = (function() {
                     SyncDSnapshotFatalRecoveryResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -190147,7 +190147,7 @@ $root.waproto = (function() {
                     WaffleNonceFetchResponse.decodeDelimited = function(reader) {
                         if (!(reader instanceof $Reader))
                             reader = new $Reader(reader);
-                        return this.decode(reader, reader.uint32());
+                        return this.decode(reader, reader.size());
                     };
 
                     /**
@@ -190484,7 +190484,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -190532,7 +190532,7 @@ $root.waproto = (function() {
             PinInChatMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -190881,7 +190881,7 @@ $root.waproto = (function() {
             PlaceholderMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -191182,21 +191182,21 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.pollCreationMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageKey);
+                            message.pollCreationMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageKey);
                             message._pollCreationMessageKey = "pollCreationMessageKey";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.addOption = $root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.uint32(), $undefined, _depth + 1, message.addOption);
+                            message.addOption = $root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.size(), $undefined, _depth + 1, message.addOption);
                             message._addOption = "addOption";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.metadata = $root.waproto.Message.PollUpdateMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metadata);
+                            message.metadata = $root.waproto.Message.PollUpdateMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.metadata);
                             message._metadata = "metadata";
                             continue;
                         }
@@ -191230,7 +191230,7 @@ $root.waproto = (function() {
             PollAddOptionMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -191725,7 +191725,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.options && message.options.length))
                                 message.options = [];
-                            message.options.push($root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.options.push($root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 4: {
@@ -191738,7 +191738,7 @@ $root.waproto = (function() {
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -191759,7 +191759,7 @@ $root.waproto = (function() {
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.correctAnswer = $root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.uint32(), $undefined, _depth + 1, message.correctAnswer);
+                            message.correctAnswer = $root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.size(), $undefined, _depth + 1, message.correctAnswer);
                             message._correctAnswer = "correctAnswer";
                             continue;
                         }
@@ -191814,7 +191814,7 @@ $root.waproto = (function() {
             PollCreationMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -192277,7 +192277,7 @@ $root.waproto = (function() {
                 Option.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -192595,7 +192595,7 @@ $root.waproto = (function() {
             PollEncValue.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -192920,13 +192920,13 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.pollVotes && message.pollVotes.length))
                                 message.pollVotes = [];
-                            message.pollVotes.push($root.waproto.Message.PollResultSnapshotMessage.PollVote.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.pollVotes.push($root.waproto.Message.PollResultSnapshotMessage.PollVote.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -192967,7 +192967,7 @@ $root.waproto = (function() {
             PollResultSnapshotMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -193331,7 +193331,7 @@ $root.waproto = (function() {
                 PollVote.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -193668,21 +193668,21 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.pollCreationMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollCreationMessageKey);
+                            message.pollCreationMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.pollCreationMessageKey);
                             message._pollCreationMessageKey = "pollCreationMessageKey";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.vote = $root.waproto.Message.PollEncValue.decode(reader, reader.uint32(), $undefined, _depth + 1, message.vote);
+                            message.vote = $root.waproto.Message.PollEncValue.decode(reader, reader.size(), $undefined, _depth + 1, message.vote);
                             message._vote = "vote";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.metadata = $root.waproto.Message.PollUpdateMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metadata);
+                            message.metadata = $root.waproto.Message.PollUpdateMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.metadata);
                             message._metadata = "metadata";
                             continue;
                         }
@@ -193723,7 +193723,7 @@ $root.waproto = (function() {
             PollUpdateMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -194086,7 +194086,7 @@ $root.waproto = (function() {
             PollUpdateMessageMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -194374,7 +194374,7 @@ $root.waproto = (function() {
             PollVoteMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -194729,7 +194729,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.product = $root.waproto.Message.ProductMessage.ProductSnapshot.decode(reader, reader.uint32(), $undefined, _depth + 1, message.product);
+                            message.product = $root.waproto.Message.ProductMessage.ProductSnapshot.decode(reader, reader.size(), $undefined, _depth + 1, message.product);
                             message._product = "product";
                             continue;
                         }
@@ -194743,7 +194743,7 @@ $root.waproto = (function() {
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.catalog = $root.waproto.Message.ProductMessage.CatalogSnapshot.decode(reader, reader.uint32(), $undefined, _depth + 1, message.catalog);
+                            message.catalog = $root.waproto.Message.ProductMessage.CatalogSnapshot.decode(reader, reader.size(), $undefined, _depth + 1, message.catalog);
                             message._catalog = "catalog";
                             continue;
                         }
@@ -194764,7 +194764,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -194798,7 +194798,7 @@ $root.waproto = (function() {
             ProductMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -195145,7 +195145,7 @@ $root.waproto = (function() {
                         case 1: {
                                 if (wireType !== 2)
                                     break;
-                                message.catalogImage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.catalogImage);
+                                message.catalogImage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.catalogImage);
                                 message._catalogImage = "catalogImage";
                                 continue;
                             }
@@ -195193,7 +195193,7 @@ $root.waproto = (function() {
                 CatalogSnapshot.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -195666,7 +195666,7 @@ $root.waproto = (function() {
                         case 1: {
                                 if (wireType !== 2)
                                     break;
-                                message.productImage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.productImage);
+                                message.productImage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.productImage);
                                 message._productImage = "productImage";
                                 continue;
                             }
@@ -195777,7 +195777,7 @@ $root.waproto = (function() {
                 ProductSnapshot.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -196750,7 +196750,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -196778,49 +196778,49 @@ $root.waproto = (function() {
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.historySyncNotification = $root.waproto.Message.HistorySyncNotification.decode(reader, reader.uint32(), $undefined, _depth + 1, message.historySyncNotification);
+                            message.historySyncNotification = $root.waproto.Message.HistorySyncNotification.decode(reader, reader.size(), $undefined, _depth + 1, message.historySyncNotification);
                             message._historySyncNotification = "historySyncNotification";
                             continue;
                         }
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.appStateSyncKeyShare = $root.waproto.Message.AppStateSyncKeyShare.decode(reader, reader.uint32(), $undefined, _depth + 1, message.appStateSyncKeyShare);
+                            message.appStateSyncKeyShare = $root.waproto.Message.AppStateSyncKeyShare.decode(reader, reader.size(), $undefined, _depth + 1, message.appStateSyncKeyShare);
                             message._appStateSyncKeyShare = "appStateSyncKeyShare";
                             continue;
                         }
                     case 8: {
                             if (wireType !== 2)
                                 break;
-                            message.appStateSyncKeyRequest = $root.waproto.Message.AppStateSyncKeyRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.appStateSyncKeyRequest);
+                            message.appStateSyncKeyRequest = $root.waproto.Message.AppStateSyncKeyRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.appStateSyncKeyRequest);
                             message._appStateSyncKeyRequest = "appStateSyncKeyRequest";
                             continue;
                         }
                     case 9: {
                             if (wireType !== 2)
                                 break;
-                            message.initialSecurityNotificationSettingSync = $root.waproto.Message.InitialSecurityNotificationSettingSync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.initialSecurityNotificationSettingSync);
+                            message.initialSecurityNotificationSettingSync = $root.waproto.Message.InitialSecurityNotificationSettingSync.decode(reader, reader.size(), $undefined, _depth + 1, message.initialSecurityNotificationSettingSync);
                             message._initialSecurityNotificationSettingSync = "initialSecurityNotificationSettingSync";
                             continue;
                         }
                     case 10: {
                             if (wireType !== 2)
                                 break;
-                            message.appStateFatalExceptionNotification = $root.waproto.Message.AppStateFatalExceptionNotification.decode(reader, reader.uint32(), $undefined, _depth + 1, message.appStateFatalExceptionNotification);
+                            message.appStateFatalExceptionNotification = $root.waproto.Message.AppStateFatalExceptionNotification.decode(reader, reader.size(), $undefined, _depth + 1, message.appStateFatalExceptionNotification);
                             message._appStateFatalExceptionNotification = "appStateFatalExceptionNotification";
                             continue;
                         }
                     case 11: {
                             if (wireType !== 2)
                                 break;
-                            message.disappearingMode = $root.waproto.DisappearingMode.decode(reader, reader.uint32(), $undefined, _depth + 1, message.disappearingMode);
+                            message.disappearingMode = $root.waproto.DisappearingMode.decode(reader, reader.size(), $undefined, _depth + 1, message.disappearingMode);
                             message._disappearingMode = "disappearingMode";
                             continue;
                         }
                     case 14: {
                             if (wireType !== 2)
                                 break;
-                            message.editedMessage = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.editedMessage);
+                            message.editedMessage = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.editedMessage);
                             message._editedMessage = "editedMessage";
                             continue;
                         }
@@ -196834,21 +196834,21 @@ $root.waproto = (function() {
                     case 16: {
                             if (wireType !== 2)
                                 break;
-                            message.peerDataOperationRequestMessage = $root.waproto.Message.PeerDataOperationRequestMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.peerDataOperationRequestMessage);
+                            message.peerDataOperationRequestMessage = $root.waproto.Message.PeerDataOperationRequestMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.peerDataOperationRequestMessage);
                             message._peerDataOperationRequestMessage = "peerDataOperationRequestMessage";
                             continue;
                         }
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.peerDataOperationRequestResponseMessage = $root.waproto.Message.PeerDataOperationRequestResponseMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.peerDataOperationRequestResponseMessage);
+                            message.peerDataOperationRequestResponseMessage = $root.waproto.Message.PeerDataOperationRequestResponseMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.peerDataOperationRequestResponseMessage);
                             message._peerDataOperationRequestResponseMessage = "peerDataOperationRequestResponseMessage";
                             continue;
                         }
                     case 18: {
                             if (wireType !== 2)
                                 break;
-                            message.botFeedbackMessage = $root.waproto.BotFeedbackMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botFeedbackMessage);
+                            message.botFeedbackMessage = $root.waproto.BotFeedbackMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.botFeedbackMessage);
                             message._botFeedbackMessage = "botFeedbackMessage";
                             continue;
                         }
@@ -196862,35 +196862,35 @@ $root.waproto = (function() {
                     case 20: {
                             if (wireType !== 2)
                                 break;
-                            message.requestWelcomeMessageMetadata = $root.waproto.Message.RequestWelcomeMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestWelcomeMessageMetadata);
+                            message.requestWelcomeMessageMetadata = $root.waproto.Message.RequestWelcomeMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.requestWelcomeMessageMetadata);
                             message._requestWelcomeMessageMetadata = "requestWelcomeMessageMetadata";
                             continue;
                         }
                     case 21: {
                             if (wireType !== 2)
                                 break;
-                            message.mediaNotifyMessage = $root.waproto.MediaNotifyMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mediaNotifyMessage);
+                            message.mediaNotifyMessage = $root.waproto.MediaNotifyMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.mediaNotifyMessage);
                             message._mediaNotifyMessage = "mediaNotifyMessage";
                             continue;
                         }
                     case 22: {
                             if (wireType !== 2)
                                 break;
-                            message.cloudApiThreadControlNotification = $root.waproto.Message.CloudAPIThreadControlNotification.decode(reader, reader.uint32(), $undefined, _depth + 1, message.cloudApiThreadControlNotification);
+                            message.cloudApiThreadControlNotification = $root.waproto.Message.CloudAPIThreadControlNotification.decode(reader, reader.size(), $undefined, _depth + 1, message.cloudApiThreadControlNotification);
                             message._cloudApiThreadControlNotification = "cloudApiThreadControlNotification";
                             continue;
                         }
                     case 23: {
                             if (wireType !== 2)
                                 break;
-                            message.lidMigrationMappingSyncMessage = $root.waproto.LIDMigrationMappingSyncMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.lidMigrationMappingSyncMessage);
+                            message.lidMigrationMappingSyncMessage = $root.waproto.LIDMigrationMappingSyncMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.lidMigrationMappingSyncMessage);
                             message._lidMigrationMappingSyncMessage = "lidMigrationMappingSyncMessage";
                             continue;
                         }
                     case 24: {
                             if (wireType !== 2)
                                 break;
-                            message.limitSharing = $root.waproto.LimitSharing.decode(reader, reader.uint32(), $undefined, _depth + 1, message.limitSharing);
+                            message.limitSharing = $root.waproto.LimitSharing.decode(reader, reader.size(), $undefined, _depth + 1, message.limitSharing);
                             message._limitSharing = "limitSharing";
                             continue;
                         }
@@ -196904,21 +196904,21 @@ $root.waproto = (function() {
                     case 26: {
                             if (wireType !== 2)
                                 break;
-                            message.aiQueryFanout = $root.waproto.AIQueryFanout.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiQueryFanout);
+                            message.aiQueryFanout = $root.waproto.AIQueryFanout.decode(reader, reader.size(), $undefined, _depth + 1, message.aiQueryFanout);
                             message._aiQueryFanout = "aiQueryFanout";
                             continue;
                         }
                     case 27: {
                             if (wireType !== 2)
                                 break;
-                            message.memberLabel = $root.waproto.MemberLabel.decode(reader, reader.uint32(), $undefined, _depth + 1, message.memberLabel);
+                            message.memberLabel = $root.waproto.MemberLabel.decode(reader, reader.size(), $undefined, _depth + 1, message.memberLabel);
                             message._memberLabel = "memberLabel";
                             continue;
                         }
                     case 28: {
                             if (wireType !== 2)
                                 break;
-                            message.aiMediaCollectionMessage = $root.waproto.AIMediaCollectionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiMediaCollectionMessage);
+                            message.aiMediaCollectionMessage = $root.waproto.AIMediaCollectionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.aiMediaCollectionMessage);
                             message._aiMediaCollectionMessage = "aiMediaCollectionMessage";
                             continue;
                         }
@@ -196932,49 +196932,49 @@ $root.waproto = (function() {
                     case 30: {
                             if (wireType !== 2)
                                 break;
-                            message.chatThemeSetting = $root.waproto.Message.ChatThemeSetting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chatThemeSetting);
+                            message.chatThemeSetting = $root.waproto.Message.ChatThemeSetting.decode(reader, reader.size(), $undefined, _depth + 1, message.chatThemeSetting);
                             message._chatThemeSetting = "chatThemeSetting";
                             continue;
                         }
                     case 31: {
                             if (wireType !== 2)
                                 break;
-                            message.aiMetadataOperation = $root.waproto.AIMetadataOperation.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiMetadataOperation);
+                            message.aiMetadataOperation = $root.waproto.AIMetadataOperation.decode(reader, reader.size(), $undefined, _depth + 1, message.aiMetadataOperation);
                             message._aiMetadataOperation = "aiMetadataOperation";
                             continue;
                         }
                     case 32: {
                             if (wireType !== 2)
                                 break;
-                            message.markAsVerifiedAction = $root.waproto.Message.MarkAsVerifiedAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.markAsVerifiedAction);
+                            message.markAsVerifiedAction = $root.waproto.Message.MarkAsVerifiedAction.decode(reader, reader.size(), $undefined, _depth + 1, message.markAsVerifiedAction);
                             message._markAsVerifiedAction = "markAsVerifiedAction";
                             continue;
                         }
                     case 33: {
                             if (wireType !== 2)
                                 break;
-                            message.coexStateSync = $root.waproto.CoexStateSync.decode(reader, reader.uint32(), $undefined, _depth + 1, message.coexStateSync);
+                            message.coexStateSync = $root.waproto.CoexStateSync.decode(reader, reader.size(), $undefined, _depth + 1, message.coexStateSync);
                             message._coexStateSync = "coexStateSync";
                             continue;
                         }
                     case 35: {
                             if (wireType !== 2)
                                 break;
-                            message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.acp2Setting);
+                            message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.size(), $undefined, _depth + 1, message.acp2Setting);
                             message._acp2Setting = "acp2Setting";
                             continue;
                         }
                     case 36: {
                             if (wireType !== 2)
                                 break;
-                            message.sharedDeviceContactHashKeyShare = $root.waproto.Message.SharedDeviceContactHashKeyShare.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sharedDeviceContactHashKeyShare);
+                            message.sharedDeviceContactHashKeyShare = $root.waproto.Message.SharedDeviceContactHashKeyShare.decode(reader, reader.size(), $undefined, _depth + 1, message.sharedDeviceContactHashKeyShare);
                             message._sharedDeviceContactHashKeyShare = "sharedDeviceContactHashKeyShare";
                             continue;
                         }
                     case 37: {
                             if (wireType !== 2)
                                 break;
-                            message.sharedDeviceContactHashKeyRequest = $root.waproto.Message.SharedDeviceContactHashKeyRequest.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sharedDeviceContactHashKeyRequest);
+                            message.sharedDeviceContactHashKeyRequest = $root.waproto.Message.SharedDeviceContactHashKeyRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.sharedDeviceContactHashKeyRequest);
                             message._sharedDeviceContactHashKeyRequest = "sharedDeviceContactHashKeyRequest";
                             continue;
                         }
@@ -197016,7 +197016,7 @@ $root.waproto = (function() {
             ProtocolMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -197996,7 +197996,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -198037,7 +198037,7 @@ $root.waproto = (function() {
             QuestionResponseMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -198351,7 +198351,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -198406,7 +198406,7 @@ $root.waproto = (function() {
             ReactionMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -198702,7 +198702,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -198736,7 +198736,7 @@ $root.waproto = (function() {
             RequestLocationMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -199024,7 +199024,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -199072,7 +199072,7 @@ $root.waproto = (function() {
             RequestLocationUpdateMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -199492,7 +199492,7 @@ $root.waproto = (function() {
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.noteMessage = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.noteMessage);
+                            message.noteMessage = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.noteMessage);
                             message._noteMessage = "noteMessage";
                             continue;
                         }
@@ -199527,14 +199527,14 @@ $root.waproto = (function() {
                     case 6: {
                             if (wireType !== 2)
                                 break;
-                            message.amount = $root.waproto.Money.decode(reader, reader.uint32(), $undefined, _depth + 1, message.amount);
+                            message.amount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.amount);
                             message._amount = "amount";
                             continue;
                         }
                     case 7: {
                             if (wireType !== 2)
                                 break;
-                            message.background = $root.waproto.PaymentBackground.decode(reader, reader.uint32(), $undefined, _depth + 1, message.background);
+                            message.background = $root.waproto.PaymentBackground.decode(reader, reader.size(), $undefined, _depth + 1, message.background);
                             message._background = "background";
                             continue;
                         }
@@ -199568,7 +199568,7 @@ $root.waproto = (function() {
             RequestPaymentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -199915,7 +199915,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -199949,7 +199949,7 @@ $root.waproto = (function() {
             RequestPhoneNumberMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -200251,7 +200251,7 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.botAgentMetadata = $root.waproto.BotAgentMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botAgentMetadata);
+                            message.botAgentMetadata = $root.waproto.BotAgentMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botAgentMetadata);
                             message._botAgentMetadata = "botAgentMetadata";
                             continue;
                         }
@@ -200285,7 +200285,7 @@ $root.waproto = (function() {
             RequestWelcomeMessageMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -200641,7 +200641,7 @@ $root.waproto = (function() {
             RootSecretDistributeMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -200971,7 +200971,7 @@ $root.waproto = (function() {
             ScheduledCallCreationMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -201297,7 +201297,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -201338,7 +201338,7 @@ $root.waproto = (function() {
             ScheduledCallEditMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -201694,7 +201694,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.targetMessageKey);
+                            message.targetMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.targetMessageKey);
                             message._targetMessageKey = "targetMessageKey";
                             continue;
                         }
@@ -201756,7 +201756,7 @@ $root.waproto = (function() {
             SecretEncryptedMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -202158,21 +202158,21 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.noteMessage = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.noteMessage);
+                            message.noteMessage = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.noteMessage);
                             message._noteMessage = "noteMessage";
                             continue;
                         }
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.requestMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestMessageKey);
+                            message.requestMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.requestMessageKey);
                             message._requestMessageKey = "requestMessageKey";
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.background = $root.waproto.PaymentBackground.decode(reader, reader.uint32(), $undefined, _depth + 1, message.background);
+                            message.background = $root.waproto.PaymentBackground.decode(reader, reader.size(), $undefined, _depth + 1, message.background);
                             message._background = "background";
                             continue;
                         }
@@ -202213,7 +202213,7 @@ $root.waproto = (function() {
             SendPaymentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -202564,7 +202564,7 @@ $root.waproto = (function() {
             SenderKeyDistributionMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -202906,7 +202906,7 @@ $root.waproto = (function() {
             SharedDeviceContactHashKey.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -203240,7 +203240,7 @@ $root.waproto = (function() {
             SharedDeviceContactHashKeyRequest.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -203483,7 +203483,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.keys && message.keys.length))
                                 message.keys = [];
-                            message.keys.push($root.waproto.Message.SharedDeviceContactHashKey.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.keys.push($root.waproto.Message.SharedDeviceContactHashKey.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -203516,7 +203516,7 @@ $root.waproto = (function() {
             SharedDeviceContactHashKeyShare.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -203894,7 +203894,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.totalAmount = $root.waproto.Money.decode(reader, reader.uint32(), $undefined, _depth + 1, message.totalAmount);
+                            message.totalAmount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.totalAmount);
                             message._totalAmount = "totalAmount";
                             continue;
                         }
@@ -203917,7 +203917,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.participants && message.participants.length))
                                 message.participants = [];
-                            message.participants.push($root.waproto.Message.SplitPaymentParticipant.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.participants.push($root.waproto.Message.SplitPaymentParticipant.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 6: {
@@ -203930,7 +203930,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -203964,7 +203964,7 @@ $root.waproto = (function() {
             SplitPaymentMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -204348,7 +204348,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.amount = $root.waproto.Money.decode(reader, reader.uint32(), $undefined, _depth + 1, message.amount);
+                            message.amount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.amount);
                             message._amount = "amount";
                             continue;
                         }
@@ -204389,7 +204389,7 @@ $root.waproto = (function() {
             SplitPaymentParticipant.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -204744,7 +204744,7 @@ $root.waproto = (function() {
             SplitPaymentUpdateMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -205035,7 +205035,7 @@ $root.waproto = (function() {
             StatusLinkPreviewMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -205354,14 +205354,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.responseMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.responseMessageKey);
+                            message.responseMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.responseMessageKey);
                             message._responseMessageKey = "responseMessageKey";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.originalMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.originalMessageKey);
+                            message.originalMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.originalMessageKey);
                             message._originalMessageKey = "originalMessageKey";
                             continue;
                         }
@@ -205402,7 +205402,7 @@ $root.waproto = (function() {
             StatusNotificationMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -205740,7 +205740,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -205781,7 +205781,7 @@ $root.waproto = (function() {
             StatusQuestionAnswerMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -206116,7 +206116,7 @@ $root.waproto = (function() {
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.originalStatusId = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.originalStatusId);
+                            message.originalStatusId = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.originalStatusId);
                             message._originalStatusId = "originalStatusId";
                             continue;
                         }
@@ -206150,7 +206150,7 @@ $root.waproto = (function() {
             StatusQuotedMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -206487,7 +206487,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -206535,7 +206535,7 @@ $root.waproto = (function() {
             StatusStickerInteractionMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -207337,7 +207337,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -207393,7 +207393,7 @@ $root.waproto = (function() {
                     case 26: {
                             if (wireType !== 2)
                                 break;
-                            message.audioMessage = $root.waproto.Message.AudioMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.audioMessage);
+                            message.audioMessage = $root.waproto.Message.AudioMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.audioMessage);
                             message.audio = "audioMessage";
                             continue;
                         }
@@ -207427,7 +207427,7 @@ $root.waproto = (function() {
             StickerMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -208339,7 +208339,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.stickers && message.stickers.length))
                                 message.stickers = [];
-                            message.stickers.push($root.waproto.Message.StickerPackMessage.Sticker.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.stickers.push($root.waproto.Message.StickerPackMessage.Sticker.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 5: {
@@ -208387,7 +208387,7 @@ $root.waproto = (function() {
                     case 11: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -208498,7 +208498,7 @@ $root.waproto = (function() {
             StickerPackMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -209196,7 +209196,7 @@ $root.waproto = (function() {
                 Sticker.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -209608,7 +209608,7 @@ $root.waproto = (function() {
             StickerSyncRMRMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -209987,7 +209987,7 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -210035,7 +210035,7 @@ $root.waproto = (function() {
             TemplateButtonReplyMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -210414,14 +210414,14 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.hydratedTemplate = $root.waproto.Message.TemplateMessage.HydratedFourRowTemplate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.hydratedTemplate);
+                            message.hydratedTemplate = $root.waproto.Message.TemplateMessage.HydratedFourRowTemplate.decode(reader, reader.size(), $undefined, _depth + 1, message.hydratedTemplate);
                             message._hydratedTemplate = "hydratedTemplate";
                             continue;
                         }
@@ -210435,21 +210435,21 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.fourRowTemplate = $root.waproto.Message.TemplateMessage.FourRowTemplate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fourRowTemplate);
+                            message.fourRowTemplate = $root.waproto.Message.TemplateMessage.FourRowTemplate.decode(reader, reader.size(), $undefined, _depth + 1, message.fourRowTemplate);
                             message.format = "fourRowTemplate";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.hydratedFourRowTemplate = $root.waproto.Message.TemplateMessage.HydratedFourRowTemplate.decode(reader, reader.uint32(), $undefined, _depth + 1, message.hydratedFourRowTemplate);
+                            message.hydratedFourRowTemplate = $root.waproto.Message.TemplateMessage.HydratedFourRowTemplate.decode(reader, reader.size(), $undefined, _depth + 1, message.hydratedFourRowTemplate);
                             message.format = "hydratedFourRowTemplate";
                             continue;
                         }
                     case 5: {
                             if (wireType !== 2)
                                 break;
-                            message.interactiveMessageTemplate = $root.waproto.Message.InteractiveMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.interactiveMessageTemplate);
+                            message.interactiveMessageTemplate = $root.waproto.Message.InteractiveMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.interactiveMessageTemplate);
                             message.format = "interactiveMessageTemplate";
                             continue;
                         }
@@ -210483,7 +210483,7 @@ $root.waproto = (function() {
             TemplateMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -210925,14 +210925,14 @@ $root.waproto = (function() {
                         case 6: {
                                 if (wireType !== 2)
                                     break;
-                                message.content = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.content);
+                                message.content = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.content);
                                 message._content = "content";
                                 continue;
                             }
                         case 7: {
                                 if (wireType !== 2)
                                     break;
-                                message.footer = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.footer);
+                                message.footer = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.footer);
                                 message._footer = "footer";
                                 continue;
                             }
@@ -210941,41 +210941,41 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.buttons && message.buttons.length))
                                     message.buttons = [];
-                                message.buttons.push($root.waproto.TemplateButton.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.buttons.push($root.waproto.TemplateButton.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         case 1: {
                                 if (wireType !== 2)
                                     break;
-                                message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.documentMessage);
+                                message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.documentMessage);
                                 message.title = "documentMessage";
                                 continue;
                             }
                         case 2: {
                                 if (wireType !== 2)
                                     break;
-                                message.highlyStructuredMessage = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.highlyStructuredMessage);
+                                message.highlyStructuredMessage = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.highlyStructuredMessage);
                                 message.title = "highlyStructuredMessage";
                                 continue;
                             }
                         case 3: {
                                 if (wireType !== 2)
                                     break;
-                                message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageMessage);
+                                message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.imageMessage);
                                 message.title = "imageMessage";
                                 continue;
                             }
                         case 4: {
                                 if (wireType !== 2)
                                     break;
-                                message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.videoMessage);
+                                message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.videoMessage);
                                 message.title = "videoMessage";
                                 continue;
                             }
                         case 5: {
                                 if (wireType !== 2)
                                     break;
-                                message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.locationMessage);
+                                message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.locationMessage);
                                 message.title = "locationMessage";
                                 continue;
                             }
@@ -211009,7 +211009,7 @@ $root.waproto = (function() {
                 FourRowTemplate.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -211563,7 +211563,7 @@ $root.waproto = (function() {
                                     break;
                                 if (!(message.hydratedButtons && message.hydratedButtons.length))
                                     message.hydratedButtons = [];
-                                message.hydratedButtons.push($root.waproto.HydratedTemplateButton.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                                message.hydratedButtons.push($root.waproto.HydratedTemplateButton.decode(reader, reader.size(), $undefined, _depth + 1));
                                 continue;
                             }
                         case 9: {
@@ -211583,7 +211583,7 @@ $root.waproto = (function() {
                         case 1: {
                                 if (wireType !== 2)
                                     break;
-                                message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.documentMessage);
+                                message.documentMessage = $root.waproto.Message.DocumentMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.documentMessage);
                                 message.title = "documentMessage";
                                 continue;
                             }
@@ -211597,21 +211597,21 @@ $root.waproto = (function() {
                         case 3: {
                                 if (wireType !== 2)
                                     break;
-                                message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.imageMessage);
+                                message.imageMessage = $root.waproto.Message.ImageMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.imageMessage);
                                 message.title = "imageMessage";
                                 continue;
                             }
                         case 4: {
                                 if (wireType !== 2)
                                     break;
-                                message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.videoMessage);
+                                message.videoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.videoMessage);
                                 message.title = "videoMessage";
                                 continue;
                             }
                         case 5: {
                                 if (wireType !== 2)
                                     break;
-                                message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.locationMessage);
+                                message.locationMessage = $root.waproto.Message.LocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.locationMessage);
                                 message.title = "locationMessage";
                                 continue;
                             }
@@ -211645,7 +211645,7 @@ $root.waproto = (function() {
                 HydratedFourRowTemplate.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -212075,7 +212075,7 @@ $root.waproto = (function() {
             URLMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -212402,7 +212402,7 @@ $root.waproto = (function() {
             VideoEndCard.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -213298,7 +213298,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.interactiveAnnotations && message.interactiveAnnotations.length))
                                 message.interactiveAnnotations = [];
-                            message.interactiveAnnotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.interactiveAnnotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 13: {
@@ -213325,7 +213325,7 @@ $root.waproto = (function() {
                     case 17: {
                             if (wireType !== 2)
                                 break;
-                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contextInfo);
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
                             message._contextInfo = "contextInfo";
                             continue;
                         }
@@ -213383,7 +213383,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.annotations && message.annotations.length))
                                 message.annotations = [];
-                            message.annotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.annotations.push($root.waproto.InteractiveAnnotation.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 26: {
@@ -213398,7 +213398,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.processedVideos && message.processedVideos.length))
                                 message.processedVideos = [];
-                            message.processedVideos.push($root.waproto.ProcessedVideo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.processedVideos.push($root.waproto.ProcessedVideo.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 28: {
@@ -213473,7 +213473,7 @@ $root.waproto = (function() {
             VideoMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -214326,7 +214326,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.messageAddOn = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageAddOn);
+                        message.messageAddOn = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.messageAddOn);
                         message._messageAddOn = "messageAddOn";
                         continue;
                     }
@@ -214354,21 +214354,21 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.addOnContextInfo = $root.waproto.MessageAddOnContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.addOnContextInfo);
+                        message.addOnContextInfo = $root.waproto.MessageAddOnContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.addOnContextInfo);
                         message._addOnContextInfo = "addOnContextInfo";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.messageAddOnKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageAddOnKey);
+                        message.messageAddOnKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.messageAddOnKey);
                         message._messageAddOnKey = "messageAddOnKey";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.legacyMessage = $root.waproto.LegacyMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.legacyMessage);
+                        message.legacyMessage = $root.waproto.LegacyMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.legacyMessage);
                         message._legacyMessage = "legacyMessage";
                         continue;
                     }
@@ -214402,7 +214402,7 @@ $root.waproto = (function() {
         MessageAddOn.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -214895,7 +214895,7 @@ $root.waproto = (function() {
         MessageAddOnContextInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -215204,7 +215204,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.parentMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.parentMessageKey);
+                        message.parentMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.parentMessageKey);
                         message._parentMessageKey = "parentMessageKey";
                         continue;
                     }
@@ -215245,7 +215245,7 @@ $root.waproto = (function() {
         MessageAssociation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -216004,7 +216004,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.deviceListMetadata = $root.waproto.DeviceListMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deviceListMetadata);
+                        message.deviceListMetadata = $root.waproto.DeviceListMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.deviceListMetadata);
                         message._deviceListMetadata = "deviceListMetadata";
                         continue;
                     }
@@ -216046,7 +216046,7 @@ $root.waproto = (function() {
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.botMetadata = $root.waproto.BotMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botMetadata);
+                        message.botMetadata = $root.waproto.BotMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.botMetadata);
                         message._botMetadata = "botMetadata";
                         continue;
                     }
@@ -216067,7 +216067,7 @@ $root.waproto = (function() {
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.messageAssociation = $root.waproto.MessageAssociation.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageAssociation);
+                        message.messageAssociation = $root.waproto.MessageAssociation.decode(reader, reader.size(), $undefined, _depth + 1, message.messageAssociation);
                         message._messageAssociation = "messageAssociation";
                         continue;
                     }
@@ -216088,14 +216088,14 @@ $root.waproto = (function() {
                 case 13: {
                         if (wireType !== 2)
                             break;
-                        message.limitSharing = $root.waproto.LimitSharing.decode(reader, reader.uint32(), $undefined, _depth + 1, message.limitSharing);
+                        message.limitSharing = $root.waproto.LimitSharing.decode(reader, reader.size(), $undefined, _depth + 1, message.limitSharing);
                         message._limitSharing = "limitSharing";
                         continue;
                     }
                 case 14: {
                         if (wireType !== 2)
                             break;
-                        message.limitSharingV2 = $root.waproto.LimitSharing.decode(reader, reader.uint32(), $undefined, _depth + 1, message.limitSharingV2);
+                        message.limitSharingV2 = $root.waproto.LimitSharing.decode(reader, reader.size(), $undefined, _depth + 1, message.limitSharingV2);
                         message._limitSharingV2 = "limitSharingV2";
                         continue;
                     }
@@ -216104,7 +216104,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.threadId && message.threadId.length))
                             message.threadId = [];
-                        message.threadId.push($root.waproto.ThreadID.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.threadId.push($root.waproto.ThreadID.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 16: {
@@ -216124,7 +216124,7 @@ $root.waproto = (function() {
                 case 18: {
                         if (wireType !== 2)
                             break;
-                        message.accountEncryptionAttestation = $root.waproto.NonE2EEAttestation.decode(reader, reader.uint32(), $undefined, _depth + 1, message.accountEncryptionAttestation);
+                        message.accountEncryptionAttestation = $root.waproto.NonE2EEAttestation.decode(reader, reader.size(), $undefined, _depth + 1, message.accountEncryptionAttestation);
                         message._accountEncryptionAttestation = "accountEncryptionAttestation";
                         continue;
                     }
@@ -216145,7 +216145,7 @@ $root.waproto = (function() {
                 case 21: {
                         if (wireType !== 2)
                             break;
-                        message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.acp2Setting);
+                        message.acp2Setting = $root.waproto.ACP2Setting.decode(reader, reader.size(), $undefined, _depth + 1, message.acp2Setting);
                         message._acp2Setting = "acp2Setting";
                         continue;
                     }
@@ -216179,7 +216179,7 @@ $root.waproto = (function() {
         MessageContextInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -216823,7 +216823,7 @@ $root.waproto = (function() {
         MessageKey.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -217180,7 +217180,7 @@ $root.waproto = (function() {
         MessageSecretMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -217508,7 +217508,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.commands && message.commands.length))
                             message.commands = [];
-                        message.commands.push($root.waproto.Command.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.commands.push($root.waproto.Command.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 4: {
@@ -217516,7 +217516,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.mentions && message.mentions.length))
                             message.mentions = [];
-                        message.mentions.push($root.waproto.Mention.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.mentions.push($root.waproto.Mention.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -217549,7 +217549,7 @@ $root.waproto = (function() {
         MessageText.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -217984,7 +217984,7 @@ $root.waproto = (function() {
         MessagingMailboxPublicData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -218370,7 +218370,7 @@ $root.waproto = (function() {
         MinosClientConfig.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -218983,210 +218983,210 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.encryptAndSignMessage = $root.waproto.MinosEncryptAndSignMessageInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encryptAndSignMessage);
+                        message.encryptAndSignMessage = $root.waproto.MinosEncryptAndSignMessageInput.decode(reader, reader.size(), $undefined, _depth + 1, message.encryptAndSignMessage);
                         message.commandInput = "encryptAndSignMessage";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.decryptAndVerifyMessage = $root.waproto.MinosDecryptAndVerifyMessageInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.decryptAndVerifyMessage);
+                        message.decryptAndVerifyMessage = $root.waproto.MinosDecryptAndVerifyMessageInput.decode(reader, reader.size(), $undefined, _depth + 1, message.decryptAndVerifyMessage);
                         message.commandInput = "decryptAndVerifyMessage";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.generateMek = $root.waproto.GenerateMekInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.generateMek);
+                        message.generateMek = $root.waproto.GenerateMekInput.decode(reader, reader.size(), $undefined, _depth + 1, message.generateMek);
                         message.commandInput = "generateMek";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.generateMekRosterHash = $root.waproto.GenerateMekRosterHashInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.generateMekRosterHash);
+                        message.generateMekRosterHash = $root.waproto.GenerateMekRosterHashInput.decode(reader, reader.size(), $undefined, _depth + 1, message.generateMekRosterHash);
                         message.commandInput = "generateMekRosterHash";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.encryptMekForDistribution = $root.waproto.EncryptMekForDistributionInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encryptMekForDistribution);
+                        message.encryptMekForDistribution = $root.waproto.EncryptMekForDistributionInput.decode(reader, reader.size(), $undefined, _depth + 1, message.encryptMekForDistribution);
                         message.commandInput = "encryptMekForDistribution";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.decryptMekForDistribution = $root.waproto.DecryptMekForDistributionInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.decryptMekForDistribution);
+                        message.decryptMekForDistribution = $root.waproto.DecryptMekForDistributionInput.decode(reader, reader.size(), $undefined, _depth + 1, message.decryptMekForDistribution);
                         message.commandInput = "decryptMekForDistribution";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.encryptMeksForDistributionFromTransportSender = $root.waproto.EncryptMeksForDistributionFromTransportSenderInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encryptMeksForDistributionFromTransportSender);
+                        message.encryptMeksForDistributionFromTransportSender = $root.waproto.EncryptMeksForDistributionFromTransportSenderInput.decode(reader, reader.size(), $undefined, _depth + 1, message.encryptMeksForDistributionFromTransportSender);
                         message.commandInput = "encryptMeksForDistributionFromTransportSender";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.decryptMekForDistributionFromTransportSender = $root.waproto.DecryptMekForDistributionFromTransportSenderInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.decryptMekForDistributionFromTransportSender);
+                        message.decryptMekForDistributionFromTransportSender = $root.waproto.DecryptMekForDistributionFromTransportSenderInput.decode(reader, reader.size(), $undefined, _depth + 1, message.decryptMekForDistributionFromTransportSender);
                         message.commandInput = "decryptMekForDistributionFromTransportSender";
                         continue;
                     }
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.wrapTransportSigningPublicKey = $root.waproto.WrapTransportSigningPublicKeyInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.wrapTransportSigningPublicKey);
+                        message.wrapTransportSigningPublicKey = $root.waproto.WrapTransportSigningPublicKeyInput.decode(reader, reader.size(), $undefined, _depth + 1, message.wrapTransportSigningPublicKey);
                         message.commandInput = "wrapTransportSigningPublicKey";
                         continue;
                     }
                 case 10: {
                         if (wireType !== 2)
                             break;
-                        message.wrapTransportSigningSecretKey = $root.waproto.WrapTransportSigningSecretKeyInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.wrapTransportSigningSecretKey);
+                        message.wrapTransportSigningSecretKey = $root.waproto.WrapTransportSigningSecretKeyInput.decode(reader, reader.size(), $undefined, _depth + 1, message.wrapTransportSigningSecretKey);
                         message.commandInput = "wrapTransportSigningSecretKey";
                         continue;
                     }
                 case 11: {
                         if (wireType !== 2)
                             break;
-                        message.deriveMailboxSigningKeypair = $root.waproto.DeriveMailboxSigningKeypairInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveMailboxSigningKeypair);
+                        message.deriveMailboxSigningKeypair = $root.waproto.DeriveMailboxSigningKeypairInput.decode(reader, reader.size(), $undefined, _depth + 1, message.deriveMailboxSigningKeypair);
                         message.commandInput = "deriveMailboxSigningKeypair";
                         continue;
                     }
                 case 12: {
                         if (wireType !== 2)
                             break;
-                        message.deriveMailboxEncryptionKeypair = $root.waproto.DeriveMailboxEncryptionKeypairInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveMailboxEncryptionKeypair);
+                        message.deriveMailboxEncryptionKeypair = $root.waproto.DeriveMailboxEncryptionKeypairInput.decode(reader, reader.size(), $undefined, _depth + 1, message.deriveMailboxEncryptionKeypair);
                         message.commandInput = "deriveMailboxEncryptionKeypair";
                         continue;
                     }
                 case 13: {
                         if (wireType !== 2)
                             break;
-                        message.deriveMailboxAuthKeypair = $root.waproto.DeriveMailboxAuthKeypairInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveMailboxAuthKeypair);
+                        message.deriveMailboxAuthKeypair = $root.waproto.DeriveMailboxAuthKeypairInput.decode(reader, reader.size(), $undefined, _depth + 1, message.deriveMailboxAuthKeypair);
                         message.commandInput = "deriveMailboxAuthKeypair";
                         continue;
                     }
                 case 14: {
                         if (wireType !== 2)
                             break;
-                        message.deriveAttachmentAccessTokenSecret = $root.waproto.DeriveAttachmentAccessTokenSecretInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveAttachmentAccessTokenSecret);
+                        message.deriveAttachmentAccessTokenSecret = $root.waproto.DeriveAttachmentAccessTokenSecretInput.decode(reader, reader.size(), $undefined, _depth + 1, message.deriveAttachmentAccessTokenSecret);
                         message.commandInput = "deriveAttachmentAccessTokenSecret";
                         continue;
                     }
                 case 15: {
                         if (wireType !== 2)
                             break;
-                        message.deriveAttachmentPrimaryKeySecret = $root.waproto.DeriveAttachmentPrimaryKeySecretInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveAttachmentPrimaryKeySecret);
+                        message.deriveAttachmentPrimaryKeySecret = $root.waproto.DeriveAttachmentPrimaryKeySecretInput.decode(reader, reader.size(), $undefined, _depth + 1, message.deriveAttachmentPrimaryKeySecret);
                         message.commandInput = "deriveAttachmentPrimaryKeySecret";
                         continue;
                     }
                 case 16: {
                         if (wireType !== 2)
                             break;
-                        message.minosOpenInitialEpoch = $root.waproto.MinosOpenInitialEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosOpenInitialEpoch);
+                        message.minosOpenInitialEpoch = $root.waproto.MinosOpenInitialEpochInput.decode(reader, reader.size(), $undefined, _depth + 1, message.minosOpenInitialEpoch);
                         message.commandInput = "minosOpenInitialEpoch";
                         continue;
                     }
                 case 17: {
                         if (wireType !== 2)
                             break;
-                        message.minosOpenEpoch = $root.waproto.MinosOpenEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosOpenEpoch);
+                        message.minosOpenEpoch = $root.waproto.MinosOpenEpochInput.decode(reader, reader.size(), $undefined, _depth + 1, message.minosOpenEpoch);
                         message.commandInput = "minosOpenEpoch";
                         continue;
                     }
                 case 18: {
                         if (wireType !== 2)
                             break;
-                        message.minosValidateEpoch = $root.waproto.MinosValidateEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosValidateEpoch);
+                        message.minosValidateEpoch = $root.waproto.MinosValidateEpochInput.decode(reader, reader.size(), $undefined, _depth + 1, message.minosValidateEpoch);
                         message.commandInput = "minosValidateEpoch";
                         continue;
                     }
                 case 19: {
                         if (wireType !== 2)
                             break;
-                        message.minosVerifySingleEpoch = $root.waproto.MinosVerifySingleEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosVerifySingleEpoch);
+                        message.minosVerifySingleEpoch = $root.waproto.MinosVerifySingleEpochInput.decode(reader, reader.size(), $undefined, _depth + 1, message.minosVerifySingleEpoch);
                         message.commandInput = "minosVerifySingleEpoch";
                         continue;
                     }
                 case 20: {
                         if (wireType !== 2)
                             break;
-                        message.minosThreadIdFromOneToOneThread = $root.waproto.MinosThreadIdFromOneToOneThreadInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosThreadIdFromOneToOneThread);
+                        message.minosThreadIdFromOneToOneThread = $root.waproto.MinosThreadIdFromOneToOneThreadInput.decode(reader, reader.size(), $undefined, _depth + 1, message.minosThreadIdFromOneToOneThread);
                         message.commandInput = "minosThreadIdFromOneToOneThread";
                         continue;
                     }
                 case 21: {
                         if (wireType !== 2)
                             break;
-                        message.minosThreadIdFromActThreadId = $root.waproto.MinosThreadIdFromActThreadIdInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosThreadIdFromActThreadId);
+                        message.minosThreadIdFromActThreadId = $root.waproto.MinosThreadIdFromActThreadIdInput.decode(reader, reader.size(), $undefined, _depth + 1, message.minosThreadIdFromActThreadId);
                         message.commandInput = "minosThreadIdFromActThreadId";
                         continue;
                     }
                 case 22: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeOpenEpoch = $root.waproto.MandrakeOpenEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeOpenEpoch);
+                        message.mandrakeOpenEpoch = $root.waproto.MandrakeOpenEpochInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeOpenEpoch);
                         message.commandInput = "mandrakeOpenEpoch";
                         continue;
                     }
                 case 23: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeEncryptMek = $root.waproto.MandrakeEncryptMekInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeEncryptMek);
+                        message.mandrakeEncryptMek = $root.waproto.MandrakeEncryptMekInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeEncryptMek);
                         message.commandInput = "mandrakeEncryptMek";
                         continue;
                     }
                 case 24: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeDecryptMek = $root.waproto.MandrakeDecryptMekInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeDecryptMek);
+                        message.mandrakeDecryptMek = $root.waproto.MandrakeDecryptMekInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeDecryptMek);
                         message.commandInput = "mandrakeDecryptMek";
                         continue;
                     }
                 case 25: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeOpenInitialEpoch = $root.waproto.MandrakeOpenInitialEpochInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeOpenInitialEpoch);
+                        message.mandrakeOpenInitialEpoch = $root.waproto.MandrakeOpenInitialEpochInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeOpenInitialEpoch);
                         message.commandInput = "mandrakeOpenInitialEpoch";
                         continue;
                     }
                 case 27: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeValidateNewMmkFromMailbox = $root.waproto.MandrakeValidateNewMmkFromMailboxInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeValidateNewMmkFromMailbox);
+                        message.mandrakeValidateNewMmkFromMailbox = $root.waproto.MandrakeValidateNewMmkFromMailboxInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeValidateNewMmkFromMailbox);
                         message.commandInput = "mandrakeValidateNewMmkFromMailbox";
                         continue;
                     }
                 case 28: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeValidateNewMmkFromDetachedDevice = $root.waproto.MandrakeValidateNewMmkFromDetachedDeviceInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeValidateNewMmkFromDetachedDevice);
+                        message.mandrakeValidateNewMmkFromDetachedDevice = $root.waproto.MandrakeValidateNewMmkFromDetachedDeviceInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeValidateNewMmkFromDetachedDevice);
                         message.commandInput = "mandrakeValidateNewMmkFromDetachedDevice";
                         continue;
                     }
                 case 29: {
                         if (wireType !== 2)
                             break;
-                        message.deriveMessagingMailboxKeypairs = $root.waproto.DeriveMessagingMailboxKeypairsInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deriveMessagingMailboxKeypairs);
+                        message.deriveMessagingMailboxKeypairs = $root.waproto.DeriveMessagingMailboxKeypairsInput.decode(reader, reader.size(), $undefined, _depth + 1, message.deriveMessagingMailboxKeypairs);
                         message.commandInput = "deriveMessagingMailboxKeypairs";
                         continue;
                     }
                 case 30: {
                         if (wireType !== 2)
                             break;
-                        message.decryptSelfMmkDistribution = $root.waproto.DecryptSelfMmkDistributionInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.decryptSelfMmkDistribution);
+                        message.decryptSelfMmkDistribution = $root.waproto.DecryptSelfMmkDistributionInput.decode(reader, reader.size(), $undefined, _depth + 1, message.decryptSelfMmkDistribution);
                         message.commandInput = "decryptSelfMmkDistribution";
                         continue;
                     }
                 case 31: {
                         if (wireType !== 2)
                             break;
-                        message.mandrakeValidateAndDecryptSelfMmk = $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mandrakeValidateAndDecryptSelfMmk);
+                        message.mandrakeValidateAndDecryptSelfMmk = $root.waproto.MandrakeValidateAndDecryptSelfMmkInput.decode(reader, reader.size(), $undefined, _depth + 1, message.mandrakeValidateAndDecryptSelfMmk);
                         message.commandInput = "mandrakeValidateAndDecryptSelfMmk";
                         continue;
                     }
@@ -219220,7 +219220,7 @@ $root.waproto = (function() {
         MinosCommand.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -220148,7 +220148,7 @@ $root.waproto = (function() {
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.metadata = $root.waproto.MinosMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metadata);
+                        message.metadata = $root.waproto.MinosMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.metadata);
                         continue;
                     }
                 case 6: {
@@ -220161,7 +220161,7 @@ $root.waproto = (function() {
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
@@ -220205,7 +220205,7 @@ $root.waproto = (function() {
         MinosDecryptAndVerifyMessageInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -220570,7 +220570,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.success = $root.waproto.MinosDecryptAndVerifyMessageSuccess.decode(reader, reader.uint32(), $undefined, _depth + 1, message.success);
+                        message.success = $root.waproto.MinosDecryptAndVerifyMessageSuccess.decode(reader, reader.size(), $undefined, _depth + 1, message.success);
                         message.result = "success";
                         continue;
                     }
@@ -220611,7 +220611,7 @@ $root.waproto = (function() {
         MinosDecryptAndVerifyMessageResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -220907,7 +220907,7 @@ $root.waproto = (function() {
         MinosDecryptAndVerifyMessageSuccess.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -221237,7 +221237,7 @@ $root.waproto = (function() {
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.metadata = $root.waproto.MinosMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metadata);
+                        message.metadata = $root.waproto.MinosMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.metadata);
                         continue;
                     }
                 case 5: {
@@ -221250,7 +221250,7 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.uint32(), $undefined, _depth + 1, message.conf);
+                        message.conf = $root.waproto.MinosClientConfig.decode(reader, reader.size(), $undefined, _depth + 1, message.conf);
                         message._conf = "conf";
                         continue;
                     }
@@ -221292,7 +221292,7 @@ $root.waproto = (function() {
         MinosEncryptAndSignMessageInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -221682,7 +221682,7 @@ $root.waproto = (function() {
         MinosEncryptAndSignMessageResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -222040,7 +222040,7 @@ $root.waproto = (function() {
         MinosMessageMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -222457,7 +222457,7 @@ $root.waproto = (function() {
         MinosOpenEpochInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -222788,7 +222788,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.minosSignedEpoch = $root.waproto.MinosSignedEpoch.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosSignedEpoch);
+                        message.minosSignedEpoch = $root.waproto.MinosSignedEpoch.decode(reader, reader.size(), $undefined, _depth + 1, message.minosSignedEpoch);
                         continue;
                     }
                 }
@@ -222823,7 +222823,7 @@ $root.waproto = (function() {
         MinosOpenEpochResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -223136,7 +223136,7 @@ $root.waproto = (function() {
         MinosOpenInitialEpochInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -223412,7 +223412,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.minosSignedEpoch = $root.waproto.MinosSignedEpoch.decode(reader, reader.uint32(), $undefined, _depth + 1, message.minosSignedEpoch);
+                        message.minosSignedEpoch = $root.waproto.MinosSignedEpoch.decode(reader, reader.size(), $undefined, _depth + 1, message.minosSignedEpoch);
                         continue;
                     }
                 }
@@ -223447,7 +223447,7 @@ $root.waproto = (function() {
         MinosOpenInitialEpochResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -223709,13 +223709,13 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochPublicData);
+                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochPublicData);
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.signatures = $root.waproto.EpochSignatures.decode(reader, reader.uint32(), $undefined, _depth + 1, message.signatures);
+                        message.signatures = $root.waproto.EpochSignatures.decode(reader, reader.size(), $undefined, _depth + 1, message.signatures);
                         continue;
                     }
                 case 3: {
@@ -223760,7 +223760,7 @@ $root.waproto = (function() {
         MinosSignedEpoch.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -224067,7 +224067,7 @@ $root.waproto = (function() {
         MinosThreadIdFromActThreadIdInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -224338,7 +224338,7 @@ $root.waproto = (function() {
         MinosThreadIdFromActThreadIdResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -224636,7 +224636,7 @@ $root.waproto = (function() {
         MinosThreadIdFromOneToOneThreadInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -224915,7 +224915,7 @@ $root.waproto = (function() {
         MinosThreadIdFromOneToOneThreadResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -225180,19 +225180,19 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochPublicData);
+                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochPublicData);
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.previousEpochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.previousEpochPublicData);
+                        message.previousEpochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.previousEpochPublicData);
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.signatures = $root.waproto.EpochSignatures.decode(reader, reader.uint32(), $undefined, _depth + 1, message.signatures);
+                        message.signatures = $root.waproto.EpochSignatures.decode(reader, reader.size(), $undefined, _depth + 1, message.signatures);
                         continue;
                     }
                 }
@@ -225231,7 +225231,7 @@ $root.waproto = (function() {
         MinosValidateEpochInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -225574,7 +225574,7 @@ $root.waproto = (function() {
         MinosValidateEpochResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -225839,7 +225839,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.epochPublicData);
+                        message.epochPublicData = $root.waproto.EpochPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.epochPublicData);
                         continue;
                     }
                 case 2: {
@@ -225882,7 +225882,7 @@ $root.waproto = (function() {
         MinosVerifySingleEpochInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -226176,7 +226176,7 @@ $root.waproto = (function() {
         MinosVerifySingleEpochResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -226437,13 +226437,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.toDetachedDevices && message.toDetachedDevices.length))
                             message.toDetachedDevices = [];
-                        message.toDetachedDevices.push($root.waproto.MmkDistributionToDetachedDevice.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.toDetachedDevices.push($root.waproto.MmkDistributionToDetachedDevice.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.toMailbox = $root.waproto.MmkDistributionToMailbox.decode(reader, reader.uint32(), $undefined, _depth + 1, message.toMailbox);
+                        message.toMailbox = $root.waproto.MmkDistributionToMailbox.decode(reader, reader.size(), $undefined, _depth + 1, message.toMailbox);
                         continue;
                     }
                 case 3: {
@@ -226486,7 +226486,7 @@ $root.waproto = (function() {
         MmkDistribution.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -226831,7 +226831,7 @@ $root.waproto = (function() {
         MmkDistributionToDetachedDevice.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -227146,7 +227146,7 @@ $root.waproto = (function() {
         MmkDistributionToMailbox.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -227428,19 +227428,19 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmk);
+                        message.mmk = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.mmk);
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.fromDetachedDevice = $root.waproto.DetachedDevicePublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fromDetachedDevice);
+                        message.fromDetachedDevice = $root.waproto.DetachedDevicePublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.fromDetachedDevice);
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.membershipProof = $root.waproto.MerkleMembershipProof.decode(reader, reader.uint32(), $undefined, _depth + 1, message.membershipProof);
+                        message.membershipProof = $root.waproto.MerkleMembershipProof.decode(reader, reader.size(), $undefined, _depth + 1, message.membershipProof);
                         continue;
                     }
                 }
@@ -227479,7 +227479,7 @@ $root.waproto = (function() {
         MmkFromDetachedDevice.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -227840,7 +227840,7 @@ $root.waproto = (function() {
         Money.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -229166,7 +229166,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.pollOptions && message.pollOptions.length))
                             message.pollOptions = [];
-                        message.pollOptions.push($root.waproto.MsgOpaqueData.PollOption.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.pollOptions.push($root.waproto.MsgOpaqueData.PollOption.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 20: {
@@ -229207,7 +229207,7 @@ $root.waproto = (function() {
                 case 24: {
                         if (wireType !== 2)
                             break;
-                        message.encPollVote = $root.waproto.PollEncValue.decode(reader, reader.uint32(), $undefined, _depth + 1, message.encPollVote);
+                        message.encPollVote = $root.waproto.PollEncValue.decode(reader, reader.size(), $undefined, _depth + 1, message.encPollVote);
                         message._encPollVote = "encPollVote";
                         continue;
                     }
@@ -229242,7 +229242,7 @@ $root.waproto = (function() {
                 case 41: {
                         if (wireType !== 2)
                             break;
-                        message.pollVotesSnapshot = $root.waproto.MsgOpaqueData.PollVotesSnapshot.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollVotesSnapshot);
+                        message.pollVotesSnapshot = $root.waproto.MsgOpaqueData.PollVotesSnapshot.decode(reader, reader.size(), $undefined, _depth + 1, message.pollVotesSnapshot);
                         message._pollVotesSnapshot = "pollVotesSnapshot";
                         continue;
                     }
@@ -229333,7 +229333,7 @@ $root.waproto = (function() {
                 case 38: {
                         if (wireType !== 2)
                             break;
-                        message.eventLocation = $root.waproto.MsgOpaqueData.EventLocation.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventLocation);
+                        message.eventLocation = $root.waproto.MsgOpaqueData.EventLocation.decode(reader, reader.size(), $undefined, _depth + 1, message.eventLocation);
                         message._eventLocation = "eventLocation";
                         continue;
                     }
@@ -229493,7 +229493,7 @@ $root.waproto = (function() {
         MsgOpaqueData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -230556,7 +230556,7 @@ $root.waproto = (function() {
             EventLocation.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -230950,7 +230950,7 @@ $root.waproto = (function() {
             PollOption.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -231247,7 +231247,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.option = $root.waproto.MsgOpaqueData.PollOption.decode(reader, reader.uint32(), $undefined, _depth + 1, message.option);
+                            message.option = $root.waproto.MsgOpaqueData.PollOption.decode(reader, reader.size(), $undefined, _depth + 1, message.option);
                             message._option = "option";
                             continue;
                         }
@@ -231288,7 +231288,7 @@ $root.waproto = (function() {
             PollVoteSnapshot.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -231546,7 +231546,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.pollVotes && message.pollVotes.length))
                                 message.pollVotes = [];
-                            message.pollVotes.push($root.waproto.MsgOpaqueData.PollVoteSnapshot.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.pollVotes.push($root.waproto.MsgOpaqueData.PollVoteSnapshot.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -231579,7 +231579,7 @@ $root.waproto = (function() {
             PollVotesSnapshot.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -231863,14 +231863,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.currentMsg = $root.waproto.MsgOpaqueData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.currentMsg);
+                        message.currentMsg = $root.waproto.MsgOpaqueData.decode(reader, reader.size(), $undefined, _depth + 1, message.currentMsg);
                         message._currentMsg = "currentMsg";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.quotedMsg = $root.waproto.MsgOpaqueData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedMsg);
+                        message.quotedMsg = $root.waproto.MsgOpaqueData.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedMsg);
                         message._quotedMsg = "quotedMsg";
                         continue;
                     }
@@ -231904,7 +231904,7 @@ $root.waproto = (function() {
         MsgRowOpaqueData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -232433,7 +232433,7 @@ $root.waproto = (function() {
         NoiseCertificate.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -232823,7 +232823,7 @@ $root.waproto = (function() {
             Details.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -233159,7 +233159,7 @@ $root.waproto = (function() {
         NonE2EEAttestation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -233495,14 +233495,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                        message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                         message._key = "key";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                        message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                         message._message = "message";
                         continue;
                     }
@@ -233550,7 +233550,7 @@ $root.waproto = (function() {
         NotificationMessageInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -234003,7 +234003,7 @@ $root.waproto = (function() {
         NotificationSettings.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -234378,7 +234378,7 @@ $root.waproto = (function() {
         PairingRequest.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -234735,7 +234735,7 @@ $root.waproto = (function() {
         PastParticipant.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -235060,7 +235060,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.pastParticipants && message.pastParticipants.length))
                             message.pastParticipants = [];
-                        message.pastParticipants.push($root.waproto.PastParticipant.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.pastParticipants.push($root.waproto.PastParticipant.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -235093,7 +235093,7 @@ $root.waproto = (function() {
         PastParticipants.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -235641,7 +235641,7 @@ $root.waproto = (function() {
         PatchDebugData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -236291,7 +236291,7 @@ $root.waproto = (function() {
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.mediaData = $root.waproto.PaymentBackground.MediaData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mediaData);
+                        message.mediaData = $root.waproto.PaymentBackground.MediaData.decode(reader, reader.size(), $undefined, _depth + 1, message.mediaData);
                         message._mediaData = "mediaData";
                         continue;
                     }
@@ -236332,7 +236332,7 @@ $root.waproto = (function() {
         PaymentBackground.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -236817,7 +236817,7 @@ $root.waproto = (function() {
             MediaData.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -237378,7 +237378,7 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.requestMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.requestMessageKey);
+                        message.requestMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.requestMessageKey);
                         message._requestMessageKey = "requestMessageKey";
                         continue;
                     }
@@ -237420,14 +237420,14 @@ $root.waproto = (function() {
                 case 12: {
                         if (wireType !== 2)
                             break;
-                        message.primaryAmount = $root.waproto.Money.decode(reader, reader.uint32(), $undefined, _depth + 1, message.primaryAmount);
+                        message.primaryAmount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.primaryAmount);
                         message._primaryAmount = "primaryAmount";
                         continue;
                     }
                 case 13: {
                         if (wireType !== 2)
                             break;
-                        message.exchangeAmount = $root.waproto.Money.decode(reader, reader.uint32(), $undefined, _depth + 1, message.exchangeAmount);
+                        message.exchangeAmount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.exchangeAmount);
                         message._exchangeAmount = "exchangeAmount";
                         continue;
                     }
@@ -237461,7 +237461,7 @@ $root.waproto = (function() {
         PaymentInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -238244,7 +238244,7 @@ $root.waproto = (function() {
         PhoneNumberToLIDMapping.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -238583,7 +238583,7 @@ $root.waproto = (function() {
         PhotoChange.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -238930,7 +238930,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                        message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                         message._key = "key";
                         continue;
                     }
@@ -238951,7 +238951,7 @@ $root.waproto = (function() {
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.messageAddOnContextInfo = $root.waproto.MessageAddOnContextInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageAddOnContextInfo);
+                        message.messageAddOnContextInfo = $root.waproto.MessageAddOnContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.messageAddOnContextInfo);
                         message._messageAddOnContextInfo = "messageAddOnContextInfo";
                         continue;
                     }
@@ -238985,7 +238985,7 @@ $root.waproto = (function() {
         PinInChat.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -239442,7 +239442,7 @@ $root.waproto = (function() {
         Point.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -239752,7 +239752,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.pollNameHashHistory && message.pollNameHashHistory.length))
                             message.pollNameHashHistory = [];
-                        message.pollNameHashHistory.push($root.waproto.PollAdditionalMetadata.PollNameHashHistoryEntry.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.pollNameHashHistory.push($root.waproto.PollAdditionalMetadata.PollNameHashHistoryEntry.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -239760,7 +239760,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.originalOptions && message.originalOptions.length))
                             message.originalOptions = [];
-                        message.originalOptions.push($root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.originalOptions.push($root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -239793,7 +239793,7 @@ $root.waproto = (function() {
         PollAdditionalMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -240148,7 +240148,7 @@ $root.waproto = (function() {
             PollNameHashHistoryEntry.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -240469,7 +240469,7 @@ $root.waproto = (function() {
         PollEncValue.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -240817,14 +240817,14 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.pollUpdateMessageKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollUpdateMessageKey);
+                        message.pollUpdateMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.pollUpdateMessageKey);
                         message._pollUpdateMessageKey = "pollUpdateMessageKey";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.vote = $root.waproto.Message.PollVoteMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.vote);
+                        message.vote = $root.waproto.Message.PollVoteMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.vote);
                         message._vote = "vote";
                         continue;
                     }
@@ -240852,7 +240852,7 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.metadata = $root.waproto.Message.PollUpdateMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metadata);
+                        message.metadata = $root.waproto.Message.PollUpdateMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.metadata);
                         message._metadata = "metadata";
                         continue;
                     }
@@ -240886,7 +240886,7 @@ $root.waproto = (function() {
         PollUpdate.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -241303,7 +241303,7 @@ $root.waproto = (function() {
         PreKeyRecordStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -241777,7 +241777,7 @@ $root.waproto = (function() {
         PreKeySignalMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -242134,7 +242134,7 @@ $root.waproto = (function() {
         PremiumMessageInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -242440,7 +242440,7 @@ $root.waproto = (function() {
         PrimaryEphemeralIdentity.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -242918,7 +242918,7 @@ $root.waproto = (function() {
         ProcessedVideo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -243317,7 +243317,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.commitment = $root.waproto.CompanionCommitment.decode(reader, reader.uint32(), $undefined, _depth + 1, message.commitment);
+                        message.commitment = $root.waproto.CompanionCommitment.decode(reader, reader.size(), $undefined, _depth + 1, message.commitment);
                         message._commitment = "commitment";
                         continue;
                     }
@@ -243351,7 +243351,7 @@ $root.waproto = (function() {
         ProloguePayload.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -243675,7 +243675,7 @@ $root.waproto = (function() {
         Pushname.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -243936,7 +243936,7 @@ $root.waproto = (function() {
         QP.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -244220,7 +244220,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.parameters && message.parameters.length))
                                 message.parameters = [];
-                            message.parameters.push($root.waproto.QP.FilterParameters.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.parameters.push($root.waproto.QP.FilterParameters.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 3: {
@@ -244270,7 +244270,7 @@ $root.waproto = (function() {
             Filter.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -244610,7 +244610,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.clauses && message.clauses.length))
                                 message.clauses = [];
-                            message.clauses.push($root.waproto.QP.FilterClause.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.clauses.push($root.waproto.QP.FilterClause.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 3: {
@@ -244618,7 +244618,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.filters && message.filters.length))
                                 message.filters = [];
-                            message.filters.push($root.waproto.QP.Filter.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.filters.push($root.waproto.QP.Filter.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -244653,7 +244653,7 @@ $root.waproto = (function() {
             FilterClause.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -245038,7 +245038,7 @@ $root.waproto = (function() {
             FilterParameters.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -245372,7 +245372,7 @@ $root.waproto = (function() {
         QuarantinedMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -245700,7 +245700,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                        message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                         message._key = "key";
                         continue;
                     }
@@ -245762,7 +245762,7 @@ $root.waproto = (function() {
         Reaction.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -246122,7 +246122,7 @@ $root.waproto = (function() {
         RecentEmojiWeight.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -246392,7 +246392,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.currentSession = $root.waproto.SessionStructure.decode(reader, reader.uint32(), $undefined, _depth + 1, message.currentSession);
+                        message.currentSession = $root.waproto.SessionStructure.decode(reader, reader.size(), $undefined, _depth + 1, message.currentSession);
                         message._currentSession = "currentSession";
                         continue;
                     }
@@ -246401,7 +246401,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.previousSessions && message.previousSessions.length))
                             message.previousSessions = [];
-                        message.previousSessions.push($root.waproto.SessionStructure.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.previousSessions.push($root.waproto.SessionStructure.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -246434,7 +246434,7 @@ $root.waproto = (function() {
         RecordStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -246772,7 +246772,7 @@ $root.waproto = (function() {
         RecoverableHistoryConversation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -247135,7 +247135,7 @@ $root.waproto = (function() {
         Reportable.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -247468,7 +247468,7 @@ $root.waproto = (function() {
         ReportingTokenInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -247898,7 +247898,7 @@ $root.waproto = (function() {
         RoutingInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -248297,7 +248297,7 @@ $root.waproto = (function() {
         ScheduledMessageMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -248684,7 +248684,7 @@ $root.waproto = (function() {
         SenderKeyDistributionMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -249047,7 +249047,7 @@ $root.waproto = (function() {
         SenderKeyMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -249311,7 +249311,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.senderKeyStates && message.senderKeyStates.length))
                             message.senderKeyStates = [];
-                        message.senderKeyStates.push($root.waproto.SenderKeyStateStructure.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.senderKeyStates.push($root.waproto.SenderKeyStateStructure.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -249344,7 +249344,7 @@ $root.waproto = (function() {
         SenderKeyRecordStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -249662,14 +249662,14 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.senderChainKey = $root.waproto.SenderKeyStateStructure.SenderChainKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.senderChainKey);
+                        message.senderChainKey = $root.waproto.SenderKeyStateStructure.SenderChainKey.decode(reader, reader.size(), $undefined, _depth + 1, message.senderChainKey);
                         message._senderChainKey = "senderChainKey";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.senderSigningKey = $root.waproto.SenderKeyStateStructure.SenderSigningKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.senderSigningKey);
+                        message.senderSigningKey = $root.waproto.SenderKeyStateStructure.SenderSigningKey.decode(reader, reader.size(), $undefined, _depth + 1, message.senderSigningKey);
                         message._senderSigningKey = "senderSigningKey";
                         continue;
                     }
@@ -249678,7 +249678,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.senderMessageKeys && message.senderMessageKeys.length))
                             message.senderMessageKeys = [];
-                        message.senderMessageKeys.push($root.waproto.SenderKeyStateStructure.SenderMessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.senderMessageKeys.push($root.waproto.SenderKeyStateStructure.SenderMessageKey.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -249711,7 +249711,7 @@ $root.waproto = (function() {
         SenderKeyStateStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -250070,7 +250070,7 @@ $root.waproto = (function() {
             SenderChainKey.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -250388,7 +250388,7 @@ $root.waproto = (function() {
             SenderMessageKey.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -250706,7 +250706,7 @@ $root.waproto = (function() {
             SenderSigningKey.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -251006,7 +251006,7 @@ $root.waproto = (function() {
         ServerErrorReceipt.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -251489,7 +251489,7 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.senderChain = $root.waproto.SessionStructure.Chain.decode(reader, reader.uint32(), $undefined, _depth + 1, message.senderChain);
+                        message.senderChain = $root.waproto.SessionStructure.Chain.decode(reader, reader.size(), $undefined, _depth + 1, message.senderChain);
                         message._senderChain = "senderChain";
                         continue;
                     }
@@ -251498,20 +251498,20 @@ $root.waproto = (function() {
                             break;
                         if (!(message.receiverChains && message.receiverChains.length))
                             message.receiverChains = [];
-                        message.receiverChains.push($root.waproto.SessionStructure.Chain.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.receiverChains.push($root.waproto.SessionStructure.Chain.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.pendingKeyExchange = $root.waproto.SessionStructure.PendingKeyExchange.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pendingKeyExchange);
+                        message.pendingKeyExchange = $root.waproto.SessionStructure.PendingKeyExchange.decode(reader, reader.size(), $undefined, _depth + 1, message.pendingKeyExchange);
                         message._pendingKeyExchange = "pendingKeyExchange";
                         continue;
                     }
                 case 9: {
                         if (wireType !== 2)
                             break;
-                        message.pendingPreKey = $root.waproto.SessionStructure.PendingPreKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pendingPreKey);
+                        message.pendingPreKey = $root.waproto.SessionStructure.PendingPreKey.decode(reader, reader.size(), $undefined, _depth + 1, message.pendingPreKey);
                         message._pendingPreKey = "pendingPreKey";
                         continue;
                     }
@@ -251573,7 +251573,7 @@ $root.waproto = (function() {
         SessionStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -252034,7 +252034,7 @@ $root.waproto = (function() {
                     case 3: {
                             if (wireType !== 2)
                                 break;
-                            message.chainKey = $root.waproto.SessionStructure.Chain.ChainKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chainKey);
+                            message.chainKey = $root.waproto.SessionStructure.Chain.ChainKey.decode(reader, reader.size(), $undefined, _depth + 1, message.chainKey);
                             message._chainKey = "chainKey";
                             continue;
                         }
@@ -252043,7 +252043,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.messageKeys && message.messageKeys.length))
                                 message.messageKeys = [];
-                            message.messageKeys.push($root.waproto.SessionStructure.Chain.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.messageKeys.push($root.waproto.SessionStructure.Chain.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -252076,7 +252076,7 @@ $root.waproto = (function() {
             Chain.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -252435,7 +252435,7 @@ $root.waproto = (function() {
                 ChainKey.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -252801,7 +252801,7 @@ $root.waproto = (function() {
                 MessageKey.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -253266,7 +253266,7 @@ $root.waproto = (function() {
             PendingKeyExchange.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -253716,7 +253716,7 @@ $root.waproto = (function() {
             PendingPreKey.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -254091,7 +254091,7 @@ $root.waproto = (function() {
         SessionTransparencyMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -254488,7 +254488,7 @@ $root.waproto = (function() {
         SignalMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -254779,7 +254779,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.mmkDistribution = $root.waproto.MmkDistribution.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mmkDistribution);
+                        message.mmkDistribution = $root.waproto.MmkDistribution.decode(reader, reader.size(), $undefined, _depth + 1, message.mmkDistribution);
                         continue;
                     }
                 case 2: {
@@ -254791,7 +254791,7 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.fromMailbox = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.fromMailbox);
+                        message.fromMailbox = $root.waproto.MessagingMailboxPublicData.decode(reader, reader.size(), $undefined, _depth + 1, message.fromMailbox);
                         continue;
                     }
                 }
@@ -254830,7 +254830,7 @@ $root.waproto = (function() {
         SignedMmkDistributionFromMailbox.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -255242,7 +255242,7 @@ $root.waproto = (function() {
         SignedPreKeyRecordStructure.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -255668,42 +255668,42 @@ $root.waproto = (function() {
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.statusReshare = $root.waproto.StatusAttribution.StatusReshare.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusReshare);
+                        message.statusReshare = $root.waproto.StatusAttribution.StatusReshare.decode(reader, reader.size(), $undefined, _depth + 1, message.statusReshare);
                         message.attributionData = "statusReshare";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.externalShare = $root.waproto.StatusAttribution.ExternalShare.decode(reader, reader.uint32(), $undefined, _depth + 1, message.externalShare);
+                        message.externalShare = $root.waproto.StatusAttribution.ExternalShare.decode(reader, reader.size(), $undefined, _depth + 1, message.externalShare);
                         message.attributionData = "externalShare";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.music = $root.waproto.StatusAttribution.Music.decode(reader, reader.uint32(), $undefined, _depth + 1, message.music);
+                        message.music = $root.waproto.StatusAttribution.Music.decode(reader, reader.size(), $undefined, _depth + 1, message.music);
                         message.attributionData = "music";
                         continue;
                     }
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.groupStatus = $root.waproto.StatusAttribution.GroupStatus.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupStatus);
+                        message.groupStatus = $root.waproto.StatusAttribution.GroupStatus.decode(reader, reader.size(), $undefined, _depth + 1, message.groupStatus);
                         message.attributionData = "groupStatus";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.rlAttribution = $root.waproto.StatusAttribution.RLAttribution.decode(reader, reader.uint32(), $undefined, _depth + 1, message.rlAttribution);
+                        message.rlAttribution = $root.waproto.StatusAttribution.RLAttribution.decode(reader, reader.size(), $undefined, _depth + 1, message.rlAttribution);
                         message.attributionData = "rlAttribution";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.aiCreatedAttribution = $root.waproto.StatusAttribution.AiCreatedAttribution.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiCreatedAttribution);
+                        message.aiCreatedAttribution = $root.waproto.StatusAttribution.AiCreatedAttribution.decode(reader, reader.size(), $undefined, _depth + 1, message.aiCreatedAttribution);
                         message.attributionData = "aiCreatedAttribution";
                         continue;
                     }
@@ -255737,7 +255737,7 @@ $root.waproto = (function() {
         StatusAttribution.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -256198,7 +256198,7 @@ $root.waproto = (function() {
             AiCreatedAttribution.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -256577,7 +256577,7 @@ $root.waproto = (function() {
             ExternalShare.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -256983,7 +256983,7 @@ $root.waproto = (function() {
             GroupStatus.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -257385,7 +257385,7 @@ $root.waproto = (function() {
             Music.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -257712,7 +257712,7 @@ $root.waproto = (function() {
             RLAttribution.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -258021,7 +258021,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.metadata = $root.waproto.StatusAttribution.StatusReshare.Metadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.metadata);
+                            message.metadata = $root.waproto.StatusAttribution.StatusReshare.Metadata.decode(reader, reader.size(), $undefined, _depth + 1, message.metadata);
                             message._metadata = "metadata";
                             continue;
                         }
@@ -258055,7 +258055,7 @@ $root.waproto = (function() {
             StatusReshare.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -258444,7 +258444,7 @@ $root.waproto = (function() {
                 Metadata.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -258784,7 +258784,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.quotedStatus = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedStatus);
+                        message.quotedStatus = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedStatus);
                         message._quotedStatus = "quotedStatus";
                         continue;
                     }
@@ -258818,7 +258818,7 @@ $root.waproto = (function() {
         StatusMentionMessage.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -259124,7 +259124,7 @@ $root.waproto = (function() {
         StatusPSA.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -259754,7 +259754,7 @@ $root.waproto = (function() {
         StickerMetadata.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -260210,7 +260210,7 @@ $root.waproto = (function() {
         SubProtocol.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -260534,7 +260534,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.value = $root.waproto.SyncActionValue.decode(reader, reader.uint32(), $undefined, _depth + 1, message.value);
+                        message.value = $root.waproto.SyncActionValue.decode(reader, reader.size(), $undefined, _depth + 1, message.value);
                         message._value = "value";
                         continue;
                     }
@@ -260582,7 +260582,7 @@ $root.waproto = (function() {
         SyncActionData.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -262481,623 +262481,623 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.starAction = $root.waproto.SyncActionValue.StarAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.starAction);
+                        message.starAction = $root.waproto.SyncActionValue.StarAction.decode(reader, reader.size(), $undefined, _depth + 1, message.starAction);
                         message._starAction = "starAction";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.contactAction = $root.waproto.SyncActionValue.ContactAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactAction);
+                        message.contactAction = $root.waproto.SyncActionValue.ContactAction.decode(reader, reader.size(), $undefined, _depth + 1, message.contactAction);
                         message._contactAction = "contactAction";
                         continue;
                     }
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.muteAction = $root.waproto.SyncActionValue.MuteAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.muteAction);
+                        message.muteAction = $root.waproto.SyncActionValue.MuteAction.decode(reader, reader.size(), $undefined, _depth + 1, message.muteAction);
                         message._muteAction = "muteAction";
                         continue;
                     }
                 case 5: {
                         if (wireType !== 2)
                             break;
-                        message.pinAction = $root.waproto.SyncActionValue.PinAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pinAction);
+                        message.pinAction = $root.waproto.SyncActionValue.PinAction.decode(reader, reader.size(), $undefined, _depth + 1, message.pinAction);
                         message._pinAction = "pinAction";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.pushNameSetting = $root.waproto.SyncActionValue.PushNameSetting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pushNameSetting);
+                        message.pushNameSetting = $root.waproto.SyncActionValue.PushNameSetting.decode(reader, reader.size(), $undefined, _depth + 1, message.pushNameSetting);
                         message._pushNameSetting = "pushNameSetting";
                         continue;
                     }
                 case 8: {
                         if (wireType !== 2)
                             break;
-                        message.quickReplyAction = $root.waproto.SyncActionValue.QuickReplyAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quickReplyAction);
+                        message.quickReplyAction = $root.waproto.SyncActionValue.QuickReplyAction.decode(reader, reader.size(), $undefined, _depth + 1, message.quickReplyAction);
                         message._quickReplyAction = "quickReplyAction";
                         continue;
                     }
                 case 11: {
                         if (wireType !== 2)
                             break;
-                        message.recentEmojiWeightsAction = $root.waproto.SyncActionValue.RecentEmojiWeightsAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.recentEmojiWeightsAction);
+                        message.recentEmojiWeightsAction = $root.waproto.SyncActionValue.RecentEmojiWeightsAction.decode(reader, reader.size(), $undefined, _depth + 1, message.recentEmojiWeightsAction);
                         message._recentEmojiWeightsAction = "recentEmojiWeightsAction";
                         continue;
                     }
                 case 14: {
                         if (wireType !== 2)
                             break;
-                        message.labelEditAction = $root.waproto.SyncActionValue.LabelEditAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.labelEditAction);
+                        message.labelEditAction = $root.waproto.SyncActionValue.LabelEditAction.decode(reader, reader.size(), $undefined, _depth + 1, message.labelEditAction);
                         message._labelEditAction = "labelEditAction";
                         continue;
                     }
                 case 15: {
                         if (wireType !== 2)
                             break;
-                        message.labelAssociationAction = $root.waproto.SyncActionValue.LabelAssociationAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.labelAssociationAction);
+                        message.labelAssociationAction = $root.waproto.SyncActionValue.LabelAssociationAction.decode(reader, reader.size(), $undefined, _depth + 1, message.labelAssociationAction);
                         message._labelAssociationAction = "labelAssociationAction";
                         continue;
                     }
                 case 16: {
                         if (wireType !== 2)
                             break;
-                        message.localeSetting = $root.waproto.SyncActionValue.LocaleSetting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.localeSetting);
+                        message.localeSetting = $root.waproto.SyncActionValue.LocaleSetting.decode(reader, reader.size(), $undefined, _depth + 1, message.localeSetting);
                         message._localeSetting = "localeSetting";
                         continue;
                     }
                 case 17: {
                         if (wireType !== 2)
                             break;
-                        message.archiveChatAction = $root.waproto.SyncActionValue.ArchiveChatAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.archiveChatAction);
+                        message.archiveChatAction = $root.waproto.SyncActionValue.ArchiveChatAction.decode(reader, reader.size(), $undefined, _depth + 1, message.archiveChatAction);
                         message._archiveChatAction = "archiveChatAction";
                         continue;
                     }
                 case 18: {
                         if (wireType !== 2)
                             break;
-                        message.deleteMessageForMeAction = $root.waproto.SyncActionValue.DeleteMessageForMeAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deleteMessageForMeAction);
+                        message.deleteMessageForMeAction = $root.waproto.SyncActionValue.DeleteMessageForMeAction.decode(reader, reader.size(), $undefined, _depth + 1, message.deleteMessageForMeAction);
                         message._deleteMessageForMeAction = "deleteMessageForMeAction";
                         continue;
                     }
                 case 19: {
                         if (wireType !== 2)
                             break;
-                        message.keyExpiration = $root.waproto.SyncActionValue.KeyExpiration.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keyExpiration);
+                        message.keyExpiration = $root.waproto.SyncActionValue.KeyExpiration.decode(reader, reader.size(), $undefined, _depth + 1, message.keyExpiration);
                         message._keyExpiration = "keyExpiration";
                         continue;
                     }
                 case 20: {
                         if (wireType !== 2)
                             break;
-                        message.markChatAsReadAction = $root.waproto.SyncActionValue.MarkChatAsReadAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.markChatAsReadAction);
+                        message.markChatAsReadAction = $root.waproto.SyncActionValue.MarkChatAsReadAction.decode(reader, reader.size(), $undefined, _depth + 1, message.markChatAsReadAction);
                         message._markChatAsReadAction = "markChatAsReadAction";
                         continue;
                     }
                 case 21: {
                         if (wireType !== 2)
                             break;
-                        message.clearChatAction = $root.waproto.SyncActionValue.ClearChatAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.clearChatAction);
+                        message.clearChatAction = $root.waproto.SyncActionValue.ClearChatAction.decode(reader, reader.size(), $undefined, _depth + 1, message.clearChatAction);
                         message._clearChatAction = "clearChatAction";
                         continue;
                     }
                 case 22: {
                         if (wireType !== 2)
                             break;
-                        message.deleteChatAction = $root.waproto.SyncActionValue.DeleteChatAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deleteChatAction);
+                        message.deleteChatAction = $root.waproto.SyncActionValue.DeleteChatAction.decode(reader, reader.size(), $undefined, _depth + 1, message.deleteChatAction);
                         message._deleteChatAction = "deleteChatAction";
                         continue;
                     }
                 case 23: {
                         if (wireType !== 2)
                             break;
-                        message.unarchiveChatsSetting = $root.waproto.SyncActionValue.UnarchiveChatsSetting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.unarchiveChatsSetting);
+                        message.unarchiveChatsSetting = $root.waproto.SyncActionValue.UnarchiveChatsSetting.decode(reader, reader.size(), $undefined, _depth + 1, message.unarchiveChatsSetting);
                         message._unarchiveChatsSetting = "unarchiveChatsSetting";
                         continue;
                     }
                 case 24: {
                         if (wireType !== 2)
                             break;
-                        message.primaryFeature = $root.waproto.SyncActionValue.PrimaryFeature.decode(reader, reader.uint32(), $undefined, _depth + 1, message.primaryFeature);
+                        message.primaryFeature = $root.waproto.SyncActionValue.PrimaryFeature.decode(reader, reader.size(), $undefined, _depth + 1, message.primaryFeature);
                         message._primaryFeature = "primaryFeature";
                         continue;
                     }
                 case 26: {
                         if (wireType !== 2)
                             break;
-                        message.androidUnsupportedActions = $root.waproto.SyncActionValue.AndroidUnsupportedActions.decode(reader, reader.uint32(), $undefined, _depth + 1, message.androidUnsupportedActions);
+                        message.androidUnsupportedActions = $root.waproto.SyncActionValue.AndroidUnsupportedActions.decode(reader, reader.size(), $undefined, _depth + 1, message.androidUnsupportedActions);
                         message._androidUnsupportedActions = "androidUnsupportedActions";
                         continue;
                     }
                 case 27: {
                         if (wireType !== 2)
                             break;
-                        message.agentAction = $root.waproto.SyncActionValue.AgentAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.agentAction);
+                        message.agentAction = $root.waproto.SyncActionValue.AgentAction.decode(reader, reader.size(), $undefined, _depth + 1, message.agentAction);
                         message._agentAction = "agentAction";
                         continue;
                     }
                 case 28: {
                         if (wireType !== 2)
                             break;
-                        message.subscriptionAction = $root.waproto.SyncActionValue.SubscriptionAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.subscriptionAction);
+                        message.subscriptionAction = $root.waproto.SyncActionValue.SubscriptionAction.decode(reader, reader.size(), $undefined, _depth + 1, message.subscriptionAction);
                         message._subscriptionAction = "subscriptionAction";
                         continue;
                     }
                 case 29: {
                         if (wireType !== 2)
                             break;
-                        message.userStatusMuteAction = $root.waproto.SyncActionValue.UserStatusMuteAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.userStatusMuteAction);
+                        message.userStatusMuteAction = $root.waproto.SyncActionValue.UserStatusMuteAction.decode(reader, reader.size(), $undefined, _depth + 1, message.userStatusMuteAction);
                         message._userStatusMuteAction = "userStatusMuteAction";
                         continue;
                     }
                 case 30: {
                         if (wireType !== 2)
                             break;
-                        message.timeFormatAction = $root.waproto.SyncActionValue.TimeFormatAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.timeFormatAction);
+                        message.timeFormatAction = $root.waproto.SyncActionValue.TimeFormatAction.decode(reader, reader.size(), $undefined, _depth + 1, message.timeFormatAction);
                         message._timeFormatAction = "timeFormatAction";
                         continue;
                     }
                 case 31: {
                         if (wireType !== 2)
                             break;
-                        message.nuxAction = $root.waproto.SyncActionValue.NuxAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.nuxAction);
+                        message.nuxAction = $root.waproto.SyncActionValue.NuxAction.decode(reader, reader.size(), $undefined, _depth + 1, message.nuxAction);
                         message._nuxAction = "nuxAction";
                         continue;
                     }
                 case 32: {
                         if (wireType !== 2)
                             break;
-                        message.primaryVersionAction = $root.waproto.SyncActionValue.PrimaryVersionAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.primaryVersionAction);
+                        message.primaryVersionAction = $root.waproto.SyncActionValue.PrimaryVersionAction.decode(reader, reader.size(), $undefined, _depth + 1, message.primaryVersionAction);
                         message._primaryVersionAction = "primaryVersionAction";
                         continue;
                     }
                 case 33: {
                         if (wireType !== 2)
                             break;
-                        message.stickerAction = $root.waproto.SyncActionValue.StickerAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.stickerAction);
+                        message.stickerAction = $root.waproto.SyncActionValue.StickerAction.decode(reader, reader.size(), $undefined, _depth + 1, message.stickerAction);
                         message._stickerAction = "stickerAction";
                         continue;
                     }
                 case 34: {
                         if (wireType !== 2)
                             break;
-                        message.removeRecentStickerAction = $root.waproto.SyncActionValue.RemoveRecentStickerAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.removeRecentStickerAction);
+                        message.removeRecentStickerAction = $root.waproto.SyncActionValue.RemoveRecentStickerAction.decode(reader, reader.size(), $undefined, _depth + 1, message.removeRecentStickerAction);
                         message._removeRecentStickerAction = "removeRecentStickerAction";
                         continue;
                     }
                 case 35: {
                         if (wireType !== 2)
                             break;
-                        message.chatAssignment = $root.waproto.SyncActionValue.ChatAssignmentAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chatAssignment);
+                        message.chatAssignment = $root.waproto.SyncActionValue.ChatAssignmentAction.decode(reader, reader.size(), $undefined, _depth + 1, message.chatAssignment);
                         message._chatAssignment = "chatAssignment";
                         continue;
                     }
                 case 36: {
                         if (wireType !== 2)
                             break;
-                        message.chatAssignmentOpenedStatus = $root.waproto.SyncActionValue.ChatAssignmentOpenedStatusAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chatAssignmentOpenedStatus);
+                        message.chatAssignmentOpenedStatus = $root.waproto.SyncActionValue.ChatAssignmentOpenedStatusAction.decode(reader, reader.size(), $undefined, _depth + 1, message.chatAssignmentOpenedStatus);
                         message._chatAssignmentOpenedStatus = "chatAssignmentOpenedStatus";
                         continue;
                     }
                 case 37: {
                         if (wireType !== 2)
                             break;
-                        message.pnForLidChatAction = $root.waproto.SyncActionValue.PnForLidChatAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pnForLidChatAction);
+                        message.pnForLidChatAction = $root.waproto.SyncActionValue.PnForLidChatAction.decode(reader, reader.size(), $undefined, _depth + 1, message.pnForLidChatAction);
                         message._pnForLidChatAction = "pnForLidChatAction";
                         continue;
                     }
                 case 38: {
                         if (wireType !== 2)
                             break;
-                        message.marketingMessageAction = $root.waproto.SyncActionValue.MarketingMessageAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.marketingMessageAction);
+                        message.marketingMessageAction = $root.waproto.SyncActionValue.MarketingMessageAction.decode(reader, reader.size(), $undefined, _depth + 1, message.marketingMessageAction);
                         message._marketingMessageAction = "marketingMessageAction";
                         continue;
                     }
                 case 39: {
                         if (wireType !== 2)
                             break;
-                        message.marketingMessageBroadcastAction = $root.waproto.SyncActionValue.MarketingMessageBroadcastAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.marketingMessageBroadcastAction);
+                        message.marketingMessageBroadcastAction = $root.waproto.SyncActionValue.MarketingMessageBroadcastAction.decode(reader, reader.size(), $undefined, _depth + 1, message.marketingMessageBroadcastAction);
                         message._marketingMessageBroadcastAction = "marketingMessageBroadcastAction";
                         continue;
                     }
                 case 40: {
                         if (wireType !== 2)
                             break;
-                        message.externalWebBetaAction = $root.waproto.SyncActionValue.ExternalWebBetaAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.externalWebBetaAction);
+                        message.externalWebBetaAction = $root.waproto.SyncActionValue.ExternalWebBetaAction.decode(reader, reader.size(), $undefined, _depth + 1, message.externalWebBetaAction);
                         message._externalWebBetaAction = "externalWebBetaAction";
                         continue;
                     }
                 case 41: {
                         if (wireType !== 2)
                             break;
-                        message.privacySettingRelayAllCalls = $root.waproto.SyncActionValue.PrivacySettingRelayAllCalls.decode(reader, reader.uint32(), $undefined, _depth + 1, message.privacySettingRelayAllCalls);
+                        message.privacySettingRelayAllCalls = $root.waproto.SyncActionValue.PrivacySettingRelayAllCalls.decode(reader, reader.size(), $undefined, _depth + 1, message.privacySettingRelayAllCalls);
                         message._privacySettingRelayAllCalls = "privacySettingRelayAllCalls";
                         continue;
                     }
                 case 42: {
                         if (wireType !== 2)
                             break;
-                        message.callLogAction = $root.waproto.SyncActionValue.CallLogAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.callLogAction);
+                        message.callLogAction = $root.waproto.SyncActionValue.CallLogAction.decode(reader, reader.size(), $undefined, _depth + 1, message.callLogAction);
                         message._callLogAction = "callLogAction";
                         continue;
                     }
                 case 43: {
                         if (wireType !== 2)
                             break;
-                        message.ugcBot = $root.waproto.SyncActionValue.UGCBot.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ugcBot);
+                        message.ugcBot = $root.waproto.SyncActionValue.UGCBot.decode(reader, reader.size(), $undefined, _depth + 1, message.ugcBot);
                         message._ugcBot = "ugcBot";
                         continue;
                     }
                 case 44: {
                         if (wireType !== 2)
                             break;
-                        message.statusPrivacy = $root.waproto.SyncActionValue.StatusPrivacyAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusPrivacy);
+                        message.statusPrivacy = $root.waproto.SyncActionValue.StatusPrivacyAction.decode(reader, reader.size(), $undefined, _depth + 1, message.statusPrivacy);
                         message._statusPrivacy = "statusPrivacy";
                         continue;
                     }
                 case 45: {
                         if (wireType !== 2)
                             break;
-                        message.botWelcomeRequestAction = $root.waproto.SyncActionValue.BotWelcomeRequestAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.botWelcomeRequestAction);
+                        message.botWelcomeRequestAction = $root.waproto.SyncActionValue.BotWelcomeRequestAction.decode(reader, reader.size(), $undefined, _depth + 1, message.botWelcomeRequestAction);
                         message._botWelcomeRequestAction = "botWelcomeRequestAction";
                         continue;
                     }
                 case 46: {
                         if (wireType !== 2)
                             break;
-                        message.deleteIndividualCallLog = $root.waproto.SyncActionValue.DeleteIndividualCallLogAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deleteIndividualCallLog);
+                        message.deleteIndividualCallLog = $root.waproto.SyncActionValue.DeleteIndividualCallLogAction.decode(reader, reader.size(), $undefined, _depth + 1, message.deleteIndividualCallLog);
                         message._deleteIndividualCallLog = "deleteIndividualCallLog";
                         continue;
                     }
                 case 47: {
                         if (wireType !== 2)
                             break;
-                        message.labelReorderingAction = $root.waproto.SyncActionValue.LabelReorderingAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.labelReorderingAction);
+                        message.labelReorderingAction = $root.waproto.SyncActionValue.LabelReorderingAction.decode(reader, reader.size(), $undefined, _depth + 1, message.labelReorderingAction);
                         message._labelReorderingAction = "labelReorderingAction";
                         continue;
                     }
                 case 48: {
                         if (wireType !== 2)
                             break;
-                        message.paymentInfoAction = $root.waproto.SyncActionValue.PaymentInfoAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentInfoAction);
+                        message.paymentInfoAction = $root.waproto.SyncActionValue.PaymentInfoAction.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentInfoAction);
                         message._paymentInfoAction = "paymentInfoAction";
                         continue;
                     }
                 case 49: {
                         if (wireType !== 2)
                             break;
-                        message.customPaymentMethodsAction = $root.waproto.SyncActionValue.CustomPaymentMethodsAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.customPaymentMethodsAction);
+                        message.customPaymentMethodsAction = $root.waproto.SyncActionValue.CustomPaymentMethodsAction.decode(reader, reader.size(), $undefined, _depth + 1, message.customPaymentMethodsAction);
                         message._customPaymentMethodsAction = "customPaymentMethodsAction";
                         continue;
                     }
                 case 50: {
                         if (wireType !== 2)
                             break;
-                        message.lockChatAction = $root.waproto.SyncActionValue.LockChatAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.lockChatAction);
+                        message.lockChatAction = $root.waproto.SyncActionValue.LockChatAction.decode(reader, reader.size(), $undefined, _depth + 1, message.lockChatAction);
                         message._lockChatAction = "lockChatAction";
                         continue;
                     }
                 case 51: {
                         if (wireType !== 2)
                             break;
-                        message.chatLockSettings = $root.waproto.ChatLockSettings.decode(reader, reader.uint32(), $undefined, _depth + 1, message.chatLockSettings);
+                        message.chatLockSettings = $root.waproto.ChatLockSettings.decode(reader, reader.size(), $undefined, _depth + 1, message.chatLockSettings);
                         message._chatLockSettings = "chatLockSettings";
                         continue;
                     }
                 case 52: {
                         if (wireType !== 2)
                             break;
-                        message.wamoUserIdentifierAction = $root.waproto.SyncActionValue.WamoUserIdentifierAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.wamoUserIdentifierAction);
+                        message.wamoUserIdentifierAction = $root.waproto.SyncActionValue.WamoUserIdentifierAction.decode(reader, reader.size(), $undefined, _depth + 1, message.wamoUserIdentifierAction);
                         message._wamoUserIdentifierAction = "wamoUserIdentifierAction";
                         continue;
                     }
                 case 53: {
                         if (wireType !== 2)
                             break;
-                        message.privacySettingDisableLinkPreviewsAction = $root.waproto.SyncActionValue.PrivacySettingDisableLinkPreviewsAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.privacySettingDisableLinkPreviewsAction);
+                        message.privacySettingDisableLinkPreviewsAction = $root.waproto.SyncActionValue.PrivacySettingDisableLinkPreviewsAction.decode(reader, reader.size(), $undefined, _depth + 1, message.privacySettingDisableLinkPreviewsAction);
                         message._privacySettingDisableLinkPreviewsAction = "privacySettingDisableLinkPreviewsAction";
                         continue;
                     }
                 case 54: {
                         if (wireType !== 2)
                             break;
-                        message.deviceCapabilities = $root.waproto.DeviceCapabilities.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deviceCapabilities);
+                        message.deviceCapabilities = $root.waproto.DeviceCapabilities.decode(reader, reader.size(), $undefined, _depth + 1, message.deviceCapabilities);
                         message._deviceCapabilities = "deviceCapabilities";
                         continue;
                     }
                 case 55: {
                         if (wireType !== 2)
                             break;
-                        message.noteEditAction = $root.waproto.SyncActionValue.NoteEditAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.noteEditAction);
+                        message.noteEditAction = $root.waproto.SyncActionValue.NoteEditAction.decode(reader, reader.size(), $undefined, _depth + 1, message.noteEditAction);
                         message._noteEditAction = "noteEditAction";
                         continue;
                     }
                 case 56: {
                         if (wireType !== 2)
                             break;
-                        message.favoritesAction = $root.waproto.SyncActionValue.FavoritesAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.favoritesAction);
+                        message.favoritesAction = $root.waproto.SyncActionValue.FavoritesAction.decode(reader, reader.size(), $undefined, _depth + 1, message.favoritesAction);
                         message._favoritesAction = "favoritesAction";
                         continue;
                     }
                 case 57: {
                         if (wireType !== 2)
                             break;
-                        message.merchantPaymentPartnerAction = $root.waproto.SyncActionValue.MerchantPaymentPartnerAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.merchantPaymentPartnerAction);
+                        message.merchantPaymentPartnerAction = $root.waproto.SyncActionValue.MerchantPaymentPartnerAction.decode(reader, reader.size(), $undefined, _depth + 1, message.merchantPaymentPartnerAction);
                         message._merchantPaymentPartnerAction = "merchantPaymentPartnerAction";
                         continue;
                     }
                 case 58: {
                         if (wireType !== 2)
                             break;
-                        message.waffleAccountLinkStateAction = $root.waproto.SyncActionValue.WaffleAccountLinkStateAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.waffleAccountLinkStateAction);
+                        message.waffleAccountLinkStateAction = $root.waproto.SyncActionValue.WaffleAccountLinkStateAction.decode(reader, reader.size(), $undefined, _depth + 1, message.waffleAccountLinkStateAction);
                         message._waffleAccountLinkStateAction = "waffleAccountLinkStateAction";
                         continue;
                     }
                 case 59: {
                         if (wireType !== 2)
                             break;
-                        message.usernameChatStartMode = $root.waproto.SyncActionValue.UsernameChatStartModeAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.usernameChatStartMode);
+                        message.usernameChatStartMode = $root.waproto.SyncActionValue.UsernameChatStartModeAction.decode(reader, reader.size(), $undefined, _depth + 1, message.usernameChatStartMode);
                         message._usernameChatStartMode = "usernameChatStartMode";
                         continue;
                     }
                 case 60: {
                         if (wireType !== 2)
                             break;
-                        message.notificationActivitySettingAction = $root.waproto.SyncActionValue.NotificationActivitySettingAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.notificationActivitySettingAction);
+                        message.notificationActivitySettingAction = $root.waproto.SyncActionValue.NotificationActivitySettingAction.decode(reader, reader.size(), $undefined, _depth + 1, message.notificationActivitySettingAction);
                         message._notificationActivitySettingAction = "notificationActivitySettingAction";
                         continue;
                     }
                 case 61: {
                         if (wireType !== 2)
                             break;
-                        message.lidContactAction = $root.waproto.SyncActionValue.LidContactAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.lidContactAction);
+                        message.lidContactAction = $root.waproto.SyncActionValue.LidContactAction.decode(reader, reader.size(), $undefined, _depth + 1, message.lidContactAction);
                         message._lidContactAction = "lidContactAction";
                         continue;
                     }
                 case 62: {
                         if (wireType !== 2)
                             break;
-                        message.ctwaPerCustomerDataSharingAction = $root.waproto.SyncActionValue.CtwaPerCustomerDataSharingAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctwaPerCustomerDataSharingAction);
+                        message.ctwaPerCustomerDataSharingAction = $root.waproto.SyncActionValue.CtwaPerCustomerDataSharingAction.decode(reader, reader.size(), $undefined, _depth + 1, message.ctwaPerCustomerDataSharingAction);
                         message._ctwaPerCustomerDataSharingAction = "ctwaPerCustomerDataSharingAction";
                         continue;
                     }
                 case 63: {
                         if (wireType !== 2)
                             break;
-                        message.paymentTosAction = $root.waproto.SyncActionValue.PaymentTosAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentTosAction);
+                        message.paymentTosAction = $root.waproto.SyncActionValue.PaymentTosAction.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentTosAction);
                         message._paymentTosAction = "paymentTosAction";
                         continue;
                     }
                 case 64: {
                         if (wireType !== 2)
                             break;
-                        message.privacySettingChannelsPersonalisedRecommendationAction = $root.waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.privacySettingChannelsPersonalisedRecommendationAction);
+                        message.privacySettingChannelsPersonalisedRecommendationAction = $root.waproto.SyncActionValue.PrivacySettingChannelsPersonalisedRecommendationAction.decode(reader, reader.size(), $undefined, _depth + 1, message.privacySettingChannelsPersonalisedRecommendationAction);
                         message._privacySettingChannelsPersonalisedRecommendationAction = "privacySettingChannelsPersonalisedRecommendationAction";
                         continue;
                     }
                 case 66: {
                         if (wireType !== 2)
                             break;
-                        message.detectedOutcomesStatusAction = $root.waproto.SyncActionValue.DetectedOutcomesStatusAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.detectedOutcomesStatusAction);
+                        message.detectedOutcomesStatusAction = $root.waproto.SyncActionValue.DetectedOutcomesStatusAction.decode(reader, reader.size(), $undefined, _depth + 1, message.detectedOutcomesStatusAction);
                         message._detectedOutcomesStatusAction = "detectedOutcomesStatusAction";
                         continue;
                     }
                 case 68: {
                         if (wireType !== 2)
                             break;
-                        message.maibaAiFeaturesControlAction = $root.waproto.SyncActionValue.MaibaAIFeaturesControlAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.maibaAiFeaturesControlAction);
+                        message.maibaAiFeaturesControlAction = $root.waproto.SyncActionValue.MaibaAIFeaturesControlAction.decode(reader, reader.size(), $undefined, _depth + 1, message.maibaAiFeaturesControlAction);
                         message._maibaAiFeaturesControlAction = "maibaAiFeaturesControlAction";
                         continue;
                     }
                 case 69: {
                         if (wireType !== 2)
                             break;
-                        message.businessBroadcastListAction = $root.waproto.SyncActionValue.BusinessBroadcastListAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessBroadcastListAction);
+                        message.businessBroadcastListAction = $root.waproto.SyncActionValue.BusinessBroadcastListAction.decode(reader, reader.size(), $undefined, _depth + 1, message.businessBroadcastListAction);
                         message._businessBroadcastListAction = "businessBroadcastListAction";
                         continue;
                     }
                 case 70: {
                         if (wireType !== 2)
                             break;
-                        message.musicUserIdAction = $root.waproto.SyncActionValue.MusicUserIdAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.musicUserIdAction);
+                        message.musicUserIdAction = $root.waproto.SyncActionValue.MusicUserIdAction.decode(reader, reader.size(), $undefined, _depth + 1, message.musicUserIdAction);
                         message._musicUserIdAction = "musicUserIdAction";
                         continue;
                     }
                 case 71: {
                         if (wireType !== 2)
                             break;
-                        message.statusPostOptInNotificationPreferencesAction = $root.waproto.SyncActionValue.StatusPostOptInNotificationPreferencesAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusPostOptInNotificationPreferencesAction);
+                        message.statusPostOptInNotificationPreferencesAction = $root.waproto.SyncActionValue.StatusPostOptInNotificationPreferencesAction.decode(reader, reader.size(), $undefined, _depth + 1, message.statusPostOptInNotificationPreferencesAction);
                         message._statusPostOptInNotificationPreferencesAction = "statusPostOptInNotificationPreferencesAction";
                         continue;
                     }
                 case 72: {
                         if (wireType !== 2)
                             break;
-                        message.avatarUpdatedAction = $root.waproto.SyncActionValue.AvatarUpdatedAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.avatarUpdatedAction);
+                        message.avatarUpdatedAction = $root.waproto.SyncActionValue.AvatarUpdatedAction.decode(reader, reader.size(), $undefined, _depth + 1, message.avatarUpdatedAction);
                         message._avatarUpdatedAction = "avatarUpdatedAction";
                         continue;
                     }
                 case 74: {
                         if (wireType !== 2)
                             break;
-                        message.privateProcessingSettingAction = $root.waproto.SyncActionValue.PrivateProcessingSettingAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.privateProcessingSettingAction);
+                        message.privateProcessingSettingAction = $root.waproto.SyncActionValue.PrivateProcessingSettingAction.decode(reader, reader.size(), $undefined, _depth + 1, message.privateProcessingSettingAction);
                         message._privateProcessingSettingAction = "privateProcessingSettingAction";
                         continue;
                     }
                 case 75: {
                         if (wireType !== 2)
                             break;
-                        message.newsletterSavedInterestsAction = $root.waproto.SyncActionValue.NewsletterSavedInterestsAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.newsletterSavedInterestsAction);
+                        message.newsletterSavedInterestsAction = $root.waproto.SyncActionValue.NewsletterSavedInterestsAction.decode(reader, reader.size(), $undefined, _depth + 1, message.newsletterSavedInterestsAction);
                         message._newsletterSavedInterestsAction = "newsletterSavedInterestsAction";
                         continue;
                     }
                 case 76: {
                         if (wireType !== 2)
                             break;
-                        message.aiThreadRenameAction = $root.waproto.SyncActionValue.AiThreadRenameAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.aiThreadRenameAction);
+                        message.aiThreadRenameAction = $root.waproto.SyncActionValue.AiThreadRenameAction.decode(reader, reader.size(), $undefined, _depth + 1, message.aiThreadRenameAction);
                         message._aiThreadRenameAction = "aiThreadRenameAction";
                         continue;
                     }
                 case 77: {
                         if (wireType !== 2)
                             break;
-                        message.interactiveMessageAction = $root.waproto.SyncActionValue.InteractiveMessageAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.interactiveMessageAction);
+                        message.interactiveMessageAction = $root.waproto.SyncActionValue.InteractiveMessageAction.decode(reader, reader.size(), $undefined, _depth + 1, message.interactiveMessageAction);
                         message._interactiveMessageAction = "interactiveMessageAction";
                         continue;
                     }
                 case 78: {
                         if (wireType !== 2)
                             break;
-                        message.settingsSyncAction = $root.waproto.SyncActionValue.SettingsSyncAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.settingsSyncAction);
+                        message.settingsSyncAction = $root.waproto.SyncActionValue.SettingsSyncAction.decode(reader, reader.size(), $undefined, _depth + 1, message.settingsSyncAction);
                         message._settingsSyncAction = "settingsSyncAction";
                         continue;
                     }
                 case 79: {
                         if (wireType !== 2)
                             break;
-                        message.outContactAction = $root.waproto.SyncActionValue.OutContactAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.outContactAction);
+                        message.outContactAction = $root.waproto.SyncActionValue.OutContactAction.decode(reader, reader.size(), $undefined, _depth + 1, message.outContactAction);
                         message._outContactAction = "outContactAction";
                         continue;
                     }
                 case 80: {
                         if (wireType !== 2)
                             break;
-                        message.nctSaltSyncAction = $root.waproto.SyncActionValue.NctSaltSyncAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.nctSaltSyncAction);
+                        message.nctSaltSyncAction = $root.waproto.SyncActionValue.NctSaltSyncAction.decode(reader, reader.size(), $undefined, _depth + 1, message.nctSaltSyncAction);
                         message._nctSaltSyncAction = "nctSaltSyncAction";
                         continue;
                     }
                 case 81: {
                         if (wireType !== 2)
                             break;
-                        message.businessBroadcastCampaignAction = $root.waproto.SyncActionValue.BusinessBroadcastCampaignAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessBroadcastCampaignAction);
+                        message.businessBroadcastCampaignAction = $root.waproto.SyncActionValue.BusinessBroadcastCampaignAction.decode(reader, reader.size(), $undefined, _depth + 1, message.businessBroadcastCampaignAction);
                         message._businessBroadcastCampaignAction = "businessBroadcastCampaignAction";
                         continue;
                     }
                 case 82: {
                         if (wireType !== 2)
                             break;
-                        message.businessBroadcastInsightsAction = $root.waproto.SyncActionValue.BusinessBroadcastInsightsAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessBroadcastInsightsAction);
+                        message.businessBroadcastInsightsAction = $root.waproto.SyncActionValue.BusinessBroadcastInsightsAction.decode(reader, reader.size(), $undefined, _depth + 1, message.businessBroadcastInsightsAction);
                         message._businessBroadcastInsightsAction = "businessBroadcastInsightsAction";
                         continue;
                     }
                 case 83: {
                         if (wireType !== 2)
                             break;
-                        message.customerDataAction = $root.waproto.SyncActionValue.CustomerDataAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.customerDataAction);
+                        message.customerDataAction = $root.waproto.SyncActionValue.CustomerDataAction.decode(reader, reader.size(), $undefined, _depth + 1, message.customerDataAction);
                         message._customerDataAction = "customerDataAction";
                         continue;
                     }
                 case 84: {
                         if (wireType !== 2)
                             break;
-                        message.subscriptionsSyncV2Action = $root.waproto.SyncActionValue.SubscriptionsSyncV2Action.decode(reader, reader.uint32(), $undefined, _depth + 1, message.subscriptionsSyncV2Action);
+                        message.subscriptionsSyncV2Action = $root.waproto.SyncActionValue.SubscriptionsSyncV2Action.decode(reader, reader.size(), $undefined, _depth + 1, message.subscriptionsSyncV2Action);
                         message._subscriptionsSyncV2Action = "subscriptionsSyncV2Action";
                         continue;
                     }
                 case 85: {
                         if (wireType !== 2)
                             break;
-                        message.threadPinAction = $root.waproto.SyncActionValue.ThreadPinAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.threadPinAction);
+                        message.threadPinAction = $root.waproto.SyncActionValue.ThreadPinAction.decode(reader, reader.size(), $undefined, _depth + 1, message.threadPinAction);
                         message._threadPinAction = "threadPinAction";
                         continue;
                     }
                 case 86: {
                         if (wireType !== 2)
                             break;
-                        message.autoOrganizeBusinessChatSetting = $root.waproto.SyncActionValue.AutoOrganizeBusinessChatSetting.decode(reader, reader.uint32(), $undefined, _depth + 1, message.autoOrganizeBusinessChatSetting);
+                        message.autoOrganizeBusinessChatSetting = $root.waproto.SyncActionValue.AutoOrganizeBusinessChatSetting.decode(reader, reader.size(), $undefined, _depth + 1, message.autoOrganizeBusinessChatSetting);
                         message._autoOrganizeBusinessChatSetting = "autoOrganizeBusinessChatSetting";
                         continue;
                     }
                 case 87: {
                         if (wireType !== 2)
                             break;
-                        message.bizAiSettingsNudgeAction = $root.waproto.SyncActionValue.BizAISettingsNudgeAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bizAiSettingsNudgeAction);
+                        message.bizAiSettingsNudgeAction = $root.waproto.SyncActionValue.BizAISettingsNudgeAction.decode(reader, reader.size(), $undefined, _depth + 1, message.bizAiSettingsNudgeAction);
                         message._bizAiSettingsNudgeAction = "bizAiSettingsNudgeAction";
                         continue;
                     }
                 case 88: {
                         if (wireType !== 2)
                             break;
-                        message.coexV2VersionAction = $root.waproto.SyncActionValue.CoexV2VersionAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.coexV2VersionAction);
+                        message.coexV2VersionAction = $root.waproto.SyncActionValue.CoexV2VersionAction.decode(reader, reader.size(), $undefined, _depth + 1, message.coexV2VersionAction);
                         message._coexV2VersionAction = "coexV2VersionAction";
                         continue;
                     }
                 case 89: {
                         if (wireType !== 2)
                             break;
-                        message.wasaRootSecretAction = $root.waproto.SyncActionValue.WASARootSecretAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.wasaRootSecretAction);
+                        message.wasaRootSecretAction = $root.waproto.SyncActionValue.WASARootSecretAction.decode(reader, reader.size(), $undefined, _depth + 1, message.wasaRootSecretAction);
                         message._wasaRootSecretAction = "wasaRootSecretAction";
                         continue;
                     }
                 case 90: {
                         if (wireType !== 2)
                             break;
-                        message.bubbleLockMessageAction = $root.waproto.SyncActionValue.BubbleLockMessageAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bubbleLockMessageAction);
+                        message.bubbleLockMessageAction = $root.waproto.SyncActionValue.BubbleLockMessageAction.decode(reader, reader.size(), $undefined, _depth + 1, message.bubbleLockMessageAction);
                         message._bubbleLockMessageAction = "bubbleLockMessageAction";
                         continue;
                     }
                 case 91: {
                         if (wireType !== 2)
                             break;
-                        message.labelSublistAction = $root.waproto.SyncActionValue.LabelSublistAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.labelSublistAction);
+                        message.labelSublistAction = $root.waproto.SyncActionValue.LabelSublistAction.decode(reader, reader.size(), $undefined, _depth + 1, message.labelSublistAction);
                         message._labelSublistAction = "labelSublistAction";
                         continue;
                     }
                 case 92: {
                         if (wireType !== 2)
                             break;
-                        message.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.decode(reader, reader.uint32(), $undefined, _depth + 1, message.deviceCapabilitiesV2);
+                        message.deviceCapabilitiesV2 = $root.waproto.DeviceCapabilities.decode(reader, reader.size(), $undefined, _depth + 1, message.deviceCapabilitiesV2);
                         message._deviceCapabilitiesV2 = "deviceCapabilitiesV2";
                         continue;
                     }
                 case 93: {
                         if (wireType !== 2)
                             break;
-                        message.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.ctwaMessageReceivedAction);
+                        message.ctwaMessageReceivedAction = $root.waproto.SyncActionValue.CtwaMessageReceivedAction.decode(reader, reader.size(), $undefined, _depth + 1, message.ctwaMessageReceivedAction);
                         message._ctwaMessageReceivedAction = "ctwaMessageReceivedAction";
                         continue;
                     }
                 case 94: {
                         if (wireType !== 2)
                             break;
-                        message.sharedDeviceAllowlistAction = $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.sharedDeviceAllowlistAction);
+                        message.sharedDeviceAllowlistAction = $root.waproto.SyncActionValue.SharedDeviceAllowlistAction.decode(reader, reader.size(), $undefined, _depth + 1, message.sharedDeviceAllowlistAction);
                         message._sharedDeviceAllowlistAction = "sharedDeviceAllowlistAction";
                         continue;
                     }
                 case 95: {
                         if (wireType !== 2)
                             break;
-                        message.contactManagerMetadataAction = $root.waproto.SyncActionValue.ContactManagerMetadataAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.contactManagerMetadataAction);
+                        message.contactManagerMetadataAction = $root.waproto.SyncActionValue.ContactManagerMetadataAction.decode(reader, reader.size(), $undefined, _depth + 1, message.contactManagerMetadataAction);
                         message._contactManagerMetadataAction = "contactManagerMetadataAction";
                         continue;
                     }
                 case 96: {
                         if (wireType !== 2)
                             break;
-                        message.businessFolderActivationAction = $root.waproto.SyncActionValue.BusinessFolderActivationAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.businessFolderActivationAction);
+                        message.businessFolderActivationAction = $root.waproto.SyncActionValue.BusinessFolderActivationAction.decode(reader, reader.size(), $undefined, _depth + 1, message.businessFolderActivationAction);
                         message._businessFolderActivationAction = "businessFolderActivationAction";
                         continue;
                     }
                 case 97: {
                         if (wireType !== 2)
                             break;
-                        message.groupHistoryToggleAction = $root.waproto.SyncActionValue.GroupHistoryToggleAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupHistoryToggleAction);
+                        message.groupHistoryToggleAction = $root.waproto.SyncActionValue.GroupHistoryToggleAction.decode(reader, reader.size(), $undefined, _depth + 1, message.groupHistoryToggleAction);
                         message._groupHistoryToggleAction = "groupHistoryToggleAction";
                         continue;
                     }
                 case 98: {
                         if (wireType !== 2)
                             break;
-                        message.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.bbProPendingCustomerBaseAction);
+                        message.bbProPendingCustomerBaseAction = $root.waproto.SyncActionValue.BBProPendingCustomerBaseAction.decode(reader, reader.size(), $undefined, _depth + 1, message.bbProPendingCustomerBaseAction);
                         message._bbProPendingCustomerBaseAction = "bbProPendingCustomerBaseAction";
                         continue;
                     }
                 case 99: {
                         if (wireType !== 2)
                             break;
-                        message.communityNestingStateAction = $root.waproto.SyncActionValue.CommunityNestingStateAction.decode(reader, reader.uint32(), $undefined, _depth + 1, message.communityNestingStateAction);
+                        message.communityNestingStateAction = $root.waproto.SyncActionValue.CommunityNestingStateAction.decode(reader, reader.size(), $undefined, _depth + 1, message.communityNestingStateAction);
                         message._communityNestingStateAction = "communityNestingStateAction";
                         continue;
                     }
@@ -263131,7 +263131,7 @@ $root.waproto = (function() {
         SyncActionValue.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -264805,7 +264805,7 @@ $root.waproto = (function() {
             AgentAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -265105,7 +265105,7 @@ $root.waproto = (function() {
             AiThreadRenameAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -265387,7 +265387,7 @@ $root.waproto = (function() {
             AndroidUnsupportedActions.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -265659,7 +265659,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageRange);
+                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.size(), $undefined, _depth + 1, message.messageRange);
                             message._messageRange = "messageRange";
                             continue;
                         }
@@ -265693,7 +265693,7 @@ $root.waproto = (function() {
             ArchiveChatAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -265990,7 +265990,7 @@ $root.waproto = (function() {
             AutoOrganizeBusinessChatSetting.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -266260,7 +266260,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.recentAvatarStickers && message.recentAvatarStickers.length))
                                 message.recentAvatarStickers = [];
-                            message.recentAvatarStickers.push($root.waproto.SyncActionValue.StickerAction.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.recentAvatarStickers.push($root.waproto.SyncActionValue.StickerAction.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -266293,7 +266293,7 @@ $root.waproto = (function() {
             AvatarUpdatedAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -266632,7 +266632,7 @@ $root.waproto = (function() {
             BBProPendingCustomerBaseAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -266962,7 +266962,7 @@ $root.waproto = (function() {
             BizAISettingsNudgeAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -267341,7 +267341,7 @@ $root.waproto = (function() {
             BotWelcomeRequestAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -267641,7 +267641,7 @@ $root.waproto = (function() {
             BroadcastListParticipant.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -267931,7 +267931,7 @@ $root.waproto = (function() {
             BubbleLockMessageAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -268213,7 +268213,7 @@ $root.waproto = (function() {
             BusinessBroadcastAssociationAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -268735,7 +268735,7 @@ $root.waproto = (function() {
             BusinessBroadcastCampaignAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -269343,7 +269343,7 @@ $root.waproto = (function() {
             BusinessBroadcastInsightsAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -269713,7 +269713,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.participants && message.participants.length))
                                 message.participants = [];
-                            message.participants.push($root.waproto.SyncActionValue.BroadcastListParticipant.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.participants.push($root.waproto.SyncActionValue.BroadcastListParticipant.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 3: {
@@ -269775,7 +269775,7 @@ $root.waproto = (function() {
             BusinessBroadcastListAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -270131,7 +270131,7 @@ $root.waproto = (function() {
             BusinessFolderActivationAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -270379,7 +270379,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.callLogRecord = $root.waproto.CallLogRecord.decode(reader, reader.uint32(), $undefined, _depth + 1, message.callLogRecord);
+                            message.callLogRecord = $root.waproto.CallLogRecord.decode(reader, reader.size(), $undefined, _depth + 1, message.callLogRecord);
                             message._callLogRecord = "callLogRecord";
                             continue;
                         }
@@ -270413,7 +270413,7 @@ $root.waproto = (function() {
             CallLogAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -270701,7 +270701,7 @@ $root.waproto = (function() {
             ChatAssignmentAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -270983,7 +270983,7 @@ $root.waproto = (function() {
             ChatAssignmentOpenedStatusAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -271231,7 +271231,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageRange);
+                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.size(), $undefined, _depth + 1, message.messageRange);
                             message._messageRange = "messageRange";
                             continue;
                         }
@@ -271265,7 +271265,7 @@ $root.waproto = (function() {
             ClearChatAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -271553,7 +271553,7 @@ $root.waproto = (function() {
             CoexV2VersionAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -271847,7 +271847,7 @@ $root.waproto = (function() {
             CommunityNestingStateAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -272304,7 +272304,7 @@ $root.waproto = (function() {
             ContactAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -272640,7 +272640,7 @@ $root.waproto = (function() {
             ContactManagerMetadataAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -272922,7 +272922,7 @@ $root.waproto = (function() {
             CtwaMessageReceivedAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -273204,7 +273204,7 @@ $root.waproto = (function() {
             CtwaPerCustomerDataSharingAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -273495,7 +273495,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.metadata && message.metadata.length))
                                 message.metadata = [];
-                            message.metadata.push($root.waproto.SyncActionValue.CustomPaymentMethodMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.metadata.push($root.waproto.SyncActionValue.CustomPaymentMethodMetadata.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -273534,7 +273534,7 @@ $root.waproto = (function() {
             CustomPaymentMethod.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -273864,7 +273864,7 @@ $root.waproto = (function() {
             CustomPaymentMethodMetadata.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -274113,7 +274113,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.customPaymentMethods && message.customPaymentMethods.length))
                                 message.customPaymentMethods = [];
-                            message.customPaymentMethods.push($root.waproto.SyncActionValue.CustomPaymentMethod.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.customPaymentMethods.push($root.waproto.SyncActionValue.CustomPaymentMethod.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -274146,7 +274146,7 @@ $root.waproto = (function() {
             CustomPaymentMethodsAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -274684,7 +274684,7 @@ $root.waproto = (function() {
             CustomerDataAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -275070,7 +275070,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageRange);
+                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.size(), $undefined, _depth + 1, message.messageRange);
                             message._messageRange = "messageRange";
                             continue;
                         }
@@ -275104,7 +275104,7 @@ $root.waproto = (function() {
             DeleteChatAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -275416,7 +275416,7 @@ $root.waproto = (function() {
             DeleteIndividualCallLogAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -275731,7 +275731,7 @@ $root.waproto = (function() {
             DeleteMessageForMeAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -276034,7 +276034,7 @@ $root.waproto = (function() {
             DetectedOutcomesStatusAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -276316,7 +276316,7 @@ $root.waproto = (function() {
             ExternalWebBetaAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -276559,7 +276559,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.favorites && message.favorites.length))
                                 message.favorites = [];
-                            message.favorites.push($root.waproto.SyncActionValue.FavoritesAction.Favorite.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.favorites.push($root.waproto.SyncActionValue.FavoritesAction.Favorite.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -276592,7 +276592,7 @@ $root.waproto = (function() {
             FavoritesAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -276887,7 +276887,7 @@ $root.waproto = (function() {
                 Favorite.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -277172,7 +277172,7 @@ $root.waproto = (function() {
             GroupHistoryToggleAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -277503,7 +277503,7 @@ $root.waproto = (function() {
             InteractiveMessageAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -277812,7 +277812,7 @@ $root.waproto = (function() {
             KeyExpiration.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -278118,7 +278118,7 @@ $root.waproto = (function() {
             LabelAssociationAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -278601,7 +278601,7 @@ $root.waproto = (function() {
             LabelEditAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -279105,7 +279105,7 @@ $root.waproto = (function() {
             LabelReorderingAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -279398,7 +279398,7 @@ $root.waproto = (function() {
             LabelSublistAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -279752,7 +279752,7 @@ $root.waproto = (function() {
             LidContactAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -280061,7 +280061,7 @@ $root.waproto = (function() {
             LocaleSetting.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -280343,7 +280343,7 @@ $root.waproto = (function() {
             LockChatAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -280649,7 +280649,7 @@ $root.waproto = (function() {
             MaibaAIFeaturesControlAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -280992,7 +280992,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.uint32(), $undefined, _depth + 1, message.messageRange);
+                            message.messageRange = $root.waproto.SyncActionValue.SyncActionMessageRange.decode(reader, reader.size(), $undefined, _depth + 1, message.messageRange);
                             message._messageRange = "messageRange";
                             continue;
                         }
@@ -281026,7 +281026,7 @@ $root.waproto = (function() {
             MarkChatAsReadAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -281467,7 +281467,7 @@ $root.waproto = (function() {
             MarketingMessageAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -281846,7 +281846,7 @@ $root.waproto = (function() {
             MarketingMessageBroadcastAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -282188,7 +282188,7 @@ $root.waproto = (function() {
             MerchantPaymentPartnerAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -282508,7 +282508,7 @@ $root.waproto = (function() {
                                 break;
                             if (message.musicUserIdMap === $util.emptyObject)
                                 message.musicUserIdMap = {};
-                            var end2 = reader.uint32() + reader.pos;
+                            var end2 = reader.size() + reader.pos;
                             if (end2 > reader.len)
                                 throw $RangeError("index out of range");
                             reader.len = end2;
@@ -282569,7 +282569,7 @@ $root.waproto = (function() {
             MusicUserIdAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -282952,7 +282952,7 @@ $root.waproto = (function() {
             MuteAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -283285,7 +283285,7 @@ $root.waproto = (function() {
             NctSaltSyncAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -283570,7 +283570,7 @@ $root.waproto = (function() {
             NewsletterSavedInterestsAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -283948,7 +283948,7 @@ $root.waproto = (function() {
             NoteEditAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -284303,7 +284303,7 @@ $root.waproto = (function() {
             NotificationActivitySettingAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -284622,7 +284622,7 @@ $root.waproto = (function() {
             NuxAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -284928,7 +284928,7 @@ $root.waproto = (function() {
             OutContactAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -285219,7 +285219,7 @@ $root.waproto = (function() {
             PaymentInfoAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -285510,7 +285510,7 @@ $root.waproto = (function() {
             PaymentTosAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -285817,7 +285817,7 @@ $root.waproto = (function() {
             PinAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -286099,7 +286099,7 @@ $root.waproto = (function() {
             PnForLidChatAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -286375,7 +286375,7 @@ $root.waproto = (function() {
             PrimaryFeature.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -286668,7 +286668,7 @@ $root.waproto = (function() {
             PrimaryVersionAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -286950,7 +286950,7 @@ $root.waproto = (function() {
             PrivacySettingChannelsPersonalisedRecommendationAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -287232,7 +287232,7 @@ $root.waproto = (function() {
             PrivacySettingDisableLinkPreviewsAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -287514,7 +287514,7 @@ $root.waproto = (function() {
             PrivacySettingRelayAllCalls.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -287796,7 +287796,7 @@ $root.waproto = (function() {
             PrivateProcessingSettingAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -288109,7 +288109,7 @@ $root.waproto = (function() {
             PushNameSetting.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -288505,7 +288505,7 @@ $root.waproto = (function() {
             QuickReplyAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -288817,7 +288817,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.weights && message.weights.length))
                                 message.weights = [];
-                            message.weights.push($root.waproto.RecentEmojiWeight.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.weights.push($root.waproto.RecentEmojiWeight.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -288850,7 +288850,7 @@ $root.waproto = (function() {
             RecentEmojiWeightsAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -289148,7 +289148,7 @@ $root.waproto = (function() {
             RemoveRecentStickerAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -290234,7 +290234,7 @@ $root.waproto = (function() {
             SettingsSyncAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -291000,7 +291000,7 @@ $root.waproto = (function() {
             SharedDeviceAllowlistAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -291282,7 +291282,7 @@ $root.waproto = (function() {
             StarAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -291564,7 +291564,7 @@ $root.waproto = (function() {
             StatusPostOptInNotificationPreferencesAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -291915,7 +291915,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.customLists && message.customLists.length))
                                 message.customLists = [];
-                            message.customLists.push($root.waproto.SyncActionValue.StatusPrivacyAction.CustomList.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.customLists.push($root.waproto.SyncActionValue.StatusPrivacyAction.CustomList.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 6: {
@@ -291962,7 +291962,7 @@ $root.waproto = (function() {
             StatusPrivacyAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -292466,7 +292466,7 @@ $root.waproto = (function() {
                 CustomList.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -293107,7 +293107,7 @@ $root.waproto = (function() {
             StickerAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -293563,7 +293563,7 @@ $root.waproto = (function() {
             SubscriptionAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -293849,7 +293849,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.subscriptions && message.subscriptions.length))
                                 message.subscriptions = [];
-                            message.subscriptions.push($root.waproto.SyncActionValue.SubscriptionsSyncV2Action.SubscriptionInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.subscriptions.push($root.waproto.SyncActionValue.SubscriptionsSyncV2Action.SubscriptionInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 2: {
@@ -293857,7 +293857,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.paidFeature && message.paidFeature.length))
                                 message.paidFeature = [];
-                            message.paidFeature.push($root.waproto.SyncActionValue.SubscriptionsSyncV2Action.PaidFeature.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.paidFeature.push($root.waproto.SyncActionValue.SubscriptionsSyncV2Action.PaidFeature.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -293890,7 +293890,7 @@ $root.waproto = (function() {
             SubscriptionsSyncV2Action.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -294283,7 +294283,7 @@ $root.waproto = (function() {
                 PaidFeature.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -294772,7 +294772,7 @@ $root.waproto = (function() {
                 SubscriptionInfo.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -295139,7 +295139,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                            message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                             message._key = "key";
                             continue;
                         }
@@ -295180,7 +295180,7 @@ $root.waproto = (function() {
             SyncActionMessage.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -295501,7 +295501,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.messages && message.messages.length))
                                 message.messages = [];
-                            message.messages.push($root.waproto.SyncActionValue.SyncActionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.messages.push($root.waproto.SyncActionValue.SyncActionMessage.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -295534,7 +295534,7 @@ $root.waproto = (function() {
             SyncActionMessageRange.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -295875,7 +295875,7 @@ $root.waproto = (function() {
             ThreadPinAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -296157,7 +296157,7 @@ $root.waproto = (function() {
             TimeFormatAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -296439,7 +296439,7 @@ $root.waproto = (function() {
             UGCBot.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -296724,7 +296724,7 @@ $root.waproto = (function() {
             UnarchiveChatsSetting.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -297006,7 +297006,7 @@ $root.waproto = (function() {
             UserStatusMuteAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -297288,7 +297288,7 @@ $root.waproto = (function() {
             UsernameChatStartModeAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -297556,7 +297556,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.secrets && message.secrets.length))
                                 message.secrets = [];
-                            message.secrets.push($root.waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.secrets.push($root.waproto.SyncActionValue.WASARootSecretAction.RootSecretEntry.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     }
@@ -297589,7 +297589,7 @@ $root.waproto = (function() {
             WASARootSecretAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -297956,7 +297956,7 @@ $root.waproto = (function() {
                 RootSecretEntry.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -298308,7 +298308,7 @@ $root.waproto = (function() {
             WaffleAccountLinkStateAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -298621,7 +298621,7 @@ $root.waproto = (function() {
             WamoUserIdentifierAction.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -298906,7 +298906,7 @@ $root.waproto = (function() {
         SyncdIndex.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -299181,7 +299181,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.record = $root.waproto.SyncdRecord.decode(reader, reader.uint32(), $undefined, _depth + 1, message.record);
+                        message.record = $root.waproto.SyncdRecord.decode(reader, reader.size(), $undefined, _depth + 1, message.record);
                         message._record = "record";
                         continue;
                     }
@@ -299215,7 +299215,7 @@ $root.waproto = (function() {
         SyncdMutation.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -299498,7 +299498,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.mutations && message.mutations.length))
                             message.mutations = [];
-                        message.mutations.push($root.waproto.SyncdMutation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.mutations.push($root.waproto.SyncdMutation.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -299531,7 +299531,7 @@ $root.waproto = (function() {
         SyncdMutations.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -299927,7 +299927,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.version = $root.waproto.SyncdVersion.decode(reader, reader.uint32(), $undefined, _depth + 1, message.version);
+                        message.version = $root.waproto.SyncdVersion.decode(reader, reader.size(), $undefined, _depth + 1, message.version);
                         message._version = "version";
                         continue;
                     }
@@ -299936,13 +299936,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.mutations && message.mutations.length))
                             message.mutations = [];
-                        message.mutations.push($root.waproto.SyncdMutation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.mutations.push($root.waproto.SyncdMutation.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.externalMutations = $root.waproto.ExternalBlobReference.decode(reader, reader.uint32(), $undefined, _depth + 1, message.externalMutations);
+                        message.externalMutations = $root.waproto.ExternalBlobReference.decode(reader, reader.size(), $undefined, _depth + 1, message.externalMutations);
                         message._externalMutations = "externalMutations";
                         continue;
                     }
@@ -299963,14 +299963,14 @@ $root.waproto = (function() {
                 case 6: {
                         if (wireType !== 2)
                             break;
-                        message.keyId = $root.waproto.KeyId.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keyId);
+                        message.keyId = $root.waproto.KeyId.decode(reader, reader.size(), $undefined, _depth + 1, message.keyId);
                         message._keyId = "keyId";
                         continue;
                     }
                 case 7: {
                         if (wireType !== 2)
                             break;
-                        message.exitCode = $root.waproto.ExitCode.decode(reader, reader.uint32(), $undefined, _depth + 1, message.exitCode);
+                        message.exitCode = $root.waproto.ExitCode.decode(reader, reader.size(), $undefined, _depth + 1, message.exitCode);
                         message._exitCode = "exitCode";
                         continue;
                     }
@@ -300018,7 +300018,7 @@ $root.waproto = (function() {
         SyncdPatch.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -300427,7 +300427,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.value = $root.waproto.SyncActionData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.value);
+                        message.value = $root.waproto.SyncActionData.decode(reader, reader.size(), $undefined, _depth + 1, message.value);
                         message._value = "value";
                         continue;
                     }
@@ -300475,7 +300475,7 @@ $root.waproto = (function() {
         SyncdPlainTextRecord.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -300787,21 +300787,21 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.index = $root.waproto.SyncdIndex.decode(reader, reader.uint32(), $undefined, _depth + 1, message.index);
+                        message.index = $root.waproto.SyncdIndex.decode(reader, reader.size(), $undefined, _depth + 1, message.index);
                         message._index = "index";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.value = $root.waproto.SyncdValue.decode(reader, reader.uint32(), $undefined, _depth + 1, message.value);
+                        message.value = $root.waproto.SyncdValue.decode(reader, reader.size(), $undefined, _depth + 1, message.value);
                         message._value = "value";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.keyId = $root.waproto.KeyId.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keyId);
+                        message.keyId = $root.waproto.KeyId.decode(reader, reader.size(), $undefined, _depth + 1, message.keyId);
                         message._keyId = "keyId";
                         continue;
                     }
@@ -300835,7 +300835,7 @@ $root.waproto = (function() {
         SyncdRecord.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -301166,7 +301166,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.version = $root.waproto.SyncdVersion.decode(reader, reader.uint32(), $undefined, _depth + 1, message.version);
+                        message.version = $root.waproto.SyncdVersion.decode(reader, reader.size(), $undefined, _depth + 1, message.version);
                         message._version = "version";
                         continue;
                     }
@@ -301175,7 +301175,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.records && message.records.length))
                             message.records = [];
-                        message.records.push($root.waproto.SyncdRecord.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.records.push($root.waproto.SyncdRecord.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 3: {
@@ -301188,7 +301188,7 @@ $root.waproto = (function() {
                 case 4: {
                         if (wireType !== 2)
                             break;
-                        message.keyId = $root.waproto.KeyId.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keyId);
+                        message.keyId = $root.waproto.KeyId.decode(reader, reader.size(), $undefined, _depth + 1, message.keyId);
                         message._keyId = "keyId";
                         continue;
                     }
@@ -301222,7 +301222,7 @@ $root.waproto = (function() {
         SyncdSnapshot.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -301582,7 +301582,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.version = $root.waproto.SyncdVersion.decode(reader, reader.uint32(), $undefined, _depth + 1, message.version);
+                        message.version = $root.waproto.SyncdVersion.decode(reader, reader.size(), $undefined, _depth + 1, message.version);
                         message._version = "version";
                         continue;
                     }
@@ -301598,7 +301598,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.mutationRecords && message.mutationRecords.length))
                             message.mutationRecords = [];
-                        message.mutationRecords.push($root.waproto.SyncdPlainTextRecord.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.mutationRecords.push($root.waproto.SyncdPlainTextRecord.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 4: {
@@ -301638,7 +301638,7 @@ $root.waproto = (function() {
         SyncdSnapshotRecovery.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -301973,7 +301973,7 @@ $root.waproto = (function() {
         SyncdValue.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -302258,7 +302258,7 @@ $root.waproto = (function() {
         SyncdVersion.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -302576,7 +302576,7 @@ $root.waproto = (function() {
         TapLinkAction.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -302893,21 +302893,21 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.quickReplyButton = $root.waproto.TemplateButton.QuickReplyButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quickReplyButton);
+                        message.quickReplyButton = $root.waproto.TemplateButton.QuickReplyButton.decode(reader, reader.size(), $undefined, _depth + 1, message.quickReplyButton);
                         message.button = "quickReplyButton";
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.urlButton = $root.waproto.TemplateButton.URLButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.urlButton);
+                        message.urlButton = $root.waproto.TemplateButton.URLButton.decode(reader, reader.size(), $undefined, _depth + 1, message.urlButton);
                         message.button = "urlButton";
                         continue;
                     }
                 case 3: {
                         if (wireType !== 2)
                             break;
-                        message.callButton = $root.waproto.TemplateButton.CallButton.decode(reader, reader.uint32(), $undefined, _depth + 1, message.callButton);
+                        message.callButton = $root.waproto.TemplateButton.CallButton.decode(reader, reader.size(), $undefined, _depth + 1, message.callButton);
                         message.button = "callButton";
                         continue;
                     }
@@ -302941,7 +302941,7 @@ $root.waproto = (function() {
         TemplateButton.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -303265,14 +303265,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.displayText = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.displayText);
+                            message.displayText = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.displayText);
                             message._displayText = "displayText";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.phoneNumber = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.phoneNumber);
+                            message.phoneNumber = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.phoneNumber);
                             message._phoneNumber = "phoneNumber";
                             continue;
                         }
@@ -303306,7 +303306,7 @@ $root.waproto = (function() {
             CallButton.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -303596,7 +303596,7 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.displayText = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.displayText);
+                            message.displayText = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.displayText);
                             message._displayText = "displayText";
                             continue;
                         }
@@ -303637,7 +303637,7 @@ $root.waproto = (function() {
             QuickReplyButton.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -303921,14 +303921,14 @@ $root.waproto = (function() {
                     case 1: {
                             if (wireType !== 2)
                                 break;
-                            message.displayText = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.displayText);
+                            message.displayText = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.displayText);
                             message._displayText = "displayText";
                             continue;
                         }
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.url = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.url);
+                            message.url = $root.waproto.Message.HighlyStructuredMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.url);
                             message._url = "url";
                             continue;
                         }
@@ -303962,7 +303962,7 @@ $root.waproto = (function() {
             URLButton.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -304258,7 +304258,7 @@ $root.waproto = (function() {
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.threadKey = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.threadKey);
+                        message.threadKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.threadKey);
                         message._threadKey = "threadKey";
                         continue;
                     }
@@ -304292,7 +304292,7 @@ $root.waproto = (function() {
         ThreadID.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -304623,13 +304623,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.messages && message.messages.length))
                             message.messages = [];
-                        message.messages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.messages.push($root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.parentMessage = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.parentMessage);
+                        message.parentMessage = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.parentMessage);
                         message._parentMessage = "parentMessage";
                         continue;
                     }
@@ -304670,7 +304670,7 @@ $root.waproto = (function() {
         UnCountedAssociatedMessageList.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -305069,13 +305069,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.messages && message.messages.length))
                             message.messages = [];
-                        message.messages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.messages.push($root.waproto.WebMessageInfoWithMessageBytes.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.parentMessage = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.parentMessage);
+                        message.parentMessage = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.parentMessage);
                         message._parentMessage = "parentMessage";
                         continue;
                     }
@@ -305109,7 +305109,7 @@ $root.waproto = (function() {
         UnCountedAssociatedMessageListWithMessageBytes.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -305384,7 +305384,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.urlTrackingMapElements && message.urlTrackingMapElements.length))
                             message.urlTrackingMapElements = [];
-                        message.urlTrackingMapElements.push($root.waproto.UrlTrackingMap.UrlTrackingMapElement.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.urlTrackingMapElements.push($root.waproto.UrlTrackingMap.UrlTrackingMapElement.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -305417,7 +305417,7 @@ $root.waproto = (function() {
         UrlTrackingMap.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -305784,7 +305784,7 @@ $root.waproto = (function() {
             UrlTrackingMapElement.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -306131,7 +306131,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.transformerArg && message.transformerArg.length))
                             message.transformerArg = [];
-                        message.transformerArg.push($root.waproto.UserPassword.TransformerArg.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.transformerArg.push($root.waproto.UserPassword.TransformerArg.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 4: {
@@ -306171,7 +306171,7 @@ $root.waproto = (function() {
         UserPassword.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -306547,7 +306547,7 @@ $root.waproto = (function() {
                     case 2: {
                             if (wireType !== 2)
                                 break;
-                            message.value = $root.waproto.UserPassword.TransformerArg.Value.decode(reader, reader.uint32(), $undefined, _depth + 1, message.value);
+                            message.value = $root.waproto.UserPassword.TransformerArg.Value.decode(reader, reader.size(), $undefined, _depth + 1, message.value);
                             message._value = "value";
                             continue;
                         }
@@ -306581,7 +306581,7 @@ $root.waproto = (function() {
             TransformerArg.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -306905,7 +306905,7 @@ $root.waproto = (function() {
                 Value.decodeDelimited = function(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
-                    return this.decode(reader, reader.uint32());
+                    return this.decode(reader, reader.size());
                 };
 
                 /**
@@ -307321,7 +307321,7 @@ $root.waproto = (function() {
         UserReceipt.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -307755,7 +307755,7 @@ $root.waproto = (function() {
         VerifiedNameCertificate.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -308114,7 +308114,7 @@ $root.waproto = (function() {
                                 break;
                             if (!(message.localizedNames && message.localizedNames.length))
                                 message.localizedNames = [];
-                            message.localizedNames.push($root.waproto.LocalizedName.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                            message.localizedNames.push($root.waproto.LocalizedName.decode(reader, reader.size(), $undefined, _depth + 1));
                             continue;
                         }
                     case 10: {
@@ -308154,7 +308154,7 @@ $root.waproto = (function() {
             Details.decodeDelimited = function(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
+                return this.decode(reader, reader.size());
             };
 
             /**
@@ -308564,7 +308564,7 @@ $root.waproto = (function() {
         WallpaperSettings.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -309920,7 +309920,7 @@ $root.waproto = (function() {
         WebFeatures.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -312699,13 +312699,13 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                        message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                         continue;
                     }
                 case 2: {
                         if (wireType !== 2)
                             break;
-                        message.message = $root.waproto.Message.decode(reader, reader.uint32(), $undefined, _depth + 1, message.message);
+                        message.message = $root.waproto.Message.decode(reader, reader.size(), $undefined, _depth + 1, message.message);
                         message._message = "message";
                         continue;
                     }
@@ -312833,21 +312833,21 @@ $root.waproto = (function() {
                 case 29: {
                         if (wireType !== 2)
                             break;
-                        message.paymentInfo = $root.waproto.PaymentInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.paymentInfo);
+                        message.paymentInfo = $root.waproto.PaymentInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentInfo);
                         message._paymentInfo = "paymentInfo";
                         continue;
                     }
                 case 30: {
                         if (wireType !== 2)
                             break;
-                        message.finalLiveLocation = $root.waproto.Message.LiveLocationMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.finalLiveLocation);
+                        message.finalLiveLocation = $root.waproto.Message.LiveLocationMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.finalLiveLocation);
                         message._finalLiveLocation = "finalLiveLocation";
                         continue;
                     }
                 case 31: {
                         if (wireType !== 2)
                             break;
-                        message.quotedPaymentInfo = $root.waproto.PaymentInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedPaymentInfo);
+                        message.quotedPaymentInfo = $root.waproto.PaymentInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedPaymentInfo);
                         message._quotedPaymentInfo = "quotedPaymentInfo";
                         continue;
                     }
@@ -312896,14 +312896,14 @@ $root.waproto = (function() {
                 case 38: {
                         if (wireType !== 2)
                             break;
-                        message.mediaData = $root.waproto.MediaData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.mediaData);
+                        message.mediaData = $root.waproto.MediaData.decode(reader, reader.size(), $undefined, _depth + 1, message.mediaData);
                         message._mediaData = "mediaData";
                         continue;
                     }
                 case 39: {
                         if (wireType !== 2)
                             break;
-                        message.photoChange = $root.waproto.PhotoChange.decode(reader, reader.uint32(), $undefined, _depth + 1, message.photoChange);
+                        message.photoChange = $root.waproto.PhotoChange.decode(reader, reader.size(), $undefined, _depth + 1, message.photoChange);
                         message._photoChange = "photoChange";
                         continue;
                     }
@@ -312912,7 +312912,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.userReceipt && message.userReceipt.length))
                             message.userReceipt = [];
-                        message.userReceipt.push($root.waproto.UserReceipt.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.userReceipt.push($root.waproto.UserReceipt.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 41: {
@@ -312920,13 +312920,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.reactions && message.reactions.length))
                             message.reactions = [];
-                        message.reactions.push($root.waproto.Reaction.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.reactions.push($root.waproto.Reaction.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 42: {
                         if (wireType !== 2)
                             break;
-                        message.quotedStickerData = $root.waproto.MediaData.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quotedStickerData);
+                        message.quotedStickerData = $root.waproto.MediaData.decode(reader, reader.size(), $undefined, _depth + 1, message.quotedStickerData);
                         message._quotedStickerData = "quotedStickerData";
                         continue;
                     }
@@ -312940,7 +312940,7 @@ $root.waproto = (function() {
                 case 44: {
                         if (wireType !== 2)
                             break;
-                        message.statusPsa = $root.waproto.StatusPSA.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusPsa);
+                        message.statusPsa = $root.waproto.StatusPSA.decode(reader, reader.size(), $undefined, _depth + 1, message.statusPsa);
                         message._statusPsa = "statusPsa";
                         continue;
                     }
@@ -312949,13 +312949,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.pollUpdates && message.pollUpdates.length))
                             message.pollUpdates = [];
-                        message.pollUpdates.push($root.waproto.PollUpdate.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.pollUpdates.push($root.waproto.PollUpdate.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 46: {
                         if (wireType !== 2)
                             break;
-                        message.pollAdditionalMetadata = $root.waproto.PollAdditionalMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pollAdditionalMetadata);
+                        message.pollAdditionalMetadata = $root.waproto.PollAdditionalMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.pollAdditionalMetadata);
                         message._pollAdditionalMetadata = "pollAdditionalMetadata";
                         continue;
                     }
@@ -312983,7 +312983,7 @@ $root.waproto = (function() {
                 case 50: {
                         if (wireType !== 2)
                             break;
-                        message.keepInChat = $root.waproto.KeepInChat.decode(reader, reader.uint32(), $undefined, _depth + 1, message.keepInChat);
+                        message.keepInChat = $root.waproto.KeepInChat.decode(reader, reader.size(), $undefined, _depth + 1, message.keepInChat);
                         message._keepInChat = "keepInChat";
                         continue;
                     }
@@ -313004,14 +313004,14 @@ $root.waproto = (function() {
                 case 54: {
                         if (wireType !== 2)
                             break;
-                        message.pinInChat = $root.waproto.PinInChat.decode(reader, reader.uint32(), $undefined, _depth + 1, message.pinInChat);
+                        message.pinInChat = $root.waproto.PinInChat.decode(reader, reader.size(), $undefined, _depth + 1, message.pinInChat);
                         message._pinInChat = "pinInChat";
                         continue;
                     }
                 case 55: {
                         if (wireType !== 2)
                             break;
-                        message.premiumMessageInfo = $root.waproto.PremiumMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.premiumMessageInfo);
+                        message.premiumMessageInfo = $root.waproto.PremiumMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.premiumMessageInfo);
                         message._premiumMessageInfo = "premiumMessageInfo";
                         continue;
                     }
@@ -313039,7 +313039,7 @@ $root.waproto = (function() {
                 case 59: {
                         if (wireType !== 2)
                             break;
-                        message.commentMetadata = $root.waproto.CommentMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.commentMetadata);
+                        message.commentMetadata = $root.waproto.CommentMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.commentMetadata);
                         message._commentMetadata = "commentMetadata";
                         continue;
                     }
@@ -313048,13 +313048,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.eventResponses && message.eventResponses.length))
                             message.eventResponses = [];
-                        message.eventResponses.push($root.waproto.EventResponse.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.eventResponses.push($root.waproto.EventResponse.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 62: {
                         if (wireType !== 2)
                             break;
-                        message.reportingTokenInfo = $root.waproto.ReportingTokenInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.reportingTokenInfo);
+                        message.reportingTokenInfo = $root.waproto.ReportingTokenInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.reportingTokenInfo);
                         message._reportingTokenInfo = "reportingTokenInfo";
                         continue;
                     }
@@ -313068,7 +313068,7 @@ $root.waproto = (function() {
                 case 64: {
                         if (wireType !== 2)
                             break;
-                        message.eventAdditionalMetadata = $root.waproto.EventAdditionalMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventAdditionalMetadata);
+                        message.eventAdditionalMetadata = $root.waproto.EventAdditionalMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.eventAdditionalMetadata);
                         message._eventAdditionalMetadata = "eventAdditionalMetadata";
                         continue;
                     }
@@ -313090,7 +313090,7 @@ $root.waproto = (function() {
                 case 67: {
                         if (wireType !== 2)
                             break;
-                        message.targetMessageId = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.targetMessageId);
+                        message.targetMessageId = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.targetMessageId);
                         message._targetMessageId = "targetMessageId";
                         continue;
                     }
@@ -313099,13 +313099,13 @@ $root.waproto = (function() {
                             break;
                         if (!(message.messageAddOns && message.messageAddOns.length))
                             message.messageAddOns = [];
-                        message.messageAddOns.push($root.waproto.MessageAddOn.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.messageAddOns.push($root.waproto.MessageAddOn.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 69: {
                         if (wireType !== 2)
                             break;
-                        message.statusMentionMessageInfo = $root.waproto.StatusMentionMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.statusMentionMessageInfo);
+                        message.statusMentionMessageInfo = $root.waproto.StatusMentionMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.statusMentionMessageInfo);
                         message._statusMentionMessageInfo = "statusMentionMessageInfo";
                         continue;
                     }
@@ -313129,7 +313129,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.supportAiCitations && message.supportAiCitations.length))
                             message.supportAiCitations = [];
-                        message.supportAiCitations.push($root.waproto.Citation.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.supportAiCitations.push($root.waproto.Citation.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 case 73: {
@@ -313142,28 +313142,28 @@ $root.waproto = (function() {
                 case 74: {
                         if (wireType !== 2)
                             break;
-                        message.groupHistoryIndividualMessageInfo = $root.waproto.GroupHistoryIndividualMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupHistoryIndividualMessageInfo);
+                        message.groupHistoryIndividualMessageInfo = $root.waproto.GroupHistoryIndividualMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.groupHistoryIndividualMessageInfo);
                         message._groupHistoryIndividualMessageInfo = "groupHistoryIndividualMessageInfo";
                         continue;
                     }
                 case 75: {
                         if (wireType !== 2)
                             break;
-                        message.groupHistoryBundleInfo = $root.waproto.GroupHistoryBundleInfo.decode(reader, reader.uint32(), $undefined, _depth + 1, message.groupHistoryBundleInfo);
+                        message.groupHistoryBundleInfo = $root.waproto.GroupHistoryBundleInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.groupHistoryBundleInfo);
                         message._groupHistoryBundleInfo = "groupHistoryBundleInfo";
                         continue;
                     }
                 case 76: {
                         if (wireType !== 2)
                             break;
-                        message.interactiveMessageAdditionalMetadata = $root.waproto.InteractiveMessageAdditionalMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.interactiveMessageAdditionalMetadata);
+                        message.interactiveMessageAdditionalMetadata = $root.waproto.InteractiveMessageAdditionalMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.interactiveMessageAdditionalMetadata);
                         message._interactiveMessageAdditionalMetadata = "interactiveMessageAdditionalMetadata";
                         continue;
                     }
                 case 77: {
                         if (wireType !== 2)
                             break;
-                        message.quarantinedMessage = $root.waproto.QuarantinedMessage.decode(reader, reader.uint32(), $undefined, _depth + 1, message.quarantinedMessage);
+                        message.quarantinedMessage = $root.waproto.QuarantinedMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.quarantinedMessage);
                         message._quarantinedMessage = "quarantinedMessage";
                         continue;
                     }
@@ -313191,7 +313191,7 @@ $root.waproto = (function() {
                 case 81: {
                         if (wireType !== 2)
                             break;
-                        message.scheduledMessageMetadata = $root.waproto.ScheduledMessageMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.scheduledMessageMetadata);
+                        message.scheduledMessageMetadata = $root.waproto.ScheduledMessageMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.scheduledMessageMetadata);
                         message._scheduledMessageMetadata = "scheduledMessageMetadata";
                         continue;
                     }
@@ -313213,7 +313213,7 @@ $root.waproto = (function() {
                 case 84: {
                         if (wireType !== 2)
                             break;
-                        message.eventInviteAdditionalMetadata = $root.waproto.EventInviteAdditionalMetadata.decode(reader, reader.uint32(), $undefined, _depth + 1, message.eventInviteAdditionalMetadata);
+                        message.eventInviteAdditionalMetadata = $root.waproto.EventInviteAdditionalMetadata.decode(reader, reader.size(), $undefined, _depth + 1, message.eventInviteAdditionalMetadata);
                         message._eventInviteAdditionalMetadata = "eventInviteAdditionalMetadata";
                         continue;
                     }
@@ -313249,7 +313249,7 @@ $root.waproto = (function() {
         WebMessageInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -316168,7 +316168,7 @@ $root.waproto = (function() {
                 case 1: {
                         if (wireType !== 2)
                             break;
-                        message.key = $root.waproto.MessageKey.decode(reader, reader.uint32(), $undefined, _depth + 1, message.key);
+                        message.key = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.key);
                         message._key = "key";
                         continue;
                     }
@@ -316209,7 +316209,7 @@ $root.waproto = (function() {
         WebMessageInfoWithMessageBytes.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -316551,7 +316551,7 @@ $root.waproto = (function() {
                             break;
                         if (!(message.notifyMessages && message.notifyMessages.length))
                             message.notifyMessages = [];
-                        message.notifyMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.uint32(), $undefined, _depth + 1));
+                        message.notifyMessages.push($root.waproto.WebMessageInfo.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
                 }
@@ -316584,7 +316584,7 @@ $root.waproto = (function() {
         WebNotificationsInfo.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -316913,7 +316913,7 @@ $root.waproto = (function() {
         WrapTransportSigningPublicKeyInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -317193,7 +317193,7 @@ $root.waproto = (function() {
         WrapTransportSigningPublicKeyResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -317473,7 +317473,7 @@ $root.waproto = (function() {
         WrapTransportSigningSecretKeyInput.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
@@ -317753,7 +317753,7 @@ $root.waproto = (function() {
         WrapTransportSigningSecretKeyResult.decodeDelimited = function(reader) {
             if (!(reader instanceof $Reader))
                 reader = new $Reader(reader);
-            return this.decode(reader, reader.uint32());
+            return this.decode(reader, reader.size());
         };
 
         /**
