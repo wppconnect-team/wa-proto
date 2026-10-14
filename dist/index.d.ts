@@ -7320,7 +7320,10 @@ export namespace waproto {
             AI_STUDY_CENTER_ENABLED = 80,
 
             /** AI_MUSE_JARVIS_SCHEMA_ENABLED value */
-            AI_MUSE_JARVIS_SCHEMA_ENABLED = 81
+            AI_MUSE_JARVIS_SCHEMA_ENABLED = 81,
+
+            /** AI_STUDY_QUIZ_ENABLED value */
+            AI_STUDY_QUIZ_ENABLED = 82
         }
     }
 
@@ -11190,7 +11193,10 @@ export namespace waproto {
         CONTACTS_TAB = 57,
 
         /** NEW_3P_AGENT_CREATION value */
-        NEW_3P_AGENT_CREATION = 58
+        NEW_3P_AGENT_CREATION = 58,
+
+        /** SHARE value */
+        SHARE = 59
     }
 
     /**
@@ -107594,6 +107600,21 @@ export namespace waproto {
 
             /** BB_PRO_BROADCAST_CHAT_CARD value */
             BB_PRO_BROADCAST_CHAT_CARD = 272,
+
+            /** BOT_PROACTIVE_MESSAGE_ENABLED value */
+            BOT_PROACTIVE_MESSAGE_ENABLED = 273,
+
+            /** BOT_PROACTIVE_MESSAGE_DISABLED value */
+            BOT_PROACTIVE_MESSAGE_DISABLED = 274,
+
+            /** BOT_PROACTIVE_MESSAGE_FIRST_TIME value */
+            BOT_PROACTIVE_MESSAGE_FIRST_TIME = 275,
+
+            /** DYNAMIC_AUDIENCE_LIST_CREATE value */
+            DYNAMIC_AUDIENCE_LIST_CREATE = 276,
+
+            /** DYNAMIC_AUDIENCE_LIST_UPDATE_LINK value */
+            DYNAMIC_AUDIENCE_LIST_UPDATE_LINK = 277,
 
             /** CHAT_WITH_BUSINESS_IN_DIRECTORY value */
             CHAT_WITH_BUSINESS_IN_DIRECTORY = 283,
