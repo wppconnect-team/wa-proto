@@ -86478,6 +86478,10 @@ $root.waproto = (function() {
      * @property {number} FB_PROFILE_DIRECTORY_ITEM=1013 FB_PROFILE_DIRECTORY_ITEM value
      * @property {number} FB_FEED_POST_REACTION_REPLY=1014 FB_FEED_POST_REACTION_REPLY value
      * @property {number} FB_QUICKSNAP_REPLY=1015 FB_QUICKSNAP_REPLY value
+     * @property {number} MSG_STATUS_REPLY=1016 MSG_STATUS_REPLY value
+     * @property {number} FB_GROUP_POST=1017 FB_GROUP_POST value
+     * @property {number} FB_DAILY_GAME_CHALLENGE=1018 FB_DAILY_GAME_CHALLENGE value
+     * @property {number} FB_QUICKSNAP_REACTION_REPLY=1019 FB_QUICKSNAP_REACTION_REPLY value
      * @property {number} MSG_EXTERNAL_LINK_SHARE=2000 MSG_EXTERNAL_LINK_SHARE value
      * @property {number} MSG_P2P_PAYMENT=2001 MSG_P2P_PAYMENT value
      * @property {number} MSG_LOCATION_SHARING=2002 MSG_LOCATION_SHARING value
@@ -86514,6 +86518,10 @@ $root.waproto = (function() {
      * @property {number} MSG_MOMENT_LINK=2061 MSG_MOMENT_LINK value
      * @property {number} MSG_HORIZON_WEEL=2062 MSG_HORIZON_WEEL value
      * @property {number} MSG_MOMENT_ADDED=2063 MSG_MOMENT_ADDED value
+     * @property {number} MSG_STORYTELLING_PROMPT=2067 MSG_STORYTELLING_PROMPT value
+     * @property {number} MSG_SUPERVISION_INVITE=2068 MSG_SUPERVISION_INVITE value
+     * @property {number} MSG_SOCIAL_CUE_MLE=2069 MSG_SOCIAL_CUE_MLE value
+     * @property {number} MSG_SOCIAL_CUE_POST=2070 MSG_SOCIAL_CUE_POST value
      * @property {number} RTC_AUDIO_CALL=3000 RTC_AUDIO_CALL value
      * @property {number} RTC_VIDEO_CALL=3001 RTC_VIDEO_CALL value
      * @property {number} RTC_MISSED_AUDIO_CALL=3002 RTC_MISSED_AUDIO_CALL value
@@ -86564,6 +86572,10 @@ $root.waproto = (function() {
         values[valuesById[1013] = "FB_PROFILE_DIRECTORY_ITEM"] = 1013;
         values[valuesById[1014] = "FB_FEED_POST_REACTION_REPLY"] = 1014;
         values[valuesById[1015] = "FB_QUICKSNAP_REPLY"] = 1015;
+        values[valuesById[1016] = "MSG_STATUS_REPLY"] = 1016;
+        values[valuesById[1017] = "FB_GROUP_POST"] = 1017;
+        values[valuesById[1018] = "FB_DAILY_GAME_CHALLENGE"] = 1018;
+        values[valuesById[1019] = "FB_QUICKSNAP_REACTION_REPLY"] = 1019;
         values[valuesById[2000] = "MSG_EXTERNAL_LINK_SHARE"] = 2000;
         values[valuesById[2001] = "MSG_P2P_PAYMENT"] = 2001;
         values[valuesById[2002] = "MSG_LOCATION_SHARING"] = 2002;
@@ -86600,6 +86612,10 @@ $root.waproto = (function() {
         values[valuesById[2061] = "MSG_MOMENT_LINK"] = 2061;
         values[valuesById[2062] = "MSG_HORIZON_WEEL"] = 2062;
         values[valuesById[2063] = "MSG_MOMENT_ADDED"] = 2063;
+        values[valuesById[2067] = "MSG_STORYTELLING_PROMPT"] = 2067;
+        values[valuesById[2068] = "MSG_SUPERVISION_INVITE"] = 2068;
+        values[valuesById[2069] = "MSG_SOCIAL_CUE_MLE"] = 2069;
+        values[valuesById[2070] = "MSG_SOCIAL_CUE_POST"] = 2070;
         values[valuesById[3000] = "RTC_AUDIO_CALL"] = 3000;
         values[valuesById[3001] = "RTC_VIDEO_CALL"] = 3001;
         values[valuesById[3002] = "RTC_MISSED_AUDIO_CALL"] = 3002;
@@ -94309,6 +94325,22 @@ $root.waproto = (function() {
             case 1015:
                 message.targetType = 1015;
                 break;
+            case "MSG_STATUS_REPLY":
+            case 1016:
+                message.targetType = 1016;
+                break;
+            case "FB_GROUP_POST":
+            case 1017:
+                message.targetType = 1017;
+                break;
+            case "FB_DAILY_GAME_CHALLENGE":
+            case 1018:
+                message.targetType = 1018;
+                break;
+            case "FB_QUICKSNAP_REACTION_REPLY":
+            case 1019:
+                message.targetType = 1019;
+                break;
             case "MSG_EXTERNAL_LINK_SHARE":
             case 2000:
                 message.targetType = 2000;
@@ -94452,6 +94484,22 @@ $root.waproto = (function() {
             case "MSG_MOMENT_ADDED":
             case 2063:
                 message.targetType = 2063;
+                break;
+            case "MSG_STORYTELLING_PROMPT":
+            case 2067:
+                message.targetType = 2067;
+                break;
+            case "MSG_SUPERVISION_INVITE":
+            case 2068:
+                message.targetType = 2068;
+                break;
+            case "MSG_SOCIAL_CUE_MLE":
+            case 2069:
+                message.targetType = 2069;
+                break;
+            case "MSG_SOCIAL_CUE_POST":
+            case 2070:
+                message.targetType = 2070;
                 break;
             case "RTC_AUDIO_CALL":
             case 3000:

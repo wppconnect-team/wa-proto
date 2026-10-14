@@ -29692,6 +29692,18 @@ export namespace waproto {
         /** FB_QUICKSNAP_REPLY value */
         FB_QUICKSNAP_REPLY = 1015,
 
+        /** MSG_STATUS_REPLY value */
+        MSG_STATUS_REPLY = 1016,
+
+        /** FB_GROUP_POST value */
+        FB_GROUP_POST = 1017,
+
+        /** FB_DAILY_GAME_CHALLENGE value */
+        FB_DAILY_GAME_CHALLENGE = 1018,
+
+        /** FB_QUICKSNAP_REACTION_REPLY value */
+        FB_QUICKSNAP_REACTION_REPLY = 1019,
+
         /** MSG_EXTERNAL_LINK_SHARE value */
         MSG_EXTERNAL_LINK_SHARE = 2000,
 
@@ -29799,6 +29811,18 @@ export namespace waproto {
 
         /** MSG_MOMENT_ADDED value */
         MSG_MOMENT_ADDED = 2063,
+
+        /** MSG_STORYTELLING_PROMPT value */
+        MSG_STORYTELLING_PROMPT = 2067,
+
+        /** MSG_SUPERVISION_INVITE value */
+        MSG_SUPERVISION_INVITE = 2068,
+
+        /** MSG_SOCIAL_CUE_MLE value */
+        MSG_SOCIAL_CUE_MLE = 2069,
+
+        /** MSG_SOCIAL_CUE_POST value */
+        MSG_SOCIAL_CUE_POST = 2070,
 
         /** RTC_AUDIO_CALL value */
         RTC_AUDIO_CALL = 3000,
