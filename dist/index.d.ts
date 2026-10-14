@@ -29397,7 +29397,10 @@ export namespace waproto {
             WAIL_WAI = 28,
 
             /** WAIL_ALEXA value */
-            WAIL_ALEXA = 29
+            WAIL_ALEXA = 29,
+
+            /** AUTOMOTIVE value */
+            AUTOMOTIVE = 30
         }
     }
 
@@ -107564,6 +107567,9 @@ export namespace waproto {
 
             /** BIZ_POST_SEND_OPT_OUT value */
             BIZ_POST_SEND_OPT_OUT = 271,
+
+            /** BB_PRO_BROADCAST_CHAT_CARD value */
+            BB_PRO_BROADCAST_CHAT_CARD = 272,
 
             /** CHAT_WITH_BUSINESS_IN_DIRECTORY value */
             CHAT_WITH_BUSINESS_IN_DIRECTORY = 283,

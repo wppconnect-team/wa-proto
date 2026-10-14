@@ -57213,6 +57213,10 @@ $root.waproto = (function() {
             case 29:
                 message.deviceType = 29;
                 break;
+            case "AUTOMOTIVE":
+            case 30:
+                message.deviceType = 30;
+                break;
             default:
                 if (typeof object.deviceType === "number" && (object.deviceType | 0) === object.deviceType)
                     message.deviceType = object.deviceType;
@@ -84245,6 +84249,10 @@ $root.waproto = (function() {
             case 29:
                 message.platformType = 29;
                 break;
+            case "AUTOMOTIVE":
+            case 30:
+                message.platformType = 30;
+                break;
             default:
                 if (typeof object.platformType === "number" && (object.platformType | 0) === object.platformType)
                     message.platformType = object.platformType;
@@ -85911,6 +85919,7 @@ $root.waproto = (function() {
          * @property {number} BUSINESS_BACK_OFFICE=27 BUSINESS_BACK_OFFICE value
          * @property {number} WAIL_WAI=28 WAIL_WAI value
          * @property {number} WAIL_ALEXA=29 WAIL_ALEXA value
+         * @property {number} AUTOMOTIVE=30 AUTOMOTIVE value
          */
         DeviceProps.PlatformType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -85944,6 +85953,7 @@ $root.waproto = (function() {
             values[valuesById[27] = "BUSINESS_BACK_OFFICE"] = 27;
             values[valuesById[28] = "WAIL_WAI"] = 28;
             values[valuesById[29] = "WAIL_ALEXA"] = 29;
+            values[valuesById[30] = "AUTOMOTIVE"] = 30;
             return values;
         })();
 
@@ -315727,6 +315737,10 @@ $root.waproto = (function() {
             case 271:
                 message.messageStubType = 271;
                 break;
+            case "BB_PRO_BROADCAST_CHAT_CARD":
+            case 272:
+                message.messageStubType = 272;
+                break;
             case "CHAT_WITH_BUSINESS_IN_DIRECTORY":
             case 283:
                 message.messageStubType = 283;
@@ -316626,6 +316640,7 @@ $root.waproto = (function() {
          * @property {number} CAMEO_CHAT_EXPIRED=267 CAMEO_CHAT_EXPIRED value
          * @property {number} GROUP_PUSHNAME_SHARED=270 GROUP_PUSHNAME_SHARED value
          * @property {number} BIZ_POST_SEND_OPT_OUT=271 BIZ_POST_SEND_OPT_OUT value
+         * @property {number} BB_PRO_BROADCAST_CHAT_CARD=272 BB_PRO_BROADCAST_CHAT_CARD value
          * @property {number} CHAT_WITH_BUSINESS_IN_DIRECTORY=283 CHAT_WITH_BUSINESS_IN_DIRECTORY value
          * @property {number} META_AI_THREAD_CREATED=284 META_AI_THREAD_CREATED value
          * @property {number} META_AI_CONNECTOR_LINKED=285 META_AI_CONNECTOR_LINKED value
@@ -316888,6 +316903,7 @@ $root.waproto = (function() {
             values[valuesById[267] = "CAMEO_CHAT_EXPIRED"] = 267;
             values[valuesById[270] = "GROUP_PUSHNAME_SHARED"] = 270;
             values[valuesById[271] = "BIZ_POST_SEND_OPT_OUT"] = 271;
+            values[valuesById[272] = "BB_PRO_BROADCAST_CHAT_CARD"] = 272;
             values[valuesById[283] = "CHAT_WITH_BUSINESS_IN_DIRECTORY"] = 283;
             values[valuesById[284] = "META_AI_THREAD_CREATED"] = 284;
             values[valuesById[285] = "META_AI_CONNECTOR_LINKED"] = 285;
