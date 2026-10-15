@@ -10423,7 +10423,10 @@ export namespace waproto {
         enum BotMessageOriginType {
 
             /** BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED value */
-            BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED = 0
+            BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED = 0,
+
+            /** BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME value */
+            BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME = 1
         }
     }
 
@@ -18657,7 +18660,10 @@ export namespace waproto {
                 WORK_ANDROID = 39,
 
                 /** WORK_IOS value */
-                WORK_IOS = 40
+                WORK_IOS = 40,
+
+                /** AUTOMOTIVE value */
+                AUTOMOTIVE = 41
             }
 
             /** ReleaseChannel enum. */

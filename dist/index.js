@@ -28397,6 +28397,10 @@ $root.waproto = (function() {
             case 0:
                 message.type = 0;
                 break;
+            case "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME":
+            case 1:
+                message.type = 1;
+                break;
             default:
                 if (typeof object.type === "number" && (object.type | 0) === object.type)
                     message.type = object.type;
@@ -28456,10 +28460,12 @@ $root.waproto = (function() {
          * @name waproto.BotMessageOrigin.BotMessageOriginType
          * @enum {number}
          * @property {number} BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED=0 BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED value
+         * @property {number} BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME=1 BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME value
          */
         BotMessageOrigin.BotMessageOriginType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
             values[valuesById[0] = "BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED"] = 0;
+            values[valuesById[1] = "BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME"] = 1;
             return values;
         })();
 
@@ -52526,6 +52532,10 @@ $root.waproto = (function() {
                 case 40:
                     message.platform = 40;
                     break;
+                case "AUTOMOTIVE":
+                case 41:
+                    message.platform = 41;
+                    break;
                 default:
                     if (typeof object.platform === "number" && (object.platform | 0) === object.platform)
                         message.platform = object.platform;
@@ -53205,6 +53215,7 @@ $root.waproto = (function() {
              * @property {number} WAIL=38 WAIL value
              * @property {number} WORK_ANDROID=39 WORK_ANDROID value
              * @property {number} WORK_IOS=40 WORK_IOS value
+             * @property {number} AUTOMOTIVE=41 AUTOMOTIVE value
              */
             UserAgent.Platform = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -53249,6 +53260,7 @@ $root.waproto = (function() {
                 values[valuesById[38] = "WAIL"] = 38;
                 values[valuesById[39] = "WORK_ANDROID"] = 39;
                 values[valuesById[40] = "WORK_IOS"] = 40;
+                values[valuesById[41] = "AUTOMOTIVE"] = 41;
                 return values;
             })();
 

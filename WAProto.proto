@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050469598
+/// WhatsApp Version: 2.3000.1050487101
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -698,6 +698,7 @@ message BotMessageOrigin {
     optional BotMessageOriginType type = 1;
     enum BotMessageOriginType {
         BOT_MESSAGE_ORIGIN_TYPE_AI_INITIATED = 0;
+        BOT_MESSAGE_ORIGIN_TYPE_META_AI_THREAD_WELCOME = 1;
     }
 }
 
@@ -1421,6 +1422,7 @@ message ClientPayload {
             WAIL = 38;
             WORK_ANDROID = 39;
             WORK_IOS = 40;
+            AUTOMOTIVE = 41;
         }
         enum ReleaseChannel {
             RELEASE = 0;
