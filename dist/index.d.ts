@@ -78987,6 +78987,9 @@ export namespace waproto {
         /** COMMUNITY_NESTING_STATE_ACTION value */
         COMMUNITY_NESTING_STATE_ACTION = 99,
 
+        /** SHARED_DEVICE_SECRET_ACTION value */
+        SHARED_DEVICE_SECRET_ACTION = 100,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -89289,6 +89292,9 @@ export namespace waproto {
         /** SyncActionValue communityNestingStateAction. */
         communityNestingStateAction?: (waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
 
+        /** SyncActionValue sharedDeviceSecretAction. */
+        sharedDeviceSecretAction?: (waproto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -89643,6 +89649,9 @@ export namespace waproto {
             /** SyncActionValue communityNestingStateAction */
             communityNestingStateAction?: (waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null);
 
+            /** SyncActionValue sharedDeviceSecretAction */
+            sharedDeviceSecretAction?: (waproto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -89739,6 +89748,7 @@ export namespace waproto {
           groupHistoryToggleAction?: waproto.SyncActionValue.GroupHistoryToggleAction.$Shape|null;
           bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
           communityNestingStateAction?: waproto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
+          sharedDeviceSecretAction?: waproto.SyncActionValue.SharedDeviceSecretAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -99789,6 +99799,129 @@ export namespace waproto {
 
             /** Shape of a SharedDeviceAllowlistAction. */
             type $Shape = waproto.SyncActionValue.SharedDeviceAllowlistAction.$Properties;
+        }
+
+        /**
+         * Properties of a SharedDeviceSecretAction.
+         * @deprecated Use waproto.SyncActionValue.SharedDeviceSecretAction.$Properties instead.
+         */
+        interface ISharedDeviceSecretAction extends waproto.SyncActionValue.SharedDeviceSecretAction.$Properties {
+        }
+
+        /** Represents a SharedDeviceSecretAction. */
+        class SharedDeviceSecretAction {
+
+            /**
+             * Constructs a new SharedDeviceSecretAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.SharedDeviceSecretAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** SharedDeviceSecretAction secret. */
+            secret?: (Uint8Array|null);
+
+            /** SharedDeviceSecretAction ttlMs. */
+            ttlMs?: (number|Long|null);
+
+            /**
+             * Creates a new SharedDeviceSecretAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns SharedDeviceSecretAction instance
+             */
+            static create(properties: waproto.SyncActionValue.SharedDeviceSecretAction.$Shape): waproto.SyncActionValue.SharedDeviceSecretAction & waproto.SyncActionValue.SharedDeviceSecretAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.SharedDeviceSecretAction.$Properties): waproto.SyncActionValue.SharedDeviceSecretAction;
+
+            /**
+             * Encodes the specified SharedDeviceSecretAction message. Does not implicitly {@link waproto.SyncActionValue.SharedDeviceSecretAction.verify|verify} messages.
+             * @param message SharedDeviceSecretAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.SharedDeviceSecretAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified SharedDeviceSecretAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.SharedDeviceSecretAction.verify|verify} messages.
+             * @param message SharedDeviceSecretAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.SharedDeviceSecretAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a SharedDeviceSecretAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.SharedDeviceSecretAction & waproto.SyncActionValue.SharedDeviceSecretAction.$Shape} SharedDeviceSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.SharedDeviceSecretAction & waproto.SyncActionValue.SharedDeviceSecretAction.$Shape;
+
+            /**
+             * Decodes a SharedDeviceSecretAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.SharedDeviceSecretAction & waproto.SyncActionValue.SharedDeviceSecretAction.$Shape} SharedDeviceSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.SharedDeviceSecretAction & waproto.SyncActionValue.SharedDeviceSecretAction.$Shape;
+
+            /**
+             * Verifies a SharedDeviceSecretAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a SharedDeviceSecretAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns SharedDeviceSecretAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.SharedDeviceSecretAction;
+
+            /**
+             * Creates a plain object from a SharedDeviceSecretAction message. Also converts values to other types if specified.
+             * @param message SharedDeviceSecretAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.SharedDeviceSecretAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this SharedDeviceSecretAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for SharedDeviceSecretAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace SharedDeviceSecretAction {
+
+            /** Properties of a SharedDeviceSecretAction. */
+            interface $Properties {
+
+                /** SharedDeviceSecretAction secret */
+                secret?: (Uint8Array|null);
+
+                /** SharedDeviceSecretAction ttlMs */
+                ttlMs?: (number|Long|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a SharedDeviceSecretAction. */
+            type $Shape = waproto.SyncActionValue.SharedDeviceSecretAction.$Properties;
         }
 
         /**

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050611685
+/// WhatsApp Version: 2.3000.1050642531
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -5695,6 +5695,7 @@ enum MutationProps {
     GROUP_HISTORY_TOGGLE_ACTION = 97;
     BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98;
     COMMUNITY_NESTING_STATE_ACTION = 99;
+    SHARED_DEVICE_SECRET_ACTION = 100;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -6440,6 +6441,7 @@ message SyncActionValue {
     optional GroupHistoryToggleAction groupHistoryToggleAction = 97;
     optional BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
     optional CommunityNestingStateAction communityNestingStateAction = 99;
+    optional SharedDeviceSecretAction sharedDeviceSecretAction = 100;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceId = 2;
@@ -7021,6 +7023,11 @@ message SyncActionValue {
     
     message SharedDeviceAllowlistAction {
         optional bool allowed = 1;
+    }
+    
+    message SharedDeviceSecretAction {
+        optional bytes secret = 1;
+        optional int64 ttlMs = 2;
     }
     
     message StarAction {
