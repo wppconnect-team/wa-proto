@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050579926
+/// WhatsApp Version: 2.3000.1050596417
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -5539,6 +5539,7 @@ message MsgOpaqueData {
     optional string sharableEventInviteCallLink = 60;
     optional string mediaPngThumbnail = 61;
     optional string qrUrl = 62;
+    optional MusicData musicData = 63;
     message EventLocation {
         optional double degreesLatitude = 1;
         optional double degreesLongitude = 2;
@@ -5546,6 +5547,27 @@ message MsgOpaqueData {
         optional string address = 4;
         optional string url = 5;
         optional bytes jpegThumbnail = 6;
+    }
+    
+    message MusicData {
+        optional string musicContentMediaId = 1;
+        optional string songId = 2;
+        optional string author = 3;
+        optional string title = 4;
+        optional string songUri = 5;
+        optional string artworkUri = 6;
+        optional int32 style = 7;
+        optional int32 songStartTimeMs = 8;
+        optional int32 clipDurationMs = 9;
+        optional bool isExplicit = 10;
+        optional bytes countryBlocklist = 11;
+        optional string artistAttribution = 12;
+        optional string artworkDirectPath = 13;
+        optional bytes artworkSha256 = 14;
+        optional bytes artworkEncSha256 = 15;
+        optional bytes artworkMediaKey = 16;
+        optional int64 consumptionCheckedAtS = 17;
+        optional bool isAvailableForConsumption = 18;
     }
     
     enum PollContentType {

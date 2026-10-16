@@ -229315,6 +229315,7 @@ $root.waproto = (function() {
          * @property {string|null} [sharableEventInviteCallLink] MsgOpaqueData sharableEventInviteCallLink
          * @property {string|null} [mediaPngThumbnail] MsgOpaqueData mediaPngThumbnail
          * @property {string|null} [qrUrl] MsgOpaqueData qrUrl
+         * @property {waproto.MsgOpaqueData.MusicData.$Properties|null} [musicData] MsgOpaqueData musicData
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -229803,6 +229804,14 @@ $root.waproto = (function() {
          */
         MsgOpaqueData.prototype.qrUrl = null;
 
+        /**
+         * MsgOpaqueData musicData.
+         * @member {waproto.MsgOpaqueData.MusicData.$Properties|null|undefined} musicData
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.musicData = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -230142,6 +230151,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_musicData", {
+            get: $util.oneOfGetter($oneOfFields = ["musicData"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @function create
@@ -230289,6 +230304,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 61, wireType 2 =*/490).string(message.mediaPngThumbnail);
             if (message.qrUrl != null && $Object.hasOwnProperty.call(message, "qrUrl"))
                 writer.uint32(/* id 62, wireType 2 =*/498).string(message.qrUrl);
+            if (message.musicData != null && $Object.hasOwnProperty.call(message, "musicData"))
+                $root.waproto.MsgOpaqueData.MusicData.encode(message.musicData, writer.uint32(/* id 63, wireType 2 =*/506).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -230746,6 +230763,13 @@ $root.waproto = (function() {
                         message._qrUrl = "qrUrl";
                         continue;
                     }
+                case 63: {
+                        if (wireType !== 2)
+                            break;
+                        message.musicData = $root.waproto.MsgOpaqueData.MusicData.decode(reader, reader.size(), $undefined, _depth + 1, message.musicData);
+                        message._musicData = "musicData";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -231093,6 +231117,14 @@ $root.waproto = (function() {
                 if (!$util.isString(message.qrUrl))
                     return "qrUrl: string expected";
             }
+            if (message.musicData != null && $Object.hasOwnProperty.call(message, "musicData")) {
+                properties._musicData = 1;
+                {
+                    var error = $root.waproto.MsgOpaqueData.MusicData.verify(message.musicData, _depth + 1);
+                    if (error)
+                        return "musicData." + error;
+                }
+            }
             return null;
         };
 
@@ -231340,6 +231372,11 @@ $root.waproto = (function() {
                 message.mediaPngThumbnail = $String(object.mediaPngThumbnail);
             if (object.qrUrl != null)
                 message.qrUrl = $String(object.qrUrl);
+            if (object.musicData != null) {
+                if (!$util.isObject(object.musicData))
+                    throw $TypeError(".waproto.MsgOpaqueData.musicData: object expected");
+                message.musicData = $root.waproto.MsgOpaqueData.MusicData.fromObject(object.musicData, _depth + 1);
+            }
             return message;
         };
 
@@ -231509,6 +231546,8 @@ $root.waproto = (function() {
                 object.mediaPngThumbnail = message.mediaPngThumbnail;
             if (message.qrUrl != null && $Object.hasOwnProperty.call(message, "qrUrl"))
                 object.qrUrl = message.qrUrl;
+            if (message.musicData != null && $Object.hasOwnProperty.call(message, "musicData"))
+                object.musicData = $root.waproto.MsgOpaqueData.MusicData.toObject(message.musicData, options, _depth + 1);
             return object;
         };
 
@@ -231985,6 +232024,873 @@ $root.waproto = (function() {
             };
 
             return EventLocation;
+        })();
+
+        MsgOpaqueData.MusicData = (function() {
+
+            /**
+             * Properties of a MusicData.
+             * @typedef {Object} waproto.MsgOpaqueData.MusicData.$Properties
+             * @property {string|null} [musicContentMediaId] MusicData musicContentMediaId
+             * @property {string|null} [songId] MusicData songId
+             * @property {string|null} [author] MusicData author
+             * @property {string|null} [title] MusicData title
+             * @property {string|null} [songUri] MusicData songUri
+             * @property {string|null} [artworkUri] MusicData artworkUri
+             * @property {number|null} [style] MusicData style
+             * @property {number|null} [songStartTimeMs] MusicData songStartTimeMs
+             * @property {number|null} [clipDurationMs] MusicData clipDurationMs
+             * @property {boolean|null} [isExplicit] MusicData isExplicit
+             * @property {Uint8Array|null} [countryBlocklist] MusicData countryBlocklist
+             * @property {string|null} [artistAttribution] MusicData artistAttribution
+             * @property {string|null} [artworkDirectPath] MusicData artworkDirectPath
+             * @property {Uint8Array|null} [artworkSha256] MusicData artworkSha256
+             * @property {Uint8Array|null} [artworkEncSha256] MusicData artworkEncSha256
+             * @property {Uint8Array|null} [artworkMediaKey] MusicData artworkMediaKey
+             * @property {number|Long|null} [consumptionCheckedAtS] MusicData consumptionCheckedAtS
+             * @property {boolean|null} [isAvailableForConsumption] MusicData isAvailableForConsumption
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a MusicData.
+             * @memberof waproto.MsgOpaqueData
+             * @interface IMusicData
+             * @augments waproto.MsgOpaqueData.MusicData.$Properties
+             * @deprecated Use waproto.MsgOpaqueData.MusicData.$Properties instead.
+             */
+
+            /**
+             * Shape of a MusicData.
+             * @typedef {waproto.MsgOpaqueData.MusicData.$Properties} waproto.MsgOpaqueData.MusicData.$Shape
+             */
+
+            /**
+             * Constructs a new MusicData.
+             * @memberof waproto.MsgOpaqueData
+             * @classdesc Represents a MusicData.
+             * @constructor
+             * @param {waproto.MsgOpaqueData.MusicData.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var MusicData = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * MusicData musicContentMediaId.
+             * @member {string|null|undefined} musicContentMediaId
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.musicContentMediaId = null;
+
+            /**
+             * MusicData songId.
+             * @member {string|null|undefined} songId
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.songId = null;
+
+            /**
+             * MusicData author.
+             * @member {string|null|undefined} author
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.author = null;
+
+            /**
+             * MusicData title.
+             * @member {string|null|undefined} title
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.title = null;
+
+            /**
+             * MusicData songUri.
+             * @member {string|null|undefined} songUri
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.songUri = null;
+
+            /**
+             * MusicData artworkUri.
+             * @member {string|null|undefined} artworkUri
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkUri = null;
+
+            /**
+             * MusicData style.
+             * @member {number|null|undefined} style
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.style = null;
+
+            /**
+             * MusicData songStartTimeMs.
+             * @member {number|null|undefined} songStartTimeMs
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.songStartTimeMs = null;
+
+            /**
+             * MusicData clipDurationMs.
+             * @member {number|null|undefined} clipDurationMs
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.clipDurationMs = null;
+
+            /**
+             * MusicData isExplicit.
+             * @member {boolean|null|undefined} isExplicit
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.isExplicit = null;
+
+            /**
+             * MusicData countryBlocklist.
+             * @member {Uint8Array|null|undefined} countryBlocklist
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.countryBlocklist = null;
+
+            /**
+             * MusicData artistAttribution.
+             * @member {string|null|undefined} artistAttribution
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artistAttribution = null;
+
+            /**
+             * MusicData artworkDirectPath.
+             * @member {string|null|undefined} artworkDirectPath
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkDirectPath = null;
+
+            /**
+             * MusicData artworkSha256.
+             * @member {Uint8Array|null|undefined} artworkSha256
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkSha256 = null;
+
+            /**
+             * MusicData artworkEncSha256.
+             * @member {Uint8Array|null|undefined} artworkEncSha256
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkEncSha256 = null;
+
+            /**
+             * MusicData artworkMediaKey.
+             * @member {Uint8Array|null|undefined} artworkMediaKey
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.artworkMediaKey = null;
+
+            /**
+             * MusicData consumptionCheckedAtS.
+             * @member {number|Long|null|undefined} consumptionCheckedAtS
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.consumptionCheckedAtS = null;
+
+            /**
+             * MusicData isAvailableForConsumption.
+             * @member {boolean|null|undefined} isAvailableForConsumption
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.isAvailableForConsumption = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_musicContentMediaId", {
+                get: $util.oneOfGetter($oneOfFields = ["musicContentMediaId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_songId", {
+                get: $util.oneOfGetter($oneOfFields = ["songId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_author", {
+                get: $util.oneOfGetter($oneOfFields = ["author"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_title", {
+                get: $util.oneOfGetter($oneOfFields = ["title"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_songUri", {
+                get: $util.oneOfGetter($oneOfFields = ["songUri"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_artworkUri", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkUri"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_style", {
+                get: $util.oneOfGetter($oneOfFields = ["style"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_songStartTimeMs", {
+                get: $util.oneOfGetter($oneOfFields = ["songStartTimeMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_clipDurationMs", {
+                get: $util.oneOfGetter($oneOfFields = ["clipDurationMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_isExplicit", {
+                get: $util.oneOfGetter($oneOfFields = ["isExplicit"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_countryBlocklist", {
+                get: $util.oneOfGetter($oneOfFields = ["countryBlocklist"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_artistAttribution", {
+                get: $util.oneOfGetter($oneOfFields = ["artistAttribution"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_artworkDirectPath", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkDirectPath"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_artworkSha256", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkSha256"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_artworkEncSha256", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkEncSha256"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_artworkMediaKey", {
+                get: $util.oneOfGetter($oneOfFields = ["artworkMediaKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_consumptionCheckedAtS", {
+                get: $util.oneOfGetter($oneOfFields = ["consumptionCheckedAtS"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_isAvailableForConsumption", {
+                get: $util.oneOfGetter($oneOfFields = ["isAvailableForConsumption"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new MusicData instance using the specified properties.
+             * @function create
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {waproto.MsgOpaqueData.MusicData.$Properties=} [properties] Properties to set
+             * @returns {waproto.MsgOpaqueData.MusicData} MusicData instance
+             * @type {{
+             *   (properties: waproto.MsgOpaqueData.MusicData.$Shape): waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape;
+             *   (properties?: waproto.MsgOpaqueData.MusicData.$Properties): waproto.MsgOpaqueData.MusicData;
+             * }}
+             */
+            MusicData.create = function(properties) {
+                return new MusicData(properties);
+            };
+
+            /**
+             * Encodes the specified MusicData message. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {waproto.MsgOpaqueData.MusicData.$Properties} message MusicData message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MusicData.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.musicContentMediaId != null && $Object.hasOwnProperty.call(message, "musicContentMediaId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.musicContentMediaId);
+                if (message.songId != null && $Object.hasOwnProperty.call(message, "songId"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.songId);
+                if (message.author != null && $Object.hasOwnProperty.call(message, "author"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.author);
+                if (message.title != null && $Object.hasOwnProperty.call(message, "title"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.title);
+                if (message.songUri != null && $Object.hasOwnProperty.call(message, "songUri"))
+                    writer.uint32(/* id 5, wireType 2 =*/42).string(message.songUri);
+                if (message.artworkUri != null && $Object.hasOwnProperty.call(message, "artworkUri"))
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.artworkUri);
+                if (message.style != null && $Object.hasOwnProperty.call(message, "style"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).int32(message.style);
+                if (message.songStartTimeMs != null && $Object.hasOwnProperty.call(message, "songStartTimeMs"))
+                    writer.uint32(/* id 8, wireType 0 =*/64).int32(message.songStartTimeMs);
+                if (message.clipDurationMs != null && $Object.hasOwnProperty.call(message, "clipDurationMs"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.clipDurationMs);
+                if (message.isExplicit != null && $Object.hasOwnProperty.call(message, "isExplicit"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).bool(message.isExplicit);
+                if (message.countryBlocklist != null && $Object.hasOwnProperty.call(message, "countryBlocklist"))
+                    writer.uint32(/* id 11, wireType 2 =*/90).bytes(message.countryBlocklist);
+                if (message.artistAttribution != null && $Object.hasOwnProperty.call(message, "artistAttribution"))
+                    writer.uint32(/* id 12, wireType 2 =*/98).string(message.artistAttribution);
+                if (message.artworkDirectPath != null && $Object.hasOwnProperty.call(message, "artworkDirectPath"))
+                    writer.uint32(/* id 13, wireType 2 =*/106).string(message.artworkDirectPath);
+                if (message.artworkSha256 != null && $Object.hasOwnProperty.call(message, "artworkSha256"))
+                    writer.uint32(/* id 14, wireType 2 =*/114).bytes(message.artworkSha256);
+                if (message.artworkEncSha256 != null && $Object.hasOwnProperty.call(message, "artworkEncSha256"))
+                    writer.uint32(/* id 15, wireType 2 =*/122).bytes(message.artworkEncSha256);
+                if (message.artworkMediaKey != null && $Object.hasOwnProperty.call(message, "artworkMediaKey"))
+                    writer.uint32(/* id 16, wireType 2 =*/130).bytes(message.artworkMediaKey);
+                if (message.consumptionCheckedAtS != null && $Object.hasOwnProperty.call(message, "consumptionCheckedAtS"))
+                    writer.uint32(/* id 17, wireType 0 =*/136).int64(message.consumptionCheckedAtS);
+                if (message.isAvailableForConsumption != null && $Object.hasOwnProperty.call(message, "isAvailableForConsumption"))
+                    writer.uint32(/* id 18, wireType 0 =*/144).bool(message.isAvailableForConsumption);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified MusicData message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {waproto.MsgOpaqueData.MusicData.$Properties} message MusicData message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            MusicData.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a MusicData message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape} MusicData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MusicData.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.MsgOpaqueData.MusicData();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.musicContentMediaId = reader.stringVerify();
+                            message._musicContentMediaId = "musicContentMediaId";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 2)
+                                break;
+                            message.songId = reader.stringVerify();
+                            message._songId = "songId";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.author = reader.stringVerify();
+                            message._author = "author";
+                            continue;
+                        }
+                    case 4: {
+                            if (wireType !== 2)
+                                break;
+                            message.title = reader.stringVerify();
+                            message._title = "title";
+                            continue;
+                        }
+                    case 5: {
+                            if (wireType !== 2)
+                                break;
+                            message.songUri = reader.stringVerify();
+                            message._songUri = "songUri";
+                            continue;
+                        }
+                    case 6: {
+                            if (wireType !== 2)
+                                break;
+                            message.artworkUri = reader.stringVerify();
+                            message._artworkUri = "artworkUri";
+                            continue;
+                        }
+                    case 7: {
+                            if (wireType !== 0)
+                                break;
+                            message.style = reader.int32();
+                            message._style = "style";
+                            continue;
+                        }
+                    case 8: {
+                            if (wireType !== 0)
+                                break;
+                            message.songStartTimeMs = reader.int32();
+                            message._songStartTimeMs = "songStartTimeMs";
+                            continue;
+                        }
+                    case 9: {
+                            if (wireType !== 0)
+                                break;
+                            message.clipDurationMs = reader.int32();
+                            message._clipDurationMs = "clipDurationMs";
+                            continue;
+                        }
+                    case 10: {
+                            if (wireType !== 0)
+                                break;
+                            message.isExplicit = reader.bool();
+                            message._isExplicit = "isExplicit";
+                            continue;
+                        }
+                    case 11: {
+                            if (wireType !== 2)
+                                break;
+                            message.countryBlocklist = reader.bytes();
+                            message._countryBlocklist = "countryBlocklist";
+                            continue;
+                        }
+                    case 12: {
+                            if (wireType !== 2)
+                                break;
+                            message.artistAttribution = reader.stringVerify();
+                            message._artistAttribution = "artistAttribution";
+                            continue;
+                        }
+                    case 13: {
+                            if (wireType !== 2)
+                                break;
+                            message.artworkDirectPath = reader.stringVerify();
+                            message._artworkDirectPath = "artworkDirectPath";
+                            continue;
+                        }
+                    case 14: {
+                            if (wireType !== 2)
+                                break;
+                            message.artworkSha256 = reader.bytes();
+                            message._artworkSha256 = "artworkSha256";
+                            continue;
+                        }
+                    case 15: {
+                            if (wireType !== 2)
+                                break;
+                            message.artworkEncSha256 = reader.bytes();
+                            message._artworkEncSha256 = "artworkEncSha256";
+                            continue;
+                        }
+                    case 16: {
+                            if (wireType !== 2)
+                                break;
+                            message.artworkMediaKey = reader.bytes();
+                            message._artworkMediaKey = "artworkMediaKey";
+                            continue;
+                        }
+                    case 17: {
+                            if (wireType !== 0)
+                                break;
+                            message.consumptionCheckedAtS = reader.int64();
+                            message._consumptionCheckedAtS = "consumptionCheckedAtS";
+                            continue;
+                        }
+                    case 18: {
+                            if (wireType !== 0)
+                                break;
+                            message.isAvailableForConsumption = reader.bool();
+                            message._isAvailableForConsumption = "isAvailableForConsumption";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a MusicData message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape} MusicData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            MusicData.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a MusicData message.
+             * @function verify
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            MusicData.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.musicContentMediaId != null && $Object.hasOwnProperty.call(message, "musicContentMediaId")) {
+                    properties._musicContentMediaId = 1;
+                    if (!$util.isString(message.musicContentMediaId))
+                        return "musicContentMediaId: string expected";
+                }
+                if (message.songId != null && $Object.hasOwnProperty.call(message, "songId")) {
+                    properties._songId = 1;
+                    if (!$util.isString(message.songId))
+                        return "songId: string expected";
+                }
+                if (message.author != null && $Object.hasOwnProperty.call(message, "author")) {
+                    properties._author = 1;
+                    if (!$util.isString(message.author))
+                        return "author: string expected";
+                }
+                if (message.title != null && $Object.hasOwnProperty.call(message, "title")) {
+                    properties._title = 1;
+                    if (!$util.isString(message.title))
+                        return "title: string expected";
+                }
+                if (message.songUri != null && $Object.hasOwnProperty.call(message, "songUri")) {
+                    properties._songUri = 1;
+                    if (!$util.isString(message.songUri))
+                        return "songUri: string expected";
+                }
+                if (message.artworkUri != null && $Object.hasOwnProperty.call(message, "artworkUri")) {
+                    properties._artworkUri = 1;
+                    if (!$util.isString(message.artworkUri))
+                        return "artworkUri: string expected";
+                }
+                if (message.style != null && $Object.hasOwnProperty.call(message, "style")) {
+                    properties._style = 1;
+                    if (!$util.isInteger(message.style))
+                        return "style: integer expected";
+                }
+                if (message.songStartTimeMs != null && $Object.hasOwnProperty.call(message, "songStartTimeMs")) {
+                    properties._songStartTimeMs = 1;
+                    if (!$util.isInteger(message.songStartTimeMs))
+                        return "songStartTimeMs: integer expected";
+                }
+                if (message.clipDurationMs != null && $Object.hasOwnProperty.call(message, "clipDurationMs")) {
+                    properties._clipDurationMs = 1;
+                    if (!$util.isInteger(message.clipDurationMs))
+                        return "clipDurationMs: integer expected";
+                }
+                if (message.isExplicit != null && $Object.hasOwnProperty.call(message, "isExplicit")) {
+                    properties._isExplicit = 1;
+                    if (typeof message.isExplicit !== "boolean")
+                        return "isExplicit: boolean expected";
+                }
+                if (message.countryBlocklist != null && $Object.hasOwnProperty.call(message, "countryBlocklist")) {
+                    properties._countryBlocklist = 1;
+                    if (!(message.countryBlocklist && typeof message.countryBlocklist.length === "number" || $util.isString(message.countryBlocklist)))
+                        return "countryBlocklist: buffer expected";
+                }
+                if (message.artistAttribution != null && $Object.hasOwnProperty.call(message, "artistAttribution")) {
+                    properties._artistAttribution = 1;
+                    if (!$util.isString(message.artistAttribution))
+                        return "artistAttribution: string expected";
+                }
+                if (message.artworkDirectPath != null && $Object.hasOwnProperty.call(message, "artworkDirectPath")) {
+                    properties._artworkDirectPath = 1;
+                    if (!$util.isString(message.artworkDirectPath))
+                        return "artworkDirectPath: string expected";
+                }
+                if (message.artworkSha256 != null && $Object.hasOwnProperty.call(message, "artworkSha256")) {
+                    properties._artworkSha256 = 1;
+                    if (!(message.artworkSha256 && typeof message.artworkSha256.length === "number" || $util.isString(message.artworkSha256)))
+                        return "artworkSha256: buffer expected";
+                }
+                if (message.artworkEncSha256 != null && $Object.hasOwnProperty.call(message, "artworkEncSha256")) {
+                    properties._artworkEncSha256 = 1;
+                    if (!(message.artworkEncSha256 && typeof message.artworkEncSha256.length === "number" || $util.isString(message.artworkEncSha256)))
+                        return "artworkEncSha256: buffer expected";
+                }
+                if (message.artworkMediaKey != null && $Object.hasOwnProperty.call(message, "artworkMediaKey")) {
+                    properties._artworkMediaKey = 1;
+                    if (!(message.artworkMediaKey && typeof message.artworkMediaKey.length === "number" || $util.isString(message.artworkMediaKey)))
+                        return "artworkMediaKey: buffer expected";
+                }
+                if (message.consumptionCheckedAtS != null && $Object.hasOwnProperty.call(message, "consumptionCheckedAtS")) {
+                    properties._consumptionCheckedAtS = 1;
+                    if (!$util.isInteger(message.consumptionCheckedAtS) && !(message.consumptionCheckedAtS && $util.isInteger(message.consumptionCheckedAtS.low) && $util.isInteger(message.consumptionCheckedAtS.high)))
+                        return "consumptionCheckedAtS: integer|Long expected";
+                }
+                if (message.isAvailableForConsumption != null && $Object.hasOwnProperty.call(message, "isAvailableForConsumption")) {
+                    properties._isAvailableForConsumption = 1;
+                    if (typeof message.isAvailableForConsumption !== "boolean")
+                        return "isAvailableForConsumption: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a MusicData message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.MsgOpaqueData.MusicData} MusicData
+             */
+            MusicData.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.MsgOpaqueData.MusicData)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.MsgOpaqueData.MusicData: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.MsgOpaqueData.MusicData();
+                if (object.musicContentMediaId != null)
+                    message.musicContentMediaId = $String(object.musicContentMediaId);
+                if (object.songId != null)
+                    message.songId = $String(object.songId);
+                if (object.author != null)
+                    message.author = $String(object.author);
+                if (object.title != null)
+                    message.title = $String(object.title);
+                if (object.songUri != null)
+                    message.songUri = $String(object.songUri);
+                if (object.artworkUri != null)
+                    message.artworkUri = $String(object.artworkUri);
+                if (object.style != null)
+                    message.style = object.style | 0;
+                if (object.songStartTimeMs != null)
+                    message.songStartTimeMs = object.songStartTimeMs | 0;
+                if (object.clipDurationMs != null)
+                    message.clipDurationMs = object.clipDurationMs | 0;
+                if (object.isExplicit != null)
+                    message.isExplicit = $Boolean(object.isExplicit);
+                if (object.countryBlocklist != null)
+                    if (typeof object.countryBlocklist === "string")
+                        $util.base64.decode(object.countryBlocklist, message.countryBlocklist = $util.newBuffer($util.base64.length(object.countryBlocklist)), 0);
+                    else if (object.countryBlocklist.length >= 0)
+                        message.countryBlocklist = object.countryBlocklist;
+                if (object.artistAttribution != null)
+                    message.artistAttribution = $String(object.artistAttribution);
+                if (object.artworkDirectPath != null)
+                    message.artworkDirectPath = $String(object.artworkDirectPath);
+                if (object.artworkSha256 != null)
+                    if (typeof object.artworkSha256 === "string")
+                        $util.base64.decode(object.artworkSha256, message.artworkSha256 = $util.newBuffer($util.base64.length(object.artworkSha256)), 0);
+                    else if (object.artworkSha256.length >= 0)
+                        message.artworkSha256 = object.artworkSha256;
+                if (object.artworkEncSha256 != null)
+                    if (typeof object.artworkEncSha256 === "string")
+                        $util.base64.decode(object.artworkEncSha256, message.artworkEncSha256 = $util.newBuffer($util.base64.length(object.artworkEncSha256)), 0);
+                    else if (object.artworkEncSha256.length >= 0)
+                        message.artworkEncSha256 = object.artworkEncSha256;
+                if (object.artworkMediaKey != null)
+                    if (typeof object.artworkMediaKey === "string")
+                        $util.base64.decode(object.artworkMediaKey, message.artworkMediaKey = $util.newBuffer($util.base64.length(object.artworkMediaKey)), 0);
+                    else if (object.artworkMediaKey.length >= 0)
+                        message.artworkMediaKey = object.artworkMediaKey;
+                if (object.consumptionCheckedAtS != null)
+                    if ($util.Long)
+                        message.consumptionCheckedAtS = $util.Long.fromValue(object.consumptionCheckedAtS, false);
+                    else if (typeof object.consumptionCheckedAtS === "string")
+                        message.consumptionCheckedAtS = $parseInt(object.consumptionCheckedAtS, 10);
+                    else if (typeof object.consumptionCheckedAtS === "number")
+                        message.consumptionCheckedAtS = object.consumptionCheckedAtS;
+                    else if (typeof object.consumptionCheckedAtS === "object")
+                        message.consumptionCheckedAtS = new $util.LongBits(object.consumptionCheckedAtS.low >>> 0, object.consumptionCheckedAtS.high >>> 0).toNumber();
+                if (object.isAvailableForConsumption != null)
+                    message.isAvailableForConsumption = $Boolean(object.isAvailableForConsumption);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a MusicData message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {waproto.MsgOpaqueData.MusicData} message MusicData
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            MusicData.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.musicContentMediaId != null && $Object.hasOwnProperty.call(message, "musicContentMediaId"))
+                    object.musicContentMediaId = message.musicContentMediaId;
+                if (message.songId != null && $Object.hasOwnProperty.call(message, "songId"))
+                    object.songId = message.songId;
+                if (message.author != null && $Object.hasOwnProperty.call(message, "author"))
+                    object.author = message.author;
+                if (message.title != null && $Object.hasOwnProperty.call(message, "title"))
+                    object.title = message.title;
+                if (message.songUri != null && $Object.hasOwnProperty.call(message, "songUri"))
+                    object.songUri = message.songUri;
+                if (message.artworkUri != null && $Object.hasOwnProperty.call(message, "artworkUri"))
+                    object.artworkUri = message.artworkUri;
+                if (message.style != null && $Object.hasOwnProperty.call(message, "style"))
+                    object.style = message.style;
+                if (message.songStartTimeMs != null && $Object.hasOwnProperty.call(message, "songStartTimeMs"))
+                    object.songStartTimeMs = message.songStartTimeMs;
+                if (message.clipDurationMs != null && $Object.hasOwnProperty.call(message, "clipDurationMs"))
+                    object.clipDurationMs = message.clipDurationMs;
+                if (message.isExplicit != null && $Object.hasOwnProperty.call(message, "isExplicit"))
+                    object.isExplicit = message.isExplicit;
+                if (message.countryBlocklist != null && $Object.hasOwnProperty.call(message, "countryBlocklist"))
+                    object.countryBlocklist = options.bytes === $String ? $util.base64.encode(message.countryBlocklist, 0, message.countryBlocklist.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.countryBlocklist) : message.countryBlocklist;
+                if (message.artistAttribution != null && $Object.hasOwnProperty.call(message, "artistAttribution"))
+                    object.artistAttribution = message.artistAttribution;
+                if (message.artworkDirectPath != null && $Object.hasOwnProperty.call(message, "artworkDirectPath"))
+                    object.artworkDirectPath = message.artworkDirectPath;
+                if (message.artworkSha256 != null && $Object.hasOwnProperty.call(message, "artworkSha256"))
+                    object.artworkSha256 = options.bytes === $String ? $util.base64.encode(message.artworkSha256, 0, message.artworkSha256.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.artworkSha256) : message.artworkSha256;
+                if (message.artworkEncSha256 != null && $Object.hasOwnProperty.call(message, "artworkEncSha256"))
+                    object.artworkEncSha256 = options.bytes === $String ? $util.base64.encode(message.artworkEncSha256, 0, message.artworkEncSha256.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.artworkEncSha256) : message.artworkEncSha256;
+                if (message.artworkMediaKey != null && $Object.hasOwnProperty.call(message, "artworkMediaKey"))
+                    object.artworkMediaKey = options.bytes === $String ? $util.base64.encode(message.artworkMediaKey, 0, message.artworkMediaKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.artworkMediaKey) : message.artworkMediaKey;
+                if (message.consumptionCheckedAtS != null && $Object.hasOwnProperty.call(message, "consumptionCheckedAtS"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.consumptionCheckedAtS = typeof message.consumptionCheckedAtS === "number" ? $BigInt(message.consumptionCheckedAtS) : $util.Long.fromBits(message.consumptionCheckedAtS.low >>> 0, message.consumptionCheckedAtS.high >>> 0, false).toBigInt();
+                    else if (typeof message.consumptionCheckedAtS === "number")
+                        object.consumptionCheckedAtS = options.longs === $String ? $String(message.consumptionCheckedAtS) : message.consumptionCheckedAtS;
+                    else
+                        object.consumptionCheckedAtS = options.longs === $String ? $util.Long.prototype.toString.call(message.consumptionCheckedAtS) : options.longs === $Number ? new $util.LongBits(message.consumptionCheckedAtS.low >>> 0, message.consumptionCheckedAtS.high >>> 0).toNumber() : message.consumptionCheckedAtS;
+                if (message.isAvailableForConsumption != null && $Object.hasOwnProperty.call(message, "isAvailableForConsumption"))
+                    object.isAvailableForConsumption = message.isAvailableForConsumption;
+                return object;
+            };
+
+            /**
+             * Converts this MusicData to JSON.
+             * @function toJSON
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            MusicData.prototype.toJSON = function() {
+                return MusicData.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for MusicData
+             * @function getTypeUrl
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            MusicData.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.MsgOpaqueData.MusicData";
+            };
+
+            return MusicData;
         })();
 
         /**

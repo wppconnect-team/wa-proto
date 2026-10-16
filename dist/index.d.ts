@@ -77555,6 +77555,9 @@ export namespace waproto {
         /** MsgOpaqueData qrUrl. */
         qrUrl?: (string|null);
 
+        /** MsgOpaqueData musicData. */
+        musicData?: (waproto.MsgOpaqueData.MusicData.$Properties|null);
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @param [properties] Properties to set
@@ -77810,6 +77813,9 @@ export namespace waproto {
             /** MsgOpaqueData qrUrl */
             qrUrl?: (string|null);
 
+            /** MsgOpaqueData musicData */
+            musicData?: (waproto.MsgOpaqueData.MusicData.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -77962,6 +77968,225 @@ export namespace waproto {
 
             /** Shape of an EventLocation. */
             type $Shape = waproto.MsgOpaqueData.EventLocation.$Properties;
+        }
+
+        /**
+         * Properties of a MusicData.
+         * @deprecated Use waproto.MsgOpaqueData.MusicData.$Properties instead.
+         */
+        interface IMusicData extends waproto.MsgOpaqueData.MusicData.$Properties {
+        }
+
+        /** Represents a MusicData. */
+        class MusicData {
+
+            /**
+             * Constructs a new MusicData.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.MsgOpaqueData.MusicData.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** MusicData musicContentMediaId. */
+            musicContentMediaId?: (string|null);
+
+            /** MusicData songId. */
+            songId?: (string|null);
+
+            /** MusicData author. */
+            author?: (string|null);
+
+            /** MusicData title. */
+            title?: (string|null);
+
+            /** MusicData songUri. */
+            songUri?: (string|null);
+
+            /** MusicData artworkUri. */
+            artworkUri?: (string|null);
+
+            /** MusicData style. */
+            style?: (number|null);
+
+            /** MusicData songStartTimeMs. */
+            songStartTimeMs?: (number|null);
+
+            /** MusicData clipDurationMs. */
+            clipDurationMs?: (number|null);
+
+            /** MusicData isExplicit. */
+            isExplicit?: (boolean|null);
+
+            /** MusicData countryBlocklist. */
+            countryBlocklist?: (Uint8Array|null);
+
+            /** MusicData artistAttribution. */
+            artistAttribution?: (string|null);
+
+            /** MusicData artworkDirectPath. */
+            artworkDirectPath?: (string|null);
+
+            /** MusicData artworkSha256. */
+            artworkSha256?: (Uint8Array|null);
+
+            /** MusicData artworkEncSha256. */
+            artworkEncSha256?: (Uint8Array|null);
+
+            /** MusicData artworkMediaKey. */
+            artworkMediaKey?: (Uint8Array|null);
+
+            /** MusicData consumptionCheckedAtS. */
+            consumptionCheckedAtS?: (number|Long|null);
+
+            /** MusicData isAvailableForConsumption. */
+            isAvailableForConsumption?: (boolean|null);
+
+            /**
+             * Creates a new MusicData instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns MusicData instance
+             */
+            static create(properties: waproto.MsgOpaqueData.MusicData.$Shape): waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape;
+            static create(properties?: waproto.MsgOpaqueData.MusicData.$Properties): waproto.MsgOpaqueData.MusicData;
+
+            /**
+             * Encodes the specified MusicData message. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.verify|verify} messages.
+             * @param message MusicData message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.MsgOpaqueData.MusicData.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified MusicData message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.verify|verify} messages.
+             * @param message MusicData message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.MsgOpaqueData.MusicData.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a MusicData message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape} MusicData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape;
+
+            /**
+             * Decodes a MusicData message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape} MusicData
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MsgOpaqueData.MusicData & waproto.MsgOpaqueData.MusicData.$Shape;
+
+            /**
+             * Verifies a MusicData message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a MusicData message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns MusicData
+             */
+            static fromObject(object: { [k: string]: any }): waproto.MsgOpaqueData.MusicData;
+
+            /**
+             * Creates a plain object from a MusicData message. Also converts values to other types if specified.
+             * @param message MusicData
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.MsgOpaqueData.MusicData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this MusicData to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for MusicData
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace MusicData {
+
+            /** Properties of a MusicData. */
+            interface $Properties {
+
+                /** MusicData musicContentMediaId */
+                musicContentMediaId?: (string|null);
+
+                /** MusicData songId */
+                songId?: (string|null);
+
+                /** MusicData author */
+                author?: (string|null);
+
+                /** MusicData title */
+                title?: (string|null);
+
+                /** MusicData songUri */
+                songUri?: (string|null);
+
+                /** MusicData artworkUri */
+                artworkUri?: (string|null);
+
+                /** MusicData style */
+                style?: (number|null);
+
+                /** MusicData songStartTimeMs */
+                songStartTimeMs?: (number|null);
+
+                /** MusicData clipDurationMs */
+                clipDurationMs?: (number|null);
+
+                /** MusicData isExplicit */
+                isExplicit?: (boolean|null);
+
+                /** MusicData countryBlocklist */
+                countryBlocklist?: (Uint8Array|null);
+
+                /** MusicData artistAttribution */
+                artistAttribution?: (string|null);
+
+                /** MusicData artworkDirectPath */
+                artworkDirectPath?: (string|null);
+
+                /** MusicData artworkSha256 */
+                artworkSha256?: (Uint8Array|null);
+
+                /** MusicData artworkEncSha256 */
+                artworkEncSha256?: (Uint8Array|null);
+
+                /** MusicData artworkMediaKey */
+                artworkMediaKey?: (Uint8Array|null);
+
+                /** MusicData consumptionCheckedAtS */
+                consumptionCheckedAtS?: (number|Long|null);
+
+                /** MusicData isAvailableForConsumption */
+                isAvailableForConsumption?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a MusicData. */
+            type $Shape = waproto.MsgOpaqueData.MusicData.$Properties;
         }
 
         /** PollContentType enum. */
