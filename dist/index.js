@@ -79264,6 +79264,7 @@ $root.waproto = (function() {
          * @property {waproto.DeviceCapabilities.ContactRefresh.$Properties|null} [contactRefresh] DeviceCapabilities contactRefresh
          * @property {waproto.DeviceCapabilities.ReverseHistorySync.$Properties|null} [reverseHistorySync] DeviceCapabilities reverseHistorySync
          * @property {waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties|null} [newsletterChatsMigration] DeviceCapabilities newsletterChatsMigration
+         * @property {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null} [hostWriteMutationSupport] DeviceCapabilities hostWriteMutationSupport
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -79383,6 +79384,14 @@ $root.waproto = (function() {
          */
         DeviceCapabilities.prototype.newsletterChatsMigration = null;
 
+        /**
+         * DeviceCapabilities hostWriteMutationSupport.
+         * @member {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null|undefined} hostWriteMutationSupport
+         * @memberof waproto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.hostWriteMutationSupport = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -79452,6 +79461,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceCapabilities.prototype, "_hostWriteMutationSupport", {
+            get: $util.oneOfGetter($oneOfFields = ["hostWriteMutationSupport"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -79506,6 +79521,8 @@ $root.waproto = (function() {
                 $root.waproto.DeviceCapabilities.ReverseHistorySync.encode(message.reverseHistorySync, writer.uint32(/* id 10, wireType 2 =*/82).fork(), _depth + 1).ldelim();
             if (message.newsletterChatsMigration != null && $Object.hasOwnProperty.call(message, "newsletterChatsMigration"))
                 $root.waproto.DeviceCapabilities.NewsletterChatsMigration.encode(message.newsletterChatsMigration, writer.uint32(/* id 11, wireType 2 =*/90).fork(), _depth + 1).ldelim();
+            if (message.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(message, "hostWriteMutationSupport"))
+                $root.waproto.DeviceCapabilities.HostWriteMutationSupport.encode(message.hostWriteMutationSupport, writer.uint32(/* id 12, wireType 2 =*/98).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -79640,6 +79657,13 @@ $root.waproto = (function() {
                         message._newsletterChatsMigration = "newsletterChatsMigration";
                         continue;
                     }
+                case 12: {
+                        if (wireType !== 2)
+                            break;
+                        message.hostWriteMutationSupport = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.decode(reader, reader.size(), $undefined, _depth + 1, message.hostWriteMutationSupport);
+                        message._hostWriteMutationSupport = "hostWriteMutationSupport";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -79771,6 +79795,14 @@ $root.waproto = (function() {
                         return "newsletterChatsMigration." + error;
                 }
             }
+            if (message.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(message, "hostWriteMutationSupport")) {
+                properties._hostWriteMutationSupport = 1;
+                {
+                    var error = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.verify(message.hostWriteMutationSupport, _depth + 1);
+                    if (error)
+                        return "hostWriteMutationSupport." + error;
+                }
+            }
             return null;
         };
 
@@ -79871,6 +79903,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.DeviceCapabilities.newsletterChatsMigration: object expected");
                 message.newsletterChatsMigration = $root.waproto.DeviceCapabilities.NewsletterChatsMigration.fromObject(object.newsletterChatsMigration, _depth + 1);
             }
+            if (object.hostWriteMutationSupport != null) {
+                if (!$util.isObject(object.hostWriteMutationSupport))
+                    throw $TypeError(".waproto.DeviceCapabilities.hostWriteMutationSupport: object expected");
+                message.hostWriteMutationSupport = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.fromObject(object.hostWriteMutationSupport, _depth + 1);
+            }
             return message;
         };
 
@@ -79913,6 +79950,8 @@ $root.waproto = (function() {
                 object.reverseHistorySync = $root.waproto.DeviceCapabilities.ReverseHistorySync.toObject(message.reverseHistorySync, options, _depth + 1);
             if (message.newsletterChatsMigration != null && $Object.hasOwnProperty.call(message, "newsletterChatsMigration"))
                 object.newsletterChatsMigration = $root.waproto.DeviceCapabilities.NewsletterChatsMigration.toObject(message.newsletterChatsMigration, options, _depth + 1);
+            if (message.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(message, "hostWriteMutationSupport"))
+                object.hostWriteMutationSupport = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.toObject(message.hostWriteMutationSupport, options, _depth + 1);
             return object;
         };
 
@@ -81606,6 +81645,293 @@ $root.waproto = (function() {
             };
 
             return ContactRefresh;
+        })();
+
+        DeviceCapabilities.HostWriteMutationSupport = (function() {
+
+            /**
+             * Properties of a HostWriteMutationSupport.
+             * @typedef {Object} waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties
+             * @property {Array.<string>|null} [mutationNames] HostWriteMutationSupport mutationNames
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a HostWriteMutationSupport.
+             * @memberof waproto.DeviceCapabilities
+             * @interface IHostWriteMutationSupport
+             * @augments waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties
+             * @deprecated Use waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties instead.
+             */
+
+            /**
+             * Shape of a HostWriteMutationSupport.
+             * @typedef {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties} waproto.DeviceCapabilities.HostWriteMutationSupport.$Shape
+             */
+
+            /**
+             * Constructs a new HostWriteMutationSupport.
+             * @memberof waproto.DeviceCapabilities
+             * @classdesc Represents a HostWriteMutationSupport.
+             * @constructor
+             * @param {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var HostWriteMutationSupport = function (properties) {
+                this.mutationNames = [];
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * HostWriteMutationSupport mutationNames.
+             * @member {Array.<string>} mutationNames
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @instance
+             */
+            HostWriteMutationSupport.prototype.mutationNames = $util.emptyArray;
+
+            /**
+             * Creates a new HostWriteMutationSupport instance using the specified properties.
+             * @function create
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties=} [properties] Properties to set
+             * @returns {waproto.DeviceCapabilities.HostWriteMutationSupport} HostWriteMutationSupport instance
+             * @type {{
+             *   (properties: waproto.DeviceCapabilities.HostWriteMutationSupport.$Shape): waproto.DeviceCapabilities.HostWriteMutationSupport & waproto.DeviceCapabilities.HostWriteMutationSupport.$Shape;
+             *   (properties?: waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties): waproto.DeviceCapabilities.HostWriteMutationSupport;
+             * }}
+             */
+            HostWriteMutationSupport.create = function(properties) {
+                return new HostWriteMutationSupport(properties);
+            };
+
+            /**
+             * Encodes the specified HostWriteMutationSupport message. Does not implicitly {@link waproto.DeviceCapabilities.HostWriteMutationSupport.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties} message HostWriteMutationSupport message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HostWriteMutationSupport.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.mutationNames != null && message.mutationNames.length)
+                    for (var i = 0; i < message.mutationNames.length; ++i)
+                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.mutationNames[i]);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified HostWriteMutationSupport message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.HostWriteMutationSupport.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties} message HostWriteMutationSupport message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HostWriteMutationSupport.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a HostWriteMutationSupport message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.HostWriteMutationSupport & waproto.DeviceCapabilities.HostWriteMutationSupport.$Shape} HostWriteMutationSupport
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HostWriteMutationSupport.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.DeviceCapabilities.HostWriteMutationSupport();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            if (!(message.mutationNames && message.mutationNames.length))
+                                message.mutationNames = [];
+                            message.mutationNames.push(reader.stringVerify());
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a HostWriteMutationSupport message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.HostWriteMutationSupport & waproto.DeviceCapabilities.HostWriteMutationSupport.$Shape} HostWriteMutationSupport
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HostWriteMutationSupport.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a HostWriteMutationSupport message.
+             * @function verify
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            HostWriteMutationSupport.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                if (message.mutationNames != null && $Object.hasOwnProperty.call(message, "mutationNames")) {
+                    if (!$Array.isArray(message.mutationNames))
+                        return "mutationNames: array expected";
+                    for (var i = 0; i < message.mutationNames.length; ++i)
+                        if (!$util.isString(message.mutationNames[i]))
+                            return "mutationNames: string[] expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a HostWriteMutationSupport message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.DeviceCapabilities.HostWriteMutationSupport} HostWriteMutationSupport
+             */
+            HostWriteMutationSupport.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.DeviceCapabilities.HostWriteMutationSupport)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.DeviceCapabilities.HostWriteMutationSupport: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.DeviceCapabilities.HostWriteMutationSupport();
+                if (object.mutationNames) {
+                    if (!$Array.isArray(object.mutationNames))
+                        throw $TypeError(".waproto.DeviceCapabilities.HostWriteMutationSupport.mutationNames: array expected");
+                    message.mutationNames = $Array(object.mutationNames.length);
+                    for (var i = 0; i < object.mutationNames.length; ++i)
+                        message.mutationNames[i] = $String(object.mutationNames[i]);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a HostWriteMutationSupport message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {waproto.DeviceCapabilities.HostWriteMutationSupport} message HostWriteMutationSupport
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            HostWriteMutationSupport.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.mutationNames = [];
+                if (message.mutationNames && message.mutationNames.length) {
+                    object.mutationNames = $Array(message.mutationNames.length);
+                    for (var j = 0; j < message.mutationNames.length; ++j)
+                        object.mutationNames[j] = message.mutationNames[j];
+                }
+                return object;
+            };
+
+            /**
+             * Converts this HostWriteMutationSupport to JSON.
+             * @function toJSON
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            HostWriteMutationSupport.prototype.toJSON = function() {
+                return HostWriteMutationSupport.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for HostWriteMutationSupport
+             * @function getTypeUrl
+             * @memberof waproto.DeviceCapabilities.HostWriteMutationSupport
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            HostWriteMutationSupport.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.DeviceCapabilities.HostWriteMutationSupport";
+            };
+
+            return HostWriteMutationSupport;
         })();
 
         DeviceCapabilities.LIDMigration = (function() {
