@@ -20249,6 +20249,9 @@ export namespace waproto {
         /** ContextInfo partnerDeepLinkToken. */
         partnerDeepLinkToken?: (string|null);
 
+        /** ContextInfo sourceExperienceId. */
+        sourceExperienceId?: (number|null);
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -20531,6 +20534,9 @@ export namespace waproto {
             /** ContextInfo partnerDeepLinkToken */
             partnerDeepLinkToken?: (string|null);
 
+            /** ContextInfo sourceExperienceId */
+            sourceExperienceId?: (number|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -20603,6 +20609,7 @@ export namespace waproto {
           aiProvenance?: waproto.AIProvenance.$Shape|null;
           experienceIds?: number[]|null;
           partnerDeepLinkToken?: string|null;
+          sourceExperienceId?: number|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -22934,6 +22941,9 @@ export namespace waproto {
             /** StatusAudienceMetadata listEmoji. */
             listEmoji?: (string|null);
 
+            /** StatusAudienceMetadata networkId. */
+            networkId?: (string|null);
+
             /**
              * Creates a new StatusAudienceMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -23027,6 +23037,9 @@ export namespace waproto {
                 /** StatusAudienceMetadata listEmoji */
                 listEmoji?: (string|null);
 
+                /** StatusAudienceMetadata networkId */
+                networkId?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -23041,7 +23054,13 @@ export namespace waproto {
                 UNKNOWN = 0,
 
                 /** CLOSE_FRIENDS value */
-                CLOSE_FRIENDS = 1
+                CLOSE_FRIENDS = 1,
+
+                /** CUSTOM_LIST value */
+                CUSTOM_LIST = 2,
+
+                /** NETWORK value */
+                NETWORK = 3
             }
         }
 
@@ -30494,7 +30513,10 @@ export namespace waproto {
             NON_BLOCKING_DATA = 5,
 
             /** ON_DEMAND value */
-            ON_DEMAND = 6
+            ON_DEMAND = 6,
+
+            /** RECENT_CONVERSATIONS_ON_DEMAND value */
+            RECENT_CONVERSATIONS_ON_DEMAND = 9
         }
     }
 
@@ -32888,6 +32910,148 @@ export namespace waproto {
 
         /** Shape of a KeyId. */
         type $Shape = waproto.KeyId.$Properties;
+    }
+
+    /**
+     * Properties of a KeyTransparencyCommand.
+     * @deprecated Use waproto.KeyTransparencyCommand.$Properties instead.
+     */
+    interface IKeyTransparencyCommand extends waproto.KeyTransparencyCommand.$Properties {
+    }
+
+    /** Represents a KeyTransparencyCommand. */
+    class KeyTransparencyCommand {
+
+        /**
+         * Constructs a new KeyTransparencyCommand.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.KeyTransparencyCommand.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** KeyTransparencyCommand verifyKtForUserSignal. */
+        verifyKtForUserSignal?: (waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties|null);
+
+        /** KeyTransparencyCommand verifyKtForUserMinos. */
+        verifyKtForUserMinos?: (waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties|null);
+
+        /** KeyTransparencyCommand verifyKtForUserMandrake. */
+        verifyKtForUserMandrake?: (waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties|null);
+
+        /** KeyTransparencyCommand commandInput. */
+        commandInput?: ("verifyKtForUserSignal"|"verifyKtForUserMinos"|"verifyKtForUserMandrake");
+
+        /**
+         * Creates a new KeyTransparencyCommand instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns KeyTransparencyCommand instance
+         */
+        static create(properties: waproto.KeyTransparencyCommand.$Shape): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
+        static create(properties?: waproto.KeyTransparencyCommand.$Properties): waproto.KeyTransparencyCommand;
+
+        /**
+         * Encodes the specified KeyTransparencyCommand message. Does not implicitly {@link waproto.KeyTransparencyCommand.verify|verify} messages.
+         * @param message KeyTransparencyCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.KeyTransparencyCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified KeyTransparencyCommand message, length delimited. Does not implicitly {@link waproto.KeyTransparencyCommand.verify|verify} messages.
+         * @param message KeyTransparencyCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.KeyTransparencyCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a KeyTransparencyCommand message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape} KeyTransparencyCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
+
+        /**
+         * Decodes a KeyTransparencyCommand message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape} KeyTransparencyCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.KeyTransparencyCommand & waproto.KeyTransparencyCommand.$Shape;
+
+        /**
+         * Verifies a KeyTransparencyCommand message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a KeyTransparencyCommand message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns KeyTransparencyCommand
+         */
+        static fromObject(object: { [k: string]: any }): waproto.KeyTransparencyCommand;
+
+        /**
+         * Creates a plain object from a KeyTransparencyCommand message. Also converts values to other types if specified.
+         * @param message KeyTransparencyCommand
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.KeyTransparencyCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this KeyTransparencyCommand to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for KeyTransparencyCommand
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace KeyTransparencyCommand {
+
+        /** Properties of a KeyTransparencyCommand. */
+        interface $Properties {
+
+            /** KeyTransparencyCommand verifyKtForUserSignal */
+            verifyKtForUserSignal?: (waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties|null);
+
+            /** KeyTransparencyCommand verifyKtForUserMinos */
+            verifyKtForUserMinos?: (waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties|null);
+
+            /** KeyTransparencyCommand verifyKtForUserMandrake */
+            verifyKtForUserMandrake?: (waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties|null);
+
+            /** KeyTransparencyCommand commandInput */
+            commandInput?: ("verifyKtForUserSignal"|"verifyKtForUserMinos"|"verifyKtForUserMandrake");
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Narrowed shape of a KeyTransparencyCommand. */
+        type $Shape = {
+          verifyKtForUserSignal?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape|null;
+          verifyKtForUserMinos?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape|null;
+          verifyKtForUserMandrake?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape|null;
+          $unknowns?: Uint8Array[];
+        } & (
+          ({ commandInput?: undefined; verifyKtForUserSignal?: null; verifyKtForUserMinos?: null; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserSignal"; verifyKtForUserSignal: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape; verifyKtForUserMinos?: null; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserMinos"; verifyKtForUserSignal?: null; verifyKtForUserMinos: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape; verifyKtForUserMandrake?: null }|{ commandInput?: "verifyKtForUserMandrake"; verifyKtForUserSignal?: null; verifyKtForUserMinos?: null; verifyKtForUserMandrake: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape })
+        );
     }
 
     /**
@@ -44175,7 +44339,10 @@ export namespace waproto {
             NO_HISTORY = 7,
 
             /** MESSAGE_ACCESS_STATUS value */
-            MESSAGE_ACCESS_STATUS = 8
+            MESSAGE_ACCESS_STATUS = 8,
+
+            /** RECENT_CONVERSATIONS_ON_DEMAND value */
+            RECENT_CONVERSATIONS_ON_DEMAND = 9
         }
 
         /**
@@ -51077,6 +51244,9 @@ export namespace waproto {
             /** PeerDataOperationRequestMessage bizBroadcastInsightsRefreshRequest. */
             bizBroadcastInsightsRefreshRequest?: (waproto.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.$Properties|null);
 
+            /** PeerDataOperationRequestMessage recentConversationsOnDemandRequest. */
+            recentConversationsOnDemandRequest?: (waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties|null);
+
             /**
              * Creates a new PeerDataOperationRequestMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -51196,6 +51366,9 @@ export namespace waproto {
 
                 /** PeerDataOperationRequestMessage bizBroadcastInsightsRefreshRequest */
                 bizBroadcastInsightsRefreshRequest?: (waproto.Message.PeerDataOperationRequestMessage.BizBroadcastInsightsRefreshRequest.$Properties|null);
+
+                /** PeerDataOperationRequestMessage recentConversationsOnDemandRequest */
+                recentConversationsOnDemandRequest?: (waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -52238,6 +52411,129 @@ export namespace waproto {
 
                 /** Shape of a PlaceholderMessageResendRequest. */
                 type $Shape = waproto.Message.PeerDataOperationRequestMessage.PlaceholderMessageResendRequest.$Properties;
+            }
+
+            /**
+             * Properties of a RecentConversationsOnDemandRequest.
+             * @deprecated Use waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties instead.
+             */
+            interface IRecentConversationsOnDemandRequest extends waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties {
+            }
+
+            /** Represents a RecentConversationsOnDemandRequest. */
+            class RecentConversationsOnDemandRequest {
+
+                /**
+                 * Constructs a new RecentConversationsOnDemandRequest.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** RecentConversationsOnDemandRequest conversationCount. */
+                conversationCount?: (number|null);
+
+                /** RecentConversationsOnDemandRequest messagesPerConversation. */
+                messagesPerConversation?: (number|null);
+
+                /**
+                 * Creates a new RecentConversationsOnDemandRequest instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns RecentConversationsOnDemandRequest instance
+                 */
+                static create(properties: waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Shape): waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest & waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Shape;
+                static create(properties?: waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties): waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest;
+
+                /**
+                 * Encodes the specified RecentConversationsOnDemandRequest message. Does not implicitly {@link waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.verify|verify} messages.
+                 * @param message RecentConversationsOnDemandRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified RecentConversationsOnDemandRequest message, length delimited. Does not implicitly {@link waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.verify|verify} messages.
+                 * @param message RecentConversationsOnDemandRequest message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a RecentConversationsOnDemandRequest message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest & waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Shape} RecentConversationsOnDemandRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest & waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Shape;
+
+                /**
+                 * Decodes a RecentConversationsOnDemandRequest message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest & waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Shape} RecentConversationsOnDemandRequest
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest & waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Shape;
+
+                /**
+                 * Verifies a RecentConversationsOnDemandRequest message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a RecentConversationsOnDemandRequest message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns RecentConversationsOnDemandRequest
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest;
+
+                /**
+                 * Creates a plain object from a RecentConversationsOnDemandRequest message. Also converts values to other types if specified.
+                 * @param message RecentConversationsOnDemandRequest
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this RecentConversationsOnDemandRequest to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for RecentConversationsOnDemandRequest
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace RecentConversationsOnDemandRequest {
+
+                /** Properties of a RecentConversationsOnDemandRequest. */
+                interface $Properties {
+
+                    /** RecentConversationsOnDemandRequest conversationCount */
+                    conversationCount?: (number|null);
+
+                    /** RecentConversationsOnDemandRequest messagesPerConversation */
+                    messagesPerConversation?: (number|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of a RecentConversationsOnDemandRequest. */
+                type $Shape = waproto.Message.PeerDataOperationRequestMessage.RecentConversationsOnDemandRequest.$Properties;
             }
 
             /**
@@ -54922,7 +55218,10 @@ export namespace waproto {
             BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13,
 
             /** CONTACT_REFRESH_REQUEST value */
-            CONTACT_REFRESH_REQUEST = 14
+            CONTACT_REFRESH_REQUEST = 14,
+
+            /** RECENT_CONVERSATIONS_ON_DEMAND_REQUEST value */
+            RECENT_CONVERSATIONS_ON_DEMAND_REQUEST = 15
         }
 
         /**
@@ -63353,6 +63652,9 @@ export namespace waproto {
         /** MessageContextInfo acp2Setting. */
         acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
+        /** MessageContextInfo lightE2Ee. */
+        lightE2Ee?: (boolean|null);
+
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -63499,6 +63801,9 @@ export namespace waproto {
 
             /** MessageContextInfo acp2Setting */
             acp2Setting?: (waproto.ACP2Setting.$Properties|null);
+
+            /** MessageContextInfo lightE2Ee */
+            lightE2Ee?: (boolean|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -92415,6 +92720,840 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a VerifyKeyTransparencyForUserMandrakeCommand.
+     * @deprecated Use waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties instead.
+     */
+    interface IVerifyKeyTransparencyForUserMandrakeCommand extends waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties {
+    }
+
+    /** Represents a VerifyKeyTransparencyForUserMandrakeCommand. */
+    class VerifyKeyTransparencyForUserMandrakeCommand {
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMandrakeCommand.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VerifyKeyTransparencyForUserMandrakeCommand lookupResponse. */
+        lookupResponse: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserMandrakeCommand userFbid. */
+        userFbid: (number|Long);
+
+        /** VerifyKeyTransparencyForUserMandrakeCommand auditorSignatureTtlSecs. */
+        auditorSignatureTtlSecs: (number|Long);
+
+        /** VerifyKeyTransparencyForUserMandrakeCommand requestedAuditorList. */
+        requestedAuditorList: string[];
+
+        /** VerifyKeyTransparencyForUserMandrakeCommand isProductionBuild. */
+        isProductionBuild: boolean;
+
+        /** VerifyKeyTransparencyForUserMandrakeCommand localMailboxHead. */
+        localMailboxHead: Uint8Array;
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMandrakeCommand instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VerifyKeyTransparencyForUserMandrakeCommand instance
+         */
+        static create(properties: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
+        static create(properties?: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties): waproto.VerifyKeyTransparencyForUserMandrakeCommand;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMandrakeCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeCommand.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMandrakeCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeCommand message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape} VerifyKeyTransparencyForUserMandrakeCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeCommand message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape} VerifyKeyTransparencyForUserMandrakeCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMandrakeCommand & waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Shape;
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMandrakeCommand message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMandrakeCommand message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VerifyKeyTransparencyForUserMandrakeCommand
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMandrakeCommand;
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMandrakeCommand message. Also converts values to other types if specified.
+         * @param message VerifyKeyTransparencyForUserMandrakeCommand
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VerifyKeyTransparencyForUserMandrakeCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMandrakeCommand to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMandrakeCommand
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VerifyKeyTransparencyForUserMandrakeCommand {
+
+        /** Properties of a VerifyKeyTransparencyForUserMandrakeCommand. */
+        interface $Properties {
+
+            /** VerifyKeyTransparencyForUserMandrakeCommand lookupResponse */
+            lookupResponse: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserMandrakeCommand userFbid */
+            userFbid: (number|Long);
+
+            /** VerifyKeyTransparencyForUserMandrakeCommand auditorSignatureTtlSecs */
+            auditorSignatureTtlSecs: (number|Long);
+
+            /** VerifyKeyTransparencyForUserMandrakeCommand requestedAuditorList */
+            requestedAuditorList?: (string[]|null);
+
+            /** VerifyKeyTransparencyForUserMandrakeCommand isProductionBuild */
+            isProductionBuild: boolean;
+
+            /** VerifyKeyTransparencyForUserMandrakeCommand localMailboxHead */
+            localMailboxHead: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VerifyKeyTransparencyForUserMandrakeCommand. */
+        type $Shape = waproto.VerifyKeyTransparencyForUserMandrakeCommand.$Properties;
+    }
+
+    /**
+     * Properties of a VerifyKeyTransparencyForUserMandrakeResult.
+     * @deprecated Use waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties instead.
+     */
+    interface IVerifyKeyTransparencyForUserMandrakeResult extends waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties {
+    }
+
+    /** Represents a VerifyKeyTransparencyForUserMandrakeResult. */
+    class VerifyKeyTransparencyForUserMandrakeResult {
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMandrakeResult.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VerifyKeyTransparencyForUserMandrakeResult success. */
+        success?: (boolean|null);
+
+        /** VerifyKeyTransparencyForUserMandrakeResult error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMandrakeResult instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VerifyKeyTransparencyForUserMandrakeResult instance
+         */
+        static create(properties: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
+        static create(properties?: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties): waproto.VerifyKeyTransparencyForUserMandrakeResult;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeResult.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMandrakeResult message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMandrakeResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMandrakeResult.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMandrakeResult message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeResult message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape} VerifyKeyTransparencyForUserMandrakeResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMandrakeResult message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape} VerifyKeyTransparencyForUserMandrakeResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMandrakeResult & waproto.VerifyKeyTransparencyForUserMandrakeResult.$Shape;
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMandrakeResult message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMandrakeResult message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VerifyKeyTransparencyForUserMandrakeResult
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMandrakeResult;
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMandrakeResult message. Also converts values to other types if specified.
+         * @param message VerifyKeyTransparencyForUserMandrakeResult
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VerifyKeyTransparencyForUserMandrakeResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMandrakeResult to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMandrakeResult
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VerifyKeyTransparencyForUserMandrakeResult {
+
+        /** Properties of a VerifyKeyTransparencyForUserMandrakeResult. */
+        interface $Properties {
+
+            /** VerifyKeyTransparencyForUserMandrakeResult success */
+            success?: (boolean|null);
+
+            /** VerifyKeyTransparencyForUserMandrakeResult error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VerifyKeyTransparencyForUserMandrakeResult. */
+        type $Shape = waproto.VerifyKeyTransparencyForUserMandrakeResult.$Properties;
+    }
+
+    /**
+     * Properties of a VerifyKeyTransparencyForUserMinosCommand.
+     * @deprecated Use waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties instead.
+     */
+    interface IVerifyKeyTransparencyForUserMinosCommand extends waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties {
+    }
+
+    /** Represents a VerifyKeyTransparencyForUserMinosCommand. */
+    class VerifyKeyTransparencyForUserMinosCommand {
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMinosCommand.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VerifyKeyTransparencyForUserMinosCommand lookupResponse. */
+        lookupResponse: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserMinosCommand userFbid. */
+        userFbid: (number|Long);
+
+        /** VerifyKeyTransparencyForUserMinosCommand auditorSignatureTtlSecs. */
+        auditorSignatureTtlSecs: (number|Long);
+
+        /** VerifyKeyTransparencyForUserMinosCommand requestedAuditorList. */
+        requestedAuditorList: string[];
+
+        /** VerifyKeyTransparencyForUserMinosCommand isProductionBuild. */
+        isProductionBuild: boolean;
+
+        /** VerifyKeyTransparencyForUserMinosCommand localEpochHead. */
+        localEpochHead: Uint8Array;
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMinosCommand instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VerifyKeyTransparencyForUserMinosCommand instance
+         */
+        static create(properties: waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
+        static create(properties?: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties): waproto.VerifyKeyTransparencyForUserMinosCommand;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosCommand.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMinosCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosCommand.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMinosCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosCommand message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape} VerifyKeyTransparencyForUserMinosCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosCommand message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape} VerifyKeyTransparencyForUserMinosCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMinosCommand & waproto.VerifyKeyTransparencyForUserMinosCommand.$Shape;
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMinosCommand message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMinosCommand message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VerifyKeyTransparencyForUserMinosCommand
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMinosCommand;
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMinosCommand message. Also converts values to other types if specified.
+         * @param message VerifyKeyTransparencyForUserMinosCommand
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VerifyKeyTransparencyForUserMinosCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMinosCommand to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMinosCommand
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VerifyKeyTransparencyForUserMinosCommand {
+
+        /** Properties of a VerifyKeyTransparencyForUserMinosCommand. */
+        interface $Properties {
+
+            /** VerifyKeyTransparencyForUserMinosCommand lookupResponse */
+            lookupResponse: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserMinosCommand userFbid */
+            userFbid: (number|Long);
+
+            /** VerifyKeyTransparencyForUserMinosCommand auditorSignatureTtlSecs */
+            auditorSignatureTtlSecs: (number|Long);
+
+            /** VerifyKeyTransparencyForUserMinosCommand requestedAuditorList */
+            requestedAuditorList?: (string[]|null);
+
+            /** VerifyKeyTransparencyForUserMinosCommand isProductionBuild */
+            isProductionBuild: boolean;
+
+            /** VerifyKeyTransparencyForUserMinosCommand localEpochHead */
+            localEpochHead: Uint8Array;
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VerifyKeyTransparencyForUserMinosCommand. */
+        type $Shape = waproto.VerifyKeyTransparencyForUserMinosCommand.$Properties;
+    }
+
+    /**
+     * Properties of a VerifyKeyTransparencyForUserMinosResult.
+     * @deprecated Use waproto.VerifyKeyTransparencyForUserMinosResult.$Properties instead.
+     */
+    interface IVerifyKeyTransparencyForUserMinosResult extends waproto.VerifyKeyTransparencyForUserMinosResult.$Properties {
+    }
+
+    /** Represents a VerifyKeyTransparencyForUserMinosResult. */
+    class VerifyKeyTransparencyForUserMinosResult {
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserMinosResult.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VerifyKeyTransparencyForUserMinosResult success. */
+        success?: (boolean|null);
+
+        /** VerifyKeyTransparencyForUserMinosResult error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserMinosResult instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VerifyKeyTransparencyForUserMinosResult instance
+         */
+        static create(properties: waproto.VerifyKeyTransparencyForUserMinosResult.$Shape): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
+        static create(properties?: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties): waproto.VerifyKeyTransparencyForUserMinosResult;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosResult.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMinosResult message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserMinosResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserMinosResult.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserMinosResult message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserMinosResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosResult message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape} VerifyKeyTransparencyForUserMinosResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserMinosResult message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape} VerifyKeyTransparencyForUserMinosResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserMinosResult & waproto.VerifyKeyTransparencyForUserMinosResult.$Shape;
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserMinosResult message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserMinosResult message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VerifyKeyTransparencyForUserMinosResult
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserMinosResult;
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserMinosResult message. Also converts values to other types if specified.
+         * @param message VerifyKeyTransparencyForUserMinosResult
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VerifyKeyTransparencyForUserMinosResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserMinosResult to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserMinosResult
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VerifyKeyTransparencyForUserMinosResult {
+
+        /** Properties of a VerifyKeyTransparencyForUserMinosResult. */
+        interface $Properties {
+
+            /** VerifyKeyTransparencyForUserMinosResult success */
+            success?: (boolean|null);
+
+            /** VerifyKeyTransparencyForUserMinosResult error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VerifyKeyTransparencyForUserMinosResult. */
+        type $Shape = waproto.VerifyKeyTransparencyForUserMinosResult.$Properties;
+    }
+
+    /**
+     * Properties of a VerifyKeyTransparencyForUserSignalCommand.
+     * @deprecated Use waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties instead.
+     */
+    interface IVerifyKeyTransparencyForUserSignalCommand extends waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties {
+    }
+
+    /** Represents a VerifyKeyTransparencyForUserSignalCommand. */
+    class VerifyKeyTransparencyForUserSignalCommand {
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserSignalCommand.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VerifyKeyTransparencyForUserSignalCommand rootHash. */
+        rootHash: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserSignalCommand currentEpoch. */
+        currentEpoch: (number|Long);
+
+        /** VerifyKeyTransparencyForUserSignalCommand userFbid. */
+        userFbid: (number|Long);
+
+        /** VerifyKeyTransparencyForUserSignalCommand historyProof. */
+        historyProof: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserSignalCommand metaSignature. */
+        metaSignature: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserSignalCommand cloudflareSignature. */
+        cloudflareSignature: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserSignalCommand cloudflareMessage. */
+        cloudflareMessage: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserSignalCommand cloudflarePubKey. */
+        cloudflarePubKey: Uint8Array;
+
+        /** VerifyKeyTransparencyForUserSignalCommand auditorSignatureTtlSecs. */
+        auditorSignatureTtlSecs: (number|Long);
+
+        /** VerifyKeyTransparencyForUserSignalCommand localDeviceKeys. */
+        localDeviceKeys: { [k: string]: Uint8Array };
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserSignalCommand instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VerifyKeyTransparencyForUserSignalCommand instance
+         */
+        static create(properties: waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
+        static create(properties?: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties): waproto.VerifyKeyTransparencyForUserSignalCommand;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalCommand message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalCommand.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserSignalCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalCommand message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalCommand.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserSignalCommand message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalCommand message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape} VerifyKeyTransparencyForUserSignalCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalCommand message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape} VerifyKeyTransparencyForUserSignalCommand
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserSignalCommand & waproto.VerifyKeyTransparencyForUserSignalCommand.$Shape;
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserSignalCommand message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserSignalCommand message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VerifyKeyTransparencyForUserSignalCommand
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserSignalCommand;
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserSignalCommand message. Also converts values to other types if specified.
+         * @param message VerifyKeyTransparencyForUserSignalCommand
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VerifyKeyTransparencyForUserSignalCommand, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserSignalCommand to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserSignalCommand
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VerifyKeyTransparencyForUserSignalCommand {
+
+        /** Properties of a VerifyKeyTransparencyForUserSignalCommand. */
+        interface $Properties {
+
+            /** VerifyKeyTransparencyForUserSignalCommand rootHash */
+            rootHash: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserSignalCommand currentEpoch */
+            currentEpoch: (number|Long);
+
+            /** VerifyKeyTransparencyForUserSignalCommand userFbid */
+            userFbid: (number|Long);
+
+            /** VerifyKeyTransparencyForUserSignalCommand historyProof */
+            historyProof: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserSignalCommand metaSignature */
+            metaSignature: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserSignalCommand cloudflareSignature */
+            cloudflareSignature: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserSignalCommand cloudflareMessage */
+            cloudflareMessage: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserSignalCommand cloudflarePubKey */
+            cloudflarePubKey: Uint8Array;
+
+            /** VerifyKeyTransparencyForUserSignalCommand auditorSignatureTtlSecs */
+            auditorSignatureTtlSecs: (number|Long);
+
+            /** VerifyKeyTransparencyForUserSignalCommand localDeviceKeys */
+            localDeviceKeys?: ({ [k: string]: Uint8Array }|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VerifyKeyTransparencyForUserSignalCommand. */
+        type $Shape = waproto.VerifyKeyTransparencyForUserSignalCommand.$Properties;
+    }
+
+    /**
+     * Properties of a VerifyKeyTransparencyForUserSignalResult.
+     * @deprecated Use waproto.VerifyKeyTransparencyForUserSignalResult.$Properties instead.
+     */
+    interface IVerifyKeyTransparencyForUserSignalResult extends waproto.VerifyKeyTransparencyForUserSignalResult.$Properties {
+    }
+
+    /** Represents a VerifyKeyTransparencyForUserSignalResult. */
+    class VerifyKeyTransparencyForUserSignalResult {
+
+        /**
+         * Constructs a new VerifyKeyTransparencyForUserSignalResult.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** VerifyKeyTransparencyForUserSignalResult success. */
+        success?: (boolean|null);
+
+        /** VerifyKeyTransparencyForUserSignalResult error. */
+        error?: (string|null);
+
+        /**
+         * Creates a new VerifyKeyTransparencyForUserSignalResult instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns VerifyKeyTransparencyForUserSignalResult instance
+         */
+        static create(properties: waproto.VerifyKeyTransparencyForUserSignalResult.$Shape): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
+        static create(properties?: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties): waproto.VerifyKeyTransparencyForUserSignalResult;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalResult message. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalResult.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserSignalResult message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified VerifyKeyTransparencyForUserSignalResult message, length delimited. Does not implicitly {@link waproto.VerifyKeyTransparencyForUserSignalResult.verify|verify} messages.
+         * @param message VerifyKeyTransparencyForUserSignalResult message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.VerifyKeyTransparencyForUserSignalResult.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalResult message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape} VerifyKeyTransparencyForUserSignalResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
+
+        /**
+         * Decodes a VerifyKeyTransparencyForUserSignalResult message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape} VerifyKeyTransparencyForUserSignalResult
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.VerifyKeyTransparencyForUserSignalResult & waproto.VerifyKeyTransparencyForUserSignalResult.$Shape;
+
+        /**
+         * Verifies a VerifyKeyTransparencyForUserSignalResult message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a VerifyKeyTransparencyForUserSignalResult message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns VerifyKeyTransparencyForUserSignalResult
+         */
+        static fromObject(object: { [k: string]: any }): waproto.VerifyKeyTransparencyForUserSignalResult;
+
+        /**
+         * Creates a plain object from a VerifyKeyTransparencyForUserSignalResult message. Also converts values to other types if specified.
+         * @param message VerifyKeyTransparencyForUserSignalResult
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.VerifyKeyTransparencyForUserSignalResult, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this VerifyKeyTransparencyForUserSignalResult to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for VerifyKeyTransparencyForUserSignalResult
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace VerifyKeyTransparencyForUserSignalResult {
+
+        /** Properties of a VerifyKeyTransparencyForUserSignalResult. */
+        interface $Properties {
+
+            /** VerifyKeyTransparencyForUserSignalResult success */
+            success?: (boolean|null);
+
+            /** VerifyKeyTransparencyForUserSignalResult error */
+            error?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a VerifyKeyTransparencyForUserSignalResult. */
+        type $Shape = waproto.VerifyKeyTransparencyForUserSignalResult.$Properties;
+    }
+
+    /**
      * Properties of a WallpaperSettings.
      * @deprecated Use waproto.WallpaperSettings.$Properties instead.
      */
@@ -94407,7 +95546,13 @@ export namespace waproto {
             META_AI_CONNECTOR_LINKED = 285,
 
             /** SPLIT_PAYMENT_MARKED_AS_PAID value */
-            SPLIT_PAYMENT_MARKED_AS_PAID = 289
+            SPLIT_PAYMENT_MARKED_AS_PAID = 289,
+
+            /** POLL_OPTIONS_REMOVED value */
+            POLL_OPTIONS_REMOVED = 290,
+
+            /** POLL_ADDED_OPTION_REMOVED value */
+            POLL_ADDED_OPTION_REMOVED = 291
         }
     }
 

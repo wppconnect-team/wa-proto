@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050834002
+/// WhatsApp Version: 2.3000.1050849967
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1576,6 +1576,7 @@ message ContextInfo {
     optional AIProvenance aiProvenance = 81;
     repeated uint32 experienceIds = 82 [packed=true];
     optional string partnerDeepLinkToken = 83;
+    optional uint32 sourceExperienceId = 84;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -1792,9 +1793,12 @@ message ContextInfo {
         optional AudienceType audienceType = 1;
         optional string listName = 2;
         optional string listEmoji = 3;
+        optional string networkId = 4;
         enum AudienceType {
             UNKNOWN = 0;
             CLOSE_FRIENDS = 1;
+            CUSTOM_LIST = 2;
+            NETWORK = 3;
         }
     }
     
@@ -2356,6 +2360,7 @@ message HistorySync {
         PUSH_NAME = 4;
         NON_BLOCKING_DATA = 5;
         ON_DEMAND = 6;
+        RECENT_CONVERSATIONS_ON_DEMAND = 9;
     }
 }
 
@@ -2501,6 +2506,14 @@ message KeyExchangeMessage {
 
 message KeyId {
     optional bytes id = 1;
+}
+
+message KeyTransparencyCommand {
+    oneof commandInput {
+        VerifyKeyTransparencyForUserSignalCommand verifyKtForUserSignal = 5;
+        VerifyKeyTransparencyForUserMinosCommand verifyKtForUserMinos = 6;
+        VerifyKeyTransparencyForUserMandrakeCommand verifyKtForUserMandrake = 7;
+    }
 }
 
 message LIDMigrationMappingSyncMessage {
@@ -3306,6 +3319,7 @@ message Message {
         ON_DEMAND = 6;
         NO_HISTORY = 7;
         MESSAGE_ACCESS_STATUS = 8;
+        RECENT_CONVERSATIONS_ON_DEMAND = 9;
     }
     message ImageMessage {
         optional string url = 1;
@@ -3790,6 +3804,7 @@ message Message {
         optional CompanionCanonicalUserNonceFetchRequest companionCanonicalUserNonceFetchRequest = 10;
         optional BizBroadcastInsightsContactListRequest bizBroadcastInsightsContactListRequest = 11;
         optional BizBroadcastInsightsRefreshRequest bizBroadcastInsightsRefreshRequest = 12;
+        optional RecentConversationsOnDemandRequest recentConversationsOnDemandRequest = 13;
         message BizBroadcastInsightsContactListRequest {
             optional string campaignId = 1;
         }
@@ -3839,6 +3854,11 @@ message Message {
         
         message PlaceholderMessageResendRequest {
             optional MessageKey messageKey = 1;
+        }
+        
+        message RecentConversationsOnDemandRequest {
+            optional uint32 conversationCount = 1;
+            optional uint32 messagesPerConversation = 2;
         }
         
         message RequestStickerReupload {
@@ -4010,6 +4030,7 @@ message Message {
         BUSINESS_BROADCAST_INSIGHTS_DELIVERED_TO = 12;
         BUSINESS_BROADCAST_INSIGHTS_REFRESH = 13;
         CONTACT_REFRESH_REQUEST = 14;
+        RECENT_CONVERSATIONS_ON_DEMAND_REQUEST = 15;
     }
     message PinInChatMessage {
         optional MessageKey key = 1;
@@ -4654,6 +4675,7 @@ message MessageContextInfo {
     optional bytes associatedPrimaryIdentityKey = 19;
     optional string teeContextAnchorMessageId = 20;
     optional ACP2Setting acp2Setting = 21;
+    optional bool lightE2Ee = 22;
     enum MessageAddonExpiryType {
         STATIC = 1;
         DEPENDENT_ON_PARENT = 2;
@@ -6538,6 +6560,52 @@ message VerifiedNameCertificate {
     
 }
 
+message VerifyKeyTransparencyForUserMandrakeCommand {
+    required bytes lookupResponse = 1;
+    required int64 userFbid = 2;
+    required uint64 auditorSignatureTtlSecs = 3;
+    repeated string requestedAuditorList = 4;
+    required bool isProductionBuild = 5;
+    required bytes localMailboxHead = 6;
+}
+
+message VerifyKeyTransparencyForUserMandrakeResult {
+    optional bool success = 1;
+    optional string error = 2;
+}
+
+message VerifyKeyTransparencyForUserMinosCommand {
+    required bytes lookupResponse = 1;
+    required int64 userFbid = 2;
+    required uint64 auditorSignatureTtlSecs = 3;
+    repeated string requestedAuditorList = 4;
+    required bool isProductionBuild = 5;
+    required bytes localEpochHead = 6;
+}
+
+message VerifyKeyTransparencyForUserMinosResult {
+    optional bool success = 1;
+    optional string error = 2;
+}
+
+message VerifyKeyTransparencyForUserSignalCommand {
+    required bytes rootHash = 1;
+    required uint64 currentEpoch = 2;
+    required int64 userFbid = 3;
+    required bytes historyProof = 4;
+    required bytes metaSignature = 5;
+    required bytes cloudflareSignature = 6;
+    required bytes cloudflareMessage = 7;
+    required bytes cloudflarePubKey = 8;
+    required uint64 auditorSignatureTtlSecs = 9;
+    map<uint64, bytes> local_device_keys = 10;
+}
+
+message VerifyKeyTransparencyForUserSignalResult {
+    optional bool success = 1;
+    optional string error = 2;
+}
+
 message WallpaperSettings {
     optional string filename = 1;
     optional uint32 opacity = 2;
@@ -6956,6 +7024,8 @@ message WebMessageInfo {
         META_AI_THREAD_CREATED = 284;
         META_AI_CONNECTOR_LINKED = 285;
         SPLIT_PAYMENT_MARKED_AS_PAID = 289;
+        POLL_OPTIONS_REMOVED = 290;
+        POLL_ADDED_OPTION_REMOVED = 291;
     }
 }
 
