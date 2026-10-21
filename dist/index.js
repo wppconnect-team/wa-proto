@@ -16935,6 +16935,7 @@ $root.waproto = (function() {
          * @property {number|Long|null} [issueTime] BizAccountLinkInfo issueTime
          * @property {waproto.BizAccountLinkInfo.HostStorageType|null} [hostStorage] BizAccountLinkInfo hostStorage
          * @property {waproto.BizAccountLinkInfo.AccountType|null} [accountType] BizAccountLinkInfo accountType
+         * @property {string|null} [whatsappAcctEmail] BizAccountLinkInfo whatsappAcctEmail
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -17006,6 +17007,14 @@ $root.waproto = (function() {
          */
         BizAccountLinkInfo.prototype.accountType = null;
 
+        /**
+         * BizAccountLinkInfo whatsappAcctEmail.
+         * @member {string|null|undefined} whatsappAcctEmail
+         * @memberof waproto.BizAccountLinkInfo
+         * @instance
+         */
+        BizAccountLinkInfo.prototype.whatsappAcctEmail = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -17036,6 +17045,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(BizAccountLinkInfo.prototype, "_accountType", {
             get: $util.oneOfGetter($oneOfFields = ["accountType"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BizAccountLinkInfo.prototype, "_whatsappAcctEmail", {
+            get: $util.oneOfGetter($oneOfFields = ["whatsappAcctEmail"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -17081,6 +17096,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 4, wireType 0 =*/32).int32(message.hostStorage);
             if (message.accountType != null && $Object.hasOwnProperty.call(message, "accountType"))
                 writer.uint32(/* id 5, wireType 0 =*/40).int32(message.accountType);
+            if (message.whatsappAcctEmail != null && $Object.hasOwnProperty.call(message, "whatsappAcctEmail"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.whatsappAcctEmail);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -17173,6 +17190,13 @@ $root.waproto = (function() {
                         message._accountType = "accountType";
                         continue;
                     }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.whatsappAcctEmail = reader.stringVerify();
+                        message._whatsappAcctEmail = "whatsappAcctEmail";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -17247,6 +17271,11 @@ $root.waproto = (function() {
                 if (typeof message.accountType !== "number" || (message.accountType | 0) !== message.accountType)
                     return "accountType: enum value expected";
             }
+            if (message.whatsappAcctEmail != null && $Object.hasOwnProperty.call(message, "whatsappAcctEmail")) {
+                properties._whatsappAcctEmail = 1;
+                if (!$util.isString(message.whatsappAcctEmail))
+                    return "whatsappAcctEmail: string expected";
+            }
             return null;
         };
 
@@ -17310,6 +17339,8 @@ $root.waproto = (function() {
                 if (typeof object.accountType === "number" && (object.accountType | 0) === object.accountType)
                     message.accountType = object.accountType;
             }
+            if (object.whatsappAcctEmail != null)
+                message.whatsappAcctEmail = $String(object.whatsappAcctEmail);
             return message;
         };
 
@@ -17350,6 +17381,8 @@ $root.waproto = (function() {
                 object.hostStorage = options.enums === $String ? $root.waproto.BizAccountLinkInfo.HostStorageType[message.hostStorage] === $undefined ? message.hostStorage : $root.waproto.BizAccountLinkInfo.HostStorageType[message.hostStorage] : message.hostStorage;
             if (message.accountType != null && $Object.hasOwnProperty.call(message, "accountType"))
                 object.accountType = options.enums === $String ? $root.waproto.BizAccountLinkInfo.AccountType[message.accountType] === $undefined ? message.accountType : $root.waproto.BizAccountLinkInfo.AccountType[message.accountType] : message.accountType;
+            if (message.whatsappAcctEmail != null && $Object.hasOwnProperty.call(message, "whatsappAcctEmail"))
+                object.whatsappAcctEmail = message.whatsappAcctEmail;
             return object;
         };
 
@@ -28171,6 +28204,7 @@ $root.waproto = (function() {
          * Properties of a BotMessageOrigin.
          * @typedef {Object} waproto.BotMessageOrigin.$Properties
          * @property {waproto.BotMessageOrigin.BotMessageOriginType|null} [type] BotMessageOrigin type
+         * @property {string|null} [proactiveMessageCampaignId] BotMessageOrigin proactiveMessageCampaignId
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -28210,12 +28244,26 @@ $root.waproto = (function() {
          */
         BotMessageOrigin.prototype.type = null;
 
+        /**
+         * BotMessageOrigin proactiveMessageCampaignId.
+         * @member {string|null|undefined} proactiveMessageCampaignId
+         * @memberof waproto.BotMessageOrigin
+         * @instance
+         */
+        BotMessageOrigin.prototype.proactiveMessageCampaignId = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(BotMessageOrigin.prototype, "_type", {
             get: $util.oneOfGetter($oneOfFields = ["type"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(BotMessageOrigin.prototype, "_proactiveMessageCampaignId", {
+            get: $util.oneOfGetter($oneOfFields = ["proactiveMessageCampaignId"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -28253,6 +28301,8 @@ $root.waproto = (function() {
                 throw $Error("max depth exceeded");
             if (message.type != null && $Object.hasOwnProperty.call(message, "type"))
                 writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
+            if (message.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(message, "proactiveMessageCampaignId"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.proactiveMessageCampaignId);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -28317,6 +28367,13 @@ $root.waproto = (function() {
                         message._type = "type";
                         continue;
                     }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.proactiveMessageCampaignId = reader.stringVerify();
+                        message._proactiveMessageCampaignId = "proactiveMessageCampaignId";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -28371,6 +28428,11 @@ $root.waproto = (function() {
                 if (typeof message.type !== "number" || (message.type | 0) !== message.type)
                     return "type: enum value expected";
             }
+            if (message.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(message, "proactiveMessageCampaignId")) {
+                properties._proactiveMessageCampaignId = 1;
+                if (!$util.isString(message.proactiveMessageCampaignId))
+                    return "proactiveMessageCampaignId: string expected";
+            }
             return null;
         };
 
@@ -28405,6 +28467,8 @@ $root.waproto = (function() {
                 if (typeof object.type === "number" && (object.type | 0) === object.type)
                     message.type = object.type;
             }
+            if (object.proactiveMessageCampaignId != null)
+                message.proactiveMessageCampaignId = $String(object.proactiveMessageCampaignId);
             return message;
         };
 
@@ -28427,6 +28491,8 @@ $root.waproto = (function() {
             var object = {};
             if (message.type != null && $Object.hasOwnProperty.call(message, "type"))
                 object.type = options.enums === $String ? $root.waproto.BotMessageOrigin.BotMessageOriginType[message.type] === $undefined ? message.type : $root.waproto.BotMessageOrigin.BotMessageOriginType[message.type] : message.type;
+            if (message.proactiveMessageCampaignId != null && $Object.hasOwnProperty.call(message, "proactiveMessageCampaignId"))
+                object.proactiveMessageCampaignId = message.proactiveMessageCampaignId;
             return object;
         };
 
@@ -70455,6 +70521,7 @@ $root.waproto = (function() {
          * @property {waproto.DeviceCapabilities.ReverseHistorySync.$Properties|null} [reverseHistorySync] DeviceCapabilities reverseHistorySync
          * @property {waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties|null} [newsletterChatsMigration] DeviceCapabilities newsletterChatsMigration
          * @property {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null} [hostWriteMutationSupport] DeviceCapabilities hostWriteMutationSupport
+         * @property {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null} [bizAiWebOnboarding] DeviceCapabilities bizAiWebOnboarding
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -70582,6 +70649,14 @@ $root.waproto = (function() {
          */
         DeviceCapabilities.prototype.hostWriteMutationSupport = null;
 
+        /**
+         * DeviceCapabilities bizAiWebOnboarding.
+         * @member {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null|undefined} bizAiWebOnboarding
+         * @memberof waproto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.bizAiWebOnboarding = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -70657,6 +70732,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceCapabilities.prototype, "_bizAiWebOnboarding", {
+            get: $util.oneOfGetter($oneOfFields = ["bizAiWebOnboarding"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -70713,6 +70794,8 @@ $root.waproto = (function() {
                 $root.waproto.DeviceCapabilities.NewsletterChatsMigration.encode(message.newsletterChatsMigration, writer.uint32(/* id 11, wireType 2 =*/90).fork(), _depth + 1).ldelim();
             if (message.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(message, "hostWriteMutationSupport"))
                 $root.waproto.DeviceCapabilities.HostWriteMutationSupport.encode(message.hostWriteMutationSupport, writer.uint32(/* id 12, wireType 2 =*/98).fork(), _depth + 1).ldelim();
+            if (message.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(message, "bizAiWebOnboarding"))
+                $root.waproto.DeviceCapabilities.BizAiWebOnboarding.encode(message.bizAiWebOnboarding, writer.uint32(/* id 13, wireType 2 =*/106).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -70854,6 +70937,13 @@ $root.waproto = (function() {
                         message._hostWriteMutationSupport = "hostWriteMutationSupport";
                         continue;
                     }
+                case 13: {
+                        if (wireType !== 2)
+                            break;
+                        message.bizAiWebOnboarding = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.decode(reader, reader.size(), $undefined, _depth + 1, message.bizAiWebOnboarding);
+                        message._bizAiWebOnboarding = "bizAiWebOnboarding";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -70993,6 +71083,14 @@ $root.waproto = (function() {
                         return "hostWriteMutationSupport." + error;
                 }
             }
+            if (message.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(message, "bizAiWebOnboarding")) {
+                properties._bizAiWebOnboarding = 1;
+                {
+                    var error = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.verify(message.bizAiWebOnboarding, _depth + 1);
+                    if (error)
+                        return "bizAiWebOnboarding." + error;
+                }
+            }
             return null;
         };
 
@@ -71098,6 +71196,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.DeviceCapabilities.hostWriteMutationSupport: object expected");
                 message.hostWriteMutationSupport = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.fromObject(object.hostWriteMutationSupport, _depth + 1);
             }
+            if (object.bizAiWebOnboarding != null) {
+                if (!$util.isObject(object.bizAiWebOnboarding))
+                    throw $TypeError(".waproto.DeviceCapabilities.bizAiWebOnboarding: object expected");
+                message.bizAiWebOnboarding = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.fromObject(object.bizAiWebOnboarding, _depth + 1);
+            }
             return message;
         };
 
@@ -71142,6 +71245,8 @@ $root.waproto = (function() {
                 object.newsletterChatsMigration = $root.waproto.DeviceCapabilities.NewsletterChatsMigration.toObject(message.newsletterChatsMigration, options, _depth + 1);
             if (message.hostWriteMutationSupport != null && $Object.hasOwnProperty.call(message, "hostWriteMutationSupport"))
                 object.hostWriteMutationSupport = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.toObject(message.hostWriteMutationSupport, options, _depth + 1);
+            if (message.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(message, "bizAiWebOnboarding"))
+                object.bizAiWebOnboarding = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.toObject(message.bizAiWebOnboarding, options, _depth + 1);
             return object;
         };
 
@@ -72090,6 +72195,288 @@ $root.waproto = (function() {
             };
 
             return BizAiSettingsSync;
+        })();
+
+        DeviceCapabilities.BizAiWebOnboarding = (function() {
+
+            /**
+             * Properties of a BizAiWebOnboarding.
+             * @typedef {Object} waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties
+             * @property {number|null} [version] BizAiWebOnboarding version
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a BizAiWebOnboarding.
+             * @memberof waproto.DeviceCapabilities
+             * @interface IBizAiWebOnboarding
+             * @augments waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties
+             * @deprecated Use waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties instead.
+             */
+
+            /**
+             * Shape of a BizAiWebOnboarding.
+             * @typedef {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties} waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape
+             */
+
+            /**
+             * Constructs a new BizAiWebOnboarding.
+             * @memberof waproto.DeviceCapabilities
+             * @classdesc Represents a BizAiWebOnboarding.
+             * @constructor
+             * @param {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var BizAiWebOnboarding = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * BizAiWebOnboarding version.
+             * @member {number|null|undefined} version
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @instance
+             */
+            BizAiWebOnboarding.prototype.version = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(BizAiWebOnboarding.prototype, "_version", {
+                get: $util.oneOfGetter($oneOfFields = ["version"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new BizAiWebOnboarding instance using the specified properties.
+             * @function create
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties=} [properties] Properties to set
+             * @returns {waproto.DeviceCapabilities.BizAiWebOnboarding} BizAiWebOnboarding instance
+             * @type {{
+             *   (properties: waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape): waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape;
+             *   (properties?: waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties): waproto.DeviceCapabilities.BizAiWebOnboarding;
+             * }}
+             */
+            BizAiWebOnboarding.create = function(properties) {
+                return new BizAiWebOnboarding(properties);
+            };
+
+            /**
+             * Encodes the specified BizAiWebOnboarding message. Does not implicitly {@link waproto.DeviceCapabilities.BizAiWebOnboarding.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties} message BizAiWebOnboarding message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BizAiWebOnboarding.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified BizAiWebOnboarding message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.BizAiWebOnboarding.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties} message BizAiWebOnboarding message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            BizAiWebOnboarding.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a BizAiWebOnboarding message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape} BizAiWebOnboarding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BizAiWebOnboarding.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.DeviceCapabilities.BizAiWebOnboarding();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.version = reader.uint32();
+                            message._version = "version";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a BizAiWebOnboarding message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape} BizAiWebOnboarding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            BizAiWebOnboarding.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a BizAiWebOnboarding message.
+             * @function verify
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            BizAiWebOnboarding.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.version != null && $Object.hasOwnProperty.call(message, "version")) {
+                    properties._version = 1;
+                    if (!$util.isInteger(message.version))
+                        return "version: integer expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a BizAiWebOnboarding message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.DeviceCapabilities.BizAiWebOnboarding} BizAiWebOnboarding
+             */
+            BizAiWebOnboarding.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.DeviceCapabilities.BizAiWebOnboarding)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.DeviceCapabilities.BizAiWebOnboarding: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.DeviceCapabilities.BizAiWebOnboarding();
+                if (object.version != null)
+                    message.version = object.version >>> 0;
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a BizAiWebOnboarding message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {waproto.DeviceCapabilities.BizAiWebOnboarding} message BizAiWebOnboarding
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            BizAiWebOnboarding.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
+                    object.version = message.version;
+                return object;
+            };
+
+            /**
+             * Converts this BizAiWebOnboarding to JSON.
+             * @function toJSON
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            BizAiWebOnboarding.prototype.toJSON = function() {
+                return BizAiWebOnboarding.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for BizAiWebOnboarding
+             * @function getTypeUrl
+             * @memberof waproto.DeviceCapabilities.BizAiWebOnboarding
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            BizAiWebOnboarding.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.DeviceCapabilities.BizAiWebOnboarding";
+            };
+
+            return BizAiWebOnboarding;
         })();
 
         DeviceCapabilities.BusinessBroadcast = (function() {

@@ -6139,6 +6139,9 @@ export namespace waproto {
         /** BizAccountLinkInfo accountType. */
         accountType?: (waproto.BizAccountLinkInfo.AccountType|null);
 
+        /** BizAccountLinkInfo whatsappAcctEmail. */
+        whatsappAcctEmail?: (string|null);
+
         /**
          * Creates a new BizAccountLinkInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -6237,6 +6240,9 @@ export namespace waproto {
 
             /** BizAccountLinkInfo accountType */
             accountType?: (waproto.BizAccountLinkInfo.AccountType|null);
+
+            /** BizAccountLinkInfo whatsappAcctEmail */
+            whatsappAcctEmail?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -10325,6 +10331,9 @@ export namespace waproto {
         /** BotMessageOrigin type. */
         type?: (waproto.BotMessageOrigin.BotMessageOriginType|null);
 
+        /** BotMessageOrigin proactiveMessageCampaignId. */
+        proactiveMessageCampaignId?: (string|null);
+
         /**
          * Creates a new BotMessageOrigin instance using the specified properties.
          * @param [properties] Properties to set
@@ -10411,6 +10420,9 @@ export namespace waproto {
 
             /** BotMessageOrigin type */
             type?: (waproto.BotMessageOrigin.BotMessageOriginType|null);
+
+            /** BotMessageOrigin proactiveMessageCampaignId */
+            proactiveMessageCampaignId?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -23865,6 +23877,9 @@ export namespace waproto {
         /** DeviceCapabilities hostWriteMutationSupport. */
         hostWriteMutationSupport?: (waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null);
 
+        /** DeviceCapabilities bizAiWebOnboarding. */
+        bizAiWebOnboarding?: (waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @param [properties] Properties to set
@@ -23984,6 +23999,9 @@ export namespace waproto {
 
             /** DeviceCapabilities hostWriteMutationSupport */
             hostWriteMutationSupport?: (waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null);
+
+            /** DeviceCapabilities bizAiWebOnboarding */
+            bizAiWebOnboarding?: (waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -24360,6 +24378,123 @@ export namespace waproto {
 
             /** Shape of a BizAiSettingsSync. */
             type $Shape = waproto.DeviceCapabilities.BizAiSettingsSync.$Properties;
+        }
+
+        /**
+         * Properties of a BizAiWebOnboarding.
+         * @deprecated Use waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties instead.
+         */
+        interface IBizAiWebOnboarding extends waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties {
+        }
+
+        /** Represents a BizAiWebOnboarding. */
+        class BizAiWebOnboarding {
+
+            /**
+             * Constructs a new BizAiWebOnboarding.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** BizAiWebOnboarding version. */
+            version?: (number|null);
+
+            /**
+             * Creates a new BizAiWebOnboarding instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BizAiWebOnboarding instance
+             */
+            static create(properties: waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape): waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties): waproto.DeviceCapabilities.BizAiWebOnboarding;
+
+            /**
+             * Encodes the specified BizAiWebOnboarding message. Does not implicitly {@link waproto.DeviceCapabilities.BizAiWebOnboarding.verify|verify} messages.
+             * @param message BizAiWebOnboarding message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BizAiWebOnboarding message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.BizAiWebOnboarding.verify|verify} messages.
+             * @param message BizAiWebOnboarding message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BizAiWebOnboarding message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape} BizAiWebOnboarding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape;
+
+            /**
+             * Decodes a BizAiWebOnboarding message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape} BizAiWebOnboarding
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.BizAiWebOnboarding & waproto.DeviceCapabilities.BizAiWebOnboarding.$Shape;
+
+            /**
+             * Verifies a BizAiWebOnboarding message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BizAiWebOnboarding message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BizAiWebOnboarding
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.BizAiWebOnboarding;
+
+            /**
+             * Creates a plain object from a BizAiWebOnboarding message. Also converts values to other types if specified.
+             * @param message BizAiWebOnboarding
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.BizAiWebOnboarding, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BizAiWebOnboarding to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for BizAiWebOnboarding
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BizAiWebOnboarding {
+
+            /** Properties of a BizAiWebOnboarding. */
+            interface $Properties {
+
+                /** BizAiWebOnboarding version */
+                version?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a BizAiWebOnboarding. */
+            type $Shape = waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties;
         }
 
         /**
