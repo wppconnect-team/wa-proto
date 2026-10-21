@@ -192597,6 +192597,7 @@ $root.waproto = (function() {
          * @property {string|null} [mediaPngThumbnail] MsgOpaqueData mediaPngThumbnail
          * @property {string|null} [qrUrl] MsgOpaqueData qrUrl
          * @property {waproto.MsgOpaqueData.MusicData.$Properties|null} [musicData] MsgOpaqueData musicData
+         * @property {string|null} [pollAddedOptionName] MsgOpaqueData pollAddedOptionName
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -193093,6 +193094,14 @@ $root.waproto = (function() {
          */
         MsgOpaqueData.prototype.musicData = null;
 
+        /**
+         * MsgOpaqueData pollAddedOptionName.
+         * @member {string|null|undefined} pollAddedOptionName
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.pollAddedOptionName = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -193438,6 +193447,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_pollAddedOptionName", {
+            get: $util.oneOfGetter($oneOfFields = ["pollAddedOptionName"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @function create
@@ -193587,6 +193602,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 62, wireType 2 =*/498).string(message.qrUrl);
             if (message.musicData != null && $Object.hasOwnProperty.call(message, "musicData"))
                 $root.waproto.MsgOpaqueData.MusicData.encode(message.musicData, writer.uint32(/* id 63, wireType 2 =*/506).fork(), _depth + 1).ldelim();
+            if (message.pollAddedOptionName != null && $Object.hasOwnProperty.call(message, "pollAddedOptionName"))
+                writer.uint32(/* id 64, wireType 2 =*/514).string(message.pollAddedOptionName);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -194051,6 +194068,13 @@ $root.waproto = (function() {
                         message._musicData = "musicData";
                         continue;
                     }
+                case 64: {
+                        if (wireType !== 2)
+                            break;
+                        message.pollAddedOptionName = reader.stringVerify();
+                        message._pollAddedOptionName = "pollAddedOptionName";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -194406,6 +194430,11 @@ $root.waproto = (function() {
                         return "musicData." + error;
                 }
             }
+            if (message.pollAddedOptionName != null && $Object.hasOwnProperty.call(message, "pollAddedOptionName")) {
+                properties._pollAddedOptionName = 1;
+                if (!$util.isString(message.pollAddedOptionName))
+                    return "pollAddedOptionName: string expected";
+            }
             return null;
         };
 
@@ -194658,6 +194687,8 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.MsgOpaqueData.musicData: object expected");
                 message.musicData = $root.waproto.MsgOpaqueData.MusicData.fromObject(object.musicData, _depth + 1);
             }
+            if (object.pollAddedOptionName != null)
+                message.pollAddedOptionName = $String(object.pollAddedOptionName);
             return message;
         };
 
@@ -194829,6 +194860,8 @@ $root.waproto = (function() {
                 object.qrUrl = message.qrUrl;
             if (message.musicData != null && $Object.hasOwnProperty.call(message, "musicData"))
                 object.musicData = $root.waproto.MsgOpaqueData.MusicData.toObject(message.musicData, options, _depth + 1);
+            if (message.pollAddedOptionName != null && $Object.hasOwnProperty.call(message, "pollAddedOptionName"))
+                object.pollAddedOptionName = message.pollAddedOptionName;
             return object;
         };
 

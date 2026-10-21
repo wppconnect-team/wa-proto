@@ -64267,6 +64267,9 @@ export namespace waproto {
         /** MsgOpaqueData musicData. */
         musicData?: (waproto.MsgOpaqueData.MusicData.$Properties|null);
 
+        /** MsgOpaqueData pollAddedOptionName. */
+        pollAddedOptionName?: (string|null);
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @param [properties] Properties to set
@@ -64524,6 +64527,9 @@ export namespace waproto {
 
             /** MsgOpaqueData musicData */
             musicData?: (waproto.MsgOpaqueData.MusicData.$Properties|null);
+
+            /** MsgOpaqueData pollAddedOptionName */
+            pollAddedOptionName?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
