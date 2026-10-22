@@ -22953,8 +22953,8 @@ export namespace waproto {
             /** StatusAudienceMetadata listEmoji. */
             listEmoji?: (string|null);
 
-            /** StatusAudienceMetadata networkId. */
-            networkId?: (string|null);
+            /** StatusAudienceMetadata orgId. */
+            orgId?: (string|null);
 
             /**
              * Creates a new StatusAudienceMetadata instance using the specified properties.
@@ -23049,8 +23049,8 @@ export namespace waproto {
                 /** StatusAudienceMetadata listEmoji */
                 listEmoji?: (string|null);
 
-                /** StatusAudienceMetadata networkId */
-                networkId?: (string|null);
+                /** StatusAudienceMetadata orgId */
+                orgId?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -23071,8 +23071,8 @@ export namespace waproto {
                 /** CUSTOM_LIST value */
                 CUSTOM_LIST = 2,
 
-                /** NETWORK value */
-                NETWORK = 3
+                /** ORG value */
+                ORG = 3
             }
         }
 

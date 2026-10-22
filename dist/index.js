@@ -67011,7 +67011,7 @@ $root.waproto = (function() {
              * @property {waproto.ContextInfo.StatusAudienceMetadata.AudienceType|null} [audienceType] StatusAudienceMetadata audienceType
              * @property {string|null} [listName] StatusAudienceMetadata listName
              * @property {string|null} [listEmoji] StatusAudienceMetadata listEmoji
-             * @property {string|null} [networkId] StatusAudienceMetadata networkId
+             * @property {string|null} [orgId] StatusAudienceMetadata orgId
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -67068,12 +67068,12 @@ $root.waproto = (function() {
             StatusAudienceMetadata.prototype.listEmoji = null;
 
             /**
-             * StatusAudienceMetadata networkId.
-             * @member {string|null|undefined} networkId
+             * StatusAudienceMetadata orgId.
+             * @member {string|null|undefined} orgId
              * @memberof waproto.ContextInfo.StatusAudienceMetadata
              * @instance
              */
-            StatusAudienceMetadata.prototype.networkId = null;
+            StatusAudienceMetadata.prototype.orgId = null;
 
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
@@ -67097,8 +67097,8 @@ $root.waproto = (function() {
             });
 
             // Virtual OneOf for proto3 optional field
-            $Object.defineProperty(StatusAudienceMetadata.prototype, "_networkId", {
-                get: $util.oneOfGetter($oneOfFields = ["networkId"]),
+            $Object.defineProperty(StatusAudienceMetadata.prototype, "_orgId", {
+                get: $util.oneOfGetter($oneOfFields = ["orgId"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -67140,8 +67140,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.listName);
                 if (message.listEmoji != null && $Object.hasOwnProperty.call(message, "listEmoji"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.listEmoji);
-                if (message.networkId != null && $Object.hasOwnProperty.call(message, "networkId"))
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.networkId);
+                if (message.orgId != null && $Object.hasOwnProperty.call(message, "orgId"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.orgId);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -67223,8 +67223,8 @@ $root.waproto = (function() {
                     case 4: {
                             if (wireType !== 2)
                                 break;
-                            message.networkId = reader.stringVerify();
-                            message._networkId = "networkId";
+                            message.orgId = reader.stringVerify();
+                            message._orgId = "orgId";
                             continue;
                         }
                     }
@@ -67291,10 +67291,10 @@ $root.waproto = (function() {
                     if (!$util.isString(message.listEmoji))
                         return "listEmoji: string expected";
                 }
-                if (message.networkId != null && $Object.hasOwnProperty.call(message, "networkId")) {
-                    properties._networkId = 1;
-                    if (!$util.isString(message.networkId))
-                        return "networkId: string expected";
+                if (message.orgId != null && $Object.hasOwnProperty.call(message, "orgId")) {
+                    properties._orgId = 1;
+                    if (!$util.isString(message.orgId))
+                        return "orgId: string expected";
                 }
                 return null;
             };
@@ -67330,7 +67330,7 @@ $root.waproto = (function() {
                 case 2:
                     message.audienceType = 2;
                     break;
-                case "NETWORK":
+                case "ORG":
                 case 3:
                     message.audienceType = 3;
                     break;
@@ -67342,8 +67342,8 @@ $root.waproto = (function() {
                     message.listName = $String(object.listName);
                 if (object.listEmoji != null)
                     message.listEmoji = $String(object.listEmoji);
-                if (object.networkId != null)
-                    message.networkId = $String(object.networkId);
+                if (object.orgId != null)
+                    message.orgId = $String(object.orgId);
                 return message;
             };
 
@@ -67370,8 +67370,8 @@ $root.waproto = (function() {
                     object.listName = message.listName;
                 if (message.listEmoji != null && $Object.hasOwnProperty.call(message, "listEmoji"))
                     object.listEmoji = message.listEmoji;
-                if (message.networkId != null && $Object.hasOwnProperty.call(message, "networkId"))
-                    object.networkId = message.networkId;
+                if (message.orgId != null && $Object.hasOwnProperty.call(message, "orgId"))
+                    object.orgId = message.orgId;
                 return object;
             };
 
@@ -67407,14 +67407,14 @@ $root.waproto = (function() {
              * @property {number} UNKNOWN=0 UNKNOWN value
              * @property {number} CLOSE_FRIENDS=1 CLOSE_FRIENDS value
              * @property {number} CUSTOM_LIST=2 CUSTOM_LIST value
-             * @property {number} NETWORK=3 NETWORK value
+             * @property {number} ORG=3 ORG value
              */
             StatusAudienceMetadata.AudienceType = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
                 values[valuesById[0] = "UNKNOWN"] = 0;
                 values[valuesById[1] = "CLOSE_FRIENDS"] = 1;
                 values[valuesById[2] = "CUSTOM_LIST"] = 2;
-                values[valuesById[3] = "NETWORK"] = 3;
+                values[valuesById[3] = "ORG"] = 3;
                 return values;
             })();
 
