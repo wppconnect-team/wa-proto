@@ -234530,6 +234530,7 @@ $root.waproto = (function() {
              * @property {string|null} [name] PollOption name
              * @property {string|null} [hash] PollOption hash
              * @property {string|null} [addOptionMsgKey] PollOption addOptionMsgKey
+             * @property {number|null} [localId] PollOption localId
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -234585,6 +234586,14 @@ $root.waproto = (function() {
              */
             PollOption.prototype.addOptionMsgKey = null;
 
+            /**
+             * PollOption localId.
+             * @member {number|null|undefined} localId
+             * @memberof waproto.MsgOpaqueData.PollOption
+             * @instance
+             */
+            PollOption.prototype.localId = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -234603,6 +234612,12 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(PollOption.prototype, "_addOptionMsgKey", {
                 get: $util.oneOfGetter($oneOfFields = ["addOptionMsgKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOption.prototype, "_localId", {
+                get: $util.oneOfGetter($oneOfFields = ["localId"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -234644,6 +234659,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.hash);
                 if (message.addOptionMsgKey != null && $Object.hasOwnProperty.call(message, "addOptionMsgKey"))
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.addOptionMsgKey);
+                if (message.localId != null && $Object.hasOwnProperty.call(message, "localId"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.localId);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -234722,6 +234739,13 @@ $root.waproto = (function() {
                             message._addOptionMsgKey = "addOptionMsgKey";
                             continue;
                         }
+                    case 4: {
+                            if (wireType !== 0)
+                                break;
+                            message.localId = reader.uint32();
+                            message._localId = "localId";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -234786,6 +234810,11 @@ $root.waproto = (function() {
                     if (!$util.isString(message.addOptionMsgKey))
                         return "addOptionMsgKey: string expected";
                 }
+                if (message.localId != null && $Object.hasOwnProperty.call(message, "localId")) {
+                    properties._localId = 1;
+                    if (!$util.isInteger(message.localId))
+                        return "localId: integer expected";
+                }
                 return null;
             };
 
@@ -234813,6 +234842,8 @@ $root.waproto = (function() {
                     message.hash = $String(object.hash);
                 if (object.addOptionMsgKey != null)
                     message.addOptionMsgKey = $String(object.addOptionMsgKey);
+                if (object.localId != null)
+                    message.localId = object.localId >>> 0;
                 return message;
             };
 
@@ -234839,6 +234870,8 @@ $root.waproto = (function() {
                     object.hash = message.hash;
                 if (message.addOptionMsgKey != null && $Object.hasOwnProperty.call(message, "addOptionMsgKey"))
                     object.addOptionMsgKey = message.addOptionMsgKey;
+                if (message.localId != null && $Object.hasOwnProperty.call(message, "localId"))
+                    object.localId = message.localId;
                 return object;
             };
 

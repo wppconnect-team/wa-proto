@@ -78787,6 +78787,9 @@ export namespace waproto {
             /** PollOption addOptionMsgKey. */
             addOptionMsgKey?: (string|null);
 
+            /** PollOption localId. */
+            localId?: (number|null);
+
             /**
              * Creates a new PollOption instance using the specified properties.
              * @param [properties] Properties to set
@@ -78879,6 +78882,9 @@ export namespace waproto {
 
                 /** PollOption addOptionMsgKey */
                 addOptionMsgKey?: (string|null);
+
+                /** PollOption localId */
+                localId?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];

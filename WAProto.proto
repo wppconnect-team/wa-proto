@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1051351692
+/// WhatsApp Version: 2.3000.1051404344
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -5612,6 +5612,7 @@ message MsgOpaqueData {
         optional string name = 1;
         optional string hash = 2;
         optional string addOptionMsgKey = 3;
+        optional uint32 localId = 4;
     }
     
     enum PollType {
