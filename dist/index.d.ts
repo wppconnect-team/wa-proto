@@ -17153,6 +17153,9 @@ export namespace waproto {
         /** ClientPairingProps isBotJidDbMigrated. */
         isBotJidDbMigrated?: (boolean|null);
 
+        /** ClientPairingProps companionAddPeerPayload. */
+        companionAddPeerPayload?: (Uint8Array|null);
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @param [properties] Properties to set
@@ -17254,6 +17257,9 @@ export namespace waproto {
 
             /** ClientPairingProps isBotJidDbMigrated */
             isBotJidDbMigrated?: (boolean|null);
+
+            /** ClientPairingProps companionAddPeerPayload */
+            companionAddPeerPayload?: (Uint8Array|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -78790,6 +78796,9 @@ export namespace waproto {
             /** PollOption localId. */
             localId?: (number|null);
 
+            /** PollOption addOptionMsgT. */
+            addOptionMsgT?: (number|null);
+
             /**
              * Creates a new PollOption instance using the specified properties.
              * @param [properties] Properties to set
@@ -78885,6 +78894,9 @@ export namespace waproto {
 
                 /** PollOption localId */
                 localId?: (number|null);
+
+                /** PollOption addOptionMsgT */
+                addOptionMsgT?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];

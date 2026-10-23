@@ -48171,6 +48171,7 @@ $root.waproto = (function() {
          * @property {boolean|null} [isHsThumbnailSyncEnabled] ClientPairingProps isHsThumbnailSyncEnabled
          * @property {Uint8Array|null} [subscriptionSyncPayload] ClientPairingProps subscriptionSyncPayload
          * @property {boolean|null} [isBotJidDbMigrated] ClientPairingProps isBotJidDbMigrated
+         * @property {Uint8Array|null} [companionAddPeerPayload] ClientPairingProps companionAddPeerPayload
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -48250,6 +48251,14 @@ $root.waproto = (function() {
          */
         ClientPairingProps.prototype.isBotJidDbMigrated = null;
 
+        /**
+         * ClientPairingProps companionAddPeerPayload.
+         * @member {Uint8Array|null|undefined} companionAddPeerPayload
+         * @memberof waproto.ClientPairingProps
+         * @instance
+         */
+        ClientPairingProps.prototype.companionAddPeerPayload = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -48286,6 +48295,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(ClientPairingProps.prototype, "_isBotJidDbMigrated", {
             get: $util.oneOfGetter($oneOfFields = ["isBotJidDbMigrated"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ClientPairingProps.prototype, "_companionAddPeerPayload", {
+            get: $util.oneOfGetter($oneOfFields = ["companionAddPeerPayload"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -48333,6 +48348,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.subscriptionSyncPayload);
             if (message.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(message, "isBotJidDbMigrated"))
                 writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isBotJidDbMigrated);
+            if (message.companionAddPeerPayload != null && $Object.hasOwnProperty.call(message, "companionAddPeerPayload"))
+                writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.companionAddPeerPayload);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -48432,6 +48449,13 @@ $root.waproto = (function() {
                         message._isBotJidDbMigrated = "isBotJidDbMigrated";
                         continue;
                     }
+                case 7: {
+                        if (wireType !== 2)
+                            break;
+                        message.companionAddPeerPayload = reader.bytes();
+                        message._companionAddPeerPayload = "companionAddPeerPayload";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -48511,6 +48535,11 @@ $root.waproto = (function() {
                 if (typeof message.isBotJidDbMigrated !== "boolean")
                     return "isBotJidDbMigrated: boolean expected";
             }
+            if (message.companionAddPeerPayload != null && $Object.hasOwnProperty.call(message, "companionAddPeerPayload")) {
+                properties._companionAddPeerPayload = 1;
+                if (!(message.companionAddPeerPayload && typeof message.companionAddPeerPayload.length === "number" || $util.isString(message.companionAddPeerPayload)))
+                    return "companionAddPeerPayload: buffer expected";
+            }
             return null;
         };
 
@@ -48547,6 +48576,11 @@ $root.waproto = (function() {
                     message.subscriptionSyncPayload = object.subscriptionSyncPayload;
             if (object.isBotJidDbMigrated != null)
                 message.isBotJidDbMigrated = $Boolean(object.isBotJidDbMigrated);
+            if (object.companionAddPeerPayload != null)
+                if (typeof object.companionAddPeerPayload === "string")
+                    $util.base64.decode(object.companionAddPeerPayload, message.companionAddPeerPayload = $util.newBuffer($util.base64.length(object.companionAddPeerPayload)), 0);
+                else if (object.companionAddPeerPayload.length >= 0)
+                    message.companionAddPeerPayload = object.companionAddPeerPayload;
             return message;
         };
 
@@ -48579,6 +48613,8 @@ $root.waproto = (function() {
                 object.subscriptionSyncPayload = options.bytes === $String ? $util.base64.encode(message.subscriptionSyncPayload, 0, message.subscriptionSyncPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.subscriptionSyncPayload) : message.subscriptionSyncPayload;
             if (message.isBotJidDbMigrated != null && $Object.hasOwnProperty.call(message, "isBotJidDbMigrated"))
                 object.isBotJidDbMigrated = message.isBotJidDbMigrated;
+            if (message.companionAddPeerPayload != null && $Object.hasOwnProperty.call(message, "companionAddPeerPayload"))
+                object.companionAddPeerPayload = options.bytes === $String ? $util.base64.encode(message.companionAddPeerPayload, 0, message.companionAddPeerPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.companionAddPeerPayload) : message.companionAddPeerPayload;
             return object;
         };
 
@@ -234531,6 +234567,7 @@ $root.waproto = (function() {
              * @property {string|null} [hash] PollOption hash
              * @property {string|null} [addOptionMsgKey] PollOption addOptionMsgKey
              * @property {number|null} [localId] PollOption localId
+             * @property {number|null} [addOptionMsgT] PollOption addOptionMsgT
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -234594,6 +234631,14 @@ $root.waproto = (function() {
              */
             PollOption.prototype.localId = null;
 
+            /**
+             * PollOption addOptionMsgT.
+             * @member {number|null|undefined} addOptionMsgT
+             * @memberof waproto.MsgOpaqueData.PollOption
+             * @instance
+             */
+            PollOption.prototype.addOptionMsgT = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -234618,6 +234663,12 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(PollOption.prototype, "_localId", {
                 get: $util.oneOfGetter($oneOfFields = ["localId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOption.prototype, "_addOptionMsgT", {
+                get: $util.oneOfGetter($oneOfFields = ["addOptionMsgT"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -234661,6 +234712,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 3, wireType 2 =*/26).string(message.addOptionMsgKey);
                 if (message.localId != null && $Object.hasOwnProperty.call(message, "localId"))
                     writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.localId);
+                if (message.addOptionMsgT != null && $Object.hasOwnProperty.call(message, "addOptionMsgT"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).uint32(message.addOptionMsgT);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -234746,6 +234799,13 @@ $root.waproto = (function() {
                             message._localId = "localId";
                             continue;
                         }
+                    case 5: {
+                            if (wireType !== 0)
+                                break;
+                            message.addOptionMsgT = reader.uint32();
+                            message._addOptionMsgT = "addOptionMsgT";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -234815,6 +234875,11 @@ $root.waproto = (function() {
                     if (!$util.isInteger(message.localId))
                         return "localId: integer expected";
                 }
+                if (message.addOptionMsgT != null && $Object.hasOwnProperty.call(message, "addOptionMsgT")) {
+                    properties._addOptionMsgT = 1;
+                    if (!$util.isInteger(message.addOptionMsgT))
+                        return "addOptionMsgT: integer expected";
+                }
                 return null;
             };
 
@@ -234844,6 +234909,8 @@ $root.waproto = (function() {
                     message.addOptionMsgKey = $String(object.addOptionMsgKey);
                 if (object.localId != null)
                     message.localId = object.localId >>> 0;
+                if (object.addOptionMsgT != null)
+                    message.addOptionMsgT = object.addOptionMsgT >>> 0;
                 return message;
             };
 
@@ -234872,6 +234939,8 @@ $root.waproto = (function() {
                     object.addOptionMsgKey = message.addOptionMsgKey;
                 if (message.localId != null && $Object.hasOwnProperty.call(message, "localId"))
                     object.localId = message.localId;
+                if (message.addOptionMsgT != null && $Object.hasOwnProperty.call(message, "addOptionMsgT"))
+                    object.addOptionMsgT = message.addOptionMsgT;
                 return object;
             };
 
