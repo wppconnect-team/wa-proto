@@ -7329,7 +7329,10 @@ export namespace waproto {
             AI_MUSE_JARVIS_SCHEMA_ENABLED = 81,
 
             /** AI_STUDY_QUIZ_ENABLED value */
-            AI_STUDY_QUIZ_ENABLED = 82
+            AI_STUDY_QUIZ_ENABLED = 82,
+
+            /** HATCH_CVM_ENABLED value */
+            HATCH_CVM_ENABLED = 83
         }
     }
 
@@ -9522,6 +9525,129 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a BotInterjectionMetadata.
+     * @deprecated Use waproto.BotInterjectionMetadata.$Properties instead.
+     */
+    interface IBotInterjectionMetadata extends waproto.BotInterjectionMetadata.$Properties {
+    }
+
+    /** Represents a BotInterjectionMetadata. */
+    class BotInterjectionMetadata {
+
+        /**
+         * Constructs a new BotInterjectionMetadata.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.BotInterjectionMetadata.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** BotInterjectionMetadata targetPromptMessageId. */
+        targetPromptMessageId?: (string|null);
+
+        /** BotInterjectionMetadata foldedPromptMessageIds. */
+        foldedPromptMessageIds: string[];
+
+        /**
+         * Creates a new BotInterjectionMetadata instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns BotInterjectionMetadata instance
+         */
+        static create(properties: waproto.BotInterjectionMetadata.$Shape): waproto.BotInterjectionMetadata & waproto.BotInterjectionMetadata.$Shape;
+        static create(properties?: waproto.BotInterjectionMetadata.$Properties): waproto.BotInterjectionMetadata;
+
+        /**
+         * Encodes the specified BotInterjectionMetadata message. Does not implicitly {@link waproto.BotInterjectionMetadata.verify|verify} messages.
+         * @param message BotInterjectionMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.BotInterjectionMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified BotInterjectionMetadata message, length delimited. Does not implicitly {@link waproto.BotInterjectionMetadata.verify|verify} messages.
+         * @param message BotInterjectionMetadata message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.BotInterjectionMetadata.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a BotInterjectionMetadata message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.BotInterjectionMetadata & waproto.BotInterjectionMetadata.$Shape} BotInterjectionMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.BotInterjectionMetadata & waproto.BotInterjectionMetadata.$Shape;
+
+        /**
+         * Decodes a BotInterjectionMetadata message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.BotInterjectionMetadata & waproto.BotInterjectionMetadata.$Shape} BotInterjectionMetadata
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.BotInterjectionMetadata & waproto.BotInterjectionMetadata.$Shape;
+
+        /**
+         * Verifies a BotInterjectionMetadata message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a BotInterjectionMetadata message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns BotInterjectionMetadata
+         */
+        static fromObject(object: { [k: string]: any }): waproto.BotInterjectionMetadata;
+
+        /**
+         * Creates a plain object from a BotInterjectionMetadata message. Also converts values to other types if specified.
+         * @param message BotInterjectionMetadata
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.BotInterjectionMetadata, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this BotInterjectionMetadata to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for BotInterjectionMetadata
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace BotInterjectionMetadata {
+
+        /** Properties of a BotInterjectionMetadata. */
+        interface $Properties {
+
+            /** BotInterjectionMetadata targetPromptMessageId */
+            targetPromptMessageId?: (string|null);
+
+            /** BotInterjectionMetadata foldedPromptMessageIds */
+            foldedPromptMessageIds?: (string[]|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a BotInterjectionMetadata. */
+        type $Shape = waproto.BotInterjectionMetadata.$Properties;
+    }
+
+    /**
      * Properties of a BotLinkedAccount.
      * @deprecated Use waproto.BotLinkedAccount.$Properties instead.
      */
@@ -10830,6 +10956,9 @@ export namespace waproto {
         /** BotMetadata responseStoppedByUser. */
         responseStoppedByUser?: (boolean|null);
 
+        /** BotMetadata interjectionMetadata. */
+        interjectionMetadata?: (waproto.BotInterjectionMetadata.$Properties|null);
+
         /** BotMetadata internalMetadata. */
         internalMetadata?: (Uint8Array|null);
 
@@ -11045,6 +11174,9 @@ export namespace waproto {
 
             /** BotMetadata responseStoppedByUser */
             responseStoppedByUser?: (boolean|null);
+
+            /** BotMetadata interjectionMetadata */
+            interjectionMetadata?: (waproto.BotInterjectionMetadata.$Properties|null);
 
             /** BotMetadata internalMetadata */
             internalMetadata?: (Uint8Array|null);

@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1051891131
+/// WhatsApp Version: 2.3000.1051908825
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -505,6 +505,7 @@ message BotCapabilityMetadata {
         AI_STUDY_CENTER_ENABLED = 80;
         AI_MUSE_JARVIS_SCHEMA_ENABLED = 81;
         AI_STUDY_QUIZ_ENABLED = 82;
+        HATCH_CVM_ENABLED = 83;
     }
 }
 
@@ -652,6 +653,11 @@ message BotInfrastructureDiagnostics {
     }
 }
 
+message BotInterjectionMetadata {
+    optional string targetPromptMessageId = 1;
+    repeated string foldedPromptMessageIds = 2;
+}
+
 message BotLinkedAccount {
     optional BotLinkedAccountType type = 1;
     enum BotLinkedAccountType {
@@ -757,6 +763,7 @@ message BotMetadata {
     optional BotPttPromptMetadata pttPromptMetadata = 42;
     optional BotHistoryShareMetadata botHistoryShareMetadata = 43;
     optional bool responseStoppedByUser = 44;
+    optional BotInterjectionMetadata interjectionMetadata = 45;
     optional bytes internalMetadata = 999;
 }
 
