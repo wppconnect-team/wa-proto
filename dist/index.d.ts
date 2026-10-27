@@ -20270,6 +20270,9 @@ export namespace waproto {
         /** ContextInfo sourceExperienceId. */
         sourceExperienceId?: (number|null);
 
+        /** ContextInfo sourceExperienceIds. */
+        sourceExperienceIds: number[];
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -20555,6 +20558,9 @@ export namespace waproto {
             /** ContextInfo sourceExperienceId */
             sourceExperienceId?: (number|null);
 
+            /** ContextInfo sourceExperienceIds */
+            sourceExperienceIds?: (number[]|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -20628,6 +20634,7 @@ export namespace waproto {
           experienceIds?: number[]|null;
           partnerDeepLinkToken?: string|null;
           sourceExperienceId?: number|null;
+          sourceExperienceIds?: number[]|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -49786,6 +49793,9 @@ export namespace waproto {
                     /** Line text. */
                     text?: (string|null);
 
+                    /** Line wordOffsets. */
+                    wordOffsets: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties[];
+
                     /**
                      * Creates a new Line instance using the specified properties.
                      * @param [properties] Properties to set
@@ -49879,12 +49889,150 @@ export namespace waproto {
                         /** Line text */
                         text?: (string|null);
 
+                        /** Line wordOffsets */
+                        wordOffsets?: (waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties[]|null);
+
                         /** Unknown fields preserved while decoding when enabled */
                         $unknowns?: Uint8Array[];
                     }
 
                     /** Shape of a Line. */
                     type $Shape = waproto.Message.MusicMessage.Lyrics.Line.$Properties;
+
+                    /**
+                     * Properties of a WordOffset.
+                     * @deprecated Use waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties instead.
+                     */
+                    interface IWordOffset extends waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties {
+                    }
+
+                    /** Represents a WordOffset. */
+                    class WordOffset {
+
+                        /**
+                         * Constructs a new WordOffset.
+                         * @param [properties] Properties to set
+                         */
+                        constructor(properties?: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties);
+
+                        /** Unknown fields preserved while decoding when enabled */
+                        $unknowns?: Uint8Array[];
+
+                        /** WordOffset startIndex. */
+                        startIndex?: (number|null);
+
+                        /** WordOffset endIndex. */
+                        endIndex?: (number|null);
+
+                        /** WordOffset startOffsetMs. */
+                        startOffsetMs?: (number|Long|null);
+
+                        /** WordOffset endOffsetMs. */
+                        endOffsetMs?: (number|Long|null);
+
+                        /**
+                         * Creates a new WordOffset instance using the specified properties.
+                         * @param [properties] Properties to set
+                         * @returns WordOffset instance
+                         */
+                        static create(properties: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape): waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape;
+                        static create(properties?: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties): waproto.Message.MusicMessage.Lyrics.Line.WordOffset;
+
+                        /**
+                         * Encodes the specified WordOffset message. Does not implicitly {@link waproto.Message.MusicMessage.Lyrics.Line.WordOffset.verify|verify} messages.
+                         * @param message WordOffset message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        static encode(message: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Encodes the specified WordOffset message, length delimited. Does not implicitly {@link waproto.Message.MusicMessage.Lyrics.Line.WordOffset.verify|verify} messages.
+                         * @param message WordOffset message or plain object to encode
+                         * @param [writer] Writer to encode to
+                         * @returns Writer
+                         */
+                        static encodeDelimited(message: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                        /**
+                         * Decodes a WordOffset message from the specified reader or buffer.
+                         * @param reader Reader or buffer to decode from
+                         * @param [length] Message length if known beforehand
+                         * @returns {waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape} WordOffset
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape;
+
+                        /**
+                         * Decodes a WordOffset message from the specified reader or buffer, length delimited.
+                         * @param reader Reader or buffer to decode from
+                         * @returns {waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape} WordOffset
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape;
+
+                        /**
+                         * Verifies a WordOffset message.
+                         * @param message Plain object to verify
+                         * @returns `null` if valid, otherwise the reason why it is not
+                         */
+                        static verify(message: { [k: string]: any }): (string|null);
+
+                        /**
+                         * Creates a WordOffset message from a plain object. Also converts values to their respective internal types.
+                         * @param object Plain object
+                         * @returns WordOffset
+                         */
+                        static fromObject(object: { [k: string]: any }): waproto.Message.MusicMessage.Lyrics.Line.WordOffset;
+
+                        /**
+                         * Creates a plain object from a WordOffset message. Also converts values to other types if specified.
+                         * @param message WordOffset
+                         * @param [options] Conversion options
+                         * @returns Plain object
+                         */
+                        static toObject(message: waproto.Message.MusicMessage.Lyrics.Line.WordOffset, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                        /**
+                         * Converts this WordOffset to JSON.
+                         * @returns JSON object
+                         */
+                        toJSON(): { [k: string]: any };
+
+                        /**
+                         * Gets the type url for WordOffset
+                         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                         * @returns The type url
+                         */
+                        static getTypeUrl(prefix?: string): string;
+                    }
+
+                    namespace WordOffset {
+
+                        /** Properties of a WordOffset. */
+                        interface $Properties {
+
+                            /** WordOffset startIndex */
+                            startIndex?: (number|null);
+
+                            /** WordOffset endIndex */
+                            endIndex?: (number|null);
+
+                            /** WordOffset startOffsetMs */
+                            startOffsetMs?: (number|Long|null);
+
+                            /** WordOffset endOffsetMs */
+                            endOffsetMs?: (number|Long|null);
+
+                            /** Unknown fields preserved while decoding when enabled */
+                            $unknowns?: Uint8Array[];
+                        }
+
+                        /** Shape of a WordOffset. */
+                        type $Shape = waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties;
+                    }
                 }
             }
 
@@ -52435,6 +52583,9 @@ export namespace waproto {
                 /** HistorySyncOnDemandRequest supportInlineResponse. */
                 supportInlineResponse?: (boolean|null);
 
+                /** HistorySyncOnDemandRequest mode. */
+                mode?: (waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode|null);
+
                 /**
                  * Creates a new HistorySyncOnDemandRequest instance using the specified properties.
                  * @param [properties] Properties to set
@@ -52540,12 +52691,25 @@ export namespace waproto {
                     /** HistorySyncOnDemandRequest supportInlineResponse */
                     supportInlineResponse?: (boolean|null);
 
+                    /** HistorySyncOnDemandRequest mode */
+                    mode?: (waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode|null);
+
                     /** Unknown fields preserved while decoding when enabled */
                     $unknowns?: Uint8Array[];
                 }
 
                 /** Shape of a HistorySyncOnDemandRequest. */
                 type $Shape = waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.$Properties;
+
+                /** Mode enum. */
+                enum Mode {
+
+                    /** MODE_UNSPECIFIED value */
+                    MODE_UNSPECIFIED = 0,
+
+                    /** INITIAL_REVERSE_HISTORY value */
+                    INITIAL_REVERSE_HISTORY = 1
+                }
             }
 
             /**

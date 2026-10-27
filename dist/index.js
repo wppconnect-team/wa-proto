@@ -57432,6 +57432,7 @@ $root.waproto = (function() {
          * @property {Array.<number>|null} [experienceIds] ContextInfo experienceIds
          * @property {string|null} [partnerDeepLinkToken] ContextInfo partnerDeepLinkToken
          * @property {number|null} [sourceExperienceId] ContextInfo sourceExperienceId
+         * @property {Array.<number>|null} [sourceExperienceIds] ContextInfo sourceExperienceIds
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -57513,6 +57514,7 @@ $root.waproto = (function() {
          *   experienceIds?: Array.<number>|null;
          *   partnerDeepLinkToken?: string|null;
          *   sourceExperienceId?: number|null;
+         *   sourceExperienceIds?: Array.<number>|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.ContextInfo.$Shape
          */
@@ -57530,6 +57532,7 @@ $root.waproto = (function() {
             this.groupMentions = [];
             this.statusAttributions = [];
             this.experienceIds = [];
+            this.sourceExperienceIds = [];
             if (properties)
                 for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -58071,6 +58074,14 @@ $root.waproto = (function() {
          * @instance
          */
         ContextInfo.prototype.sourceExperienceId = null;
+
+        /**
+         * ContextInfo sourceExperienceIds.
+         * @member {Array.<number>} sourceExperienceIds
+         * @memberof waproto.ContextInfo
+         * @instance
+         */
+        ContextInfo.prototype.sourceExperienceIds = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
@@ -58622,6 +58633,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 83, wireType 2 =*/666).string(message.partnerDeepLinkToken);
             if (message.sourceExperienceId != null && $Object.hasOwnProperty.call(message, "sourceExperienceId"))
                 writer.uint32(/* id 84, wireType 0 =*/672).uint32(message.sourceExperienceId);
+            if (message.sourceExperienceIds != null && message.sourceExperienceIds.length)
+                writer.uint32(/* id 85, wireType 2 =*/682).uint32s(message.sourceExperienceIds);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -59158,6 +59171,20 @@ $root.waproto = (function() {
                         message._sourceExperienceId = "sourceExperienceId";
                         continue;
                     }
+                case 85: {
+                        if (wireType === 2) {
+                            if (!(message.sourceExperienceIds && message.sourceExperienceIds.length))
+                                message.sourceExperienceIds = [];
+                            reader.uint32s(message.sourceExperienceIds);
+                            continue;
+                        }
+                        if (wireType !== 0)
+                            break;
+                        if (!(message.sourceExperienceIds && message.sourceExperienceIds.length))
+                            message.sourceExperienceIds = [];
+                        message.sourceExperienceIds.push(reader.uint32());
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -59620,6 +59647,13 @@ $root.waproto = (function() {
                 if (!$util.isInteger(message.sourceExperienceId))
                     return "sourceExperienceId: integer expected";
             }
+            if (message.sourceExperienceIds != null && $Object.hasOwnProperty.call(message, "sourceExperienceIds")) {
+                if (!$Array.isArray(message.sourceExperienceIds))
+                    return "sourceExperienceIds: array expected";
+                for (var i = 0; i < message.sourceExperienceIds.length; ++i)
+                    if (!$util.isInteger(message.sourceExperienceIds[i]))
+                        return "sourceExperienceIds: integer[] expected";
+            }
             return null;
         };
 
@@ -60041,6 +60075,13 @@ $root.waproto = (function() {
                 message.partnerDeepLinkToken = $String(object.partnerDeepLinkToken);
             if (object.sourceExperienceId != null)
                 message.sourceExperienceId = object.sourceExperienceId >>> 0;
+            if (object.sourceExperienceIds) {
+                if (!$Array.isArray(object.sourceExperienceIds))
+                    throw $TypeError(".waproto.ContextInfo.sourceExperienceIds: array expected");
+                message.sourceExperienceIds = $Array(object.sourceExperienceIds.length);
+                for (var i = 0; i < object.sourceExperienceIds.length; ++i)
+                    message.sourceExperienceIds[i] = object.sourceExperienceIds[i] >>> 0;
+            }
             return message;
         };
 
@@ -60066,6 +60107,7 @@ $root.waproto = (function() {
                 object.groupMentions = [];
                 object.statusAttributions = [];
                 object.experienceIds = [];
+                object.sourceExperienceIds = [];
             }
             if (message.stanzaId != null && $Object.hasOwnProperty.call(message, "stanzaId"))
                 object.stanzaId = message.stanzaId;
@@ -60218,6 +60260,11 @@ $root.waproto = (function() {
                 object.partnerDeepLinkToken = message.partnerDeepLinkToken;
             if (message.sourceExperienceId != null && $Object.hasOwnProperty.call(message, "sourceExperienceId"))
                 object.sourceExperienceId = message.sourceExperienceId;
+            if (message.sourceExperienceIds && message.sourceExperienceIds.length) {
+                object.sourceExperienceIds = $Array(message.sourceExperienceIds.length);
+                for (var j = 0; j < message.sourceExperienceIds.length; ++j)
+                    object.sourceExperienceIds[j] = message.sourceExperienceIds[j];
+            }
             return object;
         };
 
@@ -149599,6 +149646,7 @@ $root.waproto = (function() {
                      * @property {number|Long|null} [startTimeInMs] Line startTimeInMs
                      * @property {number|Long|null} [endTimeInMs] Line endTimeInMs
                      * @property {string|null} [text] Line text
+                     * @property {Array.<waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties>|null} [wordOffsets] Line wordOffsets
                      * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
                      */
 
@@ -149624,6 +149672,7 @@ $root.waproto = (function() {
                      * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
                      */
                     var Line = function (properties) {
+                        this.wordOffsets = [];
                         if (properties)
                             for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
                                 if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -149653,6 +149702,14 @@ $root.waproto = (function() {
                      * @instance
                      */
                     Line.prototype.text = null;
+
+                    /**
+                     * Line wordOffsets.
+                     * @member {Array.<waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties>} wordOffsets
+                     * @memberof waproto.Message.MusicMessage.Lyrics.Line
+                     * @instance
+                     */
+                    Line.prototype.wordOffsets = $util.emptyArray;
 
                     // OneOf field names bound to virtual getters and setters
                     var $oneOfFields;
@@ -149713,6 +149770,9 @@ $root.waproto = (function() {
                             writer.uint32(/* id 2, wireType 0 =*/16).int64(message.endTimeInMs);
                         if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
                             writer.uint32(/* id 3, wireType 2 =*/26).string(message.text);
+                        if (message.wordOffsets != null && message.wordOffsets.length)
+                            for (var i = 0; i < message.wordOffsets.length; ++i)
+                                $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset.encode(message.wordOffsets[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
                         if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                             for (var i = 0; i < message.$unknowns.length; ++i)
                                 writer.raw(message.$unknowns[i]);
@@ -149791,6 +149851,14 @@ $root.waproto = (function() {
                                     message._text = "text";
                                     continue;
                                 }
+                            case 4: {
+                                    if (wireType !== 2)
+                                        break;
+                                    if (!(message.wordOffsets && message.wordOffsets.length))
+                                        message.wordOffsets = [];
+                                    message.wordOffsets.push($root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset.decode(reader, reader.size(), $undefined, _depth + 1));
+                                    continue;
+                                }
                             }
                             reader.skipType(wireType, _depth, tag);
                             if (!reader.discardUnknown) {
@@ -149855,6 +149923,15 @@ $root.waproto = (function() {
                             if (!$util.isString(message.text))
                                 return "text: string expected";
                         }
+                        if (message.wordOffsets != null && $Object.hasOwnProperty.call(message, "wordOffsets")) {
+                            if (!$Array.isArray(message.wordOffsets))
+                                return "wordOffsets: array expected";
+                            for (var i = 0; i < message.wordOffsets.length; ++i) {
+                                var error = $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset.verify(message.wordOffsets[i], _depth + 1);
+                                if (error)
+                                    return "wordOffsets." + error;
+                            }
+                        }
                         return null;
                     };
 
@@ -149896,6 +149973,16 @@ $root.waproto = (function() {
                                 message.endTimeInMs = new $util.LongBits(object.endTimeInMs.low >>> 0, object.endTimeInMs.high >>> 0).toNumber();
                         if (object.text != null)
                             message.text = $String(object.text);
+                        if (object.wordOffsets) {
+                            if (!$Array.isArray(object.wordOffsets))
+                                throw $TypeError(".waproto.Message.MusicMessage.Lyrics.Line.wordOffsets: array expected");
+                            message.wordOffsets = $Array(object.wordOffsets.length);
+                            for (var i = 0; i < object.wordOffsets.length; ++i) {
+                                if (!$util.isObject(object.wordOffsets[i]))
+                                    throw $TypeError(".waproto.Message.MusicMessage.Lyrics.Line.wordOffsets: object expected");
+                                message.wordOffsets[i] = $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset.fromObject(object.wordOffsets[i], _depth + 1);
+                            }
+                        }
                         return message;
                     };
 
@@ -149916,6 +150003,8 @@ $root.waproto = (function() {
                         if (_depth > $util.recursionLimit)
                             throw $Error("max depth exceeded");
                         var object = {};
+                        if (options.arrays || options.defaults)
+                            object.wordOffsets = [];
                         if (message.startTimeInMs != null && $Object.hasOwnProperty.call(message, "startTimeInMs"))
                             if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
                                 object.startTimeInMs = typeof message.startTimeInMs === "number" ? $BigInt(message.startTimeInMs) : $util.Long.fromBits(message.startTimeInMs.low >>> 0, message.startTimeInMs.high >>> 0, false).toBigInt();
@@ -149932,6 +150021,11 @@ $root.waproto = (function() {
                                 object.endTimeInMs = options.longs === $String ? $util.Long.prototype.toString.call(message.endTimeInMs) : options.longs === $Number ? new $util.LongBits(message.endTimeInMs.low >>> 0, message.endTimeInMs.high >>> 0).toNumber() : message.endTimeInMs;
                         if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
                             object.text = message.text;
+                        if (message.wordOffsets && message.wordOffsets.length) {
+                            object.wordOffsets = $Array(message.wordOffsets.length);
+                            for (var j = 0; j < message.wordOffsets.length; ++j)
+                                object.wordOffsets[j] = $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset.toObject(message.wordOffsets[j], options, _depth + 1);
+                        }
                         return object;
                     };
 
@@ -149959,6 +150053,411 @@ $root.waproto = (function() {
                             prefix = "type.googleapis.com";
                         return prefix + "/waproto.Message.MusicMessage.Lyrics.Line";
                     };
+
+                    Line.WordOffset = (function() {
+
+                        /**
+                         * Properties of a WordOffset.
+                         * @typedef {Object} waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties
+                         * @property {number|null} [startIndex] WordOffset startIndex
+                         * @property {number|null} [endIndex] WordOffset endIndex
+                         * @property {number|Long|null} [startOffsetMs] WordOffset startOffsetMs
+                         * @property {number|Long|null} [endOffsetMs] WordOffset endOffsetMs
+                         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                         */
+
+                        /**
+                         * Properties of a WordOffset.
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line
+                         * @interface IWordOffset
+                         * @augments waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties
+                         * @deprecated Use waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties instead.
+                         */
+
+                        /**
+                         * Shape of a WordOffset.
+                         * @typedef {waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties} waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape
+                         */
+
+                        /**
+                         * Constructs a new WordOffset.
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line
+                         * @classdesc Represents a WordOffset.
+                         * @constructor
+                         * @param {waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties=} [properties] Properties to set
+                         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                         */
+                        var WordOffset = function (properties) {
+                            if (properties)
+                                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                        this[keys[i]] = properties[keys[i]];
+                        };
+
+                        /**
+                         * WordOffset startIndex.
+                         * @member {number|null|undefined} startIndex
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.startIndex = null;
+
+                        /**
+                         * WordOffset endIndex.
+                         * @member {number|null|undefined} endIndex
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.endIndex = null;
+
+                        /**
+                         * WordOffset startOffsetMs.
+                         * @member {number|Long|null|undefined} startOffsetMs
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.startOffsetMs = null;
+
+                        /**
+                         * WordOffset endOffsetMs.
+                         * @member {number|Long|null|undefined} endOffsetMs
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         */
+                        WordOffset.prototype.endOffsetMs = null;
+
+                        // OneOf field names bound to virtual getters and setters
+                        var $oneOfFields;
+
+                        // Virtual OneOf for proto3 optional field
+                        $Object.defineProperty(WordOffset.prototype, "_startIndex", {
+                            get: $util.oneOfGetter($oneOfFields = ["startIndex"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        // Virtual OneOf for proto3 optional field
+                        $Object.defineProperty(WordOffset.prototype, "_endIndex", {
+                            get: $util.oneOfGetter($oneOfFields = ["endIndex"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        // Virtual OneOf for proto3 optional field
+                        $Object.defineProperty(WordOffset.prototype, "_startOffsetMs", {
+                            get: $util.oneOfGetter($oneOfFields = ["startOffsetMs"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        // Virtual OneOf for proto3 optional field
+                        $Object.defineProperty(WordOffset.prototype, "_endOffsetMs", {
+                            get: $util.oneOfGetter($oneOfFields = ["endOffsetMs"]),
+                            set: $util.oneOfSetter($oneOfFields)
+                        });
+
+                        /**
+                         * Creates a new WordOffset instance using the specified properties.
+                         * @function create
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties=} [properties] Properties to set
+                         * @returns {waproto.Message.MusicMessage.Lyrics.Line.WordOffset} WordOffset instance
+                         * @type {{
+                         *   (properties: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape): waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape;
+                         *   (properties?: waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties): waproto.Message.MusicMessage.Lyrics.Line.WordOffset;
+                         * }}
+                         */
+                        WordOffset.create = function(properties) {
+                            return new WordOffset(properties);
+                        };
+
+                        /**
+                         * Encodes the specified WordOffset message. Does not implicitly {@link waproto.Message.MusicMessage.Lyrics.Line.WordOffset.verify|verify} messages.
+                         * @function encode
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties} message WordOffset message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        WordOffset.encode = function (message, writer, _depth) {
+                            if (!writer)
+                                writer = $Writer.create();
+                            if (_depth === $undefined)
+                                _depth = 0;
+                            if (_depth > $util.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            if (message.startIndex != null && $Object.hasOwnProperty.call(message, "startIndex"))
+                                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startIndex);
+                            if (message.endIndex != null && $Object.hasOwnProperty.call(message, "endIndex"))
+                                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.endIndex);
+                            if (message.startOffsetMs != null && $Object.hasOwnProperty.call(message, "startOffsetMs"))
+                                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.startOffsetMs);
+                            if (message.endOffsetMs != null && $Object.hasOwnProperty.call(message, "endOffsetMs"))
+                                writer.uint32(/* id 4, wireType 0 =*/32).int64(message.endOffsetMs);
+                            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                                for (var i = 0; i < message.$unknowns.length; ++i)
+                                    writer.raw(message.$unknowns[i]);
+                            return writer;
+                        };
+
+                        /**
+                         * Encodes the specified WordOffset message, length delimited. Does not implicitly {@link waproto.Message.MusicMessage.Lyrics.Line.WordOffset.verify|verify} messages.
+                         * @function encodeDelimited
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Properties} message WordOffset message or plain object to encode
+                         * @param {$protobuf.Writer} [writer] Writer to encode to
+                         * @returns {$protobuf.Writer} Writer
+                         */
+                        WordOffset.encodeDelimited = function(message, writer) {
+                            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+                        };
+
+                        /**
+                         * Decodes a WordOffset message from the specified reader or buffer.
+                         * @function decode
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @param {number} [length] Message length if known beforehand
+                         * @returns {waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape} WordOffset
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        WordOffset.decode = function (reader, length, _end, _depth, _target) {
+                            if (!(reader instanceof $Reader))
+                                reader = $Reader.create(reader);
+                            if (_depth === $undefined)
+                                _depth = 0;
+                            if (_depth > $Reader.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            var end, message;
+                            if (length === $undefined)
+                                end = reader.len;
+                            else {
+                                end = reader.pos + length;
+                                if (end > reader.len)
+                                    throw $RangeError("index out of range");
+                                length = reader.len;
+                                reader.len = end;
+                            }
+                            message = _target || new $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset();
+                            while (reader.pos < end) {
+                                var start = reader.pos;
+                                var tag = reader.tag();
+                                if (tag === _end) {
+                                    _end = $undefined;
+                                    break;
+                                }
+                                var wireType = tag & 7;
+                                switch (tag >>>= 3) {
+                                case 1: {
+                                        if (wireType !== 0)
+                                            break;
+                                        message.startIndex = reader.int32();
+                                        message._startIndex = "startIndex";
+                                        continue;
+                                    }
+                                case 2: {
+                                        if (wireType !== 0)
+                                            break;
+                                        message.endIndex = reader.int32();
+                                        message._endIndex = "endIndex";
+                                        continue;
+                                    }
+                                case 3: {
+                                        if (wireType !== 0)
+                                            break;
+                                        message.startOffsetMs = reader.int64();
+                                        message._startOffsetMs = "startOffsetMs";
+                                        continue;
+                                    }
+                                case 4: {
+                                        if (wireType !== 0)
+                                            break;
+                                        message.endOffsetMs = reader.int64();
+                                        message._endOffsetMs = "endOffsetMs";
+                                        continue;
+                                    }
+                                }
+                                reader.skipType(wireType, _depth, tag);
+                                if (!reader.discardUnknown) {
+                                    $util.makeProp(message, "$unknowns", false);
+                                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                                }
+                            }
+                            if (length !== $undefined) {
+                                if (reader.pos !== end)
+                                    throw $RangeError("index out of range");
+                                reader.len = length;
+                            }
+                            if (_end !== $undefined)
+                                throw $Error("missing end group");
+                            return message;
+                        };
+
+                        /**
+                         * Decodes a WordOffset message from the specified reader or buffer, length delimited.
+                         * @function decodeDelimited
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                         * @returns {waproto.Message.MusicMessage.Lyrics.Line.WordOffset & waproto.Message.MusicMessage.Lyrics.Line.WordOffset.$Shape} WordOffset
+                         * @throws {Error} If the payload is not a reader or valid buffer
+                         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                         */
+                        WordOffset.decodeDelimited = function(reader) {
+                            if (!(reader instanceof $Reader))
+                                reader = new $Reader(reader);
+                            return this.decode(reader, reader.size());
+                        };
+
+                        /**
+                         * Verifies a WordOffset message.
+                         * @function verify
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {Object.<string,*>} message Plain object to verify
+                         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                         */
+                        WordOffset.verify = function (message, _depth) {
+                            if (typeof message !== "object" || message === null)
+                                return "object expected";
+                            if (_depth === $undefined)
+                                _depth = 0;
+                            if (_depth > $util.recursionLimit)
+                                return "max depth exceeded";
+                            var properties = {};
+                            if (message.startIndex != null && $Object.hasOwnProperty.call(message, "startIndex")) {
+                                properties._startIndex = 1;
+                                if (!$util.isInteger(message.startIndex))
+                                    return "startIndex: integer expected";
+                            }
+                            if (message.endIndex != null && $Object.hasOwnProperty.call(message, "endIndex")) {
+                                properties._endIndex = 1;
+                                if (!$util.isInteger(message.endIndex))
+                                    return "endIndex: integer expected";
+                            }
+                            if (message.startOffsetMs != null && $Object.hasOwnProperty.call(message, "startOffsetMs")) {
+                                properties._startOffsetMs = 1;
+                                if (!$util.isInteger(message.startOffsetMs) && !(message.startOffsetMs && $util.isInteger(message.startOffsetMs.low) && $util.isInteger(message.startOffsetMs.high)))
+                                    return "startOffsetMs: integer|Long expected";
+                            }
+                            if (message.endOffsetMs != null && $Object.hasOwnProperty.call(message, "endOffsetMs")) {
+                                properties._endOffsetMs = 1;
+                                if (!$util.isInteger(message.endOffsetMs) && !(message.endOffsetMs && $util.isInteger(message.endOffsetMs.low) && $util.isInteger(message.endOffsetMs.high)))
+                                    return "endOffsetMs: integer|Long expected";
+                            }
+                            return null;
+                        };
+
+                        /**
+                         * Creates a WordOffset message from a plain object. Also converts values to their respective internal types.
+                         * @function fromObject
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {Object.<string,*>} object Plain object
+                         * @returns {waproto.Message.MusicMessage.Lyrics.Line.WordOffset} WordOffset
+                         */
+                        WordOffset.fromObject = function (object, _depth) {
+                            if (object instanceof $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset)
+                                return object;
+                            if (!$util.isObject(object))
+                                throw $TypeError(".waproto.Message.MusicMessage.Lyrics.Line.WordOffset: object expected");
+                            if (_depth === $undefined)
+                                _depth = 0;
+                            if (_depth > $util.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            var message = new $root.waproto.Message.MusicMessage.Lyrics.Line.WordOffset();
+                            if (object.startIndex != null)
+                                message.startIndex = object.startIndex | 0;
+                            if (object.endIndex != null)
+                                message.endIndex = object.endIndex | 0;
+                            if (object.startOffsetMs != null)
+                                if ($util.Long)
+                                    message.startOffsetMs = $util.Long.fromValue(object.startOffsetMs, false);
+                                else if (typeof object.startOffsetMs === "string")
+                                    message.startOffsetMs = $parseInt(object.startOffsetMs, 10);
+                                else if (typeof object.startOffsetMs === "number")
+                                    message.startOffsetMs = object.startOffsetMs;
+                                else if (typeof object.startOffsetMs === "object")
+                                    message.startOffsetMs = new $util.LongBits(object.startOffsetMs.low >>> 0, object.startOffsetMs.high >>> 0).toNumber();
+                            if (object.endOffsetMs != null)
+                                if ($util.Long)
+                                    message.endOffsetMs = $util.Long.fromValue(object.endOffsetMs, false);
+                                else if (typeof object.endOffsetMs === "string")
+                                    message.endOffsetMs = $parseInt(object.endOffsetMs, 10);
+                                else if (typeof object.endOffsetMs === "number")
+                                    message.endOffsetMs = object.endOffsetMs;
+                                else if (typeof object.endOffsetMs === "object")
+                                    message.endOffsetMs = new $util.LongBits(object.endOffsetMs.low >>> 0, object.endOffsetMs.high >>> 0).toNumber();
+                            return message;
+                        };
+
+                        /**
+                         * Creates a plain object from a WordOffset message. Also converts values to other types if specified.
+                         * @function toObject
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {waproto.Message.MusicMessage.Lyrics.Line.WordOffset} message WordOffset
+                         * @param {$protobuf.IConversionOptions} [options] Conversion options
+                         * @returns {Object.<string,*>} Plain object
+                         */
+                        WordOffset.toObject = function (message, options, _depth) {
+                            if (!options)
+                                options = {};
+                            if (_depth === $undefined)
+                                _depth = 0;
+                            if (_depth > $util.recursionLimit)
+                                throw $Error("max depth exceeded");
+                            var object = {};
+                            if (message.startIndex != null && $Object.hasOwnProperty.call(message, "startIndex"))
+                                object.startIndex = message.startIndex;
+                            if (message.endIndex != null && $Object.hasOwnProperty.call(message, "endIndex"))
+                                object.endIndex = message.endIndex;
+                            if (message.startOffsetMs != null && $Object.hasOwnProperty.call(message, "startOffsetMs"))
+                                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                                    object.startOffsetMs = typeof message.startOffsetMs === "number" ? $BigInt(message.startOffsetMs) : $util.Long.fromBits(message.startOffsetMs.low >>> 0, message.startOffsetMs.high >>> 0, false).toBigInt();
+                                else if (typeof message.startOffsetMs === "number")
+                                    object.startOffsetMs = options.longs === $String ? $String(message.startOffsetMs) : message.startOffsetMs;
+                                else
+                                    object.startOffsetMs = options.longs === $String ? $util.Long.prototype.toString.call(message.startOffsetMs) : options.longs === $Number ? new $util.LongBits(message.startOffsetMs.low >>> 0, message.startOffsetMs.high >>> 0).toNumber() : message.startOffsetMs;
+                            if (message.endOffsetMs != null && $Object.hasOwnProperty.call(message, "endOffsetMs"))
+                                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                                    object.endOffsetMs = typeof message.endOffsetMs === "number" ? $BigInt(message.endOffsetMs) : $util.Long.fromBits(message.endOffsetMs.low >>> 0, message.endOffsetMs.high >>> 0, false).toBigInt();
+                                else if (typeof message.endOffsetMs === "number")
+                                    object.endOffsetMs = options.longs === $String ? $String(message.endOffsetMs) : message.endOffsetMs;
+                                else
+                                    object.endOffsetMs = options.longs === $String ? $util.Long.prototype.toString.call(message.endOffsetMs) : options.longs === $Number ? new $util.LongBits(message.endOffsetMs.low >>> 0, message.endOffsetMs.high >>> 0).toNumber() : message.endOffsetMs;
+                            return object;
+                        };
+
+                        /**
+                         * Converts this WordOffset to JSON.
+                         * @function toJSON
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @instance
+                         * @returns {Object.<string,*>} JSON object
+                         */
+                        WordOffset.prototype.toJSON = function() {
+                            return WordOffset.toObject(this, $protobuf.util.toJSONOptions);
+                        };
+
+                        /**
+                         * Gets the type url for WordOffset
+                         * @function getTypeUrl
+                         * @memberof waproto.Message.MusicMessage.Lyrics.Line.WordOffset
+                         * @static
+                         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                         * @returns {string} The type url
+                         */
+                        WordOffset.getTypeUrl = function(prefix) {
+                            if (prefix === $undefined)
+                                prefix = "type.googleapis.com";
+                            return prefix + "/waproto.Message.MusicMessage.Lyrics.Line.WordOffset";
+                        };
+
+                        return WordOffset;
+                    })();
 
                     return Line;
                 })();
@@ -157378,6 +157877,7 @@ $root.waproto = (function() {
                  * @property {number|Long|null} [oldestMsgTimestampMs] HistorySyncOnDemandRequest oldestMsgTimestampMs
                  * @property {string|null} [accountLid] HistorySyncOnDemandRequest accountLid
                  * @property {boolean|null} [supportInlineResponse] HistorySyncOnDemandRequest supportInlineResponse
+                 * @property {waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode|null} [mode] HistorySyncOnDemandRequest mode
                  * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
                  */
 
@@ -157465,6 +157965,14 @@ $root.waproto = (function() {
                  */
                 HistorySyncOnDemandRequest.prototype.supportInlineResponse = null;
 
+                /**
+                 * HistorySyncOnDemandRequest mode.
+                 * @member {waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode|null|undefined} mode
+                 * @memberof waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest
+                 * @instance
+                 */
+                HistorySyncOnDemandRequest.prototype.mode = null;
+
                 // OneOf field names bound to virtual getters and setters
                 var $oneOfFields;
 
@@ -157507,6 +158015,12 @@ $root.waproto = (function() {
                 // Virtual OneOf for proto3 optional field
                 $Object.defineProperty(HistorySyncOnDemandRequest.prototype, "_supportInlineResponse", {
                     get: $util.oneOfGetter($oneOfFields = ["supportInlineResponse"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(HistorySyncOnDemandRequest.prototype, "_mode", {
+                    get: $util.oneOfGetter($oneOfFields = ["mode"]),
                     set: $util.oneOfSetter($oneOfFields)
                 });
 
@@ -157556,6 +158070,8 @@ $root.waproto = (function() {
                         writer.uint32(/* id 6, wireType 2 =*/50).string(message.accountLid);
                     if (message.supportInlineResponse != null && $Object.hasOwnProperty.call(message, "supportInlineResponse"))
                         writer.uint32(/* id 7, wireType 0 =*/56).bool(message.supportInlineResponse);
+                    if (message.mode != null && $Object.hasOwnProperty.call(message, "mode"))
+                        writer.uint32(/* id 8, wireType 0 =*/64).int32(message.mode);
                     if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                         for (var i = 0; i < message.$unknowns.length; ++i)
                             writer.raw(message.$unknowns[i]);
@@ -157593,7 +158109,7 @@ $root.waproto = (function() {
                         _depth = 0;
                     if (_depth > $Reader.recursionLimit)
                         throw $Error("max depth exceeded");
-                    var end, message;
+                    var end, message, value;
                     if (length === $undefined)
                         end = reader.len;
                     else {
@@ -157660,6 +158176,13 @@ $root.waproto = (function() {
                                     break;
                                 message.supportInlineResponse = reader.bool();
                                 message._supportInlineResponse = "supportInlineResponse";
+                                continue;
+                            }
+                        case 8: {
+                                if (wireType !== 0)
+                                    break;
+                                message.mode = reader.int32();
+                                message._mode = "mode";
                                 continue;
                             }
                         }
@@ -157746,6 +158269,11 @@ $root.waproto = (function() {
                         if (typeof message.supportInlineResponse !== "boolean")
                             return "supportInlineResponse: boolean expected";
                     }
+                    if (message.mode != null && $Object.hasOwnProperty.call(message, "mode")) {
+                        properties._mode = 1;
+                        if (typeof message.mode !== "number" || (message.mode | 0) !== message.mode)
+                            return "mode: enum value expected";
+                    }
                     return null;
                 };
 
@@ -157788,6 +158316,19 @@ $root.waproto = (function() {
                         message.accountLid = $String(object.accountLid);
                     if (object.supportInlineResponse != null)
                         message.supportInlineResponse = $Boolean(object.supportInlineResponse);
+                    switch (object.mode) {
+                    case "MODE_UNSPECIFIED":
+                    case 0:
+                        message.mode = 0;
+                        break;
+                    case "INITIAL_REVERSE_HISTORY":
+                    case 1:
+                        message.mode = 1;
+                        break;
+                    default:
+                        if (typeof object.mode === "number" && (object.mode | 0) === object.mode)
+                            message.mode = object.mode;
+                    }
                     return message;
                 };
 
@@ -157827,6 +158368,8 @@ $root.waproto = (function() {
                         object.accountLid = message.accountLid;
                     if (message.supportInlineResponse != null && $Object.hasOwnProperty.call(message, "supportInlineResponse"))
                         object.supportInlineResponse = message.supportInlineResponse;
+                    if (message.mode != null && $Object.hasOwnProperty.call(message, "mode"))
+                        object.mode = options.enums === $String ? $root.waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[message.mode] === $undefined ? message.mode : $root.waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode[message.mode] : message.mode;
                     return object;
                 };
 
@@ -157854,6 +158397,20 @@ $root.waproto = (function() {
                         prefix = "type.googleapis.com";
                     return prefix + "/waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest";
                 };
+
+                /**
+                 * Mode enum.
+                 * @name waproto.Message.PeerDataOperationRequestMessage.HistorySyncOnDemandRequest.Mode
+                 * @enum {number}
+                 * @property {number} MODE_UNSPECIFIED=0 MODE_UNSPECIFIED value
+                 * @property {number} INITIAL_REVERSE_HISTORY=1 INITIAL_REVERSE_HISTORY value
+                 */
+                HistorySyncOnDemandRequest.Mode = (function() {
+                    var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                    values[valuesById[0] = "MODE_UNSPECIFIED"] = 0;
+                    values[valuesById[1] = "INITIAL_REVERSE_HISTORY"] = 1;
+                    return values;
+                })();
 
                 return HistorySyncOnDemandRequest;
             })();
