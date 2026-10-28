@@ -32,8 +32,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run regression tests
+        run: npm test
+
       - name: Validate current WhatsApp proto
         run: npm run build
+
+      - name: Verify production package
+        run: npm run test:package
 
   update:
     if: >-

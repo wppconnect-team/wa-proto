@@ -1,3 +1,5 @@
 *.tgz
 /debug.log
 node_modules
+
+!vendor/deepmerge-4.3.2+wppconnect.1.tgz
