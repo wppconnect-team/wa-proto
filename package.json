@@ -19,7 +19,8 @@
     "compile": "npm run compile:js && npm run compile:ts",
     "compile:js": "node scripts/patch-protobufjs-parser.js && pbjs -t static-module --sparse -w commonjs -o ./dist/index.js ./WAProto.proto",
     "compile:ts": "pbts -o ./dist/index.d.ts ./dist/index.js",
-    "fetch": "node index.js"
+    "fetch": "node index.js",
+    "test:package": "node scripts/test-package.js"
   },
   "dependencies": {
     "long": "^5.3.2",
@@ -29,6 +30,13 @@
     "acorn": "^8.19.0",
     "acorn-walk": "^8.3.5",
     "protobufjs-cli": "^2.7.1",
-    "puppeteer-real-browser": "^1.4.4"
+    "puppeteer-real-browser": "^1.4.4",
+    "deepmerge": "file:vendor/deepmerge-4.3.2+wppconnect.1.tgz"
+  },
+  "overrides": {
+    "deepmerge": "$deepmerge",
+    "rebrowser-puppeteer-core": {
+      "@puppeteer/browsers": "3.2.4"
+    }
   }
 }
