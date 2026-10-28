@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1052045173
+/// WhatsApp Version: 2.3000.1052070306
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -4951,6 +4951,7 @@ enum MutationProps {
     BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98;
     COMMUNITY_NESTING_STATE_ACTION = 99;
     SHARED_DEVICE_SECRET_ACTION = 100;
+    HATCH_CVM_SECRET_ACTION = 101;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -5690,6 +5691,7 @@ message SyncActionValue {
     optional BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
     optional CommunityNestingStateAction communityNestingStateAction = 99;
     optional SharedDeviceSecretAction sharedDeviceSecretAction = 100;
+    optional HatchCVMSecretAction hatchCvmSecretAction = 101;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceId = 2;
@@ -5836,9 +5838,9 @@ message SyncActionValue {
     message CommunityNestingStateAction {
         optional NestingState nestingState = 1;
         enum NestingState {
-            NESTING_STATE_UNKNOWN = 0;
-            NESTING_STATE_NESTED = 1;
-            NESTING_STATE_UNNESTED = 2;
+            PLATFORM_DEFAULT = 0;
+            NESTED = 1;
+            UNNESTED = 2;
         }
     }
     
@@ -5931,6 +5933,11 @@ message SyncActionValue {
             GROUP_HISTORY_TOGGLE_MODE_ON = 1;
             GROUP_HISTORY_TOGGLE_MODE_OFF = 2;
         }
+    }
+    
+    message HatchCVMSecretAction {
+        optional bytes secret = 1;
+        optional int64 generation = 2;
     }
     
     message InteractiveMessageAction {
@@ -6212,11 +6219,18 @@ message SyncActionValue {
         optional string chatThemeId = 32;
         optional string colorSchemeId = 33;
         optional string stockWallpaperImageId = 34;
+        optional MediaAutoDownloadQualitySetting mediaAutoDownloadQuality = 35;
         enum DisplayMode {
             DISPLAY_MODE_UNKNOWN = 0;
             ALWAYS = 1;
             NEVER = 2;
             ONLY_WHEN_APP_IS_OPEN = 3;
+        }
+        enum MediaAutoDownloadQualitySetting {
+            MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN = 0;
+            MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD = 1;
+            MEDIA_AUTO_DOWNLOAD_QUALITY_HD = 2;
+            MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO = 3;
         }
         enum MediaQualitySetting {
             MEDIA_QUALITY_UNKNOWN = 0;
@@ -6259,6 +6273,7 @@ message SyncActionValue {
             CHAT_THEME_ID = 32;
             COLOR_SCHEME_ID = 33;
             STOCK_WALLPAPER_IMAGE_ID = 34;
+            MEDIA_AUTO_DOWNLOAD_QUALITY = 35;
         }
         enum SettingPlatform {
             PLATFORM_UNKNOWN = 0;

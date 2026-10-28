@@ -199738,6 +199738,7 @@ $root.waproto = (function() {
      * @property {number} BB_PRO_PENDING_CUSTOMER_BASE_ACTION=98 BB_PRO_PENDING_CUSTOMER_BASE_ACTION value
      * @property {number} COMMUNITY_NESTING_STATE_ACTION=99 COMMUNITY_NESTING_STATE_ACTION value
      * @property {number} SHARED_DEVICE_SECRET_ACTION=100 SHARED_DEVICE_SECRET_ACTION value
+     * @property {number} HATCH_CVM_SECRET_ACTION=101 HATCH_CVM_SECRET_ACTION value
      * @property {number} SHARE_OWN_PN=10001 SHARE_OWN_PN value
      * @property {number} BUSINESS_BROADCAST_ACTION=10002 BUSINESS_BROADCAST_ACTION value
      * @property {number} AI_THREAD_DELETE_ACTION=10003 AI_THREAD_DELETE_ACTION value
@@ -199838,6 +199839,7 @@ $root.waproto = (function() {
         values[valuesById[98] = "BB_PRO_PENDING_CUSTOMER_BASE_ACTION"] = 98;
         values[valuesById[99] = "COMMUNITY_NESTING_STATE_ACTION"] = 99;
         values[valuesById[100] = "SHARED_DEVICE_SECRET_ACTION"] = 100;
+        values[valuesById[101] = "HATCH_CVM_SECRET_ACTION"] = 101;
         values[valuesById[10001] = "SHARE_OWN_PN"] = 10001;
         values[valuesById[10002] = "BUSINESS_BROADCAST_ACTION"] = 10002;
         values[valuesById[10003] = "AI_THREAD_DELETE_ACTION"] = 10003;
@@ -227939,6 +227941,7 @@ $root.waproto = (function() {
          * @property {waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Properties|null} [bbProPendingCustomerBaseAction] SyncActionValue bbProPendingCustomerBaseAction
          * @property {waproto.SyncActionValue.CommunityNestingStateAction.$Properties|null} [communityNestingStateAction] SyncActionValue communityNestingStateAction
          * @property {waproto.SyncActionValue.SharedDeviceSecretAction.$Properties|null} [sharedDeviceSecretAction] SyncActionValue sharedDeviceSecretAction
+         * @property {waproto.SyncActionValue.HatchCVMSecretAction.$Properties|null} [hatchCvmSecretAction] SyncActionValue hatchCvmSecretAction
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -228044,6 +228047,7 @@ $root.waproto = (function() {
          *   bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
          *   communityNestingStateAction?: waproto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
          *   sharedDeviceSecretAction?: waproto.SyncActionValue.SharedDeviceSecretAction.$Shape|null;
+         *   hatchCvmSecretAction?: waproto.SyncActionValue.HatchCVMSecretAction.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.SyncActionValue.$Shape
          */
@@ -228791,6 +228795,14 @@ $root.waproto = (function() {
          */
         SyncActionValue.prototype.sharedDeviceSecretAction = null;
 
+        /**
+         * SyncActionValue hatchCvmSecretAction.
+         * @member {waproto.SyncActionValue.HatchCVMSecretAction.$Properties|null|undefined} hatchCvmSecretAction
+         * @memberof waproto.SyncActionValue
+         * @instance
+         */
+        SyncActionValue.prototype.hatchCvmSecretAction = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -229340,6 +229352,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(SyncActionValue.prototype, "_hatchCvmSecretAction", {
+            get: $util.oneOfGetter($oneOfFields = ["hatchCvmSecretAction"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @function create
@@ -229554,6 +229572,8 @@ $root.waproto = (function() {
                 $root.waproto.SyncActionValue.CommunityNestingStateAction.encode(message.communityNestingStateAction, writer.uint32(/* id 99, wireType 2 =*/794).fork(), _depth + 1).ldelim();
             if (message.sharedDeviceSecretAction != null && $Object.hasOwnProperty.call(message, "sharedDeviceSecretAction"))
                 $root.waproto.SyncActionValue.SharedDeviceSecretAction.encode(message.sharedDeviceSecretAction, writer.uint32(/* id 100, wireType 2 =*/802).fork(), _depth + 1).ldelim();
+            if (message.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(message, "hatchCvmSecretAction"))
+                $root.waproto.SyncActionValue.HatchCVMSecretAction.encode(message.hatchCvmSecretAction, writer.uint32(/* id 101, wireType 2 =*/810).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -230246,6 +230266,13 @@ $root.waproto = (function() {
                             break;
                         message.sharedDeviceSecretAction = $root.waproto.SyncActionValue.SharedDeviceSecretAction.decode(reader, reader.size(), $undefined, _depth + 1, message.sharedDeviceSecretAction);
                         message._sharedDeviceSecretAction = "sharedDeviceSecretAction";
+                        continue;
+                    }
+                case 101: {
+                        if (wireType !== 2)
+                            break;
+                        message.hatchCvmSecretAction = $root.waproto.SyncActionValue.HatchCVMSecretAction.decode(reader, reader.size(), $undefined, _depth + 1, message.hatchCvmSecretAction);
+                        message._hatchCvmSecretAction = "hatchCvmSecretAction";
                         continue;
                     }
                 }
@@ -231022,6 +231049,14 @@ $root.waproto = (function() {
                         return "sharedDeviceSecretAction." + error;
                 }
             }
+            if (message.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(message, "hatchCvmSecretAction")) {
+                properties._hatchCvmSecretAction = 1;
+                {
+                    var error = $root.waproto.SyncActionValue.HatchCVMSecretAction.verify(message.hatchCvmSecretAction, _depth + 1);
+                    if (error)
+                        return "hatchCvmSecretAction." + error;
+                }
+            }
             return null;
         };
 
@@ -231502,6 +231537,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.SyncActionValue.sharedDeviceSecretAction: object expected");
                 message.sharedDeviceSecretAction = $root.waproto.SyncActionValue.SharedDeviceSecretAction.fromObject(object.sharedDeviceSecretAction, _depth + 1);
             }
+            if (object.hatchCvmSecretAction != null) {
+                if (!$util.isObject(object.hatchCvmSecretAction))
+                    throw $TypeError(".waproto.SyncActionValue.hatchCvmSecretAction: object expected");
+                message.hatchCvmSecretAction = $root.waproto.SyncActionValue.HatchCVMSecretAction.fromObject(object.hatchCvmSecretAction, _depth + 1);
+            }
             return message;
         };
 
@@ -231709,6 +231749,8 @@ $root.waproto = (function() {
                 object.communityNestingStateAction = $root.waproto.SyncActionValue.CommunityNestingStateAction.toObject(message.communityNestingStateAction, options, _depth + 1);
             if (message.sharedDeviceSecretAction != null && $Object.hasOwnProperty.call(message, "sharedDeviceSecretAction"))
                 object.sharedDeviceSecretAction = $root.waproto.SyncActionValue.SharedDeviceSecretAction.toObject(message.sharedDeviceSecretAction, options, _depth + 1);
+            if (message.hatchCvmSecretAction != null && $Object.hasOwnProperty.call(message, "hatchCvmSecretAction"))
+                object.hatchCvmSecretAction = $root.waproto.SyncActionValue.HatchCVMSecretAction.toObject(message.hatchCvmSecretAction, options, _depth + 1);
             return object;
         };
 
@@ -239055,15 +239097,15 @@ $root.waproto = (function() {
                     throw $Error("max depth exceeded");
                 var message = new $root.waproto.SyncActionValue.CommunityNestingStateAction();
                 switch (object.nestingState) {
-                case "NESTING_STATE_UNKNOWN":
+                case "PLATFORM_DEFAULT":
                 case 0:
                     message.nestingState = 0;
                     break;
-                case "NESTING_STATE_NESTED":
+                case "NESTED":
                 case 1:
                     message.nestingState = 1;
                     break;
-                case "NESTING_STATE_UNNESTED":
+                case "UNNESTED":
                 case 2:
                     message.nestingState = 2;
                     break;
@@ -239125,15 +239167,15 @@ $root.waproto = (function() {
              * NestingState enum.
              * @name waproto.SyncActionValue.CommunityNestingStateAction.NestingState
              * @enum {number}
-             * @property {number} NESTING_STATE_UNKNOWN=0 NESTING_STATE_UNKNOWN value
-             * @property {number} NESTING_STATE_NESTED=1 NESTING_STATE_NESTED value
-             * @property {number} NESTING_STATE_UNNESTED=2 NESTING_STATE_UNNESTED value
+             * @property {number} PLATFORM_DEFAULT=0 PLATFORM_DEFAULT value
+             * @property {number} NESTED=1 NESTED value
+             * @property {number} UNNESTED=2 UNNESTED value
              */
             CommunityNestingStateAction.NestingState = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
-                values[valuesById[0] = "NESTING_STATE_UNKNOWN"] = 0;
-                values[valuesById[1] = "NESTING_STATE_NESTED"] = 1;
-                values[valuesById[2] = "NESTING_STATE_UNNESTED"] = 2;
+                values[valuesById[0] = "PLATFORM_DEFAULT"] = 0;
+                values[valuesById[1] = "NESTED"] = 1;
+                values[valuesById[2] = "UNNESTED"] = 2;
                 return values;
             })();
 
@@ -244463,6 +244505,336 @@ $root.waproto = (function() {
             })();
 
             return GroupHistoryToggleAction;
+        })();
+
+        SyncActionValue.HatchCVMSecretAction = (function() {
+
+            /**
+             * Properties of a HatchCVMSecretAction.
+             * @typedef {Object} waproto.SyncActionValue.HatchCVMSecretAction.$Properties
+             * @property {Uint8Array|null} [secret] HatchCVMSecretAction secret
+             * @property {number|Long|null} [generation] HatchCVMSecretAction generation
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a HatchCVMSecretAction.
+             * @memberof waproto.SyncActionValue
+             * @interface IHatchCVMSecretAction
+             * @augments waproto.SyncActionValue.HatchCVMSecretAction.$Properties
+             * @deprecated Use waproto.SyncActionValue.HatchCVMSecretAction.$Properties instead.
+             */
+
+            /**
+             * Shape of a HatchCVMSecretAction.
+             * @typedef {waproto.SyncActionValue.HatchCVMSecretAction.$Properties} waproto.SyncActionValue.HatchCVMSecretAction.$Shape
+             */
+
+            /**
+             * Constructs a new HatchCVMSecretAction.
+             * @memberof waproto.SyncActionValue
+             * @classdesc Represents a HatchCVMSecretAction.
+             * @constructor
+             * @param {waproto.SyncActionValue.HatchCVMSecretAction.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var HatchCVMSecretAction = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * HatchCVMSecretAction secret.
+             * @member {Uint8Array|null|undefined} secret
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @instance
+             */
+            HatchCVMSecretAction.prototype.secret = null;
+
+            /**
+             * HatchCVMSecretAction generation.
+             * @member {number|Long|null|undefined} generation
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @instance
+             */
+            HatchCVMSecretAction.prototype.generation = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(HatchCVMSecretAction.prototype, "_secret", {
+                get: $util.oneOfGetter($oneOfFields = ["secret"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(HatchCVMSecretAction.prototype, "_generation", {
+                get: $util.oneOfGetter($oneOfFields = ["generation"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new HatchCVMSecretAction instance using the specified properties.
+             * @function create
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {waproto.SyncActionValue.HatchCVMSecretAction.$Properties=} [properties] Properties to set
+             * @returns {waproto.SyncActionValue.HatchCVMSecretAction} HatchCVMSecretAction instance
+             * @type {{
+             *   (properties: waproto.SyncActionValue.HatchCVMSecretAction.$Shape): waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape;
+             *   (properties?: waproto.SyncActionValue.HatchCVMSecretAction.$Properties): waproto.SyncActionValue.HatchCVMSecretAction;
+             * }}
+             */
+            HatchCVMSecretAction.create = function(properties) {
+                return new HatchCVMSecretAction(properties);
+            };
+
+            /**
+             * Encodes the specified HatchCVMSecretAction message. Does not implicitly {@link waproto.SyncActionValue.HatchCVMSecretAction.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {waproto.SyncActionValue.HatchCVMSecretAction.$Properties} message HatchCVMSecretAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HatchCVMSecretAction.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.secret != null && $Object.hasOwnProperty.call(message, "secret"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.secret);
+                if (message.generation != null && $Object.hasOwnProperty.call(message, "generation"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int64(message.generation);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified HatchCVMSecretAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.HatchCVMSecretAction.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {waproto.SyncActionValue.HatchCVMSecretAction.$Properties} message HatchCVMSecretAction message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            HatchCVMSecretAction.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a HatchCVMSecretAction message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape} HatchCVMSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HatchCVMSecretAction.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.SyncActionValue.HatchCVMSecretAction();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.secret = reader.bytes();
+                            message._secret = "secret";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 0)
+                                break;
+                            message.generation = reader.int64();
+                            message._generation = "generation";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a HatchCVMSecretAction message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape} HatchCVMSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            HatchCVMSecretAction.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a HatchCVMSecretAction message.
+             * @function verify
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            HatchCVMSecretAction.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.secret != null && $Object.hasOwnProperty.call(message, "secret")) {
+                    properties._secret = 1;
+                    if (!(message.secret && typeof message.secret.length === "number" || $util.isString(message.secret)))
+                        return "secret: buffer expected";
+                }
+                if (message.generation != null && $Object.hasOwnProperty.call(message, "generation")) {
+                    properties._generation = 1;
+                    if (!$util.isInteger(message.generation) && !(message.generation && $util.isInteger(message.generation.low) && $util.isInteger(message.generation.high)))
+                        return "generation: integer|Long expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a HatchCVMSecretAction message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.SyncActionValue.HatchCVMSecretAction} HatchCVMSecretAction
+             */
+            HatchCVMSecretAction.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.SyncActionValue.HatchCVMSecretAction)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.SyncActionValue.HatchCVMSecretAction: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.SyncActionValue.HatchCVMSecretAction();
+                if (object.secret != null)
+                    if (typeof object.secret === "string")
+                        $util.base64.decode(object.secret, message.secret = $util.newBuffer($util.base64.length(object.secret)), 0);
+                    else if (object.secret.length >= 0)
+                        message.secret = object.secret;
+                if (object.generation != null)
+                    if ($util.Long)
+                        message.generation = $util.Long.fromValue(object.generation, false);
+                    else if (typeof object.generation === "string")
+                        message.generation = $parseInt(object.generation, 10);
+                    else if (typeof object.generation === "number")
+                        message.generation = object.generation;
+                    else if (typeof object.generation === "object")
+                        message.generation = new $util.LongBits(object.generation.low >>> 0, object.generation.high >>> 0).toNumber();
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a HatchCVMSecretAction message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {waproto.SyncActionValue.HatchCVMSecretAction} message HatchCVMSecretAction
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            HatchCVMSecretAction.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.secret != null && $Object.hasOwnProperty.call(message, "secret"))
+                    object.secret = options.bytes === $String ? $util.base64.encode(message.secret, 0, message.secret.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.secret) : message.secret;
+                if (message.generation != null && $Object.hasOwnProperty.call(message, "generation"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.generation = typeof message.generation === "number" ? $BigInt(message.generation) : $util.Long.fromBits(message.generation.low >>> 0, message.generation.high >>> 0, false).toBigInt();
+                    else if (typeof message.generation === "number")
+                        object.generation = options.longs === $String ? $String(message.generation) : message.generation;
+                    else
+                        object.generation = options.longs === $String ? $util.Long.prototype.toString.call(message.generation) : options.longs === $Number ? new $util.LongBits(message.generation.low >>> 0, message.generation.high >>> 0).toNumber() : message.generation;
+                return object;
+            };
+
+            /**
+             * Converts this HatchCVMSecretAction to JSON.
+             * @function toJSON
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            HatchCVMSecretAction.prototype.toJSON = function() {
+                return HatchCVMSecretAction.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for HatchCVMSecretAction
+             * @function getTypeUrl
+             * @memberof waproto.SyncActionValue.HatchCVMSecretAction
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            HatchCVMSecretAction.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.SyncActionValue.HatchCVMSecretAction";
+            };
+
+            return HatchCVMSecretAction;
         })();
 
         SyncActionValue.InteractiveMessageAction = (function() {
@@ -256461,6 +256833,7 @@ $root.waproto = (function() {
              * @property {string|null} [chatThemeId] SettingsSyncAction chatThemeId
              * @property {string|null} [colorSchemeId] SettingsSyncAction colorSchemeId
              * @property {string|null} [stockWallpaperImageId] SettingsSyncAction stockWallpaperImageId
+             * @property {waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null} [mediaAutoDownloadQuality] SettingsSyncAction mediaAutoDownloadQuality
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -256764,6 +257137,14 @@ $root.waproto = (function() {
              */
             SettingsSyncAction.prototype.stockWallpaperImageId = null;
 
+            /**
+             * SettingsSyncAction mediaAutoDownloadQuality.
+             * @member {waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null|undefined} mediaAutoDownloadQuality
+             * @memberof waproto.SyncActionValue.SettingsSyncAction
+             * @instance
+             */
+            SettingsSyncAction.prototype.mediaAutoDownloadQuality = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -256971,6 +257352,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(SettingsSyncAction.prototype, "_mediaAutoDownloadQuality", {
+                get: $util.oneOfGetter($oneOfFields = ["mediaAutoDownloadQuality"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new SettingsSyncAction instance using the specified properties.
              * @function create
@@ -257071,6 +257458,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 33, wireType 2 =*/266).string(message.colorSchemeId);
                 if (message.stockWallpaperImageId != null && $Object.hasOwnProperty.call(message, "stockWallpaperImageId"))
                     writer.uint32(/* id 34, wireType 2 =*/274).string(message.stockWallpaperImageId);
+                if (message.mediaAutoDownloadQuality != null && $Object.hasOwnProperty.call(message, "mediaAutoDownloadQuality"))
+                    writer.uint32(/* id 35, wireType 0 =*/280).int32(message.mediaAutoDownloadQuality);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -257366,6 +257755,13 @@ $root.waproto = (function() {
                             message._stockWallpaperImageId = "stockWallpaperImageId";
                             continue;
                         }
+                    case 35: {
+                            if (wireType !== 0)
+                                break;
+                            message.mediaAutoDownloadQuality = reader.int32();
+                            message._mediaAutoDownloadQuality = "mediaAutoDownloadQuality";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -257585,6 +257981,11 @@ $root.waproto = (function() {
                     if (!$util.isString(message.stockWallpaperImageId))
                         return "stockWallpaperImageId: string expected";
                 }
+                if (message.mediaAutoDownloadQuality != null && $Object.hasOwnProperty.call(message, "mediaAutoDownloadQuality")) {
+                    properties._mediaAutoDownloadQuality = 1;
+                    if (typeof message.mediaAutoDownloadQuality !== "number" || (message.mediaAutoDownloadQuality | 0) !== message.mediaAutoDownloadQuality)
+                        return "mediaAutoDownloadQuality: enum value expected";
+                }
                 return null;
             };
 
@@ -257727,6 +258128,27 @@ $root.waproto = (function() {
                     message.colorSchemeId = $String(object.colorSchemeId);
                 if (object.stockWallpaperImageId != null)
                     message.stockWallpaperImageId = $String(object.stockWallpaperImageId);
+                switch (object.mediaAutoDownloadQuality) {
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN":
+                case 0:
+                    message.mediaAutoDownloadQuality = 0;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD":
+                case 1:
+                    message.mediaAutoDownloadQuality = 1;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_HD":
+                case 2:
+                    message.mediaAutoDownloadQuality = 2;
+                    break;
+                case "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO":
+                case 3:
+                    message.mediaAutoDownloadQuality = 3;
+                    break;
+                default:
+                    if (typeof object.mediaAutoDownloadQuality === "number" && (object.mediaAutoDownloadQuality | 0) === object.mediaAutoDownloadQuality)
+                        message.mediaAutoDownloadQuality = object.mediaAutoDownloadQuality;
+                }
                 return message;
             };
 
@@ -257815,6 +258237,8 @@ $root.waproto = (function() {
                     object.colorSchemeId = message.colorSchemeId;
                 if (message.stockWallpaperImageId != null && $Object.hasOwnProperty.call(message, "stockWallpaperImageId"))
                     object.stockWallpaperImageId = message.stockWallpaperImageId;
+                if (message.mediaAutoDownloadQuality != null && $Object.hasOwnProperty.call(message, "mediaAutoDownloadQuality"))
+                    object.mediaAutoDownloadQuality = options.enums === $String ? $root.waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting[message.mediaAutoDownloadQuality] === $undefined ? message.mediaAutoDownloadQuality : $root.waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting[message.mediaAutoDownloadQuality] : message.mediaAutoDownloadQuality;
                 return object;
             };
 
@@ -257858,6 +258282,24 @@ $root.waproto = (function() {
                 values[valuesById[1] = "ALWAYS"] = 1;
                 values[valuesById[2] = "NEVER"] = 2;
                 values[valuesById[3] = "ONLY_WHEN_APP_IS_OPEN"] = 3;
+                return values;
+            })();
+
+            /**
+             * MediaAutoDownloadQualitySetting enum.
+             * @name waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting
+             * @enum {number}
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN=0 MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD=1 MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_HD=2 MEDIA_AUTO_DOWNLOAD_QUALITY_HD value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO=3 MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO value
+             */
+            SettingsSyncAction.MediaAutoDownloadQualitySetting = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN"] = 0;
+                values[valuesById[1] = "MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD"] = 1;
+                values[valuesById[2] = "MEDIA_AUTO_DOWNLOAD_QUALITY_HD"] = 2;
+                values[valuesById[3] = "MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO"] = 3;
                 return values;
             })();
 
@@ -257916,6 +258358,7 @@ $root.waproto = (function() {
              * @property {number} CHAT_THEME_ID=32 CHAT_THEME_ID value
              * @property {number} COLOR_SCHEME_ID=33 COLOR_SCHEME_ID value
              * @property {number} STOCK_WALLPAPER_IMAGE_ID=34 STOCK_WALLPAPER_IMAGE_ID value
+             * @property {number} MEDIA_AUTO_DOWNLOAD_QUALITY=35 MEDIA_AUTO_DOWNLOAD_QUALITY value
              */
             SettingsSyncAction.SettingKey = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -257954,6 +258397,7 @@ $root.waproto = (function() {
                 values[valuesById[32] = "CHAT_THEME_ID"] = 32;
                 values[valuesById[33] = "COLOR_SCHEME_ID"] = 33;
                 values[valuesById[34] = "STOCK_WALLPAPER_IMAGE_ID"] = 34;
+                values[valuesById[35] = "MEDIA_AUTO_DOWNLOAD_QUALITY"] = 35;
                 return values;
             })();
 

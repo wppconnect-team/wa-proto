@@ -66407,6 +66407,9 @@ export namespace waproto {
         /** SHARED_DEVICE_SECRET_ACTION value */
         SHARED_DEVICE_SECRET_ACTION = 100,
 
+        /** HATCH_CVM_SECRET_ACTION value */
+        HATCH_CVM_SECRET_ACTION = 101,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -76492,6 +76495,9 @@ export namespace waproto {
         /** SyncActionValue sharedDeviceSecretAction. */
         sharedDeviceSecretAction?: (waproto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
 
+        /** SyncActionValue hatchCvmSecretAction. */
+        hatchCvmSecretAction?: (waproto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -76849,6 +76855,9 @@ export namespace waproto {
             /** SyncActionValue sharedDeviceSecretAction */
             sharedDeviceSecretAction?: (waproto.SyncActionValue.SharedDeviceSecretAction.$Properties|null);
 
+            /** SyncActionValue hatchCvmSecretAction */
+            hatchCvmSecretAction?: (waproto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -76946,6 +76955,7 @@ export namespace waproto {
           bbProPendingCustomerBaseAction?: waproto.SyncActionValue.BBProPendingCustomerBaseAction.$Shape|null;
           communityNestingStateAction?: waproto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
           sharedDeviceSecretAction?: waproto.SyncActionValue.SharedDeviceSecretAction.$Shape|null;
+          hatchCvmSecretAction?: waproto.SyncActionValue.HatchCVMSecretAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -79772,14 +79782,14 @@ export namespace waproto {
             /** NestingState enum. */
             enum NestingState {
 
-                /** NESTING_STATE_UNKNOWN value */
-                NESTING_STATE_UNKNOWN = 0,
+                /** PLATFORM_DEFAULT value */
+                PLATFORM_DEFAULT = 0,
 
-                /** NESTING_STATE_NESTED value */
-                NESTING_STATE_NESTED = 1,
+                /** NESTED value */
+                NESTED = 1,
 
-                /** NESTING_STATE_UNNESTED value */
-                NESTING_STATE_UNNESTED = 2
+                /** UNNESTED value */
+                UNNESTED = 2
             }
         }
 
@@ -81798,6 +81808,129 @@ export namespace waproto {
                 /** GROUP_HISTORY_TOGGLE_MODE_OFF value */
                 GROUP_HISTORY_TOGGLE_MODE_OFF = 2
             }
+        }
+
+        /**
+         * Properties of a HatchCVMSecretAction.
+         * @deprecated Use waproto.SyncActionValue.HatchCVMSecretAction.$Properties instead.
+         */
+        interface IHatchCVMSecretAction extends waproto.SyncActionValue.HatchCVMSecretAction.$Properties {
+        }
+
+        /** Represents a HatchCVMSecretAction. */
+        class HatchCVMSecretAction {
+
+            /**
+             * Constructs a new HatchCVMSecretAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.HatchCVMSecretAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** HatchCVMSecretAction secret. */
+            secret?: (Uint8Array|null);
+
+            /** HatchCVMSecretAction generation. */
+            generation?: (number|Long|null);
+
+            /**
+             * Creates a new HatchCVMSecretAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns HatchCVMSecretAction instance
+             */
+            static create(properties: waproto.SyncActionValue.HatchCVMSecretAction.$Shape): waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.HatchCVMSecretAction.$Properties): waproto.SyncActionValue.HatchCVMSecretAction;
+
+            /**
+             * Encodes the specified HatchCVMSecretAction message. Does not implicitly {@link waproto.SyncActionValue.HatchCVMSecretAction.verify|verify} messages.
+             * @param message HatchCVMSecretAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.HatchCVMSecretAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified HatchCVMSecretAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.HatchCVMSecretAction.verify|verify} messages.
+             * @param message HatchCVMSecretAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.HatchCVMSecretAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a HatchCVMSecretAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape} HatchCVMSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape;
+
+            /**
+             * Decodes a HatchCVMSecretAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape} HatchCVMSecretAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.HatchCVMSecretAction & waproto.SyncActionValue.HatchCVMSecretAction.$Shape;
+
+            /**
+             * Verifies a HatchCVMSecretAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a HatchCVMSecretAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns HatchCVMSecretAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.HatchCVMSecretAction;
+
+            /**
+             * Creates a plain object from a HatchCVMSecretAction message. Also converts values to other types if specified.
+             * @param message HatchCVMSecretAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.HatchCVMSecretAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this HatchCVMSecretAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for HatchCVMSecretAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace HatchCVMSecretAction {
+
+            /** Properties of a HatchCVMSecretAction. */
+            interface $Properties {
+
+                /** HatchCVMSecretAction secret */
+                secret?: (Uint8Array|null);
+
+                /** HatchCVMSecretAction generation */
+                generation?: (number|Long|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a HatchCVMSecretAction. */
+            type $Shape = waproto.SyncActionValue.HatchCVMSecretAction.$Properties;
         }
 
         /**
@@ -86530,6 +86663,9 @@ export namespace waproto {
             /** SettingsSyncAction stockWallpaperImageId. */
             stockWallpaperImageId?: (string|null);
 
+            /** SettingsSyncAction mediaAutoDownloadQuality. */
+            mediaAutoDownloadQuality?: (waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null);
+
             /**
              * Creates a new SettingsSyncAction instance using the specified properties.
              * @param [properties] Properties to set
@@ -86716,6 +86852,9 @@ export namespace waproto {
                 /** SettingsSyncAction stockWallpaperImageId */
                 stockWallpaperImageId?: (string|null);
 
+                /** SettingsSyncAction mediaAutoDownloadQuality */
+                mediaAutoDownloadQuality?: (waproto.SyncActionValue.SettingsSyncAction.MediaAutoDownloadQualitySetting|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -86737,6 +86876,22 @@ export namespace waproto {
 
                 /** ONLY_WHEN_APP_IS_OPEN value */
                 ONLY_WHEN_APP_IS_OPEN = 3
+            }
+
+            /** MediaAutoDownloadQualitySetting enum. */
+            enum MediaAutoDownloadQualitySetting {
+
+                /** MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN value */
+                MEDIA_AUTO_DOWNLOAD_QUALITY_UNKNOWN = 0,
+
+                /** MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD value */
+                MEDIA_AUTO_DOWNLOAD_QUALITY_STANDARD = 1,
+
+                /** MEDIA_AUTO_DOWNLOAD_QUALITY_HD value */
+                MEDIA_AUTO_DOWNLOAD_QUALITY_HD = 2,
+
+                /** MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO value */
+                MEDIA_AUTO_DOWNLOAD_QUALITY_AUTO = 3
             }
 
             /** MediaQualitySetting enum. */
@@ -86858,7 +87013,10 @@ export namespace waproto {
                 COLOR_SCHEME_ID = 33,
 
                 /** STOCK_WALLPAPER_IMAGE_ID value */
-                STOCK_WALLPAPER_IMAGE_ID = 34
+                STOCK_WALLPAPER_IMAGE_ID = 34,
+
+                /** MEDIA_AUTO_DOWNLOAD_QUALITY value */
+                MEDIA_AUTO_DOWNLOAD_QUALITY = 35
             }
 
             /** SettingPlatform enum. */
