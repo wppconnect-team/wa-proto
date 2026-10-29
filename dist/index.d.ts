@@ -7332,7 +7332,10 @@ export namespace waproto {
             AI_STUDY_QUIZ_ENABLED = 82,
 
             /** HATCH_CVM_ENABLED value */
-            HATCH_CVM_ENABLED = 83
+            HATCH_CVM_ENABLED = 83,
+
+            /** RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED value */
+            RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84
         }
     }
 
@@ -18651,7 +18654,13 @@ export namespace waproto {
                 WEARABLE = 3,
 
                 /** VR value */
-                VR = 4
+                VR = 4,
+
+                /** SMART_DISPLAY value */
+                SMART_DISPLAY = 5,
+
+                /** SMART_SPEAKER value */
+                SMART_SPEAKER = 6
             }
 
             /** DistributionChannel enum. */

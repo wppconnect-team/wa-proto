@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1052070306
+/// WhatsApp Version: 2.3000.1052144417
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -506,6 +506,7 @@ message BotCapabilityMetadata {
         AI_MUSE_JARVIS_SCHEMA_ENABLED = 81;
         AI_STUDY_QUIZ_ENABLED = 82;
         HATCH_CVM_ENABLED = 83;
+        RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84;
     }
 }
 
@@ -1377,6 +1378,8 @@ message ClientPayload {
             DESKTOP = 2;
             WEARABLE = 3;
             VR = 4;
+            SMART_DISPLAY = 5;
+            SMART_SPEAKER = 6;
         }
         enum DistributionChannel {
             APPSTORE = 0;

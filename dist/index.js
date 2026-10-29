@@ -19936,6 +19936,10 @@ $root.waproto = (function() {
                     case 83:
                         message.capabilities[message.capabilities.length] = 83;
                         break;
+                    case "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED":
+                    case 84:
+                        message.capabilities[message.capabilities.length] = 84;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -20084,6 +20088,7 @@ $root.waproto = (function() {
          * @property {number} AI_MUSE_JARVIS_SCHEMA_ENABLED=81 AI_MUSE_JARVIS_SCHEMA_ENABLED value
          * @property {number} AI_STUDY_QUIZ_ENABLED=82 AI_STUDY_QUIZ_ENABLED value
          * @property {number} HATCH_CVM_ENABLED=83 HATCH_CVM_ENABLED value
+         * @property {number} RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED=84 RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -20171,6 +20176,7 @@ $root.waproto = (function() {
             values[valuesById[81] = "AI_MUSE_JARVIS_SCHEMA_ENABLED"] = 81;
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
+            values[valuesById[84] = "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED"] = 84;
             return values;
         })();
 
@@ -53062,6 +53068,14 @@ $root.waproto = (function() {
                 case 4:
                     message.deviceType = 4;
                     break;
+                case "SMART_DISPLAY":
+                case 5:
+                    message.deviceType = 5;
+                    break;
+                case "SMART_SPEAKER":
+                case 6:
+                    message.deviceType = 6;
+                    break;
                 default:
                     if (typeof object.deviceType === "number" && (object.deviceType | 0) === object.deviceType)
                         message.deviceType = object.deviceType;
@@ -53594,6 +53608,8 @@ $root.waproto = (function() {
              * @property {number} DESKTOP=2 DESKTOP value
              * @property {number} WEARABLE=3 WEARABLE value
              * @property {number} VR=4 VR value
+             * @property {number} SMART_DISPLAY=5 SMART_DISPLAY value
+             * @property {number} SMART_SPEAKER=6 SMART_SPEAKER value
              */
             UserAgent.DeviceType = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -53602,6 +53618,8 @@ $root.waproto = (function() {
                 values[valuesById[2] = "DESKTOP"] = 2;
                 values[valuesById[3] = "WEARABLE"] = 3;
                 values[valuesById[4] = "VR"] = 4;
+                values[valuesById[5] = "SMART_DISPLAY"] = 5;
+                values[valuesById[6] = "SMART_SPEAKER"] = 6;
                 return values;
             })();
 
