@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1052191878
+/// WhatsApp Version: 2.3000.1052238679
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -4824,6 +4824,22 @@ message MsgOpaqueData {
         optional bytes artworkMediaKey = 16;
         optional int64 consumptionCheckedAtS = 17;
         optional bool isAvailableForConsumption = 18;
+        repeated LyricsLine lyrics = 19;
+        optional int64 lyricsConfirmedAtS = 20;
+        message LyricsLine {
+            optional int32 startTimeMs = 1;
+            optional int32 endTimeMs = 2;
+            optional string text = 3;
+            repeated WordOffset wordOffsets = 4;
+            message WordOffset {
+                optional int32 startIndex = 1;
+                optional int32 endIndex = 2;
+                optional int32 startOffsetMs = 3;
+                optional int32 endOffsetMs = 4;
+            }
+            
+        }
+        
     }
     
     enum PollContentType {

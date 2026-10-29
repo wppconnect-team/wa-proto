@@ -65457,6 +65457,12 @@ export namespace waproto {
             /** MusicData isAvailableForConsumption. */
             isAvailableForConsumption?: (boolean|null);
 
+            /** MusicData lyrics. */
+            lyrics: waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties[];
+
+            /** MusicData lyricsConfirmedAtS. */
+            lyricsConfirmedAtS?: (number|Long|null);
+
             /**
              * Creates a new MusicData instance using the specified properties.
              * @param [properties] Properties to set
@@ -65595,12 +65601,288 @@ export namespace waproto {
                 /** MusicData isAvailableForConsumption */
                 isAvailableForConsumption?: (boolean|null);
 
+                /** MusicData lyrics */
+                lyrics?: (waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties[]|null);
+
+                /** MusicData lyricsConfirmedAtS */
+                lyricsConfirmedAtS?: (number|Long|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
 
             /** Shape of a MusicData. */
             type $Shape = waproto.MsgOpaqueData.MusicData.$Properties;
+
+            /**
+             * Properties of a LyricsLine.
+             * @deprecated Use waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties instead.
+             */
+            interface ILyricsLine extends waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties {
+            }
+
+            /** Represents a LyricsLine. */
+            class LyricsLine {
+
+                /**
+                 * Constructs a new LyricsLine.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** LyricsLine startTimeMs. */
+                startTimeMs?: (number|null);
+
+                /** LyricsLine endTimeMs. */
+                endTimeMs?: (number|null);
+
+                /** LyricsLine text. */
+                text?: (string|null);
+
+                /** LyricsLine wordOffsets. */
+                wordOffsets: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties[];
+
+                /**
+                 * Creates a new LyricsLine instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns LyricsLine instance
+                 */
+                static create(properties: waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape): waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape;
+                static create(properties?: waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties): waproto.MsgOpaqueData.MusicData.LyricsLine;
+
+                /**
+                 * Encodes the specified LyricsLine message. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.verify|verify} messages.
+                 * @param message LyricsLine message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified LyricsLine message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.verify|verify} messages.
+                 * @param message LyricsLine message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a LyricsLine message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape} LyricsLine
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape;
+
+                /**
+                 * Decodes a LyricsLine message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape} LyricsLine
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape;
+
+                /**
+                 * Verifies a LyricsLine message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a LyricsLine message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns LyricsLine
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.MsgOpaqueData.MusicData.LyricsLine;
+
+                /**
+                 * Creates a plain object from a LyricsLine message. Also converts values to other types if specified.
+                 * @param message LyricsLine
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.MsgOpaqueData.MusicData.LyricsLine, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this LyricsLine to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for LyricsLine
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace LyricsLine {
+
+                /** Properties of a LyricsLine. */
+                interface $Properties {
+
+                    /** LyricsLine startTimeMs */
+                    startTimeMs?: (number|null);
+
+                    /** LyricsLine endTimeMs */
+                    endTimeMs?: (number|null);
+
+                    /** LyricsLine text */
+                    text?: (string|null);
+
+                    /** LyricsLine wordOffsets */
+                    wordOffsets?: (waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties[]|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of a LyricsLine. */
+                type $Shape = waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties;
+
+                /**
+                 * Properties of a WordOffset.
+                 * @deprecated Use waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties instead.
+                 */
+                interface IWordOffset extends waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties {
+                }
+
+                /** Represents a WordOffset. */
+                class WordOffset {
+
+                    /**
+                     * Constructs a new WordOffset.
+                     * @param [properties] Properties to set
+                     */
+                    constructor(properties?: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+
+                    /** WordOffset startIndex. */
+                    startIndex?: (number|null);
+
+                    /** WordOffset endIndex. */
+                    endIndex?: (number|null);
+
+                    /** WordOffset startOffsetMs. */
+                    startOffsetMs?: (number|null);
+
+                    /** WordOffset endOffsetMs. */
+                    endOffsetMs?: (number|null);
+
+                    /**
+                     * Creates a new WordOffset instance using the specified properties.
+                     * @param [properties] Properties to set
+                     * @returns WordOffset instance
+                     */
+                    static create(properties: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape;
+                    static create(properties?: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset;
+
+                    /**
+                     * Encodes the specified WordOffset message. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify|verify} messages.
+                     * @param message WordOffset message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    static encode(message: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Encodes the specified WordOffset message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify|verify} messages.
+                     * @param message WordOffset message or plain object to encode
+                     * @param [writer] Writer to encode to
+                     * @returns Writer
+                     */
+                    static encodeDelimited(message: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                    /**
+                     * Decodes a WordOffset message from the specified reader or buffer.
+                     * @param reader Reader or buffer to decode from
+                     * @param [length] Message length if known beforehand
+                     * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape} WordOffset
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape;
+
+                    /**
+                     * Decodes a WordOffset message from the specified reader or buffer, length delimited.
+                     * @param reader Reader or buffer to decode from
+                     * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape} WordOffset
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape;
+
+                    /**
+                     * Verifies a WordOffset message.
+                     * @param message Plain object to verify
+                     * @returns `null` if valid, otherwise the reason why it is not
+                     */
+                    static verify(message: { [k: string]: any }): (string|null);
+
+                    /**
+                     * Creates a WordOffset message from a plain object. Also converts values to their respective internal types.
+                     * @param object Plain object
+                     * @returns WordOffset
+                     */
+                    static fromObject(object: { [k: string]: any }): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset;
+
+                    /**
+                     * Creates a plain object from a WordOffset message. Also converts values to other types if specified.
+                     * @param message WordOffset
+                     * @param [options] Conversion options
+                     * @returns Plain object
+                     */
+                    static toObject(message: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                    /**
+                     * Converts this WordOffset to JSON.
+                     * @returns JSON object
+                     */
+                    toJSON(): { [k: string]: any };
+
+                    /**
+                     * Gets the type url for WordOffset
+                     * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                     * @returns The type url
+                     */
+                    static getTypeUrl(prefix?: string): string;
+                }
+
+                namespace WordOffset {
+
+                    /** Properties of a WordOffset. */
+                    interface $Properties {
+
+                        /** WordOffset startIndex */
+                        startIndex?: (number|null);
+
+                        /** WordOffset endIndex */
+                        endIndex?: (number|null);
+
+                        /** WordOffset startOffsetMs */
+                        startOffsetMs?: (number|null);
+
+                        /** WordOffset endOffsetMs */
+                        endOffsetMs?: (number|null);
+
+                        /** Unknown fields preserved while decoding when enabled */
+                        $unknowns?: Uint8Array[];
+                    }
+
+                    /** Shape of a WordOffset. */
+                    type $Shape = waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties;
+                }
+            }
         }
 
         /** PollContentType enum. */

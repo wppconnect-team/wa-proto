@@ -197427,6 +197427,8 @@ $root.waproto = (function() {
              * @property {Uint8Array|null} [artworkMediaKey] MusicData artworkMediaKey
              * @property {number|Long|null} [consumptionCheckedAtS] MusicData consumptionCheckedAtS
              * @property {boolean|null} [isAvailableForConsumption] MusicData isAvailableForConsumption
+             * @property {Array.<waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties>|null} [lyrics] MusicData lyrics
+             * @property {number|Long|null} [lyricsConfirmedAtS] MusicData lyricsConfirmedAtS
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -197452,6 +197454,7 @@ $root.waproto = (function() {
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
             var MusicData = function (properties) {
+                this.lyrics = [];
                 if (properties)
                     for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -197602,6 +197605,22 @@ $root.waproto = (function() {
              */
             MusicData.prototype.isAvailableForConsumption = null;
 
+            /**
+             * MusicData lyrics.
+             * @member {Array.<waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties>} lyrics
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.lyrics = $util.emptyArray;
+
+            /**
+             * MusicData lyricsConfirmedAtS.
+             * @member {number|Long|null|undefined} lyricsConfirmedAtS
+             * @memberof waproto.MsgOpaqueData.MusicData
+             * @instance
+             */
+            MusicData.prototype.lyricsConfirmedAtS = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -197713,6 +197732,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(MusicData.prototype, "_lyricsConfirmedAtS", {
+                get: $util.oneOfGetter($oneOfFields = ["lyricsConfirmedAtS"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new MusicData instance using the specified properties.
              * @function create
@@ -197781,6 +197806,11 @@ $root.waproto = (function() {
                     writer.uint32(/* id 17, wireType 0 =*/136).int64(message.consumptionCheckedAtS);
                 if (message.isAvailableForConsumption != null && $Object.hasOwnProperty.call(message, "isAvailableForConsumption"))
                     writer.uint32(/* id 18, wireType 0 =*/144).bool(message.isAvailableForConsumption);
+                if (message.lyrics != null && message.lyrics.length)
+                    for (var i = 0; i < message.lyrics.length; ++i)
+                        $root.waproto.MsgOpaqueData.MusicData.LyricsLine.encode(message.lyrics[i], writer.uint32(/* id 19, wireType 2 =*/154).fork(), _depth + 1).ldelim();
+                if (message.lyricsConfirmedAtS != null && $Object.hasOwnProperty.call(message, "lyricsConfirmedAtS"))
+                    writer.uint32(/* id 20, wireType 0 =*/160).int64(message.lyricsConfirmedAtS);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -197964,6 +197994,21 @@ $root.waproto = (function() {
                             message._isAvailableForConsumption = "isAvailableForConsumption";
                             continue;
                         }
+                    case 19: {
+                            if (wireType !== 2)
+                                break;
+                            if (!(message.lyrics && message.lyrics.length))
+                                message.lyrics = [];
+                            message.lyrics.push($root.waproto.MsgOpaqueData.MusicData.LyricsLine.decode(reader, reader.size(), $undefined, _depth + 1));
+                            continue;
+                        }
+                    case 20: {
+                            if (wireType !== 0)
+                                break;
+                            message.lyricsConfirmedAtS = reader.int64();
+                            message._lyricsConfirmedAtS = "lyricsConfirmedAtS";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -198103,6 +198148,20 @@ $root.waproto = (function() {
                     if (typeof message.isAvailableForConsumption !== "boolean")
                         return "isAvailableForConsumption: boolean expected";
                 }
+                if (message.lyrics != null && $Object.hasOwnProperty.call(message, "lyrics")) {
+                    if (!$Array.isArray(message.lyrics))
+                        return "lyrics: array expected";
+                    for (var i = 0; i < message.lyrics.length; ++i) {
+                        var error = $root.waproto.MsgOpaqueData.MusicData.LyricsLine.verify(message.lyrics[i], _depth + 1);
+                        if (error)
+                            return "lyrics." + error;
+                    }
+                }
+                if (message.lyricsConfirmedAtS != null && $Object.hasOwnProperty.call(message, "lyricsConfirmedAtS")) {
+                    properties._lyricsConfirmedAtS = 1;
+                    if (!$util.isInteger(message.lyricsConfirmedAtS) && !(message.lyricsConfirmedAtS && $util.isInteger(message.lyricsConfirmedAtS.low) && $util.isInteger(message.lyricsConfirmedAtS.high)))
+                        return "lyricsConfirmedAtS: integer|Long expected";
+                }
                 return null;
             };
 
@@ -198179,6 +198238,25 @@ $root.waproto = (function() {
                         message.consumptionCheckedAtS = new $util.LongBits(object.consumptionCheckedAtS.low >>> 0, object.consumptionCheckedAtS.high >>> 0).toNumber();
                 if (object.isAvailableForConsumption != null)
                     message.isAvailableForConsumption = $Boolean(object.isAvailableForConsumption);
+                if (object.lyrics) {
+                    if (!$Array.isArray(object.lyrics))
+                        throw $TypeError(".waproto.MsgOpaqueData.MusicData.lyrics: array expected");
+                    message.lyrics = $Array(object.lyrics.length);
+                    for (var i = 0; i < object.lyrics.length; ++i) {
+                        if (!$util.isObject(object.lyrics[i]))
+                            throw $TypeError(".waproto.MsgOpaqueData.MusicData.lyrics: object expected");
+                        message.lyrics[i] = $root.waproto.MsgOpaqueData.MusicData.LyricsLine.fromObject(object.lyrics[i], _depth + 1);
+                    }
+                }
+                if (object.lyricsConfirmedAtS != null)
+                    if ($util.Long)
+                        message.lyricsConfirmedAtS = $util.Long.fromValue(object.lyricsConfirmedAtS, false);
+                    else if (typeof object.lyricsConfirmedAtS === "string")
+                        message.lyricsConfirmedAtS = $parseInt(object.lyricsConfirmedAtS, 10);
+                    else if (typeof object.lyricsConfirmedAtS === "number")
+                        message.lyricsConfirmedAtS = object.lyricsConfirmedAtS;
+                    else if (typeof object.lyricsConfirmedAtS === "object")
+                        message.lyricsConfirmedAtS = new $util.LongBits(object.lyricsConfirmedAtS.low >>> 0, object.lyricsConfirmedAtS.high >>> 0).toNumber();
                 return message;
             };
 
@@ -198199,6 +198277,8 @@ $root.waproto = (function() {
                 if (_depth > $util.recursionLimit)
                     throw $Error("max depth exceeded");
                 var object = {};
+                if (options.arrays || options.defaults)
+                    object.lyrics = [];
                 if (message.musicContentMediaId != null && $Object.hasOwnProperty.call(message, "musicContentMediaId"))
                     object.musicContentMediaId = message.musicContentMediaId;
                 if (message.songId != null && $Object.hasOwnProperty.call(message, "songId"))
@@ -198240,6 +198320,18 @@ $root.waproto = (function() {
                         object.consumptionCheckedAtS = options.longs === $String ? $util.Long.prototype.toString.call(message.consumptionCheckedAtS) : options.longs === $Number ? new $util.LongBits(message.consumptionCheckedAtS.low >>> 0, message.consumptionCheckedAtS.high >>> 0).toNumber() : message.consumptionCheckedAtS;
                 if (message.isAvailableForConsumption != null && $Object.hasOwnProperty.call(message, "isAvailableForConsumption"))
                     object.isAvailableForConsumption = message.isAvailableForConsumption;
+                if (message.lyrics && message.lyrics.length) {
+                    object.lyrics = $Array(message.lyrics.length);
+                    for (var j = 0; j < message.lyrics.length; ++j)
+                        object.lyrics[j] = $root.waproto.MsgOpaqueData.MusicData.LyricsLine.toObject(message.lyrics[j], options, _depth + 1);
+                }
+                if (message.lyricsConfirmedAtS != null && $Object.hasOwnProperty.call(message, "lyricsConfirmedAtS"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.lyricsConfirmedAtS = typeof message.lyricsConfirmedAtS === "number" ? $BigInt(message.lyricsConfirmedAtS) : $util.Long.fromBits(message.lyricsConfirmedAtS.low >>> 0, message.lyricsConfirmedAtS.high >>> 0, false).toBigInt();
+                    else if (typeof message.lyricsConfirmedAtS === "number")
+                        object.lyricsConfirmedAtS = options.longs === $String ? $String(message.lyricsConfirmedAtS) : message.lyricsConfirmedAtS;
+                    else
+                        object.lyricsConfirmedAtS = options.longs === $String ? $util.Long.prototype.toString.call(message.lyricsConfirmedAtS) : options.longs === $Number ? new $util.LongBits(message.lyricsConfirmedAtS.low >>> 0, message.lyricsConfirmedAtS.high >>> 0).toNumber() : message.lyricsConfirmedAtS;
                 return object;
             };
 
@@ -198267,6 +198359,782 @@ $root.waproto = (function() {
                     prefix = "type.googleapis.com";
                 return prefix + "/waproto.MsgOpaqueData.MusicData";
             };
+
+            MusicData.LyricsLine = (function() {
+
+                /**
+                 * Properties of a LyricsLine.
+                 * @typedef {Object} waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties
+                 * @property {number|null} [startTimeMs] LyricsLine startTimeMs
+                 * @property {number|null} [endTimeMs] LyricsLine endTimeMs
+                 * @property {string|null} [text] LyricsLine text
+                 * @property {Array.<waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties>|null} [wordOffsets] LyricsLine wordOffsets
+                 * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                 */
+
+                /**
+                 * Properties of a LyricsLine.
+                 * @memberof waproto.MsgOpaqueData.MusicData
+                 * @interface ILyricsLine
+                 * @augments waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties
+                 * @deprecated Use waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties instead.
+                 */
+
+                /**
+                 * Shape of a LyricsLine.
+                 * @typedef {waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties} waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape
+                 */
+
+                /**
+                 * Constructs a new LyricsLine.
+                 * @memberof waproto.MsgOpaqueData.MusicData
+                 * @classdesc Represents a LyricsLine.
+                 * @constructor
+                 * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties=} [properties] Properties to set
+                 * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                 */
+                var LyricsLine = function (properties) {
+                    this.wordOffsets = [];
+                    if (properties)
+                        for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                this[keys[i]] = properties[keys[i]];
+                };
+
+                /**
+                 * LyricsLine startTimeMs.
+                 * @member {number|null|undefined} startTimeMs
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.startTimeMs = null;
+
+                /**
+                 * LyricsLine endTimeMs.
+                 * @member {number|null|undefined} endTimeMs
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.endTimeMs = null;
+
+                /**
+                 * LyricsLine text.
+                 * @member {string|null|undefined} text
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.text = null;
+
+                /**
+                 * LyricsLine wordOffsets.
+                 * @member {Array.<waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties>} wordOffsets
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 */
+                LyricsLine.prototype.wordOffsets = $util.emptyArray;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(LyricsLine.prototype, "_startTimeMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["startTimeMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(LyricsLine.prototype, "_endTimeMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["endTimeMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(LyricsLine.prototype, "_text", {
+                    get: $util.oneOfGetter($oneOfFields = ["text"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new LyricsLine instance using the specified properties.
+                 * @function create
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties=} [properties] Properties to set
+                 * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine} LyricsLine instance
+                 * @type {{
+                 *   (properties: waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape): waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape;
+                 *   (properties?: waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties): waproto.MsgOpaqueData.MusicData.LyricsLine;
+                 * }}
+                 */
+                LyricsLine.create = function(properties) {
+                    return new LyricsLine(properties);
+                };
+
+                /**
+                 * Encodes the specified LyricsLine message. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.verify|verify} messages.
+                 * @function encode
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties} message LyricsLine message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                LyricsLine.encode = function (message, writer, _depth) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (message.startTimeMs != null && $Object.hasOwnProperty.call(message, "startTimeMs"))
+                        writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startTimeMs);
+                    if (message.endTimeMs != null && $Object.hasOwnProperty.call(message, "endTimeMs"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.endTimeMs);
+                    if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.text);
+                    if (message.wordOffsets != null && message.wordOffsets.length)
+                        for (var i = 0; i < message.wordOffsets.length; ++i)
+                            $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.encode(message.wordOffsets[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+                    if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                        for (var i = 0; i < message.$unknowns.length; ++i)
+                            writer.raw(message.$unknowns[i]);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified LyricsLine message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.$Properties} message LyricsLine message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                LyricsLine.encodeDelimited = function(message, writer) {
+                    return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+                };
+
+                /**
+                 * Decodes a LyricsLine message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape} LyricsLine
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                LyricsLine.decode = function (reader, length, _end, _depth, _target) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var end, message;
+                    if (length === $undefined)
+                        end = reader.len;
+                    else {
+                        end = reader.pos + length;
+                        if (end > reader.len)
+                            throw $RangeError("index out of range");
+                        length = reader.len;
+                        reader.len = end;
+                    }
+                    message = _target || new $root.waproto.MsgOpaqueData.MusicData.LyricsLine();
+                    while (reader.pos < end) {
+                        var start = reader.pos;
+                        var tag = reader.tag();
+                        if (tag === _end) {
+                            _end = $undefined;
+                            break;
+                        }
+                        var wireType = tag & 7;
+                        switch (tag >>>= 3) {
+                        case 1: {
+                                if (wireType !== 0)
+                                    break;
+                                message.startTimeMs = reader.int32();
+                                message._startTimeMs = "startTimeMs";
+                                continue;
+                            }
+                        case 2: {
+                                if (wireType !== 0)
+                                    break;
+                                message.endTimeMs = reader.int32();
+                                message._endTimeMs = "endTimeMs";
+                                continue;
+                            }
+                        case 3: {
+                                if (wireType !== 2)
+                                    break;
+                                message.text = reader.stringVerify();
+                                message._text = "text";
+                                continue;
+                            }
+                        case 4: {
+                                if (wireType !== 2)
+                                    break;
+                                if (!(message.wordOffsets && message.wordOffsets.length))
+                                    message.wordOffsets = [];
+                                message.wordOffsets.push($root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.decode(reader, reader.size(), $undefined, _depth + 1));
+                                continue;
+                            }
+                        }
+                        reader.skipType(wireType, _depth, tag);
+                        if (!reader.discardUnknown) {
+                            $util.makeProp(message, "$unknowns", false);
+                            (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                        }
+                    }
+                    if (length !== $undefined) {
+                        if (reader.pos !== end)
+                            throw $RangeError("index out of range");
+                        reader.len = length;
+                    }
+                    if (_end !== $undefined)
+                        throw $Error("missing end group");
+                    return message;
+                };
+
+                /**
+                 * Decodes a LyricsLine message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine & waproto.MsgOpaqueData.MusicData.LyricsLine.$Shape} LyricsLine
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                LyricsLine.decodeDelimited = function(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.size());
+                };
+
+                /**
+                 * Verifies a LyricsLine message.
+                 * @function verify
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                LyricsLine.verify = function (message, _depth) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        return "max depth exceeded";
+                    var properties = {};
+                    if (message.startTimeMs != null && $Object.hasOwnProperty.call(message, "startTimeMs")) {
+                        properties._startTimeMs = 1;
+                        if (!$util.isInteger(message.startTimeMs))
+                            return "startTimeMs: integer expected";
+                    }
+                    if (message.endTimeMs != null && $Object.hasOwnProperty.call(message, "endTimeMs")) {
+                        properties._endTimeMs = 1;
+                        if (!$util.isInteger(message.endTimeMs))
+                            return "endTimeMs: integer expected";
+                    }
+                    if (message.text != null && $Object.hasOwnProperty.call(message, "text")) {
+                        properties._text = 1;
+                        if (!$util.isString(message.text))
+                            return "text: string expected";
+                    }
+                    if (message.wordOffsets != null && $Object.hasOwnProperty.call(message, "wordOffsets")) {
+                        if (!$Array.isArray(message.wordOffsets))
+                            return "wordOffsets: array expected";
+                        for (var i = 0; i < message.wordOffsets.length; ++i) {
+                            var error = $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify(message.wordOffsets[i], _depth + 1);
+                            if (error)
+                                return "wordOffsets." + error;
+                        }
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates a LyricsLine message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine} LyricsLine
+                 */
+                LyricsLine.fromObject = function (object, _depth) {
+                    if (object instanceof $root.waproto.MsgOpaqueData.MusicData.LyricsLine)
+                        return object;
+                    if (!$util.isObject(object))
+                        throw $TypeError(".waproto.MsgOpaqueData.MusicData.LyricsLine: object expected");
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var message = new $root.waproto.MsgOpaqueData.MusicData.LyricsLine();
+                    if (object.startTimeMs != null)
+                        message.startTimeMs = object.startTimeMs | 0;
+                    if (object.endTimeMs != null)
+                        message.endTimeMs = object.endTimeMs | 0;
+                    if (object.text != null)
+                        message.text = $String(object.text);
+                    if (object.wordOffsets) {
+                        if (!$Array.isArray(object.wordOffsets))
+                            throw $TypeError(".waproto.MsgOpaqueData.MusicData.LyricsLine.wordOffsets: array expected");
+                        message.wordOffsets = $Array(object.wordOffsets.length);
+                        for (var i = 0; i < object.wordOffsets.length; ++i) {
+                            if (!$util.isObject(object.wordOffsets[i]))
+                                throw $TypeError(".waproto.MsgOpaqueData.MusicData.LyricsLine.wordOffsets: object expected");
+                            message.wordOffsets[i] = $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.fromObject(object.wordOffsets[i], _depth + 1);
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a LyricsLine message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {waproto.MsgOpaqueData.MusicData.LyricsLine} message LyricsLine
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                LyricsLine.toObject = function (message, options, _depth) {
+                    if (!options)
+                        options = {};
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var object = {};
+                    if (options.arrays || options.defaults)
+                        object.wordOffsets = [];
+                    if (message.startTimeMs != null && $Object.hasOwnProperty.call(message, "startTimeMs"))
+                        object.startTimeMs = message.startTimeMs;
+                    if (message.endTimeMs != null && $Object.hasOwnProperty.call(message, "endTimeMs"))
+                        object.endTimeMs = message.endTimeMs;
+                    if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
+                        object.text = message.text;
+                    if (message.wordOffsets && message.wordOffsets.length) {
+                        object.wordOffsets = $Array(message.wordOffsets.length);
+                        for (var j = 0; j < message.wordOffsets.length; ++j)
+                            object.wordOffsets[j] = $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.toObject(message.wordOffsets[j], options, _depth + 1);
+                    }
+                    return object;
+                };
+
+                /**
+                 * Converts this LyricsLine to JSON.
+                 * @function toJSON
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                LyricsLine.prototype.toJSON = function() {
+                    return LyricsLine.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the type url for LyricsLine
+                 * @function getTypeUrl
+                 * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                 * @static
+                 * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns {string} The type url
+                 */
+                LyricsLine.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/waproto.MsgOpaqueData.MusicData.LyricsLine";
+                };
+
+                LyricsLine.WordOffset = (function() {
+
+                    /**
+                     * Properties of a WordOffset.
+                     * @typedef {Object} waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties
+                     * @property {number|null} [startIndex] WordOffset startIndex
+                     * @property {number|null} [endIndex] WordOffset endIndex
+                     * @property {number|null} [startOffsetMs] WordOffset startOffsetMs
+                     * @property {number|null} [endOffsetMs] WordOffset endOffsetMs
+                     * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                     */
+
+                    /**
+                     * Properties of a WordOffset.
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                     * @interface IWordOffset
+                     * @augments waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties
+                     * @deprecated Use waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties instead.
+                     */
+
+                    /**
+                     * Shape of a WordOffset.
+                     * @typedef {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties} waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape
+                     */
+
+                    /**
+                     * Constructs a new WordOffset.
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine
+                     * @classdesc Represents a WordOffset.
+                     * @constructor
+                     * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties=} [properties] Properties to set
+                     * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                     */
+                    var WordOffset = function (properties) {
+                        if (properties)
+                            for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                                if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                    this[keys[i]] = properties[keys[i]];
+                    };
+
+                    /**
+                     * WordOffset startIndex.
+                     * @member {number|null|undefined} startIndex
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.startIndex = null;
+
+                    /**
+                     * WordOffset endIndex.
+                     * @member {number|null|undefined} endIndex
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.endIndex = null;
+
+                    /**
+                     * WordOffset startOffsetMs.
+                     * @member {number|null|undefined} startOffsetMs
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.startOffsetMs = null;
+
+                    /**
+                     * WordOffset endOffsetMs.
+                     * @member {number|null|undefined} endOffsetMs
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     */
+                    WordOffset.prototype.endOffsetMs = null;
+
+                    // OneOf field names bound to virtual getters and setters
+                    var $oneOfFields;
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_startIndex", {
+                        get: $util.oneOfGetter($oneOfFields = ["startIndex"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_endIndex", {
+                        get: $util.oneOfGetter($oneOfFields = ["endIndex"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_startOffsetMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["startOffsetMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    // Virtual OneOf for proto3 optional field
+                    $Object.defineProperty(WordOffset.prototype, "_endOffsetMs", {
+                        get: $util.oneOfGetter($oneOfFields = ["endOffsetMs"]),
+                        set: $util.oneOfSetter($oneOfFields)
+                    });
+
+                    /**
+                     * Creates a new WordOffset instance using the specified properties.
+                     * @function create
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties=} [properties] Properties to set
+                     * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} WordOffset instance
+                     * @type {{
+                     *   (properties: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape;
+                     *   (properties?: waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties): waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset;
+                     * }}
+                     */
+                    WordOffset.create = function(properties) {
+                        return new WordOffset(properties);
+                    };
+
+                    /**
+                     * Encodes the specified WordOffset message. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify|verify} messages.
+                     * @function encode
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties} message WordOffset message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    WordOffset.encode = function (message, writer, _depth) {
+                        if (!writer)
+                            writer = $Writer.create();
+                        if (_depth === $undefined)
+                            _depth = 0;
+                        if (_depth > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        if (message.startIndex != null && $Object.hasOwnProperty.call(message, "startIndex"))
+                            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.startIndex);
+                        if (message.endIndex != null && $Object.hasOwnProperty.call(message, "endIndex"))
+                            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.endIndex);
+                        if (message.startOffsetMs != null && $Object.hasOwnProperty.call(message, "startOffsetMs"))
+                            writer.uint32(/* id 3, wireType 0 =*/24).int32(message.startOffsetMs);
+                        if (message.endOffsetMs != null && $Object.hasOwnProperty.call(message, "endOffsetMs"))
+                            writer.uint32(/* id 4, wireType 0 =*/32).int32(message.endOffsetMs);
+                        if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                            for (var i = 0; i < message.$unknowns.length; ++i)
+                                writer.raw(message.$unknowns[i]);
+                        return writer;
+                    };
+
+                    /**
+                     * Encodes the specified WordOffset message, length delimited. Does not implicitly {@link waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.verify|verify} messages.
+                     * @function encodeDelimited
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Properties} message WordOffset message or plain object to encode
+                     * @param {$protobuf.Writer} [writer] Writer to encode to
+                     * @returns {$protobuf.Writer} Writer
+                     */
+                    WordOffset.encodeDelimited = function(message, writer) {
+                        return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+                    };
+
+                    /**
+                     * Decodes a WordOffset message from the specified reader or buffer.
+                     * @function decode
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @param {number} [length] Message length if known beforehand
+                     * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape} WordOffset
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    WordOffset.decode = function (reader, length, _end, _depth, _target) {
+                        if (!(reader instanceof $Reader))
+                            reader = $Reader.create(reader);
+                        if (_depth === $undefined)
+                            _depth = 0;
+                        if (_depth > $Reader.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset();
+                        while (reader.pos < end) {
+                            var start = reader.pos;
+                            var tag = reader.tag();
+                            if (tag === _end) {
+                                _end = $undefined;
+                                break;
+                            }
+                            var wireType = tag & 7;
+                            switch (tag >>>= 3) {
+                            case 1: {
+                                    if (wireType !== 0)
+                                        break;
+                                    message.startIndex = reader.int32();
+                                    message._startIndex = "startIndex";
+                                    continue;
+                                }
+                            case 2: {
+                                    if (wireType !== 0)
+                                        break;
+                                    message.endIndex = reader.int32();
+                                    message._endIndex = "endIndex";
+                                    continue;
+                                }
+                            case 3: {
+                                    if (wireType !== 0)
+                                        break;
+                                    message.startOffsetMs = reader.int32();
+                                    message._startOffsetMs = "startOffsetMs";
+                                    continue;
+                                }
+                            case 4: {
+                                    if (wireType !== 0)
+                                        break;
+                                    message.endOffsetMs = reader.int32();
+                                    message._endOffsetMs = "endOffsetMs";
+                                    continue;
+                                }
+                            }
+                            reader.skipType(wireType, _depth, tag);
+                            if (!reader.discardUnknown) {
+                                $util.makeProp(message, "$unknowns", false);
+                                (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                            }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
+                        }
+                        if (_end !== $undefined)
+                            throw $Error("missing end group");
+                        return message;
+                    };
+
+                    /**
+                     * Decodes a WordOffset message from the specified reader or buffer, length delimited.
+                     * @function decodeDelimited
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                     * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset & waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset.$Shape} WordOffset
+                     * @throws {Error} If the payload is not a reader or valid buffer
+                     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                     */
+                    WordOffset.decodeDelimited = function(reader) {
+                        if (!(reader instanceof $Reader))
+                            reader = new $Reader(reader);
+                        return this.decode(reader, reader.size());
+                    };
+
+                    /**
+                     * Verifies a WordOffset message.
+                     * @function verify
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {Object.<string,*>} message Plain object to verify
+                     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                     */
+                    WordOffset.verify = function (message, _depth) {
+                        if (typeof message !== "object" || message === null)
+                            return "object expected";
+                        if (_depth === $undefined)
+                            _depth = 0;
+                        if (_depth > $util.recursionLimit)
+                            return "max depth exceeded";
+                        var properties = {};
+                        if (message.startIndex != null && $Object.hasOwnProperty.call(message, "startIndex")) {
+                            properties._startIndex = 1;
+                            if (!$util.isInteger(message.startIndex))
+                                return "startIndex: integer expected";
+                        }
+                        if (message.endIndex != null && $Object.hasOwnProperty.call(message, "endIndex")) {
+                            properties._endIndex = 1;
+                            if (!$util.isInteger(message.endIndex))
+                                return "endIndex: integer expected";
+                        }
+                        if (message.startOffsetMs != null && $Object.hasOwnProperty.call(message, "startOffsetMs")) {
+                            properties._startOffsetMs = 1;
+                            if (!$util.isInteger(message.startOffsetMs))
+                                return "startOffsetMs: integer expected";
+                        }
+                        if (message.endOffsetMs != null && $Object.hasOwnProperty.call(message, "endOffsetMs")) {
+                            properties._endOffsetMs = 1;
+                            if (!$util.isInteger(message.endOffsetMs))
+                                return "endOffsetMs: integer expected";
+                        }
+                        return null;
+                    };
+
+                    /**
+                     * Creates a WordOffset message from a plain object. Also converts values to their respective internal types.
+                     * @function fromObject
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {Object.<string,*>} object Plain object
+                     * @returns {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} WordOffset
+                     */
+                    WordOffset.fromObject = function (object, _depth) {
+                        if (object instanceof $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset)
+                            return object;
+                        if (!$util.isObject(object))
+                            throw $TypeError(".waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset: object expected");
+                        if (_depth === $undefined)
+                            _depth = 0;
+                        if (_depth > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var message = new $root.waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset();
+                        if (object.startIndex != null)
+                            message.startIndex = object.startIndex | 0;
+                        if (object.endIndex != null)
+                            message.endIndex = object.endIndex | 0;
+                        if (object.startOffsetMs != null)
+                            message.startOffsetMs = object.startOffsetMs | 0;
+                        if (object.endOffsetMs != null)
+                            message.endOffsetMs = object.endOffsetMs | 0;
+                        return message;
+                    };
+
+                    /**
+                     * Creates a plain object from a WordOffset message. Also converts values to other types if specified.
+                     * @function toObject
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset} message WordOffset
+                     * @param {$protobuf.IConversionOptions} [options] Conversion options
+                     * @returns {Object.<string,*>} Plain object
+                     */
+                    WordOffset.toObject = function (message, options, _depth) {
+                        if (!options)
+                            options = {};
+                        if (_depth === $undefined)
+                            _depth = 0;
+                        if (_depth > $util.recursionLimit)
+                            throw $Error("max depth exceeded");
+                        var object = {};
+                        if (message.startIndex != null && $Object.hasOwnProperty.call(message, "startIndex"))
+                            object.startIndex = message.startIndex;
+                        if (message.endIndex != null && $Object.hasOwnProperty.call(message, "endIndex"))
+                            object.endIndex = message.endIndex;
+                        if (message.startOffsetMs != null && $Object.hasOwnProperty.call(message, "startOffsetMs"))
+                            object.startOffsetMs = message.startOffsetMs;
+                        if (message.endOffsetMs != null && $Object.hasOwnProperty.call(message, "endOffsetMs"))
+                            object.endOffsetMs = message.endOffsetMs;
+                        return object;
+                    };
+
+                    /**
+                     * Converts this WordOffset to JSON.
+                     * @function toJSON
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @instance
+                     * @returns {Object.<string,*>} JSON object
+                     */
+                    WordOffset.prototype.toJSON = function() {
+                        return WordOffset.toObject(this, $protobuf.util.toJSONOptions);
+                    };
+
+                    /**
+                     * Gets the type url for WordOffset
+                     * @function getTypeUrl
+                     * @memberof waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset
+                     * @static
+                     * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                     * @returns {string} The type url
+                     */
+                    WordOffset.getTypeUrl = function(prefix) {
+                        if (prefix === $undefined)
+                            prefix = "type.googleapis.com";
+                        return prefix + "/waproto.MsgOpaqueData.MusicData.LyricsLine.WordOffset";
+                    };
+
+                    return WordOffset;
+                })();
+
+                return LyricsLine;
+            })();
 
             return MusicData;
         })();
