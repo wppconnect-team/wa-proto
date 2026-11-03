@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1052682108
+/// WhatsApp Version: 2.3000.1052769028
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -4796,6 +4796,10 @@ message MsgOpaqueData {
     optional string qrUrl = 62;
     optional MusicData musicData = 63;
     optional string pollAddedOptionName = 64;
+    optional string sharableEventInviteStatus = 65;
+    optional string sharableEventInviteLocationName = 66;
+    optional string sharableEventInviteCoverImageHandle = 67;
+    optional int64 sharableEventInviteLastUpdatedTsUsec = 68;
     message EventLocation {
         optional double degreesLatitude = 1;
         optional double degreesLongitude = 2;

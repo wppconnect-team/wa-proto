@@ -64969,6 +64969,18 @@ export namespace waproto {
         /** MsgOpaqueData pollAddedOptionName. */
         pollAddedOptionName?: (string|null);
 
+        /** MsgOpaqueData sharableEventInviteStatus. */
+        sharableEventInviteStatus?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteLocationName. */
+        sharableEventInviteLocationName?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteCoverImageHandle. */
+        sharableEventInviteCoverImageHandle?: (string|null);
+
+        /** MsgOpaqueData sharableEventInviteLastUpdatedTsUsec. */
+        sharableEventInviteLastUpdatedTsUsec?: (number|Long|null);
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @param [properties] Properties to set
@@ -65229,6 +65241,18 @@ export namespace waproto {
 
             /** MsgOpaqueData pollAddedOptionName */
             pollAddedOptionName?: (string|null);
+
+            /** MsgOpaqueData sharableEventInviteStatus */
+            sharableEventInviteStatus?: (string|null);
+
+            /** MsgOpaqueData sharableEventInviteLocationName */
+            sharableEventInviteLocationName?: (string|null);
+
+            /** MsgOpaqueData sharableEventInviteCoverImageHandle */
+            sharableEventInviteCoverImageHandle?: (string|null);
+
+            /** MsgOpaqueData sharableEventInviteLastUpdatedTsUsec */
+            sharableEventInviteLastUpdatedTsUsec?: (number|Long|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];

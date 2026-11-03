@@ -194662,6 +194662,10 @@ $root.waproto = (function() {
          * @property {string|null} [qrUrl] MsgOpaqueData qrUrl
          * @property {waproto.MsgOpaqueData.MusicData.$Properties|null} [musicData] MsgOpaqueData musicData
          * @property {string|null} [pollAddedOptionName] MsgOpaqueData pollAddedOptionName
+         * @property {string|null} [sharableEventInviteStatus] MsgOpaqueData sharableEventInviteStatus
+         * @property {string|null} [sharableEventInviteLocationName] MsgOpaqueData sharableEventInviteLocationName
+         * @property {string|null} [sharableEventInviteCoverImageHandle] MsgOpaqueData sharableEventInviteCoverImageHandle
+         * @property {number|Long|null} [sharableEventInviteLastUpdatedTsUsec] MsgOpaqueData sharableEventInviteLastUpdatedTsUsec
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -195166,6 +195170,38 @@ $root.waproto = (function() {
          */
         MsgOpaqueData.prototype.pollAddedOptionName = null;
 
+        /**
+         * MsgOpaqueData sharableEventInviteStatus.
+         * @member {string|null|undefined} sharableEventInviteStatus
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteStatus = null;
+
+        /**
+         * MsgOpaqueData sharableEventInviteLocationName.
+         * @member {string|null|undefined} sharableEventInviteLocationName
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteLocationName = null;
+
+        /**
+         * MsgOpaqueData sharableEventInviteCoverImageHandle.
+         * @member {string|null|undefined} sharableEventInviteCoverImageHandle
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteCoverImageHandle = null;
+
+        /**
+         * MsgOpaqueData sharableEventInviteLastUpdatedTsUsec.
+         * @member {number|Long|null|undefined} sharableEventInviteLastUpdatedTsUsec
+         * @memberof waproto.MsgOpaqueData
+         * @instance
+         */
+        MsgOpaqueData.prototype.sharableEventInviteLastUpdatedTsUsec = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -195517,6 +195553,30 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteLocationName", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteLocationName"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteCoverImageHandle", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteCoverImageHandle"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MsgOpaqueData.prototype, "_sharableEventInviteLastUpdatedTsUsec", {
+            get: $util.oneOfGetter($oneOfFields = ["sharableEventInviteLastUpdatedTsUsec"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new MsgOpaqueData instance using the specified properties.
          * @function create
@@ -195668,6 +195728,14 @@ $root.waproto = (function() {
                 $root.waproto.MsgOpaqueData.MusicData.encode(message.musicData, writer.uint32(/* id 63, wireType 2 =*/506).fork(), _depth + 1).ldelim();
             if (message.pollAddedOptionName != null && $Object.hasOwnProperty.call(message, "pollAddedOptionName"))
                 writer.uint32(/* id 64, wireType 2 =*/514).string(message.pollAddedOptionName);
+            if (message.sharableEventInviteStatus != null && $Object.hasOwnProperty.call(message, "sharableEventInviteStatus"))
+                writer.uint32(/* id 65, wireType 2 =*/522).string(message.sharableEventInviteStatus);
+            if (message.sharableEventInviteLocationName != null && $Object.hasOwnProperty.call(message, "sharableEventInviteLocationName"))
+                writer.uint32(/* id 66, wireType 2 =*/530).string(message.sharableEventInviteLocationName);
+            if (message.sharableEventInviteCoverImageHandle != null && $Object.hasOwnProperty.call(message, "sharableEventInviteCoverImageHandle"))
+                writer.uint32(/* id 67, wireType 2 =*/538).string(message.sharableEventInviteCoverImageHandle);
+            if (message.sharableEventInviteLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(message, "sharableEventInviteLastUpdatedTsUsec"))
+                writer.uint32(/* id 68, wireType 0 =*/544).int64(message.sharableEventInviteLastUpdatedTsUsec);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -196139,6 +196207,34 @@ $root.waproto = (function() {
                         message._pollAddedOptionName = "pollAddedOptionName";
                         continue;
                     }
+                case 65: {
+                        if (wireType !== 2)
+                            break;
+                        message.sharableEventInviteStatus = reader.stringVerify();
+                        message._sharableEventInviteStatus = "sharableEventInviteStatus";
+                        continue;
+                    }
+                case 66: {
+                        if (wireType !== 2)
+                            break;
+                        message.sharableEventInviteLocationName = reader.stringVerify();
+                        message._sharableEventInviteLocationName = "sharableEventInviteLocationName";
+                        continue;
+                    }
+                case 67: {
+                        if (wireType !== 2)
+                            break;
+                        message.sharableEventInviteCoverImageHandle = reader.stringVerify();
+                        message._sharableEventInviteCoverImageHandle = "sharableEventInviteCoverImageHandle";
+                        continue;
+                    }
+                case 68: {
+                        if (wireType !== 0)
+                            break;
+                        message.sharableEventInviteLastUpdatedTsUsec = reader.int64();
+                        message._sharableEventInviteLastUpdatedTsUsec = "sharableEventInviteLastUpdatedTsUsec";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -196499,6 +196595,26 @@ $root.waproto = (function() {
                 if (!$util.isString(message.pollAddedOptionName))
                     return "pollAddedOptionName: string expected";
             }
+            if (message.sharableEventInviteStatus != null && $Object.hasOwnProperty.call(message, "sharableEventInviteStatus")) {
+                properties._sharableEventInviteStatus = 1;
+                if (!$util.isString(message.sharableEventInviteStatus))
+                    return "sharableEventInviteStatus: string expected";
+            }
+            if (message.sharableEventInviteLocationName != null && $Object.hasOwnProperty.call(message, "sharableEventInviteLocationName")) {
+                properties._sharableEventInviteLocationName = 1;
+                if (!$util.isString(message.sharableEventInviteLocationName))
+                    return "sharableEventInviteLocationName: string expected";
+            }
+            if (message.sharableEventInviteCoverImageHandle != null && $Object.hasOwnProperty.call(message, "sharableEventInviteCoverImageHandle")) {
+                properties._sharableEventInviteCoverImageHandle = 1;
+                if (!$util.isString(message.sharableEventInviteCoverImageHandle))
+                    return "sharableEventInviteCoverImageHandle: string expected";
+            }
+            if (message.sharableEventInviteLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(message, "sharableEventInviteLastUpdatedTsUsec")) {
+                properties._sharableEventInviteLastUpdatedTsUsec = 1;
+                if (!$util.isInteger(message.sharableEventInviteLastUpdatedTsUsec) && !(message.sharableEventInviteLastUpdatedTsUsec && $util.isInteger(message.sharableEventInviteLastUpdatedTsUsec.low) && $util.isInteger(message.sharableEventInviteLastUpdatedTsUsec.high)))
+                    return "sharableEventInviteLastUpdatedTsUsec: integer|Long expected";
+            }
             return null;
         };
 
@@ -196753,6 +196869,21 @@ $root.waproto = (function() {
             }
             if (object.pollAddedOptionName != null)
                 message.pollAddedOptionName = $String(object.pollAddedOptionName);
+            if (object.sharableEventInviteStatus != null)
+                message.sharableEventInviteStatus = $String(object.sharableEventInviteStatus);
+            if (object.sharableEventInviteLocationName != null)
+                message.sharableEventInviteLocationName = $String(object.sharableEventInviteLocationName);
+            if (object.sharableEventInviteCoverImageHandle != null)
+                message.sharableEventInviteCoverImageHandle = $String(object.sharableEventInviteCoverImageHandle);
+            if (object.sharableEventInviteLastUpdatedTsUsec != null)
+                if ($util.Long)
+                    message.sharableEventInviteLastUpdatedTsUsec = $util.Long.fromValue(object.sharableEventInviteLastUpdatedTsUsec, false);
+                else if (typeof object.sharableEventInviteLastUpdatedTsUsec === "string")
+                    message.sharableEventInviteLastUpdatedTsUsec = $parseInt(object.sharableEventInviteLastUpdatedTsUsec, 10);
+                else if (typeof object.sharableEventInviteLastUpdatedTsUsec === "number")
+                    message.sharableEventInviteLastUpdatedTsUsec = object.sharableEventInviteLastUpdatedTsUsec;
+                else if (typeof object.sharableEventInviteLastUpdatedTsUsec === "object")
+                    message.sharableEventInviteLastUpdatedTsUsec = new $util.LongBits(object.sharableEventInviteLastUpdatedTsUsec.low >>> 0, object.sharableEventInviteLastUpdatedTsUsec.high >>> 0).toNumber();
             return message;
         };
 
@@ -196926,6 +197057,19 @@ $root.waproto = (function() {
                 object.musicData = $root.waproto.MsgOpaqueData.MusicData.toObject(message.musicData, options, _depth + 1);
             if (message.pollAddedOptionName != null && $Object.hasOwnProperty.call(message, "pollAddedOptionName"))
                 object.pollAddedOptionName = message.pollAddedOptionName;
+            if (message.sharableEventInviteStatus != null && $Object.hasOwnProperty.call(message, "sharableEventInviteStatus"))
+                object.sharableEventInviteStatus = message.sharableEventInviteStatus;
+            if (message.sharableEventInviteLocationName != null && $Object.hasOwnProperty.call(message, "sharableEventInviteLocationName"))
+                object.sharableEventInviteLocationName = message.sharableEventInviteLocationName;
+            if (message.sharableEventInviteCoverImageHandle != null && $Object.hasOwnProperty.call(message, "sharableEventInviteCoverImageHandle"))
+                object.sharableEventInviteCoverImageHandle = message.sharableEventInviteCoverImageHandle;
+            if (message.sharableEventInviteLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(message, "sharableEventInviteLastUpdatedTsUsec"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.sharableEventInviteLastUpdatedTsUsec = typeof message.sharableEventInviteLastUpdatedTsUsec === "number" ? $BigInt(message.sharableEventInviteLastUpdatedTsUsec) : $util.Long.fromBits(message.sharableEventInviteLastUpdatedTsUsec.low >>> 0, message.sharableEventInviteLastUpdatedTsUsec.high >>> 0, false).toBigInt();
+                else if (typeof message.sharableEventInviteLastUpdatedTsUsec === "number")
+                    object.sharableEventInviteLastUpdatedTsUsec = options.longs === $String ? $String(message.sharableEventInviteLastUpdatedTsUsec) : message.sharableEventInviteLastUpdatedTsUsec;
+                else
+                    object.sharableEventInviteLastUpdatedTsUsec = options.longs === $String ? $util.Long.prototype.toString.call(message.sharableEventInviteLastUpdatedTsUsec) : options.longs === $Number ? new $util.LongBits(message.sharableEventInviteLastUpdatedTsUsec.low >>> 0, message.sharableEventInviteLastUpdatedTsUsec.high >>> 0).toNumber() : message.sharableEventInviteLastUpdatedTsUsec;
             return object;
         };
 
