@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1053260417
+/// WhatsApp Version: 2.3000.1053300637
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1519,7 +1519,6 @@ message CompanionEphemeralIdentity {
 
 message Config {
     map<uint32, Field> field = 1;
-    optional uint32 version = 2;
 }
 
 message ContextInfo {
@@ -2185,7 +2184,6 @@ message ExternalBlobReference {
 message Field {
     optional uint32 minVersion = 1;
     optional uint32 maxVersion = 2;
-    optional uint32 notReportableMinVersion = 3;
     optional bool isMessage = 4;
     map<uint32, Field> subfield = 5;
 }
@@ -5338,13 +5336,6 @@ message RecentEmojiWeight {
 message RecordStructure {
     optional SessionStructure currentSession = 1;
     repeated SessionStructure previousSessions = 2;
-}
-
-message Reportable {
-    optional uint32 minVersion = 1;
-    optional uint32 maxVersion = 2;
-    optional uint32 notReportableMinVersion = 3;
-    optional bool never = 4;
 }
 
 message ReportingTokenInfo {

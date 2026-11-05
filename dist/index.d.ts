@@ -20090,9 +20090,6 @@ export namespace waproto {
         /** Config field. */
         field: { [k: string]: waproto.Field.$Properties };
 
-        /** Config version. */
-        version?: (number|null);
-
         /**
          * Creates a new Config instance using the specified properties.
          * @param [properties] Properties to set
@@ -20179,9 +20176,6 @@ export namespace waproto {
 
             /** Config field */
             field?: ({ [k: string]: waproto.Field.$Properties }|null);
-
-            /** Config version */
-            version?: (number|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -28023,9 +28017,6 @@ export namespace waproto {
         /** Field maxVersion. */
         maxVersion?: (number|null);
 
-        /** Field notReportableMinVersion. */
-        notReportableMinVersion?: (number|null);
-
         /** Field isMessage. */
         isMessage?: (boolean|null);
 
@@ -28121,9 +28112,6 @@ export namespace waproto {
 
             /** Field maxVersion */
             maxVersion?: (number|null);
-
-            /** Field notReportableMinVersion */
-            notReportableMinVersion?: (number|null);
 
             /** Field isMessage */
             isMessage?: (boolean|null);
@@ -71908,141 +71896,6 @@ export namespace waproto {
 
         /** Shape of a RecordStructure. */
         type $Shape = waproto.RecordStructure.$Properties;
-    }
-
-    /**
-     * Properties of a Reportable.
-     * @deprecated Use waproto.Reportable.$Properties instead.
-     */
-    interface IReportable extends waproto.Reportable.$Properties {
-    }
-
-    /** Represents a Reportable. */
-    class Reportable {
-
-        /**
-         * Constructs a new Reportable.
-         * @param [properties] Properties to set
-         */
-        constructor(properties?: waproto.Reportable.$Properties);
-
-        /** Unknown fields preserved while decoding when enabled */
-        $unknowns?: Uint8Array[];
-
-        /** Reportable minVersion. */
-        minVersion?: (number|null);
-
-        /** Reportable maxVersion. */
-        maxVersion?: (number|null);
-
-        /** Reportable notReportableMinVersion. */
-        notReportableMinVersion?: (number|null);
-
-        /** Reportable never. */
-        never?: (boolean|null);
-
-        /**
-         * Creates a new Reportable instance using the specified properties.
-         * @param [properties] Properties to set
-         * @returns Reportable instance
-         */
-        static create(properties: waproto.Reportable.$Shape): waproto.Reportable & waproto.Reportable.$Shape;
-        static create(properties?: waproto.Reportable.$Properties): waproto.Reportable;
-
-        /**
-         * Encodes the specified Reportable message. Does not implicitly {@link waproto.Reportable.verify|verify} messages.
-         * @param message Reportable message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encode(message: waproto.Reportable.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Encodes the specified Reportable message, length delimited. Does not implicitly {@link waproto.Reportable.verify|verify} messages.
-         * @param message Reportable message or plain object to encode
-         * @param [writer] Writer to encode to
-         * @returns Writer
-         */
-        static encodeDelimited(message: waproto.Reportable.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
-
-        /**
-         * Decodes a Reportable message from the specified reader or buffer.
-         * @param reader Reader or buffer to decode from
-         * @param [length] Message length if known beforehand
-         * @returns {waproto.Reportable & waproto.Reportable.$Shape} Reportable
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Reportable & waproto.Reportable.$Shape;
-
-        /**
-         * Decodes a Reportable message from the specified reader or buffer, length delimited.
-         * @param reader Reader or buffer to decode from
-         * @returns {waproto.Reportable & waproto.Reportable.$Shape} Reportable
-         * @throws {Error} If the payload is not a reader or valid buffer
-         * @throws {$protobuf.util.ProtocolError} If required fields are missing
-         */
-        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Reportable & waproto.Reportable.$Shape;
-
-        /**
-         * Verifies a Reportable message.
-         * @param message Plain object to verify
-         * @returns `null` if valid, otherwise the reason why it is not
-         */
-        static verify(message: { [k: string]: any }): (string|null);
-
-        /**
-         * Creates a Reportable message from a plain object. Also converts values to their respective internal types.
-         * @param object Plain object
-         * @returns Reportable
-         */
-        static fromObject(object: { [k: string]: any }): waproto.Reportable;
-
-        /**
-         * Creates a plain object from a Reportable message. Also converts values to other types if specified.
-         * @param message Reportable
-         * @param [options] Conversion options
-         * @returns Plain object
-         */
-        static toObject(message: waproto.Reportable, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-        /**
-         * Converts this Reportable to JSON.
-         * @returns JSON object
-         */
-        toJSON(): { [k: string]: any };
-
-        /**
-         * Gets the type url for Reportable
-         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
-         * @returns The type url
-         */
-        static getTypeUrl(prefix?: string): string;
-    }
-
-    namespace Reportable {
-
-        /** Properties of a Reportable. */
-        interface $Properties {
-
-            /** Reportable minVersion */
-            minVersion?: (number|null);
-
-            /** Reportable maxVersion */
-            maxVersion?: (number|null);
-
-            /** Reportable notReportableMinVersion */
-            notReportableMinVersion?: (number|null);
-
-            /** Reportable never */
-            never?: (boolean|null);
-
-            /** Unknown fields preserved while decoding when enabled */
-            $unknowns?: Uint8Array[];
-        }
-
-        /** Shape of a Reportable. */
-        type $Shape = waproto.Reportable.$Properties;
     }
 
     /**
