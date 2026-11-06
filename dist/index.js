@@ -14205,6 +14205,7 @@ $root.waproto = (function() {
          * @property {string|null} [username] Account username
          * @property {string|null} [countryCode] Account countryCode
          * @property {boolean|null} [isUsernameDeleted] Account isUsernameDeleted
+         * @property {waproto.Account.PnLearnState|null} [pnLearnState] Account pnLearnState
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -14268,6 +14269,14 @@ $root.waproto = (function() {
          */
         Account.prototype.isUsernameDeleted = null;
 
+        /**
+         * Account pnLearnState.
+         * @member {waproto.Account.PnLearnState|null|undefined} pnLearnState
+         * @memberof waproto.Account
+         * @instance
+         */
+        Account.prototype.pnLearnState = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -14292,6 +14301,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(Account.prototype, "_isUsernameDeleted", {
             get: $util.oneOfGetter($oneOfFields = ["isUsernameDeleted"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Account.prototype, "_pnLearnState", {
+            get: $util.oneOfGetter($oneOfFields = ["pnLearnState"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -14335,6 +14350,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 3, wireType 2 =*/26).string(message.countryCode);
             if (message.isUsernameDeleted != null && $Object.hasOwnProperty.call(message, "isUsernameDeleted"))
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.isUsernameDeleted);
+            if (message.pnLearnState != null && $Object.hasOwnProperty.call(message, "pnLearnState"))
+                writer.uint32(/* id 6, wireType 0 =*/48).int32(message.pnLearnState);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -14372,7 +14389,7 @@ $root.waproto = (function() {
                 _depth = 0;
             if (_depth > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var end, message;
+            var end, message, value;
             if (length === $undefined)
                 end = reader.len;
             else {
@@ -14418,6 +14435,13 @@ $root.waproto = (function() {
                             break;
                         message.isUsernameDeleted = reader.bool();
                         message._isUsernameDeleted = "isUsernameDeleted";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 0)
+                            break;
+                        message.pnLearnState = reader.int32();
+                        message._pnLearnState = "pnLearnState";
                         continue;
                     }
                 }
@@ -14489,6 +14513,11 @@ $root.waproto = (function() {
                 if (typeof message.isUsernameDeleted !== "boolean")
                     return "isUsernameDeleted: boolean expected";
             }
+            if (message.pnLearnState != null && $Object.hasOwnProperty.call(message, "pnLearnState")) {
+                properties._pnLearnState = 1;
+                if (typeof message.pnLearnState !== "number" || (message.pnLearnState | 0) !== message.pnLearnState)
+                    return "pnLearnState: enum value expected";
+            }
             return null;
         };
 
@@ -14518,6 +14547,23 @@ $root.waproto = (function() {
                 message.countryCode = $String(object.countryCode);
             if (object.isUsernameDeleted != null)
                 message.isUsernameDeleted = $Boolean(object.isUsernameDeleted);
+            switch (object.pnLearnState) {
+            case "UNSET":
+            case 0:
+                message.pnLearnState = 0;
+                break;
+            case "SHARED":
+            case 1:
+                message.pnLearnState = 1;
+                break;
+            case "HIDDEN":
+            case 2:
+                message.pnLearnState = 2;
+                break;
+            default:
+                if (typeof object.pnLearnState === "number" && (object.pnLearnState | 0) === object.pnLearnState)
+                    message.pnLearnState = object.pnLearnState;
+            }
             return message;
         };
 
@@ -14546,6 +14592,8 @@ $root.waproto = (function() {
                 object.countryCode = message.countryCode;
             if (message.isUsernameDeleted != null && $Object.hasOwnProperty.call(message, "isUsernameDeleted"))
                 object.isUsernameDeleted = message.isUsernameDeleted;
+            if (message.pnLearnState != null && $Object.hasOwnProperty.call(message, "pnLearnState"))
+                object.pnLearnState = options.enums === $String ? $root.waproto.Account.PnLearnState[message.pnLearnState] === $undefined ? message.pnLearnState : $root.waproto.Account.PnLearnState[message.pnLearnState] : message.pnLearnState;
             return object;
         };
 
@@ -14573,6 +14621,22 @@ $root.waproto = (function() {
                 prefix = "type.googleapis.com";
             return prefix + "/waproto.Account";
         };
+
+        /**
+         * PnLearnState enum.
+         * @name waproto.Account.PnLearnState
+         * @enum {number}
+         * @property {number} UNSET=0 UNSET value
+         * @property {number} SHARED=1 SHARED value
+         * @property {number} HIDDEN=2 HIDDEN value
+         */
+        Account.PnLearnState = (function() {
+            var valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[0] = "UNSET"] = 0;
+            values[valuesById[1] = "SHARED"] = 1;
+            values[valuesById[2] = "HIDDEN"] = 2;
+            return values;
+        })();
 
         return Account;
     })();
@@ -19940,6 +20004,18 @@ $root.waproto = (function() {
                     case 84:
                         message.capabilities[message.capabilities.length] = 84;
                         break;
+                    case "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED":
+                    case 85:
+                        message.capabilities[message.capabilities.length] = 85;
+                        break;
+                    case "AI_INTERJECTIONS_ENABLED":
+                    case 86:
+                        message.capabilities[message.capabilities.length] = 86;
+                        break;
+                    case "AI_RICH_RESPONSE_READ_ALOUD_ENABLED":
+                    case 87:
+                        message.capabilities[message.capabilities.length] = 87;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -20089,6 +20165,9 @@ $root.waproto = (function() {
          * @property {number} AI_STUDY_QUIZ_ENABLED=82 AI_STUDY_QUIZ_ENABLED value
          * @property {number} HATCH_CVM_ENABLED=83 HATCH_CVM_ENABLED value
          * @property {number} RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED=84 RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED value
+         * @property {number} AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED=85 AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED value
+         * @property {number} AI_INTERJECTIONS_ENABLED=86 AI_INTERJECTIONS_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_READ_ALOUD_ENABLED=87 AI_RICH_RESPONSE_READ_ALOUD_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -20177,6 +20256,9 @@ $root.waproto = (function() {
             values[valuesById[82] = "AI_STUDY_QUIZ_ENABLED"] = 82;
             values[valuesById[83] = "HATCH_CVM_ENABLED"] = 83;
             values[valuesById[84] = "RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED"] = 84;
+            values[valuesById[85] = "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED"] = 85;
+            values[valuesById[86] = "AI_INTERJECTIONS_ENABLED"] = 86;
+            values[valuesById[87] = "AI_RICH_RESPONSE_READ_ALOUD_ENABLED"] = 87;
             return values;
         })();
 
@@ -48529,6 +48611,7 @@ $root.waproto = (function() {
          * @property {Uint8Array|null} [subscriptionSyncPayload] ClientPairingProps subscriptionSyncPayload
          * @property {boolean|null} [isBotJidDbMigrated] ClientPairingProps isBotJidDbMigrated
          * @property {Uint8Array|null} [companionAddPeerPayload] ClientPairingProps companionAddPeerPayload
+         * @property {boolean|null} [isCompanionRegistrationFgsEnabled] ClientPairingProps isCompanionRegistrationFgsEnabled
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -48616,6 +48699,14 @@ $root.waproto = (function() {
          */
         ClientPairingProps.prototype.companionAddPeerPayload = null;
 
+        /**
+         * ClientPairingProps isCompanionRegistrationFgsEnabled.
+         * @member {boolean|null|undefined} isCompanionRegistrationFgsEnabled
+         * @memberof waproto.ClientPairingProps
+         * @instance
+         */
+        ClientPairingProps.prototype.isCompanionRegistrationFgsEnabled = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -48658,6 +48749,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(ClientPairingProps.prototype, "_companionAddPeerPayload", {
             get: $util.oneOfGetter($oneOfFields = ["companionAddPeerPayload"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ClientPairingProps.prototype, "_isCompanionRegistrationFgsEnabled", {
+            get: $util.oneOfGetter($oneOfFields = ["isCompanionRegistrationFgsEnabled"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -48707,6 +48804,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 6, wireType 0 =*/48).bool(message.isBotJidDbMigrated);
             if (message.companionAddPeerPayload != null && $Object.hasOwnProperty.call(message, "companionAddPeerPayload"))
                 writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.companionAddPeerPayload);
+            if (message.isCompanionRegistrationFgsEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled"))
+                writer.uint32(/* id 8, wireType 0 =*/64).bool(message.isCompanionRegistrationFgsEnabled);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -48813,6 +48912,13 @@ $root.waproto = (function() {
                         message._companionAddPeerPayload = "companionAddPeerPayload";
                         continue;
                     }
+                case 8: {
+                        if (wireType !== 0)
+                            break;
+                        message.isCompanionRegistrationFgsEnabled = reader.bool();
+                        message._isCompanionRegistrationFgsEnabled = "isCompanionRegistrationFgsEnabled";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -48897,6 +49003,11 @@ $root.waproto = (function() {
                 if (!(message.companionAddPeerPayload && typeof message.companionAddPeerPayload.length === "number" || $util.isString(message.companionAddPeerPayload)))
                     return "companionAddPeerPayload: buffer expected";
             }
+            if (message.isCompanionRegistrationFgsEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled")) {
+                properties._isCompanionRegistrationFgsEnabled = 1;
+                if (typeof message.isCompanionRegistrationFgsEnabled !== "boolean")
+                    return "isCompanionRegistrationFgsEnabled: boolean expected";
+            }
             return null;
         };
 
@@ -48938,6 +49049,8 @@ $root.waproto = (function() {
                     $util.base64.decode(object.companionAddPeerPayload, message.companionAddPeerPayload = $util.newBuffer($util.base64.length(object.companionAddPeerPayload)), 0);
                 else if (object.companionAddPeerPayload.length >= 0)
                     message.companionAddPeerPayload = object.companionAddPeerPayload;
+            if (object.isCompanionRegistrationFgsEnabled != null)
+                message.isCompanionRegistrationFgsEnabled = $Boolean(object.isCompanionRegistrationFgsEnabled);
             return message;
         };
 
@@ -48972,6 +49085,8 @@ $root.waproto = (function() {
                 object.isBotJidDbMigrated = message.isBotJidDbMigrated;
             if (message.companionAddPeerPayload != null && $Object.hasOwnProperty.call(message, "companionAddPeerPayload"))
                 object.companionAddPeerPayload = options.bytes === $String ? $util.base64.encode(message.companionAddPeerPayload, 0, message.companionAddPeerPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.companionAddPeerPayload) : message.companionAddPeerPayload;
+            if (message.isCompanionRegistrationFgsEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled"))
+                object.isCompanionRegistrationFgsEnabled = message.isCompanionRegistrationFgsEnabled;
             return object;
         };
 
@@ -49045,6 +49160,7 @@ $root.waproto = (function() {
          * @property {Array.<string>|null} [pairedPeripherals] ClientPayload pairedPeripherals
          * @property {Uint8Array|null} [testIsolationId] ClientPayload testIsolationId
          * @property {number|Long|null} [messageSts] ClientPayload messageSts
+         * @property {waproto.ClientPayload.IntegrationAttestation.$Properties|null} [integrationAttestation] ClientPayload integrationAttestation
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -49374,6 +49490,14 @@ $root.waproto = (function() {
          */
         ClientPayload.prototype.messageSts = null;
 
+        /**
+         * ClientPayload integrationAttestation.
+         * @member {waproto.ClientPayload.IntegrationAttestation.$Properties|null|undefined} integrationAttestation
+         * @memberof waproto.ClientPayload
+         * @instance
+         */
+        ClientPayload.prototype.integrationAttestation = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -49587,6 +49711,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ClientPayload.prototype, "_integrationAttestation", {
+            get: $util.oneOfGetter($oneOfFields = ["integrationAttestation"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPayload instance using the specified properties.
          * @function create
@@ -49694,6 +49824,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 48, wireType 2 =*/386).bytes(message.testIsolationId);
             if (message.messageSts != null && $Object.hasOwnProperty.call(message, "messageSts"))
                 writer.uint32(/* id 49, wireType 0 =*/392).int64(message.messageSts);
+            if (message.integrationAttestation != null && $Object.hasOwnProperty.call(message, "integrationAttestation"))
+                $root.waproto.ClientPayload.IntegrationAttestation.encode(message.integrationAttestation, writer.uint32(/* id 50, wireType 2 =*/402).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -50018,6 +50150,13 @@ $root.waproto = (function() {
                         message._messageSts = "messageSts";
                         continue;
                     }
+                case 50: {
+                        if (wireType !== 2)
+                            break;
+                        message.integrationAttestation = $root.waproto.ClientPayload.IntegrationAttestation.decode(reader, reader.size(), $undefined, _depth + 1, message.integrationAttestation);
+                        message._integrationAttestation = "integrationAttestation";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -50270,6 +50409,14 @@ $root.waproto = (function() {
                 properties._messageSts = 1;
                 if (!$util.isInteger(message.messageSts) && !(message.messageSts && $util.isInteger(message.messageSts.low) && $util.isInteger(message.messageSts.high)))
                     return "messageSts: integer|Long expected";
+            }
+            if (message.integrationAttestation != null && $Object.hasOwnProperty.call(message, "integrationAttestation")) {
+                properties._integrationAttestation = 1;
+                {
+                    var error = $root.waproto.ClientPayload.IntegrationAttestation.verify(message.integrationAttestation, _depth + 1);
+                    if (error)
+                        return "integrationAttestation." + error;
+                }
             }
             return null;
         };
@@ -50581,6 +50728,11 @@ $root.waproto = (function() {
                     message.messageSts = object.messageSts;
                 else if (typeof object.messageSts === "object")
                     message.messageSts = new $util.LongBits(object.messageSts.low >>> 0, object.messageSts.high >>> 0).toNumber();
+            if (object.integrationAttestation != null) {
+                if (!$util.isObject(object.integrationAttestation))
+                    throw $TypeError(".waproto.ClientPayload.integrationAttestation: object expected");
+                message.integrationAttestation = $root.waproto.ClientPayload.IntegrationAttestation.fromObject(object.integrationAttestation, _depth + 1);
+            }
             return message;
         };
 
@@ -50700,6 +50852,8 @@ $root.waproto = (function() {
                     object.messageSts = options.longs === $String ? $String(message.messageSts) : message.messageSts;
                 else
                     object.messageSts = options.longs === $String ? $util.Long.prototype.toString.call(message.messageSts) : options.longs === $Number ? new $util.LongBits(message.messageSts.low >>> 0, message.messageSts.high >>> 0).toNumber() : message.messageSts;
+            if (message.integrationAttestation != null && $Object.hasOwnProperty.call(message, "integrationAttestation"))
+                object.integrationAttestation = $root.waproto.ClientPayload.IntegrationAttestation.toObject(message.integrationAttestation, options, _depth + 1);
             return object;
         };
 
@@ -51733,6 +51887,321 @@ $root.waproto = (function() {
             values[valuesById[1] = "SERVICE_EXTENSION"] = 1;
             values[valuesById[2] = "INTENTS_EXTENSION"] = 2;
             return values;
+        })();
+
+        ClientPayload.IntegrationAttestation = (function() {
+
+            /**
+             * Properties of an IntegrationAttestation.
+             * @typedef {Object} waproto.ClientPayload.IntegrationAttestation.$Properties
+             * @property {string|null} [staticUnbound] IntegrationAttestation staticUnbound
+             * @property {string|null} [onlineSigned] IntegrationAttestation onlineSigned
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of an IntegrationAttestation.
+             * @memberof waproto.ClientPayload
+             * @interface IIntegrationAttestation
+             * @augments waproto.ClientPayload.IntegrationAttestation.$Properties
+             * @deprecated Use waproto.ClientPayload.IntegrationAttestation.$Properties instead.
+             */
+
+            /**
+             * Shape of an IntegrationAttestation.
+             * @typedef {waproto.ClientPayload.IntegrationAttestation.$Properties} waproto.ClientPayload.IntegrationAttestation.$Shape
+             */
+
+            /**
+             * Constructs a new IntegrationAttestation.
+             * @memberof waproto.ClientPayload
+             * @classdesc Represents an IntegrationAttestation.
+             * @constructor
+             * @param {waproto.ClientPayload.IntegrationAttestation.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var IntegrationAttestation = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * IntegrationAttestation staticUnbound.
+             * @member {string|null|undefined} staticUnbound
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @instance
+             */
+            IntegrationAttestation.prototype.staticUnbound = null;
+
+            /**
+             * IntegrationAttestation onlineSigned.
+             * @member {string|null|undefined} onlineSigned
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @instance
+             */
+            IntegrationAttestation.prototype.onlineSigned = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(IntegrationAttestation.prototype, "_staticUnbound", {
+                get: $util.oneOfGetter($oneOfFields = ["staticUnbound"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(IntegrationAttestation.prototype, "_onlineSigned", {
+                get: $util.oneOfGetter($oneOfFields = ["onlineSigned"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new IntegrationAttestation instance using the specified properties.
+             * @function create
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {waproto.ClientPayload.IntegrationAttestation.$Properties=} [properties] Properties to set
+             * @returns {waproto.ClientPayload.IntegrationAttestation} IntegrationAttestation instance
+             * @type {{
+             *   (properties: waproto.ClientPayload.IntegrationAttestation.$Shape): waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape;
+             *   (properties?: waproto.ClientPayload.IntegrationAttestation.$Properties): waproto.ClientPayload.IntegrationAttestation;
+             * }}
+             */
+            IntegrationAttestation.create = function(properties) {
+                return new IntegrationAttestation(properties);
+            };
+
+            /**
+             * Encodes the specified IntegrationAttestation message. Does not implicitly {@link waproto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {waproto.ClientPayload.IntegrationAttestation.$Properties} message IntegrationAttestation message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IntegrationAttestation.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.staticUnbound != null && $Object.hasOwnProperty.call(message, "staticUnbound"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.staticUnbound);
+                if (message.onlineSigned != null && $Object.hasOwnProperty.call(message, "onlineSigned"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.onlineSigned);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified IntegrationAttestation message, length delimited. Does not implicitly {@link waproto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {waproto.ClientPayload.IntegrationAttestation.$Properties} message IntegrationAttestation message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IntegrationAttestation.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IntegrationAttestation.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.ClientPayload.IntegrationAttestation();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.staticUnbound = reader.stringVerify();
+                            message._staticUnbound = "staticUnbound";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.onlineSigned = reader.stringVerify();
+                            message._onlineSigned = "onlineSigned";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IntegrationAttestation.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies an IntegrationAttestation message.
+             * @function verify
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            IntegrationAttestation.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.staticUnbound != null && $Object.hasOwnProperty.call(message, "staticUnbound")) {
+                    properties._staticUnbound = 1;
+                    if (!$util.isString(message.staticUnbound))
+                        return "staticUnbound: string expected";
+                }
+                if (message.onlineSigned != null && $Object.hasOwnProperty.call(message, "onlineSigned")) {
+                    properties._onlineSigned = 1;
+                    if (!$util.isString(message.onlineSigned))
+                        return "onlineSigned: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates an IntegrationAttestation message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.ClientPayload.IntegrationAttestation} IntegrationAttestation
+             */
+            IntegrationAttestation.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.ClientPayload.IntegrationAttestation)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.ClientPayload.IntegrationAttestation: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.ClientPayload.IntegrationAttestation();
+                if (object.staticUnbound != null)
+                    message.staticUnbound = $String(object.staticUnbound);
+                if (object.onlineSigned != null)
+                    message.onlineSigned = $String(object.onlineSigned);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an IntegrationAttestation message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {waproto.ClientPayload.IntegrationAttestation} message IntegrationAttestation
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            IntegrationAttestation.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.staticUnbound != null && $Object.hasOwnProperty.call(message, "staticUnbound"))
+                    object.staticUnbound = message.staticUnbound;
+                if (message.onlineSigned != null && $Object.hasOwnProperty.call(message, "onlineSigned"))
+                    object.onlineSigned = message.onlineSigned;
+                return object;
+            };
+
+            /**
+             * Converts this IntegrationAttestation to JSON.
+             * @function toJSON
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            IntegrationAttestation.prototype.toJSON = function() {
+                return IntegrationAttestation.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for IntegrationAttestation
+             * @function getTypeUrl
+             * @memberof waproto.ClientPayload.IntegrationAttestation
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            IntegrationAttestation.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.ClientPayload.IntegrationAttestation";
+            };
+
+            return IntegrationAttestation;
         })();
 
         ClientPayload.InteropData = (function() {
@@ -53076,6 +53545,10 @@ $root.waproto = (function() {
                 case 6:
                     message.deviceType = 6;
                     break;
+                case "AGENT":
+                case 7:
+                    message.deviceType = 7;
+                    break;
                 default:
                     if (typeof object.deviceType === "number" && (object.deviceType | 0) === object.deviceType)
                         message.deviceType = object.deviceType;
@@ -53610,6 +54083,7 @@ $root.waproto = (function() {
              * @property {number} VR=4 VR value
              * @property {number} SMART_DISPLAY=5 SMART_DISPLAY value
              * @property {number} SMART_SPEAKER=6 SMART_SPEAKER value
+             * @property {number} AGENT=7 AGENT value
              */
             UserAgent.DeviceType = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -53620,6 +54094,7 @@ $root.waproto = (function() {
                 values[valuesById[4] = "VR"] = 4;
                 values[valuesById[5] = "SMART_DISPLAY"] = 5;
                 values[valuesById[6] = "SMART_SPEAKER"] = 6;
+                values[valuesById[7] = "AGENT"] = 7;
                 return values;
             })();
 
@@ -60253,6 +60728,14 @@ $root.waproto = (function() {
             case 12:
                 message.pairedMediaType = 12;
                 break;
+            case "ORIGINAL_VIDEO_CHILD":
+            case 13:
+                message.pairedMediaType = 13;
+                break;
+            case "ORIGINAL_IMAGE_CHILD":
+            case 14:
+                message.pairedMediaType = 14;
+                break;
             default:
                 if (typeof object.pairedMediaType === "number" && (object.pairedMediaType | 0) === object.pairedMediaType)
                     message.pairedMediaType = object.pairedMediaType;
@@ -66736,6 +67219,8 @@ $root.waproto = (function() {
          * @property {number} AV1_VIDEO_CHILD=10 AV1_VIDEO_CHILD value
          * @property {number} STREAMED_VIDEO_PARENT=11 STREAMED_VIDEO_PARENT value
          * @property {number} STREAMED_VIDEO_CHILD=12 STREAMED_VIDEO_CHILD value
+         * @property {number} ORIGINAL_VIDEO_CHILD=13 ORIGINAL_VIDEO_CHILD value
+         * @property {number} ORIGINAL_IMAGE_CHILD=14 ORIGINAL_IMAGE_CHILD value
          */
         ContextInfo.PairedMediaType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -66752,6 +67237,8 @@ $root.waproto = (function() {
             values[valuesById[10] = "AV1_VIDEO_CHILD"] = 10;
             values[valuesById[11] = "STREAMED_VIDEO_PARENT"] = 11;
             values[valuesById[12] = "STREAMED_VIDEO_CHILD"] = 12;
+            values[valuesById[13] = "ORIGINAL_VIDEO_CHILD"] = 13;
+            values[valuesById[14] = "ORIGINAL_IMAGE_CHILD"] = 14;
             return values;
         })();
 
@@ -68264,6 +68751,7 @@ $root.waproto = (function() {
          * @property {waproto.IdentityVerificationState.$Properties|null} [identityVerification] Conversation identityVerification
          * @property {waproto.ACP2Setting.$Properties|null} [acp2Setting] Conversation acp2Setting
          * @property {boolean|null} [acp2HistoryWithheld] Conversation acp2HistoryWithheld
+         * @property {Array.<waproto.GroupRootKey.$Properties>|null} [groupRootKeys] Conversation groupRootKeys
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -68343,6 +68831,7 @@ $root.waproto = (function() {
          *   identityVerification?: waproto.IdentityVerificationState.$Shape|null;
          *   acp2Setting?: waproto.ACP2Setting.$Shape|null;
          *   acp2HistoryWithheld?: boolean|null;
+         *   groupRootKeys?: Array.<waproto.GroupRootKey.$Shape>|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Conversation.$Shape
          */
@@ -68358,6 +68847,7 @@ $root.waproto = (function() {
         var Conversation = function (properties) {
             this.messages = [];
             this.participant = [];
+            this.groupRootKeys = [];
             if (properties)
                 for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -68883,6 +69373,14 @@ $root.waproto = (function() {
          * @instance
          */
         Conversation.prototype.acp2HistoryWithheld = null;
+
+        /**
+         * Conversation groupRootKeys.
+         * @member {Array.<waproto.GroupRootKey.$Properties>} groupRootKeys
+         * @memberof waproto.Conversation
+         * @instance
+         */
+        Conversation.prototype.groupRootKeys = $util.emptyArray;
 
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
@@ -69422,6 +69920,9 @@ $root.waproto = (function() {
                 $root.waproto.ACP2Setting.encode(message.acp2Setting, writer.uint32(/* id 64, wireType 2 =*/514).fork(), _depth + 1).ldelim();
             if (message.acp2HistoryWithheld != null && $Object.hasOwnProperty.call(message, "acp2HistoryWithheld"))
                 writer.uint32(/* id 65, wireType 0 =*/520).bool(message.acp2HistoryWithheld);
+            if (message.groupRootKeys != null && message.groupRootKeys.length)
+                for (var i = 0; i < message.groupRootKeys.length; ++i)
+                    $root.waproto.GroupRootKey.encode(message.groupRootKeys[i], writer.uint32(/* id 66, wireType 2 =*/530).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -69935,6 +70436,14 @@ $root.waproto = (function() {
                         message._acp2HistoryWithheld = "acp2HistoryWithheld";
                         continue;
                     }
+                case 66: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.groupRootKeys && message.groupRootKeys.length))
+                            message.groupRootKeys = [];
+                        message.groupRootKeys.push($root.waproto.GroupRootKey.decode(reader, reader.size(), $undefined, _depth + 1));
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -70328,6 +70837,15 @@ $root.waproto = (function() {
                 if (typeof message.acp2HistoryWithheld !== "boolean")
                     return "acp2HistoryWithheld: boolean expected";
             }
+            if (message.groupRootKeys != null && $Object.hasOwnProperty.call(message, "groupRootKeys")) {
+                if (!$Array.isArray(message.groupRootKeys))
+                    return "groupRootKeys: array expected";
+                for (var i = 0; i < message.groupRootKeys.length; ++i) {
+                    var error = $root.waproto.GroupRootKey.verify(message.groupRootKeys[i], _depth + 1);
+                    if (error)
+                        return "groupRootKeys." + error;
+                }
+            }
             return null;
         };
 
@@ -70663,6 +71181,16 @@ $root.waproto = (function() {
             }
             if (object.acp2HistoryWithheld != null)
                 message.acp2HistoryWithheld = $Boolean(object.acp2HistoryWithheld);
+            if (object.groupRootKeys) {
+                if (!$Array.isArray(object.groupRootKeys))
+                    throw $TypeError(".waproto.Conversation.groupRootKeys: array expected");
+                message.groupRootKeys = $Array(object.groupRootKeys.length);
+                for (var i = 0; i < object.groupRootKeys.length; ++i) {
+                    if (!$util.isObject(object.groupRootKeys[i]))
+                        throw $TypeError(".waproto.Conversation.groupRootKeys: object expected");
+                    message.groupRootKeys[i] = $root.waproto.GroupRootKey.fromObject(object.groupRootKeys[i], _depth + 1);
+                }
+            }
             return message;
         };
 
@@ -70686,6 +71214,7 @@ $root.waproto = (function() {
             if (options.arrays || options.defaults) {
                 object.messages = [];
                 object.participant = [];
+                object.groupRootKeys = [];
             }
             if (options.defaults)
                 object.id = "";
@@ -70870,6 +71399,11 @@ $root.waproto = (function() {
                 object.acp2Setting = $root.waproto.ACP2Setting.toObject(message.acp2Setting, options, _depth + 1);
             if (message.acp2HistoryWithheld != null && $Object.hasOwnProperty.call(message, "acp2HistoryWithheld"))
                 object.acp2HistoryWithheld = message.acp2HistoryWithheld;
+            if (message.groupRootKeys && message.groupRootKeys.length) {
+                object.groupRootKeys = $Array(message.groupRootKeys.length);
+                for (var j = 0; j < message.groupRootKeys.length; ++j)
+                    object.groupRootKeys[j] = $root.waproto.GroupRootKey.toObject(message.groupRootKeys[j], options, _depth + 1);
+            }
             return object;
         };
 
@@ -70955,6 +71489,7 @@ $root.waproto = (function() {
          * @property {waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties|null} [newsletterChatsMigration] DeviceCapabilities newsletterChatsMigration
          * @property {waproto.DeviceCapabilities.HostWriteMutationSupport.$Properties|null} [hostWriteMutationSupport] DeviceCapabilities hostWriteMutationSupport
          * @property {waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null} [bizAiWebOnboarding] DeviceCapabilities bizAiWebOnboarding
+         * @property {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties|null} [phoneNumberSharing] DeviceCapabilities phoneNumberSharing
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -71090,6 +71625,14 @@ $root.waproto = (function() {
          */
         DeviceCapabilities.prototype.bizAiWebOnboarding = null;
 
+        /**
+         * DeviceCapabilities phoneNumberSharing.
+         * @member {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties|null|undefined} phoneNumberSharing
+         * @memberof waproto.DeviceCapabilities
+         * @instance
+         */
+        DeviceCapabilities.prototype.phoneNumberSharing = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -71171,6 +71714,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceCapabilities.prototype, "_phoneNumberSharing", {
+            get: $util.oneOfGetter($oneOfFields = ["phoneNumberSharing"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @function create
@@ -71229,6 +71778,8 @@ $root.waproto = (function() {
                 $root.waproto.DeviceCapabilities.HostWriteMutationSupport.encode(message.hostWriteMutationSupport, writer.uint32(/* id 12, wireType 2 =*/98).fork(), _depth + 1).ldelim();
             if (message.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(message, "bizAiWebOnboarding"))
                 $root.waproto.DeviceCapabilities.BizAiWebOnboarding.encode(message.bizAiWebOnboarding, writer.uint32(/* id 13, wireType 2 =*/106).fork(), _depth + 1).ldelim();
+            if (message.phoneNumberSharing != null && $Object.hasOwnProperty.call(message, "phoneNumberSharing"))
+                $root.waproto.DeviceCapabilities.PhoneNumberSharing.encode(message.phoneNumberSharing, writer.uint32(/* id 14, wireType 2 =*/114).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -71375,6 +71926,13 @@ $root.waproto = (function() {
                             break;
                         message.bizAiWebOnboarding = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.decode(reader, reader.size(), $undefined, _depth + 1, message.bizAiWebOnboarding);
                         message._bizAiWebOnboarding = "bizAiWebOnboarding";
+                        continue;
+                    }
+                case 14: {
+                        if (wireType !== 2)
+                            break;
+                        message.phoneNumberSharing = $root.waproto.DeviceCapabilities.PhoneNumberSharing.decode(reader, reader.size(), $undefined, _depth + 1, message.phoneNumberSharing);
+                        message._phoneNumberSharing = "phoneNumberSharing";
                         continue;
                     }
                 }
@@ -71524,6 +72082,14 @@ $root.waproto = (function() {
                         return "bizAiWebOnboarding." + error;
                 }
             }
+            if (message.phoneNumberSharing != null && $Object.hasOwnProperty.call(message, "phoneNumberSharing")) {
+                properties._phoneNumberSharing = 1;
+                {
+                    var error = $root.waproto.DeviceCapabilities.PhoneNumberSharing.verify(message.phoneNumberSharing, _depth + 1);
+                    if (error)
+                        return "phoneNumberSharing." + error;
+                }
+            }
             return null;
         };
 
@@ -71634,6 +72200,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.DeviceCapabilities.bizAiWebOnboarding: object expected");
                 message.bizAiWebOnboarding = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.fromObject(object.bizAiWebOnboarding, _depth + 1);
             }
+            if (object.phoneNumberSharing != null) {
+                if (!$util.isObject(object.phoneNumberSharing))
+                    throw $TypeError(".waproto.DeviceCapabilities.phoneNumberSharing: object expected");
+                message.phoneNumberSharing = $root.waproto.DeviceCapabilities.PhoneNumberSharing.fromObject(object.phoneNumberSharing, _depth + 1);
+            }
             return message;
         };
 
@@ -71680,6 +72251,8 @@ $root.waproto = (function() {
                 object.hostWriteMutationSupport = $root.waproto.DeviceCapabilities.HostWriteMutationSupport.toObject(message.hostWriteMutationSupport, options, _depth + 1);
             if (message.bizAiWebOnboarding != null && $Object.hasOwnProperty.call(message, "bizAiWebOnboarding"))
                 object.bizAiWebOnboarding = $root.waproto.DeviceCapabilities.BizAiWebOnboarding.toObject(message.bizAiWebOnboarding, options, _depth + 1);
+            if (message.phoneNumberSharing != null && $Object.hasOwnProperty.call(message, "phoneNumberSharing"))
+                object.phoneNumberSharing = $root.waproto.DeviceCapabilities.PhoneNumberSharing.toObject(message.phoneNumberSharing, options, _depth + 1);
             return object;
         };
 
@@ -74612,6 +75185,288 @@ $root.waproto = (function() {
             };
 
             return NewsletterChatsMigration;
+        })();
+
+        DeviceCapabilities.PhoneNumberSharing = (function() {
+
+            /**
+             * Properties of a PhoneNumberSharing.
+             * @typedef {Object} waproto.DeviceCapabilities.PhoneNumberSharing.$Properties
+             * @property {boolean|null} [phoneSharingSupported] PhoneNumberSharing phoneSharingSupported
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a PhoneNumberSharing.
+             * @memberof waproto.DeviceCapabilities
+             * @interface IPhoneNumberSharing
+             * @augments waproto.DeviceCapabilities.PhoneNumberSharing.$Properties
+             * @deprecated Use waproto.DeviceCapabilities.PhoneNumberSharing.$Properties instead.
+             */
+
+            /**
+             * Shape of a PhoneNumberSharing.
+             * @typedef {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties} waproto.DeviceCapabilities.PhoneNumberSharing.$Shape
+             */
+
+            /**
+             * Constructs a new PhoneNumberSharing.
+             * @memberof waproto.DeviceCapabilities
+             * @classdesc Represents a PhoneNumberSharing.
+             * @constructor
+             * @param {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var PhoneNumberSharing = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * PhoneNumberSharing phoneSharingSupported.
+             * @member {boolean|null|undefined} phoneSharingSupported
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @instance
+             */
+            PhoneNumberSharing.prototype.phoneSharingSupported = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PhoneNumberSharing.prototype, "_phoneSharingSupported", {
+                get: $util.oneOfGetter($oneOfFields = ["phoneSharingSupported"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PhoneNumberSharing instance using the specified properties.
+             * @function create
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties=} [properties] Properties to set
+             * @returns {waproto.DeviceCapabilities.PhoneNumberSharing} PhoneNumberSharing instance
+             * @type {{
+             *   (properties: waproto.DeviceCapabilities.PhoneNumberSharing.$Shape): waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape;
+             *   (properties?: waproto.DeviceCapabilities.PhoneNumberSharing.$Properties): waproto.DeviceCapabilities.PhoneNumberSharing;
+             * }}
+             */
+            PhoneNumberSharing.create = function(properties) {
+                return new PhoneNumberSharing(properties);
+            };
+
+            /**
+             * Encodes the specified PhoneNumberSharing message. Does not implicitly {@link waproto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties} message PhoneNumberSharing message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PhoneNumberSharing.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.phoneSharingSupported != null && $Object.hasOwnProperty.call(message, "phoneSharingSupported"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.phoneSharingSupported);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PhoneNumberSharing message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {waproto.DeviceCapabilities.PhoneNumberSharing.$Properties} message PhoneNumberSharing message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PhoneNumberSharing.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape} PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PhoneNumberSharing.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.DeviceCapabilities.PhoneNumberSharing();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.phoneSharingSupported = reader.bool();
+                            message._phoneSharingSupported = "phoneSharingSupported";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape} PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PhoneNumberSharing.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a PhoneNumberSharing message.
+             * @function verify
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PhoneNumberSharing.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.phoneSharingSupported != null && $Object.hasOwnProperty.call(message, "phoneSharingSupported")) {
+                    properties._phoneSharingSupported = 1;
+                    if (typeof message.phoneSharingSupported !== "boolean")
+                        return "phoneSharingSupported: boolean expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PhoneNumberSharing message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.DeviceCapabilities.PhoneNumberSharing} PhoneNumberSharing
+             */
+            PhoneNumberSharing.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.DeviceCapabilities.PhoneNumberSharing)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.DeviceCapabilities.PhoneNumberSharing: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.DeviceCapabilities.PhoneNumberSharing();
+                if (object.phoneSharingSupported != null)
+                    message.phoneSharingSupported = $Boolean(object.phoneSharingSupported);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PhoneNumberSharing message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {waproto.DeviceCapabilities.PhoneNumberSharing} message PhoneNumberSharing
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PhoneNumberSharing.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.phoneSharingSupported != null && $Object.hasOwnProperty.call(message, "phoneSharingSupported"))
+                    object.phoneSharingSupported = message.phoneSharingSupported;
+                return object;
+            };
+
+            /**
+             * Converts this PhoneNumberSharing to JSON.
+             * @function toJSON
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PhoneNumberSharing.prototype.toJSON = function() {
+                return PhoneNumberSharing.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for PhoneNumberSharing
+             * @function getTypeUrl
+             * @memberof waproto.DeviceCapabilities.PhoneNumberSharing
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            PhoneNumberSharing.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.DeviceCapabilities.PhoneNumberSharing";
+            };
+
+            return PhoneNumberSharing;
         })();
 
         DeviceCapabilities.ReverseHistorySync = (function() {
@@ -87248,6 +88103,639 @@ $root.waproto = (function() {
         })();
 
         return GroupParticipant;
+    })();
+
+    waproto.GroupRootKey = (function() {
+
+        /**
+         * Properties of a GroupRootKey.
+         * @typedef {Object} waproto.GroupRootKey.$Properties
+         * @property {string|null} [keyId] GroupRootKey keyId
+         * @property {Uint8Array|null} [rootKey] GroupRootKey rootKey
+         * @property {boolean|null} [isCurrent] GroupRootKey isCurrent
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupRootKey.
+         * @memberof waproto
+         * @interface IGroupRootKey
+         * @augments waproto.GroupRootKey.$Properties
+         * @deprecated Use waproto.GroupRootKey.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupRootKey.
+         * @typedef {waproto.GroupRootKey.$Properties} waproto.GroupRootKey.$Shape
+         */
+
+        /**
+         * Constructs a new GroupRootKey.
+         * @memberof waproto
+         * @classdesc Represents a GroupRootKey.
+         * @constructor
+         * @param {waproto.GroupRootKey.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupRootKey = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupRootKey keyId.
+         * @member {string|null|undefined} keyId
+         * @memberof waproto.GroupRootKey
+         * @instance
+         */
+        GroupRootKey.prototype.keyId = null;
+
+        /**
+         * GroupRootKey rootKey.
+         * @member {Uint8Array|null|undefined} rootKey
+         * @memberof waproto.GroupRootKey
+         * @instance
+         */
+        GroupRootKey.prototype.rootKey = null;
+
+        /**
+         * GroupRootKey isCurrent.
+         * @member {boolean|null|undefined} isCurrent
+         * @memberof waproto.GroupRootKey
+         * @instance
+         */
+        GroupRootKey.prototype.isCurrent = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupRootKey.prototype, "_keyId", {
+            get: $util.oneOfGetter($oneOfFields = ["keyId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupRootKey.prototype, "_rootKey", {
+            get: $util.oneOfGetter($oneOfFields = ["rootKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupRootKey.prototype, "_isCurrent", {
+            get: $util.oneOfGetter($oneOfFields = ["isCurrent"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupRootKey instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {waproto.GroupRootKey.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupRootKey} GroupRootKey instance
+         * @type {{
+         *   (properties: waproto.GroupRootKey.$Shape): waproto.GroupRootKey & waproto.GroupRootKey.$Shape;
+         *   (properties?: waproto.GroupRootKey.$Properties): waproto.GroupRootKey;
+         * }}
+         */
+        GroupRootKey.create = function(properties) {
+            return new GroupRootKey(properties);
+        };
+
+        /**
+         * Encodes the specified GroupRootKey message. Does not implicitly {@link waproto.GroupRootKey.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {waproto.GroupRootKey.$Properties} message GroupRootKey message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKey.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.keyId);
+            if (message.rootKey != null && $Object.hasOwnProperty.call(message, "rootKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.rootKey);
+            if (message.isCurrent != null && $Object.hasOwnProperty.call(message, "isCurrent"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.isCurrent);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupRootKey message, length delimited. Does not implicitly {@link waproto.GroupRootKey.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {waproto.GroupRootKey.$Properties} message GroupRootKey message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKey.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupRootKey & waproto.GroupRootKey.$Shape} GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKey.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupRootKey();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.keyId = reader.stringVerify();
+                        message._keyId = "keyId";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.rootKey = reader.bytes();
+                        message._rootKey = "rootKey";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.isCurrent = reader.bool();
+                        message._isCurrent = "isCurrent";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupRootKey & waproto.GroupRootKey.$Shape} GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKey.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupRootKey message.
+         * @function verify
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupRootKey.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId")) {
+                properties._keyId = 1;
+                if (!$util.isString(message.keyId))
+                    return "keyId: string expected";
+            }
+            if (message.rootKey != null && $Object.hasOwnProperty.call(message, "rootKey")) {
+                properties._rootKey = 1;
+                if (!(message.rootKey && typeof message.rootKey.length === "number" || $util.isString(message.rootKey)))
+                    return "rootKey: buffer expected";
+            }
+            if (message.isCurrent != null && $Object.hasOwnProperty.call(message, "isCurrent")) {
+                properties._isCurrent = 1;
+                if (typeof message.isCurrent !== "boolean")
+                    return "isCurrent: boolean expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupRootKey message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupRootKey} GroupRootKey
+         */
+        GroupRootKey.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupRootKey)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupRootKey: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupRootKey();
+            if (object.keyId != null)
+                message.keyId = $String(object.keyId);
+            if (object.rootKey != null)
+                if (typeof object.rootKey === "string")
+                    $util.base64.decode(object.rootKey, message.rootKey = $util.newBuffer($util.base64.length(object.rootKey)), 0);
+                else if (object.rootKey.length >= 0)
+                    message.rootKey = object.rootKey;
+            if (object.isCurrent != null)
+                message.isCurrent = $Boolean(object.isCurrent);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupRootKey message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {waproto.GroupRootKey} message GroupRootKey
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupRootKey.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId"))
+                object.keyId = message.keyId;
+            if (message.rootKey != null && $Object.hasOwnProperty.call(message, "rootKey"))
+                object.rootKey = options.bytes === $String ? $util.base64.encode(message.rootKey, 0, message.rootKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.rootKey) : message.rootKey;
+            if (message.isCurrent != null && $Object.hasOwnProperty.call(message, "isCurrent"))
+                object.isCurrent = message.isCurrent;
+            return object;
+        };
+
+        /**
+         * Converts this GroupRootKey to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupRootKey
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupRootKey.prototype.toJSON = function() {
+            return GroupRootKey.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupRootKey
+         * @function getTypeUrl
+         * @memberof waproto.GroupRootKey
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupRootKey.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupRootKey";
+        };
+
+        return GroupRootKey;
+    })();
+
+    waproto.GroupRootKeyRequest = (function() {
+
+        /**
+         * Properties of a GroupRootKeyRequest.
+         * @typedef {Object} waproto.GroupRootKeyRequest.$Properties
+         * @property {string|null} [keyId] GroupRootKeyRequest keyId
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupRootKeyRequest.
+         * @memberof waproto
+         * @interface IGroupRootKeyRequest
+         * @augments waproto.GroupRootKeyRequest.$Properties
+         * @deprecated Use waproto.GroupRootKeyRequest.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupRootKeyRequest.
+         * @typedef {waproto.GroupRootKeyRequest.$Properties} waproto.GroupRootKeyRequest.$Shape
+         */
+
+        /**
+         * Constructs a new GroupRootKeyRequest.
+         * @memberof waproto
+         * @classdesc Represents a GroupRootKeyRequest.
+         * @constructor
+         * @param {waproto.GroupRootKeyRequest.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupRootKeyRequest = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupRootKeyRequest keyId.
+         * @member {string|null|undefined} keyId
+         * @memberof waproto.GroupRootKeyRequest
+         * @instance
+         */
+        GroupRootKeyRequest.prototype.keyId = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupRootKeyRequest.prototype, "_keyId", {
+            get: $util.oneOfGetter($oneOfFields = ["keyId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupRootKeyRequest instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {waproto.GroupRootKeyRequest.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupRootKeyRequest} GroupRootKeyRequest instance
+         * @type {{
+         *   (properties: waproto.GroupRootKeyRequest.$Shape): waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape;
+         *   (properties?: waproto.GroupRootKeyRequest.$Properties): waproto.GroupRootKeyRequest;
+         * }}
+         */
+        GroupRootKeyRequest.create = function(properties) {
+            return new GroupRootKeyRequest(properties);
+        };
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message. Does not implicitly {@link waproto.GroupRootKeyRequest.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {waproto.GroupRootKeyRequest.$Properties} message GroupRootKeyRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKeyRequest.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.keyId);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message, length delimited. Does not implicitly {@link waproto.GroupRootKeyRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {waproto.GroupRootKeyRequest.$Properties} message GroupRootKeyRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupRootKeyRequest.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape} GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKeyRequest.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupRootKeyRequest();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.keyId = reader.stringVerify();
+                        message._keyId = "keyId";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape} GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupRootKeyRequest.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupRootKeyRequest message.
+         * @function verify
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupRootKeyRequest.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId")) {
+                properties._keyId = 1;
+                if (!$util.isString(message.keyId))
+                    return "keyId: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupRootKeyRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupRootKeyRequest} GroupRootKeyRequest
+         */
+        GroupRootKeyRequest.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupRootKeyRequest)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupRootKeyRequest: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupRootKeyRequest();
+            if (object.keyId != null)
+                message.keyId = $String(object.keyId);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupRootKeyRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {waproto.GroupRootKeyRequest} message GroupRootKeyRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupRootKeyRequest.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId"))
+                object.keyId = message.keyId;
+            return object;
+        };
+
+        /**
+         * Converts this GroupRootKeyRequest to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupRootKeyRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupRootKeyRequest.prototype.toJSON = function() {
+            return GroupRootKeyRequest.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupRootKeyRequest
+         * @function getTypeUrl
+         * @memberof waproto.GroupRootKeyRequest
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupRootKeyRequest.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupRootKeyRequest";
+        };
+
+        return GroupRootKeyRequest;
     })();
 
     waproto.GroupRootKeyShare = (function() {
@@ -103235,6 +104723,7 @@ $root.waproto = (function() {
          * @typedef {Object} waproto.MemberLabel.$Properties
          * @property {string|null} [label] MemberLabel label
          * @property {number|Long|null} [labelTimestamp] MemberLabel labelTimestamp
+         * @property {boolean|null} [showAdminBadge] MemberLabel showAdminBadge
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -103282,6 +104771,14 @@ $root.waproto = (function() {
          */
         MemberLabel.prototype.labelTimestamp = null;
 
+        /**
+         * MemberLabel showAdminBadge.
+         * @member {boolean|null|undefined} showAdminBadge
+         * @memberof waproto.MemberLabel
+         * @instance
+         */
+        MemberLabel.prototype.showAdminBadge = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -103294,6 +104791,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(MemberLabel.prototype, "_labelTimestamp", {
             get: $util.oneOfGetter($oneOfFields = ["labelTimestamp"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MemberLabel.prototype, "_showAdminBadge", {
+            get: $util.oneOfGetter($oneOfFields = ["showAdminBadge"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -103333,6 +104836,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 1, wireType 2 =*/10).string(message.label);
             if (message.labelTimestamp != null && $Object.hasOwnProperty.call(message, "labelTimestamp"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int64(message.labelTimestamp);
+            if (message.showAdminBadge != null && $Object.hasOwnProperty.call(message, "showAdminBadge"))
+                writer.uint32(/* id 3, wireType 0 =*/24).bool(message.showAdminBadge);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -103404,6 +104909,13 @@ $root.waproto = (function() {
                         message._labelTimestamp = "labelTimestamp";
                         continue;
                     }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.showAdminBadge = reader.bool();
+                        message._showAdminBadge = "showAdminBadge";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -103463,6 +104975,11 @@ $root.waproto = (function() {
                 if (!$util.isInteger(message.labelTimestamp) && !(message.labelTimestamp && $util.isInteger(message.labelTimestamp.low) && $util.isInteger(message.labelTimestamp.high)))
                     return "labelTimestamp: integer|Long expected";
             }
+            if (message.showAdminBadge != null && $Object.hasOwnProperty.call(message, "showAdminBadge")) {
+                properties._showAdminBadge = 1;
+                if (typeof message.showAdminBadge !== "boolean")
+                    return "showAdminBadge: boolean expected";
+            }
             return null;
         };
 
@@ -103495,6 +105012,8 @@ $root.waproto = (function() {
                     message.labelTimestamp = object.labelTimestamp;
                 else if (typeof object.labelTimestamp === "object")
                     message.labelTimestamp = new $util.LongBits(object.labelTimestamp.low >>> 0, object.labelTimestamp.high >>> 0).toNumber();
+            if (object.showAdminBadge != null)
+                message.showAdminBadge = $Boolean(object.showAdminBadge);
             return message;
         };
 
@@ -103524,6 +105043,8 @@ $root.waproto = (function() {
                     object.labelTimestamp = options.longs === $String ? $String(message.labelTimestamp) : message.labelTimestamp;
                 else
                     object.labelTimestamp = options.longs === $String ? $util.Long.prototype.toString.call(message.labelTimestamp) : options.longs === $Number ? new $util.LongBits(message.labelTimestamp.low >>> 0, message.labelTimestamp.high >>> 0).toNumber() : message.labelTimestamp;
+            if (message.showAdminBadge != null && $Object.hasOwnProperty.call(message, "showAdminBadge"))
+                object.showAdminBadge = message.showAdminBadge;
             return object;
         };
 
@@ -103553,6 +105074,357 @@ $root.waproto = (function() {
         };
 
         return MemberLabel;
+    })();
+
+    waproto.MembershipFormKeyFingerprintVerification = (function() {
+
+        /**
+         * Properties of a MembershipFormKeyFingerprintVerification.
+         * @typedef {Object} waproto.MembershipFormKeyFingerprintVerification.$Properties
+         * @property {string|null} [requestId] MembershipFormKeyFingerprintVerification requestId
+         * @property {string|null} [keyId] MembershipFormKeyFingerprintVerification keyId
+         * @property {Uint8Array|null} [keyFingerprint] MembershipFormKeyFingerprintVerification keyFingerprint
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a MembershipFormKeyFingerprintVerification.
+         * @memberof waproto
+         * @interface IMembershipFormKeyFingerprintVerification
+         * @augments waproto.MembershipFormKeyFingerprintVerification.$Properties
+         * @deprecated Use waproto.MembershipFormKeyFingerprintVerification.$Properties instead.
+         */
+
+        /**
+         * Shape of a MembershipFormKeyFingerprintVerification.
+         * @typedef {waproto.MembershipFormKeyFingerprintVerification.$Properties} waproto.MembershipFormKeyFingerprintVerification.$Shape
+         */
+
+        /**
+         * Constructs a new MembershipFormKeyFingerprintVerification.
+         * @memberof waproto
+         * @classdesc Represents a MembershipFormKeyFingerprintVerification.
+         * @constructor
+         * @param {waproto.MembershipFormKeyFingerprintVerification.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var MembershipFormKeyFingerprintVerification = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * MembershipFormKeyFingerprintVerification requestId.
+         * @member {string|null|undefined} requestId
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @instance
+         */
+        MembershipFormKeyFingerprintVerification.prototype.requestId = null;
+
+        /**
+         * MembershipFormKeyFingerprintVerification keyId.
+         * @member {string|null|undefined} keyId
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @instance
+         */
+        MembershipFormKeyFingerprintVerification.prototype.keyId = null;
+
+        /**
+         * MembershipFormKeyFingerprintVerification keyFingerprint.
+         * @member {Uint8Array|null|undefined} keyFingerprint
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @instance
+         */
+        MembershipFormKeyFingerprintVerification.prototype.keyFingerprint = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormKeyFingerprintVerification.prototype, "_requestId", {
+            get: $util.oneOfGetter($oneOfFields = ["requestId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormKeyFingerprintVerification.prototype, "_keyId", {
+            get: $util.oneOfGetter($oneOfFields = ["keyId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormKeyFingerprintVerification.prototype, "_keyFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["keyFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new MembershipFormKeyFingerprintVerification instance using the specified properties.
+         * @function create
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {waproto.MembershipFormKeyFingerprintVerification.$Properties=} [properties] Properties to set
+         * @returns {waproto.MembershipFormKeyFingerprintVerification} MembershipFormKeyFingerprintVerification instance
+         * @type {{
+         *   (properties: waproto.MembershipFormKeyFingerprintVerification.$Shape): waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape;
+         *   (properties?: waproto.MembershipFormKeyFingerprintVerification.$Properties): waproto.MembershipFormKeyFingerprintVerification;
+         * }}
+         */
+        MembershipFormKeyFingerprintVerification.create = function(properties) {
+            return new MembershipFormKeyFingerprintVerification(properties);
+        };
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message. Does not implicitly {@link waproto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {waproto.MembershipFormKeyFingerprintVerification.$Properties} message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MembershipFormKeyFingerprintVerification.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.requestId);
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.keyId);
+            if (message.keyFingerprint != null && $Object.hasOwnProperty.call(message, "keyFingerprint"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.keyFingerprint);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message, length delimited. Does not implicitly {@link waproto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {waproto.MembershipFormKeyFingerprintVerification.$Properties} message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MembershipFormKeyFingerprintVerification.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape} MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MembershipFormKeyFingerprintVerification.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.MembershipFormKeyFingerprintVerification();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.requestId = reader.stringVerify();
+                        message._requestId = "requestId";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.keyId = reader.stringVerify();
+                        message._keyId = "keyId";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.keyFingerprint = reader.bytes();
+                        message._keyFingerprint = "keyFingerprint";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape} MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MembershipFormKeyFingerprintVerification.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a MembershipFormKeyFingerprintVerification message.
+         * @function verify
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MembershipFormKeyFingerprintVerification.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId")) {
+                properties._requestId = 1;
+                if (!$util.isString(message.requestId))
+                    return "requestId: string expected";
+            }
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId")) {
+                properties._keyId = 1;
+                if (!$util.isString(message.keyId))
+                    return "keyId: string expected";
+            }
+            if (message.keyFingerprint != null && $Object.hasOwnProperty.call(message, "keyFingerprint")) {
+                properties._keyFingerprint = 1;
+                if (!(message.keyFingerprint && typeof message.keyFingerprint.length === "number" || $util.isString(message.keyFingerprint)))
+                    return "keyFingerprint: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a MembershipFormKeyFingerprintVerification message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.MembershipFormKeyFingerprintVerification} MembershipFormKeyFingerprintVerification
+         */
+        MembershipFormKeyFingerprintVerification.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.MembershipFormKeyFingerprintVerification)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.MembershipFormKeyFingerprintVerification: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.MembershipFormKeyFingerprintVerification();
+            if (object.requestId != null)
+                message.requestId = $String(object.requestId);
+            if (object.keyId != null)
+                message.keyId = $String(object.keyId);
+            if (object.keyFingerprint != null)
+                if (typeof object.keyFingerprint === "string")
+                    $util.base64.decode(object.keyFingerprint, message.keyFingerprint = $util.newBuffer($util.base64.length(object.keyFingerprint)), 0);
+                else if (object.keyFingerprint.length >= 0)
+                    message.keyFingerprint = object.keyFingerprint;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MembershipFormKeyFingerprintVerification message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {waproto.MembershipFormKeyFingerprintVerification} message MembershipFormKeyFingerprintVerification
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MembershipFormKeyFingerprintVerification.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId"))
+                object.requestId = message.requestId;
+            if (message.keyId != null && $Object.hasOwnProperty.call(message, "keyId"))
+                object.keyId = message.keyId;
+            if (message.keyFingerprint != null && $Object.hasOwnProperty.call(message, "keyFingerprint"))
+                object.keyFingerprint = options.bytes === $String ? $util.base64.encode(message.keyFingerprint, 0, message.keyFingerprint.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.keyFingerprint) : message.keyFingerprint;
+            return object;
+        };
+
+        /**
+         * Converts this MembershipFormKeyFingerprintVerification to JSON.
+         * @function toJSON
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MembershipFormKeyFingerprintVerification.prototype.toJSON = function() {
+            return MembershipFormKeyFingerprintVerification.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for MembershipFormKeyFingerprintVerification
+         * @function getTypeUrl
+         * @memberof waproto.MembershipFormKeyFingerprintVerification
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        MembershipFormKeyFingerprintVerification.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.MembershipFormKeyFingerprintVerification";
+        };
+
+        return MembershipFormKeyFingerprintVerification;
     })();
 
     waproto.Message = (function() {
@@ -103677,6 +105549,7 @@ $root.waproto = (function() {
          * @property {waproto.Message.RequestLocationMessage.$Properties|null} [requestLocationMessage] Message requestLocationMessage
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [botGroupParticipantMessage] Message botGroupParticipantMessage
          * @property {waproto.Message.RequestLocationUpdateMessage.$Properties|null} [requestLocationUpdateMessage] Message requestLocationUpdateMessage
+         * @property {waproto.Message.VpcRequestMessage.$Properties|null} [vpcRequestMessage] Message vpcRequestMessage
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -103808,6 +105681,7 @@ $root.waproto = (function() {
          *   requestLocationMessage?: waproto.Message.RequestLocationMessage.$Shape|null;
          *   botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
          *   requestLocationUpdateMessage?: waproto.Message.RequestLocationUpdateMessage.$Shape|null;
+         *   vpcRequestMessage?: waproto.Message.VpcRequestMessage.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Message.$Shape
          */
@@ -104763,6 +106637,14 @@ $root.waproto = (function() {
          */
         Message.prototype.requestLocationUpdateMessage = null;
 
+        /**
+         * Message vpcRequestMessage.
+         * @member {waproto.Message.VpcRequestMessage.$Properties|null|undefined} vpcRequestMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.vpcRequestMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -105468,6 +107350,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_vpcRequestMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["vpcRequestMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -105734,6 +107622,8 @@ $root.waproto = (function() {
                 $root.waproto.Message.FutureProofMessage.encode(message.botGroupParticipantMessage, writer.uint32(/* id 137, wireType 2 =*/1098).fork(), _depth + 1).ldelim();
             if (message.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(message, "requestLocationUpdateMessage"))
                 $root.waproto.Message.RequestLocationUpdateMessage.encode(message.requestLocationUpdateMessage, writer.uint32(/* id 138, wireType 2 =*/1106).fork(), _depth + 1).ldelim();
+            if (message.vpcRequestMessage != null && $Object.hasOwnProperty.call(message, "vpcRequestMessage"))
+                $root.waproto.Message.VpcRequestMessage.encode(message.vpcRequestMessage, writer.uint32(/* id 139, wireType 2 =*/1114).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -106608,6 +108498,13 @@ $root.waproto = (function() {
                             break;
                         message.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.requestLocationUpdateMessage);
                         message._requestLocationUpdateMessage = "requestLocationUpdateMessage";
+                        continue;
+                    }
+                case 139: {
+                        if (wireType !== 2)
+                            break;
+                        message.vpcRequestMessage = $root.waproto.Message.VpcRequestMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.vpcRequestMessage);
+                        message._vpcRequestMessage = "vpcRequestMessage";
                         continue;
                     }
                 }
@@ -107592,6 +109489,14 @@ $root.waproto = (function() {
                         return "requestLocationUpdateMessage." + error;
                 }
             }
+            if (message.vpcRequestMessage != null && $Object.hasOwnProperty.call(message, "vpcRequestMessage")) {
+                properties._vpcRequestMessage = 1;
+                {
+                    var error = $root.waproto.Message.VpcRequestMessage.verify(message.vpcRequestMessage, _depth + 1);
+                    if (error)
+                        return "vpcRequestMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -108195,6 +110100,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.Message.requestLocationUpdateMessage: object expected");
                 message.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.fromObject(object.requestLocationUpdateMessage, _depth + 1);
             }
+            if (object.vpcRequestMessage != null) {
+                if (!$util.isObject(object.vpcRequestMessage))
+                    throw $TypeError(".waproto.Message.vpcRequestMessage: object expected");
+                message.vpcRequestMessage = $root.waproto.Message.VpcRequestMessage.fromObject(object.vpcRequestMessage, _depth + 1);
+            }
             return message;
         };
 
@@ -108449,6 +110359,8 @@ $root.waproto = (function() {
                 object.botGroupParticipantMessage = $root.waproto.Message.FutureProofMessage.toObject(message.botGroupParticipantMessage, options, _depth + 1);
             if (message.requestLocationUpdateMessage != null && $Object.hasOwnProperty.call(message, "requestLocationUpdateMessage"))
                 object.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.toObject(message.requestLocationUpdateMessage, options, _depth + 1);
+            if (message.vpcRequestMessage != null && $Object.hasOwnProperty.call(message, "vpcRequestMessage"))
+                object.vpcRequestMessage = $root.waproto.Message.VpcRequestMessage.toObject(message.vpcRequestMessage, options, _depth + 1);
             return object;
         };
 
@@ -172879,6 +174791,9 @@ $root.waproto = (function() {
              * @property {waproto.Message.SharedDeviceContactHashKeyShare.$Properties|null} [sharedDeviceContactHashKeyShare] ProtocolMessage sharedDeviceContactHashKeyShare
              * @property {waproto.Message.SharedDeviceContactHashKeyRequest.$Properties|null} [sharedDeviceContactHashKeyRequest] ProtocolMessage sharedDeviceContactHashKeyRequest
              * @property {Array.<string>|null} [additionalPromptIds] ProtocolMessage additionalPromptIds
+             * @property {waproto.GroupRootKeyRequest.$Properties|null} [groupRootKeyRequest] ProtocolMessage groupRootKeyRequest
+             * @property {waproto.MembershipFormKeyFingerprintVerification.$Properties|null} [membershipFormKeyFingerprintVerification] ProtocolMessage membershipFormKeyFingerprintVerification
+             * @property {waproto.GroupRootKeyShare.$Properties|null} [groupRootKeyShare] ProtocolMessage groupRootKeyShare
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -172927,6 +174842,9 @@ $root.waproto = (function() {
              *   sharedDeviceContactHashKeyShare?: waproto.Message.SharedDeviceContactHashKeyShare.$Shape|null;
              *   sharedDeviceContactHashKeyRequest?: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape|null;
              *   additionalPromptIds?: Array.<string>|null;
+             *   groupRootKeyRequest?: waproto.GroupRootKeyRequest.$Shape|null;
+             *   membershipFormKeyFingerprintVerification?: waproto.MembershipFormKeyFingerprintVerification.$Shape|null;
+             *   groupRootKeyShare?: waproto.GroupRootKeyShare.$Shape|null;
              *   $unknowns?: Array.<Uint8Array>;
              * }} waproto.Message.ProtocolMessage.$Shape
              */
@@ -173219,6 +175137,30 @@ $root.waproto = (function() {
              */
             ProtocolMessage.prototype.additionalPromptIds = $util.emptyArray;
 
+            /**
+             * ProtocolMessage groupRootKeyRequest.
+             * @member {waproto.GroupRootKeyRequest.$Properties|null|undefined} groupRootKeyRequest
+             * @memberof waproto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.groupRootKeyRequest = null;
+
+            /**
+             * ProtocolMessage membershipFormKeyFingerprintVerification.
+             * @member {waproto.MembershipFormKeyFingerprintVerification.$Properties|null|undefined} membershipFormKeyFingerprintVerification
+             * @memberof waproto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.membershipFormKeyFingerprintVerification = null;
+
+            /**
+             * ProtocolMessage groupRootKeyShare.
+             * @member {waproto.GroupRootKeyShare.$Properties|null|undefined} groupRootKeyShare
+             * @memberof waproto.Message.ProtocolMessage
+             * @instance
+             */
+            ProtocolMessage.prototype.groupRootKeyShare = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -173420,6 +175362,24 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ProtocolMessage.prototype, "_groupRootKeyRequest", {
+                get: $util.oneOfGetter($oneOfFields = ["groupRootKeyRequest"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ProtocolMessage.prototype, "_membershipFormKeyFingerprintVerification", {
+                get: $util.oneOfGetter($oneOfFields = ["membershipFormKeyFingerprintVerification"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(ProtocolMessage.prototype, "_groupRootKeyShare", {
+                get: $util.oneOfGetter($oneOfFields = ["groupRootKeyShare"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @function create
@@ -173521,6 +175481,12 @@ $root.waproto = (function() {
                 if (message.additionalPromptIds != null && message.additionalPromptIds.length)
                     for (var i = 0; i < message.additionalPromptIds.length; ++i)
                         writer.uint32(/* id 38, wireType 2 =*/306).string(message.additionalPromptIds[i]);
+                if (message.groupRootKeyRequest != null && $Object.hasOwnProperty.call(message, "groupRootKeyRequest"))
+                    $root.waproto.GroupRootKeyRequest.encode(message.groupRootKeyRequest, writer.uint32(/* id 39, wireType 2 =*/314).fork(), _depth + 1).ldelim();
+                if (message.membershipFormKeyFingerprintVerification != null && $Object.hasOwnProperty.call(message, "membershipFormKeyFingerprintVerification"))
+                    $root.waproto.MembershipFormKeyFingerprintVerification.encode(message.membershipFormKeyFingerprintVerification, writer.uint32(/* id 40, wireType 2 =*/322).fork(), _depth + 1).ldelim();
+                if (message.groupRootKeyShare != null && $Object.hasOwnProperty.call(message, "groupRootKeyShare"))
+                    $root.waproto.GroupRootKeyShare.encode(message.groupRootKeyShare, writer.uint32(/* id 41, wireType 2 =*/330).fork(), _depth + 1).ldelim();
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -173815,6 +175781,27 @@ $root.waproto = (function() {
                             if (!(message.additionalPromptIds && message.additionalPromptIds.length))
                                 message.additionalPromptIds = [];
                             message.additionalPromptIds.push(reader.stringVerify());
+                            continue;
+                        }
+                    case 39: {
+                            if (wireType !== 2)
+                                break;
+                            message.groupRootKeyRequest = $root.waproto.GroupRootKeyRequest.decode(reader, reader.size(), $undefined, _depth + 1, message.groupRootKeyRequest);
+                            message._groupRootKeyRequest = "groupRootKeyRequest";
+                            continue;
+                        }
+                    case 40: {
+                            if (wireType !== 2)
+                                break;
+                            message.membershipFormKeyFingerprintVerification = $root.waproto.MembershipFormKeyFingerprintVerification.decode(reader, reader.size(), $undefined, _depth + 1, message.membershipFormKeyFingerprintVerification);
+                            message._membershipFormKeyFingerprintVerification = "membershipFormKeyFingerprintVerification";
+                            continue;
+                        }
+                    case 41: {
+                            if (wireType !== 2)
+                                break;
+                            message.groupRootKeyShare = $root.waproto.GroupRootKeyShare.decode(reader, reader.size(), $undefined, _depth + 1, message.groupRootKeyShare);
+                            message._groupRootKeyShare = "groupRootKeyShare";
                             continue;
                         }
                     }
@@ -174116,6 +176103,30 @@ $root.waproto = (function() {
                         if (!$util.isString(message.additionalPromptIds[i]))
                             return "additionalPromptIds: string[] expected";
                 }
+                if (message.groupRootKeyRequest != null && $Object.hasOwnProperty.call(message, "groupRootKeyRequest")) {
+                    properties._groupRootKeyRequest = 1;
+                    {
+                        var error = $root.waproto.GroupRootKeyRequest.verify(message.groupRootKeyRequest, _depth + 1);
+                        if (error)
+                            return "groupRootKeyRequest." + error;
+                    }
+                }
+                if (message.membershipFormKeyFingerprintVerification != null && $Object.hasOwnProperty.call(message, "membershipFormKeyFingerprintVerification")) {
+                    properties._membershipFormKeyFingerprintVerification = 1;
+                    {
+                        var error = $root.waproto.MembershipFormKeyFingerprintVerification.verify(message.membershipFormKeyFingerprintVerification, _depth + 1);
+                        if (error)
+                            return "membershipFormKeyFingerprintVerification." + error;
+                    }
+                }
+                if (message.groupRootKeyShare != null && $Object.hasOwnProperty.call(message, "groupRootKeyShare")) {
+                    properties._groupRootKeyShare = 1;
+                    {
+                        var error = $root.waproto.GroupRootKeyShare.verify(message.groupRootKeyShare, _depth + 1);
+                        if (error)
+                            return "groupRootKeyShare." + error;
+                    }
+                }
                 return null;
             };
 
@@ -174283,6 +176294,18 @@ $root.waproto = (function() {
                 case 41:
                     message.type = 41;
                     break;
+                case "GROUP_ROOT_KEY_REQUEST":
+                case 42:
+                    message.type = 42;
+                    break;
+                case "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION":
+                case 43:
+                    message.type = 43;
+                    break;
+                case "GROUP_ROOT_KEY_SHARE":
+                case 44:
+                    message.type = 44;
+                    break;
                 default:
                     if (typeof object.type === "number" && (object.type | 0) === object.type)
                         message.type = object.type;
@@ -174448,6 +176471,21 @@ $root.waproto = (function() {
                     for (var i = 0; i < object.additionalPromptIds.length; ++i)
                         message.additionalPromptIds[i] = $String(object.additionalPromptIds[i]);
                 }
+                if (object.groupRootKeyRequest != null) {
+                    if (!$util.isObject(object.groupRootKeyRequest))
+                        throw $TypeError(".waproto.Message.ProtocolMessage.groupRootKeyRequest: object expected");
+                    message.groupRootKeyRequest = $root.waproto.GroupRootKeyRequest.fromObject(object.groupRootKeyRequest, _depth + 1);
+                }
+                if (object.membershipFormKeyFingerprintVerification != null) {
+                    if (!$util.isObject(object.membershipFormKeyFingerprintVerification))
+                        throw $TypeError(".waproto.Message.ProtocolMessage.membershipFormKeyFingerprintVerification: object expected");
+                    message.membershipFormKeyFingerprintVerification = $root.waproto.MembershipFormKeyFingerprintVerification.fromObject(object.membershipFormKeyFingerprintVerification, _depth + 1);
+                }
+                if (object.groupRootKeyShare != null) {
+                    if (!$util.isObject(object.groupRootKeyShare))
+                        throw $TypeError(".waproto.Message.ProtocolMessage.groupRootKeyShare: object expected");
+                    message.groupRootKeyShare = $root.waproto.GroupRootKeyShare.fromObject(object.groupRootKeyShare, _depth + 1);
+                }
                 return message;
             };
 
@@ -174551,6 +176589,12 @@ $root.waproto = (function() {
                     for (var j = 0; j < message.additionalPromptIds.length; ++j)
                         object.additionalPromptIds[j] = message.additionalPromptIds[j];
                 }
+                if (message.groupRootKeyRequest != null && $Object.hasOwnProperty.call(message, "groupRootKeyRequest"))
+                    object.groupRootKeyRequest = $root.waproto.GroupRootKeyRequest.toObject(message.groupRootKeyRequest, options, _depth + 1);
+                if (message.membershipFormKeyFingerprintVerification != null && $Object.hasOwnProperty.call(message, "membershipFormKeyFingerprintVerification"))
+                    object.membershipFormKeyFingerprintVerification = $root.waproto.MembershipFormKeyFingerprintVerification.toObject(message.membershipFormKeyFingerprintVerification, options, _depth + 1);
+                if (message.groupRootKeyShare != null && $Object.hasOwnProperty.call(message, "groupRootKeyShare"))
+                    object.groupRootKeyShare = $root.waproto.GroupRootKeyShare.toObject(message.groupRootKeyShare, options, _depth + 1);
                 return object;
             };
 
@@ -174618,6 +176662,9 @@ $root.waproto = (function() {
              * @property {number} ACP2_SETTING=39 ACP2_SETTING value
              * @property {number} SHARED_DEVICE_CONTACT_HASH_KEY_SHARE=40 SHARED_DEVICE_CONTACT_HASH_KEY_SHARE value
              * @property {number} SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST=41 SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST value
+             * @property {number} GROUP_ROOT_KEY_REQUEST=42 GROUP_ROOT_KEY_REQUEST value
+             * @property {number} MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION=43 MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION value
+             * @property {number} GROUP_ROOT_KEY_SHARE=44 GROUP_ROOT_KEY_SHARE value
              */
             ProtocolMessage.Type = (function() {
                 var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -174656,6 +176703,9 @@ $root.waproto = (function() {
                 values[valuesById[39] = "ACP2_SETTING"] = 39;
                 values[valuesById[40] = "SHARED_DEVICE_CONTACT_HASH_KEY_SHARE"] = 40;
                 values[valuesById[41] = "SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST"] = 41;
+                values[valuesById[42] = "GROUP_ROOT_KEY_REQUEST"] = 42;
+                values[valuesById[43] = "MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION"] = 43;
+                values[valuesById[44] = "GROUP_ROOT_KEY_SHARE"] = 44;
                 return values;
             })();
 
@@ -190870,6 +192920,481 @@ $root.waproto = (function() {
             return VideoMessage;
         })();
 
+        Message.VpcRequestMessage = (function() {
+
+            /**
+             * Properties of a VpcRequestMessage.
+             * @typedef {Object} waproto.Message.VpcRequestMessage.$Properties
+             * @property {number|null} [payloadSchemaVersion] VpcRequestMessage payloadSchemaVersion
+             * @property {string|null} [requestId] VpcRequestMessage requestId
+             * @property {string|null} [launchRef] VpcRequestMessage launchRef
+             * @property {number|Long|null} [invitationExpiresAtMs] VpcRequestMessage invitationExpiresAtMs
+             * @property {waproto.Message.VpcRequestMessage.ScopeHint|null} [scopeHint] VpcRequestMessage scopeHint
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a VpcRequestMessage.
+             * @memberof waproto.Message
+             * @interface IVpcRequestMessage
+             * @augments waproto.Message.VpcRequestMessage.$Properties
+             * @deprecated Use waproto.Message.VpcRequestMessage.$Properties instead.
+             */
+
+            /**
+             * Shape of a VpcRequestMessage.
+             * @typedef {waproto.Message.VpcRequestMessage.$Properties} waproto.Message.VpcRequestMessage.$Shape
+             */
+
+            /**
+             * Constructs a new VpcRequestMessage.
+             * @memberof waproto.Message
+             * @classdesc Represents a VpcRequestMessage.
+             * @constructor
+             * @param {waproto.Message.VpcRequestMessage.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var VpcRequestMessage = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * VpcRequestMessage payloadSchemaVersion.
+             * @member {number|null|undefined} payloadSchemaVersion
+             * @memberof waproto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.payloadSchemaVersion = null;
+
+            /**
+             * VpcRequestMessage requestId.
+             * @member {string|null|undefined} requestId
+             * @memberof waproto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.requestId = null;
+
+            /**
+             * VpcRequestMessage launchRef.
+             * @member {string|null|undefined} launchRef
+             * @memberof waproto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.launchRef = null;
+
+            /**
+             * VpcRequestMessage invitationExpiresAtMs.
+             * @member {number|Long|null|undefined} invitationExpiresAtMs
+             * @memberof waproto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.invitationExpiresAtMs = null;
+
+            /**
+             * VpcRequestMessage scopeHint.
+             * @member {waproto.Message.VpcRequestMessage.ScopeHint|null|undefined} scopeHint
+             * @memberof waproto.Message.VpcRequestMessage
+             * @instance
+             */
+            VpcRequestMessage.prototype.scopeHint = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VpcRequestMessage.prototype, "_payloadSchemaVersion", {
+                get: $util.oneOfGetter($oneOfFields = ["payloadSchemaVersion"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VpcRequestMessage.prototype, "_requestId", {
+                get: $util.oneOfGetter($oneOfFields = ["requestId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VpcRequestMessage.prototype, "_launchRef", {
+                get: $util.oneOfGetter($oneOfFields = ["launchRef"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VpcRequestMessage.prototype, "_invitationExpiresAtMs", {
+                get: $util.oneOfGetter($oneOfFields = ["invitationExpiresAtMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(VpcRequestMessage.prototype, "_scopeHint", {
+                get: $util.oneOfGetter($oneOfFields = ["scopeHint"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new VpcRequestMessage instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {waproto.Message.VpcRequestMessage.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.VpcRequestMessage} VpcRequestMessage instance
+             * @type {{
+             *   (properties: waproto.Message.VpcRequestMessage.$Shape): waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape;
+             *   (properties?: waproto.Message.VpcRequestMessage.$Properties): waproto.Message.VpcRequestMessage;
+             * }}
+             */
+            VpcRequestMessage.create = function(properties) {
+                return new VpcRequestMessage(properties);
+            };
+
+            /**
+             * Encodes the specified VpcRequestMessage message. Does not implicitly {@link waproto.Message.VpcRequestMessage.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {waproto.Message.VpcRequestMessage.$Properties} message VpcRequestMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            VpcRequestMessage.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.payloadSchemaVersion != null && $Object.hasOwnProperty.call(message, "payloadSchemaVersion"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.payloadSchemaVersion);
+                if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.requestId);
+                if (message.launchRef != null && $Object.hasOwnProperty.call(message, "launchRef"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.launchRef);
+                if (message.invitationExpiresAtMs != null && $Object.hasOwnProperty.call(message, "invitationExpiresAtMs"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).int64(message.invitationExpiresAtMs);
+                if (message.scopeHint != null && $Object.hasOwnProperty.call(message, "scopeHint"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).int32(message.scopeHint);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified VpcRequestMessage message, length delimited. Does not implicitly {@link waproto.Message.VpcRequestMessage.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {waproto.Message.VpcRequestMessage.$Properties} message VpcRequestMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            VpcRequestMessage.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape} VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            VpcRequestMessage.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.VpcRequestMessage();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.payloadSchemaVersion = reader.uint32();
+                            message._payloadSchemaVersion = "payloadSchemaVersion";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 2)
+                                break;
+                            message.requestId = reader.stringVerify();
+                            message._requestId = "requestId";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.launchRef = reader.stringVerify();
+                            message._launchRef = "launchRef";
+                            continue;
+                        }
+                    case 4: {
+                            if (wireType !== 0)
+                                break;
+                            message.invitationExpiresAtMs = reader.int64();
+                            message._invitationExpiresAtMs = "invitationExpiresAtMs";
+                            continue;
+                        }
+                    case 5: {
+                            if (wireType !== 0)
+                                break;
+                            message.scopeHint = reader.int32();
+                            message._scopeHint = "scopeHint";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape} VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            VpcRequestMessage.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a VpcRequestMessage message.
+             * @function verify
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            VpcRequestMessage.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.payloadSchemaVersion != null && $Object.hasOwnProperty.call(message, "payloadSchemaVersion")) {
+                    properties._payloadSchemaVersion = 1;
+                    if (!$util.isInteger(message.payloadSchemaVersion))
+                        return "payloadSchemaVersion: integer expected";
+                }
+                if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId")) {
+                    properties._requestId = 1;
+                    if (!$util.isString(message.requestId))
+                        return "requestId: string expected";
+                }
+                if (message.launchRef != null && $Object.hasOwnProperty.call(message, "launchRef")) {
+                    properties._launchRef = 1;
+                    if (!$util.isString(message.launchRef))
+                        return "launchRef: string expected";
+                }
+                if (message.invitationExpiresAtMs != null && $Object.hasOwnProperty.call(message, "invitationExpiresAtMs")) {
+                    properties._invitationExpiresAtMs = 1;
+                    if (!$util.isInteger(message.invitationExpiresAtMs) && !(message.invitationExpiresAtMs && $util.isInteger(message.invitationExpiresAtMs.low) && $util.isInteger(message.invitationExpiresAtMs.high)))
+                        return "invitationExpiresAtMs: integer|Long expected";
+                }
+                if (message.scopeHint != null && $Object.hasOwnProperty.call(message, "scopeHint")) {
+                    properties._scopeHint = 1;
+                    if (typeof message.scopeHint !== "number" || (message.scopeHint | 0) !== message.scopeHint)
+                        return "scopeHint: enum value expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a VpcRequestMessage message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.VpcRequestMessage} VpcRequestMessage
+             */
+            VpcRequestMessage.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.VpcRequestMessage)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.VpcRequestMessage: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.VpcRequestMessage();
+                if (object.payloadSchemaVersion != null)
+                    message.payloadSchemaVersion = object.payloadSchemaVersion >>> 0;
+                if (object.requestId != null)
+                    message.requestId = $String(object.requestId);
+                if (object.launchRef != null)
+                    message.launchRef = $String(object.launchRef);
+                if (object.invitationExpiresAtMs != null)
+                    if ($util.Long)
+                        message.invitationExpiresAtMs = $util.Long.fromValue(object.invitationExpiresAtMs, false);
+                    else if (typeof object.invitationExpiresAtMs === "string")
+                        message.invitationExpiresAtMs = $parseInt(object.invitationExpiresAtMs, 10);
+                    else if (typeof object.invitationExpiresAtMs === "number")
+                        message.invitationExpiresAtMs = object.invitationExpiresAtMs;
+                    else if (typeof object.invitationExpiresAtMs === "object")
+                        message.invitationExpiresAtMs = new $util.LongBits(object.invitationExpiresAtMs.low >>> 0, object.invitationExpiresAtMs.high >>> 0).toNumber();
+                switch (object.scopeHint) {
+                case "UNKNOWN":
+                case 0:
+                    message.scopeHint = 0;
+                    break;
+                case "WA_ONLY":
+                case 1:
+                    message.scopeHint = 1;
+                    break;
+                case "WAFFLE":
+                case 2:
+                    message.scopeHint = 2;
+                    break;
+                case "WA_META_AI":
+                case 3:
+                    message.scopeHint = 3;
+                    break;
+                case "META_AI_ONLY":
+                case 4:
+                    message.scopeHint = 4;
+                    break;
+                case "FOA_ONLY":
+                case 5:
+                    message.scopeHint = 5;
+                    break;
+                default:
+                    if (typeof object.scopeHint === "number" && (object.scopeHint | 0) === object.scopeHint)
+                        message.scopeHint = object.scopeHint;
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a VpcRequestMessage message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {waproto.Message.VpcRequestMessage} message VpcRequestMessage
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            VpcRequestMessage.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.payloadSchemaVersion != null && $Object.hasOwnProperty.call(message, "payloadSchemaVersion"))
+                    object.payloadSchemaVersion = message.payloadSchemaVersion;
+                if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId"))
+                    object.requestId = message.requestId;
+                if (message.launchRef != null && $Object.hasOwnProperty.call(message, "launchRef"))
+                    object.launchRef = message.launchRef;
+                if (message.invitationExpiresAtMs != null && $Object.hasOwnProperty.call(message, "invitationExpiresAtMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.invitationExpiresAtMs = typeof message.invitationExpiresAtMs === "number" ? $BigInt(message.invitationExpiresAtMs) : $util.Long.fromBits(message.invitationExpiresAtMs.low >>> 0, message.invitationExpiresAtMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.invitationExpiresAtMs === "number")
+                        object.invitationExpiresAtMs = options.longs === $String ? $String(message.invitationExpiresAtMs) : message.invitationExpiresAtMs;
+                    else
+                        object.invitationExpiresAtMs = options.longs === $String ? $util.Long.prototype.toString.call(message.invitationExpiresAtMs) : options.longs === $Number ? new $util.LongBits(message.invitationExpiresAtMs.low >>> 0, message.invitationExpiresAtMs.high >>> 0).toNumber() : message.invitationExpiresAtMs;
+                if (message.scopeHint != null && $Object.hasOwnProperty.call(message, "scopeHint"))
+                    object.scopeHint = options.enums === $String ? $root.waproto.Message.VpcRequestMessage.ScopeHint[message.scopeHint] === $undefined ? message.scopeHint : $root.waproto.Message.VpcRequestMessage.ScopeHint[message.scopeHint] : message.scopeHint;
+                return object;
+            };
+
+            /**
+             * Converts this VpcRequestMessage to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.VpcRequestMessage
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            VpcRequestMessage.prototype.toJSON = function() {
+                return VpcRequestMessage.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for VpcRequestMessage
+             * @function getTypeUrl
+             * @memberof waproto.Message.VpcRequestMessage
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            VpcRequestMessage.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.VpcRequestMessage";
+            };
+
+            /**
+             * ScopeHint enum.
+             * @name waproto.Message.VpcRequestMessage.ScopeHint
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} WA_ONLY=1 WA_ONLY value
+             * @property {number} WAFFLE=2 WAFFLE value
+             * @property {number} WA_META_AI=3 WA_META_AI value
+             * @property {number} META_AI_ONLY=4 META_AI_ONLY value
+             * @property {number} FOA_ONLY=5 FOA_ONLY value
+             */
+            VpcRequestMessage.ScopeHint = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "WA_ONLY"] = 1;
+                values[valuesById[2] = "WAFFLE"] = 2;
+                values[valuesById[3] = "WA_META_AI"] = 3;
+                values[valuesById[4] = "META_AI_ONLY"] = 4;
+                values[valuesById[5] = "FOA_ONLY"] = 5;
+                return values;
+            })();
+
+            return VpcRequestMessage;
+        })();
+
         return Message;
     })();
 
@@ -192227,6 +194752,14 @@ $root.waproto = (function() {
             case 22:
                 message.associationType = 22;
                 break;
+            case "ORIGINAL_VIDEO_DUAL_UPLOAD":
+            case 23:
+                message.associationType = 23;
+                break;
+            case "ORIGINAL_IMAGE_DUAL_UPLOAD":
+            case 24:
+                message.associationType = 24;
+                break;
             default:
                 if (typeof object.associationType === "number" && (object.associationType | 0) === object.associationType)
                     message.associationType = object.associationType;
@@ -192319,6 +194852,8 @@ $root.waproto = (function() {
          * @property {number} POLL_ADD_OPTION=20 POLL_ADD_OPTION value
          * @property {number} AV1_VIDEO_DUAL_UPLOAD=21 AV1_VIDEO_DUAL_UPLOAD value
          * @property {number} STREAMED_HD_VIDEO_DUAL_UPLOAD=22 STREAMED_HD_VIDEO_DUAL_UPLOAD value
+         * @property {number} ORIGINAL_VIDEO_DUAL_UPLOAD=23 ORIGINAL_VIDEO_DUAL_UPLOAD value
+         * @property {number} ORIGINAL_IMAGE_DUAL_UPLOAD=24 ORIGINAL_IMAGE_DUAL_UPLOAD value
          */
         MessageAssociation.AssociationType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -192345,6 +194880,8 @@ $root.waproto = (function() {
             values[valuesById[20] = "POLL_ADD_OPTION"] = 20;
             values[valuesById[21] = "AV1_VIDEO_DUAL_UPLOAD"] = 21;
             values[valuesById[22] = "STREAMED_HD_VIDEO_DUAL_UPLOAD"] = 22;
+            values[valuesById[23] = "ORIGINAL_VIDEO_DUAL_UPLOAD"] = 23;
+            values[valuesById[24] = "ORIGINAL_IMAGE_DUAL_UPLOAD"] = 24;
             return values;
         })();
 
@@ -223433,7 +225970,8 @@ $root.waproto = (function() {
          * @property {waproto.StatusAttribution.GroupStatus.$Properties|null} [groupStatus] StatusAttribution groupStatus
          * @property {waproto.StatusAttribution.RLAttribution.$Properties|null} [rlAttribution] StatusAttribution rlAttribution
          * @property {waproto.StatusAttribution.AiCreatedAttribution.$Properties|null} [aiCreatedAttribution] StatusAttribution aiCreatedAttribution
-         * @property {"statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"} [attributionData] StatusAttribution attributionData
+         * @property {waproto.StatusAttribution.StatusTemplate.$Properties|null} [statusTemplate] StatusAttribution statusTemplate
+         * @property {"statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|"statusTemplate"} [attributionData] StatusAttribution attributionData
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -223456,9 +225994,10 @@ $root.waproto = (function() {
          *   groupStatus?: waproto.StatusAttribution.GroupStatus.$Shape|null;
          *   rlAttribution?: waproto.StatusAttribution.RLAttribution.$Shape|null;
          *   aiCreatedAttribution?: waproto.StatusAttribution.AiCreatedAttribution.$Shape|null;
+         *   statusTemplate?: waproto.StatusAttribution.StatusTemplate.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * } & (
-         *   ({ attributionData?: undefined; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "statusReshare"; statusReshare: waproto.StatusAttribution.StatusReshare.$Shape; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "externalShare"; statusReshare?: null; externalShare: waproto.StatusAttribution.ExternalShare.$Shape; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "music"; statusReshare?: null; externalShare?: null; music: waproto.StatusAttribution.Music.$Shape; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "groupStatus"; statusReshare?: null; externalShare?: null; music?: null; groupStatus: waproto.StatusAttribution.GroupStatus.$Shape; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "rlAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution: waproto.StatusAttribution.RLAttribution.$Shape; aiCreatedAttribution?: null }|{ attributionData?: "aiCreatedAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution: waproto.StatusAttribution.AiCreatedAttribution.$Shape })
+         *   ({ attributionData?: undefined; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "statusReshare"; statusReshare: waproto.StatusAttribution.StatusReshare.$Shape; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "externalShare"; statusReshare?: null; externalShare: waproto.StatusAttribution.ExternalShare.$Shape; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "music"; statusReshare?: null; externalShare?: null; music: waproto.StatusAttribution.Music.$Shape; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "groupStatus"; statusReshare?: null; externalShare?: null; music?: null; groupStatus: waproto.StatusAttribution.GroupStatus.$Shape; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "rlAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution: waproto.StatusAttribution.RLAttribution.$Shape; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "aiCreatedAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution: waproto.StatusAttribution.AiCreatedAttribution.$Shape; statusTemplate?: null }|{ attributionData?: "statusTemplate"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate: waproto.StatusAttribution.StatusTemplate.$Shape })
          * )} waproto.StatusAttribution.$Shape
          */
 
@@ -223541,6 +226080,14 @@ $root.waproto = (function() {
          */
         StatusAttribution.prototype.aiCreatedAttribution = null;
 
+        /**
+         * StatusAttribution statusTemplate.
+         * @member {waproto.StatusAttribution.StatusTemplate.$Properties|null|undefined} statusTemplate
+         * @memberof waproto.StatusAttribution
+         * @instance
+         */
+        StatusAttribution.prototype.statusTemplate = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -223558,12 +226105,12 @@ $root.waproto = (function() {
 
         /**
          * StatusAttribution attributionData.
-         * @member {"statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|undefined} attributionData
+         * @member {"statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|"statusTemplate"|undefined} attributionData
          * @memberof waproto.StatusAttribution
          * @instance
          */
         $Object.defineProperty(StatusAttribution.prototype, "attributionData", {
-            get: $util.oneOfGetter($oneOfFields = ["statusReshare", "externalShare", "music", "groupStatus", "rlAttribution", "aiCreatedAttribution"]),
+            get: $util.oneOfGetter($oneOfFields = ["statusReshare", "externalShare", "music", "groupStatus", "rlAttribution", "aiCreatedAttribution", "statusTemplate"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -223615,6 +226162,8 @@ $root.waproto = (function() {
                 $root.waproto.StatusAttribution.RLAttribution.encode(message.rlAttribution, writer.uint32(/* id 7, wireType 2 =*/58).fork(), _depth + 1).ldelim();
             if (message.aiCreatedAttribution != null && $Object.hasOwnProperty.call(message, "aiCreatedAttribution"))
                 $root.waproto.StatusAttribution.AiCreatedAttribution.encode(message.aiCreatedAttribution, writer.uint32(/* id 8, wireType 2 =*/66).fork(), _depth + 1).ldelim();
+            if (message.statusTemplate != null && $Object.hasOwnProperty.call(message, "statusTemplate"))
+                $root.waproto.StatusAttribution.StatusTemplate.encode(message.statusTemplate, writer.uint32(/* id 9, wireType 2 =*/74).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -223726,6 +226275,13 @@ $root.waproto = (function() {
                             break;
                         message.aiCreatedAttribution = $root.waproto.StatusAttribution.AiCreatedAttribution.decode(reader, reader.size(), $undefined, _depth + 1, message.aiCreatedAttribution);
                         message.attributionData = "aiCreatedAttribution";
+                        continue;
+                    }
+                case 9: {
+                        if (wireType !== 2)
+                            break;
+                        message.statusTemplate = $root.waproto.StatusAttribution.StatusTemplate.decode(reader, reader.size(), $undefined, _depth + 1, message.statusTemplate);
+                        message.attributionData = "statusTemplate";
                         continue;
                     }
                 }
@@ -223845,6 +226401,16 @@ $root.waproto = (function() {
                         return "aiCreatedAttribution." + error;
                 }
             }
+            if (message.statusTemplate != null && $Object.hasOwnProperty.call(message, "statusTemplate")) {
+                if (properties.attributionData === 1)
+                    return "attributionData: multiple values";
+                properties.attributionData = 1;
+                {
+                    var error = $root.waproto.StatusAttribution.StatusTemplate.verify(message.statusTemplate, _depth + 1);
+                    if (error)
+                        return "statusTemplate." + error;
+                }
+            }
             return null;
         };
 
@@ -223919,6 +226485,10 @@ $root.waproto = (function() {
             case 12:
                 message.type = 12;
                 break;
+            case "STATUS_TEMPLATES":
+            case 13:
+                message.type = 13;
+                break;
             default:
                 if (typeof object.type === "number" && (object.type | 0) === object.type)
                     message.type = object.type;
@@ -223954,6 +226524,11 @@ $root.waproto = (function() {
                 if (!$util.isObject(object.aiCreatedAttribution))
                     throw $TypeError(".waproto.StatusAttribution.aiCreatedAttribution: object expected");
                 message.aiCreatedAttribution = $root.waproto.StatusAttribution.AiCreatedAttribution.fromObject(object.aiCreatedAttribution, _depth + 1);
+            }
+            if (object.statusTemplate != null) {
+                if (!$util.isObject(object.statusTemplate))
+                    throw $TypeError(".waproto.StatusAttribution.statusTemplate: object expected");
+                message.statusTemplate = $root.waproto.StatusAttribution.StatusTemplate.fromObject(object.statusTemplate, _depth + 1);
             }
             return message;
         };
@@ -224008,6 +226583,11 @@ $root.waproto = (function() {
                 object.aiCreatedAttribution = $root.waproto.StatusAttribution.AiCreatedAttribution.toObject(message.aiCreatedAttribution, options, _depth + 1);
                 if (options.oneofs)
                     object.attributionData = "aiCreatedAttribution";
+            }
+            if (message.statusTemplate != null && $Object.hasOwnProperty.call(message, "statusTemplate")) {
+                object.statusTemplate = $root.waproto.StatusAttribution.StatusTemplate.toObject(message.statusTemplate, options, _depth + 1);
+                if (options.oneofs)
+                    object.attributionData = "statusTemplate";
             }
             return object;
         };
@@ -226615,6 +229195,354 @@ $root.waproto = (function() {
             return StatusReshare;
         })();
 
+        StatusAttribution.StatusTemplate = (function() {
+
+            /**
+             * Properties of a StatusTemplate.
+             * @typedef {Object} waproto.StatusAttribution.StatusTemplate.$Properties
+             * @property {string|null} [templateId] StatusTemplate templateId
+             * @property {string|null} [templateName] StatusTemplate templateName
+             * @property {string|null} [thumbnailUrl] StatusTemplate thumbnailUrl
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a StatusTemplate.
+             * @memberof waproto.StatusAttribution
+             * @interface IStatusTemplate
+             * @augments waproto.StatusAttribution.StatusTemplate.$Properties
+             * @deprecated Use waproto.StatusAttribution.StatusTemplate.$Properties instead.
+             */
+
+            /**
+             * Shape of a StatusTemplate.
+             * @typedef {waproto.StatusAttribution.StatusTemplate.$Properties} waproto.StatusAttribution.StatusTemplate.$Shape
+             */
+
+            /**
+             * Constructs a new StatusTemplate.
+             * @memberof waproto.StatusAttribution
+             * @classdesc Represents a StatusTemplate.
+             * @constructor
+             * @param {waproto.StatusAttribution.StatusTemplate.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var StatusTemplate = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * StatusTemplate templateId.
+             * @member {string|null|undefined} templateId
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @instance
+             */
+            StatusTemplate.prototype.templateId = null;
+
+            /**
+             * StatusTemplate templateName.
+             * @member {string|null|undefined} templateName
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @instance
+             */
+            StatusTemplate.prototype.templateName = null;
+
+            /**
+             * StatusTemplate thumbnailUrl.
+             * @member {string|null|undefined} thumbnailUrl
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @instance
+             */
+            StatusTemplate.prototype.thumbnailUrl = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(StatusTemplate.prototype, "_templateId", {
+                get: $util.oneOfGetter($oneOfFields = ["templateId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(StatusTemplate.prototype, "_templateName", {
+                get: $util.oneOfGetter($oneOfFields = ["templateName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(StatusTemplate.prototype, "_thumbnailUrl", {
+                get: $util.oneOfGetter($oneOfFields = ["thumbnailUrl"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new StatusTemplate instance using the specified properties.
+             * @function create
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {waproto.StatusAttribution.StatusTemplate.$Properties=} [properties] Properties to set
+             * @returns {waproto.StatusAttribution.StatusTemplate} StatusTemplate instance
+             * @type {{
+             *   (properties: waproto.StatusAttribution.StatusTemplate.$Shape): waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape;
+             *   (properties?: waproto.StatusAttribution.StatusTemplate.$Properties): waproto.StatusAttribution.StatusTemplate;
+             * }}
+             */
+            StatusTemplate.create = function(properties) {
+                return new StatusTemplate(properties);
+            };
+
+            /**
+             * Encodes the specified StatusTemplate message. Does not implicitly {@link waproto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {waproto.StatusAttribution.StatusTemplate.$Properties} message StatusTemplate message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusTemplate.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.templateId != null && $Object.hasOwnProperty.call(message, "templateId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.templateId);
+                if (message.templateName != null && $Object.hasOwnProperty.call(message, "templateName"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.templateName);
+                if (message.thumbnailUrl != null && $Object.hasOwnProperty.call(message, "thumbnailUrl"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.thumbnailUrl);
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified StatusTemplate message, length delimited. Does not implicitly {@link waproto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {waproto.StatusAttribution.StatusTemplate.$Properties} message StatusTemplate message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            StatusTemplate.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape} StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusTemplate.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.StatusAttribution.StatusTemplate();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 2)
+                                break;
+                            message.templateId = reader.stringVerify();
+                            message._templateId = "templateId";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 2)
+                                break;
+                            message.templateName = reader.stringVerify();
+                            message._templateName = "templateName";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.thumbnailUrl = reader.stringVerify();
+                            message._thumbnailUrl = "thumbnailUrl";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape} StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            StatusTemplate.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a StatusTemplate message.
+             * @function verify
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            StatusTemplate.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.templateId != null && $Object.hasOwnProperty.call(message, "templateId")) {
+                    properties._templateId = 1;
+                    if (!$util.isString(message.templateId))
+                        return "templateId: string expected";
+                }
+                if (message.templateName != null && $Object.hasOwnProperty.call(message, "templateName")) {
+                    properties._templateName = 1;
+                    if (!$util.isString(message.templateName))
+                        return "templateName: string expected";
+                }
+                if (message.thumbnailUrl != null && $Object.hasOwnProperty.call(message, "thumbnailUrl")) {
+                    properties._thumbnailUrl = 1;
+                    if (!$util.isString(message.thumbnailUrl))
+                        return "thumbnailUrl: string expected";
+                }
+                return null;
+            };
+
+            /**
+             * Creates a StatusTemplate message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.StatusAttribution.StatusTemplate} StatusTemplate
+             */
+            StatusTemplate.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.StatusAttribution.StatusTemplate)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.StatusAttribution.StatusTemplate: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.StatusAttribution.StatusTemplate();
+                if (object.templateId != null)
+                    message.templateId = $String(object.templateId);
+                if (object.templateName != null)
+                    message.templateName = $String(object.templateName);
+                if (object.thumbnailUrl != null)
+                    message.thumbnailUrl = $String(object.thumbnailUrl);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a StatusTemplate message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {waproto.StatusAttribution.StatusTemplate} message StatusTemplate
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            StatusTemplate.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.templateId != null && $Object.hasOwnProperty.call(message, "templateId"))
+                    object.templateId = message.templateId;
+                if (message.templateName != null && $Object.hasOwnProperty.call(message, "templateName"))
+                    object.templateName = message.templateName;
+                if (message.thumbnailUrl != null && $Object.hasOwnProperty.call(message, "thumbnailUrl"))
+                    object.thumbnailUrl = message.thumbnailUrl;
+                return object;
+            };
+
+            /**
+             * Converts this StatusTemplate to JSON.
+             * @function toJSON
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            StatusTemplate.prototype.toJSON = function() {
+                return StatusTemplate.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for StatusTemplate
+             * @function getTypeUrl
+             * @memberof waproto.StatusAttribution.StatusTemplate
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            StatusTemplate.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.StatusAttribution.StatusTemplate";
+            };
+
+            return StatusTemplate;
+        })();
+
         /**
          * Type enum.
          * @name waproto.StatusAttribution.Type
@@ -226632,6 +229560,7 @@ $root.waproto = (function() {
          * @property {number} STATUS_CLOSE_SHARING=10 STATUS_CLOSE_SHARING value
          * @property {number} PAID_PARTNERSHIP=11 PAID_PARTNERSHIP value
          * @property {number} USERNAME_STATUS=12 USERNAME_STATUS value
+         * @property {number} STATUS_TEMPLATES=13 STATUS_TEMPLATES value
          */
         StatusAttribution.Type = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -226648,6 +229577,7 @@ $root.waproto = (function() {
             values[valuesById[10] = "STATUS_CLOSE_SHARING"] = 10;
             values[valuesById[11] = "PAID_PARTNERSHIP"] = 11;
             values[valuesById[12] = "USERNAME_STATUS"] = 12;
+            values[valuesById[13] = "STATUS_TEMPLATES"] = 13;
             return values;
         })();
 
@@ -273355,6 +276285,14 @@ $root.waproto = (function() {
             case 22:
                 message.associationType = 22;
                 break;
+            case "ORIGINAL_VIDEO_DUAL_UPLOAD":
+            case 23:
+                message.associationType = 23;
+                break;
+            case "ORIGINAL_IMAGE_DUAL_UPLOAD":
+            case 24:
+                message.associationType = 24;
+                break;
             default:
                 if (typeof object.associationType === "number" && (object.associationType | 0) === object.associationType)
                     message.associationType = object.associationType;
@@ -279896,6 +282834,7 @@ $root.waproto = (function() {
          * @property {string|null} [decisionId] WebMessageInfo decisionId
          * @property {Array.<string>|null} [decisionSources] WebMessageInfo decisionSources
          * @property {waproto.EventInviteAdditionalMetadata.$Properties|null} [eventInviteAdditionalMetadata] WebMessageInfo eventInviteAdditionalMetadata
+         * @property {number|Long|null} [groupHistoryLastCountedMessageTimestamp] WebMessageInfo groupHistoryLastCountedMessageTimestamp
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -279983,6 +282922,7 @@ $root.waproto = (function() {
          *   decisionId?: string|null;
          *   decisionSources?: Array.<string>|null;
          *   eventInviteAdditionalMetadata?: waproto.EventInviteAdditionalMetadata.$Shape|null;
+         *   groupHistoryLastCountedMessageTimestamp?: number|Long|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.WebMessageInfo.$Shape
          */
@@ -280597,6 +283537,14 @@ $root.waproto = (function() {
          */
         WebMessageInfo.prototype.eventInviteAdditionalMetadata = null;
 
+        /**
+         * WebMessageInfo groupHistoryLastCountedMessageTimestamp.
+         * @member {number|Long|null|undefined} groupHistoryLastCountedMessageTimestamp
+         * @memberof waproto.WebMessageInfo
+         * @instance
+         */
+        WebMessageInfo.prototype.groupHistoryLastCountedMessageTimestamp = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -280966,6 +283914,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(WebMessageInfo.prototype, "_groupHistoryLastCountedMessageTimestamp", {
+            get: $util.oneOfGetter($oneOfFields = ["groupHistoryLastCountedMessageTimestamp"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
          * @function create
@@ -281154,6 +284108,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 83, wireType 2 =*/666).string(message.decisionSources[i]);
             if (message.eventInviteAdditionalMetadata != null && $Object.hasOwnProperty.call(message, "eventInviteAdditionalMetadata"))
                 $root.waproto.EventInviteAdditionalMetadata.encode(message.eventInviteAdditionalMetadata, writer.uint32(/* id 84, wireType 2 =*/674).fork(), _depth + 1).ldelim();
+            if (message.groupHistoryLastCountedMessageTimestamp != null && $Object.hasOwnProperty.call(message, "groupHistoryLastCountedMessageTimestamp"))
+                writer.uint32(/* id 85, wireType 0 =*/680).uint64(message.groupHistoryLastCountedMessageTimestamp);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -281732,6 +284688,13 @@ $root.waproto = (function() {
                         message._eventInviteAdditionalMetadata = "eventInviteAdditionalMetadata";
                         continue;
                     }
+                case 85: {
+                        if (wireType !== 0)
+                            break;
+                        message.groupHistoryLastCountedMessageTimestamp = reader.uint64();
+                        message._groupHistoryLastCountedMessageTimestamp = "groupHistoryLastCountedMessageTimestamp";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -282250,6 +285213,11 @@ $root.waproto = (function() {
                     if (error)
                         return "eventInviteAdditionalMetadata." + error;
                 }
+            }
+            if (message.groupHistoryLastCountedMessageTimestamp != null && $Object.hasOwnProperty.call(message, "groupHistoryLastCountedMessageTimestamp")) {
+                properties._groupHistoryLastCountedMessageTimestamp = 1;
+                if (!$util.isInteger(message.groupHistoryLastCountedMessageTimestamp) && !(message.groupHistoryLastCountedMessageTimestamp && $util.isInteger(message.groupHistoryLastCountedMessageTimestamp.low) && $util.isInteger(message.groupHistoryLastCountedMessageTimestamp.high)))
+                    return "groupHistoryLastCountedMessageTimestamp: integer|Long expected";
             }
             return null;
         };
@@ -283731,6 +286699,15 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.WebMessageInfo.eventInviteAdditionalMetadata: object expected");
                 message.eventInviteAdditionalMetadata = $root.waproto.EventInviteAdditionalMetadata.fromObject(object.eventInviteAdditionalMetadata, _depth + 1);
             }
+            if (object.groupHistoryLastCountedMessageTimestamp != null)
+                if ($util.Long)
+                    message.groupHistoryLastCountedMessageTimestamp = $util.Long.fromValue(object.groupHistoryLastCountedMessageTimestamp, true);
+                else if (typeof object.groupHistoryLastCountedMessageTimestamp === "string")
+                    message.groupHistoryLastCountedMessageTimestamp = $parseInt(object.groupHistoryLastCountedMessageTimestamp, 10);
+                else if (typeof object.groupHistoryLastCountedMessageTimestamp === "number")
+                    message.groupHistoryLastCountedMessageTimestamp = object.groupHistoryLastCountedMessageTimestamp;
+                else if (typeof object.groupHistoryLastCountedMessageTimestamp === "object")
+                    message.groupHistoryLastCountedMessageTimestamp = new $util.LongBits(object.groupHistoryLastCountedMessageTimestamp.low >>> 0, object.groupHistoryLastCountedMessageTimestamp.high >>> 0).toNumber(true);
             return message;
         };
 
@@ -283975,6 +286952,13 @@ $root.waproto = (function() {
             }
             if (message.eventInviteAdditionalMetadata != null && $Object.hasOwnProperty.call(message, "eventInviteAdditionalMetadata"))
                 object.eventInviteAdditionalMetadata = $root.waproto.EventInviteAdditionalMetadata.toObject(message.eventInviteAdditionalMetadata, options, _depth + 1);
+            if (message.groupHistoryLastCountedMessageTimestamp != null && $Object.hasOwnProperty.call(message, "groupHistoryLastCountedMessageTimestamp"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.groupHistoryLastCountedMessageTimestamp = typeof message.groupHistoryLastCountedMessageTimestamp === "number" ? $BigInt(message.groupHistoryLastCountedMessageTimestamp) : $util.Long.fromBits(message.groupHistoryLastCountedMessageTimestamp.low >>> 0, message.groupHistoryLastCountedMessageTimestamp.high >>> 0, true).toBigInt();
+                else if (typeof message.groupHistoryLastCountedMessageTimestamp === "number")
+                    object.groupHistoryLastCountedMessageTimestamp = options.longs === $String ? $String(message.groupHistoryLastCountedMessageTimestamp) : message.groupHistoryLastCountedMessageTimestamp;
+                else
+                    object.groupHistoryLastCountedMessageTimestamp = options.longs === $String ? $util.Long.prototype.toString.call(message.groupHistoryLastCountedMessageTimestamp) : options.longs === $Number ? new $util.LongBits(message.groupHistoryLastCountedMessageTimestamp.low >>> 0, message.groupHistoryLastCountedMessageTimestamp.high >>> 0).toNumber(true) : message.groupHistoryLastCountedMessageTimestamp;
             return object;
         };
 

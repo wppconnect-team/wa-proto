@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1053411851
+/// WhatsApp Version: 2.3000.1053450417
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -308,6 +308,12 @@ message Account {
     optional string username = 2;
     optional string countryCode = 3;
     optional bool isUsernameDeleted = 4;
+    optional PnLearnState pnLearnState = 6;
+    enum PnLearnState {
+        UNSET = 0;
+        SHARED = 1;
+        HIDDEN = 2;
+    }
 }
 
 message AccountLinkingOpaqueData {
@@ -507,6 +513,9 @@ message BotCapabilityMetadata {
         AI_STUDY_QUIZ_ENABLED = 82;
         HATCH_CVM_ENABLED = 83;
         RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84;
+        AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED = 85;
+        AI_INTERJECTIONS_ENABLED = 86;
+        AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87;
     }
 }
 
@@ -1228,6 +1237,7 @@ message ClientPairingProps {
     optional bytes subscriptionSyncPayload = 5;
     optional bool isBotJidDbMigrated = 6;
     optional bytes companionAddPeerPayload = 7;
+    optional bool isCompanionRegistrationFgsEnabled = 8;
 }
 
 message ClientPayload {
@@ -1268,6 +1278,7 @@ message ClientPayload {
     repeated string pairedPeripherals = 47;
     optional bytes testIsolationId = 48;
     optional int64 messageSts = 49;
+    optional IntegrationAttestation integrationAttestation = 50;
     enum AccountType {
         DEFAULT = 0;
         GUEST = 1;
@@ -1329,6 +1340,11 @@ message ClientPayload {
         SERVICE_EXTENSION = 1;
         INTENTS_EXTENSION = 2;
     }
+    message IntegrationAttestation {
+        optional string staticUnbound = 1;
+        optional string onlineSigned = 3;
+    }
+    
     message InteropData {
         optional uint64 accountId = 1;
         optional bytes token = 2;
@@ -1380,6 +1396,7 @@ message ClientPayload {
             VR = 4;
             SMART_DISPLAY = 5;
             SMART_SPEAKER = 6;
+            AGENT = 7;
         }
         enum DistributionChannel {
             APPSTORE = 0;
@@ -1780,6 +1797,8 @@ message ContextInfo {
         AV1_VIDEO_CHILD = 10;
         STREAMED_VIDEO_PARENT = 11;
         STREAMED_VIDEO_CHILD = 12;
+        ORIGINAL_VIDEO_CHILD = 13;
+        ORIGINAL_IMAGE_CHILD = 14;
     }
     message PartiallySelectedContent {
         optional string text = 1;
@@ -1896,6 +1915,7 @@ message Conversation {
     optional IdentityVerificationState identityVerification = 63;
     optional ACP2Setting acp2Setting = 64;
     optional bool acp2HistoryWithheld = 65;
+    repeated GroupRootKey groupRootKeys = 66;
     enum EndOfHistoryTransferType {
         COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0;
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
@@ -1924,6 +1944,7 @@ message DeviceCapabilities {
     optional NewsletterChatsMigration newsletterChatsMigration = 11;
     optional HostWriteMutationSupport hostWriteMutationSupport = 12;
     optional BizAiWebOnboarding bizAiWebOnboarding = 13;
+    optional PhoneNumberSharing phoneNumberSharing = 14;
     message AiFbidMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
         optional uint32 supportVersion = 2;
@@ -1981,6 +2002,10 @@ message DeviceCapabilities {
         optional bool effectiveMigrated = 1;
         optional int64 countdownEndsAt = 2;
         optional bool rolledBack = 3;
+    }
+    
+    message PhoneNumberSharing {
+        optional bool phoneSharingSupported = 1;
     }
     
     message ReverseHistorySync {
@@ -2274,6 +2299,16 @@ message GroupParticipant {
         ADMIN = 1;
         SUPERADMIN = 2;
     }
+}
+
+message GroupRootKey {
+    optional string keyId = 1;
+    optional bytes rootKey = 2;
+    optional bool isCurrent = 3;
+}
+
+message GroupRootKeyRequest {
+    optional string keyId = 1;
 }
 
 message GroupRootKeyShare {
@@ -2634,6 +2669,13 @@ enum MediaVisibility {
 message MemberLabel {
     optional string label = 1;
     optional int64 labelTimestamp = 2;
+    optional bool showAdminBadge = 3;
+}
+
+message MembershipFormKeyFingerprintVerification {
+    optional string requestId = 1;
+    optional string keyId = 2;
+    optional bytes keyFingerprint = 3;
 }
 
 message Message {
@@ -2754,6 +2796,7 @@ message Message {
     optional RequestLocationMessage requestLocationMessage = 136;
     optional FutureProofMessage botGroupParticipantMessage = 137;
     optional RequestLocationUpdateMessage requestLocationUpdateMessage = 138;
+    optional VpcRequestMessage vpcRequestMessage = 139;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -4215,6 +4258,9 @@ message Message {
         optional Message.SharedDeviceContactHashKeyShare sharedDeviceContactHashKeyShare = 36;
         optional Message.SharedDeviceContactHashKeyRequest sharedDeviceContactHashKeyRequest = 37;
         repeated string additionalPromptIds = 38;
+        optional GroupRootKeyRequest groupRootKeyRequest = 39;
+        optional MembershipFormKeyFingerprintVerification membershipFormKeyFingerprintVerification = 40;
+        optional GroupRootKeyShare groupRootKeyShare = 41;
         enum Type {
             REVOKE = 0;
             EPHEMERAL_SETTING = 3;
@@ -4251,6 +4297,9 @@ message Message {
             ACP2_SETTING = 39;
             SHARED_DEVICE_CONTACT_HASH_KEY_SHARE = 40;
             SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41;
+            GROUP_ROOT_KEY_REQUEST = 42;
+            MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43;
+            GROUP_ROOT_KEY_SHARE = 44;
         }
     }
     
@@ -4629,6 +4678,22 @@ message Message {
         }
     }
     
+    message VpcRequestMessage {
+        optional uint32 payloadSchemaVersion = 1;
+        optional string requestId = 2;
+        optional string launchRef = 3;
+        optional int64 invitationExpiresAtMs = 4;
+        optional ScopeHint scopeHint = 5;
+        enum ScopeHint {
+            UNKNOWN = 0;
+            WA_ONLY = 1;
+            WAFFLE = 2;
+            WA_META_AI = 3;
+            META_AI_ONLY = 4;
+            FOA_ONLY = 5;
+        }
+    }
+    
 }
 
 message MessageAddOn {
@@ -4683,6 +4748,8 @@ message MessageAssociation {
         POLL_ADD_OPTION = 20;
         AV1_VIDEO_DUAL_UPLOAD = 21;
         STREAMED_HD_VIDEO_DUAL_UPLOAD = 22;
+        ORIGINAL_VIDEO_DUAL_UPLOAD = 23;
+        ORIGINAL_IMAGE_DUAL_UPLOAD = 24;
     }
 }
 
@@ -5489,6 +5556,7 @@ message StatusAttribution {
         StatusAttribution.GroupStatus groupStatus = 6;
         StatusAttribution.RLAttribution rlAttribution = 7;
         StatusAttribution.AiCreatedAttribution aiCreatedAttribution = 8;
+        StatusAttribution.StatusTemplate statusTemplate = 9;
     }
     message AiCreatedAttribution {
         optional Source source = 1;
@@ -5563,6 +5631,12 @@ message StatusAttribution {
         }
     }
     
+    message StatusTemplate {
+        optional string templateId = 1;
+        optional string templateName = 2;
+        optional string thumbnailUrl = 3;
+    }
+    
     enum Type {
         UNKNOWN = 0;
         RESHARE = 1;
@@ -5577,6 +5651,7 @@ message StatusAttribution {
         STATUS_CLOSE_SHARING = 10;
         PAID_PARTNERSHIP = 11;
         USERNAME_STATUS = 12;
+        STATUS_TEMPLATES = 13;
     }
 }
 
@@ -6766,6 +6841,7 @@ message WebMessageInfo {
     optional string decisionId = 82;
     repeated string decisionSources = 83;
     optional EventInviteAdditionalMetadata eventInviteAdditionalMetadata = 84;
+    optional uint64 groupHistoryLastCountedMessageTimestamp = 85;
     enum BizPrivacyStatus {
         E2EE = 0;
         FB = 2;

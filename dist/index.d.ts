@@ -5095,6 +5095,9 @@ export namespace waproto {
         /** Account isUsernameDeleted. */
         isUsernameDeleted?: (boolean|null);
 
+        /** Account pnLearnState. */
+        pnLearnState?: (waproto.Account.PnLearnState|null);
+
         /**
          * Creates a new Account instance using the specified properties.
          * @param [properties] Properties to set
@@ -5191,12 +5194,28 @@ export namespace waproto {
             /** Account isUsernameDeleted */
             isUsernameDeleted?: (boolean|null);
 
+            /** Account pnLearnState */
+            pnLearnState?: (waproto.Account.PnLearnState|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
 
         /** Shape of an Account. */
         type $Shape = waproto.Account.$Properties;
+
+        /** PnLearnState enum. */
+        enum PnLearnState {
+
+            /** UNSET value */
+            UNSET = 0,
+
+            /** SHARED value */
+            SHARED = 1,
+
+            /** HIDDEN value */
+            HIDDEN = 2
+        }
     }
 
     /**
@@ -7335,7 +7354,16 @@ export namespace waproto {
             HATCH_CVM_ENABLED = 83,
 
             /** RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED value */
-            RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84
+            RICH_RESPONSE_SOCIAL_ENTITY_PREFETCH_SCHEDULER_ENABLED = 84,
+
+            /** AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED value */
+            AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED = 85,
+
+            /** AI_INTERJECTIONS_ENABLED value */
+            AI_INTERJECTIONS_ENABLED = 86,
+
+            /** AI_RICH_RESPONSE_READ_ALOUD_ENABLED value */
+            AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87
         }
     }
 
@@ -17275,6 +17303,9 @@ export namespace waproto {
         /** ClientPairingProps companionAddPeerPayload. */
         companionAddPeerPayload?: (Uint8Array|null);
 
+        /** ClientPairingProps isCompanionRegistrationFgsEnabled. */
+        isCompanionRegistrationFgsEnabled?: (boolean|null);
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @param [properties] Properties to set
@@ -17379,6 +17410,9 @@ export namespace waproto {
 
             /** ClientPairingProps companionAddPeerPayload */
             companionAddPeerPayload?: (Uint8Array|null);
+
+            /** ClientPairingProps isCompanionRegistrationFgsEnabled */
+            isCompanionRegistrationFgsEnabled?: (boolean|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -17517,6 +17551,9 @@ export namespace waproto {
 
         /** ClientPayload messageSts. */
         messageSts?: (number|Long|null);
+
+        /** ClientPayload integrationAttestation. */
+        integrationAttestation?: (waproto.ClientPayload.IntegrationAttestation.$Properties|null);
 
         /**
          * Creates a new ClientPayload instance using the specified properties.
@@ -17712,6 +17749,9 @@ export namespace waproto {
 
             /** ClientPayload messageSts */
             messageSts?: (number|Long|null);
+
+            /** ClientPayload integrationAttestation */
+            integrationAttestation?: (waproto.ClientPayload.IntegrationAttestation.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -18125,6 +18165,129 @@ export namespace waproto {
 
             /** INTENTS_EXTENSION value */
             INTENTS_EXTENSION = 2
+        }
+
+        /**
+         * Properties of an IntegrationAttestation.
+         * @deprecated Use waproto.ClientPayload.IntegrationAttestation.$Properties instead.
+         */
+        interface IIntegrationAttestation extends waproto.ClientPayload.IntegrationAttestation.$Properties {
+        }
+
+        /** Represents an IntegrationAttestation. */
+        class IntegrationAttestation {
+
+            /**
+             * Constructs a new IntegrationAttestation.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.ClientPayload.IntegrationAttestation.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** IntegrationAttestation staticUnbound. */
+            staticUnbound?: (string|null);
+
+            /** IntegrationAttestation onlineSigned. */
+            onlineSigned?: (string|null);
+
+            /**
+             * Creates a new IntegrationAttestation instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns IntegrationAttestation instance
+             */
+            static create(properties: waproto.ClientPayload.IntegrationAttestation.$Shape): waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape;
+            static create(properties?: waproto.ClientPayload.IntegrationAttestation.$Properties): waproto.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Encodes the specified IntegrationAttestation message. Does not implicitly {@link waproto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @param message IntegrationAttestation message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.ClientPayload.IntegrationAttestation.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified IntegrationAttestation message, length delimited. Does not implicitly {@link waproto.ClientPayload.IntegrationAttestation.verify|verify} messages.
+             * @param message IntegrationAttestation message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.ClientPayload.IntegrationAttestation.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape;
+
+            /**
+             * Decodes an IntegrationAttestation message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape} IntegrationAttestation
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ClientPayload.IntegrationAttestation & waproto.ClientPayload.IntegrationAttestation.$Shape;
+
+            /**
+             * Verifies an IntegrationAttestation message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an IntegrationAttestation message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns IntegrationAttestation
+             */
+            static fromObject(object: { [k: string]: any }): waproto.ClientPayload.IntegrationAttestation;
+
+            /**
+             * Creates a plain object from an IntegrationAttestation message. Also converts values to other types if specified.
+             * @param message IntegrationAttestation
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.ClientPayload.IntegrationAttestation, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this IntegrationAttestation to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for IntegrationAttestation
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace IntegrationAttestation {
+
+            /** Properties of an IntegrationAttestation. */
+            interface $Properties {
+
+                /** IntegrationAttestation staticUnbound */
+                staticUnbound?: (string|null);
+
+                /** IntegrationAttestation onlineSigned */
+                onlineSigned?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of an IntegrationAttestation. */
+            type $Shape = waproto.ClientPayload.IntegrationAttestation.$Properties;
         }
 
         /**
@@ -18660,7 +18823,10 @@ export namespace waproto {
                 SMART_DISPLAY = 5,
 
                 /** SMART_SPEAKER value */
-                SMART_SPEAKER = 6
+                SMART_SPEAKER = 6,
+
+                /** AGENT value */
+                AGENT = 7
             }
 
             /** DistributionChannel enum. */
@@ -22790,7 +22956,13 @@ export namespace waproto {
             STREAMED_VIDEO_PARENT = 11,
 
             /** STREAMED_VIDEO_CHILD value */
-            STREAMED_VIDEO_CHILD = 12
+            STREAMED_VIDEO_CHILD = 12,
+
+            /** ORIGINAL_VIDEO_CHILD value */
+            ORIGINAL_VIDEO_CHILD = 13,
+
+            /** ORIGINAL_IMAGE_CHILD value */
+            ORIGINAL_IMAGE_CHILD = 14
         }
 
         /**
@@ -23584,6 +23756,9 @@ export namespace waproto {
         /** Conversation acp2HistoryWithheld. */
         acp2HistoryWithheld?: (boolean|null);
 
+        /** Conversation groupRootKeys. */
+        groupRootKeys: waproto.GroupRootKey.$Properties[];
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -23863,6 +24038,9 @@ export namespace waproto {
             /** Conversation acp2HistoryWithheld */
             acp2HistoryWithheld?: (boolean|null);
 
+            /** Conversation groupRootKeys */
+            groupRootKeys?: (waproto.GroupRootKey.$Properties[]|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -23934,6 +24112,7 @@ export namespace waproto {
           identityVerification?: waproto.IdentityVerificationState.$Shape|null;
           acp2Setting?: waproto.ACP2Setting.$Shape|null;
           acp2HistoryWithheld?: boolean|null;
+          groupRootKeys?: waproto.GroupRootKey.$Shape[]|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -24027,6 +24206,9 @@ export namespace waproto {
 
         /** DeviceCapabilities bizAiWebOnboarding. */
         bizAiWebOnboarding?: (waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
+
+        /** DeviceCapabilities phoneNumberSharing. */
+        phoneNumberSharing?: (waproto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
 
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
@@ -24150,6 +24332,9 @@ export namespace waproto {
 
             /** DeviceCapabilities bizAiWebOnboarding */
             bizAiWebOnboarding?: (waproto.DeviceCapabilities.BizAiWebOnboarding.$Properties|null);
+
+            /** DeviceCapabilities phoneNumberSharing */
+            phoneNumberSharing?: (waproto.DeviceCapabilities.PhoneNumberSharing.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -25296,6 +25481,123 @@ export namespace waproto {
 
             /** Shape of a NewsletterChatsMigration. */
             type $Shape = waproto.DeviceCapabilities.NewsletterChatsMigration.$Properties;
+        }
+
+        /**
+         * Properties of a PhoneNumberSharing.
+         * @deprecated Use waproto.DeviceCapabilities.PhoneNumberSharing.$Properties instead.
+         */
+        interface IPhoneNumberSharing extends waproto.DeviceCapabilities.PhoneNumberSharing.$Properties {
+        }
+
+        /** Represents a PhoneNumberSharing. */
+        class PhoneNumberSharing {
+
+            /**
+             * Constructs a new PhoneNumberSharing.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.PhoneNumberSharing.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** PhoneNumberSharing phoneSharingSupported. */
+            phoneSharingSupported?: (boolean|null);
+
+            /**
+             * Creates a new PhoneNumberSharing instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PhoneNumberSharing instance
+             */
+            static create(properties: waproto.DeviceCapabilities.PhoneNumberSharing.$Shape): waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.PhoneNumberSharing.$Properties): waproto.DeviceCapabilities.PhoneNumberSharing;
+
+            /**
+             * Encodes the specified PhoneNumberSharing message. Does not implicitly {@link waproto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @param message PhoneNumberSharing message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.PhoneNumberSharing.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PhoneNumberSharing message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.PhoneNumberSharing.verify|verify} messages.
+             * @param message PhoneNumberSharing message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.PhoneNumberSharing.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape} PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape;
+
+            /**
+             * Decodes a PhoneNumberSharing message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape} PhoneNumberSharing
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.PhoneNumberSharing & waproto.DeviceCapabilities.PhoneNumberSharing.$Shape;
+
+            /**
+             * Verifies a PhoneNumberSharing message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PhoneNumberSharing message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PhoneNumberSharing
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.PhoneNumberSharing;
+
+            /**
+             * Creates a plain object from a PhoneNumberSharing message. Also converts values to other types if specified.
+             * @param message PhoneNumberSharing
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.PhoneNumberSharing, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PhoneNumberSharing to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for PhoneNumberSharing
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace PhoneNumberSharing {
+
+            /** Properties of a PhoneNumberSharing. */
+            interface $Properties {
+
+                /** PhoneNumberSharing phoneSharingSupported */
+                phoneSharingSupported?: (boolean|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a PhoneNumberSharing. */
+            type $Shape = waproto.DeviceCapabilities.PhoneNumberSharing.$Properties;
         }
 
         /**
@@ -29480,6 +29782,252 @@ export namespace waproto {
             /** SUPERADMIN value */
             SUPERADMIN = 2
         }
+    }
+
+    /**
+     * Properties of a GroupRootKey.
+     * @deprecated Use waproto.GroupRootKey.$Properties instead.
+     */
+    interface IGroupRootKey extends waproto.GroupRootKey.$Properties {
+    }
+
+    /** Represents a GroupRootKey. */
+    class GroupRootKey {
+
+        /**
+         * Constructs a new GroupRootKey.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupRootKey.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupRootKey keyId. */
+        keyId?: (string|null);
+
+        /** GroupRootKey rootKey. */
+        rootKey?: (Uint8Array|null);
+
+        /** GroupRootKey isCurrent. */
+        isCurrent?: (boolean|null);
+
+        /**
+         * Creates a new GroupRootKey instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupRootKey instance
+         */
+        static create(properties: waproto.GroupRootKey.$Shape): waproto.GroupRootKey & waproto.GroupRootKey.$Shape;
+        static create(properties?: waproto.GroupRootKey.$Properties): waproto.GroupRootKey;
+
+        /**
+         * Encodes the specified GroupRootKey message. Does not implicitly {@link waproto.GroupRootKey.verify|verify} messages.
+         * @param message GroupRootKey message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupRootKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupRootKey message, length delimited. Does not implicitly {@link waproto.GroupRootKey.verify|verify} messages.
+         * @param message GroupRootKey message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupRootKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupRootKey & waproto.GroupRootKey.$Shape} GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupRootKey & waproto.GroupRootKey.$Shape;
+
+        /**
+         * Decodes a GroupRootKey message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupRootKey & waproto.GroupRootKey.$Shape} GroupRootKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupRootKey & waproto.GroupRootKey.$Shape;
+
+        /**
+         * Verifies a GroupRootKey message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupRootKey message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupRootKey
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupRootKey;
+
+        /**
+         * Creates a plain object from a GroupRootKey message. Also converts values to other types if specified.
+         * @param message GroupRootKey
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupRootKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupRootKey to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupRootKey
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupRootKey {
+
+        /** Properties of a GroupRootKey. */
+        interface $Properties {
+
+            /** GroupRootKey keyId */
+            keyId?: (string|null);
+
+            /** GroupRootKey rootKey */
+            rootKey?: (Uint8Array|null);
+
+            /** GroupRootKey isCurrent */
+            isCurrent?: (boolean|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupRootKey. */
+        type $Shape = waproto.GroupRootKey.$Properties;
+    }
+
+    /**
+     * Properties of a GroupRootKeyRequest.
+     * @deprecated Use waproto.GroupRootKeyRequest.$Properties instead.
+     */
+    interface IGroupRootKeyRequest extends waproto.GroupRootKeyRequest.$Properties {
+    }
+
+    /** Represents a GroupRootKeyRequest. */
+    class GroupRootKeyRequest {
+
+        /**
+         * Constructs a new GroupRootKeyRequest.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupRootKeyRequest.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupRootKeyRequest keyId. */
+        keyId?: (string|null);
+
+        /**
+         * Creates a new GroupRootKeyRequest instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupRootKeyRequest instance
+         */
+        static create(properties: waproto.GroupRootKeyRequest.$Shape): waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape;
+        static create(properties?: waproto.GroupRootKeyRequest.$Properties): waproto.GroupRootKeyRequest;
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message. Does not implicitly {@link waproto.GroupRootKeyRequest.verify|verify} messages.
+         * @param message GroupRootKeyRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupRootKeyRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupRootKeyRequest message, length delimited. Does not implicitly {@link waproto.GroupRootKeyRequest.verify|verify} messages.
+         * @param message GroupRootKeyRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupRootKeyRequest.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape} GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape;
+
+        /**
+         * Decodes a GroupRootKeyRequest message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape} GroupRootKeyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupRootKeyRequest & waproto.GroupRootKeyRequest.$Shape;
+
+        /**
+         * Verifies a GroupRootKeyRequest message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupRootKeyRequest message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupRootKeyRequest
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupRootKeyRequest;
+
+        /**
+         * Creates a plain object from a GroupRootKeyRequest message. Also converts values to other types if specified.
+         * @param message GroupRootKeyRequest
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupRootKeyRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupRootKeyRequest to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupRootKeyRequest
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupRootKeyRequest {
+
+        /** Properties of a GroupRootKeyRequest. */
+        interface $Properties {
+
+            /** GroupRootKeyRequest keyId */
+            keyId?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupRootKeyRequest. */
+        type $Shape = waproto.GroupRootKeyRequest.$Properties;
     }
 
     /**
@@ -34892,6 +35440,9 @@ export namespace waproto {
         /** MemberLabel labelTimestamp. */
         labelTimestamp?: (number|Long|null);
 
+        /** MemberLabel showAdminBadge. */
+        showAdminBadge?: (boolean|null);
+
         /**
          * Creates a new MemberLabel instance using the specified properties.
          * @param [properties] Properties to set
@@ -34982,12 +35533,144 @@ export namespace waproto {
             /** MemberLabel labelTimestamp */
             labelTimestamp?: (number|Long|null);
 
+            /** MemberLabel showAdminBadge */
+            showAdminBadge?: (boolean|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
 
         /** Shape of a MemberLabel. */
         type $Shape = waproto.MemberLabel.$Properties;
+    }
+
+    /**
+     * Properties of a MembershipFormKeyFingerprintVerification.
+     * @deprecated Use waproto.MembershipFormKeyFingerprintVerification.$Properties instead.
+     */
+    interface IMembershipFormKeyFingerprintVerification extends waproto.MembershipFormKeyFingerprintVerification.$Properties {
+    }
+
+    /** Represents a MembershipFormKeyFingerprintVerification. */
+    class MembershipFormKeyFingerprintVerification {
+
+        /**
+         * Constructs a new MembershipFormKeyFingerprintVerification.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.MembershipFormKeyFingerprintVerification.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** MembershipFormKeyFingerprintVerification requestId. */
+        requestId?: (string|null);
+
+        /** MembershipFormKeyFingerprintVerification keyId. */
+        keyId?: (string|null);
+
+        /** MembershipFormKeyFingerprintVerification keyFingerprint. */
+        keyFingerprint?: (Uint8Array|null);
+
+        /**
+         * Creates a new MembershipFormKeyFingerprintVerification instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MembershipFormKeyFingerprintVerification instance
+         */
+        static create(properties: waproto.MembershipFormKeyFingerprintVerification.$Shape): waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape;
+        static create(properties?: waproto.MembershipFormKeyFingerprintVerification.$Properties): waproto.MembershipFormKeyFingerprintVerification;
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message. Does not implicitly {@link waproto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @param message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.MembershipFormKeyFingerprintVerification.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MembershipFormKeyFingerprintVerification message, length delimited. Does not implicitly {@link waproto.MembershipFormKeyFingerprintVerification.verify|verify} messages.
+         * @param message MembershipFormKeyFingerprintVerification message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.MembershipFormKeyFingerprintVerification.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape} MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape;
+
+        /**
+         * Decodes a MembershipFormKeyFingerprintVerification message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape} MembershipFormKeyFingerprintVerification
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MembershipFormKeyFingerprintVerification & waproto.MembershipFormKeyFingerprintVerification.$Shape;
+
+        /**
+         * Verifies a MembershipFormKeyFingerprintVerification message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MembershipFormKeyFingerprintVerification message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MembershipFormKeyFingerprintVerification
+         */
+        static fromObject(object: { [k: string]: any }): waproto.MembershipFormKeyFingerprintVerification;
+
+        /**
+         * Creates a plain object from a MembershipFormKeyFingerprintVerification message. Also converts values to other types if specified.
+         * @param message MembershipFormKeyFingerprintVerification
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.MembershipFormKeyFingerprintVerification, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MembershipFormKeyFingerprintVerification to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for MembershipFormKeyFingerprintVerification
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace MembershipFormKeyFingerprintVerification {
+
+        /** Properties of a MembershipFormKeyFingerprintVerification. */
+        interface $Properties {
+
+            /** MembershipFormKeyFingerprintVerification requestId */
+            requestId?: (string|null);
+
+            /** MembershipFormKeyFingerprintVerification keyId */
+            keyId?: (string|null);
+
+            /** MembershipFormKeyFingerprintVerification keyFingerprint */
+            keyFingerprint?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a MembershipFormKeyFingerprintVerification. */
+        type $Shape = waproto.MembershipFormKeyFingerprintVerification.$Properties;
     }
 
     /**
@@ -35359,6 +36042,9 @@ export namespace waproto {
 
         /** Message requestLocationUpdateMessage. */
         requestLocationUpdateMessage?: (waproto.Message.RequestLocationUpdateMessage.$Properties|null);
+
+        /** Message vpcRequestMessage. */
+        vpcRequestMessage?: (waproto.Message.VpcRequestMessage.$Properties|null);
 
         /**
          * Creates a new Message instance using the specified properties.
@@ -35795,6 +36481,9 @@ export namespace waproto {
             /** Message requestLocationUpdateMessage */
             requestLocationUpdateMessage?: (waproto.Message.RequestLocationUpdateMessage.$Properties|null);
 
+            /** Message vpcRequestMessage */
+            vpcRequestMessage?: (waproto.Message.VpcRequestMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -35918,6 +36607,7 @@ export namespace waproto {
           requestLocationMessage?: waproto.Message.RequestLocationMessage.$Shape|null;
           botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           requestLocationUpdateMessage?: waproto.Message.RequestLocationUpdateMessage.$Shape|null;
+          vpcRequestMessage?: waproto.Message.VpcRequestMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -57869,6 +58559,15 @@ export namespace waproto {
             /** ProtocolMessage additionalPromptIds. */
             additionalPromptIds: string[];
 
+            /** ProtocolMessage groupRootKeyRequest. */
+            groupRootKeyRequest?: (waproto.GroupRootKeyRequest.$Properties|null);
+
+            /** ProtocolMessage membershipFormKeyFingerprintVerification. */
+            membershipFormKeyFingerprintVerification?: (waproto.MembershipFormKeyFingerprintVerification.$Properties|null);
+
+            /** ProtocolMessage groupRootKeyShare. */
+            groupRootKeyShare?: (waproto.GroupRootKeyShare.$Properties|null);
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -58055,6 +58754,15 @@ export namespace waproto {
                 /** ProtocolMessage additionalPromptIds */
                 additionalPromptIds?: (string[]|null);
 
+                /** ProtocolMessage groupRootKeyRequest */
+                groupRootKeyRequest?: (waproto.GroupRootKeyRequest.$Properties|null);
+
+                /** ProtocolMessage membershipFormKeyFingerprintVerification */
+                membershipFormKeyFingerprintVerification?: (waproto.MembershipFormKeyFingerprintVerification.$Properties|null);
+
+                /** ProtocolMessage groupRootKeyShare */
+                groupRootKeyShare?: (waproto.GroupRootKeyShare.$Properties|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -58095,6 +58803,9 @@ export namespace waproto {
               sharedDeviceContactHashKeyShare?: waproto.Message.SharedDeviceContactHashKeyShare.$Shape|null;
               sharedDeviceContactHashKeyRequest?: waproto.Message.SharedDeviceContactHashKeyRequest.$Shape|null;
               additionalPromptIds?: string[]|null;
+              groupRootKeyRequest?: waproto.GroupRootKeyRequest.$Shape|null;
+              membershipFormKeyFingerprintVerification?: waproto.MembershipFormKeyFingerprintVerification.$Shape|null;
+              groupRootKeyShare?: waproto.GroupRootKeyShare.$Shape|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -58204,7 +58915,16 @@ export namespace waproto {
                 SHARED_DEVICE_CONTACT_HASH_KEY_SHARE = 40,
 
                 /** SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST value */
-                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41
+                SHARED_DEVICE_CONTACT_HASH_KEY_REQUEST = 41,
+
+                /** GROUP_ROOT_KEY_REQUEST value */
+                GROUP_ROOT_KEY_REQUEST = 42,
+
+                /** MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION value */
+                MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43,
+
+                /** GROUP_ROOT_KEY_SHARE value */
+                GROUP_ROOT_KEY_SHARE = 44
             }
         }
 
@@ -63597,6 +64317,169 @@ export namespace waproto {
                 AI_GENERATED = 1
             }
         }
+
+        /**
+         * Properties of a VpcRequestMessage.
+         * @deprecated Use waproto.Message.VpcRequestMessage.$Properties instead.
+         */
+        interface IVpcRequestMessage extends waproto.Message.VpcRequestMessage.$Properties {
+        }
+
+        /** Represents a VpcRequestMessage. */
+        class VpcRequestMessage {
+
+            /**
+             * Constructs a new VpcRequestMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.VpcRequestMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** VpcRequestMessage payloadSchemaVersion. */
+            payloadSchemaVersion?: (number|null);
+
+            /** VpcRequestMessage requestId. */
+            requestId?: (string|null);
+
+            /** VpcRequestMessage launchRef. */
+            launchRef?: (string|null);
+
+            /** VpcRequestMessage invitationExpiresAtMs. */
+            invitationExpiresAtMs?: (number|Long|null);
+
+            /** VpcRequestMessage scopeHint. */
+            scopeHint?: (waproto.Message.VpcRequestMessage.ScopeHint|null);
+
+            /**
+             * Creates a new VpcRequestMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns VpcRequestMessage instance
+             */
+            static create(properties: waproto.Message.VpcRequestMessage.$Shape): waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape;
+            static create(properties?: waproto.Message.VpcRequestMessage.$Properties): waproto.Message.VpcRequestMessage;
+
+            /**
+             * Encodes the specified VpcRequestMessage message. Does not implicitly {@link waproto.Message.VpcRequestMessage.verify|verify} messages.
+             * @param message VpcRequestMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.VpcRequestMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified VpcRequestMessage message, length delimited. Does not implicitly {@link waproto.Message.VpcRequestMessage.verify|verify} messages.
+             * @param message VpcRequestMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.VpcRequestMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape} VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape;
+
+            /**
+             * Decodes a VpcRequestMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape} VpcRequestMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.VpcRequestMessage & waproto.Message.VpcRequestMessage.$Shape;
+
+            /**
+             * Verifies a VpcRequestMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a VpcRequestMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns VpcRequestMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.VpcRequestMessage;
+
+            /**
+             * Creates a plain object from a VpcRequestMessage message. Also converts values to other types if specified.
+             * @param message VpcRequestMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.VpcRequestMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this VpcRequestMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for VpcRequestMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace VpcRequestMessage {
+
+            /** Properties of a VpcRequestMessage. */
+            interface $Properties {
+
+                /** VpcRequestMessage payloadSchemaVersion */
+                payloadSchemaVersion?: (number|null);
+
+                /** VpcRequestMessage requestId */
+                requestId?: (string|null);
+
+                /** VpcRequestMessage launchRef */
+                launchRef?: (string|null);
+
+                /** VpcRequestMessage invitationExpiresAtMs */
+                invitationExpiresAtMs?: (number|Long|null);
+
+                /** VpcRequestMessage scopeHint */
+                scopeHint?: (waproto.Message.VpcRequestMessage.ScopeHint|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a VpcRequestMessage. */
+            type $Shape = waproto.Message.VpcRequestMessage.$Properties;
+
+            /** ScopeHint enum. */
+            enum ScopeHint {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** WA_ONLY value */
+                WA_ONLY = 1,
+
+                /** WAFFLE value */
+                WAFFLE = 2,
+
+                /** WA_META_AI value */
+                WA_META_AI = 3,
+
+                /** META_AI_ONLY value */
+                META_AI_ONLY = 4,
+
+                /** FOA_ONLY value */
+                FOA_ONLY = 5
+            }
+        }
     }
 
     /**
@@ -64111,7 +64994,13 @@ export namespace waproto {
             AV1_VIDEO_DUAL_UPLOAD = 21,
 
             /** STREAMED_HD_VIDEO_DUAL_UPLOAD value */
-            STREAMED_HD_VIDEO_DUAL_UPLOAD = 22
+            STREAMED_HD_VIDEO_DUAL_UPLOAD = 22,
+
+            /** ORIGINAL_VIDEO_DUAL_UPLOAD value */
+            ORIGINAL_VIDEO_DUAL_UPLOAD = 23,
+
+            /** ORIGINAL_IMAGE_DUAL_UPLOAD value */
+            ORIGINAL_IMAGE_DUAL_UPLOAD = 24
         }
     }
 
@@ -74633,8 +75522,11 @@ export namespace waproto {
         /** StatusAttribution aiCreatedAttribution. */
         aiCreatedAttribution?: (waproto.StatusAttribution.AiCreatedAttribution.$Properties|null);
 
+        /** StatusAttribution statusTemplate. */
+        statusTemplate?: (waproto.StatusAttribution.StatusTemplate.$Properties|null);
+
         /** StatusAttribution attributionData. */
-        attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution");
+        attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|"statusTemplate");
 
         /**
          * Creates a new StatusAttribution instance using the specified properties.
@@ -74744,8 +75636,11 @@ export namespace waproto {
             /** StatusAttribution aiCreatedAttribution */
             aiCreatedAttribution?: (waproto.StatusAttribution.AiCreatedAttribution.$Properties|null);
 
+            /** StatusAttribution statusTemplate */
+            statusTemplate?: (waproto.StatusAttribution.StatusTemplate.$Properties|null);
+
             /** StatusAttribution attributionData */
-            attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution");
+            attributionData?: ("statusReshare"|"externalShare"|"music"|"groupStatus"|"rlAttribution"|"aiCreatedAttribution"|"statusTemplate");
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -74761,9 +75656,10 @@ export namespace waproto {
           groupStatus?: waproto.StatusAttribution.GroupStatus.$Shape|null;
           rlAttribution?: waproto.StatusAttribution.RLAttribution.$Shape|null;
           aiCreatedAttribution?: waproto.StatusAttribution.AiCreatedAttribution.$Shape|null;
+          statusTemplate?: waproto.StatusAttribution.StatusTemplate.$Shape|null;
           $unknowns?: Uint8Array[];
         } & (
-          ({ attributionData?: undefined; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "statusReshare"; statusReshare: waproto.StatusAttribution.StatusReshare.$Shape; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "externalShare"; statusReshare?: null; externalShare: waproto.StatusAttribution.ExternalShare.$Shape; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "music"; statusReshare?: null; externalShare?: null; music: waproto.StatusAttribution.Music.$Shape; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "groupStatus"; statusReshare?: null; externalShare?: null; music?: null; groupStatus: waproto.StatusAttribution.GroupStatus.$Shape; rlAttribution?: null; aiCreatedAttribution?: null }|{ attributionData?: "rlAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution: waproto.StatusAttribution.RLAttribution.$Shape; aiCreatedAttribution?: null }|{ attributionData?: "aiCreatedAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution: waproto.StatusAttribution.AiCreatedAttribution.$Shape })
+          ({ attributionData?: undefined; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "statusReshare"; statusReshare: waproto.StatusAttribution.StatusReshare.$Shape; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "externalShare"; statusReshare?: null; externalShare: waproto.StatusAttribution.ExternalShare.$Shape; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "music"; statusReshare?: null; externalShare?: null; music: waproto.StatusAttribution.Music.$Shape; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "groupStatus"; statusReshare?: null; externalShare?: null; music?: null; groupStatus: waproto.StatusAttribution.GroupStatus.$Shape; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "rlAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution: waproto.StatusAttribution.RLAttribution.$Shape; aiCreatedAttribution?: null; statusTemplate?: null }|{ attributionData?: "aiCreatedAttribution"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution: waproto.StatusAttribution.AiCreatedAttribution.$Shape; statusTemplate?: null }|{ attributionData?: "statusTemplate"; statusReshare?: null; externalShare?: null; music?: null; groupStatus?: null; rlAttribution?: null; aiCreatedAttribution?: null; statusTemplate: waproto.StatusAttribution.StatusTemplate.$Shape })
         );
 
         /**
@@ -75748,6 +76644,135 @@ export namespace waproto {
             }
         }
 
+        /**
+         * Properties of a StatusTemplate.
+         * @deprecated Use waproto.StatusAttribution.StatusTemplate.$Properties instead.
+         */
+        interface IStatusTemplate extends waproto.StatusAttribution.StatusTemplate.$Properties {
+        }
+
+        /** Represents a StatusTemplate. */
+        class StatusTemplate {
+
+            /**
+             * Constructs a new StatusTemplate.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.StatusAttribution.StatusTemplate.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** StatusTemplate templateId. */
+            templateId?: (string|null);
+
+            /** StatusTemplate templateName. */
+            templateName?: (string|null);
+
+            /** StatusTemplate thumbnailUrl. */
+            thumbnailUrl?: (string|null);
+
+            /**
+             * Creates a new StatusTemplate instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns StatusTemplate instance
+             */
+            static create(properties: waproto.StatusAttribution.StatusTemplate.$Shape): waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape;
+            static create(properties?: waproto.StatusAttribution.StatusTemplate.$Properties): waproto.StatusAttribution.StatusTemplate;
+
+            /**
+             * Encodes the specified StatusTemplate message. Does not implicitly {@link waproto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @param message StatusTemplate message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.StatusAttribution.StatusTemplate.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified StatusTemplate message, length delimited. Does not implicitly {@link waproto.StatusAttribution.StatusTemplate.verify|verify} messages.
+             * @param message StatusTemplate message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.StatusAttribution.StatusTemplate.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape} StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape;
+
+            /**
+             * Decodes a StatusTemplate message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape} StatusTemplate
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusAttribution.StatusTemplate & waproto.StatusAttribution.StatusTemplate.$Shape;
+
+            /**
+             * Verifies a StatusTemplate message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a StatusTemplate message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns StatusTemplate
+             */
+            static fromObject(object: { [k: string]: any }): waproto.StatusAttribution.StatusTemplate;
+
+            /**
+             * Creates a plain object from a StatusTemplate message. Also converts values to other types if specified.
+             * @param message StatusTemplate
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.StatusAttribution.StatusTemplate, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this StatusTemplate to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for StatusTemplate
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace StatusTemplate {
+
+            /** Properties of a StatusTemplate. */
+            interface $Properties {
+
+                /** StatusTemplate templateId */
+                templateId?: (string|null);
+
+                /** StatusTemplate templateName */
+                templateName?: (string|null);
+
+                /** StatusTemplate thumbnailUrl */
+                thumbnailUrl?: (string|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a StatusTemplate. */
+            type $Shape = waproto.StatusAttribution.StatusTemplate.$Properties;
+        }
+
         /** Type enum. */
         enum Type {
 
@@ -75788,7 +76813,10 @@ export namespace waproto {
             PAID_PARTNERSHIP = 11,
 
             /** USERNAME_STATUS value */
-            USERNAME_STATUS = 12
+            USERNAME_STATUS = 12,
+
+            /** STATUS_TEMPLATES value */
+            STATUS_TEMPLATES = 13
         }
     }
 
@@ -94417,6 +95445,9 @@ export namespace waproto {
         /** WebMessageInfo eventInviteAdditionalMetadata. */
         eventInviteAdditionalMetadata?: (waproto.EventInviteAdditionalMetadata.$Properties|null);
 
+        /** WebMessageInfo groupHistoryLastCountedMessageTimestamp. */
+        groupHistoryLastCountedMessageTimestamp?: (number|Long|null);
+
         /**
          * Creates a new WebMessageInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -94720,6 +95751,9 @@ export namespace waproto {
             /** WebMessageInfo eventInviteAdditionalMetadata */
             eventInviteAdditionalMetadata?: (waproto.EventInviteAdditionalMetadata.$Properties|null);
 
+            /** WebMessageInfo groupHistoryLastCountedMessageTimestamp */
+            groupHistoryLastCountedMessageTimestamp?: (number|Long|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -94799,6 +95833,7 @@ export namespace waproto {
           decisionId?: string|null;
           decisionSources?: string[]|null;
           eventInviteAdditionalMetadata?: waproto.EventInviteAdditionalMetadata.$Shape|null;
+          groupHistoryLastCountedMessageTimestamp?: number|Long|null;
           $unknowns?: Uint8Array[];
         };
 
