@@ -56410,6 +56410,366 @@ $root.waproto = (function() {
         return values;
     })();
 
+    waproto.CombinedFingerprint = (function() {
+
+        /**
+         * Properties of a CombinedFingerprint.
+         * @typedef {Object} waproto.CombinedFingerprint.$Properties
+         * @property {number|null} [version] CombinedFingerprint version
+         * @property {waproto.FingerprintData.$Properties|null} [localFingerprint] CombinedFingerprint localFingerprint
+         * @property {waproto.FingerprintData.$Properties|null} [remoteFingerprint] CombinedFingerprint remoteFingerprint
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a CombinedFingerprint.
+         * @memberof waproto
+         * @interface ICombinedFingerprint
+         * @augments waproto.CombinedFingerprint.$Properties
+         * @deprecated Use waproto.CombinedFingerprint.$Properties instead.
+         */
+
+        /**
+         * Shape of a CombinedFingerprint.
+         * @typedef {waproto.CombinedFingerprint.$Properties} waproto.CombinedFingerprint.$Shape
+         */
+
+        /**
+         * Constructs a new CombinedFingerprint.
+         * @memberof waproto
+         * @classdesc Represents a CombinedFingerprint.
+         * @constructor
+         * @param {waproto.CombinedFingerprint.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var CombinedFingerprint = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * CombinedFingerprint version.
+         * @member {number|null|undefined} version
+         * @memberof waproto.CombinedFingerprint
+         * @instance
+         */
+        CombinedFingerprint.prototype.version = null;
+
+        /**
+         * CombinedFingerprint localFingerprint.
+         * @member {waproto.FingerprintData.$Properties|null|undefined} localFingerprint
+         * @memberof waproto.CombinedFingerprint
+         * @instance
+         */
+        CombinedFingerprint.prototype.localFingerprint = null;
+
+        /**
+         * CombinedFingerprint remoteFingerprint.
+         * @member {waproto.FingerprintData.$Properties|null|undefined} remoteFingerprint
+         * @memberof waproto.CombinedFingerprint
+         * @instance
+         */
+        CombinedFingerprint.prototype.remoteFingerprint = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CombinedFingerprint.prototype, "_version", {
+            get: $util.oneOfGetter($oneOfFields = ["version"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CombinedFingerprint.prototype, "_localFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["localFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(CombinedFingerprint.prototype, "_remoteFingerprint", {
+            get: $util.oneOfGetter($oneOfFields = ["remoteFingerprint"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new CombinedFingerprint instance using the specified properties.
+         * @function create
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {waproto.CombinedFingerprint.$Properties=} [properties] Properties to set
+         * @returns {waproto.CombinedFingerprint} CombinedFingerprint instance
+         * @type {{
+         *   (properties: waproto.CombinedFingerprint.$Shape): waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape;
+         *   (properties?: waproto.CombinedFingerprint.$Properties): waproto.CombinedFingerprint;
+         * }}
+         */
+        CombinedFingerprint.create = function(properties) {
+            return new CombinedFingerprint(properties);
+        };
+
+        /**
+         * Encodes the specified CombinedFingerprint message. Does not implicitly {@link waproto.CombinedFingerprint.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {waproto.CombinedFingerprint.$Properties} message CombinedFingerprint message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CombinedFingerprint.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
+                writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.version);
+            if (message.localFingerprint != null && $Object.hasOwnProperty.call(message, "localFingerprint"))
+                $root.waproto.FingerprintData.encode(message.localFingerprint, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+            if (message.remoteFingerprint != null && $Object.hasOwnProperty.call(message, "remoteFingerprint"))
+                $root.waproto.FingerprintData.encode(message.remoteFingerprint, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified CombinedFingerprint message, length delimited. Does not implicitly {@link waproto.CombinedFingerprint.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {waproto.CombinedFingerprint.$Properties} message CombinedFingerprint message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CombinedFingerprint.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a CombinedFingerprint message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape} CombinedFingerprint
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CombinedFingerprint.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.CombinedFingerprint();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 0)
+                            break;
+                        message.version = reader.uint32();
+                        message._version = "version";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.localFingerprint = $root.waproto.FingerprintData.decode(reader, reader.size(), $undefined, _depth + 1, message.localFingerprint);
+                        message._localFingerprint = "localFingerprint";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.remoteFingerprint = $root.waproto.FingerprintData.decode(reader, reader.size(), $undefined, _depth + 1, message.remoteFingerprint);
+                        message._remoteFingerprint = "remoteFingerprint";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a CombinedFingerprint message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape} CombinedFingerprint
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CombinedFingerprint.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a CombinedFingerprint message.
+         * @function verify
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CombinedFingerprint.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.version != null && $Object.hasOwnProperty.call(message, "version")) {
+                properties._version = 1;
+                if (!$util.isInteger(message.version))
+                    return "version: integer expected";
+            }
+            if (message.localFingerprint != null && $Object.hasOwnProperty.call(message, "localFingerprint")) {
+                properties._localFingerprint = 1;
+                {
+                    var error = $root.waproto.FingerprintData.verify(message.localFingerprint, _depth + 1);
+                    if (error)
+                        return "localFingerprint." + error;
+                }
+            }
+            if (message.remoteFingerprint != null && $Object.hasOwnProperty.call(message, "remoteFingerprint")) {
+                properties._remoteFingerprint = 1;
+                {
+                    var error = $root.waproto.FingerprintData.verify(message.remoteFingerprint, _depth + 1);
+                    if (error)
+                        return "remoteFingerprint." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a CombinedFingerprint message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.CombinedFingerprint} CombinedFingerprint
+         */
+        CombinedFingerprint.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.CombinedFingerprint)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.CombinedFingerprint: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.CombinedFingerprint();
+            if (object.version != null)
+                message.version = object.version >>> 0;
+            if (object.localFingerprint != null) {
+                if (!$util.isObject(object.localFingerprint))
+                    throw $TypeError(".waproto.CombinedFingerprint.localFingerprint: object expected");
+                message.localFingerprint = $root.waproto.FingerprintData.fromObject(object.localFingerprint, _depth + 1);
+            }
+            if (object.remoteFingerprint != null) {
+                if (!$util.isObject(object.remoteFingerprint))
+                    throw $TypeError(".waproto.CombinedFingerprint.remoteFingerprint: object expected");
+                message.remoteFingerprint = $root.waproto.FingerprintData.fromObject(object.remoteFingerprint, _depth + 1);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a CombinedFingerprint message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {waproto.CombinedFingerprint} message CombinedFingerprint
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CombinedFingerprint.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.version != null && $Object.hasOwnProperty.call(message, "version"))
+                object.version = message.version;
+            if (message.localFingerprint != null && $Object.hasOwnProperty.call(message, "localFingerprint"))
+                object.localFingerprint = $root.waproto.FingerprintData.toObject(message.localFingerprint, options, _depth + 1);
+            if (message.remoteFingerprint != null && $Object.hasOwnProperty.call(message, "remoteFingerprint"))
+                object.remoteFingerprint = $root.waproto.FingerprintData.toObject(message.remoteFingerprint, options, _depth + 1);
+            return object;
+        };
+
+        /**
+         * Converts this CombinedFingerprint to JSON.
+         * @function toJSON
+         * @memberof waproto.CombinedFingerprint
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CombinedFingerprint.prototype.toJSON = function() {
+            return CombinedFingerprint.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for CombinedFingerprint
+         * @function getTypeUrl
+         * @memberof waproto.CombinedFingerprint
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        CombinedFingerprint.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.CombinedFingerprint";
+        };
+
+        return CombinedFingerprint;
+    })();
+
     waproto.CommentMetadata = (function() {
 
         /**
@@ -83557,6 +83917,479 @@ $root.waproto = (function() {
         return Field;
     })();
 
+    waproto.FingerprintData = (function() {
+
+        /**
+         * Properties of a FingerprintData.
+         * @typedef {Object} waproto.FingerprintData.$Properties
+         * @property {Uint8Array|null} [publicKey] FingerprintData publicKey
+         * @property {Uint8Array|null} [pnIdentifier] FingerprintData pnIdentifier
+         * @property {Uint8Array|null} [lidIdentifier] FingerprintData lidIdentifier
+         * @property {Uint8Array|null} [usernameIdentifier] FingerprintData usernameIdentifier
+         * @property {waproto.HostedState|null} [hostedState] FingerprintData hostedState
+         * @property {Uint8Array|null} [hashedPublicKey] FingerprintData hashedPublicKey
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a FingerprintData.
+         * @memberof waproto
+         * @interface IFingerprintData
+         * @augments waproto.FingerprintData.$Properties
+         * @deprecated Use waproto.FingerprintData.$Properties instead.
+         */
+
+        /**
+         * Shape of a FingerprintData.
+         * @typedef {waproto.FingerprintData.$Properties} waproto.FingerprintData.$Shape
+         */
+
+        /**
+         * Constructs a new FingerprintData.
+         * @memberof waproto
+         * @classdesc Represents a FingerprintData.
+         * @constructor
+         * @param {waproto.FingerprintData.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var FingerprintData = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * FingerprintData publicKey.
+         * @member {Uint8Array|null|undefined} publicKey
+         * @memberof waproto.FingerprintData
+         * @instance
+         */
+        FingerprintData.prototype.publicKey = null;
+
+        /**
+         * FingerprintData pnIdentifier.
+         * @member {Uint8Array|null|undefined} pnIdentifier
+         * @memberof waproto.FingerprintData
+         * @instance
+         */
+        FingerprintData.prototype.pnIdentifier = null;
+
+        /**
+         * FingerprintData lidIdentifier.
+         * @member {Uint8Array|null|undefined} lidIdentifier
+         * @memberof waproto.FingerprintData
+         * @instance
+         */
+        FingerprintData.prototype.lidIdentifier = null;
+
+        /**
+         * FingerprintData usernameIdentifier.
+         * @member {Uint8Array|null|undefined} usernameIdentifier
+         * @memberof waproto.FingerprintData
+         * @instance
+         */
+        FingerprintData.prototype.usernameIdentifier = null;
+
+        /**
+         * FingerprintData hostedState.
+         * @member {waproto.HostedState|null|undefined} hostedState
+         * @memberof waproto.FingerprintData
+         * @instance
+         */
+        FingerprintData.prototype.hostedState = null;
+
+        /**
+         * FingerprintData hashedPublicKey.
+         * @member {Uint8Array|null|undefined} hashedPublicKey
+         * @memberof waproto.FingerprintData
+         * @instance
+         */
+        FingerprintData.prototype.hashedPublicKey = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(FingerprintData.prototype, "_publicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["publicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(FingerprintData.prototype, "_pnIdentifier", {
+            get: $util.oneOfGetter($oneOfFields = ["pnIdentifier"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(FingerprintData.prototype, "_lidIdentifier", {
+            get: $util.oneOfGetter($oneOfFields = ["lidIdentifier"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(FingerprintData.prototype, "_usernameIdentifier", {
+            get: $util.oneOfGetter($oneOfFields = ["usernameIdentifier"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(FingerprintData.prototype, "_hostedState", {
+            get: $util.oneOfGetter($oneOfFields = ["hostedState"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(FingerprintData.prototype, "_hashedPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["hashedPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new FingerprintData instance using the specified properties.
+         * @function create
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {waproto.FingerprintData.$Properties=} [properties] Properties to set
+         * @returns {waproto.FingerprintData} FingerprintData instance
+         * @type {{
+         *   (properties: waproto.FingerprintData.$Shape): waproto.FingerprintData & waproto.FingerprintData.$Shape;
+         *   (properties?: waproto.FingerprintData.$Properties): waproto.FingerprintData;
+         * }}
+         */
+        FingerprintData.create = function(properties) {
+            return new FingerprintData(properties);
+        };
+
+        /**
+         * Encodes the specified FingerprintData message. Does not implicitly {@link waproto.FingerprintData.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {waproto.FingerprintData.$Properties} message FingerprintData message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FingerprintData.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.publicKey != null && $Object.hasOwnProperty.call(message, "publicKey"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.publicKey);
+            if (message.pnIdentifier != null && $Object.hasOwnProperty.call(message, "pnIdentifier"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.pnIdentifier);
+            if (message.lidIdentifier != null && $Object.hasOwnProperty.call(message, "lidIdentifier"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.lidIdentifier);
+            if (message.usernameIdentifier != null && $Object.hasOwnProperty.call(message, "usernameIdentifier"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.usernameIdentifier);
+            if (message.hostedState != null && $Object.hasOwnProperty.call(message, "hostedState"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int32(message.hostedState);
+            if (message.hashedPublicKey != null && $Object.hasOwnProperty.call(message, "hashedPublicKey"))
+                writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.hashedPublicKey);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified FingerprintData message, length delimited. Does not implicitly {@link waproto.FingerprintData.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {waproto.FingerprintData.$Properties} message FingerprintData message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FingerprintData.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a FingerprintData message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.FingerprintData & waproto.FingerprintData.$Shape} FingerprintData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FingerprintData.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message, value;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.FingerprintData();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.publicKey = reader.bytes();
+                        message._publicKey = "publicKey";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.pnIdentifier = reader.bytes();
+                        message._pnIdentifier = "pnIdentifier";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.lidIdentifier = reader.bytes();
+                        message._lidIdentifier = "lidIdentifier";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.usernameIdentifier = reader.bytes();
+                        message._usernameIdentifier = "usernameIdentifier";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.hostedState = reader.int32();
+                        message._hostedState = "hostedState";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.hashedPublicKey = reader.bytes();
+                        message._hashedPublicKey = "hashedPublicKey";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a FingerprintData message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.FingerprintData & waproto.FingerprintData.$Shape} FingerprintData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FingerprintData.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a FingerprintData message.
+         * @function verify
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        FingerprintData.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.publicKey != null && $Object.hasOwnProperty.call(message, "publicKey")) {
+                properties._publicKey = 1;
+                if (!(message.publicKey && typeof message.publicKey.length === "number" || $util.isString(message.publicKey)))
+                    return "publicKey: buffer expected";
+            }
+            if (message.pnIdentifier != null && $Object.hasOwnProperty.call(message, "pnIdentifier")) {
+                properties._pnIdentifier = 1;
+                if (!(message.pnIdentifier && typeof message.pnIdentifier.length === "number" || $util.isString(message.pnIdentifier)))
+                    return "pnIdentifier: buffer expected";
+            }
+            if (message.lidIdentifier != null && $Object.hasOwnProperty.call(message, "lidIdentifier")) {
+                properties._lidIdentifier = 1;
+                if (!(message.lidIdentifier && typeof message.lidIdentifier.length === "number" || $util.isString(message.lidIdentifier)))
+                    return "lidIdentifier: buffer expected";
+            }
+            if (message.usernameIdentifier != null && $Object.hasOwnProperty.call(message, "usernameIdentifier")) {
+                properties._usernameIdentifier = 1;
+                if (!(message.usernameIdentifier && typeof message.usernameIdentifier.length === "number" || $util.isString(message.usernameIdentifier)))
+                    return "usernameIdentifier: buffer expected";
+            }
+            if (message.hostedState != null && $Object.hasOwnProperty.call(message, "hostedState")) {
+                properties._hostedState = 1;
+                if (typeof message.hostedState !== "number" || (message.hostedState | 0) !== message.hostedState)
+                    return "hostedState: enum value expected";
+            }
+            if (message.hashedPublicKey != null && $Object.hasOwnProperty.call(message, "hashedPublicKey")) {
+                properties._hashedPublicKey = 1;
+                if (!(message.hashedPublicKey && typeof message.hashedPublicKey.length === "number" || $util.isString(message.hashedPublicKey)))
+                    return "hashedPublicKey: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a FingerprintData message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.FingerprintData} FingerprintData
+         */
+        FingerprintData.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.FingerprintData)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.FingerprintData: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.FingerprintData();
+            if (object.publicKey != null)
+                if (typeof object.publicKey === "string")
+                    $util.base64.decode(object.publicKey, message.publicKey = $util.newBuffer($util.base64.length(object.publicKey)), 0);
+                else if (object.publicKey.length >= 0)
+                    message.publicKey = object.publicKey;
+            if (object.pnIdentifier != null)
+                if (typeof object.pnIdentifier === "string")
+                    $util.base64.decode(object.pnIdentifier, message.pnIdentifier = $util.newBuffer($util.base64.length(object.pnIdentifier)), 0);
+                else if (object.pnIdentifier.length >= 0)
+                    message.pnIdentifier = object.pnIdentifier;
+            if (object.lidIdentifier != null)
+                if (typeof object.lidIdentifier === "string")
+                    $util.base64.decode(object.lidIdentifier, message.lidIdentifier = $util.newBuffer($util.base64.length(object.lidIdentifier)), 0);
+                else if (object.lidIdentifier.length >= 0)
+                    message.lidIdentifier = object.lidIdentifier;
+            if (object.usernameIdentifier != null)
+                if (typeof object.usernameIdentifier === "string")
+                    $util.base64.decode(object.usernameIdentifier, message.usernameIdentifier = $util.newBuffer($util.base64.length(object.usernameIdentifier)), 0);
+                else if (object.usernameIdentifier.length >= 0)
+                    message.usernameIdentifier = object.usernameIdentifier;
+            switch (object.hostedState) {
+            case "E2EE":
+            case 0:
+                message.hostedState = 0;
+                break;
+            case "HOSTED":
+            case 1:
+                message.hostedState = 1;
+                break;
+            default:
+                if (typeof object.hostedState === "number" && (object.hostedState | 0) === object.hostedState)
+                    message.hostedState = object.hostedState;
+            }
+            if (object.hashedPublicKey != null)
+                if (typeof object.hashedPublicKey === "string")
+                    $util.base64.decode(object.hashedPublicKey, message.hashedPublicKey = $util.newBuffer($util.base64.length(object.hashedPublicKey)), 0);
+                else if (object.hashedPublicKey.length >= 0)
+                    message.hashedPublicKey = object.hashedPublicKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a FingerprintData message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {waproto.FingerprintData} message FingerprintData
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        FingerprintData.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.publicKey != null && $Object.hasOwnProperty.call(message, "publicKey"))
+                object.publicKey = options.bytes === $String ? $util.base64.encode(message.publicKey, 0, message.publicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.publicKey) : message.publicKey;
+            if (message.pnIdentifier != null && $Object.hasOwnProperty.call(message, "pnIdentifier"))
+                object.pnIdentifier = options.bytes === $String ? $util.base64.encode(message.pnIdentifier, 0, message.pnIdentifier.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.pnIdentifier) : message.pnIdentifier;
+            if (message.lidIdentifier != null && $Object.hasOwnProperty.call(message, "lidIdentifier"))
+                object.lidIdentifier = options.bytes === $String ? $util.base64.encode(message.lidIdentifier, 0, message.lidIdentifier.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.lidIdentifier) : message.lidIdentifier;
+            if (message.usernameIdentifier != null && $Object.hasOwnProperty.call(message, "usernameIdentifier"))
+                object.usernameIdentifier = options.bytes === $String ? $util.base64.encode(message.usernameIdentifier, 0, message.usernameIdentifier.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.usernameIdentifier) : message.usernameIdentifier;
+            if (message.hostedState != null && $Object.hasOwnProperty.call(message, "hostedState"))
+                object.hostedState = options.enums === $String ? $root.waproto.HostedState[message.hostedState] === $undefined ? message.hostedState : $root.waproto.HostedState[message.hostedState] : message.hostedState;
+            if (message.hashedPublicKey != null && $Object.hasOwnProperty.call(message, "hashedPublicKey"))
+                object.hashedPublicKey = options.bytes === $String ? $util.base64.encode(message.hashedPublicKey, 0, message.hashedPublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.hashedPublicKey) : message.hashedPublicKey;
+            return object;
+        };
+
+        /**
+         * Converts this FingerprintData to JSON.
+         * @function toJSON
+         * @memberof waproto.FingerprintData
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        FingerprintData.prototype.toJSON = function() {
+            return FingerprintData.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for FingerprintData
+         * @function getTypeUrl
+         * @memberof waproto.FingerprintData
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        FingerprintData.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.FingerprintData";
+        };
+
+        return FingerprintData;
+    })();
+
     waproto.ForwardedAIBotMessageInfo = (function() {
 
         /**
@@ -92495,6 +93328,20 @@ $root.waproto = (function() {
         };
 
         return HistorySyncMsg;
+    })();
+
+    /**
+     * HostedState enum.
+     * @name waproto.HostedState
+     * @enum {number}
+     * @property {number} E2EE=0 E2EE value
+     * @property {number} HOSTED=1 HOSTED value
+     */
+    waproto.HostedState = (function() {
+        var valuesById = $Object.create(null), values = $Object.create(valuesById);
+        values[valuesById[0] = "E2EE"] = 0;
+        values[valuesById[1] = "HOSTED"] = 1;
+        return values;
     })();
 
     waproto.HydratedTemplateButton = (function() {

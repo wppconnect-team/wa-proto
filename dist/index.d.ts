@@ -19737,6 +19737,135 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a CombinedFingerprint.
+     * @deprecated Use waproto.CombinedFingerprint.$Properties instead.
+     */
+    interface ICombinedFingerprint extends waproto.CombinedFingerprint.$Properties {
+    }
+
+    /** Represents a CombinedFingerprint. */
+    class CombinedFingerprint {
+
+        /**
+         * Constructs a new CombinedFingerprint.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.CombinedFingerprint.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** CombinedFingerprint version. */
+        version?: (number|null);
+
+        /** CombinedFingerprint localFingerprint. */
+        localFingerprint?: (waproto.FingerprintData.$Properties|null);
+
+        /** CombinedFingerprint remoteFingerprint. */
+        remoteFingerprint?: (waproto.FingerprintData.$Properties|null);
+
+        /**
+         * Creates a new CombinedFingerprint instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns CombinedFingerprint instance
+         */
+        static create(properties: waproto.CombinedFingerprint.$Shape): waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape;
+        static create(properties?: waproto.CombinedFingerprint.$Properties): waproto.CombinedFingerprint;
+
+        /**
+         * Encodes the specified CombinedFingerprint message. Does not implicitly {@link waproto.CombinedFingerprint.verify|verify} messages.
+         * @param message CombinedFingerprint message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.CombinedFingerprint.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified CombinedFingerprint message, length delimited. Does not implicitly {@link waproto.CombinedFingerprint.verify|verify} messages.
+         * @param message CombinedFingerprint message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.CombinedFingerprint.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a CombinedFingerprint message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape} CombinedFingerprint
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape;
+
+        /**
+         * Decodes a CombinedFingerprint message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape} CombinedFingerprint
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.CombinedFingerprint & waproto.CombinedFingerprint.$Shape;
+
+        /**
+         * Verifies a CombinedFingerprint message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a CombinedFingerprint message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns CombinedFingerprint
+         */
+        static fromObject(object: { [k: string]: any }): waproto.CombinedFingerprint;
+
+        /**
+         * Creates a plain object from a CombinedFingerprint message. Also converts values to other types if specified.
+         * @param message CombinedFingerprint
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.CombinedFingerprint, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this CombinedFingerprint to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for CombinedFingerprint
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace CombinedFingerprint {
+
+        /** Properties of a CombinedFingerprint. */
+        interface $Properties {
+
+            /** CombinedFingerprint version */
+            version?: (number|null);
+
+            /** CombinedFingerprint localFingerprint */
+            localFingerprint?: (waproto.FingerprintData.$Properties|null);
+
+            /** CombinedFingerprint remoteFingerprint */
+            remoteFingerprint?: (waproto.FingerprintData.$Properties|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a CombinedFingerprint. */
+        type $Shape = waproto.CombinedFingerprint.$Properties;
+    }
+
+    /**
      * Properties of a CommentMetadata.
      * @deprecated Use waproto.CommentMetadata.$Properties instead.
      */
@@ -28301,6 +28430,153 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a FingerprintData.
+     * @deprecated Use waproto.FingerprintData.$Properties instead.
+     */
+    interface IFingerprintData extends waproto.FingerprintData.$Properties {
+    }
+
+    /** Represents a FingerprintData. */
+    class FingerprintData {
+
+        /**
+         * Constructs a new FingerprintData.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.FingerprintData.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** FingerprintData publicKey. */
+        publicKey?: (Uint8Array|null);
+
+        /** FingerprintData pnIdentifier. */
+        pnIdentifier?: (Uint8Array|null);
+
+        /** FingerprintData lidIdentifier. */
+        lidIdentifier?: (Uint8Array|null);
+
+        /** FingerprintData usernameIdentifier. */
+        usernameIdentifier?: (Uint8Array|null);
+
+        /** FingerprintData hostedState. */
+        hostedState?: (waproto.HostedState|null);
+
+        /** FingerprintData hashedPublicKey. */
+        hashedPublicKey?: (Uint8Array|null);
+
+        /**
+         * Creates a new FingerprintData instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns FingerprintData instance
+         */
+        static create(properties: waproto.FingerprintData.$Shape): waproto.FingerprintData & waproto.FingerprintData.$Shape;
+        static create(properties?: waproto.FingerprintData.$Properties): waproto.FingerprintData;
+
+        /**
+         * Encodes the specified FingerprintData message. Does not implicitly {@link waproto.FingerprintData.verify|verify} messages.
+         * @param message FingerprintData message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.FingerprintData.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified FingerprintData message, length delimited. Does not implicitly {@link waproto.FingerprintData.verify|verify} messages.
+         * @param message FingerprintData message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.FingerprintData.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a FingerprintData message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.FingerprintData & waproto.FingerprintData.$Shape} FingerprintData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.FingerprintData & waproto.FingerprintData.$Shape;
+
+        /**
+         * Decodes a FingerprintData message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.FingerprintData & waproto.FingerprintData.$Shape} FingerprintData
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.FingerprintData & waproto.FingerprintData.$Shape;
+
+        /**
+         * Verifies a FingerprintData message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a FingerprintData message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns FingerprintData
+         */
+        static fromObject(object: { [k: string]: any }): waproto.FingerprintData;
+
+        /**
+         * Creates a plain object from a FingerprintData message. Also converts values to other types if specified.
+         * @param message FingerprintData
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.FingerprintData, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this FingerprintData to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for FingerprintData
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace FingerprintData {
+
+        /** Properties of a FingerprintData. */
+        interface $Properties {
+
+            /** FingerprintData publicKey */
+            publicKey?: (Uint8Array|null);
+
+            /** FingerprintData pnIdentifier */
+            pnIdentifier?: (Uint8Array|null);
+
+            /** FingerprintData lidIdentifier */
+            lidIdentifier?: (Uint8Array|null);
+
+            /** FingerprintData usernameIdentifier */
+            usernameIdentifier?: (Uint8Array|null);
+
+            /** FingerprintData hostedState */
+            hostedState?: (waproto.HostedState|null);
+
+            /** FingerprintData hashedPublicKey */
+            hashedPublicKey?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a FingerprintData. */
+        type $Shape = waproto.FingerprintData.$Properties;
+    }
+
+    /**
      * Properties of a ForwardedAIBotMessageInfo.
      * @deprecated Use waproto.ForwardedAIBotMessageInfo.$Properties instead.
      */
@@ -31194,6 +31470,16 @@ export namespace waproto {
           msgOrderId?: number|Long|null;
           $unknowns?: Uint8Array[];
         };
+    }
+
+    /** HostedState enum. */
+    enum HostedState {
+
+        /** E2EE value */
+        E2EE = 0,
+
+        /** HOSTED value */
+        HOSTED = 1
     }
 
     /**
