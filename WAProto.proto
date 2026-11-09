@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1053699790
+/// WhatsApp Version: 2.3000.1053742331
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1607,6 +1607,7 @@ message ContextInfo {
     optional string partnerDeepLinkToken = 83;
     optional uint32 sourceExperienceId = 84;
     repeated uint32 sourceExperienceIds = 85 [packed=true];
+    optional bytes foaMutualsSignature = 86;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -4681,9 +4682,7 @@ message Message {
     message VpcRequestMessage {
         optional uint32 payloadSchemaVersion = 1;
         optional string requestId = 2;
-        optional string launchRef = 3;
-        optional int64 invitationExpiresAtMs = 4;
-        optional ScopeHint scopeHint = 5;
+        optional ScopeHint scopeHint = 3;
         enum ScopeHint {
             UNKNOWN = 0;
             WA_ONLY = 1;

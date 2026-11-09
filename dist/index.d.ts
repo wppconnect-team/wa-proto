@@ -20574,6 +20574,9 @@ export namespace waproto {
         /** ContextInfo sourceExperienceIds. */
         sourceExperienceIds: number[];
 
+        /** ContextInfo foaMutualsSignature. */
+        foaMutualsSignature?: (Uint8Array|null);
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -20862,6 +20865,9 @@ export namespace waproto {
             /** ContextInfo sourceExperienceIds */
             sourceExperienceIds?: (number[]|null);
 
+            /** ContextInfo foaMutualsSignature */
+            foaMutualsSignature?: (Uint8Array|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -20936,6 +20942,7 @@ export namespace waproto {
           partnerDeepLinkToken?: string|null;
           sourceExperienceId?: number|null;
           sourceExperienceIds?: number[]|null;
+          foaMutualsSignature?: Uint8Array|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -64343,12 +64350,6 @@ export namespace waproto {
             /** VpcRequestMessage requestId. */
             requestId?: (string|null);
 
-            /** VpcRequestMessage launchRef. */
-            launchRef?: (string|null);
-
-            /** VpcRequestMessage invitationExpiresAtMs. */
-            invitationExpiresAtMs?: (number|Long|null);
-
             /** VpcRequestMessage scopeHint. */
             scopeHint?: (waproto.Message.VpcRequestMessage.ScopeHint|null);
 
@@ -64441,12 +64442,6 @@ export namespace waproto {
 
                 /** VpcRequestMessage requestId */
                 requestId?: (string|null);
-
-                /** VpcRequestMessage launchRef */
-                launchRef?: (string|null);
-
-                /** VpcRequestMessage invitationExpiresAtMs */
-                invitationExpiresAtMs?: (number|Long|null);
 
                 /** VpcRequestMessage scopeHint */
                 scopeHint?: (waproto.Message.VpcRequestMessage.ScopeHint|null);

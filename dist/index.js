@@ -58258,6 +58258,7 @@ $root.waproto = (function() {
          * @property {string|null} [partnerDeepLinkToken] ContextInfo partnerDeepLinkToken
          * @property {number|null} [sourceExperienceId] ContextInfo sourceExperienceId
          * @property {Array.<number>|null} [sourceExperienceIds] ContextInfo sourceExperienceIds
+         * @property {Uint8Array|null} [foaMutualsSignature] ContextInfo foaMutualsSignature
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -58340,6 +58341,7 @@ $root.waproto = (function() {
          *   partnerDeepLinkToken?: string|null;
          *   sourceExperienceId?: number|null;
          *   sourceExperienceIds?: Array.<number>|null;
+         *   foaMutualsSignature?: Uint8Array|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.ContextInfo.$Shape
          */
@@ -58908,6 +58910,14 @@ $root.waproto = (function() {
          */
         ContextInfo.prototype.sourceExperienceIds = $util.emptyArray;
 
+        /**
+         * ContextInfo foaMutualsSignature.
+         * @member {Uint8Array|null|undefined} foaMutualsSignature
+         * @memberof waproto.ContextInfo
+         * @instance
+         */
+        ContextInfo.prototype.foaMutualsSignature = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -59289,6 +59299,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ContextInfo.prototype, "_foaMutualsSignature", {
+            get: $util.oneOfGetter($oneOfFields = ["foaMutualsSignature"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @function create
@@ -59460,6 +59476,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 84, wireType 0 =*/672).uint32(message.sourceExperienceId);
             if (message.sourceExperienceIds != null && message.sourceExperienceIds.length)
                 writer.uint32(/* id 85, wireType 2 =*/682).uint32s(message.sourceExperienceIds);
+            if (message.foaMutualsSignature != null && $Object.hasOwnProperty.call(message, "foaMutualsSignature"))
+                writer.uint32(/* id 86, wireType 2 =*/690).bytes(message.foaMutualsSignature);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -60010,6 +60028,13 @@ $root.waproto = (function() {
                         message.sourceExperienceIds.push(reader.uint32());
                         continue;
                     }
+                case 86: {
+                        if (wireType !== 2)
+                            break;
+                        message.foaMutualsSignature = reader.bytes();
+                        message._foaMutualsSignature = "foaMutualsSignature";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -60479,6 +60504,11 @@ $root.waproto = (function() {
                     if (!$util.isInteger(message.sourceExperienceIds[i]))
                         return "sourceExperienceIds: integer[] expected";
             }
+            if (message.foaMutualsSignature != null && $Object.hasOwnProperty.call(message, "foaMutualsSignature")) {
+                properties._foaMutualsSignature = 1;
+                if (!(message.foaMutualsSignature && typeof message.foaMutualsSignature.length === "number" || $util.isString(message.foaMutualsSignature)))
+                    return "foaMutualsSignature: buffer expected";
+            }
             return null;
         };
 
@@ -60915,6 +60945,11 @@ $root.waproto = (function() {
                 for (var i = 0; i < object.sourceExperienceIds.length; ++i)
                     message.sourceExperienceIds[i] = object.sourceExperienceIds[i] >>> 0;
             }
+            if (object.foaMutualsSignature != null)
+                if (typeof object.foaMutualsSignature === "string")
+                    $util.base64.decode(object.foaMutualsSignature, message.foaMutualsSignature = $util.newBuffer($util.base64.length(object.foaMutualsSignature)), 0);
+                else if (object.foaMutualsSignature.length >= 0)
+                    message.foaMutualsSignature = object.foaMutualsSignature;
             return message;
         };
 
@@ -61098,6 +61133,8 @@ $root.waproto = (function() {
                 for (var j = 0; j < message.sourceExperienceIds.length; ++j)
                     object.sourceExperienceIds[j] = message.sourceExperienceIds[j];
             }
+            if (message.foaMutualsSignature != null && $Object.hasOwnProperty.call(message, "foaMutualsSignature"))
+                object.foaMutualsSignature = options.bytes === $String ? $util.base64.encode(message.foaMutualsSignature, 0, message.foaMutualsSignature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.foaMutualsSignature) : message.foaMutualsSignature;
             return object;
         };
 
@@ -192927,8 +192964,6 @@ $root.waproto = (function() {
              * @typedef {Object} waproto.Message.VpcRequestMessage.$Properties
              * @property {number|null} [payloadSchemaVersion] VpcRequestMessage payloadSchemaVersion
              * @property {string|null} [requestId] VpcRequestMessage requestId
-             * @property {string|null} [launchRef] VpcRequestMessage launchRef
-             * @property {number|Long|null} [invitationExpiresAtMs] VpcRequestMessage invitationExpiresAtMs
              * @property {waproto.Message.VpcRequestMessage.ScopeHint|null} [scopeHint] VpcRequestMessage scopeHint
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
@@ -192978,22 +193013,6 @@ $root.waproto = (function() {
             VpcRequestMessage.prototype.requestId = null;
 
             /**
-             * VpcRequestMessage launchRef.
-             * @member {string|null|undefined} launchRef
-             * @memberof waproto.Message.VpcRequestMessage
-             * @instance
-             */
-            VpcRequestMessage.prototype.launchRef = null;
-
-            /**
-             * VpcRequestMessage invitationExpiresAtMs.
-             * @member {number|Long|null|undefined} invitationExpiresAtMs
-             * @memberof waproto.Message.VpcRequestMessage
-             * @instance
-             */
-            VpcRequestMessage.prototype.invitationExpiresAtMs = null;
-
-            /**
              * VpcRequestMessage scopeHint.
              * @member {waproto.Message.VpcRequestMessage.ScopeHint|null|undefined} scopeHint
              * @memberof waproto.Message.VpcRequestMessage
@@ -193013,18 +193032,6 @@ $root.waproto = (function() {
             // Virtual OneOf for proto3 optional field
             $Object.defineProperty(VpcRequestMessage.prototype, "_requestId", {
                 get: $util.oneOfGetter($oneOfFields = ["requestId"]),
-                set: $util.oneOfSetter($oneOfFields)
-            });
-
-            // Virtual OneOf for proto3 optional field
-            $Object.defineProperty(VpcRequestMessage.prototype, "_launchRef", {
-                get: $util.oneOfGetter($oneOfFields = ["launchRef"]),
-                set: $util.oneOfSetter($oneOfFields)
-            });
-
-            // Virtual OneOf for proto3 optional field
-            $Object.defineProperty(VpcRequestMessage.prototype, "_invitationExpiresAtMs", {
-                get: $util.oneOfGetter($oneOfFields = ["invitationExpiresAtMs"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -193070,12 +193077,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 1, wireType 0 =*/8).uint32(message.payloadSchemaVersion);
                 if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId"))
                     writer.uint32(/* id 2, wireType 2 =*/18).string(message.requestId);
-                if (message.launchRef != null && $Object.hasOwnProperty.call(message, "launchRef"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.launchRef);
-                if (message.invitationExpiresAtMs != null && $Object.hasOwnProperty.call(message, "invitationExpiresAtMs"))
-                    writer.uint32(/* id 4, wireType 0 =*/32).int64(message.invitationExpiresAtMs);
                 if (message.scopeHint != null && $Object.hasOwnProperty.call(message, "scopeHint"))
-                    writer.uint32(/* id 5, wireType 0 =*/40).int32(message.scopeHint);
+                    writer.uint32(/* id 3, wireType 0 =*/24).int32(message.scopeHint);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -193148,20 +193151,6 @@ $root.waproto = (function() {
                             continue;
                         }
                     case 3: {
-                            if (wireType !== 2)
-                                break;
-                            message.launchRef = reader.stringVerify();
-                            message._launchRef = "launchRef";
-                            continue;
-                        }
-                    case 4: {
-                            if (wireType !== 0)
-                                break;
-                            message.invitationExpiresAtMs = reader.int64();
-                            message._invitationExpiresAtMs = "invitationExpiresAtMs";
-                            continue;
-                        }
-                    case 5: {
                             if (wireType !== 0)
                                 break;
                             message.scopeHint = reader.int32();
@@ -193227,16 +193216,6 @@ $root.waproto = (function() {
                     if (!$util.isString(message.requestId))
                         return "requestId: string expected";
                 }
-                if (message.launchRef != null && $Object.hasOwnProperty.call(message, "launchRef")) {
-                    properties._launchRef = 1;
-                    if (!$util.isString(message.launchRef))
-                        return "launchRef: string expected";
-                }
-                if (message.invitationExpiresAtMs != null && $Object.hasOwnProperty.call(message, "invitationExpiresAtMs")) {
-                    properties._invitationExpiresAtMs = 1;
-                    if (!$util.isInteger(message.invitationExpiresAtMs) && !(message.invitationExpiresAtMs && $util.isInteger(message.invitationExpiresAtMs.low) && $util.isInteger(message.invitationExpiresAtMs.high)))
-                        return "invitationExpiresAtMs: integer|Long expected";
-                }
                 if (message.scopeHint != null && $Object.hasOwnProperty.call(message, "scopeHint")) {
                     properties._scopeHint = 1;
                     if (typeof message.scopeHint !== "number" || (message.scopeHint | 0) !== message.scopeHint)
@@ -193267,17 +193246,6 @@ $root.waproto = (function() {
                     message.payloadSchemaVersion = object.payloadSchemaVersion >>> 0;
                 if (object.requestId != null)
                     message.requestId = $String(object.requestId);
-                if (object.launchRef != null)
-                    message.launchRef = $String(object.launchRef);
-                if (object.invitationExpiresAtMs != null)
-                    if ($util.Long)
-                        message.invitationExpiresAtMs = $util.Long.fromValue(object.invitationExpiresAtMs, false);
-                    else if (typeof object.invitationExpiresAtMs === "string")
-                        message.invitationExpiresAtMs = $parseInt(object.invitationExpiresAtMs, 10);
-                    else if (typeof object.invitationExpiresAtMs === "number")
-                        message.invitationExpiresAtMs = object.invitationExpiresAtMs;
-                    else if (typeof object.invitationExpiresAtMs === "object")
-                        message.invitationExpiresAtMs = new $util.LongBits(object.invitationExpiresAtMs.low >>> 0, object.invitationExpiresAtMs.high >>> 0).toNumber();
                 switch (object.scopeHint) {
                 case "UNKNOWN":
                 case 0:
@@ -193331,15 +193299,6 @@ $root.waproto = (function() {
                     object.payloadSchemaVersion = message.payloadSchemaVersion;
                 if (message.requestId != null && $Object.hasOwnProperty.call(message, "requestId"))
                     object.requestId = message.requestId;
-                if (message.launchRef != null && $Object.hasOwnProperty.call(message, "launchRef"))
-                    object.launchRef = message.launchRef;
-                if (message.invitationExpiresAtMs != null && $Object.hasOwnProperty.call(message, "invitationExpiresAtMs"))
-                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
-                        object.invitationExpiresAtMs = typeof message.invitationExpiresAtMs === "number" ? $BigInt(message.invitationExpiresAtMs) : $util.Long.fromBits(message.invitationExpiresAtMs.low >>> 0, message.invitationExpiresAtMs.high >>> 0, false).toBigInt();
-                    else if (typeof message.invitationExpiresAtMs === "number")
-                        object.invitationExpiresAtMs = options.longs === $String ? $String(message.invitationExpiresAtMs) : message.invitationExpiresAtMs;
-                    else
-                        object.invitationExpiresAtMs = options.longs === $String ? $util.Long.prototype.toString.call(message.invitationExpiresAtMs) : options.longs === $Number ? new $util.LongBits(message.invitationExpiresAtMs.low >>> 0, message.invitationExpiresAtMs.high >>> 0).toNumber() : message.invitationExpiresAtMs;
                 if (message.scopeHint != null && $Object.hasOwnProperty.call(message, "scopeHint"))
                     object.scopeHint = options.enums === $String ? $root.waproto.Message.VpcRequestMessage.ScopeHint[message.scopeHint] === $undefined ? message.scopeHint : $root.waproto.Message.VpcRequestMessage.ScopeHint[message.scopeHint] : message.scopeHint;
                 return object;
