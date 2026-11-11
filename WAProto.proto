@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1053925913
+/// WhatsApp Version: 2.3000.1053984976
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1608,6 +1608,7 @@ message ContextInfo {
     optional uint32 sourceExperienceId = 84;
     repeated uint32 sourceExperienceIds = 85 [packed=true];
     optional bytes foaMutualsSignature = 86;
+    optional fixed32 forwardReachScore = 87;
     message AdReplyInfo {
         optional string advertiserName = 1;
         optional MediaType mediaType = 2;
@@ -2798,6 +2799,8 @@ message Message {
     optional FutureProofMessage botGroupParticipantMessage = 137;
     optional RequestLocationUpdateMessage requestLocationUpdateMessage = 138;
     optional VpcRequestMessage vpcRequestMessage = 139;
+    optional VideoMessage instantVideoMessage = 140;
+    optional PaymentDetailsMessage paymentDetailsMessage = 141;
     message AlbumMessage {
         optional uint32 expectedImageCount = 2;
         optional uint32 expectedVideoCount = 3;
@@ -3786,6 +3789,25 @@ message Message {
         }
         enum OrderSurface {
             CATALOG = 1;
+        }
+    }
+    
+    message PaymentDetailsMessage {
+        optional ServiceType serviceType = 1;
+        optional Money amount = 2;
+        optional string payeeName = 3;
+        optional string payerName = 4;
+        optional int64 transactionTimestampMs = 5;
+        optional string transactionId = 6;
+        optional Status status = 7;
+        optional ContextInfo contextInfo = 17;
+        enum ServiceType {
+            UNKNOWN = 0;
+            UPI = 1;
+        }
+        enum Status {
+            STATUS_UNKNOWN = 0;
+            SUCCESS = 1;
         }
     }
     

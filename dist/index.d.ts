@@ -20577,6 +20577,9 @@ export namespace waproto {
         /** ContextInfo foaMutualsSignature. */
         foaMutualsSignature?: (Uint8Array|null);
 
+        /** ContextInfo forwardReachScore. */
+        forwardReachScore?: (number|null);
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -20868,6 +20871,9 @@ export namespace waproto {
             /** ContextInfo foaMutualsSignature */
             foaMutualsSignature?: (Uint8Array|null);
 
+            /** ContextInfo forwardReachScore */
+            forwardReachScore?: (number|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -20943,6 +20949,7 @@ export namespace waproto {
           sourceExperienceId?: number|null;
           sourceExperienceIds?: number[]|null;
           foaMutualsSignature?: Uint8Array|null;
+          forwardReachScore?: number|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -36053,6 +36060,12 @@ export namespace waproto {
         /** Message vpcRequestMessage. */
         vpcRequestMessage?: (waproto.Message.VpcRequestMessage.$Properties|null);
 
+        /** Message instantVideoMessage. */
+        instantVideoMessage?: (waproto.Message.VideoMessage.$Properties|null);
+
+        /** Message paymentDetailsMessage. */
+        paymentDetailsMessage?: (waproto.Message.PaymentDetailsMessage.$Properties|null);
+
         /**
          * Creates a new Message instance using the specified properties.
          * @param [properties] Properties to set
@@ -36491,6 +36504,12 @@ export namespace waproto {
             /** Message vpcRequestMessage */
             vpcRequestMessage?: (waproto.Message.VpcRequestMessage.$Properties|null);
 
+            /** Message instantVideoMessage */
+            instantVideoMessage?: (waproto.Message.VideoMessage.$Properties|null);
+
+            /** Message paymentDetailsMessage */
+            paymentDetailsMessage?: (waproto.Message.PaymentDetailsMessage.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -36615,6 +36634,8 @@ export namespace waproto {
           botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
           requestLocationUpdateMessage?: waproto.Message.RequestLocationUpdateMessage.$Shape|null;
           vpcRequestMessage?: waproto.Message.VpcRequestMessage.$Shape|null;
+          instantVideoMessage?: waproto.Message.VideoMessage.$Shape|null;
+          paymentDetailsMessage?: waproto.Message.PaymentDetailsMessage.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -51417,6 +51438,195 @@ export namespace waproto {
 
                 /** CATALOG value */
                 CATALOG = 1
+            }
+        }
+
+        /**
+         * Properties of a PaymentDetailsMessage.
+         * @deprecated Use waproto.Message.PaymentDetailsMessage.$Properties instead.
+         */
+        interface IPaymentDetailsMessage extends waproto.Message.PaymentDetailsMessage.$Properties {
+        }
+
+        /** Represents a PaymentDetailsMessage. */
+        class PaymentDetailsMessage {
+
+            /**
+             * Constructs a new PaymentDetailsMessage.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.Message.PaymentDetailsMessage.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** PaymentDetailsMessage serviceType. */
+            serviceType?: (waproto.Message.PaymentDetailsMessage.ServiceType|null);
+
+            /** PaymentDetailsMessage amount. */
+            amount?: (waproto.Money.$Properties|null);
+
+            /** PaymentDetailsMessage payeeName. */
+            payeeName?: (string|null);
+
+            /** PaymentDetailsMessage payerName. */
+            payerName?: (string|null);
+
+            /** PaymentDetailsMessage transactionTimestampMs. */
+            transactionTimestampMs?: (number|Long|null);
+
+            /** PaymentDetailsMessage transactionId. */
+            transactionId?: (string|null);
+
+            /** PaymentDetailsMessage status. */
+            status?: (waproto.Message.PaymentDetailsMessage.Status|null);
+
+            /** PaymentDetailsMessage contextInfo. */
+            contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+            /**
+             * Creates a new PaymentDetailsMessage instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PaymentDetailsMessage instance
+             */
+            static create(properties: waproto.Message.PaymentDetailsMessage.$Shape): waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape;
+            static create(properties?: waproto.Message.PaymentDetailsMessage.$Properties): waproto.Message.PaymentDetailsMessage;
+
+            /**
+             * Encodes the specified PaymentDetailsMessage message. Does not implicitly {@link waproto.Message.PaymentDetailsMessage.verify|verify} messages.
+             * @param message PaymentDetailsMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.Message.PaymentDetailsMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PaymentDetailsMessage message, length delimited. Does not implicitly {@link waproto.Message.PaymentDetailsMessage.verify|verify} messages.
+             * @param message PaymentDetailsMessage message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.Message.PaymentDetailsMessage.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PaymentDetailsMessage message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape} PaymentDetailsMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape;
+
+            /**
+             * Decodes a PaymentDetailsMessage message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape} PaymentDetailsMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape;
+
+            /**
+             * Verifies a PaymentDetailsMessage message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PaymentDetailsMessage message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PaymentDetailsMessage
+             */
+            static fromObject(object: { [k: string]: any }): waproto.Message.PaymentDetailsMessage;
+
+            /**
+             * Creates a plain object from a PaymentDetailsMessage message. Also converts values to other types if specified.
+             * @param message PaymentDetailsMessage
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.Message.PaymentDetailsMessage, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PaymentDetailsMessage to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for PaymentDetailsMessage
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace PaymentDetailsMessage {
+
+            /** Properties of a PaymentDetailsMessage. */
+            interface $Properties {
+
+                /** PaymentDetailsMessage serviceType */
+                serviceType?: (waproto.Message.PaymentDetailsMessage.ServiceType|null);
+
+                /** PaymentDetailsMessage amount */
+                amount?: (waproto.Money.$Properties|null);
+
+                /** PaymentDetailsMessage payeeName */
+                payeeName?: (string|null);
+
+                /** PaymentDetailsMessage payerName */
+                payerName?: (string|null);
+
+                /** PaymentDetailsMessage transactionTimestampMs */
+                transactionTimestampMs?: (number|Long|null);
+
+                /** PaymentDetailsMessage transactionId */
+                transactionId?: (string|null);
+
+                /** PaymentDetailsMessage status */
+                status?: (waproto.Message.PaymentDetailsMessage.Status|null);
+
+                /** PaymentDetailsMessage contextInfo */
+                contextInfo?: (waproto.ContextInfo.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a PaymentDetailsMessage. */
+            type $Shape = {
+              serviceType?: waproto.Message.PaymentDetailsMessage.ServiceType|null;
+              amount?: waproto.Money.$Shape|null;
+              payeeName?: string|null;
+              payerName?: string|null;
+              transactionTimestampMs?: number|Long|null;
+              transactionId?: string|null;
+              status?: waproto.Message.PaymentDetailsMessage.Status|null;
+              contextInfo?: waproto.ContextInfo.$Shape|null;
+              $unknowns?: Uint8Array[];
+            };
+
+            /** ServiceType enum. */
+            enum ServiceType {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** UPI value */
+                UPI = 1
+            }
+
+            /** Status enum. */
+            enum Status {
+
+                /** STATUS_UNKNOWN value */
+                STATUS_UNKNOWN = 0,
+
+                /** SUCCESS value */
+                SUCCESS = 1
             }
         }
 

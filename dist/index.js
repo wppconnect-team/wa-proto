@@ -58259,6 +58259,7 @@ $root.waproto = (function() {
          * @property {number|null} [sourceExperienceId] ContextInfo sourceExperienceId
          * @property {Array.<number>|null} [sourceExperienceIds] ContextInfo sourceExperienceIds
          * @property {Uint8Array|null} [foaMutualsSignature] ContextInfo foaMutualsSignature
+         * @property {number|null} [forwardReachScore] ContextInfo forwardReachScore
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -58342,6 +58343,7 @@ $root.waproto = (function() {
          *   sourceExperienceId?: number|null;
          *   sourceExperienceIds?: Array.<number>|null;
          *   foaMutualsSignature?: Uint8Array|null;
+         *   forwardReachScore?: number|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.ContextInfo.$Shape
          */
@@ -58918,6 +58920,14 @@ $root.waproto = (function() {
          */
         ContextInfo.prototype.foaMutualsSignature = null;
 
+        /**
+         * ContextInfo forwardReachScore.
+         * @member {number|null|undefined} forwardReachScore
+         * @memberof waproto.ContextInfo
+         * @instance
+         */
+        ContextInfo.prototype.forwardReachScore = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -59305,6 +59315,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ContextInfo.prototype, "_forwardReachScore", {
+            get: $util.oneOfGetter($oneOfFields = ["forwardReachScore"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ContextInfo instance using the specified properties.
          * @function create
@@ -59478,6 +59494,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 85, wireType 2 =*/682).uint32s(message.sourceExperienceIds);
             if (message.foaMutualsSignature != null && $Object.hasOwnProperty.call(message, "foaMutualsSignature"))
                 writer.uint32(/* id 86, wireType 2 =*/690).bytes(message.foaMutualsSignature);
+            if (message.forwardReachScore != null && $Object.hasOwnProperty.call(message, "forwardReachScore"))
+                writer.uint32(/* id 87, wireType 5 =*/701).fixed32(message.forwardReachScore);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -60035,6 +60053,13 @@ $root.waproto = (function() {
                         message._foaMutualsSignature = "foaMutualsSignature";
                         continue;
                     }
+                case 87: {
+                        if (wireType !== 5)
+                            break;
+                        message.forwardReachScore = reader.fixed32();
+                        message._forwardReachScore = "forwardReachScore";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -60509,6 +60534,11 @@ $root.waproto = (function() {
                 if (!(message.foaMutualsSignature && typeof message.foaMutualsSignature.length === "number" || $util.isString(message.foaMutualsSignature)))
                     return "foaMutualsSignature: buffer expected";
             }
+            if (message.forwardReachScore != null && $Object.hasOwnProperty.call(message, "forwardReachScore")) {
+                properties._forwardReachScore = 1;
+                if (!$util.isInteger(message.forwardReachScore))
+                    return "forwardReachScore: integer expected";
+            }
             return null;
         };
 
@@ -60950,6 +60980,8 @@ $root.waproto = (function() {
                     $util.base64.decode(object.foaMutualsSignature, message.foaMutualsSignature = $util.newBuffer($util.base64.length(object.foaMutualsSignature)), 0);
                 else if (object.foaMutualsSignature.length >= 0)
                     message.foaMutualsSignature = object.foaMutualsSignature;
+            if (object.forwardReachScore != null)
+                message.forwardReachScore = object.forwardReachScore >>> 0;
             return message;
         };
 
@@ -61135,6 +61167,8 @@ $root.waproto = (function() {
             }
             if (message.foaMutualsSignature != null && $Object.hasOwnProperty.call(message, "foaMutualsSignature"))
                 object.foaMutualsSignature = options.bytes === $String ? $util.base64.encode(message.foaMutualsSignature, 0, message.foaMutualsSignature.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.foaMutualsSignature) : message.foaMutualsSignature;
+            if (message.forwardReachScore != null && $Object.hasOwnProperty.call(message, "forwardReachScore"))
+                object.forwardReachScore = message.forwardReachScore;
             return object;
         };
 
@@ -105587,6 +105621,8 @@ $root.waproto = (function() {
          * @property {waproto.Message.FutureProofMessage.$Properties|null} [botGroupParticipantMessage] Message botGroupParticipantMessage
          * @property {waproto.Message.RequestLocationUpdateMessage.$Properties|null} [requestLocationUpdateMessage] Message requestLocationUpdateMessage
          * @property {waproto.Message.VpcRequestMessage.$Properties|null} [vpcRequestMessage] Message vpcRequestMessage
+         * @property {waproto.Message.VideoMessage.$Properties|null} [instantVideoMessage] Message instantVideoMessage
+         * @property {waproto.Message.PaymentDetailsMessage.$Properties|null} [paymentDetailsMessage] Message paymentDetailsMessage
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -105719,6 +105755,8 @@ $root.waproto = (function() {
          *   botGroupParticipantMessage?: waproto.Message.FutureProofMessage.$Shape|null;
          *   requestLocationUpdateMessage?: waproto.Message.RequestLocationUpdateMessage.$Shape|null;
          *   vpcRequestMessage?: waproto.Message.VpcRequestMessage.$Shape|null;
+         *   instantVideoMessage?: waproto.Message.VideoMessage.$Shape|null;
+         *   paymentDetailsMessage?: waproto.Message.PaymentDetailsMessage.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Message.$Shape
          */
@@ -106682,6 +106720,22 @@ $root.waproto = (function() {
          */
         Message.prototype.vpcRequestMessage = null;
 
+        /**
+         * Message instantVideoMessage.
+         * @member {waproto.Message.VideoMessage.$Properties|null|undefined} instantVideoMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.instantVideoMessage = null;
+
+        /**
+         * Message paymentDetailsMessage.
+         * @member {waproto.Message.PaymentDetailsMessage.$Properties|null|undefined} paymentDetailsMessage
+         * @memberof waproto.Message
+         * @instance
+         */
+        Message.prototype.paymentDetailsMessage = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -107393,6 +107447,18 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_instantVideoMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["instantVideoMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Message.prototype, "_paymentDetailsMessage", {
+            get: $util.oneOfGetter($oneOfFields = ["paymentDetailsMessage"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Message instance using the specified properties.
          * @function create
@@ -107661,6 +107727,10 @@ $root.waproto = (function() {
                 $root.waproto.Message.RequestLocationUpdateMessage.encode(message.requestLocationUpdateMessage, writer.uint32(/* id 138, wireType 2 =*/1106).fork(), _depth + 1).ldelim();
             if (message.vpcRequestMessage != null && $Object.hasOwnProperty.call(message, "vpcRequestMessage"))
                 $root.waproto.Message.VpcRequestMessage.encode(message.vpcRequestMessage, writer.uint32(/* id 139, wireType 2 =*/1114).fork(), _depth + 1).ldelim();
+            if (message.instantVideoMessage != null && $Object.hasOwnProperty.call(message, "instantVideoMessage"))
+                $root.waproto.Message.VideoMessage.encode(message.instantVideoMessage, writer.uint32(/* id 140, wireType 2 =*/1122).fork(), _depth + 1).ldelim();
+            if (message.paymentDetailsMessage != null && $Object.hasOwnProperty.call(message, "paymentDetailsMessage"))
+                $root.waproto.Message.PaymentDetailsMessage.encode(message.paymentDetailsMessage, writer.uint32(/* id 141, wireType 2 =*/1130).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -108542,6 +108612,20 @@ $root.waproto = (function() {
                             break;
                         message.vpcRequestMessage = $root.waproto.Message.VpcRequestMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.vpcRequestMessage);
                         message._vpcRequestMessage = "vpcRequestMessage";
+                        continue;
+                    }
+                case 140: {
+                        if (wireType !== 2)
+                            break;
+                        message.instantVideoMessage = $root.waproto.Message.VideoMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.instantVideoMessage);
+                        message._instantVideoMessage = "instantVideoMessage";
+                        continue;
+                    }
+                case 141: {
+                        if (wireType !== 2)
+                            break;
+                        message.paymentDetailsMessage = $root.waproto.Message.PaymentDetailsMessage.decode(reader, reader.size(), $undefined, _depth + 1, message.paymentDetailsMessage);
+                        message._paymentDetailsMessage = "paymentDetailsMessage";
                         continue;
                     }
                 }
@@ -109534,6 +109618,22 @@ $root.waproto = (function() {
                         return "vpcRequestMessage." + error;
                 }
             }
+            if (message.instantVideoMessage != null && $Object.hasOwnProperty.call(message, "instantVideoMessage")) {
+                properties._instantVideoMessage = 1;
+                {
+                    var error = $root.waproto.Message.VideoMessage.verify(message.instantVideoMessage, _depth + 1);
+                    if (error)
+                        return "instantVideoMessage." + error;
+                }
+            }
+            if (message.paymentDetailsMessage != null && $Object.hasOwnProperty.call(message, "paymentDetailsMessage")) {
+                properties._paymentDetailsMessage = 1;
+                {
+                    var error = $root.waproto.Message.PaymentDetailsMessage.verify(message.paymentDetailsMessage, _depth + 1);
+                    if (error)
+                        return "paymentDetailsMessage." + error;
+                }
+            }
             return null;
         };
 
@@ -110142,6 +110242,16 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.Message.vpcRequestMessage: object expected");
                 message.vpcRequestMessage = $root.waproto.Message.VpcRequestMessage.fromObject(object.vpcRequestMessage, _depth + 1);
             }
+            if (object.instantVideoMessage != null) {
+                if (!$util.isObject(object.instantVideoMessage))
+                    throw $TypeError(".waproto.Message.instantVideoMessage: object expected");
+                message.instantVideoMessage = $root.waproto.Message.VideoMessage.fromObject(object.instantVideoMessage, _depth + 1);
+            }
+            if (object.paymentDetailsMessage != null) {
+                if (!$util.isObject(object.paymentDetailsMessage))
+                    throw $TypeError(".waproto.Message.paymentDetailsMessage: object expected");
+                message.paymentDetailsMessage = $root.waproto.Message.PaymentDetailsMessage.fromObject(object.paymentDetailsMessage, _depth + 1);
+            }
             return message;
         };
 
@@ -110398,6 +110508,10 @@ $root.waproto = (function() {
                 object.requestLocationUpdateMessage = $root.waproto.Message.RequestLocationUpdateMessage.toObject(message.requestLocationUpdateMessage, options, _depth + 1);
             if (message.vpcRequestMessage != null && $Object.hasOwnProperty.call(message, "vpcRequestMessage"))
                 object.vpcRequestMessage = $root.waproto.Message.VpcRequestMessage.toObject(message.vpcRequestMessage, options, _depth + 1);
+            if (message.instantVideoMessage != null && $Object.hasOwnProperty.call(message, "instantVideoMessage"))
+                object.instantVideoMessage = $root.waproto.Message.VideoMessage.toObject(message.instantVideoMessage, options, _depth + 1);
+            if (message.paymentDetailsMessage != null && $Object.hasOwnProperty.call(message, "paymentDetailsMessage"))
+                object.paymentDetailsMessage = $root.waproto.Message.PaymentDetailsMessage.toObject(message.paymentDetailsMessage, options, _depth + 1);
             return object;
         };
 
@@ -154494,6 +154608,603 @@ $root.waproto = (function() {
             })();
 
             return OrderMessage;
+        })();
+
+        Message.PaymentDetailsMessage = (function() {
+
+            /**
+             * Properties of a PaymentDetailsMessage.
+             * @typedef {Object} waproto.Message.PaymentDetailsMessage.$Properties
+             * @property {waproto.Message.PaymentDetailsMessage.ServiceType|null} [serviceType] PaymentDetailsMessage serviceType
+             * @property {waproto.Money.$Properties|null} [amount] PaymentDetailsMessage amount
+             * @property {string|null} [payeeName] PaymentDetailsMessage payeeName
+             * @property {string|null} [payerName] PaymentDetailsMessage payerName
+             * @property {number|Long|null} [transactionTimestampMs] PaymentDetailsMessage transactionTimestampMs
+             * @property {string|null} [transactionId] PaymentDetailsMessage transactionId
+             * @property {waproto.Message.PaymentDetailsMessage.Status|null} [status] PaymentDetailsMessage status
+             * @property {waproto.ContextInfo.$Properties|null} [contextInfo] PaymentDetailsMessage contextInfo
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a PaymentDetailsMessage.
+             * @memberof waproto.Message
+             * @interface IPaymentDetailsMessage
+             * @augments waproto.Message.PaymentDetailsMessage.$Properties
+             * @deprecated Use waproto.Message.PaymentDetailsMessage.$Properties instead.
+             */
+
+            /**
+             * Shape of a PaymentDetailsMessage.
+             * @typedef {{
+             *   serviceType?: waproto.Message.PaymentDetailsMessage.ServiceType|null;
+             *   amount?: waproto.Money.$Shape|null;
+             *   payeeName?: string|null;
+             *   payerName?: string|null;
+             *   transactionTimestampMs?: number|Long|null;
+             *   transactionId?: string|null;
+             *   status?: waproto.Message.PaymentDetailsMessage.Status|null;
+             *   contextInfo?: waproto.ContextInfo.$Shape|null;
+             *   $unknowns?: Array.<Uint8Array>;
+             * }} waproto.Message.PaymentDetailsMessage.$Shape
+             */
+
+            /**
+             * Constructs a new PaymentDetailsMessage.
+             * @memberof waproto.Message
+             * @classdesc Represents a PaymentDetailsMessage.
+             * @constructor
+             * @param {waproto.Message.PaymentDetailsMessage.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var PaymentDetailsMessage = function (properties) {
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * PaymentDetailsMessage serviceType.
+             * @member {waproto.Message.PaymentDetailsMessage.ServiceType|null|undefined} serviceType
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.serviceType = null;
+
+            /**
+             * PaymentDetailsMessage amount.
+             * @member {waproto.Money.$Properties|null|undefined} amount
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.amount = null;
+
+            /**
+             * PaymentDetailsMessage payeeName.
+             * @member {string|null|undefined} payeeName
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.payeeName = null;
+
+            /**
+             * PaymentDetailsMessage payerName.
+             * @member {string|null|undefined} payerName
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.payerName = null;
+
+            /**
+             * PaymentDetailsMessage transactionTimestampMs.
+             * @member {number|Long|null|undefined} transactionTimestampMs
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.transactionTimestampMs = null;
+
+            /**
+             * PaymentDetailsMessage transactionId.
+             * @member {string|null|undefined} transactionId
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.transactionId = null;
+
+            /**
+             * PaymentDetailsMessage status.
+             * @member {waproto.Message.PaymentDetailsMessage.Status|null|undefined} status
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.status = null;
+
+            /**
+             * PaymentDetailsMessage contextInfo.
+             * @member {waproto.ContextInfo.$Properties|null|undefined} contextInfo
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             */
+            PaymentDetailsMessage.prototype.contextInfo = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_serviceType", {
+                get: $util.oneOfGetter($oneOfFields = ["serviceType"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_amount", {
+                get: $util.oneOfGetter($oneOfFields = ["amount"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_payeeName", {
+                get: $util.oneOfGetter($oneOfFields = ["payeeName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_payerName", {
+                get: $util.oneOfGetter($oneOfFields = ["payerName"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_transactionTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["transactionTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_transactionId", {
+                get: $util.oneOfGetter($oneOfFields = ["transactionId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_status", {
+                get: $util.oneOfGetter($oneOfFields = ["status"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PaymentDetailsMessage.prototype, "_contextInfo", {
+                get: $util.oneOfGetter($oneOfFields = ["contextInfo"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PaymentDetailsMessage instance using the specified properties.
+             * @function create
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {waproto.Message.PaymentDetailsMessage.$Properties=} [properties] Properties to set
+             * @returns {waproto.Message.PaymentDetailsMessage} PaymentDetailsMessage instance
+             * @type {{
+             *   (properties: waproto.Message.PaymentDetailsMessage.$Shape): waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape;
+             *   (properties?: waproto.Message.PaymentDetailsMessage.$Properties): waproto.Message.PaymentDetailsMessage;
+             * }}
+             */
+            PaymentDetailsMessage.create = function(properties) {
+                return new PaymentDetailsMessage(properties);
+            };
+
+            /**
+             * Encodes the specified PaymentDetailsMessage message. Does not implicitly {@link waproto.Message.PaymentDetailsMessage.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {waproto.Message.PaymentDetailsMessage.$Properties} message PaymentDetailsMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PaymentDetailsMessage.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.serviceType != null && $Object.hasOwnProperty.call(message, "serviceType"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.serviceType);
+                if (message.amount != null && $Object.hasOwnProperty.call(message, "amount"))
+                    $root.waproto.Money.encode(message.amount, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+                if (message.payeeName != null && $Object.hasOwnProperty.call(message, "payeeName"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.payeeName);
+                if (message.payerName != null && $Object.hasOwnProperty.call(message, "payerName"))
+                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.payerName);
+                if (message.transactionTimestampMs != null && $Object.hasOwnProperty.call(message, "transactionTimestampMs"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).int64(message.transactionTimestampMs);
+                if (message.transactionId != null && $Object.hasOwnProperty.call(message, "transactionId"))
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.transactionId);
+                if (message.status != null && $Object.hasOwnProperty.call(message, "status"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).int32(message.status);
+                if (message.contextInfo != null && $Object.hasOwnProperty.call(message, "contextInfo"))
+                    $root.waproto.ContextInfo.encode(message.contextInfo, writer.uint32(/* id 17, wireType 2 =*/138).fork(), _depth + 1).ldelim();
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PaymentDetailsMessage message, length delimited. Does not implicitly {@link waproto.Message.PaymentDetailsMessage.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {waproto.Message.PaymentDetailsMessage.$Properties} message PaymentDetailsMessage message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PaymentDetailsMessage.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a PaymentDetailsMessage message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape} PaymentDetailsMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PaymentDetailsMessage.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.Message.PaymentDetailsMessage();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.serviceType = reader.int32();
+                            message._serviceType = "serviceType";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 2)
+                                break;
+                            message.amount = $root.waproto.Money.decode(reader, reader.size(), $undefined, _depth + 1, message.amount);
+                            message._amount = "amount";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            message.payeeName = reader.stringVerify();
+                            message._payeeName = "payeeName";
+                            continue;
+                        }
+                    case 4: {
+                            if (wireType !== 2)
+                                break;
+                            message.payerName = reader.stringVerify();
+                            message._payerName = "payerName";
+                            continue;
+                        }
+                    case 5: {
+                            if (wireType !== 0)
+                                break;
+                            message.transactionTimestampMs = reader.int64();
+                            message._transactionTimestampMs = "transactionTimestampMs";
+                            continue;
+                        }
+                    case 6: {
+                            if (wireType !== 2)
+                                break;
+                            message.transactionId = reader.stringVerify();
+                            message._transactionId = "transactionId";
+                            continue;
+                        }
+                    case 7: {
+                            if (wireType !== 0)
+                                break;
+                            message.status = reader.int32();
+                            message._status = "status";
+                            continue;
+                        }
+                    case 17: {
+                            if (wireType !== 2)
+                                break;
+                            message.contextInfo = $root.waproto.ContextInfo.decode(reader, reader.size(), $undefined, _depth + 1, message.contextInfo);
+                            message._contextInfo = "contextInfo";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a PaymentDetailsMessage message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.Message.PaymentDetailsMessage & waproto.Message.PaymentDetailsMessage.$Shape} PaymentDetailsMessage
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PaymentDetailsMessage.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a PaymentDetailsMessage message.
+             * @function verify
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PaymentDetailsMessage.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.serviceType != null && $Object.hasOwnProperty.call(message, "serviceType")) {
+                    properties._serviceType = 1;
+                    if (typeof message.serviceType !== "number" || (message.serviceType | 0) !== message.serviceType)
+                        return "serviceType: enum value expected";
+                }
+                if (message.amount != null && $Object.hasOwnProperty.call(message, "amount")) {
+                    properties._amount = 1;
+                    {
+                        var error = $root.waproto.Money.verify(message.amount, _depth + 1);
+                        if (error)
+                            return "amount." + error;
+                    }
+                }
+                if (message.payeeName != null && $Object.hasOwnProperty.call(message, "payeeName")) {
+                    properties._payeeName = 1;
+                    if (!$util.isString(message.payeeName))
+                        return "payeeName: string expected";
+                }
+                if (message.payerName != null && $Object.hasOwnProperty.call(message, "payerName")) {
+                    properties._payerName = 1;
+                    if (!$util.isString(message.payerName))
+                        return "payerName: string expected";
+                }
+                if (message.transactionTimestampMs != null && $Object.hasOwnProperty.call(message, "transactionTimestampMs")) {
+                    properties._transactionTimestampMs = 1;
+                    if (!$util.isInteger(message.transactionTimestampMs) && !(message.transactionTimestampMs && $util.isInteger(message.transactionTimestampMs.low) && $util.isInteger(message.transactionTimestampMs.high)))
+                        return "transactionTimestampMs: integer|Long expected";
+                }
+                if (message.transactionId != null && $Object.hasOwnProperty.call(message, "transactionId")) {
+                    properties._transactionId = 1;
+                    if (!$util.isString(message.transactionId))
+                        return "transactionId: string expected";
+                }
+                if (message.status != null && $Object.hasOwnProperty.call(message, "status")) {
+                    properties._status = 1;
+                    if (typeof message.status !== "number" || (message.status | 0) !== message.status)
+                        return "status: enum value expected";
+                }
+                if (message.contextInfo != null && $Object.hasOwnProperty.call(message, "contextInfo")) {
+                    properties._contextInfo = 1;
+                    {
+                        var error = $root.waproto.ContextInfo.verify(message.contextInfo, _depth + 1);
+                        if (error)
+                            return "contextInfo." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PaymentDetailsMessage message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.Message.PaymentDetailsMessage} PaymentDetailsMessage
+             */
+            PaymentDetailsMessage.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.Message.PaymentDetailsMessage)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.Message.PaymentDetailsMessage: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.Message.PaymentDetailsMessage();
+                switch (object.serviceType) {
+                case "UNKNOWN":
+                case 0:
+                    message.serviceType = 0;
+                    break;
+                case "UPI":
+                case 1:
+                    message.serviceType = 1;
+                    break;
+                default:
+                    if (typeof object.serviceType === "number" && (object.serviceType | 0) === object.serviceType)
+                        message.serviceType = object.serviceType;
+                }
+                if (object.amount != null) {
+                    if (!$util.isObject(object.amount))
+                        throw $TypeError(".waproto.Message.PaymentDetailsMessage.amount: object expected");
+                    message.amount = $root.waproto.Money.fromObject(object.amount, _depth + 1);
+                }
+                if (object.payeeName != null)
+                    message.payeeName = $String(object.payeeName);
+                if (object.payerName != null)
+                    message.payerName = $String(object.payerName);
+                if (object.transactionTimestampMs != null)
+                    if ($util.Long)
+                        message.transactionTimestampMs = $util.Long.fromValue(object.transactionTimestampMs, false);
+                    else if (typeof object.transactionTimestampMs === "string")
+                        message.transactionTimestampMs = $parseInt(object.transactionTimestampMs, 10);
+                    else if (typeof object.transactionTimestampMs === "number")
+                        message.transactionTimestampMs = object.transactionTimestampMs;
+                    else if (typeof object.transactionTimestampMs === "object")
+                        message.transactionTimestampMs = new $util.LongBits(object.transactionTimestampMs.low >>> 0, object.transactionTimestampMs.high >>> 0).toNumber();
+                if (object.transactionId != null)
+                    message.transactionId = $String(object.transactionId);
+                switch (object.status) {
+                case "STATUS_UNKNOWN":
+                case 0:
+                    message.status = 0;
+                    break;
+                case "SUCCESS":
+                case 1:
+                    message.status = 1;
+                    break;
+                default:
+                    if (typeof object.status === "number" && (object.status | 0) === object.status)
+                        message.status = object.status;
+                }
+                if (object.contextInfo != null) {
+                    if (!$util.isObject(object.contextInfo))
+                        throw $TypeError(".waproto.Message.PaymentDetailsMessage.contextInfo: object expected");
+                    message.contextInfo = $root.waproto.ContextInfo.fromObject(object.contextInfo, _depth + 1);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PaymentDetailsMessage message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {waproto.Message.PaymentDetailsMessage} message PaymentDetailsMessage
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PaymentDetailsMessage.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (message.serviceType != null && $Object.hasOwnProperty.call(message, "serviceType"))
+                    object.serviceType = options.enums === $String ? $root.waproto.Message.PaymentDetailsMessage.ServiceType[message.serviceType] === $undefined ? message.serviceType : $root.waproto.Message.PaymentDetailsMessage.ServiceType[message.serviceType] : message.serviceType;
+                if (message.amount != null && $Object.hasOwnProperty.call(message, "amount"))
+                    object.amount = $root.waproto.Money.toObject(message.amount, options, _depth + 1);
+                if (message.payeeName != null && $Object.hasOwnProperty.call(message, "payeeName"))
+                    object.payeeName = message.payeeName;
+                if (message.payerName != null && $Object.hasOwnProperty.call(message, "payerName"))
+                    object.payerName = message.payerName;
+                if (message.transactionTimestampMs != null && $Object.hasOwnProperty.call(message, "transactionTimestampMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.transactionTimestampMs = typeof message.transactionTimestampMs === "number" ? $BigInt(message.transactionTimestampMs) : $util.Long.fromBits(message.transactionTimestampMs.low >>> 0, message.transactionTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.transactionTimestampMs === "number")
+                        object.transactionTimestampMs = options.longs === $String ? $String(message.transactionTimestampMs) : message.transactionTimestampMs;
+                    else
+                        object.transactionTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.transactionTimestampMs) : options.longs === $Number ? new $util.LongBits(message.transactionTimestampMs.low >>> 0, message.transactionTimestampMs.high >>> 0).toNumber() : message.transactionTimestampMs;
+                if (message.transactionId != null && $Object.hasOwnProperty.call(message, "transactionId"))
+                    object.transactionId = message.transactionId;
+                if (message.status != null && $Object.hasOwnProperty.call(message, "status"))
+                    object.status = options.enums === $String ? $root.waproto.Message.PaymentDetailsMessage.Status[message.status] === $undefined ? message.status : $root.waproto.Message.PaymentDetailsMessage.Status[message.status] : message.status;
+                if (message.contextInfo != null && $Object.hasOwnProperty.call(message, "contextInfo"))
+                    object.contextInfo = $root.waproto.ContextInfo.toObject(message.contextInfo, options, _depth + 1);
+                return object;
+            };
+
+            /**
+             * Converts this PaymentDetailsMessage to JSON.
+             * @function toJSON
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PaymentDetailsMessage.prototype.toJSON = function() {
+                return PaymentDetailsMessage.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for PaymentDetailsMessage
+             * @function getTypeUrl
+             * @memberof waproto.Message.PaymentDetailsMessage
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            PaymentDetailsMessage.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.Message.PaymentDetailsMessage";
+            };
+
+            /**
+             * ServiceType enum.
+             * @name waproto.Message.PaymentDetailsMessage.ServiceType
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} UPI=1 UPI value
+             */
+            PaymentDetailsMessage.ServiceType = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "UPI"] = 1;
+                return values;
+            })();
+
+            /**
+             * Status enum.
+             * @name waproto.Message.PaymentDetailsMessage.Status
+             * @enum {number}
+             * @property {number} STATUS_UNKNOWN=0 STATUS_UNKNOWN value
+             * @property {number} SUCCESS=1 SUCCESS value
+             */
+            PaymentDetailsMessage.Status = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "STATUS_UNKNOWN"] = 0;
+                values[valuesById[1] = "SUCCESS"] = 1;
+                return values;
+            })();
+
+            return PaymentDetailsMessage;
         })();
 
         Message.PaymentExtendedMetadata = (function() {
