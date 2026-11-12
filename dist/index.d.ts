@@ -96882,7 +96882,10 @@ export namespace waproto {
             POLL_OPTIONS_REMOVED = 290,
 
             /** POLL_ADDED_OPTION_REMOVED value */
-            POLL_ADDED_OPTION_REMOVED = 291
+            POLL_ADDED_OPTION_REMOVED = 291,
+
+            /** GROUP_CUSTOM_REACTIONS value */
+            GROUP_CUSTOM_REACTIONS = 293
         }
     }
 

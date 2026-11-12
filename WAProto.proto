@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1054172749
+/// WhatsApp Version: 2.3000.1054203907
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -7145,6 +7145,7 @@ message WebMessageInfo {
         SPLIT_PAYMENT_MARKED_AS_PAID = 289;
         POLL_OPTIONS_REMOVED = 290;
         POLL_ADDED_OPTION_REMOVED = 291;
+        GROUP_CUSTOM_REACTIONS = 293;
     }
 }
 
