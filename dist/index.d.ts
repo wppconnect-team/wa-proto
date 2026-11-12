@@ -7363,7 +7363,13 @@ export namespace waproto {
             AI_INTERJECTIONS_ENABLED = 86,
 
             /** AI_RICH_RESPONSE_READ_ALOUD_ENABLED value */
-            AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87
+            AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87,
+
+            /** AI_RICH_RESPONSE_ITEM_LISTS_ENABLED value */
+            AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88,
+
+            /** RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH value */
+            RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89
         }
     }
 
@@ -11374,7 +11380,10 @@ export namespace waproto {
         NEW_3P_AGENT_CREATION = 58,
 
         /** SHARE value */
-        SHARE = 59
+        SHARE = 59,
+
+        /** BIRTHDAY_BANNER value */
+        BIRTHDAY_BANNER = 60
     }
 
     /**
@@ -23773,6 +23782,15 @@ export namespace waproto {
         /** Conversation groupRootKeys. */
         groupRootKeys: waproto.GroupRootKey.$Properties[];
 
+        /** Conversation isWorkGroup. */
+        isWorkGroup?: (boolean|null);
+
+        /** Conversation nonE2EeType. */
+        nonE2EeType?: (number|null);
+
+        /** Conversation contactAccountEncryptionAttestationType. */
+        contactAccountEncryptionAttestationType?: (waproto.NonE2EEAttestation.AccountType|null);
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -24055,6 +24073,15 @@ export namespace waproto {
             /** Conversation groupRootKeys */
             groupRootKeys?: (waproto.GroupRootKey.$Properties[]|null);
 
+            /** Conversation isWorkGroup */
+            isWorkGroup?: (boolean|null);
+
+            /** Conversation nonE2EeType */
+            nonE2EeType?: (number|null);
+
+            /** Conversation contactAccountEncryptionAttestationType */
+            contactAccountEncryptionAttestationType?: (waproto.NonE2EEAttestation.AccountType|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -24127,6 +24154,9 @@ export namespace waproto {
           acp2Setting?: waproto.ACP2Setting.$Shape|null;
           acp2HistoryWithheld?: boolean|null;
           groupRootKeys?: waproto.GroupRootKey.$Shape[]|null;
+          isWorkGroup?: boolean|null;
+          nonE2EeType?: number|null;
+          contactAccountEncryptionAttestationType?: waproto.NonE2EEAttestation.AccountType|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -26175,6 +26205,9 @@ export namespace waproto {
         /** DeviceProps historySyncConfig. */
         historySyncConfig?: (waproto.DeviceProps.HistorySyncConfig.$Properties|null);
 
+        /** DeviceProps deviceName. */
+        deviceName?: (string|null);
+
         /**
          * Creates a new DeviceProps instance using the specified properties.
          * @param [properties] Properties to set
@@ -26273,6 +26306,9 @@ export namespace waproto {
 
             /** DeviceProps historySyncConfig */
             historySyncConfig?: (waproto.DeviceProps.HistorySyncConfig.$Properties|null);
+
+            /** DeviceProps deviceName */
+            deviceName?: (string|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -47882,6 +47918,9 @@ export namespace waproto {
             /** LinkPreviewMetadata videoContentCaption. */
             videoContentCaption?: (string|null);
 
+            /** LinkPreviewMetadata videoId. */
+            videoId?: (string|null);
+
             /**
              * Creates a new LinkPreviewMetadata instance using the specified properties.
              * @param [properties] Properties to set
@@ -47992,6 +48031,9 @@ export namespace waproto {
 
                 /** LinkPreviewMetadata videoContentCaption */
                 videoContentCaption?: (string|null);
+
+                /** LinkPreviewMetadata videoId */
+                videoId?: (string|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -70492,6 +70534,12 @@ export namespace waproto {
         /** PollAdditionalMetadata originalOptions. */
         originalOptions: waproto.Message.PollCreationMessage.Option.$Properties[];
 
+        /** PollAdditionalMetadata pollOptionReplayEntries. */
+        pollOptionReplayEntries: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties[];
+
+        /** PollAdditionalMetadata pollOptionReplayBase. */
+        pollOptionReplayBase?: (waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties|null);
+
         /**
          * Creates a new PollAdditionalMetadata instance using the specified properties.
          * @param [properties] Properties to set
@@ -70584,6 +70632,12 @@ export namespace waproto {
 
             /** PollAdditionalMetadata originalOptions */
             originalOptions?: (waproto.Message.PollCreationMessage.Option.$Properties[]|null);
+
+            /** PollAdditionalMetadata pollOptionReplayEntries */
+            pollOptionReplayEntries?: (waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties[]|null);
+
+            /** PollAdditionalMetadata pollOptionReplayBase */
+            pollOptionReplayBase?: (waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -70713,6 +70767,427 @@ export namespace waproto {
 
             /** Shape of a PollNameHashHistoryEntry. */
             type $Shape = waproto.PollAdditionalMetadata.PollNameHashHistoryEntry.$Properties;
+        }
+
+        /**
+         * Properties of a PollOptionReplayBase.
+         * @deprecated Use waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties instead.
+         */
+        interface IPollOptionReplayBase extends waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties {
+        }
+
+        /** Represents a PollOptionReplayBase. */
+        class PollOptionReplayBase {
+
+            /**
+             * Constructs a new PollOptionReplayBase.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** PollOptionReplayBase boundaryTimestampMs. */
+            boundaryTimestampMs?: (number|Long|null);
+
+            /** PollOptionReplayBase editTimestampMs. */
+            editTimestampMs?: (number|Long|null);
+
+            /** PollOptionReplayBase options. */
+            options: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties[];
+
+            /**
+             * Creates a new PollOptionReplayBase instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PollOptionReplayBase instance
+             */
+            static create(properties: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape): waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape;
+            static create(properties?: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties): waproto.PollAdditionalMetadata.PollOptionReplayBase;
+
+            /**
+             * Encodes the specified PollOptionReplayBase message. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.verify|verify} messages.
+             * @param message PollOptionReplayBase message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PollOptionReplayBase message, length delimited. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.verify|verify} messages.
+             * @param message PollOptionReplayBase message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PollOptionReplayBase message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape} PollOptionReplayBase
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape;
+
+            /**
+             * Decodes a PollOptionReplayBase message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape} PollOptionReplayBase
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape;
+
+            /**
+             * Verifies a PollOptionReplayBase message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PollOptionReplayBase message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PollOptionReplayBase
+             */
+            static fromObject(object: { [k: string]: any }): waproto.PollAdditionalMetadata.PollOptionReplayBase;
+
+            /**
+             * Creates a plain object from a PollOptionReplayBase message. Also converts values to other types if specified.
+             * @param message PollOptionReplayBase
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.PollAdditionalMetadata.PollOptionReplayBase, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PollOptionReplayBase to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for PollOptionReplayBase
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace PollOptionReplayBase {
+
+            /** Properties of a PollOptionReplayBase. */
+            interface $Properties {
+
+                /** PollOptionReplayBase boundaryTimestampMs */
+                boundaryTimestampMs?: (number|Long|null);
+
+                /** PollOptionReplayBase editTimestampMs */
+                editTimestampMs?: (number|Long|null);
+
+                /** PollOptionReplayBase options */
+                options?: (waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties[]|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a PollOptionReplayBase. */
+            type $Shape = waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties;
+
+            /**
+             * Properties of an Option.
+             * @deprecated Use waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties instead.
+             */
+            interface IOption extends waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties {
+            }
+
+            /** Represents an Option. */
+            class Option {
+
+                /**
+                 * Constructs a new Option.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+
+                /** Option optionHash. */
+                optionHash?: (Uint8Array|null);
+
+                /** Option enteredTimestampMs. */
+                enteredTimestampMs?: (number|Long|null);
+
+                /** Option addMessageKey. */
+                addMessageKey?: (waproto.MessageKey.$Properties|null);
+
+                /**
+                 * Creates a new Option instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Option instance
+                 */
+                static create(properties: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape;
+                static create(properties?: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option;
+
+                /**
+                 * Encodes the specified Option message. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.verify|verify} messages.
+                 * @param message Option message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encode(message: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Option message, length delimited. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.verify|verify} messages.
+                 * @param message Option message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                static encodeDelimited(message: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes an Option message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape} Option
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape;
+
+                /**
+                 * Decodes an Option message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape} Option
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape;
+
+                /**
+                 * Verifies an Option message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates an Option message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Option
+                 */
+                static fromObject(object: { [k: string]: any }): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option;
+
+                /**
+                 * Creates a plain object from an Option message. Also converts values to other types if specified.
+                 * @param message Option
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                static toObject(message: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Option to JSON.
+                 * @returns JSON object
+                 */
+                toJSON(): { [k: string]: any };
+
+                /**
+                 * Gets the type url for Option
+                 * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns The type url
+                 */
+                static getTypeUrl(prefix?: string): string;
+            }
+
+            namespace Option {
+
+                /** Properties of an Option. */
+                interface $Properties {
+
+                    /** Option optionHash */
+                    optionHash?: (Uint8Array|null);
+
+                    /** Option enteredTimestampMs */
+                    enteredTimestampMs?: (number|Long|null);
+
+                    /** Option addMessageKey */
+                    addMessageKey?: (waproto.MessageKey.$Properties|null);
+
+                    /** Unknown fields preserved while decoding when enabled */
+                    $unknowns?: Uint8Array[];
+                }
+
+                /** Shape of an Option. */
+                type $Shape = waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties;
+            }
+        }
+
+        /**
+         * Properties of a PollOptionReplayEntry.
+         * @deprecated Use waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties instead.
+         */
+        interface IPollOptionReplayEntry extends waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties {
+        }
+
+        /** Represents a PollOptionReplayEntry. */
+        class PollOptionReplayEntry {
+
+            /**
+             * Constructs a new PollOptionReplayEntry.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** PollOptionReplayEntry type. */
+            type?: (waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type|null);
+
+            /** PollOptionReplayEntry messageKey. */
+            messageKey?: (waproto.MessageKey.$Properties|null);
+
+            /** PollOptionReplayEntry serverTimestampMs. */
+            serverTimestampMs?: (number|Long|null);
+
+            /** PollOptionReplayEntry editTimestampMs. */
+            editTimestampMs?: (number|Long|null);
+
+            /** PollOptionReplayEntry optionHashes. */
+            optionHashes: Uint8Array[];
+
+            /** PollOptionReplayEntry revokedMessageKey. */
+            revokedMessageKey?: (waproto.MessageKey.$Properties|null);
+
+            /**
+             * Creates a new PollOptionReplayEntry instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns PollOptionReplayEntry instance
+             */
+            static create(properties: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape): waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape;
+            static create(properties?: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties): waproto.PollAdditionalMetadata.PollOptionReplayEntry;
+
+            /**
+             * Encodes the specified PollOptionReplayEntry message. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayEntry.verify|verify} messages.
+             * @param message PollOptionReplayEntry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified PollOptionReplayEntry message, length delimited. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayEntry.verify|verify} messages.
+             * @param message PollOptionReplayEntry message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a PollOptionReplayEntry message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape} PollOptionReplayEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape;
+
+            /**
+             * Decodes a PollOptionReplayEntry message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape} PollOptionReplayEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape;
+
+            /**
+             * Verifies a PollOptionReplayEntry message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a PollOptionReplayEntry message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns PollOptionReplayEntry
+             */
+            static fromObject(object: { [k: string]: any }): waproto.PollAdditionalMetadata.PollOptionReplayEntry;
+
+            /**
+             * Creates a plain object from a PollOptionReplayEntry message. Also converts values to other types if specified.
+             * @param message PollOptionReplayEntry
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.PollAdditionalMetadata.PollOptionReplayEntry, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this PollOptionReplayEntry to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for PollOptionReplayEntry
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace PollOptionReplayEntry {
+
+            /** Properties of a PollOptionReplayEntry. */
+            interface $Properties {
+
+                /** PollOptionReplayEntry type */
+                type?: (waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type|null);
+
+                /** PollOptionReplayEntry messageKey */
+                messageKey?: (waproto.MessageKey.$Properties|null);
+
+                /** PollOptionReplayEntry serverTimestampMs */
+                serverTimestampMs?: (number|Long|null);
+
+                /** PollOptionReplayEntry editTimestampMs */
+                editTimestampMs?: (number|Long|null);
+
+                /** PollOptionReplayEntry optionHashes */
+                optionHashes?: (Uint8Array[]|null);
+
+                /** PollOptionReplayEntry revokedMessageKey */
+                revokedMessageKey?: (waproto.MessageKey.$Properties|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a PollOptionReplayEntry. */
+            type $Shape = waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties;
+
+            /** Type enum. */
+            enum Type {
+
+                /** UNKNOWN value */
+                UNKNOWN = 0,
+
+                /** EDIT value */
+                EDIT = 1,
+
+                /** ADD value */
+                ADD = 2,
+
+                /** REVOKE value */
+                REVOKE = 3
+            }
         }
     }
 

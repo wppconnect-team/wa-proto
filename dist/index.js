@@ -20016,6 +20016,14 @@ $root.waproto = (function() {
                     case 87:
                         message.capabilities[message.capabilities.length] = 87;
                         break;
+                    case "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED":
+                    case 88:
+                        message.capabilities[message.capabilities.length] = 88;
+                        break;
+                    case "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH":
+                    case 89:
+                        message.capabilities[message.capabilities.length] = 89;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -20168,6 +20176,8 @@ $root.waproto = (function() {
          * @property {number} AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED=85 AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED value
          * @property {number} AI_INTERJECTIONS_ENABLED=86 AI_INTERJECTIONS_ENABLED value
          * @property {number} AI_RICH_RESPONSE_READ_ALOUD_ENABLED=87 AI_RICH_RESPONSE_READ_ALOUD_ENABLED value
+         * @property {number} AI_RICH_RESPONSE_ITEM_LISTS_ENABLED=88 AI_RICH_RESPONSE_ITEM_LISTS_ENABLED value
+         * @property {number} RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH=89 RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -20259,6 +20269,8 @@ $root.waproto = (function() {
             values[valuesById[85] = "AI_MUSE_JARVIS_EXTENDED_CARDS_ENABLED"] = 85;
             values[valuesById[86] = "AI_INTERJECTIONS_ENABLED"] = 86;
             values[valuesById[87] = "AI_RICH_RESPONSE_READ_ALOUD_ENABLED"] = 87;
+            values[valuesById[88] = "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED"] = 88;
+            values[valuesById[89] = "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH"] = 89;
             return values;
         })();
 
@@ -29709,6 +29721,10 @@ $root.waproto = (function() {
             case 59:
                 message.botEntryPointOrigin = 59;
                 break;
+            case "BIRTHDAY_BANNER":
+            case 60:
+                message.botEntryPointOrigin = 60;
+                break;
             default:
                 if (typeof object.botEntryPointOrigin === "number" && (object.botEntryPointOrigin | 0) === object.botEntryPointOrigin)
                     message.botEntryPointOrigin = object.botEntryPointOrigin;
@@ -31781,6 +31797,7 @@ $root.waproto = (function() {
      * @property {number} CONTACTS_TAB=57 CONTACTS_TAB value
      * @property {number} NEW_3P_AGENT_CREATION=58 NEW_3P_AGENT_CREATION value
      * @property {number} SHARE=59 SHARE value
+     * @property {number} BIRTHDAY_BANNER=60 BIRTHDAY_BANNER value
      */
     waproto.BotMetricsEntryPoint = (function() {
         var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -31835,6 +31852,7 @@ $root.waproto = (function() {
         values[valuesById[57] = "CONTACTS_TAB"] = 57;
         values[valuesById[58] = "NEW_3P_AGENT_CREATION"] = 58;
         values[valuesById[59] = "SHARE"] = 59;
+        values[valuesById[60] = "BIRTHDAY_BANNER"] = 60;
         return values;
     })();
 
@@ -32329,6 +32347,10 @@ $root.waproto = (function() {
             case "SHARE":
             case 59:
                 message.destinationEntryPoint = 59;
+                break;
+            case "BIRTHDAY_BANNER":
+            case 60:
+                message.destinationEntryPoint = 60;
                 break;
             default:
                 if (typeof object.destinationEntryPoint === "number" && (object.destinationEntryPoint | 0) === object.destinationEntryPoint)
@@ -68823,6 +68845,9 @@ $root.waproto = (function() {
          * @property {waproto.ACP2Setting.$Properties|null} [acp2Setting] Conversation acp2Setting
          * @property {boolean|null} [acp2HistoryWithheld] Conversation acp2HistoryWithheld
          * @property {Array.<waproto.GroupRootKey.$Properties>|null} [groupRootKeys] Conversation groupRootKeys
+         * @property {boolean|null} [isWorkGroup] Conversation isWorkGroup
+         * @property {number|null} [nonE2EeType] Conversation nonE2EeType
+         * @property {waproto.NonE2EEAttestation.AccountType|null} [contactAccountEncryptionAttestationType] Conversation contactAccountEncryptionAttestationType
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -68903,6 +68928,9 @@ $root.waproto = (function() {
          *   acp2Setting?: waproto.ACP2Setting.$Shape|null;
          *   acp2HistoryWithheld?: boolean|null;
          *   groupRootKeys?: Array.<waproto.GroupRootKey.$Shape>|null;
+         *   isWorkGroup?: boolean|null;
+         *   nonE2EeType?: number|null;
+         *   contactAccountEncryptionAttestationType?: waproto.NonE2EEAttestation.AccountType|null;
          *   $unknowns?: Array.<Uint8Array>;
          * }} waproto.Conversation.$Shape
          */
@@ -69453,6 +69481,30 @@ $root.waproto = (function() {
          */
         Conversation.prototype.groupRootKeys = $util.emptyArray;
 
+        /**
+         * Conversation isWorkGroup.
+         * @member {boolean|null|undefined} isWorkGroup
+         * @memberof waproto.Conversation
+         * @instance
+         */
+        Conversation.prototype.isWorkGroup = null;
+
+        /**
+         * Conversation nonE2EeType.
+         * @member {number|null|undefined} nonE2EeType
+         * @memberof waproto.Conversation
+         * @instance
+         */
+        Conversation.prototype.nonE2EeType = null;
+
+        /**
+         * Conversation contactAccountEncryptionAttestationType.
+         * @member {waproto.NonE2EEAttestation.AccountType|null|undefined} contactAccountEncryptionAttestationType
+         * @memberof waproto.Conversation
+         * @instance
+         */
+        Conversation.prototype.contactAccountEncryptionAttestationType = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -69828,6 +69880,24 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_isWorkGroup", {
+            get: $util.oneOfGetter($oneOfFields = ["isWorkGroup"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_nonE2EeType", {
+            get: $util.oneOfGetter($oneOfFields = ["nonE2EeType"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(Conversation.prototype, "_contactAccountEncryptionAttestationType", {
+            get: $util.oneOfGetter($oneOfFields = ["contactAccountEncryptionAttestationType"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @function create
@@ -69994,6 +70064,12 @@ $root.waproto = (function() {
             if (message.groupRootKeys != null && message.groupRootKeys.length)
                 for (var i = 0; i < message.groupRootKeys.length; ++i)
                     $root.waproto.GroupRootKey.encode(message.groupRootKeys[i], writer.uint32(/* id 66, wireType 2 =*/530).fork(), _depth + 1).ldelim();
+            if (message.isWorkGroup != null && $Object.hasOwnProperty.call(message, "isWorkGroup"))
+                writer.uint32(/* id 67, wireType 0 =*/536).bool(message.isWorkGroup);
+            if (message.nonE2EeType != null && $Object.hasOwnProperty.call(message, "nonE2EeType"))
+                writer.uint32(/* id 68, wireType 0 =*/544).int32(message.nonE2EeType);
+            if (message.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(message, "contactAccountEncryptionAttestationType"))
+                writer.uint32(/* id 69, wireType 0 =*/552).int32(message.contactAccountEncryptionAttestationType);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -70515,6 +70591,27 @@ $root.waproto = (function() {
                         message.groupRootKeys.push($root.waproto.GroupRootKey.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
+                case 67: {
+                        if (wireType !== 0)
+                            break;
+                        message.isWorkGroup = reader.bool();
+                        message._isWorkGroup = "isWorkGroup";
+                        continue;
+                    }
+                case 68: {
+                        if (wireType !== 0)
+                            break;
+                        message.nonE2EeType = reader.int32();
+                        message._nonE2EeType = "nonE2EeType";
+                        continue;
+                    }
+                case 69: {
+                        if (wireType !== 0)
+                            break;
+                        message.contactAccountEncryptionAttestationType = reader.int32();
+                        message._contactAccountEncryptionAttestationType = "contactAccountEncryptionAttestationType";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -70917,6 +71014,21 @@ $root.waproto = (function() {
                         return "groupRootKeys." + error;
                 }
             }
+            if (message.isWorkGroup != null && $Object.hasOwnProperty.call(message, "isWorkGroup")) {
+                properties._isWorkGroup = 1;
+                if (typeof message.isWorkGroup !== "boolean")
+                    return "isWorkGroup: boolean expected";
+            }
+            if (message.nonE2EeType != null && $Object.hasOwnProperty.call(message, "nonE2EeType")) {
+                properties._nonE2EeType = 1;
+                if (!$util.isInteger(message.nonE2EeType))
+                    return "nonE2EeType: integer expected";
+            }
+            if (message.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(message, "contactAccountEncryptionAttestationType")) {
+                properties._contactAccountEncryptionAttestationType = 1;
+                if (typeof message.contactAccountEncryptionAttestationType !== "number" || (message.contactAccountEncryptionAttestationType | 0) !== message.contactAccountEncryptionAttestationType)
+                    return "contactAccountEncryptionAttestationType: enum value expected";
+            }
             return null;
         };
 
@@ -71262,6 +71374,27 @@ $root.waproto = (function() {
                     message.groupRootKeys[i] = $root.waproto.GroupRootKey.fromObject(object.groupRootKeys[i], _depth + 1);
                 }
             }
+            if (object.isWorkGroup != null)
+                message.isWorkGroup = $Boolean(object.isWorkGroup);
+            if (object.nonE2EeType != null)
+                message.nonE2EeType = object.nonE2EeType | 0;
+            switch (object.contactAccountEncryptionAttestationType) {
+            case "E2EE":
+            case 0:
+                message.contactAccountEncryptionAttestationType = 0;
+                break;
+            case "HYBRID_E2EE":
+            case 1:
+                message.contactAccountEncryptionAttestationType = 1;
+                break;
+            case "NON_E2EE":
+            case 2:
+                message.contactAccountEncryptionAttestationType = 2;
+                break;
+            default:
+                if (typeof object.contactAccountEncryptionAttestationType === "number" && (object.contactAccountEncryptionAttestationType | 0) === object.contactAccountEncryptionAttestationType)
+                    message.contactAccountEncryptionAttestationType = object.contactAccountEncryptionAttestationType;
+            }
             return message;
         };
 
@@ -71475,6 +71608,12 @@ $root.waproto = (function() {
                 for (var j = 0; j < message.groupRootKeys.length; ++j)
                     object.groupRootKeys[j] = $root.waproto.GroupRootKey.toObject(message.groupRootKeys[j], options, _depth + 1);
             }
+            if (message.isWorkGroup != null && $Object.hasOwnProperty.call(message, "isWorkGroup"))
+                object.isWorkGroup = message.isWorkGroup;
+            if (message.nonE2EeType != null && $Object.hasOwnProperty.call(message, "nonE2EeType"))
+                object.nonE2EeType = message.nonE2EeType;
+            if (message.contactAccountEncryptionAttestationType != null && $Object.hasOwnProperty.call(message, "contactAccountEncryptionAttestationType"))
+                object.contactAccountEncryptionAttestationType = options.enums === $String ? $root.waproto.NonE2EEAttestation.AccountType[message.contactAccountEncryptionAttestationType] === $undefined ? message.contactAccountEncryptionAttestationType : $root.waproto.NonE2EEAttestation.AccountType[message.contactAccountEncryptionAttestationType] : message.contactAccountEncryptionAttestationType;
             return object;
         };
 
@@ -77072,6 +77211,7 @@ $root.waproto = (function() {
          * @property {waproto.DeviceProps.PlatformType|null} [platformType] DeviceProps platformType
          * @property {boolean|null} [requireFullSync] DeviceProps requireFullSync
          * @property {waproto.DeviceProps.HistorySyncConfig.$Properties|null} [historySyncConfig] DeviceProps historySyncConfig
+         * @property {string|null} [deviceName] DeviceProps deviceName
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -77143,6 +77283,14 @@ $root.waproto = (function() {
          */
         DeviceProps.prototype.historySyncConfig = null;
 
+        /**
+         * DeviceProps deviceName.
+         * @member {string|null|undefined} deviceName
+         * @memberof waproto.DeviceProps
+         * @instance
+         */
+        DeviceProps.prototype.deviceName = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -77173,6 +77321,12 @@ $root.waproto = (function() {
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(DeviceProps.prototype, "_historySyncConfig", {
             get: $util.oneOfGetter($oneOfFields = ["historySyncConfig"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(DeviceProps.prototype, "_deviceName", {
+            get: $util.oneOfGetter($oneOfFields = ["deviceName"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -77218,6 +77372,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 4, wireType 0 =*/32).bool(message.requireFullSync);
             if (message.historySyncConfig != null && $Object.hasOwnProperty.call(message, "historySyncConfig"))
                 $root.waproto.DeviceProps.HistorySyncConfig.encode(message.historySyncConfig, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
+            if (message.deviceName != null && $Object.hasOwnProperty.call(message, "deviceName"))
+                writer.uint32(/* id 6, wireType 2 =*/50).string(message.deviceName);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -77310,6 +77466,13 @@ $root.waproto = (function() {
                         message._historySyncConfig = "historySyncConfig";
                         continue;
                     }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.deviceName = reader.stringVerify();
+                        message._deviceName = "deviceName";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -77389,6 +77552,11 @@ $root.waproto = (function() {
                     if (error)
                         return "historySyncConfig." + error;
                 }
+            }
+            if (message.deviceName != null && $Object.hasOwnProperty.call(message, "deviceName")) {
+                properties._deviceName = 1;
+                if (!$util.isString(message.deviceName))
+                    return "deviceName: string expected";
             }
             return null;
         };
@@ -77554,6 +77722,8 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.DeviceProps.historySyncConfig: object expected");
                 message.historySyncConfig = $root.waproto.DeviceProps.HistorySyncConfig.fromObject(object.historySyncConfig, _depth + 1);
             }
+            if (object.deviceName != null)
+                message.deviceName = $String(object.deviceName);
             return message;
         };
 
@@ -77584,6 +77754,8 @@ $root.waproto = (function() {
                 object.requireFullSync = message.requireFullSync;
             if (message.historySyncConfig != null && $Object.hasOwnProperty.call(message, "historySyncConfig"))
                 object.historySyncConfig = $root.waproto.DeviceProps.HistorySyncConfig.toObject(message.historySyncConfig, options, _depth + 1);
+            if (message.deviceName != null && $Object.hasOwnProperty.call(message, "deviceName"))
+                object.deviceName = message.deviceName;
             return object;
         };
 
@@ -143761,6 +143933,7 @@ $root.waproto = (function() {
              * @property {string|null} [videoContentUrl] LinkPreviewMetadata videoContentUrl
              * @property {waproto.EmbeddedMusic.$Properties|null} [musicMetadata] LinkPreviewMetadata musicMetadata
              * @property {string|null} [videoContentCaption] LinkPreviewMetadata videoContentCaption
+             * @property {string|null} [videoId] LinkPreviewMetadata videoId
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -143864,6 +144037,14 @@ $root.waproto = (function() {
              */
             LinkPreviewMetadata.prototype.videoContentCaption = null;
 
+            /**
+             * LinkPreviewMetadata videoId.
+             * @member {string|null|undefined} videoId
+             * @memberof waproto.Message.LinkPreviewMetadata
+             * @instance
+             */
+            LinkPreviewMetadata.prototype.videoId = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -143921,6 +144102,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(LinkPreviewMetadata.prototype, "_videoId", {
+                get: $util.oneOfGetter($oneOfFields = ["videoId"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new LinkPreviewMetadata instance using the specified properties.
              * @function create
@@ -143971,6 +144158,8 @@ $root.waproto = (function() {
                     $root.waproto.EmbeddedMusic.encode(message.musicMetadata, writer.uint32(/* id 8, wireType 2 =*/66).fork(), _depth + 1).ldelim();
                 if (message.videoContentCaption != null && $Object.hasOwnProperty.call(message, "videoContentCaption"))
                     writer.uint32(/* id 9, wireType 2 =*/74).string(message.videoContentCaption);
+                if (message.videoId != null && $Object.hasOwnProperty.call(message, "videoId"))
+                    writer.uint32(/* id 10, wireType 2 =*/82).string(message.videoId);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -144091,6 +144280,13 @@ $root.waproto = (function() {
                             message._videoContentCaption = "videoContentCaption";
                             continue;
                         }
+                    case 10: {
+                            if (wireType !== 2)
+                                break;
+                            message.videoId = reader.stringVerify();
+                            message._videoId = "videoId";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -144194,6 +144390,11 @@ $root.waproto = (function() {
                     if (!$util.isString(message.videoContentCaption))
                         return "videoContentCaption: string expected";
                 }
+                if (message.videoId != null && $Object.hasOwnProperty.call(message, "videoId")) {
+                    properties._videoId = 1;
+                    if (!$util.isString(message.videoId))
+                        return "videoId: string expected";
+                }
                 return null;
             };
 
@@ -144269,6 +144470,8 @@ $root.waproto = (function() {
                 }
                 if (object.videoContentCaption != null)
                     message.videoContentCaption = $String(object.videoContentCaption);
+                if (object.videoId != null)
+                    message.videoId = $String(object.videoId);
                 return message;
             };
 
@@ -144307,6 +144510,8 @@ $root.waproto = (function() {
                     object.musicMetadata = $root.waproto.EmbeddedMusic.toObject(message.musicMetadata, options, _depth + 1);
                 if (message.videoContentCaption != null && $Object.hasOwnProperty.call(message, "videoContentCaption"))
                     object.videoContentCaption = message.videoContentCaption;
+                if (message.videoId != null && $Object.hasOwnProperty.call(message, "videoId"))
+                    object.videoId = message.videoId;
                 return object;
             };
 
@@ -211844,6 +212049,8 @@ $root.waproto = (function() {
          * @property {boolean|null} [pollInvalidated] PollAdditionalMetadata pollInvalidated
          * @property {Array.<waproto.PollAdditionalMetadata.PollNameHashHistoryEntry.$Properties>|null} [pollNameHashHistory] PollAdditionalMetadata pollNameHashHistory
          * @property {Array.<waproto.Message.PollCreationMessage.Option.$Properties>|null} [originalOptions] PollAdditionalMetadata originalOptions
+         * @property {Array.<waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties>|null} [pollOptionReplayEntries] PollAdditionalMetadata pollOptionReplayEntries
+         * @property {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties|null} [pollOptionReplayBase] PollAdditionalMetadata pollOptionReplayBase
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -211871,6 +212078,7 @@ $root.waproto = (function() {
         var PollAdditionalMetadata = function (properties) {
             this.pollNameHashHistory = [];
             this.originalOptions = [];
+            this.pollOptionReplayEntries = [];
             if (properties)
                 for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
                     if (properties[keys[i]] != null && keys[i] !== "__proto__")
@@ -211901,12 +212109,34 @@ $root.waproto = (function() {
          */
         PollAdditionalMetadata.prototype.originalOptions = $util.emptyArray;
 
+        /**
+         * PollAdditionalMetadata pollOptionReplayEntries.
+         * @member {Array.<waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties>} pollOptionReplayEntries
+         * @memberof waproto.PollAdditionalMetadata
+         * @instance
+         */
+        PollAdditionalMetadata.prototype.pollOptionReplayEntries = $util.emptyArray;
+
+        /**
+         * PollAdditionalMetadata pollOptionReplayBase.
+         * @member {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties|null|undefined} pollOptionReplayBase
+         * @memberof waproto.PollAdditionalMetadata
+         * @instance
+         */
+        PollAdditionalMetadata.prototype.pollOptionReplayBase = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(PollAdditionalMetadata.prototype, "_pollInvalidated", {
             get: $util.oneOfGetter($oneOfFields = ["pollInvalidated"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PollAdditionalMetadata.prototype, "_pollOptionReplayBase", {
+            get: $util.oneOfGetter($oneOfFields = ["pollOptionReplayBase"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -211950,6 +212180,11 @@ $root.waproto = (function() {
             if (message.originalOptions != null && message.originalOptions.length)
                 for (var i = 0; i < message.originalOptions.length; ++i)
                     $root.waproto.Message.PollCreationMessage.Option.encode(message.originalOptions[i], writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+            if (message.pollOptionReplayEntries != null && message.pollOptionReplayEntries.length)
+                for (var i = 0; i < message.pollOptionReplayEntries.length; ++i)
+                    $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.encode(message.pollOptionReplayEntries[i], writer.uint32(/* id 4, wireType 2 =*/34).fork(), _depth + 1).ldelim();
+            if (message.pollOptionReplayBase != null && $Object.hasOwnProperty.call(message, "pollOptionReplayBase"))
+                $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.encode(message.pollOptionReplayBase, writer.uint32(/* id 5, wireType 2 =*/42).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -212030,6 +212265,21 @@ $root.waproto = (function() {
                         message.originalOptions.push($root.waproto.Message.PollCreationMessage.Option.decode(reader, reader.size(), $undefined, _depth + 1));
                         continue;
                     }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.pollOptionReplayEntries && message.pollOptionReplayEntries.length))
+                            message.pollOptionReplayEntries = [];
+                        message.pollOptionReplayEntries.push($root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.decode(reader, reader.size(), $undefined, _depth + 1));
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.pollOptionReplayBase = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.decode(reader, reader.size(), $undefined, _depth + 1, message.pollOptionReplayBase);
+                        message._pollOptionReplayBase = "pollOptionReplayBase";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -212102,6 +212352,23 @@ $root.waproto = (function() {
                         return "originalOptions." + error;
                 }
             }
+            if (message.pollOptionReplayEntries != null && $Object.hasOwnProperty.call(message, "pollOptionReplayEntries")) {
+                if (!$Array.isArray(message.pollOptionReplayEntries))
+                    return "pollOptionReplayEntries: array expected";
+                for (var i = 0; i < message.pollOptionReplayEntries.length; ++i) {
+                    var error = $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.verify(message.pollOptionReplayEntries[i], _depth + 1);
+                    if (error)
+                        return "pollOptionReplayEntries." + error;
+                }
+            }
+            if (message.pollOptionReplayBase != null && $Object.hasOwnProperty.call(message, "pollOptionReplayBase")) {
+                properties._pollOptionReplayBase = 1;
+                {
+                    var error = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.verify(message.pollOptionReplayBase, _depth + 1);
+                    if (error)
+                        return "pollOptionReplayBase." + error;
+                }
+            }
             return null;
         };
 
@@ -212145,6 +212412,21 @@ $root.waproto = (function() {
                     message.originalOptions[i] = $root.waproto.Message.PollCreationMessage.Option.fromObject(object.originalOptions[i], _depth + 1);
                 }
             }
+            if (object.pollOptionReplayEntries) {
+                if (!$Array.isArray(object.pollOptionReplayEntries))
+                    throw $TypeError(".waproto.PollAdditionalMetadata.pollOptionReplayEntries: array expected");
+                message.pollOptionReplayEntries = $Array(object.pollOptionReplayEntries.length);
+                for (var i = 0; i < object.pollOptionReplayEntries.length; ++i) {
+                    if (!$util.isObject(object.pollOptionReplayEntries[i]))
+                        throw $TypeError(".waproto.PollAdditionalMetadata.pollOptionReplayEntries: object expected");
+                    message.pollOptionReplayEntries[i] = $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.fromObject(object.pollOptionReplayEntries[i], _depth + 1);
+                }
+            }
+            if (object.pollOptionReplayBase != null) {
+                if (!$util.isObject(object.pollOptionReplayBase))
+                    throw $TypeError(".waproto.PollAdditionalMetadata.pollOptionReplayBase: object expected");
+                message.pollOptionReplayBase = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.fromObject(object.pollOptionReplayBase, _depth + 1);
+            }
             return message;
         };
 
@@ -212168,6 +212450,7 @@ $root.waproto = (function() {
             if (options.arrays || options.defaults) {
                 object.pollNameHashHistory = [];
                 object.originalOptions = [];
+                object.pollOptionReplayEntries = [];
             }
             if (message.pollInvalidated != null && $Object.hasOwnProperty.call(message, "pollInvalidated"))
                 object.pollInvalidated = message.pollInvalidated;
@@ -212181,6 +212464,13 @@ $root.waproto = (function() {
                 for (var j = 0; j < message.originalOptions.length; ++j)
                     object.originalOptions[j] = $root.waproto.Message.PollCreationMessage.Option.toObject(message.originalOptions[j], options, _depth + 1);
             }
+            if (message.pollOptionReplayEntries && message.pollOptionReplayEntries.length) {
+                object.pollOptionReplayEntries = $Array(message.pollOptionReplayEntries.length);
+                for (var j = 0; j < message.pollOptionReplayEntries.length; ++j)
+                    object.pollOptionReplayEntries[j] = $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.toObject(message.pollOptionReplayEntries[j], options, _depth + 1);
+            }
+            if (message.pollOptionReplayBase != null && $Object.hasOwnProperty.call(message, "pollOptionReplayBase"))
+                object.pollOptionReplayBase = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.toObject(message.pollOptionReplayBase, options, _depth + 1);
             return object;
         };
 
@@ -212525,6 +212815,1293 @@ $root.waproto = (function() {
             };
 
             return PollNameHashHistoryEntry;
+        })();
+
+        PollAdditionalMetadata.PollOptionReplayBase = (function() {
+
+            /**
+             * Properties of a PollOptionReplayBase.
+             * @typedef {Object} waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties
+             * @property {number|Long|null} [boundaryTimestampMs] PollOptionReplayBase boundaryTimestampMs
+             * @property {number|Long|null} [editTimestampMs] PollOptionReplayBase editTimestampMs
+             * @property {Array.<waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties>|null} [options] PollOptionReplayBase options
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a PollOptionReplayBase.
+             * @memberof waproto.PollAdditionalMetadata
+             * @interface IPollOptionReplayBase
+             * @augments waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties
+             * @deprecated Use waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties instead.
+             */
+
+            /**
+             * Shape of a PollOptionReplayBase.
+             * @typedef {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties} waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape
+             */
+
+            /**
+             * Constructs a new PollOptionReplayBase.
+             * @memberof waproto.PollAdditionalMetadata
+             * @classdesc Represents a PollOptionReplayBase.
+             * @constructor
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var PollOptionReplayBase = function (properties) {
+                this.options = [];
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * PollOptionReplayBase boundaryTimestampMs.
+             * @member {number|Long|null|undefined} boundaryTimestampMs
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @instance
+             */
+            PollOptionReplayBase.prototype.boundaryTimestampMs = null;
+
+            /**
+             * PollOptionReplayBase editTimestampMs.
+             * @member {number|Long|null|undefined} editTimestampMs
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @instance
+             */
+            PollOptionReplayBase.prototype.editTimestampMs = null;
+
+            /**
+             * PollOptionReplayBase options.
+             * @member {Array.<waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties>} options
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @instance
+             */
+            PollOptionReplayBase.prototype.options = $util.emptyArray;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayBase.prototype, "_boundaryTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["boundaryTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayBase.prototype, "_editTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["editTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PollOptionReplayBase instance using the specified properties.
+             * @function create
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties=} [properties] Properties to set
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase} PollOptionReplayBase instance
+             * @type {{
+             *   (properties: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape): waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape;
+             *   (properties?: waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties): waproto.PollAdditionalMetadata.PollOptionReplayBase;
+             * }}
+             */
+            PollOptionReplayBase.create = function(properties) {
+                return new PollOptionReplayBase(properties);
+            };
+
+            /**
+             * Encodes the specified PollOptionReplayBase message. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties} message PollOptionReplayBase message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PollOptionReplayBase.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.boundaryTimestampMs != null && $Object.hasOwnProperty.call(message, "boundaryTimestampMs"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int64(message.boundaryTimestampMs);
+                if (message.editTimestampMs != null && $Object.hasOwnProperty.call(message, "editTimestampMs"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).int64(message.editTimestampMs);
+                if (message.options != null && message.options.length)
+                    for (var i = 0; i < message.options.length; ++i)
+                        $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.encode(message.options[i], writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PollOptionReplayBase message, length delimited. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.$Properties} message PollOptionReplayBase message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PollOptionReplayBase.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a PollOptionReplayBase message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape} PollOptionReplayBase
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PollOptionReplayBase.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.PollAdditionalMetadata.PollOptionReplayBase();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.boundaryTimestampMs = reader.int64();
+                            message._boundaryTimestampMs = "boundaryTimestampMs";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 0)
+                                break;
+                            message.editTimestampMs = reader.int64();
+                            message._editTimestampMs = "editTimestampMs";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 2)
+                                break;
+                            if (!(message.options && message.options.length))
+                                message.options = [];
+                            message.options.push($root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.decode(reader, reader.size(), $undefined, _depth + 1));
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a PollOptionReplayBase message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase & waproto.PollAdditionalMetadata.PollOptionReplayBase.$Shape} PollOptionReplayBase
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PollOptionReplayBase.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a PollOptionReplayBase message.
+             * @function verify
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PollOptionReplayBase.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.boundaryTimestampMs != null && $Object.hasOwnProperty.call(message, "boundaryTimestampMs")) {
+                    properties._boundaryTimestampMs = 1;
+                    if (!$util.isInteger(message.boundaryTimestampMs) && !(message.boundaryTimestampMs && $util.isInteger(message.boundaryTimestampMs.low) && $util.isInteger(message.boundaryTimestampMs.high)))
+                        return "boundaryTimestampMs: integer|Long expected";
+                }
+                if (message.editTimestampMs != null && $Object.hasOwnProperty.call(message, "editTimestampMs")) {
+                    properties._editTimestampMs = 1;
+                    if (!$util.isInteger(message.editTimestampMs) && !(message.editTimestampMs && $util.isInteger(message.editTimestampMs.low) && $util.isInteger(message.editTimestampMs.high)))
+                        return "editTimestampMs: integer|Long expected";
+                }
+                if (message.options != null && $Object.hasOwnProperty.call(message, "options")) {
+                    if (!$Array.isArray(message.options))
+                        return "options: array expected";
+                    for (var i = 0; i < message.options.length; ++i) {
+                        var error = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.verify(message.options[i], _depth + 1);
+                        if (error)
+                            return "options." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PollOptionReplayBase message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase} PollOptionReplayBase
+             */
+            PollOptionReplayBase.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.PollAdditionalMetadata.PollOptionReplayBase)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayBase: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.PollAdditionalMetadata.PollOptionReplayBase();
+                if (object.boundaryTimestampMs != null)
+                    if ($util.Long)
+                        message.boundaryTimestampMs = $util.Long.fromValue(object.boundaryTimestampMs, false);
+                    else if (typeof object.boundaryTimestampMs === "string")
+                        message.boundaryTimestampMs = $parseInt(object.boundaryTimestampMs, 10);
+                    else if (typeof object.boundaryTimestampMs === "number")
+                        message.boundaryTimestampMs = object.boundaryTimestampMs;
+                    else if (typeof object.boundaryTimestampMs === "object")
+                        message.boundaryTimestampMs = new $util.LongBits(object.boundaryTimestampMs.low >>> 0, object.boundaryTimestampMs.high >>> 0).toNumber();
+                if (object.editTimestampMs != null)
+                    if ($util.Long)
+                        message.editTimestampMs = $util.Long.fromValue(object.editTimestampMs, false);
+                    else if (typeof object.editTimestampMs === "string")
+                        message.editTimestampMs = $parseInt(object.editTimestampMs, 10);
+                    else if (typeof object.editTimestampMs === "number")
+                        message.editTimestampMs = object.editTimestampMs;
+                    else if (typeof object.editTimestampMs === "object")
+                        message.editTimestampMs = new $util.LongBits(object.editTimestampMs.low >>> 0, object.editTimestampMs.high >>> 0).toNumber();
+                if (object.options) {
+                    if (!$Array.isArray(object.options))
+                        throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayBase.options: array expected");
+                    message.options = $Array(object.options.length);
+                    for (var i = 0; i < object.options.length; ++i) {
+                        if (!$util.isObject(object.options[i]))
+                            throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayBase.options: object expected");
+                        message.options[i] = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.fromObject(object.options[i], _depth + 1);
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PollOptionReplayBase message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase} message PollOptionReplayBase
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PollOptionReplayBase.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.options = [];
+                if (message.boundaryTimestampMs != null && $Object.hasOwnProperty.call(message, "boundaryTimestampMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.boundaryTimestampMs = typeof message.boundaryTimestampMs === "number" ? $BigInt(message.boundaryTimestampMs) : $util.Long.fromBits(message.boundaryTimestampMs.low >>> 0, message.boundaryTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.boundaryTimestampMs === "number")
+                        object.boundaryTimestampMs = options.longs === $String ? $String(message.boundaryTimestampMs) : message.boundaryTimestampMs;
+                    else
+                        object.boundaryTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.boundaryTimestampMs) : options.longs === $Number ? new $util.LongBits(message.boundaryTimestampMs.low >>> 0, message.boundaryTimestampMs.high >>> 0).toNumber() : message.boundaryTimestampMs;
+                if (message.editTimestampMs != null && $Object.hasOwnProperty.call(message, "editTimestampMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.editTimestampMs = typeof message.editTimestampMs === "number" ? $BigInt(message.editTimestampMs) : $util.Long.fromBits(message.editTimestampMs.low >>> 0, message.editTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.editTimestampMs === "number")
+                        object.editTimestampMs = options.longs === $String ? $String(message.editTimestampMs) : message.editTimestampMs;
+                    else
+                        object.editTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.editTimestampMs) : options.longs === $Number ? new $util.LongBits(message.editTimestampMs.low >>> 0, message.editTimestampMs.high >>> 0).toNumber() : message.editTimestampMs;
+                if (message.options && message.options.length) {
+                    object.options = $Array(message.options.length);
+                    for (var j = 0; j < message.options.length; ++j)
+                        object.options[j] = $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.toObject(message.options[j], options, _depth + 1);
+                }
+                return object;
+            };
+
+            /**
+             * Converts this PollOptionReplayBase to JSON.
+             * @function toJSON
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PollOptionReplayBase.prototype.toJSON = function() {
+                return PollOptionReplayBase.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for PollOptionReplayBase
+             * @function getTypeUrl
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            PollOptionReplayBase.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.PollAdditionalMetadata.PollOptionReplayBase";
+            };
+
+            PollOptionReplayBase.Option = (function() {
+
+                /**
+                 * Properties of an Option.
+                 * @typedef {Object} waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties
+                 * @property {Uint8Array|null} [optionHash] Option optionHash
+                 * @property {number|Long|null} [enteredTimestampMs] Option enteredTimestampMs
+                 * @property {waproto.MessageKey.$Properties|null} [addMessageKey] Option addMessageKey
+                 * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                 */
+
+                /**
+                 * Properties of an Option.
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+                 * @interface IOption
+                 * @augments waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties
+                 * @deprecated Use waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties instead.
+                 */
+
+                /**
+                 * Shape of an Option.
+                 * @typedef {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties} waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape
+                 */
+
+                /**
+                 * Constructs a new Option.
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase
+                 * @classdesc Represents an Option.
+                 * @constructor
+                 * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties=} [properties] Properties to set
+                 * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+                 */
+                var Option = function (properties) {
+                    if (properties)
+                        for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                                this[keys[i]] = properties[keys[i]];
+                };
+
+                /**
+                 * Option optionHash.
+                 * @member {Uint8Array|null|undefined} optionHash
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @instance
+                 */
+                Option.prototype.optionHash = null;
+
+                /**
+                 * Option enteredTimestampMs.
+                 * @member {number|Long|null|undefined} enteredTimestampMs
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @instance
+                 */
+                Option.prototype.enteredTimestampMs = null;
+
+                /**
+                 * Option addMessageKey.
+                 * @member {waproto.MessageKey.$Properties|null|undefined} addMessageKey
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @instance
+                 */
+                Option.prototype.addMessageKey = null;
+
+                // OneOf field names bound to virtual getters and setters
+                var $oneOfFields;
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_optionHash", {
+                    get: $util.oneOfGetter($oneOfFields = ["optionHash"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_enteredTimestampMs", {
+                    get: $util.oneOfGetter($oneOfFields = ["enteredTimestampMs"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                // Virtual OneOf for proto3 optional field
+                $Object.defineProperty(Option.prototype, "_addMessageKey", {
+                    get: $util.oneOfGetter($oneOfFields = ["addMessageKey"]),
+                    set: $util.oneOfSetter($oneOfFields)
+                });
+
+                /**
+                 * Creates a new Option instance using the specified properties.
+                 * @function create
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties=} [properties] Properties to set
+                 * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option} Option instance
+                 * @type {{
+                 *   (properties: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape;
+                 *   (properties?: waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties): waproto.PollAdditionalMetadata.PollOptionReplayBase.Option;
+                 * }}
+                 */
+                Option.create = function(properties) {
+                    return new Option(properties);
+                };
+
+                /**
+                 * Encodes the specified Option message. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.verify|verify} messages.
+                 * @function encode
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties} message Option message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Option.encode = function (message, writer, _depth) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    if (message.optionHash != null && $Object.hasOwnProperty.call(message, "optionHash"))
+                        writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.optionHash);
+                    if (message.enteredTimestampMs != null && $Object.hasOwnProperty.call(message, "enteredTimestampMs"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).int64(message.enteredTimestampMs);
+                    if (message.addMessageKey != null && $Object.hasOwnProperty.call(message, "addMessageKey"))
+                        $root.waproto.MessageKey.encode(message.addMessageKey, writer.uint32(/* id 3, wireType 2 =*/26).fork(), _depth + 1).ldelim();
+                    if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                        for (var i = 0; i < message.$unknowns.length; ++i)
+                            writer.raw(message.$unknowns[i]);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified Option message, length delimited. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Properties} message Option message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Option.encodeDelimited = function(message, writer) {
+                    return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+                };
+
+                /**
+                 * Decodes an Option message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape} Option
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Option.decode = function (reader, length, _end, _depth, _target) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $Reader.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var end, message;
+                    if (length === $undefined)
+                        end = reader.len;
+                    else {
+                        end = reader.pos + length;
+                        if (end > reader.len)
+                            throw $RangeError("index out of range");
+                        length = reader.len;
+                        reader.len = end;
+                    }
+                    message = _target || new $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option();
+                    while (reader.pos < end) {
+                        var start = reader.pos;
+                        var tag = reader.tag();
+                        if (tag === _end) {
+                            _end = $undefined;
+                            break;
+                        }
+                        var wireType = tag & 7;
+                        switch (tag >>>= 3) {
+                        case 1: {
+                                if (wireType !== 2)
+                                    break;
+                                message.optionHash = reader.bytes();
+                                message._optionHash = "optionHash";
+                                continue;
+                            }
+                        case 2: {
+                                if (wireType !== 0)
+                                    break;
+                                message.enteredTimestampMs = reader.int64();
+                                message._enteredTimestampMs = "enteredTimestampMs";
+                                continue;
+                            }
+                        case 3: {
+                                if (wireType !== 2)
+                                    break;
+                                message.addMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.addMessageKey);
+                                message._addMessageKey = "addMessageKey";
+                                continue;
+                            }
+                        }
+                        reader.skipType(wireType, _depth, tag);
+                        if (!reader.discardUnknown) {
+                            $util.makeProp(message, "$unknowns", false);
+                            (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                        }
+                    }
+                    if (length !== $undefined) {
+                        if (reader.pos !== end)
+                            throw $RangeError("index out of range");
+                        reader.len = length;
+                    }
+                    if (_end !== $undefined)
+                        throw $Error("missing end group");
+                    return message;
+                };
+
+                /**
+                 * Decodes an Option message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option & waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.$Shape} Option
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Option.decodeDelimited = function(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.size());
+                };
+
+                /**
+                 * Verifies an Option message.
+                 * @function verify
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Option.verify = function (message, _depth) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        return "max depth exceeded";
+                    var properties = {};
+                    if (message.optionHash != null && $Object.hasOwnProperty.call(message, "optionHash")) {
+                        properties._optionHash = 1;
+                        if (!(message.optionHash && typeof message.optionHash.length === "number" || $util.isString(message.optionHash)))
+                            return "optionHash: buffer expected";
+                    }
+                    if (message.enteredTimestampMs != null && $Object.hasOwnProperty.call(message, "enteredTimestampMs")) {
+                        properties._enteredTimestampMs = 1;
+                        if (!$util.isInteger(message.enteredTimestampMs) && !(message.enteredTimestampMs && $util.isInteger(message.enteredTimestampMs.low) && $util.isInteger(message.enteredTimestampMs.high)))
+                            return "enteredTimestampMs: integer|Long expected";
+                    }
+                    if (message.addMessageKey != null && $Object.hasOwnProperty.call(message, "addMessageKey")) {
+                        properties._addMessageKey = 1;
+                        {
+                            var error = $root.waproto.MessageKey.verify(message.addMessageKey, _depth + 1);
+                            if (error)
+                                return "addMessageKey." + error;
+                        }
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates an Option message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option} Option
+                 */
+                Option.fromObject = function (object, _depth) {
+                    if (object instanceof $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option)
+                        return object;
+                    if (!$util.isObject(object))
+                        throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayBase.Option: object expected");
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var message = new $root.waproto.PollAdditionalMetadata.PollOptionReplayBase.Option();
+                    if (object.optionHash != null)
+                        if (typeof object.optionHash === "string")
+                            $util.base64.decode(object.optionHash, message.optionHash = $util.newBuffer($util.base64.length(object.optionHash)), 0);
+                        else if (object.optionHash.length >= 0)
+                            message.optionHash = object.optionHash;
+                    if (object.enteredTimestampMs != null)
+                        if ($util.Long)
+                            message.enteredTimestampMs = $util.Long.fromValue(object.enteredTimestampMs, false);
+                        else if (typeof object.enteredTimestampMs === "string")
+                            message.enteredTimestampMs = $parseInt(object.enteredTimestampMs, 10);
+                        else if (typeof object.enteredTimestampMs === "number")
+                            message.enteredTimestampMs = object.enteredTimestampMs;
+                        else if (typeof object.enteredTimestampMs === "object")
+                            message.enteredTimestampMs = new $util.LongBits(object.enteredTimestampMs.low >>> 0, object.enteredTimestampMs.high >>> 0).toNumber();
+                    if (object.addMessageKey != null) {
+                        if (!$util.isObject(object.addMessageKey))
+                            throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayBase.Option.addMessageKey: object expected");
+                        message.addMessageKey = $root.waproto.MessageKey.fromObject(object.addMessageKey, _depth + 1);
+                    }
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from an Option message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {waproto.PollAdditionalMetadata.PollOptionReplayBase.Option} message Option
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Option.toObject = function (message, options, _depth) {
+                    if (!options)
+                        options = {};
+                    if (_depth === $undefined)
+                        _depth = 0;
+                    if (_depth > $util.recursionLimit)
+                        throw $Error("max depth exceeded");
+                    var object = {};
+                    if (message.optionHash != null && $Object.hasOwnProperty.call(message, "optionHash"))
+                        object.optionHash = options.bytes === $String ? $util.base64.encode(message.optionHash, 0, message.optionHash.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.optionHash) : message.optionHash;
+                    if (message.enteredTimestampMs != null && $Object.hasOwnProperty.call(message, "enteredTimestampMs"))
+                        if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                            object.enteredTimestampMs = typeof message.enteredTimestampMs === "number" ? $BigInt(message.enteredTimestampMs) : $util.Long.fromBits(message.enteredTimestampMs.low >>> 0, message.enteredTimestampMs.high >>> 0, false).toBigInt();
+                        else if (typeof message.enteredTimestampMs === "number")
+                            object.enteredTimestampMs = options.longs === $String ? $String(message.enteredTimestampMs) : message.enteredTimestampMs;
+                        else
+                            object.enteredTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.enteredTimestampMs) : options.longs === $Number ? new $util.LongBits(message.enteredTimestampMs.low >>> 0, message.enteredTimestampMs.high >>> 0).toNumber() : message.enteredTimestampMs;
+                    if (message.addMessageKey != null && $Object.hasOwnProperty.call(message, "addMessageKey"))
+                        object.addMessageKey = $root.waproto.MessageKey.toObject(message.addMessageKey, options, _depth + 1);
+                    return object;
+                };
+
+                /**
+                 * Converts this Option to JSON.
+                 * @function toJSON
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Option.prototype.toJSON = function() {
+                    return Option.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                /**
+                 * Gets the type url for Option
+                 * @function getTypeUrl
+                 * @memberof waproto.PollAdditionalMetadata.PollOptionReplayBase.Option
+                 * @static
+                 * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+                 * @returns {string} The type url
+                 */
+                Option.getTypeUrl = function(prefix) {
+                    if (prefix === $undefined)
+                        prefix = "type.googleapis.com";
+                    return prefix + "/waproto.PollAdditionalMetadata.PollOptionReplayBase.Option";
+                };
+
+                return Option;
+            })();
+
+            return PollOptionReplayBase;
+        })();
+
+        PollAdditionalMetadata.PollOptionReplayEntry = (function() {
+
+            /**
+             * Properties of a PollOptionReplayEntry.
+             * @typedef {Object} waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties
+             * @property {waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type|null} [type] PollOptionReplayEntry type
+             * @property {waproto.MessageKey.$Properties|null} [messageKey] PollOptionReplayEntry messageKey
+             * @property {number|Long|null} [serverTimestampMs] PollOptionReplayEntry serverTimestampMs
+             * @property {number|Long|null} [editTimestampMs] PollOptionReplayEntry editTimestampMs
+             * @property {Array.<Uint8Array>|null} [optionHashes] PollOptionReplayEntry optionHashes
+             * @property {waproto.MessageKey.$Properties|null} [revokedMessageKey] PollOptionReplayEntry revokedMessageKey
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+
+            /**
+             * Properties of a PollOptionReplayEntry.
+             * @memberof waproto.PollAdditionalMetadata
+             * @interface IPollOptionReplayEntry
+             * @augments waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties
+             * @deprecated Use waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties instead.
+             */
+
+            /**
+             * Shape of a PollOptionReplayEntry.
+             * @typedef {waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties} waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape
+             */
+
+            /**
+             * Constructs a new PollOptionReplayEntry.
+             * @memberof waproto.PollAdditionalMetadata
+             * @classdesc Represents a PollOptionReplayEntry.
+             * @constructor
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties=} [properties] Properties to set
+             * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+             */
+            var PollOptionReplayEntry = function (properties) {
+                this.optionHashes = [];
+                if (properties)
+                    for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                            this[keys[i]] = properties[keys[i]];
+            };
+
+            /**
+             * PollOptionReplayEntry type.
+             * @member {waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type|null|undefined} type
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             */
+            PollOptionReplayEntry.prototype.type = null;
+
+            /**
+             * PollOptionReplayEntry messageKey.
+             * @member {waproto.MessageKey.$Properties|null|undefined} messageKey
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             */
+            PollOptionReplayEntry.prototype.messageKey = null;
+
+            /**
+             * PollOptionReplayEntry serverTimestampMs.
+             * @member {number|Long|null|undefined} serverTimestampMs
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             */
+            PollOptionReplayEntry.prototype.serverTimestampMs = null;
+
+            /**
+             * PollOptionReplayEntry editTimestampMs.
+             * @member {number|Long|null|undefined} editTimestampMs
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             */
+            PollOptionReplayEntry.prototype.editTimestampMs = null;
+
+            /**
+             * PollOptionReplayEntry optionHashes.
+             * @member {Array.<Uint8Array>} optionHashes
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             */
+            PollOptionReplayEntry.prototype.optionHashes = $util.emptyArray;
+
+            /**
+             * PollOptionReplayEntry revokedMessageKey.
+             * @member {waproto.MessageKey.$Properties|null|undefined} revokedMessageKey
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             */
+            PollOptionReplayEntry.prototype.revokedMessageKey = null;
+
+            // OneOf field names bound to virtual getters and setters
+            var $oneOfFields;
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_type", {
+                get: $util.oneOfGetter($oneOfFields = ["type"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_messageKey", {
+                get: $util.oneOfGetter($oneOfFields = ["messageKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_serverTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["serverTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_editTimestampMs", {
+                get: $util.oneOfGetter($oneOfFields = ["editTimestampMs"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(PollOptionReplayEntry.prototype, "_revokedMessageKey", {
+                get: $util.oneOfGetter($oneOfFields = ["revokedMessageKey"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
+            /**
+             * Creates a new PollOptionReplayEntry instance using the specified properties.
+             * @function create
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties=} [properties] Properties to set
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayEntry} PollOptionReplayEntry instance
+             * @type {{
+             *   (properties: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape): waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape;
+             *   (properties?: waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties): waproto.PollAdditionalMetadata.PollOptionReplayEntry;
+             * }}
+             */
+            PollOptionReplayEntry.create = function(properties) {
+                return new PollOptionReplayEntry(properties);
+            };
+
+            /**
+             * Encodes the specified PollOptionReplayEntry message. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayEntry.verify|verify} messages.
+             * @function encode
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties} message PollOptionReplayEntry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PollOptionReplayEntry.encode = function (message, writer, _depth) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                if (message.type != null && $Object.hasOwnProperty.call(message, "type"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
+                if (message.messageKey != null && $Object.hasOwnProperty.call(message, "messageKey"))
+                    $root.waproto.MessageKey.encode(message.messageKey, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+                if (message.serverTimestampMs != null && $Object.hasOwnProperty.call(message, "serverTimestampMs"))
+                    writer.uint32(/* id 3, wireType 0 =*/24).int64(message.serverTimestampMs);
+                if (message.editTimestampMs != null && $Object.hasOwnProperty.call(message, "editTimestampMs"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).int64(message.editTimestampMs);
+                if (message.optionHashes != null && message.optionHashes.length)
+                    for (var i = 0; i < message.optionHashes.length; ++i)
+                        writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.optionHashes[i]);
+                if (message.revokedMessageKey != null && $Object.hasOwnProperty.call(message, "revokedMessageKey"))
+                    $root.waproto.MessageKey.encode(message.revokedMessageKey, writer.uint32(/* id 6, wireType 2 =*/50).fork(), _depth + 1).ldelim();
+                if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                    for (var i = 0; i < message.$unknowns.length; ++i)
+                        writer.raw(message.$unknowns[i]);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified PollOptionReplayEntry message, length delimited. Does not implicitly {@link waproto.PollAdditionalMetadata.PollOptionReplayEntry.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Properties} message PollOptionReplayEntry message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            PollOptionReplayEntry.encodeDelimited = function(message, writer) {
+                return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+            };
+
+            /**
+             * Decodes a PollOptionReplayEntry message from the specified reader or buffer.
+             * @function decode
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape} PollOptionReplayEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PollOptionReplayEntry.decode = function (reader, length, _end, _depth, _target) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $Reader.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var end, message, value;
+                if (length === $undefined)
+                    end = reader.len;
+                else {
+                    end = reader.pos + length;
+                    if (end > reader.len)
+                        throw $RangeError("index out of range");
+                    length = reader.len;
+                    reader.len = end;
+                }
+                message = _target || new $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry();
+                while (reader.pos < end) {
+                    var start = reader.pos;
+                    var tag = reader.tag();
+                    if (tag === _end) {
+                        _end = $undefined;
+                        break;
+                    }
+                    var wireType = tag & 7;
+                    switch (tag >>>= 3) {
+                    case 1: {
+                            if (wireType !== 0)
+                                break;
+                            message.type = reader.int32();
+                            message._type = "type";
+                            continue;
+                        }
+                    case 2: {
+                            if (wireType !== 2)
+                                break;
+                            message.messageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.messageKey);
+                            message._messageKey = "messageKey";
+                            continue;
+                        }
+                    case 3: {
+                            if (wireType !== 0)
+                                break;
+                            message.serverTimestampMs = reader.int64();
+                            message._serverTimestampMs = "serverTimestampMs";
+                            continue;
+                        }
+                    case 4: {
+                            if (wireType !== 0)
+                                break;
+                            message.editTimestampMs = reader.int64();
+                            message._editTimestampMs = "editTimestampMs";
+                            continue;
+                        }
+                    case 5: {
+                            if (wireType !== 2)
+                                break;
+                            if (!(message.optionHashes && message.optionHashes.length))
+                                message.optionHashes = [];
+                            message.optionHashes.push(reader.bytes());
+                            continue;
+                        }
+                    case 6: {
+                            if (wireType !== 2)
+                                break;
+                            message.revokedMessageKey = $root.waproto.MessageKey.decode(reader, reader.size(), $undefined, _depth + 1, message.revokedMessageKey);
+                            message._revokedMessageKey = "revokedMessageKey";
+                            continue;
+                        }
+                    }
+                    reader.skipType(wireType, _depth, tag);
+                    if (!reader.discardUnknown) {
+                        $util.makeProp(message, "$unknowns", false);
+                        (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                    }
+                }
+                if (length !== $undefined) {
+                    if (reader.pos !== end)
+                        throw $RangeError("index out of range");
+                    reader.len = length;
+                }
+                if (_end !== $undefined)
+                    throw $Error("missing end group");
+                return message;
+            };
+
+            /**
+             * Decodes a PollOptionReplayEntry message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayEntry & waproto.PollAdditionalMetadata.PollOptionReplayEntry.$Shape} PollOptionReplayEntry
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            PollOptionReplayEntry.decodeDelimited = function(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.size());
+            };
+
+            /**
+             * Verifies a PollOptionReplayEntry message.
+             * @function verify
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            PollOptionReplayEntry.verify = function (message, _depth) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    return "max depth exceeded";
+                var properties = {};
+                if (message.type != null && $Object.hasOwnProperty.call(message, "type")) {
+                    properties._type = 1;
+                    if (typeof message.type !== "number" || (message.type | 0) !== message.type)
+                        return "type: enum value expected";
+                }
+                if (message.messageKey != null && $Object.hasOwnProperty.call(message, "messageKey")) {
+                    properties._messageKey = 1;
+                    {
+                        var error = $root.waproto.MessageKey.verify(message.messageKey, _depth + 1);
+                        if (error)
+                            return "messageKey." + error;
+                    }
+                }
+                if (message.serverTimestampMs != null && $Object.hasOwnProperty.call(message, "serverTimestampMs")) {
+                    properties._serverTimestampMs = 1;
+                    if (!$util.isInteger(message.serverTimestampMs) && !(message.serverTimestampMs && $util.isInteger(message.serverTimestampMs.low) && $util.isInteger(message.serverTimestampMs.high)))
+                        return "serverTimestampMs: integer|Long expected";
+                }
+                if (message.editTimestampMs != null && $Object.hasOwnProperty.call(message, "editTimestampMs")) {
+                    properties._editTimestampMs = 1;
+                    if (!$util.isInteger(message.editTimestampMs) && !(message.editTimestampMs && $util.isInteger(message.editTimestampMs.low) && $util.isInteger(message.editTimestampMs.high)))
+                        return "editTimestampMs: integer|Long expected";
+                }
+                if (message.optionHashes != null && $Object.hasOwnProperty.call(message, "optionHashes")) {
+                    if (!$Array.isArray(message.optionHashes))
+                        return "optionHashes: array expected";
+                    for (var i = 0; i < message.optionHashes.length; ++i)
+                        if (!(message.optionHashes[i] && typeof message.optionHashes[i].length === "number" || $util.isString(message.optionHashes[i])))
+                            return "optionHashes: buffer[] expected";
+                }
+                if (message.revokedMessageKey != null && $Object.hasOwnProperty.call(message, "revokedMessageKey")) {
+                    properties._revokedMessageKey = 1;
+                    {
+                        var error = $root.waproto.MessageKey.verify(message.revokedMessageKey, _depth + 1);
+                        if (error)
+                            return "revokedMessageKey." + error;
+                    }
+                }
+                return null;
+            };
+
+            /**
+             * Creates a PollOptionReplayEntry message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {waproto.PollAdditionalMetadata.PollOptionReplayEntry} PollOptionReplayEntry
+             */
+            PollOptionReplayEntry.fromObject = function (object, _depth) {
+                if (object instanceof $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry)
+                    return object;
+                if (!$util.isObject(object))
+                    throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayEntry: object expected");
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var message = new $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry();
+                switch (object.type) {
+                case "UNKNOWN":
+                case 0:
+                    message.type = 0;
+                    break;
+                case "EDIT":
+                case 1:
+                    message.type = 1;
+                    break;
+                case "ADD":
+                case 2:
+                    message.type = 2;
+                    break;
+                case "REVOKE":
+                case 3:
+                    message.type = 3;
+                    break;
+                default:
+                    if (typeof object.type === "number" && (object.type | 0) === object.type)
+                        message.type = object.type;
+                }
+                if (object.messageKey != null) {
+                    if (!$util.isObject(object.messageKey))
+                        throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayEntry.messageKey: object expected");
+                    message.messageKey = $root.waproto.MessageKey.fromObject(object.messageKey, _depth + 1);
+                }
+                if (object.serverTimestampMs != null)
+                    if ($util.Long)
+                        message.serverTimestampMs = $util.Long.fromValue(object.serverTimestampMs, false);
+                    else if (typeof object.serverTimestampMs === "string")
+                        message.serverTimestampMs = $parseInt(object.serverTimestampMs, 10);
+                    else if (typeof object.serverTimestampMs === "number")
+                        message.serverTimestampMs = object.serverTimestampMs;
+                    else if (typeof object.serverTimestampMs === "object")
+                        message.serverTimestampMs = new $util.LongBits(object.serverTimestampMs.low >>> 0, object.serverTimestampMs.high >>> 0).toNumber();
+                if (object.editTimestampMs != null)
+                    if ($util.Long)
+                        message.editTimestampMs = $util.Long.fromValue(object.editTimestampMs, false);
+                    else if (typeof object.editTimestampMs === "string")
+                        message.editTimestampMs = $parseInt(object.editTimestampMs, 10);
+                    else if (typeof object.editTimestampMs === "number")
+                        message.editTimestampMs = object.editTimestampMs;
+                    else if (typeof object.editTimestampMs === "object")
+                        message.editTimestampMs = new $util.LongBits(object.editTimestampMs.low >>> 0, object.editTimestampMs.high >>> 0).toNumber();
+                if (object.optionHashes) {
+                    if (!$Array.isArray(object.optionHashes))
+                        throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayEntry.optionHashes: array expected");
+                    message.optionHashes = $Array(object.optionHashes.length);
+                    for (var i = 0; i < object.optionHashes.length; ++i)
+                        if (typeof object.optionHashes[i] === "string")
+                            $util.base64.decode(object.optionHashes[i], message.optionHashes[i] = $util.newBuffer($util.base64.length(object.optionHashes[i])), 0);
+                        else if (object.optionHashes[i].length >= 0)
+                            message.optionHashes[i] = object.optionHashes[i];
+                }
+                if (object.revokedMessageKey != null) {
+                    if (!$util.isObject(object.revokedMessageKey))
+                        throw $TypeError(".waproto.PollAdditionalMetadata.PollOptionReplayEntry.revokedMessageKey: object expected");
+                    message.revokedMessageKey = $root.waproto.MessageKey.fromObject(object.revokedMessageKey, _depth + 1);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a PollOptionReplayEntry message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {waproto.PollAdditionalMetadata.PollOptionReplayEntry} message PollOptionReplayEntry
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            PollOptionReplayEntry.toObject = function (message, options, _depth) {
+                if (!options)
+                    options = {};
+                if (_depth === $undefined)
+                    _depth = 0;
+                if (_depth > $util.recursionLimit)
+                    throw $Error("max depth exceeded");
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.optionHashes = [];
+                if (message.type != null && $Object.hasOwnProperty.call(message, "type"))
+                    object.type = options.enums === $String ? $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type[message.type] === $undefined ? message.type : $root.waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type[message.type] : message.type;
+                if (message.messageKey != null && $Object.hasOwnProperty.call(message, "messageKey"))
+                    object.messageKey = $root.waproto.MessageKey.toObject(message.messageKey, options, _depth + 1);
+                if (message.serverTimestampMs != null && $Object.hasOwnProperty.call(message, "serverTimestampMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.serverTimestampMs = typeof message.serverTimestampMs === "number" ? $BigInt(message.serverTimestampMs) : $util.Long.fromBits(message.serverTimestampMs.low >>> 0, message.serverTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.serverTimestampMs === "number")
+                        object.serverTimestampMs = options.longs === $String ? $String(message.serverTimestampMs) : message.serverTimestampMs;
+                    else
+                        object.serverTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.serverTimestampMs) : options.longs === $Number ? new $util.LongBits(message.serverTimestampMs.low >>> 0, message.serverTimestampMs.high >>> 0).toNumber() : message.serverTimestampMs;
+                if (message.editTimestampMs != null && $Object.hasOwnProperty.call(message, "editTimestampMs"))
+                    if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                        object.editTimestampMs = typeof message.editTimestampMs === "number" ? $BigInt(message.editTimestampMs) : $util.Long.fromBits(message.editTimestampMs.low >>> 0, message.editTimestampMs.high >>> 0, false).toBigInt();
+                    else if (typeof message.editTimestampMs === "number")
+                        object.editTimestampMs = options.longs === $String ? $String(message.editTimestampMs) : message.editTimestampMs;
+                    else
+                        object.editTimestampMs = options.longs === $String ? $util.Long.prototype.toString.call(message.editTimestampMs) : options.longs === $Number ? new $util.LongBits(message.editTimestampMs.low >>> 0, message.editTimestampMs.high >>> 0).toNumber() : message.editTimestampMs;
+                if (message.optionHashes && message.optionHashes.length) {
+                    object.optionHashes = $Array(message.optionHashes.length);
+                    for (var j = 0; j < message.optionHashes.length; ++j)
+                        object.optionHashes[j] = options.bytes === $String ? $util.base64.encode(message.optionHashes[j], 0, message.optionHashes[j].length) : options.bytes === $Array ? $Array.prototype.slice.call(message.optionHashes[j]) : message.optionHashes[j];
+                }
+                if (message.revokedMessageKey != null && $Object.hasOwnProperty.call(message, "revokedMessageKey"))
+                    object.revokedMessageKey = $root.waproto.MessageKey.toObject(message.revokedMessageKey, options, _depth + 1);
+                return object;
+            };
+
+            /**
+             * Converts this PollOptionReplayEntry to JSON.
+             * @function toJSON
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            PollOptionReplayEntry.prototype.toJSON = function() {
+                return PollOptionReplayEntry.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Gets the type url for PollOptionReplayEntry
+             * @function getTypeUrl
+             * @memberof waproto.PollAdditionalMetadata.PollOptionReplayEntry
+             * @static
+             * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns {string} The type url
+             */
+            PollOptionReplayEntry.getTypeUrl = function(prefix) {
+                if (prefix === $undefined)
+                    prefix = "type.googleapis.com";
+                return prefix + "/waproto.PollAdditionalMetadata.PollOptionReplayEntry";
+            };
+
+            /**
+             * Type enum.
+             * @name waproto.PollAdditionalMetadata.PollOptionReplayEntry.Type
+             * @enum {number}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} EDIT=1 EDIT value
+             * @property {number} ADD=2 ADD value
+             * @property {number} REVOKE=3 REVOKE value
+             */
+            PollOptionReplayEntry.Type = (function() {
+                var valuesById = $Object.create(null), values = $Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "EDIT"] = 1;
+                values[valuesById[2] = "ADD"] = 2;
+                values[valuesById[3] = "REVOKE"] = 3;
+                return values;
+            })();
+
+            return PollOptionReplayEntry;
         })();
 
         return PollAdditionalMetadata;
