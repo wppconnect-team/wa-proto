@@ -87655,6 +87655,1654 @@ $root.waproto = (function() {
         return GroupHistoryWithMessageBytes;
     })();
 
+    waproto.GroupMembershipForm = (function() {
+
+        /**
+         * Properties of a GroupMembershipForm.
+         * @typedef {Object} waproto.GroupMembershipForm.$Properties
+         * @property {Array.<waproto.GroupMembershipFormQuestion.$Properties>|null} [questions] GroupMembershipForm questions
+         * @property {string|null} [memberTagPrompt] GroupMembershipForm memberTagPrompt
+         * @property {number|null} [schemaVersion] GroupMembershipForm schemaVersion
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupMembershipForm.
+         * @memberof waproto
+         * @interface IGroupMembershipForm
+         * @augments waproto.GroupMembershipForm.$Properties
+         * @deprecated Use waproto.GroupMembershipForm.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupMembershipForm.
+         * @typedef {waproto.GroupMembershipForm.$Properties} waproto.GroupMembershipForm.$Shape
+         */
+
+        /**
+         * Constructs a new GroupMembershipForm.
+         * @memberof waproto
+         * @classdesc Represents a GroupMembershipForm.
+         * @constructor
+         * @param {waproto.GroupMembershipForm.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupMembershipForm = function (properties) {
+            this.questions = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupMembershipForm questions.
+         * @member {Array.<waproto.GroupMembershipFormQuestion.$Properties>} questions
+         * @memberof waproto.GroupMembershipForm
+         * @instance
+         */
+        GroupMembershipForm.prototype.questions = $util.emptyArray;
+
+        /**
+         * GroupMembershipForm memberTagPrompt.
+         * @member {string|null|undefined} memberTagPrompt
+         * @memberof waproto.GroupMembershipForm
+         * @instance
+         */
+        GroupMembershipForm.prototype.memberTagPrompt = null;
+
+        /**
+         * GroupMembershipForm schemaVersion.
+         * @member {number|null|undefined} schemaVersion
+         * @memberof waproto.GroupMembershipForm
+         * @instance
+         */
+        GroupMembershipForm.prototype.schemaVersion = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipForm.prototype, "_memberTagPrompt", {
+            get: $util.oneOfGetter($oneOfFields = ["memberTagPrompt"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipForm.prototype, "_schemaVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["schemaVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupMembershipForm instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {waproto.GroupMembershipForm.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupMembershipForm} GroupMembershipForm instance
+         * @type {{
+         *   (properties: waproto.GroupMembershipForm.$Shape): waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape;
+         *   (properties?: waproto.GroupMembershipForm.$Properties): waproto.GroupMembershipForm;
+         * }}
+         */
+        GroupMembershipForm.create = function(properties) {
+            return new GroupMembershipForm(properties);
+        };
+
+        /**
+         * Encodes the specified GroupMembershipForm message. Does not implicitly {@link waproto.GroupMembershipForm.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {waproto.GroupMembershipForm.$Properties} message GroupMembershipForm message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipForm.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.questions != null && message.questions.length)
+                for (var i = 0; i < message.questions.length; ++i)
+                    $root.waproto.GroupMembershipFormQuestion.encode(message.questions[i], writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.memberTagPrompt != null && $Object.hasOwnProperty.call(message, "memberTagPrompt"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.memberTagPrompt);
+            if (message.schemaVersion != null && $Object.hasOwnProperty.call(message, "schemaVersion"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.schemaVersion);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupMembershipForm message, length delimited. Does not implicitly {@link waproto.GroupMembershipForm.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {waproto.GroupMembershipForm.$Properties} message GroupMembershipForm message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipForm.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupMembershipForm message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape} GroupMembershipForm
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipForm.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupMembershipForm();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.questions && message.questions.length))
+                            message.questions = [];
+                        message.questions.push($root.waproto.GroupMembershipFormQuestion.decode(reader, reader.size(), $undefined, _depth + 1));
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.memberTagPrompt = reader.stringVerify();
+                        message._memberTagPrompt = "memberTagPrompt";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.schemaVersion = reader.uint32();
+                        message._schemaVersion = "schemaVersion";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupMembershipForm message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape} GroupMembershipForm
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipForm.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupMembershipForm message.
+         * @function verify
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupMembershipForm.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.questions != null && $Object.hasOwnProperty.call(message, "questions")) {
+                if (!$Array.isArray(message.questions))
+                    return "questions: array expected";
+                for (var i = 0; i < message.questions.length; ++i) {
+                    var error = $root.waproto.GroupMembershipFormQuestion.verify(message.questions[i], _depth + 1);
+                    if (error)
+                        return "questions." + error;
+                }
+            }
+            if (message.memberTagPrompt != null && $Object.hasOwnProperty.call(message, "memberTagPrompt")) {
+                properties._memberTagPrompt = 1;
+                if (!$util.isString(message.memberTagPrompt))
+                    return "memberTagPrompt: string expected";
+            }
+            if (message.schemaVersion != null && $Object.hasOwnProperty.call(message, "schemaVersion")) {
+                properties._schemaVersion = 1;
+                if (!$util.isInteger(message.schemaVersion))
+                    return "schemaVersion: integer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupMembershipForm message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupMembershipForm} GroupMembershipForm
+         */
+        GroupMembershipForm.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupMembershipForm)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupMembershipForm: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupMembershipForm();
+            if (object.questions) {
+                if (!$Array.isArray(object.questions))
+                    throw $TypeError(".waproto.GroupMembershipForm.questions: array expected");
+                message.questions = $Array(object.questions.length);
+                for (var i = 0; i < object.questions.length; ++i) {
+                    if (!$util.isObject(object.questions[i]))
+                        throw $TypeError(".waproto.GroupMembershipForm.questions: object expected");
+                    message.questions[i] = $root.waproto.GroupMembershipFormQuestion.fromObject(object.questions[i], _depth + 1);
+                }
+            }
+            if (object.memberTagPrompt != null)
+                message.memberTagPrompt = $String(object.memberTagPrompt);
+            if (object.schemaVersion != null)
+                message.schemaVersion = object.schemaVersion >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupMembershipForm message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {waproto.GroupMembershipForm} message GroupMembershipForm
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupMembershipForm.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.questions = [];
+            if (message.questions && message.questions.length) {
+                object.questions = $Array(message.questions.length);
+                for (var j = 0; j < message.questions.length; ++j)
+                    object.questions[j] = $root.waproto.GroupMembershipFormQuestion.toObject(message.questions[j], options, _depth + 1);
+            }
+            if (message.memberTagPrompt != null && $Object.hasOwnProperty.call(message, "memberTagPrompt"))
+                object.memberTagPrompt = message.memberTagPrompt;
+            if (message.schemaVersion != null && $Object.hasOwnProperty.call(message, "schemaVersion"))
+                object.schemaVersion = message.schemaVersion;
+            return object;
+        };
+
+        /**
+         * Converts this GroupMembershipForm to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupMembershipForm
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupMembershipForm.prototype.toJSON = function() {
+            return GroupMembershipForm.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupMembershipForm
+         * @function getTypeUrl
+         * @memberof waproto.GroupMembershipForm
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupMembershipForm.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupMembershipForm";
+        };
+
+        return GroupMembershipForm;
+    })();
+
+    waproto.GroupMembershipFormMemberTagAnswer = (function() {
+
+        /**
+         * Properties of a GroupMembershipFormMemberTagAnswer.
+         * @typedef {Object} waproto.GroupMembershipFormMemberTagAnswer.$Properties
+         * @property {string|null} [prompt] GroupMembershipFormMemberTagAnswer prompt
+         * @property {string|null} [memberTag] GroupMembershipFormMemberTagAnswer memberTag
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupMembershipFormMemberTagAnswer.
+         * @memberof waproto
+         * @interface IGroupMembershipFormMemberTagAnswer
+         * @augments waproto.GroupMembershipFormMemberTagAnswer.$Properties
+         * @deprecated Use waproto.GroupMembershipFormMemberTagAnswer.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupMembershipFormMemberTagAnswer.
+         * @typedef {waproto.GroupMembershipFormMemberTagAnswer.$Properties} waproto.GroupMembershipFormMemberTagAnswer.$Shape
+         */
+
+        /**
+         * Constructs a new GroupMembershipFormMemberTagAnswer.
+         * @memberof waproto
+         * @classdesc Represents a GroupMembershipFormMemberTagAnswer.
+         * @constructor
+         * @param {waproto.GroupMembershipFormMemberTagAnswer.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupMembershipFormMemberTagAnswer = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupMembershipFormMemberTagAnswer prompt.
+         * @member {string|null|undefined} prompt
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @instance
+         */
+        GroupMembershipFormMemberTagAnswer.prototype.prompt = null;
+
+        /**
+         * GroupMembershipFormMemberTagAnswer memberTag.
+         * @member {string|null|undefined} memberTag
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @instance
+         */
+        GroupMembershipFormMemberTagAnswer.prototype.memberTag = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormMemberTagAnswer.prototype, "_prompt", {
+            get: $util.oneOfGetter($oneOfFields = ["prompt"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormMemberTagAnswer.prototype, "_memberTag", {
+            get: $util.oneOfGetter($oneOfFields = ["memberTag"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupMembershipFormMemberTagAnswer instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormMemberTagAnswer.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupMembershipFormMemberTagAnswer} GroupMembershipFormMemberTagAnswer instance
+         * @type {{
+         *   (properties: waproto.GroupMembershipFormMemberTagAnswer.$Shape): waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape;
+         *   (properties?: waproto.GroupMembershipFormMemberTagAnswer.$Properties): waproto.GroupMembershipFormMemberTagAnswer;
+         * }}
+         */
+        GroupMembershipFormMemberTagAnswer.create = function(properties) {
+            return new GroupMembershipFormMemberTagAnswer(properties);
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormMemberTagAnswer message. Does not implicitly {@link waproto.GroupMembershipFormMemberTagAnswer.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormMemberTagAnswer.$Properties} message GroupMembershipFormMemberTagAnswer message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormMemberTagAnswer.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.prompt != null && $Object.hasOwnProperty.call(message, "prompt"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.prompt);
+            if (message.memberTag != null && $Object.hasOwnProperty.call(message, "memberTag"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.memberTag);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormMemberTagAnswer message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormMemberTagAnswer.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormMemberTagAnswer.$Properties} message GroupMembershipFormMemberTagAnswer message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormMemberTagAnswer.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupMembershipFormMemberTagAnswer message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape} GroupMembershipFormMemberTagAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormMemberTagAnswer.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupMembershipFormMemberTagAnswer();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.prompt = reader.stringVerify();
+                        message._prompt = "prompt";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.memberTag = reader.stringVerify();
+                        message._memberTag = "memberTag";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupMembershipFormMemberTagAnswer message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape} GroupMembershipFormMemberTagAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormMemberTagAnswer.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupMembershipFormMemberTagAnswer message.
+         * @function verify
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupMembershipFormMemberTagAnswer.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.prompt != null && $Object.hasOwnProperty.call(message, "prompt")) {
+                properties._prompt = 1;
+                if (!$util.isString(message.prompt))
+                    return "prompt: string expected";
+            }
+            if (message.memberTag != null && $Object.hasOwnProperty.call(message, "memberTag")) {
+                properties._memberTag = 1;
+                if (!$util.isString(message.memberTag))
+                    return "memberTag: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupMembershipFormMemberTagAnswer message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupMembershipFormMemberTagAnswer} GroupMembershipFormMemberTagAnswer
+         */
+        GroupMembershipFormMemberTagAnswer.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupMembershipFormMemberTagAnswer)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupMembershipFormMemberTagAnswer: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupMembershipFormMemberTagAnswer();
+            if (object.prompt != null)
+                message.prompt = $String(object.prompt);
+            if (object.memberTag != null)
+                message.memberTag = $String(object.memberTag);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupMembershipFormMemberTagAnswer message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormMemberTagAnswer} message GroupMembershipFormMemberTagAnswer
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupMembershipFormMemberTagAnswer.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.prompt != null && $Object.hasOwnProperty.call(message, "prompt"))
+                object.prompt = message.prompt;
+            if (message.memberTag != null && $Object.hasOwnProperty.call(message, "memberTag"))
+                object.memberTag = message.memberTag;
+            return object;
+        };
+
+        /**
+         * Converts this GroupMembershipFormMemberTagAnswer to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupMembershipFormMemberTagAnswer.prototype.toJSON = function() {
+            return GroupMembershipFormMemberTagAnswer.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupMembershipFormMemberTagAnswer
+         * @function getTypeUrl
+         * @memberof waproto.GroupMembershipFormMemberTagAnswer
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupMembershipFormMemberTagAnswer.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupMembershipFormMemberTagAnswer";
+        };
+
+        return GroupMembershipFormMemberTagAnswer;
+    })();
+
+    waproto.GroupMembershipFormQuestion = (function() {
+
+        /**
+         * Properties of a GroupMembershipFormQuestion.
+         * @typedef {Object} waproto.GroupMembershipFormQuestion.$Properties
+         * @property {string|null} [text] GroupMembershipFormQuestion text
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupMembershipFormQuestion.
+         * @memberof waproto
+         * @interface IGroupMembershipFormQuestion
+         * @augments waproto.GroupMembershipFormQuestion.$Properties
+         * @deprecated Use waproto.GroupMembershipFormQuestion.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupMembershipFormQuestion.
+         * @typedef {waproto.GroupMembershipFormQuestion.$Properties} waproto.GroupMembershipFormQuestion.$Shape
+         */
+
+        /**
+         * Constructs a new GroupMembershipFormQuestion.
+         * @memberof waproto
+         * @classdesc Represents a GroupMembershipFormQuestion.
+         * @constructor
+         * @param {waproto.GroupMembershipFormQuestion.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupMembershipFormQuestion = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupMembershipFormQuestion text.
+         * @member {string|null|undefined} text
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @instance
+         */
+        GroupMembershipFormQuestion.prototype.text = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormQuestion.prototype, "_text", {
+            get: $util.oneOfGetter($oneOfFields = ["text"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupMembershipFormQuestion instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {waproto.GroupMembershipFormQuestion.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupMembershipFormQuestion} GroupMembershipFormQuestion instance
+         * @type {{
+         *   (properties: waproto.GroupMembershipFormQuestion.$Shape): waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape;
+         *   (properties?: waproto.GroupMembershipFormQuestion.$Properties): waproto.GroupMembershipFormQuestion;
+         * }}
+         */
+        GroupMembershipFormQuestion.create = function(properties) {
+            return new GroupMembershipFormQuestion(properties);
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestion message. Does not implicitly {@link waproto.GroupMembershipFormQuestion.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {waproto.GroupMembershipFormQuestion.$Properties} message GroupMembershipFormQuestion message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormQuestion.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.text);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestion message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormQuestion.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {waproto.GroupMembershipFormQuestion.$Properties} message GroupMembershipFormQuestion message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormQuestion.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupMembershipFormQuestion message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape} GroupMembershipFormQuestion
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormQuestion.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupMembershipFormQuestion();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.text = reader.stringVerify();
+                        message._text = "text";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupMembershipFormQuestion message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape} GroupMembershipFormQuestion
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormQuestion.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupMembershipFormQuestion message.
+         * @function verify
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupMembershipFormQuestion.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.text != null && $Object.hasOwnProperty.call(message, "text")) {
+                properties._text = 1;
+                if (!$util.isString(message.text))
+                    return "text: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupMembershipFormQuestion message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupMembershipFormQuestion} GroupMembershipFormQuestion
+         */
+        GroupMembershipFormQuestion.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupMembershipFormQuestion)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupMembershipFormQuestion: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupMembershipFormQuestion();
+            if (object.text != null)
+                message.text = $String(object.text);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupMembershipFormQuestion message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {waproto.GroupMembershipFormQuestion} message GroupMembershipFormQuestion
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupMembershipFormQuestion.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.text != null && $Object.hasOwnProperty.call(message, "text"))
+                object.text = message.text;
+            return object;
+        };
+
+        /**
+         * Converts this GroupMembershipFormQuestion to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupMembershipFormQuestion.prototype.toJSON = function() {
+            return GroupMembershipFormQuestion.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupMembershipFormQuestion
+         * @function getTypeUrl
+         * @memberof waproto.GroupMembershipFormQuestion
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupMembershipFormQuestion.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupMembershipFormQuestion";
+        };
+
+        return GroupMembershipFormQuestion;
+    })();
+
+    waproto.GroupMembershipFormQuestionAnswer = (function() {
+
+        /**
+         * Properties of a GroupMembershipFormQuestionAnswer.
+         * @typedef {Object} waproto.GroupMembershipFormQuestionAnswer.$Properties
+         * @property {waproto.GroupMembershipFormQuestion.$Properties|null} [question] GroupMembershipFormQuestionAnswer question
+         * @property {string|null} [answer] GroupMembershipFormQuestionAnswer answer
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupMembershipFormQuestionAnswer.
+         * @memberof waproto
+         * @interface IGroupMembershipFormQuestionAnswer
+         * @augments waproto.GroupMembershipFormQuestionAnswer.$Properties
+         * @deprecated Use waproto.GroupMembershipFormQuestionAnswer.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupMembershipFormQuestionAnswer.
+         * @typedef {waproto.GroupMembershipFormQuestionAnswer.$Properties} waproto.GroupMembershipFormQuestionAnswer.$Shape
+         */
+
+        /**
+         * Constructs a new GroupMembershipFormQuestionAnswer.
+         * @memberof waproto
+         * @classdesc Represents a GroupMembershipFormQuestionAnswer.
+         * @constructor
+         * @param {waproto.GroupMembershipFormQuestionAnswer.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupMembershipFormQuestionAnswer = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupMembershipFormQuestionAnswer question.
+         * @member {waproto.GroupMembershipFormQuestion.$Properties|null|undefined} question
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @instance
+         */
+        GroupMembershipFormQuestionAnswer.prototype.question = null;
+
+        /**
+         * GroupMembershipFormQuestionAnswer answer.
+         * @member {string|null|undefined} answer
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @instance
+         */
+        GroupMembershipFormQuestionAnswer.prototype.answer = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormQuestionAnswer.prototype, "_question", {
+            get: $util.oneOfGetter($oneOfFields = ["question"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormQuestionAnswer.prototype, "_answer", {
+            get: $util.oneOfGetter($oneOfFields = ["answer"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupMembershipFormQuestionAnswer instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormQuestionAnswer.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupMembershipFormQuestionAnswer} GroupMembershipFormQuestionAnswer instance
+         * @type {{
+         *   (properties: waproto.GroupMembershipFormQuestionAnswer.$Shape): waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape;
+         *   (properties?: waproto.GroupMembershipFormQuestionAnswer.$Properties): waproto.GroupMembershipFormQuestionAnswer;
+         * }}
+         */
+        GroupMembershipFormQuestionAnswer.create = function(properties) {
+            return new GroupMembershipFormQuestionAnswer(properties);
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestionAnswer message. Does not implicitly {@link waproto.GroupMembershipFormQuestionAnswer.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormQuestionAnswer.$Properties} message GroupMembershipFormQuestionAnswer message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormQuestionAnswer.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.question != null && $Object.hasOwnProperty.call(message, "question"))
+                $root.waproto.GroupMembershipFormQuestion.encode(message.question, writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.answer != null && $Object.hasOwnProperty.call(message, "answer"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.answer);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestionAnswer message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormQuestionAnswer.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormQuestionAnswer.$Properties} message GroupMembershipFormQuestionAnswer message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormQuestionAnswer.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupMembershipFormQuestionAnswer message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape} GroupMembershipFormQuestionAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormQuestionAnswer.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupMembershipFormQuestionAnswer();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.question = $root.waproto.GroupMembershipFormQuestion.decode(reader, reader.size(), $undefined, _depth + 1, message.question);
+                        message._question = "question";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.answer = reader.stringVerify();
+                        message._answer = "answer";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupMembershipFormQuestionAnswer message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape} GroupMembershipFormQuestionAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormQuestionAnswer.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupMembershipFormQuestionAnswer message.
+         * @function verify
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupMembershipFormQuestionAnswer.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.question != null && $Object.hasOwnProperty.call(message, "question")) {
+                properties._question = 1;
+                {
+                    var error = $root.waproto.GroupMembershipFormQuestion.verify(message.question, _depth + 1);
+                    if (error)
+                        return "question." + error;
+                }
+            }
+            if (message.answer != null && $Object.hasOwnProperty.call(message, "answer")) {
+                properties._answer = 1;
+                if (!$util.isString(message.answer))
+                    return "answer: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupMembershipFormQuestionAnswer message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupMembershipFormQuestionAnswer} GroupMembershipFormQuestionAnswer
+         */
+        GroupMembershipFormQuestionAnswer.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupMembershipFormQuestionAnswer)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupMembershipFormQuestionAnswer: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupMembershipFormQuestionAnswer();
+            if (object.question != null) {
+                if (!$util.isObject(object.question))
+                    throw $TypeError(".waproto.GroupMembershipFormQuestionAnswer.question: object expected");
+                message.question = $root.waproto.GroupMembershipFormQuestion.fromObject(object.question, _depth + 1);
+            }
+            if (object.answer != null)
+                message.answer = $String(object.answer);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupMembershipFormQuestionAnswer message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {waproto.GroupMembershipFormQuestionAnswer} message GroupMembershipFormQuestionAnswer
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupMembershipFormQuestionAnswer.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.question != null && $Object.hasOwnProperty.call(message, "question"))
+                object.question = $root.waproto.GroupMembershipFormQuestion.toObject(message.question, options, _depth + 1);
+            if (message.answer != null && $Object.hasOwnProperty.call(message, "answer"))
+                object.answer = message.answer;
+            return object;
+        };
+
+        /**
+         * Converts this GroupMembershipFormQuestionAnswer to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupMembershipFormQuestionAnswer.prototype.toJSON = function() {
+            return GroupMembershipFormQuestionAnswer.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupMembershipFormQuestionAnswer
+         * @function getTypeUrl
+         * @memberof waproto.GroupMembershipFormQuestionAnswer
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupMembershipFormQuestionAnswer.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupMembershipFormQuestionAnswer";
+        };
+
+        return GroupMembershipFormQuestionAnswer;
+    })();
+
+    waproto.GroupMembershipFormSubmission = (function() {
+
+        /**
+         * Properties of a GroupMembershipFormSubmission.
+         * @typedef {Object} waproto.GroupMembershipFormSubmission.$Properties
+         * @property {Array.<waproto.GroupMembershipFormQuestionAnswer.$Properties>|null} [questionAnswers] GroupMembershipFormSubmission questionAnswers
+         * @property {waproto.GroupMembershipFormMemberTagAnswer.$Properties|null} [memberTagAnswer] GroupMembershipFormSubmission memberTagAnswer
+         * @property {number|null} [schemaVersion] GroupMembershipFormSubmission schemaVersion
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a GroupMembershipFormSubmission.
+         * @memberof waproto
+         * @interface IGroupMembershipFormSubmission
+         * @augments waproto.GroupMembershipFormSubmission.$Properties
+         * @deprecated Use waproto.GroupMembershipFormSubmission.$Properties instead.
+         */
+
+        /**
+         * Shape of a GroupMembershipFormSubmission.
+         * @typedef {waproto.GroupMembershipFormSubmission.$Properties} waproto.GroupMembershipFormSubmission.$Shape
+         */
+
+        /**
+         * Constructs a new GroupMembershipFormSubmission.
+         * @memberof waproto
+         * @classdesc Represents a GroupMembershipFormSubmission.
+         * @constructor
+         * @param {waproto.GroupMembershipFormSubmission.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var GroupMembershipFormSubmission = function (properties) {
+            this.questionAnswers = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * GroupMembershipFormSubmission questionAnswers.
+         * @member {Array.<waproto.GroupMembershipFormQuestionAnswer.$Properties>} questionAnswers
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @instance
+         */
+        GroupMembershipFormSubmission.prototype.questionAnswers = $util.emptyArray;
+
+        /**
+         * GroupMembershipFormSubmission memberTagAnswer.
+         * @member {waproto.GroupMembershipFormMemberTagAnswer.$Properties|null|undefined} memberTagAnswer
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @instance
+         */
+        GroupMembershipFormSubmission.prototype.memberTagAnswer = null;
+
+        /**
+         * GroupMembershipFormSubmission schemaVersion.
+         * @member {number|null|undefined} schemaVersion
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @instance
+         */
+        GroupMembershipFormSubmission.prototype.schemaVersion = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormSubmission.prototype, "_memberTagAnswer", {
+            get: $util.oneOfGetter($oneOfFields = ["memberTagAnswer"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(GroupMembershipFormSubmission.prototype, "_schemaVersion", {
+            get: $util.oneOfGetter($oneOfFields = ["schemaVersion"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new GroupMembershipFormSubmission instance using the specified properties.
+         * @function create
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {waproto.GroupMembershipFormSubmission.$Properties=} [properties] Properties to set
+         * @returns {waproto.GroupMembershipFormSubmission} GroupMembershipFormSubmission instance
+         * @type {{
+         *   (properties: waproto.GroupMembershipFormSubmission.$Shape): waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape;
+         *   (properties?: waproto.GroupMembershipFormSubmission.$Properties): waproto.GroupMembershipFormSubmission;
+         * }}
+         */
+        GroupMembershipFormSubmission.create = function(properties) {
+            return new GroupMembershipFormSubmission(properties);
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormSubmission message. Does not implicitly {@link waproto.GroupMembershipFormSubmission.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {waproto.GroupMembershipFormSubmission.$Properties} message GroupMembershipFormSubmission message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormSubmission.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.questionAnswers != null && message.questionAnswers.length)
+                for (var i = 0; i < message.questionAnswers.length; ++i)
+                    $root.waproto.GroupMembershipFormQuestionAnswer.encode(message.questionAnswers[i], writer.uint32(/* id 1, wireType 2 =*/10).fork(), _depth + 1).ldelim();
+            if (message.memberTagAnswer != null && $Object.hasOwnProperty.call(message, "memberTagAnswer"))
+                $root.waproto.GroupMembershipFormMemberTagAnswer.encode(message.memberTagAnswer, writer.uint32(/* id 2, wireType 2 =*/18).fork(), _depth + 1).ldelim();
+            if (message.schemaVersion != null && $Object.hasOwnProperty.call(message, "schemaVersion"))
+                writer.uint32(/* id 3, wireType 0 =*/24).uint32(message.schemaVersion);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified GroupMembershipFormSubmission message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormSubmission.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {waproto.GroupMembershipFormSubmission.$Properties} message GroupMembershipFormSubmission message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        GroupMembershipFormSubmission.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a GroupMembershipFormSubmission message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape} GroupMembershipFormSubmission
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormSubmission.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.GroupMembershipFormSubmission();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        if (!(message.questionAnswers && message.questionAnswers.length))
+                            message.questionAnswers = [];
+                        message.questionAnswers.push($root.waproto.GroupMembershipFormQuestionAnswer.decode(reader, reader.size(), $undefined, _depth + 1));
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.memberTagAnswer = $root.waproto.GroupMembershipFormMemberTagAnswer.decode(reader, reader.size(), $undefined, _depth + 1, message.memberTagAnswer);
+                        message._memberTagAnswer = "memberTagAnswer";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.schemaVersion = reader.uint32();
+                        message._schemaVersion = "schemaVersion";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a GroupMembershipFormSubmission message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape} GroupMembershipFormSubmission
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        GroupMembershipFormSubmission.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a GroupMembershipFormSubmission message.
+         * @function verify
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        GroupMembershipFormSubmission.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.questionAnswers != null && $Object.hasOwnProperty.call(message, "questionAnswers")) {
+                if (!$Array.isArray(message.questionAnswers))
+                    return "questionAnswers: array expected";
+                for (var i = 0; i < message.questionAnswers.length; ++i) {
+                    var error = $root.waproto.GroupMembershipFormQuestionAnswer.verify(message.questionAnswers[i], _depth + 1);
+                    if (error)
+                        return "questionAnswers." + error;
+                }
+            }
+            if (message.memberTagAnswer != null && $Object.hasOwnProperty.call(message, "memberTagAnswer")) {
+                properties._memberTagAnswer = 1;
+                {
+                    var error = $root.waproto.GroupMembershipFormMemberTagAnswer.verify(message.memberTagAnswer, _depth + 1);
+                    if (error)
+                        return "memberTagAnswer." + error;
+                }
+            }
+            if (message.schemaVersion != null && $Object.hasOwnProperty.call(message, "schemaVersion")) {
+                properties._schemaVersion = 1;
+                if (!$util.isInteger(message.schemaVersion))
+                    return "schemaVersion: integer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a GroupMembershipFormSubmission message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.GroupMembershipFormSubmission} GroupMembershipFormSubmission
+         */
+        GroupMembershipFormSubmission.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.GroupMembershipFormSubmission)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.GroupMembershipFormSubmission: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.GroupMembershipFormSubmission();
+            if (object.questionAnswers) {
+                if (!$Array.isArray(object.questionAnswers))
+                    throw $TypeError(".waproto.GroupMembershipFormSubmission.questionAnswers: array expected");
+                message.questionAnswers = $Array(object.questionAnswers.length);
+                for (var i = 0; i < object.questionAnswers.length; ++i) {
+                    if (!$util.isObject(object.questionAnswers[i]))
+                        throw $TypeError(".waproto.GroupMembershipFormSubmission.questionAnswers: object expected");
+                    message.questionAnswers[i] = $root.waproto.GroupMembershipFormQuestionAnswer.fromObject(object.questionAnswers[i], _depth + 1);
+                }
+            }
+            if (object.memberTagAnswer != null) {
+                if (!$util.isObject(object.memberTagAnswer))
+                    throw $TypeError(".waproto.GroupMembershipFormSubmission.memberTagAnswer: object expected");
+                message.memberTagAnswer = $root.waproto.GroupMembershipFormMemberTagAnswer.fromObject(object.memberTagAnswer, _depth + 1);
+            }
+            if (object.schemaVersion != null)
+                message.schemaVersion = object.schemaVersion >>> 0;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a GroupMembershipFormSubmission message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {waproto.GroupMembershipFormSubmission} message GroupMembershipFormSubmission
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        GroupMembershipFormSubmission.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.questionAnswers = [];
+            if (message.questionAnswers && message.questionAnswers.length) {
+                object.questionAnswers = $Array(message.questionAnswers.length);
+                for (var j = 0; j < message.questionAnswers.length; ++j)
+                    object.questionAnswers[j] = $root.waproto.GroupMembershipFormQuestionAnswer.toObject(message.questionAnswers[j], options, _depth + 1);
+            }
+            if (message.memberTagAnswer != null && $Object.hasOwnProperty.call(message, "memberTagAnswer"))
+                object.memberTagAnswer = $root.waproto.GroupMembershipFormMemberTagAnswer.toObject(message.memberTagAnswer, options, _depth + 1);
+            if (message.schemaVersion != null && $Object.hasOwnProperty.call(message, "schemaVersion"))
+                object.schemaVersion = message.schemaVersion;
+            return object;
+        };
+
+        /**
+         * Converts this GroupMembershipFormSubmission to JSON.
+         * @function toJSON
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        GroupMembershipFormSubmission.prototype.toJSON = function() {
+            return GroupMembershipFormSubmission.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for GroupMembershipFormSubmission
+         * @function getTypeUrl
+         * @memberof waproto.GroupMembershipFormSubmission
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        GroupMembershipFormSubmission.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.GroupMembershipFormSubmission";
+        };
+
+        return GroupMembershipFormSubmission;
+    })();
+
     waproto.GroupMention = (function() {
 
         /**

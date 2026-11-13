@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1054320313
+/// WhatsApp Version: 2.3000.1054357583
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -2292,6 +2292,32 @@ message GroupHistoryWithMessageBytes {
     repeated WebMessageInfoWithMessageBytes commentMessages = 3;
     repeated WebMessageInfoWithMessageBytes outOfWindowPinnedMessages = 4;
     optional WebMessageInfoWithMessageBytes themeMessage = 5;
+}
+
+message GroupMembershipForm {
+    repeated GroupMembershipFormQuestion questions = 1;
+    optional string memberTagPrompt = 2;
+    optional uint32 schemaVersion = 3;
+}
+
+message GroupMembershipFormMemberTagAnswer {
+    optional string prompt = 1;
+    optional string memberTag = 2;
+}
+
+message GroupMembershipFormQuestion {
+    optional string text = 1;
+}
+
+message GroupMembershipFormQuestionAnswer {
+    optional GroupMembershipFormQuestion question = 1;
+    optional string answer = 2;
+}
+
+message GroupMembershipFormSubmission {
+    repeated GroupMembershipFormQuestionAnswer questionAnswers = 1;
+    optional GroupMembershipFormMemberTagAnswer memberTagAnswer = 2;
+    optional uint32 schemaVersion = 3;
 }
 
 message GroupMention {

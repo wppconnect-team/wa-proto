@@ -29570,6 +29570,627 @@ export namespace waproto {
     }
 
     /**
+     * Properties of a GroupMembershipForm.
+     * @deprecated Use waproto.GroupMembershipForm.$Properties instead.
+     */
+    interface IGroupMembershipForm extends waproto.GroupMembershipForm.$Properties {
+    }
+
+    /** Represents a GroupMembershipForm. */
+    class GroupMembershipForm {
+
+        /**
+         * Constructs a new GroupMembershipForm.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupMembershipForm.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupMembershipForm questions. */
+        questions: waproto.GroupMembershipFormQuestion.$Properties[];
+
+        /** GroupMembershipForm memberTagPrompt. */
+        memberTagPrompt?: (string|null);
+
+        /** GroupMembershipForm schemaVersion. */
+        schemaVersion?: (number|null);
+
+        /**
+         * Creates a new GroupMembershipForm instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupMembershipForm instance
+         */
+        static create(properties: waproto.GroupMembershipForm.$Shape): waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape;
+        static create(properties?: waproto.GroupMembershipForm.$Properties): waproto.GroupMembershipForm;
+
+        /**
+         * Encodes the specified GroupMembershipForm message. Does not implicitly {@link waproto.GroupMembershipForm.verify|verify} messages.
+         * @param message GroupMembershipForm message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupMembershipForm.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupMembershipForm message, length delimited. Does not implicitly {@link waproto.GroupMembershipForm.verify|verify} messages.
+         * @param message GroupMembershipForm message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupMembershipForm.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupMembershipForm message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape} GroupMembershipForm
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape;
+
+        /**
+         * Decodes a GroupMembershipForm message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape} GroupMembershipForm
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupMembershipForm & waproto.GroupMembershipForm.$Shape;
+
+        /**
+         * Verifies a GroupMembershipForm message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupMembershipForm message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupMembershipForm
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupMembershipForm;
+
+        /**
+         * Creates a plain object from a GroupMembershipForm message. Also converts values to other types if specified.
+         * @param message GroupMembershipForm
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupMembershipForm, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupMembershipForm to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupMembershipForm
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipForm {
+
+        /** Properties of a GroupMembershipForm. */
+        interface $Properties {
+
+            /** GroupMembershipForm questions */
+            questions?: (waproto.GroupMembershipFormQuestion.$Properties[]|null);
+
+            /** GroupMembershipForm memberTagPrompt */
+            memberTagPrompt?: (string|null);
+
+            /** GroupMembershipForm schemaVersion */
+            schemaVersion?: (number|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupMembershipForm. */
+        type $Shape = waproto.GroupMembershipForm.$Properties;
+    }
+
+    /**
+     * Properties of a GroupMembershipFormMemberTagAnswer.
+     * @deprecated Use waproto.GroupMembershipFormMemberTagAnswer.$Properties instead.
+     */
+    interface IGroupMembershipFormMemberTagAnswer extends waproto.GroupMembershipFormMemberTagAnswer.$Properties {
+    }
+
+    /** Represents a GroupMembershipFormMemberTagAnswer. */
+    class GroupMembershipFormMemberTagAnswer {
+
+        /**
+         * Constructs a new GroupMembershipFormMemberTagAnswer.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupMembershipFormMemberTagAnswer.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupMembershipFormMemberTagAnswer prompt. */
+        prompt?: (string|null);
+
+        /** GroupMembershipFormMemberTagAnswer memberTag. */
+        memberTag?: (string|null);
+
+        /**
+         * Creates a new GroupMembershipFormMemberTagAnswer instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupMembershipFormMemberTagAnswer instance
+         */
+        static create(properties: waproto.GroupMembershipFormMemberTagAnswer.$Shape): waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape;
+        static create(properties?: waproto.GroupMembershipFormMemberTagAnswer.$Properties): waproto.GroupMembershipFormMemberTagAnswer;
+
+        /**
+         * Encodes the specified GroupMembershipFormMemberTagAnswer message. Does not implicitly {@link waproto.GroupMembershipFormMemberTagAnswer.verify|verify} messages.
+         * @param message GroupMembershipFormMemberTagAnswer message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupMembershipFormMemberTagAnswer.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupMembershipFormMemberTagAnswer message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormMemberTagAnswer.verify|verify} messages.
+         * @param message GroupMembershipFormMemberTagAnswer message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupMembershipFormMemberTagAnswer.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupMembershipFormMemberTagAnswer message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape} GroupMembershipFormMemberTagAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape;
+
+        /**
+         * Decodes a GroupMembershipFormMemberTagAnswer message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape} GroupMembershipFormMemberTagAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupMembershipFormMemberTagAnswer & waproto.GroupMembershipFormMemberTagAnswer.$Shape;
+
+        /**
+         * Verifies a GroupMembershipFormMemberTagAnswer message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupMembershipFormMemberTagAnswer message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupMembershipFormMemberTagAnswer
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupMembershipFormMemberTagAnswer;
+
+        /**
+         * Creates a plain object from a GroupMembershipFormMemberTagAnswer message. Also converts values to other types if specified.
+         * @param message GroupMembershipFormMemberTagAnswer
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupMembershipFormMemberTagAnswer, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupMembershipFormMemberTagAnswer to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupMembershipFormMemberTagAnswer
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormMemberTagAnswer {
+
+        /** Properties of a GroupMembershipFormMemberTagAnswer. */
+        interface $Properties {
+
+            /** GroupMembershipFormMemberTagAnswer prompt */
+            prompt?: (string|null);
+
+            /** GroupMembershipFormMemberTagAnswer memberTag */
+            memberTag?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupMembershipFormMemberTagAnswer. */
+        type $Shape = waproto.GroupMembershipFormMemberTagAnswer.$Properties;
+    }
+
+    /**
+     * Properties of a GroupMembershipFormQuestion.
+     * @deprecated Use waproto.GroupMembershipFormQuestion.$Properties instead.
+     */
+    interface IGroupMembershipFormQuestion extends waproto.GroupMembershipFormQuestion.$Properties {
+    }
+
+    /** Represents a GroupMembershipFormQuestion. */
+    class GroupMembershipFormQuestion {
+
+        /**
+         * Constructs a new GroupMembershipFormQuestion.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupMembershipFormQuestion.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupMembershipFormQuestion text. */
+        text?: (string|null);
+
+        /**
+         * Creates a new GroupMembershipFormQuestion instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupMembershipFormQuestion instance
+         */
+        static create(properties: waproto.GroupMembershipFormQuestion.$Shape): waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape;
+        static create(properties?: waproto.GroupMembershipFormQuestion.$Properties): waproto.GroupMembershipFormQuestion;
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestion message. Does not implicitly {@link waproto.GroupMembershipFormQuestion.verify|verify} messages.
+         * @param message GroupMembershipFormQuestion message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupMembershipFormQuestion.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestion message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormQuestion.verify|verify} messages.
+         * @param message GroupMembershipFormQuestion message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupMembershipFormQuestion.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupMembershipFormQuestion message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape} GroupMembershipFormQuestion
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape;
+
+        /**
+         * Decodes a GroupMembershipFormQuestion message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape} GroupMembershipFormQuestion
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupMembershipFormQuestion & waproto.GroupMembershipFormQuestion.$Shape;
+
+        /**
+         * Verifies a GroupMembershipFormQuestion message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupMembershipFormQuestion message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupMembershipFormQuestion
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupMembershipFormQuestion;
+
+        /**
+         * Creates a plain object from a GroupMembershipFormQuestion message. Also converts values to other types if specified.
+         * @param message GroupMembershipFormQuestion
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupMembershipFormQuestion, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupMembershipFormQuestion to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupMembershipFormQuestion
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormQuestion {
+
+        /** Properties of a GroupMembershipFormQuestion. */
+        interface $Properties {
+
+            /** GroupMembershipFormQuestion text */
+            text?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupMembershipFormQuestion. */
+        type $Shape = waproto.GroupMembershipFormQuestion.$Properties;
+    }
+
+    /**
+     * Properties of a GroupMembershipFormQuestionAnswer.
+     * @deprecated Use waproto.GroupMembershipFormQuestionAnswer.$Properties instead.
+     */
+    interface IGroupMembershipFormQuestionAnswer extends waproto.GroupMembershipFormQuestionAnswer.$Properties {
+    }
+
+    /** Represents a GroupMembershipFormQuestionAnswer. */
+    class GroupMembershipFormQuestionAnswer {
+
+        /**
+         * Constructs a new GroupMembershipFormQuestionAnswer.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupMembershipFormQuestionAnswer.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupMembershipFormQuestionAnswer question. */
+        question?: (waproto.GroupMembershipFormQuestion.$Properties|null);
+
+        /** GroupMembershipFormQuestionAnswer answer. */
+        answer?: (string|null);
+
+        /**
+         * Creates a new GroupMembershipFormQuestionAnswer instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupMembershipFormQuestionAnswer instance
+         */
+        static create(properties: waproto.GroupMembershipFormQuestionAnswer.$Shape): waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape;
+        static create(properties?: waproto.GroupMembershipFormQuestionAnswer.$Properties): waproto.GroupMembershipFormQuestionAnswer;
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestionAnswer message. Does not implicitly {@link waproto.GroupMembershipFormQuestionAnswer.verify|verify} messages.
+         * @param message GroupMembershipFormQuestionAnswer message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupMembershipFormQuestionAnswer.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupMembershipFormQuestionAnswer message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormQuestionAnswer.verify|verify} messages.
+         * @param message GroupMembershipFormQuestionAnswer message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupMembershipFormQuestionAnswer.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupMembershipFormQuestionAnswer message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape} GroupMembershipFormQuestionAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape;
+
+        /**
+         * Decodes a GroupMembershipFormQuestionAnswer message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape} GroupMembershipFormQuestionAnswer
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupMembershipFormQuestionAnswer & waproto.GroupMembershipFormQuestionAnswer.$Shape;
+
+        /**
+         * Verifies a GroupMembershipFormQuestionAnswer message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupMembershipFormQuestionAnswer message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupMembershipFormQuestionAnswer
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupMembershipFormQuestionAnswer;
+
+        /**
+         * Creates a plain object from a GroupMembershipFormQuestionAnswer message. Also converts values to other types if specified.
+         * @param message GroupMembershipFormQuestionAnswer
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupMembershipFormQuestionAnswer, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupMembershipFormQuestionAnswer to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupMembershipFormQuestionAnswer
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormQuestionAnswer {
+
+        /** Properties of a GroupMembershipFormQuestionAnswer. */
+        interface $Properties {
+
+            /** GroupMembershipFormQuestionAnswer question */
+            question?: (waproto.GroupMembershipFormQuestion.$Properties|null);
+
+            /** GroupMembershipFormQuestionAnswer answer */
+            answer?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupMembershipFormQuestionAnswer. */
+        type $Shape = waproto.GroupMembershipFormQuestionAnswer.$Properties;
+    }
+
+    /**
+     * Properties of a GroupMembershipFormSubmission.
+     * @deprecated Use waproto.GroupMembershipFormSubmission.$Properties instead.
+     */
+    interface IGroupMembershipFormSubmission extends waproto.GroupMembershipFormSubmission.$Properties {
+    }
+
+    /** Represents a GroupMembershipFormSubmission. */
+    class GroupMembershipFormSubmission {
+
+        /**
+         * Constructs a new GroupMembershipFormSubmission.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.GroupMembershipFormSubmission.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** GroupMembershipFormSubmission questionAnswers. */
+        questionAnswers: waproto.GroupMembershipFormQuestionAnswer.$Properties[];
+
+        /** GroupMembershipFormSubmission memberTagAnswer. */
+        memberTagAnswer?: (waproto.GroupMembershipFormMemberTagAnswer.$Properties|null);
+
+        /** GroupMembershipFormSubmission schemaVersion. */
+        schemaVersion?: (number|null);
+
+        /**
+         * Creates a new GroupMembershipFormSubmission instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns GroupMembershipFormSubmission instance
+         */
+        static create(properties: waproto.GroupMembershipFormSubmission.$Shape): waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape;
+        static create(properties?: waproto.GroupMembershipFormSubmission.$Properties): waproto.GroupMembershipFormSubmission;
+
+        /**
+         * Encodes the specified GroupMembershipFormSubmission message. Does not implicitly {@link waproto.GroupMembershipFormSubmission.verify|verify} messages.
+         * @param message GroupMembershipFormSubmission message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.GroupMembershipFormSubmission.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified GroupMembershipFormSubmission message, length delimited. Does not implicitly {@link waproto.GroupMembershipFormSubmission.verify|verify} messages.
+         * @param message GroupMembershipFormSubmission message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.GroupMembershipFormSubmission.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a GroupMembershipFormSubmission message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape} GroupMembershipFormSubmission
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape;
+
+        /**
+         * Decodes a GroupMembershipFormSubmission message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape} GroupMembershipFormSubmission
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.GroupMembershipFormSubmission & waproto.GroupMembershipFormSubmission.$Shape;
+
+        /**
+         * Verifies a GroupMembershipFormSubmission message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a GroupMembershipFormSubmission message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns GroupMembershipFormSubmission
+         */
+        static fromObject(object: { [k: string]: any }): waproto.GroupMembershipFormSubmission;
+
+        /**
+         * Creates a plain object from a GroupMembershipFormSubmission message. Also converts values to other types if specified.
+         * @param message GroupMembershipFormSubmission
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.GroupMembershipFormSubmission, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this GroupMembershipFormSubmission to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for GroupMembershipFormSubmission
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace GroupMembershipFormSubmission {
+
+        /** Properties of a GroupMembershipFormSubmission. */
+        interface $Properties {
+
+            /** GroupMembershipFormSubmission questionAnswers */
+            questionAnswers?: (waproto.GroupMembershipFormQuestionAnswer.$Properties[]|null);
+
+            /** GroupMembershipFormSubmission memberTagAnswer */
+            memberTagAnswer?: (waproto.GroupMembershipFormMemberTagAnswer.$Properties|null);
+
+            /** GroupMembershipFormSubmission schemaVersion */
+            schemaVersion?: (number|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a GroupMembershipFormSubmission. */
+        type $Shape = waproto.GroupMembershipFormSubmission.$Properties;
+    }
+
+    /**
      * Properties of a GroupMention.
      * @deprecated Use waproto.GroupMention.$Properties instead.
      */
