@@ -82250,6 +82250,10 @@ $root.waproto = (function() {
          * Properties of an EventInviteAdditionalMetadata.
          * @typedef {Object} waproto.EventInviteAdditionalMetadata.$Properties
          * @property {boolean|null} [isUpdated] EventInviteAdditionalMetadata isUpdated
+         * @property {waproto.EventInviteAdditionalMetadata.AccessStatus|null} [selfAccessStatus] EventInviteAdditionalMetadata selfAccessStatus
+         * @property {waproto.EventInviteAdditionalMetadata.RsvpStatus|null} [selfRsvpStatus] EventInviteAdditionalMetadata selfRsvpStatus
+         * @property {number|null} [selfAdditionalGuestCount] EventInviteAdditionalMetadata selfAdditionalGuestCount
+         * @property {number|Long|null} [selfInviteeLastUpdatedTsUsec] EventInviteAdditionalMetadata selfInviteeLastUpdatedTsUsec
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -82289,12 +82293,68 @@ $root.waproto = (function() {
          */
         EventInviteAdditionalMetadata.prototype.isUpdated = null;
 
+        /**
+         * EventInviteAdditionalMetadata selfAccessStatus.
+         * @member {waproto.EventInviteAdditionalMetadata.AccessStatus|null|undefined} selfAccessStatus
+         * @memberof waproto.EventInviteAdditionalMetadata
+         * @instance
+         */
+        EventInviteAdditionalMetadata.prototype.selfAccessStatus = null;
+
+        /**
+         * EventInviteAdditionalMetadata selfRsvpStatus.
+         * @member {waproto.EventInviteAdditionalMetadata.RsvpStatus|null|undefined} selfRsvpStatus
+         * @memberof waproto.EventInviteAdditionalMetadata
+         * @instance
+         */
+        EventInviteAdditionalMetadata.prototype.selfRsvpStatus = null;
+
+        /**
+         * EventInviteAdditionalMetadata selfAdditionalGuestCount.
+         * @member {number|null|undefined} selfAdditionalGuestCount
+         * @memberof waproto.EventInviteAdditionalMetadata
+         * @instance
+         */
+        EventInviteAdditionalMetadata.prototype.selfAdditionalGuestCount = null;
+
+        /**
+         * EventInviteAdditionalMetadata selfInviteeLastUpdatedTsUsec.
+         * @member {number|Long|null|undefined} selfInviteeLastUpdatedTsUsec
+         * @memberof waproto.EventInviteAdditionalMetadata
+         * @instance
+         */
+        EventInviteAdditionalMetadata.prototype.selfInviteeLastUpdatedTsUsec = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_isUpdated", {
             get: $util.oneOfGetter($oneOfFields = ["isUpdated"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfAccessStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["selfAccessStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfRsvpStatus", {
+            get: $util.oneOfGetter($oneOfFields = ["selfRsvpStatus"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfAdditionalGuestCount", {
+            get: $util.oneOfGetter($oneOfFields = ["selfAdditionalGuestCount"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EventInviteAdditionalMetadata.prototype, "_selfInviteeLastUpdatedTsUsec", {
+            get: $util.oneOfGetter($oneOfFields = ["selfInviteeLastUpdatedTsUsec"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -82332,6 +82392,14 @@ $root.waproto = (function() {
                 throw $Error("max depth exceeded");
             if (message.isUpdated != null && $Object.hasOwnProperty.call(message, "isUpdated"))
                 writer.uint32(/* id 1, wireType 0 =*/8).bool(message.isUpdated);
+            if (message.selfAccessStatus != null && $Object.hasOwnProperty.call(message, "selfAccessStatus"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.selfAccessStatus);
+            if (message.selfRsvpStatus != null && $Object.hasOwnProperty.call(message, "selfRsvpStatus"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.selfRsvpStatus);
+            if (message.selfAdditionalGuestCount != null && $Object.hasOwnProperty.call(message, "selfAdditionalGuestCount"))
+                writer.uint32(/* id 4, wireType 0 =*/32).uint32(message.selfAdditionalGuestCount);
+            if (message.selfInviteeLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(message, "selfInviteeLastUpdatedTsUsec"))
+                writer.uint32(/* id 5, wireType 0 =*/40).int64(message.selfInviteeLastUpdatedTsUsec);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -82369,7 +82437,7 @@ $root.waproto = (function() {
                 _depth = 0;
             if (_depth > $Reader.recursionLimit)
                 throw $Error("max depth exceeded");
-            var end, message;
+            var end, message, value;
             if (length === $undefined)
                 end = reader.len;
             else {
@@ -82394,6 +82462,34 @@ $root.waproto = (function() {
                             break;
                         message.isUpdated = reader.bool();
                         message._isUpdated = "isUpdated";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.selfAccessStatus = reader.int32();
+                        message._selfAccessStatus = "selfAccessStatus";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.selfRsvpStatus = reader.int32();
+                        message._selfRsvpStatus = "selfRsvpStatus";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 0)
+                            break;
+                        message.selfAdditionalGuestCount = reader.uint32();
+                        message._selfAdditionalGuestCount = "selfAdditionalGuestCount";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.selfInviteeLastUpdatedTsUsec = reader.int64();
+                        message._selfInviteeLastUpdatedTsUsec = "selfInviteeLastUpdatedTsUsec";
                         continue;
                     }
                 }
@@ -82450,6 +82546,26 @@ $root.waproto = (function() {
                 if (typeof message.isUpdated !== "boolean")
                     return "isUpdated: boolean expected";
             }
+            if (message.selfAccessStatus != null && $Object.hasOwnProperty.call(message, "selfAccessStatus")) {
+                properties._selfAccessStatus = 1;
+                if (typeof message.selfAccessStatus !== "number" || (message.selfAccessStatus | 0) !== message.selfAccessStatus)
+                    return "selfAccessStatus: enum value expected";
+            }
+            if (message.selfRsvpStatus != null && $Object.hasOwnProperty.call(message, "selfRsvpStatus")) {
+                properties._selfRsvpStatus = 1;
+                if (typeof message.selfRsvpStatus !== "number" || (message.selfRsvpStatus | 0) !== message.selfRsvpStatus)
+                    return "selfRsvpStatus: enum value expected";
+            }
+            if (message.selfAdditionalGuestCount != null && $Object.hasOwnProperty.call(message, "selfAdditionalGuestCount")) {
+                properties._selfAdditionalGuestCount = 1;
+                if (!$util.isInteger(message.selfAdditionalGuestCount))
+                    return "selfAdditionalGuestCount: integer expected";
+            }
+            if (message.selfInviteeLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(message, "selfInviteeLastUpdatedTsUsec")) {
+                properties._selfInviteeLastUpdatedTsUsec = 1;
+                if (!$util.isInteger(message.selfInviteeLastUpdatedTsUsec) && !(message.selfInviteeLastUpdatedTsUsec && $util.isInteger(message.selfInviteeLastUpdatedTsUsec.low) && $util.isInteger(message.selfInviteeLastUpdatedTsUsec.high)))
+                    return "selfInviteeLastUpdatedTsUsec: integer|Long expected";
+            }
             return null;
         };
 
@@ -82473,6 +82589,67 @@ $root.waproto = (function() {
             var message = new $root.waproto.EventInviteAdditionalMetadata();
             if (object.isUpdated != null)
                 message.isUpdated = $Boolean(object.isUpdated);
+            switch (object.selfAccessStatus) {
+            case "ACCESS_STATUS_UNKNOWN":
+            case 0:
+                message.selfAccessStatus = 0;
+                break;
+            case "HAS_ACCESS":
+            case 1:
+                message.selfAccessStatus = 1;
+                break;
+            case "LEFT_EVENT":
+            case 2:
+                message.selfAccessStatus = 2;
+                break;
+            case "REMOVED_FROM_INVITE_LIST":
+            case 3:
+                message.selfAccessStatus = 3;
+                break;
+            case "UNAVAILABLE":
+            case 4:
+                message.selfAccessStatus = 4;
+                break;
+            default:
+                if (typeof object.selfAccessStatus === "number" && (object.selfAccessStatus | 0) === object.selfAccessStatus)
+                    message.selfAccessStatus = object.selfAccessStatus;
+            }
+            switch (object.selfRsvpStatus) {
+            case "RSVP_STATUS_UNKNOWN":
+            case 0:
+                message.selfRsvpStatus = 0;
+                break;
+            case "GOING":
+            case 1:
+                message.selfRsvpStatus = 1;
+                break;
+            case "NOT_GOING":
+            case 2:
+                message.selfRsvpStatus = 2;
+                break;
+            case "MAYBE":
+            case 3:
+                message.selfRsvpStatus = 3;
+                break;
+            case "NO_RESPONSE":
+            case 4:
+                message.selfRsvpStatus = 4;
+                break;
+            default:
+                if (typeof object.selfRsvpStatus === "number" && (object.selfRsvpStatus | 0) === object.selfRsvpStatus)
+                    message.selfRsvpStatus = object.selfRsvpStatus;
+            }
+            if (object.selfAdditionalGuestCount != null)
+                message.selfAdditionalGuestCount = object.selfAdditionalGuestCount >>> 0;
+            if (object.selfInviteeLastUpdatedTsUsec != null)
+                if ($util.Long)
+                    message.selfInviteeLastUpdatedTsUsec = $util.Long.fromValue(object.selfInviteeLastUpdatedTsUsec, false);
+                else if (typeof object.selfInviteeLastUpdatedTsUsec === "string")
+                    message.selfInviteeLastUpdatedTsUsec = $parseInt(object.selfInviteeLastUpdatedTsUsec, 10);
+                else if (typeof object.selfInviteeLastUpdatedTsUsec === "number")
+                    message.selfInviteeLastUpdatedTsUsec = object.selfInviteeLastUpdatedTsUsec;
+                else if (typeof object.selfInviteeLastUpdatedTsUsec === "object")
+                    message.selfInviteeLastUpdatedTsUsec = new $util.LongBits(object.selfInviteeLastUpdatedTsUsec.low >>> 0, object.selfInviteeLastUpdatedTsUsec.high >>> 0).toNumber();
             return message;
         };
 
@@ -82495,6 +82672,19 @@ $root.waproto = (function() {
             var object = {};
             if (message.isUpdated != null && $Object.hasOwnProperty.call(message, "isUpdated"))
                 object.isUpdated = message.isUpdated;
+            if (message.selfAccessStatus != null && $Object.hasOwnProperty.call(message, "selfAccessStatus"))
+                object.selfAccessStatus = options.enums === $String ? $root.waproto.EventInviteAdditionalMetadata.AccessStatus[message.selfAccessStatus] === $undefined ? message.selfAccessStatus : $root.waproto.EventInviteAdditionalMetadata.AccessStatus[message.selfAccessStatus] : message.selfAccessStatus;
+            if (message.selfRsvpStatus != null && $Object.hasOwnProperty.call(message, "selfRsvpStatus"))
+                object.selfRsvpStatus = options.enums === $String ? $root.waproto.EventInviteAdditionalMetadata.RsvpStatus[message.selfRsvpStatus] === $undefined ? message.selfRsvpStatus : $root.waproto.EventInviteAdditionalMetadata.RsvpStatus[message.selfRsvpStatus] : message.selfRsvpStatus;
+            if (message.selfAdditionalGuestCount != null && $Object.hasOwnProperty.call(message, "selfAdditionalGuestCount"))
+                object.selfAdditionalGuestCount = message.selfAdditionalGuestCount;
+            if (message.selfInviteeLastUpdatedTsUsec != null && $Object.hasOwnProperty.call(message, "selfInviteeLastUpdatedTsUsec"))
+                if (typeof $BigInt !== "undefined" && options.longs === $BigInt)
+                    object.selfInviteeLastUpdatedTsUsec = typeof message.selfInviteeLastUpdatedTsUsec === "number" ? $BigInt(message.selfInviteeLastUpdatedTsUsec) : $util.Long.fromBits(message.selfInviteeLastUpdatedTsUsec.low >>> 0, message.selfInviteeLastUpdatedTsUsec.high >>> 0, false).toBigInt();
+                else if (typeof message.selfInviteeLastUpdatedTsUsec === "number")
+                    object.selfInviteeLastUpdatedTsUsec = options.longs === $String ? $String(message.selfInviteeLastUpdatedTsUsec) : message.selfInviteeLastUpdatedTsUsec;
+                else
+                    object.selfInviteeLastUpdatedTsUsec = options.longs === $String ? $util.Long.prototype.toString.call(message.selfInviteeLastUpdatedTsUsec) : options.longs === $Number ? new $util.LongBits(message.selfInviteeLastUpdatedTsUsec.low >>> 0, message.selfInviteeLastUpdatedTsUsec.high >>> 0).toNumber() : message.selfInviteeLastUpdatedTsUsec;
             return object;
         };
 
@@ -82522,6 +82712,46 @@ $root.waproto = (function() {
                 prefix = "type.googleapis.com";
             return prefix + "/waproto.EventInviteAdditionalMetadata";
         };
+
+        /**
+         * AccessStatus enum.
+         * @name waproto.EventInviteAdditionalMetadata.AccessStatus
+         * @enum {number}
+         * @property {number} ACCESS_STATUS_UNKNOWN=0 ACCESS_STATUS_UNKNOWN value
+         * @property {number} HAS_ACCESS=1 HAS_ACCESS value
+         * @property {number} LEFT_EVENT=2 LEFT_EVENT value
+         * @property {number} REMOVED_FROM_INVITE_LIST=3 REMOVED_FROM_INVITE_LIST value
+         * @property {number} UNAVAILABLE=4 UNAVAILABLE value
+         */
+        EventInviteAdditionalMetadata.AccessStatus = (function() {
+            var valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[0] = "ACCESS_STATUS_UNKNOWN"] = 0;
+            values[valuesById[1] = "HAS_ACCESS"] = 1;
+            values[valuesById[2] = "LEFT_EVENT"] = 2;
+            values[valuesById[3] = "REMOVED_FROM_INVITE_LIST"] = 3;
+            values[valuesById[4] = "UNAVAILABLE"] = 4;
+            return values;
+        })();
+
+        /**
+         * RsvpStatus enum.
+         * @name waproto.EventInviteAdditionalMetadata.RsvpStatus
+         * @enum {number}
+         * @property {number} RSVP_STATUS_UNKNOWN=0 RSVP_STATUS_UNKNOWN value
+         * @property {number} GOING=1 GOING value
+         * @property {number} NOT_GOING=2 NOT_GOING value
+         * @property {number} MAYBE=3 MAYBE value
+         * @property {number} NO_RESPONSE=4 NO_RESPONSE value
+         */
+        EventInviteAdditionalMetadata.RsvpStatus = (function() {
+            var valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[0] = "RSVP_STATUS_UNKNOWN"] = 0;
+            values[valuesById[1] = "GOING"] = 1;
+            values[valuesById[2] = "NOT_GOING"] = 2;
+            values[valuesById[3] = "MAYBE"] = 3;
+            values[valuesById[4] = "NO_RESPONSE"] = 4;
+            return values;
+        })();
 
         return EventInviteAdditionalMetadata;
     })();
@@ -126570,6 +126800,7 @@ $root.waproto = (function() {
              * @property {number|null} [thumbnailWidth] DocumentMessage thumbnailWidth
              * @property {string|null} [caption] DocumentMessage caption
              * @property {string|null} [accessibilityLabel] DocumentMessage accessibilityLabel
+             * @property {string|null} [qrUrl] DocumentMessage qrUrl
              * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
              */
 
@@ -126605,6 +126836,7 @@ $root.waproto = (function() {
              *   thumbnailWidth?: number|null;
              *   caption?: string|null;
              *   accessibilityLabel?: string|null;
+             *   qrUrl?: string|null;
              *   $unknowns?: Array.<Uint8Array>;
              * }} waproto.Message.DocumentMessage.$Shape
              */
@@ -126792,6 +127024,14 @@ $root.waproto = (function() {
              */
             DocumentMessage.prototype.accessibilityLabel = null;
 
+            /**
+             * DocumentMessage qrUrl.
+             * @member {string|null|undefined} qrUrl
+             * @memberof waproto.Message.DocumentMessage
+             * @instance
+             */
+            DocumentMessage.prototype.qrUrl = null;
+
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
@@ -126921,6 +127161,12 @@ $root.waproto = (function() {
                 set: $util.oneOfSetter($oneOfFields)
             });
 
+            // Virtual OneOf for proto3 optional field
+            $Object.defineProperty(DocumentMessage.prototype, "_qrUrl", {
+                get: $util.oneOfGetter($oneOfFields = ["qrUrl"]),
+                set: $util.oneOfSetter($oneOfFields)
+            });
+
             /**
              * Creates a new DocumentMessage instance using the specified properties.
              * @function create
@@ -126995,6 +127241,8 @@ $root.waproto = (function() {
                     writer.uint32(/* id 20, wireType 2 =*/162).string(message.caption);
                 if (message.accessibilityLabel != null && $Object.hasOwnProperty.call(message, "accessibilityLabel"))
                     writer.uint32(/* id 21, wireType 2 =*/170).string(message.accessibilityLabel);
+                if (message.qrUrl != null && $Object.hasOwnProperty.call(message, "qrUrl"))
+                    writer.uint32(/* id 23, wireType 2 =*/186).string(message.qrUrl);
                 if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                     for (var i = 0; i < message.$unknowns.length; ++i)
                         writer.raw(message.$unknowns[i]);
@@ -127199,6 +127447,13 @@ $root.waproto = (function() {
                             message._accessibilityLabel = "accessibilityLabel";
                             continue;
                         }
+                    case 23: {
+                            if (wireType !== 2)
+                                break;
+                            message.qrUrl = reader.stringVerify();
+                            message._qrUrl = "qrUrl";
+                            continue;
+                        }
                     }
                     reader.skipType(wireType, _depth, tag);
                     if (!reader.discardUnknown) {
@@ -127356,6 +127611,11 @@ $root.waproto = (function() {
                     if (!$util.isString(message.accessibilityLabel))
                         return "accessibilityLabel: string expected";
                 }
+                if (message.qrUrl != null && $Object.hasOwnProperty.call(message, "qrUrl")) {
+                    properties._qrUrl = 1;
+                    if (!$util.isString(message.qrUrl))
+                        return "qrUrl: string expected";
+                }
                 return null;
             };
 
@@ -127454,6 +127714,8 @@ $root.waproto = (function() {
                     message.caption = $String(object.caption);
                 if (object.accessibilityLabel != null)
                     message.accessibilityLabel = $String(object.accessibilityLabel);
+                if (object.qrUrl != null)
+                    message.qrUrl = $String(object.qrUrl);
                 return message;
             };
 
@@ -127526,6 +127788,8 @@ $root.waproto = (function() {
                     object.caption = message.caption;
                 if (message.accessibilityLabel != null && $Object.hasOwnProperty.call(message, "accessibilityLabel"))
                     object.accessibilityLabel = message.accessibilityLabel;
+                if (message.qrUrl != null && $Object.hasOwnProperty.call(message, "qrUrl"))
+                    object.qrUrl = message.qrUrl;
                 return object;
             };
 

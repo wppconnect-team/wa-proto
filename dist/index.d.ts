@@ -27844,6 +27844,18 @@ export namespace waproto {
         /** EventInviteAdditionalMetadata isUpdated. */
         isUpdated?: (boolean|null);
 
+        /** EventInviteAdditionalMetadata selfAccessStatus. */
+        selfAccessStatus?: (waproto.EventInviteAdditionalMetadata.AccessStatus|null);
+
+        /** EventInviteAdditionalMetadata selfRsvpStatus. */
+        selfRsvpStatus?: (waproto.EventInviteAdditionalMetadata.RsvpStatus|null);
+
+        /** EventInviteAdditionalMetadata selfAdditionalGuestCount. */
+        selfAdditionalGuestCount?: (number|null);
+
+        /** EventInviteAdditionalMetadata selfInviteeLastUpdatedTsUsec. */
+        selfInviteeLastUpdatedTsUsec?: (number|Long|null);
+
         /**
          * Creates a new EventInviteAdditionalMetadata instance using the specified properties.
          * @param [properties] Properties to set
@@ -27931,12 +27943,62 @@ export namespace waproto {
             /** EventInviteAdditionalMetadata isUpdated */
             isUpdated?: (boolean|null);
 
+            /** EventInviteAdditionalMetadata selfAccessStatus */
+            selfAccessStatus?: (waproto.EventInviteAdditionalMetadata.AccessStatus|null);
+
+            /** EventInviteAdditionalMetadata selfRsvpStatus */
+            selfRsvpStatus?: (waproto.EventInviteAdditionalMetadata.RsvpStatus|null);
+
+            /** EventInviteAdditionalMetadata selfAdditionalGuestCount */
+            selfAdditionalGuestCount?: (number|null);
+
+            /** EventInviteAdditionalMetadata selfInviteeLastUpdatedTsUsec */
+            selfInviteeLastUpdatedTsUsec?: (number|Long|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
 
         /** Shape of an EventInviteAdditionalMetadata. */
         type $Shape = waproto.EventInviteAdditionalMetadata.$Properties;
+
+        /** AccessStatus enum. */
+        enum AccessStatus {
+
+            /** ACCESS_STATUS_UNKNOWN value */
+            ACCESS_STATUS_UNKNOWN = 0,
+
+            /** HAS_ACCESS value */
+            HAS_ACCESS = 1,
+
+            /** LEFT_EVENT value */
+            LEFT_EVENT = 2,
+
+            /** REMOVED_FROM_INVITE_LIST value */
+            REMOVED_FROM_INVITE_LIST = 3,
+
+            /** UNAVAILABLE value */
+            UNAVAILABLE = 4
+        }
+
+        /** RsvpStatus enum. */
+        enum RsvpStatus {
+
+            /** RSVP_STATUS_UNKNOWN value */
+            RSVP_STATUS_UNKNOWN = 0,
+
+            /** GOING value */
+            GOING = 1,
+
+            /** NOT_GOING value */
+            NOT_GOING = 2,
+
+            /** MAYBE value */
+            MAYBE = 3,
+
+            /** NO_RESPONSE value */
+            NO_RESPONSE = 4
+        }
     }
 
     /**
@@ -42403,6 +42465,9 @@ export namespace waproto {
             /** DocumentMessage accessibilityLabel. */
             accessibilityLabel?: (string|null);
 
+            /** DocumentMessage qrUrl. */
+            qrUrl?: (string|null);
+
             /**
              * Creates a new DocumentMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -42550,6 +42615,9 @@ export namespace waproto {
                 /** DocumentMessage accessibilityLabel */
                 accessibilityLabel?: (string|null);
 
+                /** DocumentMessage qrUrl */
+                qrUrl?: (string|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -42577,6 +42645,7 @@ export namespace waproto {
               thumbnailWidth?: number|null;
               caption?: string|null;
               accessibilityLabel?: string|null;
+              qrUrl?: string|null;
               $unknowns?: Uint8Array[];
             };
         }
