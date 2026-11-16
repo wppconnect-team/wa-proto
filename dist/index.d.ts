@@ -7792,7 +7792,10 @@ export namespace waproto {
             AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88,
 
             /** RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH value */
-            RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89
+            RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89,
+
+            /** AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED value */
+            AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90
         }
     }
 
@@ -17738,6 +17741,9 @@ export namespace waproto {
         /** ClientPairingProps isCompanionRegistrationFgsEnabled. */
         isCompanionRegistrationFgsEnabled?: (boolean|null);
 
+        /** ClientPairingProps isCompanionPairingProgressUiEnabled. */
+        isCompanionPairingProgressUiEnabled?: (boolean|null);
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @param [properties] Properties to set
@@ -17845,6 +17851,9 @@ export namespace waproto {
 
             /** ClientPairingProps isCompanionRegistrationFgsEnabled */
             isCompanionRegistrationFgsEnabled?: (boolean|null);
+
+            /** ClientPairingProps isCompanionPairingProgressUiEnabled */
+            isCompanionPairingProgressUiEnabled?: (boolean|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -38300,8 +38309,11 @@ export namespace waproto {
         /** InteractiveAnnotation tapAction. */
         tapAction?: (waproto.TapLinkAction.$Properties|null);
 
+        /** InteractiveAnnotation pixKey. */
+        pixKey?: (waproto.StatusPixKey.$Properties|null);
+
         /** InteractiveAnnotation action. */
-        action?: ("location"|"newsletter"|"embeddedAction"|"tapAction");
+        action?: ("location"|"newsletter"|"embeddedAction"|"tapAction"|"pixKey");
 
         /**
          * Creates a new InteractiveAnnotation instance using the specified properties.
@@ -38411,8 +38423,11 @@ export namespace waproto {
             /** InteractiveAnnotation tapAction */
             tapAction?: (waproto.TapLinkAction.$Properties|null);
 
+            /** InteractiveAnnotation pixKey */
+            pixKey?: (waproto.StatusPixKey.$Properties|null);
+
             /** InteractiveAnnotation action */
-            action?: ("location"|"newsletter"|"embeddedAction"|"tapAction");
+            action?: ("location"|"newsletter"|"embeddedAction"|"tapAction"|"pixKey");
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -38428,9 +38443,10 @@ export namespace waproto {
           newsletter?: waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape|null;
           embeddedAction?: boolean|null;
           tapAction?: waproto.TapLinkAction.$Shape|null;
+          pixKey?: waproto.StatusPixKey.$Shape|null;
           $unknowns?: Uint8Array[];
         } & (
-          ({ action?: undefined; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null }|{ action?: "location"; location: waproto.Location.$Shape; newsletter?: null; embeddedAction?: null; tapAction?: null }|{ action?: "newsletter"; location?: null; newsletter: waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape; embeddedAction?: null; tapAction?: null }|{ action?: "embeddedAction"; location?: null; newsletter?: null; embeddedAction: boolean; tapAction?: null }|{ action?: "tapAction"; location?: null; newsletter?: null; embeddedAction?: null; tapAction: waproto.TapLinkAction.$Shape })
+          ({ action?: undefined; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "location"; location: waproto.Location.$Shape; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "newsletter"; location?: null; newsletter: waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "embeddedAction"; location?: null; newsletter?: null; embeddedAction: boolean; tapAction?: null; pixKey?: null }|{ action?: "tapAction"; location?: null; newsletter?: null; embeddedAction?: null; tapAction: waproto.TapLinkAction.$Shape; pixKey?: null }|{ action?: "pixKey"; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey: waproto.StatusPixKey.$Shape })
         );
 
         /** StatusLinkType enum. */
@@ -86232,6 +86248,157 @@ export namespace waproto {
 
         /** Shape of a StatusPSA. */
         type $Shape = waproto.StatusPSA.$Properties;
+    }
+
+    /**
+     * Properties of a StatusPixKey.
+     * @deprecated Use waproto.StatusPixKey.$Properties instead.
+     */
+    interface IStatusPixKey extends waproto.StatusPixKey.$Properties {
+    }
+
+    /** Represents a StatusPixKey. */
+    class StatusPixKey {
+
+        /**
+         * Constructs a new StatusPixKey.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.StatusPixKey.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** StatusPixKey key. */
+        key?: (string|null);
+
+        /** StatusPixKey keyType. */
+        keyType?: (waproto.StatusPixKey.KeyType|null);
+
+        /** StatusPixKey displayName. */
+        displayName?: (string|null);
+
+        /**
+         * Creates a new StatusPixKey instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns StatusPixKey instance
+         */
+        static create(properties: waproto.StatusPixKey.$Shape): waproto.StatusPixKey & waproto.StatusPixKey.$Shape;
+        static create(properties?: waproto.StatusPixKey.$Properties): waproto.StatusPixKey;
+
+        /**
+         * Encodes the specified StatusPixKey message. Does not implicitly {@link waproto.StatusPixKey.verify|verify} messages.
+         * @param message StatusPixKey message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.StatusPixKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified StatusPixKey message, length delimited. Does not implicitly {@link waproto.StatusPixKey.verify|verify} messages.
+         * @param message StatusPixKey message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.StatusPixKey.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a StatusPixKey message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.StatusPixKey & waproto.StatusPixKey.$Shape} StatusPixKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.StatusPixKey & waproto.StatusPixKey.$Shape;
+
+        /**
+         * Decodes a StatusPixKey message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.StatusPixKey & waproto.StatusPixKey.$Shape} StatusPixKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.StatusPixKey & waproto.StatusPixKey.$Shape;
+
+        /**
+         * Verifies a StatusPixKey message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a StatusPixKey message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns StatusPixKey
+         */
+        static fromObject(object: { [k: string]: any }): waproto.StatusPixKey;
+
+        /**
+         * Creates a plain object from a StatusPixKey message. Also converts values to other types if specified.
+         * @param message StatusPixKey
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.StatusPixKey, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this StatusPixKey to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for StatusPixKey
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace StatusPixKey {
+
+        /** Properties of a StatusPixKey. */
+        interface $Properties {
+
+            /** StatusPixKey key */
+            key?: (string|null);
+
+            /** StatusPixKey keyType */
+            keyType?: (waproto.StatusPixKey.KeyType|null);
+
+            /** StatusPixKey displayName */
+            displayName?: (string|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a StatusPixKey. */
+        type $Shape = waproto.StatusPixKey.$Properties;
+
+        /** KeyType enum. */
+        enum KeyType {
+
+            /** UNKNOWN value */
+            UNKNOWN = 0,
+
+            /** CPF value */
+            CPF = 1,
+
+            /** CNPJ value */
+            CNPJ = 2,
+
+            /** PHONE value */
+            PHONE = 3,
+
+            /** EMAIL value */
+            EMAIL = 4,
+
+            /** EVP value */
+            EVP = 5
+        }
     }
 
     /**

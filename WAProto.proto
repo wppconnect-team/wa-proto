@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1054735911
+/// WhatsApp Version: 2.3000.1054777660
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -542,6 +542,7 @@ message BotCapabilityMetadata {
         AI_RICH_RESPONSE_READ_ALOUD_ENABLED = 87;
         AI_RICH_RESPONSE_ITEM_LISTS_ENABLED = 88;
         RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89;
+        AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90;
     }
 }
 
@@ -1265,6 +1266,7 @@ message ClientPairingProps {
     optional bool isBotJidDbMigrated = 6;
     optional bytes companionAddPeerPayload = 7;
     optional bool isCompanionRegistrationFgsEnabled = 8;
+    optional bool isCompanionPairingProgressUiEnabled = 10;
 }
 
 message ClientPayload {
@@ -2800,6 +2802,7 @@ message InteractiveAnnotation {
         ContextInfo.ForwardedNewsletterMessageInfo newsletter = 3;
         bool embeddedAction = 6;
         TapLinkAction tapAction = 7;
+        StatusPixKey pixKey = 9;
     }
     enum StatusLinkType {
         RASTERIZED_LINK_PREVIEW = 1;
@@ -6164,6 +6167,20 @@ message StatusMentionMessage {
 message StatusPSA {
     required uint64 campaignId = 44;
     optional uint64 campaignExpirationTimestamp = 45;
+}
+
+message StatusPixKey {
+    optional string key = 1;
+    optional KeyType keyType = 2;
+    optional string displayName = 3;
+    enum KeyType {
+        UNKNOWN = 0;
+        CPF = 1;
+        CNPJ = 2;
+        PHONE = 3;
+        EMAIL = 4;
+        EVP = 5;
+    }
 }
 
 message StickerMetadata {

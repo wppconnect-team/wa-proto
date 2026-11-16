@@ -21290,6 +21290,10 @@ $root.waproto = (function() {
                     case 89:
                         message.capabilities[message.capabilities.length] = 89;
                         break;
+                    case "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED":
+                    case 90:
+                        message.capabilities[message.capabilities.length] = 90;
+                        break;
                     default:
                         if (typeof object.capabilities[i] === "number" && (object.capabilities[i] | 0) === object.capabilities[i])
                             message.capabilities[message.capabilities.length] = object.capabilities[i];
@@ -21444,6 +21448,7 @@ $root.waproto = (function() {
          * @property {number} AI_RICH_RESPONSE_READ_ALOUD_ENABLED=87 AI_RICH_RESPONSE_READ_ALOUD_ENABLED value
          * @property {number} AI_RICH_RESPONSE_ITEM_LISTS_ENABLED=88 AI_RICH_RESPONSE_ITEM_LISTS_ENABLED value
          * @property {number} RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH=89 RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH value
+         * @property {number} AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED=90 AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED value
          */
         BotCapabilityMetadata.BotCapabilityType = (function() {
             var valuesById = $Object.create(null), values = $Object.create(valuesById);
@@ -21537,6 +21542,7 @@ $root.waproto = (function() {
             values[valuesById[87] = "AI_RICH_RESPONSE_READ_ALOUD_ENABLED"] = 87;
             values[valuesById[88] = "AI_RICH_RESPONSE_ITEM_LISTS_ENABLED"] = 88;
             values[valuesById[89] = "RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH"] = 89;
+            values[valuesById[90] = "AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED"] = 90;
             return values;
         })();
 
@@ -49900,6 +49906,7 @@ $root.waproto = (function() {
          * @property {boolean|null} [isBotJidDbMigrated] ClientPairingProps isBotJidDbMigrated
          * @property {Uint8Array|null} [companionAddPeerPayload] ClientPairingProps companionAddPeerPayload
          * @property {boolean|null} [isCompanionRegistrationFgsEnabled] ClientPairingProps isCompanionRegistrationFgsEnabled
+         * @property {boolean|null} [isCompanionPairingProgressUiEnabled] ClientPairingProps isCompanionPairingProgressUiEnabled
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -49995,6 +50002,14 @@ $root.waproto = (function() {
          */
         ClientPairingProps.prototype.isCompanionRegistrationFgsEnabled = null;
 
+        /**
+         * ClientPairingProps isCompanionPairingProgressUiEnabled.
+         * @member {boolean|null|undefined} isCompanionPairingProgressUiEnabled
+         * @memberof waproto.ClientPairingProps
+         * @instance
+         */
+        ClientPairingProps.prototype.isCompanionPairingProgressUiEnabled = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -50046,6 +50061,12 @@ $root.waproto = (function() {
             set: $util.oneOfSetter($oneOfFields)
         });
 
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(ClientPairingProps.prototype, "_isCompanionPairingProgressUiEnabled", {
+            get: $util.oneOfGetter($oneOfFields = ["isCompanionPairingProgressUiEnabled"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
         /**
          * Creates a new ClientPairingProps instance using the specified properties.
          * @function create
@@ -50094,6 +50115,8 @@ $root.waproto = (function() {
                 writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.companionAddPeerPayload);
             if (message.isCompanionRegistrationFgsEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled"))
                 writer.uint32(/* id 8, wireType 0 =*/64).bool(message.isCompanionRegistrationFgsEnabled);
+            if (message.isCompanionPairingProgressUiEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionPairingProgressUiEnabled"))
+                writer.uint32(/* id 10, wireType 0 =*/80).bool(message.isCompanionPairingProgressUiEnabled);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -50207,6 +50230,13 @@ $root.waproto = (function() {
                         message._isCompanionRegistrationFgsEnabled = "isCompanionRegistrationFgsEnabled";
                         continue;
                     }
+                case 10: {
+                        if (wireType !== 0)
+                            break;
+                        message.isCompanionPairingProgressUiEnabled = reader.bool();
+                        message._isCompanionPairingProgressUiEnabled = "isCompanionPairingProgressUiEnabled";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -50296,6 +50326,11 @@ $root.waproto = (function() {
                 if (typeof message.isCompanionRegistrationFgsEnabled !== "boolean")
                     return "isCompanionRegistrationFgsEnabled: boolean expected";
             }
+            if (message.isCompanionPairingProgressUiEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionPairingProgressUiEnabled")) {
+                properties._isCompanionPairingProgressUiEnabled = 1;
+                if (typeof message.isCompanionPairingProgressUiEnabled !== "boolean")
+                    return "isCompanionPairingProgressUiEnabled: boolean expected";
+            }
             return null;
         };
 
@@ -50339,6 +50374,8 @@ $root.waproto = (function() {
                     message.companionAddPeerPayload = object.companionAddPeerPayload;
             if (object.isCompanionRegistrationFgsEnabled != null)
                 message.isCompanionRegistrationFgsEnabled = $Boolean(object.isCompanionRegistrationFgsEnabled);
+            if (object.isCompanionPairingProgressUiEnabled != null)
+                message.isCompanionPairingProgressUiEnabled = $Boolean(object.isCompanionPairingProgressUiEnabled);
             return message;
         };
 
@@ -50375,6 +50412,8 @@ $root.waproto = (function() {
                 object.companionAddPeerPayload = options.bytes === $String ? $util.base64.encode(message.companionAddPeerPayload, 0, message.companionAddPeerPayload.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.companionAddPeerPayload) : message.companionAddPeerPayload;
             if (message.isCompanionRegistrationFgsEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionRegistrationFgsEnabled"))
                 object.isCompanionRegistrationFgsEnabled = message.isCompanionRegistrationFgsEnabled;
+            if (message.isCompanionPairingProgressUiEnabled != null && $Object.hasOwnProperty.call(message, "isCompanionPairingProgressUiEnabled"))
+                object.isCompanionPairingProgressUiEnabled = message.isCompanionPairingProgressUiEnabled;
             return object;
         };
 
@@ -112063,7 +112102,8 @@ $root.waproto = (function() {
          * @property {waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Properties|null} [newsletter] InteractiveAnnotation newsletter
          * @property {boolean|null} [embeddedAction] InteractiveAnnotation embeddedAction
          * @property {waproto.TapLinkAction.$Properties|null} [tapAction] InteractiveAnnotation tapAction
-         * @property {"location"|"newsletter"|"embeddedAction"|"tapAction"} [action] InteractiveAnnotation action
+         * @property {waproto.StatusPixKey.$Properties|null} [pixKey] InteractiveAnnotation pixKey
+         * @property {"location"|"newsletter"|"embeddedAction"|"tapAction"|"pixKey"} [action] InteractiveAnnotation action
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -112086,9 +112126,10 @@ $root.waproto = (function() {
          *   newsletter?: waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape|null;
          *   embeddedAction?: boolean|null;
          *   tapAction?: waproto.TapLinkAction.$Shape|null;
+         *   pixKey?: waproto.StatusPixKey.$Shape|null;
          *   $unknowns?: Array.<Uint8Array>;
          * } & (
-         *   ({ action?: undefined; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null }|{ action?: "location"; location: waproto.Location.$Shape; newsletter?: null; embeddedAction?: null; tapAction?: null }|{ action?: "newsletter"; location?: null; newsletter: waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape; embeddedAction?: null; tapAction?: null }|{ action?: "embeddedAction"; location?: null; newsletter?: null; embeddedAction: boolean; tapAction?: null }|{ action?: "tapAction"; location?: null; newsletter?: null; embeddedAction?: null; tapAction: waproto.TapLinkAction.$Shape })
+         *   ({ action?: undefined; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "location"; location: waproto.Location.$Shape; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "newsletter"; location?: null; newsletter: waproto.ContextInfo.ForwardedNewsletterMessageInfo.$Shape; embeddedAction?: null; tapAction?: null; pixKey?: null }|{ action?: "embeddedAction"; location?: null; newsletter?: null; embeddedAction: boolean; tapAction?: null; pixKey?: null }|{ action?: "tapAction"; location?: null; newsletter?: null; embeddedAction?: null; tapAction: waproto.TapLinkAction.$Shape; pixKey?: null }|{ action?: "pixKey"; location?: null; newsletter?: null; embeddedAction?: null; tapAction?: null; pixKey: waproto.StatusPixKey.$Shape })
          * )} waproto.InteractiveAnnotation.$Shape
          */
 
@@ -112172,6 +112213,14 @@ $root.waproto = (function() {
          */
         InteractiveAnnotation.prototype.tapAction = null;
 
+        /**
+         * InteractiveAnnotation pixKey.
+         * @member {waproto.StatusPixKey.$Properties|null|undefined} pixKey
+         * @memberof waproto.InteractiveAnnotation
+         * @instance
+         */
+        InteractiveAnnotation.prototype.pixKey = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
@@ -112195,12 +112244,12 @@ $root.waproto = (function() {
 
         /**
          * InteractiveAnnotation action.
-         * @member {"location"|"newsletter"|"embeddedAction"|"tapAction"|undefined} action
+         * @member {"location"|"newsletter"|"embeddedAction"|"tapAction"|"pixKey"|undefined} action
          * @memberof waproto.InteractiveAnnotation
          * @instance
          */
         $Object.defineProperty(InteractiveAnnotation.prototype, "action", {
-            get: $util.oneOfGetter($oneOfFields = ["location", "newsletter", "embeddedAction", "tapAction"]),
+            get: $util.oneOfGetter($oneOfFields = ["location", "newsletter", "embeddedAction", "tapAction", "pixKey"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -112253,6 +112302,8 @@ $root.waproto = (function() {
                 $root.waproto.TapLinkAction.encode(message.tapAction, writer.uint32(/* id 7, wireType 2 =*/58).fork(), _depth + 1).ldelim();
             if (message.statusLinkType != null && $Object.hasOwnProperty.call(message, "statusLinkType"))
                 writer.uint32(/* id 8, wireType 0 =*/64).int32(message.statusLinkType);
+            if (message.pixKey != null && $Object.hasOwnProperty.call(message, "pixKey"))
+                $root.waproto.StatusPixKey.encode(message.pixKey, writer.uint32(/* id 9, wireType 2 =*/74).fork(), _depth + 1).ldelim();
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -112367,6 +112418,13 @@ $root.waproto = (function() {
                         message.action = "tapAction";
                         continue;
                     }
+                case 9: {
+                        if (wireType !== 2)
+                            break;
+                        message.pixKey = $root.waproto.StatusPixKey.decode(reader, reader.size(), $undefined, _depth + 1, message.pixKey);
+                        message.action = "pixKey";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -112478,6 +112536,16 @@ $root.waproto = (function() {
                         return "tapAction." + error;
                 }
             }
+            if (message.pixKey != null && $Object.hasOwnProperty.call(message, "pixKey")) {
+                if (properties.action === 1)
+                    return "action: multiple values";
+                properties.action = 1;
+                {
+                    var error = $root.waproto.StatusPixKey.verify(message.pixKey, _depth + 1);
+                    if (error)
+                        return "pixKey." + error;
+                }
+            }
             return null;
         };
 
@@ -112550,6 +112618,11 @@ $root.waproto = (function() {
                     throw $TypeError(".waproto.InteractiveAnnotation.tapAction: object expected");
                 message.tapAction = $root.waproto.TapLinkAction.fromObject(object.tapAction, _depth + 1);
             }
+            if (object.pixKey != null) {
+                if (!$util.isObject(object.pixKey))
+                    throw $TypeError(".waproto.InteractiveAnnotation.pixKey: object expected");
+                message.pixKey = $root.waproto.StatusPixKey.fromObject(object.pixKey, _depth + 1);
+            }
             return message;
         };
 
@@ -112603,6 +112676,11 @@ $root.waproto = (function() {
             }
             if (message.statusLinkType != null && $Object.hasOwnProperty.call(message, "statusLinkType"))
                 object.statusLinkType = options.enums === $String ? $root.waproto.InteractiveAnnotation.StatusLinkType[message.statusLinkType] === $undefined ? message.statusLinkType : $root.waproto.InteractiveAnnotation.StatusLinkType[message.statusLinkType] : message.statusLinkType;
+            if (message.pixKey != null && $Object.hasOwnProperty.call(message, "pixKey")) {
+                object.pixKey = $root.waproto.StatusPixKey.toObject(message.pixKey, options, _depth + 1);
+                if (options.oneofs)
+                    object.action = "pixKey";
+            }
             return object;
         };
 
@@ -255672,6 +255750,403 @@ $root.waproto = (function() {
         };
 
         return StatusPSA;
+    })();
+
+    waproto.StatusPixKey = (function() {
+
+        /**
+         * Properties of a StatusPixKey.
+         * @typedef {Object} waproto.StatusPixKey.$Properties
+         * @property {string|null} [key] StatusPixKey key
+         * @property {waproto.StatusPixKey.KeyType|null} [keyType] StatusPixKey keyType
+         * @property {string|null} [displayName] StatusPixKey displayName
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a StatusPixKey.
+         * @memberof waproto
+         * @interface IStatusPixKey
+         * @augments waproto.StatusPixKey.$Properties
+         * @deprecated Use waproto.StatusPixKey.$Properties instead.
+         */
+
+        /**
+         * Shape of a StatusPixKey.
+         * @typedef {waproto.StatusPixKey.$Properties} waproto.StatusPixKey.$Shape
+         */
+
+        /**
+         * Constructs a new StatusPixKey.
+         * @memberof waproto
+         * @classdesc Represents a StatusPixKey.
+         * @constructor
+         * @param {waproto.StatusPixKey.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var StatusPixKey = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * StatusPixKey key.
+         * @member {string|null|undefined} key
+         * @memberof waproto.StatusPixKey
+         * @instance
+         */
+        StatusPixKey.prototype.key = null;
+
+        /**
+         * StatusPixKey keyType.
+         * @member {waproto.StatusPixKey.KeyType|null|undefined} keyType
+         * @memberof waproto.StatusPixKey
+         * @instance
+         */
+        StatusPixKey.prototype.keyType = null;
+
+        /**
+         * StatusPixKey displayName.
+         * @member {string|null|undefined} displayName
+         * @memberof waproto.StatusPixKey
+         * @instance
+         */
+        StatusPixKey.prototype.displayName = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(StatusPixKey.prototype, "_key", {
+            get: $util.oneOfGetter($oneOfFields = ["key"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(StatusPixKey.prototype, "_keyType", {
+            get: $util.oneOfGetter($oneOfFields = ["keyType"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(StatusPixKey.prototype, "_displayName", {
+            get: $util.oneOfGetter($oneOfFields = ["displayName"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new StatusPixKey instance using the specified properties.
+         * @function create
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {waproto.StatusPixKey.$Properties=} [properties] Properties to set
+         * @returns {waproto.StatusPixKey} StatusPixKey instance
+         * @type {{
+         *   (properties: waproto.StatusPixKey.$Shape): waproto.StatusPixKey & waproto.StatusPixKey.$Shape;
+         *   (properties?: waproto.StatusPixKey.$Properties): waproto.StatusPixKey;
+         * }}
+         */
+        StatusPixKey.create = function(properties) {
+            return new StatusPixKey(properties);
+        };
+
+        /**
+         * Encodes the specified StatusPixKey message. Does not implicitly {@link waproto.StatusPixKey.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {waproto.StatusPixKey.$Properties} message StatusPixKey message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        StatusPixKey.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.key != null && $Object.hasOwnProperty.call(message, "key"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.key);
+            if (message.keyType != null && $Object.hasOwnProperty.call(message, "keyType"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.keyType);
+            if (message.displayName != null && $Object.hasOwnProperty.call(message, "displayName"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.displayName);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified StatusPixKey message, length delimited. Does not implicitly {@link waproto.StatusPixKey.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {waproto.StatusPixKey.$Properties} message StatusPixKey message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        StatusPixKey.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a StatusPixKey message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.StatusPixKey & waproto.StatusPixKey.$Shape} StatusPixKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        StatusPixKey.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message, value;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.StatusPixKey();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.key = reader.stringVerify();
+                        message._key = "key";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 0)
+                            break;
+                        message.keyType = reader.int32();
+                        message._keyType = "keyType";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.displayName = reader.stringVerify();
+                        message._displayName = "displayName";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a StatusPixKey message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.StatusPixKey & waproto.StatusPixKey.$Shape} StatusPixKey
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        StatusPixKey.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a StatusPixKey message.
+         * @function verify
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        StatusPixKey.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.key != null && $Object.hasOwnProperty.call(message, "key")) {
+                properties._key = 1;
+                if (!$util.isString(message.key))
+                    return "key: string expected";
+            }
+            if (message.keyType != null && $Object.hasOwnProperty.call(message, "keyType")) {
+                properties._keyType = 1;
+                if (typeof message.keyType !== "number" || (message.keyType | 0) !== message.keyType)
+                    return "keyType: enum value expected";
+            }
+            if (message.displayName != null && $Object.hasOwnProperty.call(message, "displayName")) {
+                properties._displayName = 1;
+                if (!$util.isString(message.displayName))
+                    return "displayName: string expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a StatusPixKey message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.StatusPixKey} StatusPixKey
+         */
+        StatusPixKey.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.StatusPixKey)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.StatusPixKey: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.StatusPixKey();
+            if (object.key != null)
+                message.key = $String(object.key);
+            switch (object.keyType) {
+            case "UNKNOWN":
+            case 0:
+                message.keyType = 0;
+                break;
+            case "CPF":
+            case 1:
+                message.keyType = 1;
+                break;
+            case "CNPJ":
+            case 2:
+                message.keyType = 2;
+                break;
+            case "PHONE":
+            case 3:
+                message.keyType = 3;
+                break;
+            case "EMAIL":
+            case 4:
+                message.keyType = 4;
+                break;
+            case "EVP":
+            case 5:
+                message.keyType = 5;
+                break;
+            default:
+                if (typeof object.keyType === "number" && (object.keyType | 0) === object.keyType)
+                    message.keyType = object.keyType;
+            }
+            if (object.displayName != null)
+                message.displayName = $String(object.displayName);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a StatusPixKey message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {waproto.StatusPixKey} message StatusPixKey
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        StatusPixKey.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.key != null && $Object.hasOwnProperty.call(message, "key"))
+                object.key = message.key;
+            if (message.keyType != null && $Object.hasOwnProperty.call(message, "keyType"))
+                object.keyType = options.enums === $String ? $root.waproto.StatusPixKey.KeyType[message.keyType] === $undefined ? message.keyType : $root.waproto.StatusPixKey.KeyType[message.keyType] : message.keyType;
+            if (message.displayName != null && $Object.hasOwnProperty.call(message, "displayName"))
+                object.displayName = message.displayName;
+            return object;
+        };
+
+        /**
+         * Converts this StatusPixKey to JSON.
+         * @function toJSON
+         * @memberof waproto.StatusPixKey
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        StatusPixKey.prototype.toJSON = function() {
+            return StatusPixKey.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for StatusPixKey
+         * @function getTypeUrl
+         * @memberof waproto.StatusPixKey
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        StatusPixKey.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.StatusPixKey";
+        };
+
+        /**
+         * KeyType enum.
+         * @name waproto.StatusPixKey.KeyType
+         * @enum {number}
+         * @property {number} UNKNOWN=0 UNKNOWN value
+         * @property {number} CPF=1 CPF value
+         * @property {number} CNPJ=2 CNPJ value
+         * @property {number} PHONE=3 PHONE value
+         * @property {number} EMAIL=4 EMAIL value
+         * @property {number} EVP=5 EVP value
+         */
+        StatusPixKey.KeyType = (function() {
+            var valuesById = $Object.create(null), values = $Object.create(valuesById);
+            values[valuesById[0] = "UNKNOWN"] = 0;
+            values[valuesById[1] = "CPF"] = 1;
+            values[valuesById[2] = "CNPJ"] = 2;
+            values[valuesById[3] = "PHONE"] = 3;
+            values[valuesById[4] = "EMAIL"] = 4;
+            values[valuesById[5] = "EVP"] = 5;
+            return values;
+        })();
+
+        return StatusPixKey;
     })();
 
     waproto.StickerMetadata = (function() {
