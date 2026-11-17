@@ -31189,6 +31189,141 @@ export namespace waproto {
     }
 
     /**
+     * Properties of an EncryptedJoinRequestPayload.
+     * @deprecated Use waproto.EncryptedJoinRequestPayload.$Properties instead.
+     */
+    interface IEncryptedJoinRequestPayload extends waproto.EncryptedJoinRequestPayload.$Properties {
+    }
+
+    /** Represents an EncryptedJoinRequestPayload. */
+    class EncryptedJoinRequestPayload {
+
+        /**
+         * Constructs a new EncryptedJoinRequestPayload.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.EncryptedJoinRequestPayload.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** EncryptedJoinRequestPayload encryptedAnswers. */
+        encryptedAnswers?: (Uint8Array|null);
+
+        /** EncryptedJoinRequestPayload encIv. */
+        encIv?: (Uint8Array|null);
+
+        /** EncryptedJoinRequestPayload signalIdentityPublicKey. */
+        signalIdentityPublicKey?: (Uint8Array|null);
+
+        /** EncryptedJoinRequestPayload kemCiphertext. */
+        kemCiphertext?: (Uint8Array|null);
+
+        /**
+         * Creates a new EncryptedJoinRequestPayload instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns EncryptedJoinRequestPayload instance
+         */
+        static create(properties: waproto.EncryptedJoinRequestPayload.$Shape): waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape;
+        static create(properties?: waproto.EncryptedJoinRequestPayload.$Properties): waproto.EncryptedJoinRequestPayload;
+
+        /**
+         * Encodes the specified EncryptedJoinRequestPayload message. Does not implicitly {@link waproto.EncryptedJoinRequestPayload.verify|verify} messages.
+         * @param message EncryptedJoinRequestPayload message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.EncryptedJoinRequestPayload.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified EncryptedJoinRequestPayload message, length delimited. Does not implicitly {@link waproto.EncryptedJoinRequestPayload.verify|verify} messages.
+         * @param message EncryptedJoinRequestPayload message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.EncryptedJoinRequestPayload.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an EncryptedJoinRequestPayload message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape} EncryptedJoinRequestPayload
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape;
+
+        /**
+         * Decodes an EncryptedJoinRequestPayload message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape} EncryptedJoinRequestPayload
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape;
+
+        /**
+         * Verifies an EncryptedJoinRequestPayload message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an EncryptedJoinRequestPayload message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns EncryptedJoinRequestPayload
+         */
+        static fromObject(object: { [k: string]: any }): waproto.EncryptedJoinRequestPayload;
+
+        /**
+         * Creates a plain object from an EncryptedJoinRequestPayload message. Also converts values to other types if specified.
+         * @param message EncryptedJoinRequestPayload
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.EncryptedJoinRequestPayload, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this EncryptedJoinRequestPayload to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for EncryptedJoinRequestPayload
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace EncryptedJoinRequestPayload {
+
+        /** Properties of an EncryptedJoinRequestPayload. */
+        interface $Properties {
+
+            /** EncryptedJoinRequestPayload encryptedAnswers */
+            encryptedAnswers?: (Uint8Array|null);
+
+            /** EncryptedJoinRequestPayload encIv */
+            encIv?: (Uint8Array|null);
+
+            /** EncryptedJoinRequestPayload signalIdentityPublicKey */
+            signalIdentityPublicKey?: (Uint8Array|null);
+
+            /** EncryptedJoinRequestPayload kemCiphertext */
+            kemCiphertext?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of an EncryptedJoinRequestPayload. */
+        type $Shape = waproto.EncryptedJoinRequestPayload.$Properties;
+    }
+
+    /**
      * Properties of an EncryptedPairingRequest.
      * @deprecated Use waproto.EncryptedPairingRequest.$Properties instead.
      */
@@ -41158,6 +41293,129 @@ export namespace waproto {
 
         /** Shape of a MembershipFormKeyFingerprintVerification. */
         type $Shape = waproto.MembershipFormKeyFingerprintVerification.$Properties;
+    }
+
+    /**
+     * Properties of a MembershipFormPublicKeys.
+     * @deprecated Use waproto.MembershipFormPublicKeys.$Properties instead.
+     */
+    interface IMembershipFormPublicKeys extends waproto.MembershipFormPublicKeys.$Properties {
+    }
+
+    /** Represents a MembershipFormPublicKeys. */
+    class MembershipFormPublicKeys {
+
+        /**
+         * Constructs a new MembershipFormPublicKeys.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.MembershipFormPublicKeys.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** MembershipFormPublicKeys mlKemPublicKey. */
+        mlKemPublicKey?: (Uint8Array|null);
+
+        /** MembershipFormPublicKeys x25519PublicKey. */
+        x25519PublicKey?: (Uint8Array|null);
+
+        /**
+         * Creates a new MembershipFormPublicKeys instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns MembershipFormPublicKeys instance
+         */
+        static create(properties: waproto.MembershipFormPublicKeys.$Shape): waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape;
+        static create(properties?: waproto.MembershipFormPublicKeys.$Properties): waproto.MembershipFormPublicKeys;
+
+        /**
+         * Encodes the specified MembershipFormPublicKeys message. Does not implicitly {@link waproto.MembershipFormPublicKeys.verify|verify} messages.
+         * @param message MembershipFormPublicKeys message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.MembershipFormPublicKeys.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified MembershipFormPublicKeys message, length delimited. Does not implicitly {@link waproto.MembershipFormPublicKeys.verify|verify} messages.
+         * @param message MembershipFormPublicKeys message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.MembershipFormPublicKeys.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a MembershipFormPublicKeys message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape} MembershipFormPublicKeys
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape;
+
+        /**
+         * Decodes a MembershipFormPublicKeys message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape} MembershipFormPublicKeys
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape;
+
+        /**
+         * Verifies a MembershipFormPublicKeys message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a MembershipFormPublicKeys message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns MembershipFormPublicKeys
+         */
+        static fromObject(object: { [k: string]: any }): waproto.MembershipFormPublicKeys;
+
+        /**
+         * Creates a plain object from a MembershipFormPublicKeys message. Also converts values to other types if specified.
+         * @param message MembershipFormPublicKeys
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.MembershipFormPublicKeys, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this MembershipFormPublicKeys to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for MembershipFormPublicKeys
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace MembershipFormPublicKeys {
+
+        /** Properties of a MembershipFormPublicKeys. */
+        interface $Properties {
+
+            /** MembershipFormPublicKeys mlKemPublicKey */
+            mlKemPublicKey?: (Uint8Array|null);
+
+            /** MembershipFormPublicKeys x25519PublicKey */
+            x25519PublicKey?: (Uint8Array|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a MembershipFormPublicKeys. */
+        type $Shape = waproto.MembershipFormPublicKeys.$Properties;
     }
 
     /**

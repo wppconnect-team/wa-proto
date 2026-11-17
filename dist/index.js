@@ -91336,6 +91336,399 @@ $root.waproto = (function() {
         return EncryptMessageSuccess;
     })();
 
+    waproto.EncryptedJoinRequestPayload = (function() {
+
+        /**
+         * Properties of an EncryptedJoinRequestPayload.
+         * @typedef {Object} waproto.EncryptedJoinRequestPayload.$Properties
+         * @property {Uint8Array|null} [encryptedAnswers] EncryptedJoinRequestPayload encryptedAnswers
+         * @property {Uint8Array|null} [encIv] EncryptedJoinRequestPayload encIv
+         * @property {Uint8Array|null} [signalIdentityPublicKey] EncryptedJoinRequestPayload signalIdentityPublicKey
+         * @property {Uint8Array|null} [kemCiphertext] EncryptedJoinRequestPayload kemCiphertext
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of an EncryptedJoinRequestPayload.
+         * @memberof waproto
+         * @interface IEncryptedJoinRequestPayload
+         * @augments waproto.EncryptedJoinRequestPayload.$Properties
+         * @deprecated Use waproto.EncryptedJoinRequestPayload.$Properties instead.
+         */
+
+        /**
+         * Shape of an EncryptedJoinRequestPayload.
+         * @typedef {waproto.EncryptedJoinRequestPayload.$Properties} waproto.EncryptedJoinRequestPayload.$Shape
+         */
+
+        /**
+         * Constructs a new EncryptedJoinRequestPayload.
+         * @memberof waproto
+         * @classdesc Represents an EncryptedJoinRequestPayload.
+         * @constructor
+         * @param {waproto.EncryptedJoinRequestPayload.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var EncryptedJoinRequestPayload = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * EncryptedJoinRequestPayload encryptedAnswers.
+         * @member {Uint8Array|null|undefined} encryptedAnswers
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @instance
+         */
+        EncryptedJoinRequestPayload.prototype.encryptedAnswers = null;
+
+        /**
+         * EncryptedJoinRequestPayload encIv.
+         * @member {Uint8Array|null|undefined} encIv
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @instance
+         */
+        EncryptedJoinRequestPayload.prototype.encIv = null;
+
+        /**
+         * EncryptedJoinRequestPayload signalIdentityPublicKey.
+         * @member {Uint8Array|null|undefined} signalIdentityPublicKey
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @instance
+         */
+        EncryptedJoinRequestPayload.prototype.signalIdentityPublicKey = null;
+
+        /**
+         * EncryptedJoinRequestPayload kemCiphertext.
+         * @member {Uint8Array|null|undefined} kemCiphertext
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @instance
+         */
+        EncryptedJoinRequestPayload.prototype.kemCiphertext = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_encryptedAnswers", {
+            get: $util.oneOfGetter($oneOfFields = ["encryptedAnswers"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_encIv", {
+            get: $util.oneOfGetter($oneOfFields = ["encIv"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_signalIdentityPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["signalIdentityPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(EncryptedJoinRequestPayload.prototype, "_kemCiphertext", {
+            get: $util.oneOfGetter($oneOfFields = ["kemCiphertext"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new EncryptedJoinRequestPayload instance using the specified properties.
+         * @function create
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {waproto.EncryptedJoinRequestPayload.$Properties=} [properties] Properties to set
+         * @returns {waproto.EncryptedJoinRequestPayload} EncryptedJoinRequestPayload instance
+         * @type {{
+         *   (properties: waproto.EncryptedJoinRequestPayload.$Shape): waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape;
+         *   (properties?: waproto.EncryptedJoinRequestPayload.$Properties): waproto.EncryptedJoinRequestPayload;
+         * }}
+         */
+        EncryptedJoinRequestPayload.create = function(properties) {
+            return new EncryptedJoinRequestPayload(properties);
+        };
+
+        /**
+         * Encodes the specified EncryptedJoinRequestPayload message. Does not implicitly {@link waproto.EncryptedJoinRequestPayload.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {waproto.EncryptedJoinRequestPayload.$Properties} message EncryptedJoinRequestPayload message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptedJoinRequestPayload.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.encryptedAnswers != null && $Object.hasOwnProperty.call(message, "encryptedAnswers"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.encryptedAnswers);
+            if (message.encIv != null && $Object.hasOwnProperty.call(message, "encIv"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.encIv);
+            if (message.signalIdentityPublicKey != null && $Object.hasOwnProperty.call(message, "signalIdentityPublicKey"))
+                writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.signalIdentityPublicKey);
+            if (message.kemCiphertext != null && $Object.hasOwnProperty.call(message, "kemCiphertext"))
+                writer.uint32(/* id 4, wireType 2 =*/34).bytes(message.kemCiphertext);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified EncryptedJoinRequestPayload message, length delimited. Does not implicitly {@link waproto.EncryptedJoinRequestPayload.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {waproto.EncryptedJoinRequestPayload.$Properties} message EncryptedJoinRequestPayload message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        EncryptedJoinRequestPayload.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes an EncryptedJoinRequestPayload message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape} EncryptedJoinRequestPayload
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptedJoinRequestPayload.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.EncryptedJoinRequestPayload();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.encryptedAnswers = reader.bytes();
+                        message._encryptedAnswers = "encryptedAnswers";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.encIv = reader.bytes();
+                        message._encIv = "encIv";
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 2)
+                            break;
+                        message.signalIdentityPublicKey = reader.bytes();
+                        message._signalIdentityPublicKey = "signalIdentityPublicKey";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 2)
+                            break;
+                        message.kemCiphertext = reader.bytes();
+                        message._kemCiphertext = "kemCiphertext";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes an EncryptedJoinRequestPayload message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.EncryptedJoinRequestPayload & waproto.EncryptedJoinRequestPayload.$Shape} EncryptedJoinRequestPayload
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        EncryptedJoinRequestPayload.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies an EncryptedJoinRequestPayload message.
+         * @function verify
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        EncryptedJoinRequestPayload.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.encryptedAnswers != null && $Object.hasOwnProperty.call(message, "encryptedAnswers")) {
+                properties._encryptedAnswers = 1;
+                if (!(message.encryptedAnswers && typeof message.encryptedAnswers.length === "number" || $util.isString(message.encryptedAnswers)))
+                    return "encryptedAnswers: buffer expected";
+            }
+            if (message.encIv != null && $Object.hasOwnProperty.call(message, "encIv")) {
+                properties._encIv = 1;
+                if (!(message.encIv && typeof message.encIv.length === "number" || $util.isString(message.encIv)))
+                    return "encIv: buffer expected";
+            }
+            if (message.signalIdentityPublicKey != null && $Object.hasOwnProperty.call(message, "signalIdentityPublicKey")) {
+                properties._signalIdentityPublicKey = 1;
+                if (!(message.signalIdentityPublicKey && typeof message.signalIdentityPublicKey.length === "number" || $util.isString(message.signalIdentityPublicKey)))
+                    return "signalIdentityPublicKey: buffer expected";
+            }
+            if (message.kemCiphertext != null && $Object.hasOwnProperty.call(message, "kemCiphertext")) {
+                properties._kemCiphertext = 1;
+                if (!(message.kemCiphertext && typeof message.kemCiphertext.length === "number" || $util.isString(message.kemCiphertext)))
+                    return "kemCiphertext: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates an EncryptedJoinRequestPayload message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.EncryptedJoinRequestPayload} EncryptedJoinRequestPayload
+         */
+        EncryptedJoinRequestPayload.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.EncryptedJoinRequestPayload)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.EncryptedJoinRequestPayload: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.EncryptedJoinRequestPayload();
+            if (object.encryptedAnswers != null)
+                if (typeof object.encryptedAnswers === "string")
+                    $util.base64.decode(object.encryptedAnswers, message.encryptedAnswers = $util.newBuffer($util.base64.length(object.encryptedAnswers)), 0);
+                else if (object.encryptedAnswers.length >= 0)
+                    message.encryptedAnswers = object.encryptedAnswers;
+            if (object.encIv != null)
+                if (typeof object.encIv === "string")
+                    $util.base64.decode(object.encIv, message.encIv = $util.newBuffer($util.base64.length(object.encIv)), 0);
+                else if (object.encIv.length >= 0)
+                    message.encIv = object.encIv;
+            if (object.signalIdentityPublicKey != null)
+                if (typeof object.signalIdentityPublicKey === "string")
+                    $util.base64.decode(object.signalIdentityPublicKey, message.signalIdentityPublicKey = $util.newBuffer($util.base64.length(object.signalIdentityPublicKey)), 0);
+                else if (object.signalIdentityPublicKey.length >= 0)
+                    message.signalIdentityPublicKey = object.signalIdentityPublicKey;
+            if (object.kemCiphertext != null)
+                if (typeof object.kemCiphertext === "string")
+                    $util.base64.decode(object.kemCiphertext, message.kemCiphertext = $util.newBuffer($util.base64.length(object.kemCiphertext)), 0);
+                else if (object.kemCiphertext.length >= 0)
+                    message.kemCiphertext = object.kemCiphertext;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an EncryptedJoinRequestPayload message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {waproto.EncryptedJoinRequestPayload} message EncryptedJoinRequestPayload
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        EncryptedJoinRequestPayload.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.encryptedAnswers != null && $Object.hasOwnProperty.call(message, "encryptedAnswers"))
+                object.encryptedAnswers = options.bytes === $String ? $util.base64.encode(message.encryptedAnswers, 0, message.encryptedAnswers.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encryptedAnswers) : message.encryptedAnswers;
+            if (message.encIv != null && $Object.hasOwnProperty.call(message, "encIv"))
+                object.encIv = options.bytes === $String ? $util.base64.encode(message.encIv, 0, message.encIv.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.encIv) : message.encIv;
+            if (message.signalIdentityPublicKey != null && $Object.hasOwnProperty.call(message, "signalIdentityPublicKey"))
+                object.signalIdentityPublicKey = options.bytes === $String ? $util.base64.encode(message.signalIdentityPublicKey, 0, message.signalIdentityPublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.signalIdentityPublicKey) : message.signalIdentityPublicKey;
+            if (message.kemCiphertext != null && $Object.hasOwnProperty.call(message, "kemCiphertext"))
+                object.kemCiphertext = options.bytes === $String ? $util.base64.encode(message.kemCiphertext, 0, message.kemCiphertext.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.kemCiphertext) : message.kemCiphertext;
+            return object;
+        };
+
+        /**
+         * Converts this EncryptedJoinRequestPayload to JSON.
+         * @function toJSON
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        EncryptedJoinRequestPayload.prototype.toJSON = function() {
+            return EncryptedJoinRequestPayload.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for EncryptedJoinRequestPayload
+         * @function getTypeUrl
+         * @memberof waproto.EncryptedJoinRequestPayload
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        EncryptedJoinRequestPayload.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.EncryptedJoinRequestPayload";
+        };
+
+        return EncryptedJoinRequestPayload;
+    })();
+
     waproto.EncryptedPairingRequest = (function() {
 
         /**
@@ -120643,6 +121036,327 @@ $root.waproto = (function() {
         };
 
         return MembershipFormKeyFingerprintVerification;
+    })();
+
+    waproto.MembershipFormPublicKeys = (function() {
+
+        /**
+         * Properties of a MembershipFormPublicKeys.
+         * @typedef {Object} waproto.MembershipFormPublicKeys.$Properties
+         * @property {Uint8Array|null} [mlKemPublicKey] MembershipFormPublicKeys mlKemPublicKey
+         * @property {Uint8Array|null} [x25519PublicKey] MembershipFormPublicKeys x25519PublicKey
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a MembershipFormPublicKeys.
+         * @memberof waproto
+         * @interface IMembershipFormPublicKeys
+         * @augments waproto.MembershipFormPublicKeys.$Properties
+         * @deprecated Use waproto.MembershipFormPublicKeys.$Properties instead.
+         */
+
+        /**
+         * Shape of a MembershipFormPublicKeys.
+         * @typedef {waproto.MembershipFormPublicKeys.$Properties} waproto.MembershipFormPublicKeys.$Shape
+         */
+
+        /**
+         * Constructs a new MembershipFormPublicKeys.
+         * @memberof waproto
+         * @classdesc Represents a MembershipFormPublicKeys.
+         * @constructor
+         * @param {waproto.MembershipFormPublicKeys.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var MembershipFormPublicKeys = function (properties) {
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * MembershipFormPublicKeys mlKemPublicKey.
+         * @member {Uint8Array|null|undefined} mlKemPublicKey
+         * @memberof waproto.MembershipFormPublicKeys
+         * @instance
+         */
+        MembershipFormPublicKeys.prototype.mlKemPublicKey = null;
+
+        /**
+         * MembershipFormPublicKeys x25519PublicKey.
+         * @member {Uint8Array|null|undefined} x25519PublicKey
+         * @memberof waproto.MembershipFormPublicKeys
+         * @instance
+         */
+        MembershipFormPublicKeys.prototype.x25519PublicKey = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormPublicKeys.prototype, "_mlKemPublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["mlKemPublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(MembershipFormPublicKeys.prototype, "_x25519PublicKey", {
+            get: $util.oneOfGetter($oneOfFields = ["x25519PublicKey"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new MembershipFormPublicKeys instance using the specified properties.
+         * @function create
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {waproto.MembershipFormPublicKeys.$Properties=} [properties] Properties to set
+         * @returns {waproto.MembershipFormPublicKeys} MembershipFormPublicKeys instance
+         * @type {{
+         *   (properties: waproto.MembershipFormPublicKeys.$Shape): waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape;
+         *   (properties?: waproto.MembershipFormPublicKeys.$Properties): waproto.MembershipFormPublicKeys;
+         * }}
+         */
+        MembershipFormPublicKeys.create = function(properties) {
+            return new MembershipFormPublicKeys(properties);
+        };
+
+        /**
+         * Encodes the specified MembershipFormPublicKeys message. Does not implicitly {@link waproto.MembershipFormPublicKeys.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {waproto.MembershipFormPublicKeys.$Properties} message MembershipFormPublicKeys message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MembershipFormPublicKeys.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.mlKemPublicKey != null && $Object.hasOwnProperty.call(message, "mlKemPublicKey"))
+                writer.uint32(/* id 1, wireType 2 =*/10).bytes(message.mlKemPublicKey);
+            if (message.x25519PublicKey != null && $Object.hasOwnProperty.call(message, "x25519PublicKey"))
+                writer.uint32(/* id 2, wireType 2 =*/18).bytes(message.x25519PublicKey);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified MembershipFormPublicKeys message, length delimited. Does not implicitly {@link waproto.MembershipFormPublicKeys.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {waproto.MembershipFormPublicKeys.$Properties} message MembershipFormPublicKeys message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        MembershipFormPublicKeys.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a MembershipFormPublicKeys message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape} MembershipFormPublicKeys
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MembershipFormPublicKeys.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.MembershipFormPublicKeys();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType !== 2)
+                            break;
+                        message.mlKemPublicKey = reader.bytes();
+                        message._mlKemPublicKey = "mlKemPublicKey";
+                        continue;
+                    }
+                case 2: {
+                        if (wireType !== 2)
+                            break;
+                        message.x25519PublicKey = reader.bytes();
+                        message._x25519PublicKey = "x25519PublicKey";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a MembershipFormPublicKeys message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.MembershipFormPublicKeys & waproto.MembershipFormPublicKeys.$Shape} MembershipFormPublicKeys
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        MembershipFormPublicKeys.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a MembershipFormPublicKeys message.
+         * @function verify
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        MembershipFormPublicKeys.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.mlKemPublicKey != null && $Object.hasOwnProperty.call(message, "mlKemPublicKey")) {
+                properties._mlKemPublicKey = 1;
+                if (!(message.mlKemPublicKey && typeof message.mlKemPublicKey.length === "number" || $util.isString(message.mlKemPublicKey)))
+                    return "mlKemPublicKey: buffer expected";
+            }
+            if (message.x25519PublicKey != null && $Object.hasOwnProperty.call(message, "x25519PublicKey")) {
+                properties._x25519PublicKey = 1;
+                if (!(message.x25519PublicKey && typeof message.x25519PublicKey.length === "number" || $util.isString(message.x25519PublicKey)))
+                    return "x25519PublicKey: buffer expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a MembershipFormPublicKeys message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.MembershipFormPublicKeys} MembershipFormPublicKeys
+         */
+        MembershipFormPublicKeys.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.MembershipFormPublicKeys)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.MembershipFormPublicKeys: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.MembershipFormPublicKeys();
+            if (object.mlKemPublicKey != null)
+                if (typeof object.mlKemPublicKey === "string")
+                    $util.base64.decode(object.mlKemPublicKey, message.mlKemPublicKey = $util.newBuffer($util.base64.length(object.mlKemPublicKey)), 0);
+                else if (object.mlKemPublicKey.length >= 0)
+                    message.mlKemPublicKey = object.mlKemPublicKey;
+            if (object.x25519PublicKey != null)
+                if (typeof object.x25519PublicKey === "string")
+                    $util.base64.decode(object.x25519PublicKey, message.x25519PublicKey = $util.newBuffer($util.base64.length(object.x25519PublicKey)), 0);
+                else if (object.x25519PublicKey.length >= 0)
+                    message.x25519PublicKey = object.x25519PublicKey;
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a MembershipFormPublicKeys message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {waproto.MembershipFormPublicKeys} message MembershipFormPublicKeys
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        MembershipFormPublicKeys.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (message.mlKemPublicKey != null && $Object.hasOwnProperty.call(message, "mlKemPublicKey"))
+                object.mlKemPublicKey = options.bytes === $String ? $util.base64.encode(message.mlKemPublicKey, 0, message.mlKemPublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.mlKemPublicKey) : message.mlKemPublicKey;
+            if (message.x25519PublicKey != null && $Object.hasOwnProperty.call(message, "x25519PublicKey"))
+                object.x25519PublicKey = options.bytes === $String ? $util.base64.encode(message.x25519PublicKey, 0, message.x25519PublicKey.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.x25519PublicKey) : message.x25519PublicKey;
+            return object;
+        };
+
+        /**
+         * Converts this MembershipFormPublicKeys to JSON.
+         * @function toJSON
+         * @memberof waproto.MembershipFormPublicKeys
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        MembershipFormPublicKeys.prototype.toJSON = function() {
+            return MembershipFormPublicKeys.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for MembershipFormPublicKeys
+         * @function getTypeUrl
+         * @memberof waproto.MembershipFormPublicKeys
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        MembershipFormPublicKeys.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.MembershipFormPublicKeys";
+        };
+
+        return MembershipFormPublicKeys;
     })();
 
     waproto.Message = (function() {
