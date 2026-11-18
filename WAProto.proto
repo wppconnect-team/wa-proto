@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1054995772
+/// WhatsApp Version: 2.3000.1055074787
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -328,24 +328,6 @@ message ActionLink {
     optional string buttonTitle = 2;
 }
 
-message AddDeviceKeysOutput {
-    required bytes devicePublicKey = 1;
-    required bytes epochAuthPublicKey = 2;
-    required bytes epochAuthPublicKeySig = 3;
-    required bytes epochStoragePublicKey = 4;
-    required bytes epochStoragePublicKeySig = 5;
-    required bytes epochStoragePrivateKey = 6;
-    required bytes orfClientState = 7;
-}
-
-message AddDeviceSyncEpochInput {
-    required uint64 epochId = 1;
-    required int32 epochAnonId = 2;
-    optional bytes encryptedEpochKey = 3;
-    required bytes senderAuthPubKey = 4;
-    optional uint64 nextEpochId = 5;
-}
-
 message AutoDownloadSettings {
     optional bool downloadImages = 1;
     optional bool downloadAudio = 2;
@@ -356,12 +338,6 @@ message AutoDownloadSettings {
 message AvatarUserSettings {
     optional string fbid = 1;
     optional string password = 2;
-}
-
-message BackwardEdge {
-    required bytes encryptedPrevEpochAnonId = 1;
-    required bytes encryptedPrevEpochRootKey = 2;
-    required bytes prevEpochRootKeyFingerprint = 3;
 }
 
 message BizAIMetadataSync {
@@ -1563,36 +1539,6 @@ message CompanionEphemeralIdentity {
     optional string ref = 3;
 }
 
-message CompanionTestMessageThreadIdInput {
-}
-
-message CompanionTestMessageThreadIdOutput {
-    oneof result {
-        CompanionTestMessageThreadIdSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message CompanionTestMessageThreadIdSuccess {
-    required string threadId = 1;
-}
-
-message ComputeClientSealTokenInput {
-    required bytes orfClientState = 1;
-    required uint64 backupId = 2;
-}
-
-message ComputeClientSealTokenOutput {
-    oneof result {
-        ComputeClientSealTokenSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message ComputeClientSealTokenSuccess {
-    required bytes clientSealToken = 1;
-}
-
 message Config {
     map<uint32, Field> field = 1;
 }
@@ -1994,94 +1940,6 @@ message Conversation {
     }
 }
 
-message CreateBackupInput {
-    required string recoveryCode = 1;
-    required uint64 userId = 2;
-}
-
-message CreateBackupOutput {
-    oneof result {
-        CreateBackupSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message CreateBackupSuccess {
-    required DeviceOutput device = 1;
-    required VirtualDeviceOutput virtualDevice = 2;
-    required Epoch0Output epoch0 = 3;
-    required bytes mailboxRootKey = 4;
-}
-
-message DecryptMessageInput {
-    required bytes epochRootKey = 1;
-    required int32 epochAnonId = 2;
-    required string threadId = 3;
-    required int32 encryptionVersion = 4;
-    required bytes ciphertext = 5;
-}
-
-message DecryptMessageOutput {
-    oneof result {
-        DecryptMessageSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message DecryptMessageSuccess {
-    required bytes plaintextPayload = 1;
-}
-
-message DeriveEpochsInput {
-    required bytes epochStoragePrivateKey = 1;
-    repeated EpochKey epochs = 2;
-    repeated EpochDerivationEdge edges = 3;
-}
-
-message DeriveEpochsOutput {
-    oneof result {
-        DeriveEpochsSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message DeriveEpochsSuccess {
-    repeated EpochKey epochs = 1;
-}
-
-message DeriveMessageKeyInput {
-    required bytes epochRootKey = 1;
-    required int32 epochAnonId = 2;
-    required string threadId = 3;
-}
-
-message DeriveMessageKeyOutput {
-    oneof result {
-        DeriveMessageKeySuccess success = 1;
-        string error = 2;
-    }
-}
-
-message DeriveMessageKeySuccess {
-    required bytes messageKey = 1;
-}
-
-message DeriveVirtualDeviceIdInput {
-    required string recoveryCode = 1;
-    required uint64 userId = 2;
-}
-
-message DeriveVirtualDeviceIdOutput {
-    oneof result {
-        DeriveVirtualDeviceIdSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message DeriveVirtualDeviceIdSuccess {
-    required bytes virtualDeviceId = 1;
-}
-
 message DeviceCapabilities {
     optional ChatLockSupportLevel chatLockSupportLevel = 1;
     optional LIDMigration lidMigration = 2;
@@ -2097,6 +1955,7 @@ message DeviceCapabilities {
     optional HostWriteMutationSupport hostWriteMutationSupport = 12;
     optional BizAiWebOnboarding bizAiWebOnboarding = 13;
     optional PhoneNumberSharing phoneNumberSharing = 14;
+    optional RecentConversationsOnDemand recentConversationsOnDemand = 15;
     message AiFbidMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
         optional uint32 supportVersion = 2;
@@ -2160,6 +2019,10 @@ message DeviceCapabilities {
         optional bool phoneSharingSupported = 1;
     }
     
+    message RecentConversationsOnDemand {
+        optional bool supported = 1;
+    }
+    
     message ReverseHistorySync {
         repeated Product enabledProducts = 1;
         enum Product {
@@ -2188,21 +2051,6 @@ message DeviceListMetadata {
     optional bytes recipientKeyHash = 8;
     optional uint64 recipientTimestamp = 9;
     repeated uint32 recipientKeyIndexes = 10 [packed=true];
-}
-
-message DeviceOutput {
-    required bytes publicKey = 1;
-    required bytes epochAuthPublicKey = 2;
-    required bytes epochAuthPublicKeySig = 3;
-    required bytes epochStoragePublicKey = 4;
-    required bytes epochStoragePublicKeySig = 5;
-    repeated int32 supportedEncryptionVersions = 6;
-    required bytes encryptionVersionSignature = 7;
-    required int32 clientVersion = 8;
-    required bytes ocmfClientState = 9;
-    required bytes epochStoragePrivateKey = 10;
-    required bytes epochAuthPrivateKey = 11;
-    required bytes deviceEpochHmac = 12;
 }
 
 message DeviceProps {
@@ -2335,35 +2183,6 @@ message EmbeddedMusic {
     optional int64 overlapDurationInMs = 14;
 }
 
-message EncryptMessageInput {
-    required bytes epochRootKey = 1;
-    required bytes mailboxRootKey = 2;
-    required bytes orfClientState = 3;
-    required int32 epochAnonId = 4;
-    required uint64 epochId = 5;
-    required string threadId = 6;
-    required uint64 waCanonicalUserFbid = 7;
-    required uint64 timestampMs = 8;
-    required uint64 backupId = 9;
-    required bytes plaintextPayload = 10;
-    required string stanzaId = 11;
-}
-
-message EncryptMessageOutput {
-    oneof result {
-        EncryptMessageSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message EncryptMessageSuccess {
-    required bytes encryptedProtobuf = 1;
-    required bytes orfThreadId = 2;
-    required string valueSecretRef = 3;
-    required uint64 offlineThreadingId = 4;
-    required uint64 timestampMs = 5;
-}
-
 message EncryptedJoinRequestPayload {
     optional bytes encryptedAnswers = 1;
     optional bytes encIv = 2;
@@ -2376,43 +2195,9 @@ message EncryptedPairingRequest {
     optional bytes iv = 2;
 }
 
-message EncryptedSecretValuesOutput {
-    required bytes encryptedDevicePrivateKey = 1;
-    required bytes encryptedObliviousValidationTokenBlob = 2;
-    required bytes encryptedEpochStoragePrivateKey = 3;
-    required bytes encryptedOcmfClientState = 4;
-    required bytes encryptedMailboxRootKeyBlob = 6;
-    required bytes encryptedEpochAnonId = 7;
-    required bytes encryptedEpochRootKey = 8;
-}
-
 message EphemeralSetting {
     optional sfixed32 duration = 1;
     optional sfixed64 timestamp = 2;
-}
-
-message Epoch0Output {
-    required int32 epochAnonId = 2;
-    required bytes epochRootKeyFingerprint = 6;
-    required bytes epochRootKey = 7;
-}
-
-message EpochDerivationEdge {
-    required EpochIds fromEpoch = 1;
-    required EpochIds toEpoch = 2;
-    optional ForwardEdgeInput forwardEdge = 3;
-    optional bytes backwardEdge = 4;
-}
-
-message EpochIds {
-    required uint64 serverEpochId = 1;
-    required int32 epochAnonId = 2;
-}
-
-message EpochKey {
-    required uint64 serverEpochId = 1;
-    required int32 epochAnonId = 2;
-    required bytes epochRootKey = 3;
 }
 
 message EventAdditionalMetadata {
@@ -2476,11 +2261,6 @@ message FingerprintData {
     optional bytes usernameIdentifier = 4;
     optional HostedState hostedState = 5;
     optional bytes hashedPublicKey = 6;
-}
-
-message ForwardEdgeInput {
-    required bytes encryptedEntropy = 1;
-    required bytes authPublicKey = 2;
 }
 
 message ForwardedAIBotMessageInfo {
@@ -2850,26 +2630,6 @@ message KeyId {
 
 message LIDMigrationMappingSyncMessage {
     optional bytes encodedMappingPayload = 1;
-}
-
-message LabyrinthWaCommand {
-    oneof commandInput {
-        CreateBackupInput createBackupInput = 1;
-        EncryptMessageInput encryptMessageInput = 2;
-        DecryptMessageInput decryptMessageInput = 3;
-        OrfThreadIdInput orfThreadIdInput = 4;
-        DeriveMessageKeyInput deriveMessageKeyInput = 5;
-        RotateEpochInput rotateEpochInput = 6;
-        DeriveVirtualDeviceIdInput deriveVirtualDeviceIdInput = 7;
-        PrepareAddDeviceInput prepareAddDeviceInput = 8;
-        ComputeClientSealTokenInput computeClientSealTokenInput = 9;
-        OpenSealedThreadIdInput openSealedThreadIdInput = 10;
-        DeriveEpochsInput deriveEpochsInput = 11;
-        SealThreadIdInput sealThreadIdInput = 12;
-        PrepareAddPeerDeviceInput prepareAddPeerDeviceInput = 13;
-        CompanionTestMessageThreadIdInput companionTestMessageThreadIdInput = 14;
-        ParseCompanionTestMessageInput parseCompanionTestMessageInput = 15;
-    }
 }
 
 message LegacyMessage {
@@ -5425,59 +5185,10 @@ message OmittedConversationMetadata {
     repeated Conversation conversations = 6;
 }
 
-message OpenSealedThreadIdInput {
-    required uint64 backupId = 1;
-    required bytes sealedThreadId = 2;
-    repeated EpochKey epochs = 3;
-}
-
-message OpenSealedThreadIdOutput {
-    oneof result {
-        OpenSealedThreadIdSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message OpenSealedThreadIdSuccess {
-    required string threadId = 1;
-    required int32 sealEpochAnonId = 2;
-}
-
-message OrfThreadIdInput {
-    required bytes orfClientState = 1;
-    required string threadId = 2;
-}
-
-message OrfThreadIdOutput {
-    oneof result {
-        OrfThreadIdSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message OrfThreadIdSuccess {
-    required bytes orfThreadId = 1;
-}
-
 message PairingRequest {
     optional bytes companionPublicKey = 1;
     optional bytes companionIdentityKey = 2;
     optional bytes advSecret = 3;
-}
-
-message ParseCompanionTestMessageInput {
-    required bytes plaintext = 1;
-}
-
-message ParseCompanionTestMessageOutput {
-    oneof result {
-        ParseCompanionTestMessageSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message ParseCompanionTestMessageSuccess {
-    required uint64 createdAtMs = 1;
 }
 
 message PastParticipant {
@@ -5722,56 +5433,6 @@ message PremiumMessageInfo {
     optional string serverCampaignId = 1;
 }
 
-message PrepareAddDeviceInput {
-    required string recoveryCode = 1;
-    required uint64 userId = 2;
-    required string encryptedSecretValuesJson = 3;
-    required uint64 virtualDeviceBaseEpochId = 4;
-    required uint64 activeEpochId = 5;
-    repeated AddDeviceSyncEpochInput syncEpochs = 6;
-}
-
-message PrepareAddDeviceOutput {
-    oneof result {
-        PrepareAddDeviceSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message PrepareAddDeviceSuccess {
-    required AddDeviceKeysOutput deviceKeys = 1;
-    required EpochKey currentEpoch = 2;
-    required bytes mailboxRootSalt = 3;
-    required bytes orfRotationToken = 4;
-    required bytes deviceEpochHmac = 5;
-    required bytes epochRootKeyFingerprint = 6;
-    repeated int32 supportedEncryptionVersions = 7;
-    required bytes encryptionVersionSignature = 8;
-    required int32 clientVersion = 9;
-}
-
-message PrepareAddPeerDeviceInput {
-    required bytes advSecret = 1;
-    required bytes sealedPayload = 2;
-    required uint64 backupId = 3;
-    required uint64 userId = 4;
-    required bytes companionIdentityPub = 5;
-    required uint64 activeEpochId = 6;
-}
-
-message PrepareAddPeerDeviceOutput {
-    oneof result {
-        PrepareAddPeerDeviceSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message PrepareAddPeerDeviceSuccess {
-    required PrepareAddDeviceSuccess enrolment = 1;
-    required uint64 serverDataId = 2;
-    required bytes companionDeviceBinding = 3;
-}
-
 message PrimaryEphemeralIdentity {
     optional bytes publicKey = 1;
     optional bytes nonce = 2;
@@ -5872,43 +5533,6 @@ message ReportingTokenInfo {
     optional uint64 reportingTagTimestamp = 2;
 }
 
-message RotateEpochInput {
-    required bytes currentEpochRootKey = 1;
-    required int32 currentEpochAnonId = 2;
-    required uint64 currentEpochFbid = 3;
-    required bytes epochStorageAuthPrivateKey = 4;
-    repeated RotateEpochMemberInput members = 5;
-}
-
-message RotateEpochMemberEdge {
-    required uint64 deviceId = 1;
-    required bytes encryptedEpochKey = 2;
-    required bytes deviceEpochHmac = 3;
-}
-
-message RotateEpochMemberInput {
-    required uint64 deviceId = 1;
-    required bytes epochStoragePublicKey = 2;
-    required bytes devicePublicKey = 3;
-    required bytes prevDeviceEpochHmac = 4;
-    required bytes epochStoragePublicKeySig = 5;
-}
-
-message RotateEpochOutput {
-    oneof result {
-        RotateEpochSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message RotateEpochSuccess {
-    required bytes newEpochRootKey = 1;
-    required int32 newEpochAnonId = 2;
-    required BackwardEdge backwardEdge = 4;
-    repeated RotateEpochMemberEdge memberEdges = 5;
-    required bytes epochRootKeyFingerprint = 6;
-}
-
 message RoutingInfo {
     repeated int32 regionId = 1;
     repeated int32 clusterId = 2;
@@ -5922,24 +5546,6 @@ message ScheduledMessageMetadata {
     optional string revealKeyId = 1;
     optional bytes revealKey = 2;
     optional uint64 scheduledTime = 3;
-}
-
-message SealThreadIdInput {
-    required bytes epochRootKey = 1;
-    required int32 epochAnonId = 2;
-    required uint64 backupId = 3;
-    required string threadId = 4;
-}
-
-message SealThreadIdOutput {
-    oneof result {
-        SealThreadIdSuccess success = 1;
-        string error = 2;
-    }
-}
-
-message SealThreadIdSuccess {
-    required bytes sealedThreadId = 1;
 }
 
 message SenderKeyDistributionMessage {
@@ -5983,6 +5589,7 @@ message SenderKeyStateStructure {
 
 message ServerErrorReceipt {
     optional string stanzaId = 1;
+    optional bool keepMediaKey = 2;
 }
 
 message SessionStructure {
@@ -7232,16 +6839,6 @@ message VerifiedNameCertificate {
         optional uint64 issueTime = 10;
     }
     
-}
-
-message VirtualDeviceOutput {
-    required bytes vdId = 1;
-    required bytes vdPublicKey = 2;
-    required bytes vdEpochStoragePublicKey = 3;
-    required bytes vdEpochStoragePublicKeySig = 4;
-    required bytes ocmfRotationToken = 5;
-    required bytes deviceEpochHmac = 6;
-    required EncryptedSecretValuesOutput encryptedSecretValues = 7;
 }
 
 message WallpaperSettings {
