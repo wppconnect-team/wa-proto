@@ -68962,6 +68962,9 @@ export namespace waproto {
         /** HATCH_CVM_SECRET_ACTION value */
         HATCH_CVM_SECRET_ACTION = 101,
 
+        /** BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION value */
+        BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION = 102,
+
         /** SHARE_OWN_PN value */
         SHARE_OWN_PN = 10001,
 
@@ -79644,6 +79647,9 @@ export namespace waproto {
         /** SyncActionValue hatchCvmSecretAction. */
         hatchCvmSecretAction?: (waproto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
 
+        /** SyncActionValue businessFolderChatPreferenceAction. */
+        businessFolderChatPreferenceAction?: (waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties|null);
+
         /**
          * Creates a new SyncActionValue instance using the specified properties.
          * @param [properties] Properties to set
@@ -80004,6 +80010,9 @@ export namespace waproto {
             /** SyncActionValue hatchCvmSecretAction */
             hatchCvmSecretAction?: (waproto.SyncActionValue.HatchCVMSecretAction.$Properties|null);
 
+            /** SyncActionValue businessFolderChatPreferenceAction */
+            businessFolderChatPreferenceAction?: (waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -80102,6 +80111,7 @@ export namespace waproto {
           communityNestingStateAction?: waproto.SyncActionValue.CommunityNestingStateAction.$Shape|null;
           sharedDeviceSecretAction?: waproto.SyncActionValue.SharedDeviceSecretAction.$Shape|null;
           hatchCvmSecretAction?: waproto.SyncActionValue.HatchCVMSecretAction.$Shape|null;
+          businessFolderChatPreferenceAction?: waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -82222,6 +82232,139 @@ export namespace waproto {
 
             /** Shape of a BusinessFolderActivationAction. */
             type $Shape = waproto.SyncActionValue.BusinessFolderActivationAction.$Properties;
+        }
+
+        /**
+         * Properties of a BusinessFolderChatPreferenceAction.
+         * @deprecated Use waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties instead.
+         */
+        interface IBusinessFolderChatPreferenceAction extends waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties {
+        }
+
+        /** Represents a BusinessFolderChatPreferenceAction. */
+        class BusinessFolderChatPreferenceAction {
+
+            /**
+             * Constructs a new BusinessFolderChatPreferenceAction.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** BusinessFolderChatPreferenceAction preference. */
+            preference?: (waproto.SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference|null);
+
+            /**
+             * Creates a new BusinessFolderChatPreferenceAction instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns BusinessFolderChatPreferenceAction instance
+             */
+            static create(properties: waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape): waproto.SyncActionValue.BusinessFolderChatPreferenceAction & waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape;
+            static create(properties?: waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties): waproto.SyncActionValue.BusinessFolderChatPreferenceAction;
+
+            /**
+             * Encodes the specified BusinessFolderChatPreferenceAction message. Does not implicitly {@link waproto.SyncActionValue.BusinessFolderChatPreferenceAction.verify|verify} messages.
+             * @param message BusinessFolderChatPreferenceAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified BusinessFolderChatPreferenceAction message, length delimited. Does not implicitly {@link waproto.SyncActionValue.BusinessFolderChatPreferenceAction.verify|verify} messages.
+             * @param message BusinessFolderChatPreferenceAction message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a BusinessFolderChatPreferenceAction message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.SyncActionValue.BusinessFolderChatPreferenceAction & waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape} BusinessFolderChatPreferenceAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.SyncActionValue.BusinessFolderChatPreferenceAction & waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape;
+
+            /**
+             * Decodes a BusinessFolderChatPreferenceAction message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.SyncActionValue.BusinessFolderChatPreferenceAction & waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape} BusinessFolderChatPreferenceAction
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.SyncActionValue.BusinessFolderChatPreferenceAction & waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Shape;
+
+            /**
+             * Verifies a BusinessFolderChatPreferenceAction message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a BusinessFolderChatPreferenceAction message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns BusinessFolderChatPreferenceAction
+             */
+            static fromObject(object: { [k: string]: any }): waproto.SyncActionValue.BusinessFolderChatPreferenceAction;
+
+            /**
+             * Creates a plain object from a BusinessFolderChatPreferenceAction message. Also converts values to other types if specified.
+             * @param message BusinessFolderChatPreferenceAction
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.SyncActionValue.BusinessFolderChatPreferenceAction, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this BusinessFolderChatPreferenceAction to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for BusinessFolderChatPreferenceAction
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace BusinessFolderChatPreferenceAction {
+
+            /** Properties of a BusinessFolderChatPreferenceAction. */
+            interface $Properties {
+
+                /** BusinessFolderChatPreferenceAction preference */
+                preference?: (waproto.SyncActionValue.BusinessFolderChatPreferenceAction.BusinessFolderChatPreference|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a BusinessFolderChatPreferenceAction. */
+            type $Shape = waproto.SyncActionValue.BusinessFolderChatPreferenceAction.$Properties;
+
+            /** BusinessFolderChatPreference enum. */
+            enum BusinessFolderChatPreference {
+
+                /** BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN value */
+                BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN = 0,
+
+                /** BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC value */
+                BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC = 1,
+
+                /** BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX value */
+                BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX = 2,
+
+                /** BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS value */
+                BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS = 3
+            }
         }
 
         /**

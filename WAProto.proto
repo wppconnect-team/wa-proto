@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1055574960
+/// WhatsApp Version: 2.3000.1055640952
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -5141,6 +5141,7 @@ enum MutationProps {
     COMMUNITY_NESTING_STATE_ACTION = 99;
     SHARED_DEVICE_SECRET_ACTION = 100;
     HATCH_CVM_SECRET_ACTION = 101;
+    BUSINESS_FOLDER_CHAT_PREFERENCE_ACTION = 102;
     SHARE_OWN_PN = 10001;
     BUSINESS_BROADCAST_ACTION = 10002;
     AI_THREAD_DELETE_ACTION = 10003;
@@ -5926,6 +5927,7 @@ message SyncActionValue {
     optional CommunityNestingStateAction communityNestingStateAction = 99;
     optional SharedDeviceSecretAction sharedDeviceSecretAction = 100;
     optional HatchCVMSecretAction hatchCvmSecretAction = 101;
+    optional BusinessFolderChatPreferenceAction businessFolderChatPreferenceAction = 102;
     message AgentAction {
         optional string name = 1;
         optional int32 deviceId = 2;
@@ -6047,6 +6049,16 @@ message SyncActionValue {
     
     message BusinessFolderActivationAction {
         optional bool activated = 1;
+    }
+    
+    message BusinessFolderChatPreferenceAction {
+        optional BusinessFolderChatPreference preference = 1;
+        enum BusinessFolderChatPreference {
+            BUSINESS_FOLDER_CHAT_PREFERENCE_UNKNOWN = 0;
+            BUSINESS_FOLDER_CHAT_PREFERENCE_AUTOMATIC = 1;
+            BUSINESS_FOLDER_CHAT_PREFERENCE_INBOX = 2;
+            BUSINESS_FOLDER_CHAT_PREFERENCE_BUSINESS = 3;
+        }
     }
     
     message CallLogAction {
