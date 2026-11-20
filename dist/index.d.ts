@@ -7372,7 +7372,10 @@ export namespace waproto {
             RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89,
 
             /** AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED value */
-            AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90
+            AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90,
+
+            /** AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED value */
+            AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91
         }
     }
 
@@ -46682,6 +46685,9 @@ export namespace waproto {
             /** InitialSecurityNotificationSettingSync securityNotificationEnabled. */
             securityNotificationEnabled?: (boolean|null);
 
+            /** InitialSecurityNotificationSettingSync initialAppTheme. */
+            initialAppTheme?: (number|null);
+
             /**
              * Creates a new InitialSecurityNotificationSettingSync instance using the specified properties.
              * @param [properties] Properties to set
@@ -46768,6 +46774,9 @@ export namespace waproto {
 
                 /** InitialSecurityNotificationSettingSync securityNotificationEnabled */
                 securityNotificationEnabled?: (boolean|null);
+
+                /** InitialSecurityNotificationSettingSync initialAppTheme */
+                initialAppTheme?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -58427,6 +58436,9 @@ export namespace waproto {
                 /** Option optionHash. */
                 optionHash?: (string|null);
 
+                /** Option optionDatetime. */
+                optionDatetime?: (number|Long|null);
+
                 /**
                  * Creates a new Option instance using the specified properties.
                  * @param [properties] Properties to set
@@ -58516,6 +58528,9 @@ export namespace waproto {
 
                     /** Option optionHash */
                     optionHash?: (string|null);
+
+                    /** Option optionDatetime */
+                    optionDatetime?: (number|Long|null);
 
                     /** Unknown fields preserved while decoding when enabled */
                     $unknowns?: Uint8Array[];
@@ -59914,6 +59929,9 @@ export namespace waproto {
             /** ProtocolMessage groupRootKeyShare. */
             groupRootKeyShare?: (waproto.GroupRootKeyShare.$Properties|null);
 
+            /** ProtocolMessage messageEditDisplayType. */
+            messageEditDisplayType?: (waproto.Message.ProtocolMessage.MessageEditDisplayType|null);
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -60109,6 +60127,9 @@ export namespace waproto {
                 /** ProtocolMessage groupRootKeyShare */
                 groupRootKeyShare?: (waproto.GroupRootKeyShare.$Properties|null);
 
+                /** ProtocolMessage messageEditDisplayType */
+                messageEditDisplayType?: (waproto.Message.ProtocolMessage.MessageEditDisplayType|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -60152,8 +60173,19 @@ export namespace waproto {
               groupRootKeyRequest?: waproto.GroupRootKeyRequest.$Shape|null;
               membershipFormKeyFingerprintVerification?: waproto.MembershipFormKeyFingerprintVerification.$Shape|null;
               groupRootKeyShare?: waproto.GroupRootKeyShare.$Shape|null;
+              messageEditDisplayType?: waproto.Message.ProtocolMessage.MessageEditDisplayType|null;
               $unknowns?: Uint8Array[];
             };
+
+            /** MessageEditDisplayType enum. */
+            enum MessageEditDisplayType {
+
+                /** DEFAULT value */
+                DEFAULT = 0,
+
+                /** LINK_PREVIEW_ONLY value */
+                LINK_PREVIEW_ONLY = 1
+            }
 
             /** Type enum. */
             enum Type {
@@ -66420,9 +66452,6 @@ export namespace waproto {
         /** MessageContextInfo acp2Setting. */
         acp2Setting?: (waproto.ACP2Setting.$Properties|null);
 
-        /** MessageContextInfo lightE2Ee. */
-        lightE2Ee?: (boolean|null);
-
         /**
          * Creates a new MessageContextInfo instance using the specified properties.
          * @param [properties] Properties to set
@@ -66569,9 +66598,6 @@ export namespace waproto {
 
             /** MessageContextInfo acp2Setting */
             acp2Setting?: (waproto.ACP2Setting.$Properties|null);
-
-            /** MessageContextInfo lightE2Ee */
-            lightE2Ee?: (boolean|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -82953,6 +82979,9 @@ export namespace waproto {
             /** ContactAction birthday. */
             birthday?: (string|null);
 
+            /** ContactAction nonE2EeType. */
+            nonE2EeType?: (number|null);
+
             /**
              * Creates a new ContactAction instance using the specified properties.
              * @param [properties] Properties to set
@@ -83057,6 +83086,9 @@ export namespace waproto {
 
                 /** ContactAction birthday */
                 birthday?: (string|null);
+
+                /** ContactAction nonE2EeType */
+                nonE2EeType?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -85920,6 +85952,9 @@ export namespace waproto {
             /** LidContactAction birthday. */
             birthday?: (string|null);
 
+            /** LidContactAction nonE2EeType. */
+            nonE2EeType?: (number|null);
+
             /**
              * Creates a new LidContactAction instance using the specified properties.
              * @param [properties] Properties to set
@@ -86015,6 +86050,9 @@ export namespace waproto {
 
                 /** LidContactAction birthday */
                 birthday?: (string|null);
+
+                /** LidContactAction nonE2EeType */
+                nonE2EeType?: (number|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -98602,6 +98640,9 @@ export namespace waproto {
 
             /** POLL_ADDED_OPTION_REMOVED value */
             POLL_ADDED_OPTION_REMOVED = 291,
+
+            /** POLL_OPTION_ADDED value */
+            POLL_OPTION_ADDED = 292,
 
             /** GROUP_CUSTOM_REACTIONS value */
             GROUP_CUSTOM_REACTIONS = 293
