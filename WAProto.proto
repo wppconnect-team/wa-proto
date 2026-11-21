@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1055640952
+/// WhatsApp Version: 2.3000.1055694500
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -270,6 +270,7 @@ message AIRichResponseTableMetadata {
 
 message AIRichResponseUnifiedResponse {
     optional bytes data = 1;
+    optional bytes gzipData = 2;
 }
 
 enum AISubscriptionRequestType {
@@ -520,6 +521,7 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89;
         AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90;
         AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91;
+        AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93;
     }
 }
 
@@ -1957,9 +1959,14 @@ message DeviceCapabilities {
     optional BizAiWebOnboarding bizAiWebOnboarding = 13;
     optional PhoneNumberSharing phoneNumberSharing = 14;
     optional RecentConversationsOnDemand recentConversationsOnDemand = 15;
+    optional AiMuseJarvisGzip aiMuseJarvisGzip = 16;
     message AiFbidMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
         optional uint32 supportVersion = 2;
+    }
+    
+    message AiMuseJarvisGzip {
+        optional uint32 supportVersion = 1;
     }
     
     message AiThread {

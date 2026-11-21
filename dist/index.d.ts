@@ -4454,6 +4454,9 @@ export namespace waproto {
         /** AIRichResponseUnifiedResponse data. */
         data?: (Uint8Array|null);
 
+        /** AIRichResponseUnifiedResponse gzipData. */
+        gzipData?: (Uint8Array|null);
+
         /**
          * Creates a new AIRichResponseUnifiedResponse instance using the specified properties.
          * @param [properties] Properties to set
@@ -4540,6 +4543,9 @@ export namespace waproto {
 
             /** AIRichResponseUnifiedResponse data */
             data?: (Uint8Array|null);
+
+            /** AIRichResponseUnifiedResponse gzipData */
+            gzipData?: (Uint8Array|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -7375,7 +7381,10 @@ export namespace waproto {
             AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90,
 
             /** AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED value */
-            AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91
+            AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91,
+
+            /** AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED value */
+            AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93
         }
     }
 
@@ -24269,6 +24278,9 @@ export namespace waproto {
         /** DeviceCapabilities recentConversationsOnDemand. */
         recentConversationsOnDemand?: (waproto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
 
+        /** DeviceCapabilities aiMuseJarvisGzip. */
+        aiMuseJarvisGzip?: (waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @param [properties] Properties to set
@@ -24398,6 +24410,9 @@ export namespace waproto {
             /** DeviceCapabilities recentConversationsOnDemand */
             recentConversationsOnDemand?: (waproto.DeviceCapabilities.RecentConversationsOnDemand.$Properties|null);
 
+            /** DeviceCapabilities aiMuseJarvisGzip */
+            aiMuseJarvisGzip?: (waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -24526,6 +24541,123 @@ export namespace waproto {
 
             /** Shape of an AiFbidMigration. */
             type $Shape = waproto.DeviceCapabilities.AiFbidMigration.$Properties;
+        }
+
+        /**
+         * Properties of an AiMuseJarvisGzip.
+         * @deprecated Use waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties instead.
+         */
+        interface IAiMuseJarvisGzip extends waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties {
+        }
+
+        /** Represents an AiMuseJarvisGzip. */
+        class AiMuseJarvisGzip {
+
+            /**
+             * Constructs a new AiMuseJarvisGzip.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** AiMuseJarvisGzip supportVersion. */
+            supportVersion?: (number|null);
+
+            /**
+             * Creates a new AiMuseJarvisGzip instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns AiMuseJarvisGzip instance
+             */
+            static create(properties: waproto.DeviceCapabilities.AiMuseJarvisGzip.$Shape): waproto.DeviceCapabilities.AiMuseJarvisGzip & waproto.DeviceCapabilities.AiMuseJarvisGzip.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties): waproto.DeviceCapabilities.AiMuseJarvisGzip;
+
+            /**
+             * Encodes the specified AiMuseJarvisGzip message. Does not implicitly {@link waproto.DeviceCapabilities.AiMuseJarvisGzip.verify|verify} messages.
+             * @param message AiMuseJarvisGzip message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified AiMuseJarvisGzip message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.AiMuseJarvisGzip.verify|verify} messages.
+             * @param message AiMuseJarvisGzip message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an AiMuseJarvisGzip message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.AiMuseJarvisGzip & waproto.DeviceCapabilities.AiMuseJarvisGzip.$Shape} AiMuseJarvisGzip
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.AiMuseJarvisGzip & waproto.DeviceCapabilities.AiMuseJarvisGzip.$Shape;
+
+            /**
+             * Decodes an AiMuseJarvisGzip message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.AiMuseJarvisGzip & waproto.DeviceCapabilities.AiMuseJarvisGzip.$Shape} AiMuseJarvisGzip
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.AiMuseJarvisGzip & waproto.DeviceCapabilities.AiMuseJarvisGzip.$Shape;
+
+            /**
+             * Verifies an AiMuseJarvisGzip message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an AiMuseJarvisGzip message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns AiMuseJarvisGzip
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.AiMuseJarvisGzip;
+
+            /**
+             * Creates a plain object from an AiMuseJarvisGzip message. Also converts values to other types if specified.
+             * @param message AiMuseJarvisGzip
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.AiMuseJarvisGzip, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this AiMuseJarvisGzip to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for AiMuseJarvisGzip
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace AiMuseJarvisGzip {
+
+            /** Properties of an AiMuseJarvisGzip. */
+            interface $Properties {
+
+                /** AiMuseJarvisGzip supportVersion */
+                supportVersion?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of an AiMuseJarvisGzip. */
+            type $Shape = waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties;
         }
 
         /**
