@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1055852612
+/// WhatsApp Version: 2.3000.1055923191
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -1545,12 +1545,6 @@ enum CollectionName {
     CRITICAL_BLOCK = 4;
     CRITICAL_UNBLOCK_LOW = 5;
 }
-message CombinedFingerprint {
-    optional uint32 version = 1;
-    optional FingerprintData localFingerprint = 2;
-    optional FingerprintData remoteFingerprint = 3;
-}
-
 message CommentMetadata {
     optional MessageKey commentParentKey = 1;
     optional uint32 replyCount = 2;
@@ -1983,6 +1977,7 @@ message Conversation {
     optional bool isWorkGroup = 67;
     optional int32 nonE2EeType = 68;
     optional NonE2EEAttestation.AccountType contactAccountEncryptionAttestationType = 69;
+    optional uint32 unreadReplyToMyMessageCount = 70;
     enum EndOfHistoryTransferType {
         COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0;
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
@@ -2482,15 +2477,6 @@ message Field {
     map<uint32, Field> subfield = 5;
 }
 
-message FingerprintData {
-    optional bytes publicKey = 1;
-    optional bytes pnIdentifier = 2;
-    optional bytes lidIdentifier = 3;
-    optional bytes usernameIdentifier = 4;
-    optional HostedState hostedState = 5;
-    optional bytes hashedPublicKey = 6;
-}
-
 message ForwardEdgeInput {
     required bytes encryptedEntropy = 1;
     required bytes authPublicKey = 2;
@@ -2721,10 +2707,6 @@ message HistorySyncMsg {
     optional uint64 msgOrderId = 2;
 }
 
-enum HostedState {
-    E2EE = 0;
-    HOSTED = 1;
-}
 message HydratedTemplateButton {
     optional uint32 index = 4;
     oneof hydratedButton {
@@ -5928,15 +5910,6 @@ message RotateEpochSuccess {
     required BackwardEdge backwardEdge = 4;
     repeated RotateEpochMemberEdge memberEdges = 5;
     required bytes epochRootKeyFingerprint = 6;
-}
-
-message RoutingInfo {
-    repeated int32 regionId = 1;
-    repeated int32 clusterId = 2;
-    optional int32 taskId = 3;
-    optional bool debug = 4;
-    optional bool tcpBbr = 5;
-    optional bool tcpKeepalive = 6;
 }
 
 message ScheduledMessageMetadata {
