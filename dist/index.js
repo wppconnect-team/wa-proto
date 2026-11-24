@@ -243793,6 +243793,481 @@ $root.waproto = (function() {
         return RotateEpochSuccess;
     })();
 
+    waproto.RoutingInfo = (function() {
+
+        /**
+         * Properties of a RoutingInfo.
+         * @typedef {Object} waproto.RoutingInfo.$Properties
+         * @property {Array.<number>|null} [regionId] RoutingInfo regionId
+         * @property {Array.<number>|null} [clusterId] RoutingInfo clusterId
+         * @property {number|null} [taskId] RoutingInfo taskId
+         * @property {boolean|null} [debug] RoutingInfo debug
+         * @property {boolean|null} [tcpBbr] RoutingInfo tcpBbr
+         * @property {boolean|null} [tcpKeepalive] RoutingInfo tcpKeepalive
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+
+        /**
+         * Properties of a RoutingInfo.
+         * @memberof waproto
+         * @interface IRoutingInfo
+         * @augments waproto.RoutingInfo.$Properties
+         * @deprecated Use waproto.RoutingInfo.$Properties instead.
+         */
+
+        /**
+         * Shape of a RoutingInfo.
+         * @typedef {waproto.RoutingInfo.$Properties} waproto.RoutingInfo.$Shape
+         */
+
+        /**
+         * Constructs a new RoutingInfo.
+         * @memberof waproto
+         * @classdesc Represents a RoutingInfo.
+         * @constructor
+         * @param {waproto.RoutingInfo.$Properties=} [properties] Properties to set
+         * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
+         */
+        var RoutingInfo = function (properties) {
+            this.regionId = [];
+            this.clusterId = [];
+            if (properties)
+                for (var keys = $Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null && keys[i] !== "__proto__")
+                        this[keys[i]] = properties[keys[i]];
+        };
+
+        /**
+         * RoutingInfo regionId.
+         * @member {Array.<number>} regionId
+         * @memberof waproto.RoutingInfo
+         * @instance
+         */
+        RoutingInfo.prototype.regionId = $util.emptyArray;
+
+        /**
+         * RoutingInfo clusterId.
+         * @member {Array.<number>} clusterId
+         * @memberof waproto.RoutingInfo
+         * @instance
+         */
+        RoutingInfo.prototype.clusterId = $util.emptyArray;
+
+        /**
+         * RoutingInfo taskId.
+         * @member {number|null|undefined} taskId
+         * @memberof waproto.RoutingInfo
+         * @instance
+         */
+        RoutingInfo.prototype.taskId = null;
+
+        /**
+         * RoutingInfo debug.
+         * @member {boolean|null|undefined} debug
+         * @memberof waproto.RoutingInfo
+         * @instance
+         */
+        RoutingInfo.prototype.debug = null;
+
+        /**
+         * RoutingInfo tcpBbr.
+         * @member {boolean|null|undefined} tcpBbr
+         * @memberof waproto.RoutingInfo
+         * @instance
+         */
+        RoutingInfo.prototype.tcpBbr = null;
+
+        /**
+         * RoutingInfo tcpKeepalive.
+         * @member {boolean|null|undefined} tcpKeepalive
+         * @memberof waproto.RoutingInfo
+         * @instance
+         */
+        RoutingInfo.prototype.tcpKeepalive = null;
+
+        // OneOf field names bound to virtual getters and setters
+        var $oneOfFields;
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RoutingInfo.prototype, "_taskId", {
+            get: $util.oneOfGetter($oneOfFields = ["taskId"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RoutingInfo.prototype, "_debug", {
+            get: $util.oneOfGetter($oneOfFields = ["debug"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RoutingInfo.prototype, "_tcpBbr", {
+            get: $util.oneOfGetter($oneOfFields = ["tcpBbr"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(RoutingInfo.prototype, "_tcpKeepalive", {
+            get: $util.oneOfGetter($oneOfFields = ["tcpKeepalive"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        /**
+         * Creates a new RoutingInfo instance using the specified properties.
+         * @function create
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {waproto.RoutingInfo.$Properties=} [properties] Properties to set
+         * @returns {waproto.RoutingInfo} RoutingInfo instance
+         * @type {{
+         *   (properties: waproto.RoutingInfo.$Shape): waproto.RoutingInfo & waproto.RoutingInfo.$Shape;
+         *   (properties?: waproto.RoutingInfo.$Properties): waproto.RoutingInfo;
+         * }}
+         */
+        RoutingInfo.create = function(properties) {
+            return new RoutingInfo(properties);
+        };
+
+        /**
+         * Encodes the specified RoutingInfo message. Does not implicitly {@link waproto.RoutingInfo.verify|verify} messages.
+         * @function encode
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {waproto.RoutingInfo.$Properties} message RoutingInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RoutingInfo.encode = function (message, writer, _depth) {
+            if (!writer)
+                writer = $Writer.create();
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            if (message.regionId != null && message.regionId.length)
+                writer.uint32(/* id 1, wireType 2 =*/10).int32s(message.regionId);
+            if (message.clusterId != null && message.clusterId.length)
+                writer.uint32(/* id 2, wireType 2 =*/18).int32s(message.clusterId);
+            if (message.taskId != null && $Object.hasOwnProperty.call(message, "taskId"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int32(message.taskId);
+            if (message.debug != null && $Object.hasOwnProperty.call(message, "debug"))
+                writer.uint32(/* id 4, wireType 0 =*/32).bool(message.debug);
+            if (message.tcpBbr != null && $Object.hasOwnProperty.call(message, "tcpBbr"))
+                writer.uint32(/* id 5, wireType 0 =*/40).bool(message.tcpBbr);
+            if (message.tcpKeepalive != null && $Object.hasOwnProperty.call(message, "tcpKeepalive"))
+                writer.uint32(/* id 6, wireType 0 =*/48).bool(message.tcpKeepalive);
+            if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
+                for (var i = 0; i < message.$unknowns.length; ++i)
+                    writer.raw(message.$unknowns[i]);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified RoutingInfo message, length delimited. Does not implicitly {@link waproto.RoutingInfo.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {waproto.RoutingInfo.$Properties} message RoutingInfo message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        RoutingInfo.encodeDelimited = function(message, writer) {
+            return this.encode(message, (writer || $Writer.create()).fork()).ldelim();
+        };
+
+        /**
+         * Decodes a RoutingInfo message from the specified reader or buffer.
+         * @function decode
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {waproto.RoutingInfo & waproto.RoutingInfo.$Shape} RoutingInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RoutingInfo.decode = function (reader, length, _end, _depth, _target) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $Reader.recursionLimit)
+                throw $Error("max depth exceeded");
+            var end, message;
+            if (length === $undefined)
+                end = reader.len;
+            else {
+                end = reader.pos + length;
+                if (end > reader.len)
+                    throw $RangeError("index out of range");
+                length = reader.len;
+                reader.len = end;
+            }
+            message = _target || new $root.waproto.RoutingInfo();
+            while (reader.pos < end) {
+                var start = reader.pos;
+                var tag = reader.tag();
+                if (tag === _end) {
+                    _end = $undefined;
+                    break;
+                }
+                var wireType = tag & 7;
+                switch (tag >>>= 3) {
+                case 1: {
+                        if (wireType === 2) {
+                            if (!(message.regionId && message.regionId.length))
+                                message.regionId = [];
+                            reader.int32s(message.regionId);
+                            continue;
+                        }
+                        if (wireType !== 0)
+                            break;
+                        if (!(message.regionId && message.regionId.length))
+                            message.regionId = [];
+                        message.regionId.push(reader.int32());
+                        continue;
+                    }
+                case 2: {
+                        if (wireType === 2) {
+                            if (!(message.clusterId && message.clusterId.length))
+                                message.clusterId = [];
+                            reader.int32s(message.clusterId);
+                            continue;
+                        }
+                        if (wireType !== 0)
+                            break;
+                        if (!(message.clusterId && message.clusterId.length))
+                            message.clusterId = [];
+                        message.clusterId.push(reader.int32());
+                        continue;
+                    }
+                case 3: {
+                        if (wireType !== 0)
+                            break;
+                        message.taskId = reader.int32();
+                        message._taskId = "taskId";
+                        continue;
+                    }
+                case 4: {
+                        if (wireType !== 0)
+                            break;
+                        message.debug = reader.bool();
+                        message._debug = "debug";
+                        continue;
+                    }
+                case 5: {
+                        if (wireType !== 0)
+                            break;
+                        message.tcpBbr = reader.bool();
+                        message._tcpBbr = "tcpBbr";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 0)
+                            break;
+                        message.tcpKeepalive = reader.bool();
+                        message._tcpKeepalive = "tcpKeepalive";
+                        continue;
+                    }
+                }
+                reader.skipType(wireType, _depth, tag);
+                if (!reader.discardUnknown) {
+                    $util.makeProp(message, "$unknowns", false);
+                    (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
+                }
+            }
+            if (length !== $undefined) {
+                if (reader.pos !== end)
+                    throw $RangeError("index out of range");
+                reader.len = length;
+            }
+            if (_end !== $undefined)
+                throw $Error("missing end group");
+            return message;
+        };
+
+        /**
+         * Decodes a RoutingInfo message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {waproto.RoutingInfo & waproto.RoutingInfo.$Shape} RoutingInfo
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        RoutingInfo.decodeDelimited = function(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.size());
+        };
+
+        /**
+         * Verifies a RoutingInfo message.
+         * @function verify
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        RoutingInfo.verify = function (message, _depth) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                return "max depth exceeded";
+            var properties = {};
+            if (message.regionId != null && $Object.hasOwnProperty.call(message, "regionId")) {
+                if (!$Array.isArray(message.regionId))
+                    return "regionId: array expected";
+                for (var i = 0; i < message.regionId.length; ++i)
+                    if (!$util.isInteger(message.regionId[i]))
+                        return "regionId: integer[] expected";
+            }
+            if (message.clusterId != null && $Object.hasOwnProperty.call(message, "clusterId")) {
+                if (!$Array.isArray(message.clusterId))
+                    return "clusterId: array expected";
+                for (var i = 0; i < message.clusterId.length; ++i)
+                    if (!$util.isInteger(message.clusterId[i]))
+                        return "clusterId: integer[] expected";
+            }
+            if (message.taskId != null && $Object.hasOwnProperty.call(message, "taskId")) {
+                properties._taskId = 1;
+                if (!$util.isInteger(message.taskId))
+                    return "taskId: integer expected";
+            }
+            if (message.debug != null && $Object.hasOwnProperty.call(message, "debug")) {
+                properties._debug = 1;
+                if (typeof message.debug !== "boolean")
+                    return "debug: boolean expected";
+            }
+            if (message.tcpBbr != null && $Object.hasOwnProperty.call(message, "tcpBbr")) {
+                properties._tcpBbr = 1;
+                if (typeof message.tcpBbr !== "boolean")
+                    return "tcpBbr: boolean expected";
+            }
+            if (message.tcpKeepalive != null && $Object.hasOwnProperty.call(message, "tcpKeepalive")) {
+                properties._tcpKeepalive = 1;
+                if (typeof message.tcpKeepalive !== "boolean")
+                    return "tcpKeepalive: boolean expected";
+            }
+            return null;
+        };
+
+        /**
+         * Creates a RoutingInfo message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {waproto.RoutingInfo} RoutingInfo
+         */
+        RoutingInfo.fromObject = function (object, _depth) {
+            if (object instanceof $root.waproto.RoutingInfo)
+                return object;
+            if (!$util.isObject(object))
+                throw $TypeError(".waproto.RoutingInfo: object expected");
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var message = new $root.waproto.RoutingInfo();
+            if (object.regionId) {
+                if (!$Array.isArray(object.regionId))
+                    throw $TypeError(".waproto.RoutingInfo.regionId: array expected");
+                message.regionId = $Array(object.regionId.length);
+                for (var i = 0; i < object.regionId.length; ++i)
+                    message.regionId[i] = object.regionId[i] | 0;
+            }
+            if (object.clusterId) {
+                if (!$Array.isArray(object.clusterId))
+                    throw $TypeError(".waproto.RoutingInfo.clusterId: array expected");
+                message.clusterId = $Array(object.clusterId.length);
+                for (var i = 0; i < object.clusterId.length; ++i)
+                    message.clusterId[i] = object.clusterId[i] | 0;
+            }
+            if (object.taskId != null)
+                message.taskId = object.taskId | 0;
+            if (object.debug != null)
+                message.debug = $Boolean(object.debug);
+            if (object.tcpBbr != null)
+                message.tcpBbr = $Boolean(object.tcpBbr);
+            if (object.tcpKeepalive != null)
+                message.tcpKeepalive = $Boolean(object.tcpKeepalive);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a RoutingInfo message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {waproto.RoutingInfo} message RoutingInfo
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        RoutingInfo.toObject = function (message, options, _depth) {
+            if (!options)
+                options = {};
+            if (_depth === $undefined)
+                _depth = 0;
+            if (_depth > $util.recursionLimit)
+                throw $Error("max depth exceeded");
+            var object = {};
+            if (options.arrays || options.defaults) {
+                object.regionId = [];
+                object.clusterId = [];
+            }
+            if (message.regionId && message.regionId.length) {
+                object.regionId = $Array(message.regionId.length);
+                for (var j = 0; j < message.regionId.length; ++j)
+                    object.regionId[j] = message.regionId[j];
+            }
+            if (message.clusterId && message.clusterId.length) {
+                object.clusterId = $Array(message.clusterId.length);
+                for (var j = 0; j < message.clusterId.length; ++j)
+                    object.clusterId[j] = message.clusterId[j];
+            }
+            if (message.taskId != null && $Object.hasOwnProperty.call(message, "taskId"))
+                object.taskId = message.taskId;
+            if (message.debug != null && $Object.hasOwnProperty.call(message, "debug"))
+                object.debug = message.debug;
+            if (message.tcpBbr != null && $Object.hasOwnProperty.call(message, "tcpBbr"))
+                object.tcpBbr = message.tcpBbr;
+            if (message.tcpKeepalive != null && $Object.hasOwnProperty.call(message, "tcpKeepalive"))
+                object.tcpKeepalive = message.tcpKeepalive;
+            return object;
+        };
+
+        /**
+         * Converts this RoutingInfo to JSON.
+         * @function toJSON
+         * @memberof waproto.RoutingInfo
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        RoutingInfo.prototype.toJSON = function() {
+            return RoutingInfo.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the type url for RoutingInfo
+         * @function getTypeUrl
+         * @memberof waproto.RoutingInfo
+         * @static
+         * @param {string} [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns {string} The type url
+         */
+        RoutingInfo.getTypeUrl = function(prefix) {
+            if (prefix === $undefined)
+                prefix = "type.googleapis.com";
+            return prefix + "/waproto.RoutingInfo";
+        };
+
+        return RoutingInfo;
+    })();
+
     waproto.ScheduledMessageMetadata = (function() {
 
         /**
