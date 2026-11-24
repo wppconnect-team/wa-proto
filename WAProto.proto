@@ -1,7 +1,7 @@
 syntax = "proto3";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1056008220
+/// WhatsApp Version: 2.3000.1056075170
 
 message ACP2Setting {
     optional bool enabled = 1;
@@ -545,7 +545,11 @@ message BotCapabilityMetadata {
         RICH_RESPONSE_SIDE_BY_SIDE_BUFFER_BOTH = 89;
         AI_MUSE_JARVIS_ENVELOPE_GZIP_ENABLED = 90;
         AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91;
+        HATCH_DEVICE_NODE_HOST = 92;
         AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93;
+        AI_RICH_RESPONSE_A2UI_CARDS_ENABLED = 94;
+        AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED = 95;
+        AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED = 96;
     }
 }
 
@@ -1978,6 +1982,7 @@ message Conversation {
     optional int32 nonE2EeType = 68;
     optional NonE2EEAttestation.AccountType contactAccountEncryptionAttestationType = 69;
     optional uint32 unreadReplyToMyMessageCount = 70;
+    optional ConversationDraft draft = 71;
     enum EndOfHistoryTransferType {
         COMPLETE_BUT_MORE_MESSAGES_REMAIN_ON_PRIMARY = 0;
         COMPLETE_AND_NO_MORE_MESSAGE_REMAIN_ON_PRIMARY = 1;
@@ -1990,6 +1995,12 @@ message Conversation {
         APPEAL_APPROVED = 2;
         APPEAL_REJECTED = 3;
     }
+}
+
+message ConversationDraft {
+    optional Message content = 1;
+    optional int64 editTimestampMs = 2;
+    optional uint32 editorDeviceId = 3;
 }
 
 message CreateBackupInput {
@@ -2097,6 +2108,7 @@ message DeviceCapabilities {
     optional PhoneNumberSharing phoneNumberSharing = 14;
     optional RecentConversationsOnDemand recentConversationsOnDemand = 15;
     optional AiMuseJarvisGzip aiMuseJarvisGzip = 16;
+    optional DraftSync draftSync = 17;
     message AiFbidMigration {
         optional uint64 chatDbMigrationTimestamp = 1;
         optional uint32 supportVersion = 2;
@@ -2139,6 +2151,10 @@ message DeviceCapabilities {
     }
     message ContactRefresh {
         optional bool refreshSupported = 1;
+    }
+    
+    message DraftSync {
+        optional uint32 version = 1;
     }
     
     message HostWriteMutationSupport {
@@ -2256,6 +2272,7 @@ message DeviceProps {
         optional bool supportNewsletter = 25;
         optional bool supportUniversalReachChat = 26;
         optional bool supportOmittedConversationMetadata = 28;
+        optional bool supportDraftSync = 29;
     }
     
     enum PlatformType {
@@ -2311,6 +2328,27 @@ message DisappearingMode {
         BULK_CHANGE = 3;
         BIZ_SUPPORTS_FB_HOSTING = 4;
         UNKNOWN_GROUPS = 5;
+    }
+}
+
+message DraftMessageSync {
+    optional string chatJid = 1;
+    optional string altChatJid = 2;
+    optional Action action = 3;
+    optional int64 editTimestampMs = 4;
+    optional Message draft = 5;
+    optional ClearReason clearReason = 6;
+    enum Action {
+        ACTION_UNKNOWN = 0;
+        SET = 1;
+        CLEAR = 2;
+    }
+    enum ClearReason {
+        CLEAR_REASON_UNKNOWN = 0;
+        USER_CLEARED = 1;
+        SENT = 2;
+        CHAT_LOCKED = 3;
+        REPLACED_BY_NON_TEXT = 4;
     }
 }
 
@@ -4595,6 +4633,7 @@ message Message {
         optional MembershipFormKeyFingerprintVerification membershipFormKeyFingerprintVerification = 40;
         optional GroupRootKeyShare groupRootKeyShare = 41;
         optional MessageEditDisplayType messageEditDisplayType = 42;
+        optional DraftMessageSync draftMessageSync = 43;
         enum MessageEditDisplayType {
             DEFAULT = 0;
             LINK_PREVIEW_ONLY = 1;
@@ -4638,6 +4677,7 @@ message Message {
             GROUP_ROOT_KEY_REQUEST = 42;
             MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43;
             GROUP_ROOT_KEY_SHARE = 44;
+            DRAFT_MESSAGE_SYNC = 45;
         }
     }
     

@@ -7806,8 +7806,20 @@ export namespace waproto {
             /** AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED value */
             AI_RICH_RESPONSE_INLINE_MEDIA_LIGHTBOX_ENABLED = 91,
 
+            /** HATCH_DEVICE_NODE_HOST value */
+            HATCH_DEVICE_NODE_HOST = 92,
+
             /** AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED value */
-            AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93
+            AI_MUSE_JARVIS_PAYLOAD_GZIP_ENABLED = 93,
+
+            /** AI_RICH_RESPONSE_A2UI_CARDS_ENABLED value */
+            AI_RICH_RESPONSE_A2UI_CARDS_ENABLED = 94,
+
+            /** AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED value */
+            AI_RICH_RESPONSE_READ_ALOUD_LENGTH_APPROXIMATION_ENABLED = 95,
+
+            /** AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED value */
+            AI_RICH_RESPONSE_READ_ALOUD_ACTION_TRAY_ENABLED = 96
         }
     }
 
@@ -24847,6 +24859,9 @@ export namespace waproto {
         /** Conversation unreadReplyToMyMessageCount. */
         unreadReplyToMyMessageCount?: (number|null);
 
+        /** Conversation draft. */
+        draft?: (waproto.ConversationDraft.$Properties|null);
+
         /**
          * Creates a new Conversation instance using the specified properties.
          * @param [properties] Properties to set
@@ -25141,6 +25156,9 @@ export namespace waproto {
             /** Conversation unreadReplyToMyMessageCount */
             unreadReplyToMyMessageCount?: (number|null);
 
+            /** Conversation draft */
+            draft?: (waproto.ConversationDraft.$Properties|null);
+
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
         }
@@ -25217,6 +25235,7 @@ export namespace waproto {
           nonE2EeType?: number|null;
           contactAccountEncryptionAttestationType?: waproto.NonE2EEAttestation.AccountType|null;
           unreadReplyToMyMessageCount?: number|null;
+          draft?: waproto.ConversationDraft.$Shape|null;
           $unknowns?: Uint8Array[];
         };
 
@@ -25251,6 +25270,140 @@ export namespace waproto {
             /** APPEAL_REJECTED value */
             APPEAL_REJECTED = 3
         }
+    }
+
+    /**
+     * Properties of a ConversationDraft.
+     * @deprecated Use waproto.ConversationDraft.$Properties instead.
+     */
+    interface IConversationDraft extends waproto.ConversationDraft.$Properties {
+    }
+
+    /** Represents a ConversationDraft. */
+    class ConversationDraft {
+
+        /**
+         * Constructs a new ConversationDraft.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.ConversationDraft.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** ConversationDraft content. */
+        content?: (waproto.Message.$Properties|null);
+
+        /** ConversationDraft editTimestampMs. */
+        editTimestampMs?: (number|Long|null);
+
+        /** ConversationDraft editorDeviceId. */
+        editorDeviceId?: (number|null);
+
+        /**
+         * Creates a new ConversationDraft instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns ConversationDraft instance
+         */
+        static create(properties: waproto.ConversationDraft.$Shape): waproto.ConversationDraft & waproto.ConversationDraft.$Shape;
+        static create(properties?: waproto.ConversationDraft.$Properties): waproto.ConversationDraft;
+
+        /**
+         * Encodes the specified ConversationDraft message. Does not implicitly {@link waproto.ConversationDraft.verify|verify} messages.
+         * @param message ConversationDraft message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.ConversationDraft.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified ConversationDraft message, length delimited. Does not implicitly {@link waproto.ConversationDraft.verify|verify} messages.
+         * @param message ConversationDraft message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.ConversationDraft.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a ConversationDraft message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.ConversationDraft & waproto.ConversationDraft.$Shape} ConversationDraft
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.ConversationDraft & waproto.ConversationDraft.$Shape;
+
+        /**
+         * Decodes a ConversationDraft message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.ConversationDraft & waproto.ConversationDraft.$Shape} ConversationDraft
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.ConversationDraft & waproto.ConversationDraft.$Shape;
+
+        /**
+         * Verifies a ConversationDraft message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a ConversationDraft message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns ConversationDraft
+         */
+        static fromObject(object: { [k: string]: any }): waproto.ConversationDraft;
+
+        /**
+         * Creates a plain object from a ConversationDraft message. Also converts values to other types if specified.
+         * @param message ConversationDraft
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.ConversationDraft, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this ConversationDraft to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for ConversationDraft
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace ConversationDraft {
+
+        /** Properties of a ConversationDraft. */
+        interface $Properties {
+
+            /** ConversationDraft content */
+            content?: (waproto.Message.$Properties|null);
+
+            /** ConversationDraft editTimestampMs */
+            editTimestampMs?: (number|Long|null);
+
+            /** ConversationDraft editorDeviceId */
+            editorDeviceId?: (number|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a ConversationDraft. */
+        type $Shape = {
+          content?: waproto.Message.$Shape|null;
+          editTimestampMs?: number|Long|null;
+          editorDeviceId?: number|null;
+          $unknowns?: Uint8Array[];
+        };
     }
 
     /**
@@ -27243,6 +27396,9 @@ export namespace waproto {
         /** DeviceCapabilities aiMuseJarvisGzip. */
         aiMuseJarvisGzip?: (waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
 
+        /** DeviceCapabilities draftSync. */
+        draftSync?: (waproto.DeviceCapabilities.DraftSync.$Properties|null);
+
         /**
          * Creates a new DeviceCapabilities instance using the specified properties.
          * @param [properties] Properties to set
@@ -27374,6 +27530,9 @@ export namespace waproto {
 
             /** DeviceCapabilities aiMuseJarvisGzip */
             aiMuseJarvisGzip?: (waproto.DeviceCapabilities.AiMuseJarvisGzip.$Properties|null);
+
+            /** DeviceCapabilities draftSync */
+            draftSync?: (waproto.DeviceCapabilities.DraftSync.$Properties|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
@@ -28261,6 +28420,123 @@ export namespace waproto {
 
             /** Shape of a ContactRefresh. */
             type $Shape = waproto.DeviceCapabilities.ContactRefresh.$Properties;
+        }
+
+        /**
+         * Properties of a DraftSync.
+         * @deprecated Use waproto.DeviceCapabilities.DraftSync.$Properties instead.
+         */
+        interface IDraftSync extends waproto.DeviceCapabilities.DraftSync.$Properties {
+        }
+
+        /** Represents a DraftSync. */
+        class DraftSync {
+
+            /**
+             * Constructs a new DraftSync.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: waproto.DeviceCapabilities.DraftSync.$Properties);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+
+            /** DraftSync version. */
+            version?: (number|null);
+
+            /**
+             * Creates a new DraftSync instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns DraftSync instance
+             */
+            static create(properties: waproto.DeviceCapabilities.DraftSync.$Shape): waproto.DeviceCapabilities.DraftSync & waproto.DeviceCapabilities.DraftSync.$Shape;
+            static create(properties?: waproto.DeviceCapabilities.DraftSync.$Properties): waproto.DeviceCapabilities.DraftSync;
+
+            /**
+             * Encodes the specified DraftSync message. Does not implicitly {@link waproto.DeviceCapabilities.DraftSync.verify|verify} messages.
+             * @param message DraftSync message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encode(message: waproto.DeviceCapabilities.DraftSync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified DraftSync message, length delimited. Does not implicitly {@link waproto.DeviceCapabilities.DraftSync.verify|verify} messages.
+             * @param message DraftSync message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            static encodeDelimited(message: waproto.DeviceCapabilities.DraftSync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a DraftSync message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns {waproto.DeviceCapabilities.DraftSync & waproto.DeviceCapabilities.DraftSync.$Shape} DraftSync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DeviceCapabilities.DraftSync & waproto.DeviceCapabilities.DraftSync.$Shape;
+
+            /**
+             * Decodes a DraftSync message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns {waproto.DeviceCapabilities.DraftSync & waproto.DeviceCapabilities.DraftSync.$Shape} DraftSync
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DeviceCapabilities.DraftSync & waproto.DeviceCapabilities.DraftSync.$Shape;
+
+            /**
+             * Verifies a DraftSync message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a DraftSync message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns DraftSync
+             */
+            static fromObject(object: { [k: string]: any }): waproto.DeviceCapabilities.DraftSync;
+
+            /**
+             * Creates a plain object from a DraftSync message. Also converts values to other types if specified.
+             * @param message DraftSync
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            static toObject(message: waproto.DeviceCapabilities.DraftSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this DraftSync to JSON.
+             * @returns JSON object
+             */
+            toJSON(): { [k: string]: any };
+
+            /**
+             * Gets the type url for DraftSync
+             * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+             * @returns The type url
+             */
+            static getTypeUrl(prefix?: string): string;
+        }
+
+        namespace DraftSync {
+
+            /** Properties of a DraftSync. */
+            interface $Properties {
+
+                /** DraftSync version */
+                version?: (number|null);
+
+                /** Unknown fields preserved while decoding when enabled */
+                $unknowns?: Uint8Array[];
+            }
+
+            /** Shape of a DraftSync. */
+            type $Shape = waproto.DeviceCapabilities.DraftSync.$Properties;
         }
 
         /**
@@ -29970,6 +30246,9 @@ export namespace waproto {
             /** HistorySyncConfig supportOmittedConversationMetadata. */
             supportOmittedConversationMetadata?: (boolean|null);
 
+            /** HistorySyncConfig supportDraftSync. */
+            supportDraftSync?: (boolean|null);
+
             /**
              * Creates a new HistorySyncConfig instance using the specified properties.
              * @param [properties] Properties to set
@@ -30134,6 +30413,9 @@ export namespace waproto {
 
                 /** HistorySyncConfig supportOmittedConversationMetadata */
                 supportOmittedConversationMetadata?: (boolean|null);
+
+                /** HistorySyncConfig supportDraftSync */
+                supportDraftSync?: (boolean|null);
 
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
@@ -30411,6 +30693,193 @@ export namespace waproto {
 
             /** UNKNOWN_GROUPS value */
             UNKNOWN_GROUPS = 5
+        }
+    }
+
+    /**
+     * Properties of a DraftMessageSync.
+     * @deprecated Use waproto.DraftMessageSync.$Properties instead.
+     */
+    interface IDraftMessageSync extends waproto.DraftMessageSync.$Properties {
+    }
+
+    /** Represents a DraftMessageSync. */
+    class DraftMessageSync {
+
+        /**
+         * Constructs a new DraftMessageSync.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: waproto.DraftMessageSync.$Properties);
+
+        /** Unknown fields preserved while decoding when enabled */
+        $unknowns?: Uint8Array[];
+
+        /** DraftMessageSync chatJid. */
+        chatJid?: (string|null);
+
+        /** DraftMessageSync altChatJid. */
+        altChatJid?: (string|null);
+
+        /** DraftMessageSync action. */
+        action?: (waproto.DraftMessageSync.Action|null);
+
+        /** DraftMessageSync editTimestampMs. */
+        editTimestampMs?: (number|Long|null);
+
+        /** DraftMessageSync draft. */
+        draft?: (waproto.Message.$Properties|null);
+
+        /** DraftMessageSync clearReason. */
+        clearReason?: (waproto.DraftMessageSync.ClearReason|null);
+
+        /**
+         * Creates a new DraftMessageSync instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns DraftMessageSync instance
+         */
+        static create(properties: waproto.DraftMessageSync.$Shape): waproto.DraftMessageSync & waproto.DraftMessageSync.$Shape;
+        static create(properties?: waproto.DraftMessageSync.$Properties): waproto.DraftMessageSync;
+
+        /**
+         * Encodes the specified DraftMessageSync message. Does not implicitly {@link waproto.DraftMessageSync.verify|verify} messages.
+         * @param message DraftMessageSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encode(message: waproto.DraftMessageSync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified DraftMessageSync message, length delimited. Does not implicitly {@link waproto.DraftMessageSync.verify|verify} messages.
+         * @param message DraftMessageSync message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        static encodeDelimited(message: waproto.DraftMessageSync.$Properties, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a DraftMessageSync message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns {waproto.DraftMessageSync & waproto.DraftMessageSync.$Shape} DraftMessageSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): waproto.DraftMessageSync & waproto.DraftMessageSync.$Shape;
+
+        /**
+         * Decodes a DraftMessageSync message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns {waproto.DraftMessageSync & waproto.DraftMessageSync.$Shape} DraftMessageSync
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): waproto.DraftMessageSync & waproto.DraftMessageSync.$Shape;
+
+        /**
+         * Verifies a DraftMessageSync message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a DraftMessageSync message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns DraftMessageSync
+         */
+        static fromObject(object: { [k: string]: any }): waproto.DraftMessageSync;
+
+        /**
+         * Creates a plain object from a DraftMessageSync message. Also converts values to other types if specified.
+         * @param message DraftMessageSync
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        static toObject(message: waproto.DraftMessageSync, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this DraftMessageSync to JSON.
+         * @returns JSON object
+         */
+        toJSON(): { [k: string]: any };
+
+        /**
+         * Gets the type url for DraftMessageSync
+         * @param [prefix] Custom type url prefix, defaults to `"type.googleapis.com"`
+         * @returns The type url
+         */
+        static getTypeUrl(prefix?: string): string;
+    }
+
+    namespace DraftMessageSync {
+
+        /** Properties of a DraftMessageSync. */
+        interface $Properties {
+
+            /** DraftMessageSync chatJid */
+            chatJid?: (string|null);
+
+            /** DraftMessageSync altChatJid */
+            altChatJid?: (string|null);
+
+            /** DraftMessageSync action */
+            action?: (waproto.DraftMessageSync.Action|null);
+
+            /** DraftMessageSync editTimestampMs */
+            editTimestampMs?: (number|Long|null);
+
+            /** DraftMessageSync draft */
+            draft?: (waproto.Message.$Properties|null);
+
+            /** DraftMessageSync clearReason */
+            clearReason?: (waproto.DraftMessageSync.ClearReason|null);
+
+            /** Unknown fields preserved while decoding when enabled */
+            $unknowns?: Uint8Array[];
+        }
+
+        /** Shape of a DraftMessageSync. */
+        type $Shape = {
+          chatJid?: string|null;
+          altChatJid?: string|null;
+          action?: waproto.DraftMessageSync.Action|null;
+          editTimestampMs?: number|Long|null;
+          draft?: waproto.Message.$Shape|null;
+          clearReason?: waproto.DraftMessageSync.ClearReason|null;
+          $unknowns?: Uint8Array[];
+        };
+
+        /** Action enum. */
+        enum Action {
+
+            /** ACTION_UNKNOWN value */
+            ACTION_UNKNOWN = 0,
+
+            /** SET value */
+            SET = 1,
+
+            /** CLEAR value */
+            CLEAR = 2
+        }
+
+        /** ClearReason enum. */
+        enum ClearReason {
+
+            /** CLEAR_REASON_UNKNOWN value */
+            CLEAR_REASON_UNKNOWN = 0,
+
+            /** USER_CLEARED value */
+            USER_CLEARED = 1,
+
+            /** SENT value */
+            SENT = 2,
+
+            /** CHAT_LOCKED value */
+            CHAT_LOCKED = 3,
+
+            /** REPLACED_BY_NON_TEXT value */
+            REPLACED_BY_NON_TEXT = 4
         }
     }
 
@@ -64523,6 +64992,9 @@ export namespace waproto {
             /** ProtocolMessage messageEditDisplayType. */
             messageEditDisplayType?: (waproto.Message.ProtocolMessage.MessageEditDisplayType|null);
 
+            /** ProtocolMessage draftMessageSync. */
+            draftMessageSync?: (waproto.DraftMessageSync.$Properties|null);
+
             /**
              * Creates a new ProtocolMessage instance using the specified properties.
              * @param [properties] Properties to set
@@ -64721,6 +65193,9 @@ export namespace waproto {
                 /** ProtocolMessage messageEditDisplayType */
                 messageEditDisplayType?: (waproto.Message.ProtocolMessage.MessageEditDisplayType|null);
 
+                /** ProtocolMessage draftMessageSync */
+                draftMessageSync?: (waproto.DraftMessageSync.$Properties|null);
+
                 /** Unknown fields preserved while decoding when enabled */
                 $unknowns?: Uint8Array[];
             }
@@ -64765,6 +65240,7 @@ export namespace waproto {
               membershipFormKeyFingerprintVerification?: waproto.MembershipFormKeyFingerprintVerification.$Shape|null;
               groupRootKeyShare?: waproto.GroupRootKeyShare.$Shape|null;
               messageEditDisplayType?: waproto.Message.ProtocolMessage.MessageEditDisplayType|null;
+              draftMessageSync?: waproto.DraftMessageSync.$Shape|null;
               $unknowns?: Uint8Array[];
             };
 
@@ -64893,7 +65369,10 @@ export namespace waproto {
                 MEMBERSHIP_FORM_KEY_FINGERPRINT_VERIFICATION = 43,
 
                 /** GROUP_ROOT_KEY_SHARE value */
-                GROUP_ROOT_KEY_SHARE = 44
+                GROUP_ROOT_KEY_SHARE = 44,
+
+                /** DRAFT_MESSAGE_SYNC value */
+                DRAFT_MESSAGE_SYNC = 45
             }
         }
 
