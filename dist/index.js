@@ -238159,6 +238159,8 @@ $root.waproto = (function() {
          * @property {number|Long} serverDataId PrepareAddPeerDeviceSuccess serverDataId
          * @property {Uint8Array} companionDeviceBinding PrepareAddPeerDeviceSuccess companionDeviceBinding
          * @property {number|Long|null} [historyStartTime] PrepareAddPeerDeviceSuccess historyStartTime
+         * @property {Uint8Array|null} [identityBindingBlob] PrepareAddPeerDeviceSuccess identityBindingBlob
+         * @property {Uint8Array|null} [bindingSigByLabyrinthDevice] PrepareAddPeerDeviceSuccess bindingSigByLabyrinthDevice
          * @property {Array.<Uint8Array>} [$unknowns] Unknown fields preserved while decoding when enabled
          */
 
@@ -238222,12 +238224,40 @@ $root.waproto = (function() {
          */
         PrepareAddPeerDeviceSuccess.prototype.historyStartTime = null;
 
+        /**
+         * PrepareAddPeerDeviceSuccess identityBindingBlob.
+         * @member {Uint8Array|null|undefined} identityBindingBlob
+         * @memberof waproto.PrepareAddPeerDeviceSuccess
+         * @instance
+         */
+        PrepareAddPeerDeviceSuccess.prototype.identityBindingBlob = null;
+
+        /**
+         * PrepareAddPeerDeviceSuccess bindingSigByLabyrinthDevice.
+         * @member {Uint8Array|null|undefined} bindingSigByLabyrinthDevice
+         * @memberof waproto.PrepareAddPeerDeviceSuccess
+         * @instance
+         */
+        PrepareAddPeerDeviceSuccess.prototype.bindingSigByLabyrinthDevice = null;
+
         // OneOf field names bound to virtual getters and setters
         var $oneOfFields;
 
         // Virtual OneOf for proto3 optional field
         $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_historyStartTime", {
             get: $util.oneOfGetter($oneOfFields = ["historyStartTime"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_identityBindingBlob", {
+            get: $util.oneOfGetter($oneOfFields = ["identityBindingBlob"]),
+            set: $util.oneOfSetter($oneOfFields)
+        });
+
+        // Virtual OneOf for proto3 optional field
+        $Object.defineProperty(PrepareAddPeerDeviceSuccess.prototype, "_bindingSigByLabyrinthDevice", {
+            get: $util.oneOfGetter($oneOfFields = ["bindingSigByLabyrinthDevice"]),
             set: $util.oneOfSetter($oneOfFields)
         });
 
@@ -238268,6 +238298,10 @@ $root.waproto = (function() {
             writer.uint32(/* id 3, wireType 2 =*/26).bytes(message.companionDeviceBinding);
             if (message.historyStartTime != null && $Object.hasOwnProperty.call(message, "historyStartTime"))
                 writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.historyStartTime);
+            if (message.identityBindingBlob != null && $Object.hasOwnProperty.call(message, "identityBindingBlob"))
+                writer.uint32(/* id 5, wireType 2 =*/42).bytes(message.identityBindingBlob);
+            if (message.bindingSigByLabyrinthDevice != null && $Object.hasOwnProperty.call(message, "bindingSigByLabyrinthDevice"))
+                writer.uint32(/* id 6, wireType 2 =*/50).bytes(message.bindingSigByLabyrinthDevice);
             if (message.$unknowns != null && $Object.hasOwnProperty.call(message, "$unknowns"))
                 for (var i = 0; i < message.$unknowns.length; ++i)
                     writer.raw(message.$unknowns[i]);
@@ -238350,6 +238384,20 @@ $root.waproto = (function() {
                         message._historyStartTime = "historyStartTime";
                         continue;
                     }
+                case 5: {
+                        if (wireType !== 2)
+                            break;
+                        message.identityBindingBlob = reader.bytes();
+                        message._identityBindingBlob = "identityBindingBlob";
+                        continue;
+                    }
+                case 6: {
+                        if (wireType !== 2)
+                            break;
+                        message.bindingSigByLabyrinthDevice = reader.bytes();
+                        message._bindingSigByLabyrinthDevice = "bindingSigByLabyrinthDevice";
+                        continue;
+                    }
                 }
                 reader.skipType(wireType, _depth, tag);
                 if (!reader.discardUnknown) {
@@ -238419,6 +238467,16 @@ $root.waproto = (function() {
                 if (!$util.isInteger(message.historyStartTime) && !(message.historyStartTime && $util.isInteger(message.historyStartTime.low) && $util.isInteger(message.historyStartTime.high)))
                     return "historyStartTime: integer|Long expected";
             }
+            if (message.identityBindingBlob != null && $Object.hasOwnProperty.call(message, "identityBindingBlob")) {
+                properties._identityBindingBlob = 1;
+                if (!(message.identityBindingBlob && typeof message.identityBindingBlob.length === "number" || $util.isString(message.identityBindingBlob)))
+                    return "identityBindingBlob: buffer expected";
+            }
+            if (message.bindingSigByLabyrinthDevice != null && $Object.hasOwnProperty.call(message, "bindingSigByLabyrinthDevice")) {
+                properties._bindingSigByLabyrinthDevice = 1;
+                if (!(message.bindingSigByLabyrinthDevice && typeof message.bindingSigByLabyrinthDevice.length === "number" || $util.isString(message.bindingSigByLabyrinthDevice)))
+                    return "bindingSigByLabyrinthDevice: buffer expected";
+            }
             return null;
         };
 
@@ -238468,6 +238526,16 @@ $root.waproto = (function() {
                     message.historyStartTime = object.historyStartTime;
                 else if (typeof object.historyStartTime === "object")
                     message.historyStartTime = new $util.LongBits(object.historyStartTime.low >>> 0, object.historyStartTime.high >>> 0).toNumber(true);
+            if (object.identityBindingBlob != null)
+                if (typeof object.identityBindingBlob === "string")
+                    $util.base64.decode(object.identityBindingBlob, message.identityBindingBlob = $util.newBuffer($util.base64.length(object.identityBindingBlob)), 0);
+                else if (object.identityBindingBlob.length >= 0)
+                    message.identityBindingBlob = object.identityBindingBlob;
+            if (object.bindingSigByLabyrinthDevice != null)
+                if (typeof object.bindingSigByLabyrinthDevice === "string")
+                    $util.base64.decode(object.bindingSigByLabyrinthDevice, message.bindingSigByLabyrinthDevice = $util.newBuffer($util.base64.length(object.bindingSigByLabyrinthDevice)), 0);
+                else if (object.bindingSigByLabyrinthDevice.length >= 0)
+                    message.bindingSigByLabyrinthDevice = object.bindingSigByLabyrinthDevice;
             return message;
         };
 
@@ -238521,6 +238589,10 @@ $root.waproto = (function() {
                     object.historyStartTime = options.longs === $String ? $String(message.historyStartTime) : message.historyStartTime;
                 else
                     object.historyStartTime = options.longs === $String ? $util.Long.prototype.toString.call(message.historyStartTime) : options.longs === $Number ? new $util.LongBits(message.historyStartTime.low >>> 0, message.historyStartTime.high >>> 0).toNumber(true) : message.historyStartTime;
+            if (message.identityBindingBlob != null && $Object.hasOwnProperty.call(message, "identityBindingBlob"))
+                object.identityBindingBlob = options.bytes === $String ? $util.base64.encode(message.identityBindingBlob, 0, message.identityBindingBlob.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.identityBindingBlob) : message.identityBindingBlob;
+            if (message.bindingSigByLabyrinthDevice != null && $Object.hasOwnProperty.call(message, "bindingSigByLabyrinthDevice"))
+                object.bindingSigByLabyrinthDevice = options.bytes === $String ? $util.base64.encode(message.bindingSigByLabyrinthDevice, 0, message.bindingSigByLabyrinthDevice.length) : options.bytes === $Array ? $Array.prototype.slice.call(message.bindingSigByLabyrinthDevice) : message.bindingSigByLabyrinthDevice;
             return object;
         };
 

@@ -79943,6 +79943,12 @@ export namespace waproto {
         /** PrepareAddPeerDeviceSuccess historyStartTime. */
         historyStartTime?: (number|Long|null);
 
+        /** PrepareAddPeerDeviceSuccess identityBindingBlob. */
+        identityBindingBlob?: (Uint8Array|null);
+
+        /** PrepareAddPeerDeviceSuccess bindingSigByLabyrinthDevice. */
+        bindingSigByLabyrinthDevice?: (Uint8Array|null);
+
         /**
          * Creates a new PrepareAddPeerDeviceSuccess instance using the specified properties.
          * @param [properties] Properties to set
@@ -80038,6 +80044,12 @@ export namespace waproto {
 
             /** PrepareAddPeerDeviceSuccess historyStartTime */
             historyStartTime?: (number|Long|null);
+
+            /** PrepareAddPeerDeviceSuccess identityBindingBlob */
+            identityBindingBlob?: (Uint8Array|null);
+
+            /** PrepareAddPeerDeviceSuccess bindingSigByLabyrinthDevice */
+            bindingSigByLabyrinthDevice?: (Uint8Array|null);
 
             /** Unknown fields preserved while decoding when enabled */
             $unknowns?: Uint8Array[];
