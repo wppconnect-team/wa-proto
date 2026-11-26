@@ -36,7 +36,7 @@
   "overrides": {
     "deepmerge": "$deepmerge",
     "rebrowser-puppeteer-core": {
-      "@puppeteer/browsers": "3.2.7"
+      "@puppeteer/browsers": "3.3.0"
     }
   }
 }
